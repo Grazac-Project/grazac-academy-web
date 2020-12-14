@@ -1,0 +1,17 @@
+// abstract
+@import "../scss/abstract/mixins";
+@import "../scss/abstract/variables";
+
+// base
+@import "../scss/base/base";
+@import "../scss/base/typography";
+@import "../scss/base/utilities";
+
+// components
+@import "../scss/component/navbar";
+@import "../scss/component/footer";
+
+// pages
+@import "../scss/page/landing";
+
+//dashboard
