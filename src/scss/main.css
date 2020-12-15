@@ -994,4 +994,231 @@ html {
             transform: scale(1);
   }
 }
+
+.auth__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+@media (max-width: 56.25em) {
+  .auth__body {
+    min-height: initial;
+    display: block;
+  }
+}
+
+.auth__hero {
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  background-color: #dccdf4;
+  -webkit-box-shadow: 0px 20px 200px rgba(214, 214, 214, 0.25);
+          box-shadow: 0px 20px 200px rgba(214, 214, 214, 0.25);
+  border-radius: 0px 22px 22px 0px;
+  padding: 6rem;
+}
+
+@media (max-width: 56.25em) {
+  .auth__hero {
+    background-color: initial;
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 56.25em) and (max-width: 56.25em) {
+  .auth__hero img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.auth__form {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+}
+
+@media (max-width: 56.25em) {
+  .auth__form {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+}
+
+.auth__form--container {
+  max-width: 60%;
+  margin: 0 auto;
+  margin-top: 7rem;
+}
+
+@media (max-width: 56.25em) {
+  .auth__form--container {
+    max-width: 70%;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .auth__form--container {
+    max-width: 90%;
+  }
+}
+
+.auth__form--container h1 {
+  font-family: Georgia;
+  font-weight: bold;
+  font-size: 3.25rem;
+  color: #2b5491;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 56.25em) {
+  .auth__form--container h1 {
+    text-align: center;
+  }
+}
+
+.auth__line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 4rem 0;
+}
+
+.auth__line div {
+  height: 1px;
+  width: 100%;
+  background-color: #dadada;
+}
+
+.auth__line span {
+  display: block;
+  margin: 0 1rem;
+  color: #575a65;
+  font-size: 1.5rem;
+}
+
+.auth__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.auth__btn {
+  margin-right: 1rem;
+  background: transparent;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Georgia;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #575a65;
+  padding: 1.2rem 3rem;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-bottom: 2rem;
+}
+
+.auth__btn:hover {
+  background: #773dd3;
+  color: #fff;
+}
+
+.auth__btn svg {
+  margin-right: 1.5rem;
+}
+
+.form__group {
+  display: block;
+}
+
+.form__group label {
+  display: block;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #575a65;
+  margin-bottom: 1rem;
+}
+
+.form__group--half {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 37.5em) {
+  .form__group--half {
+    display: block;
+  }
+}
+
+.form__group--half .form__group:first-child {
+  margin-right: 2rem;
+}
+
+.form__input {
+  width: 100%;
+  height: 5rem;
+  border: 1px solid #dadada;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+  outline: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-size: 1.6rem;
+  padding: 0 2rem;
+  color: #575a65;
+}
+
+.form__input:focus {
+  border-color: #773dd3;
+  border-width: 1px;
+}
+
+.form__input--err:focus {
+  border-color: red;
+  border-width: 1px;
+}
+
+.form__btn {
+  display: block;
+  background: none;
+  border: none;
+  margin-top: 3.5rem;
+}
+
+@media (max-width: 56.25em) {
+  .form__btn {
+    margin: 0 auto;
+    margin-top: 3.5rem;
+  }
+}
+
+.form__btn .nav__btn {
+  margin: 0;
+}
+
+.form__link {
+  text-decoration: none;
+  color: #773dd3;
+  font-size: 1.4rem;
+  font-family: "Nunito Sans", sans-serif;
+}
 /*# sourceMappingURL=main.css.map */
