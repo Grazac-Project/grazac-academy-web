@@ -186,6 +186,103 @@
         &-intro2{
             text-align: center;
         }
+
+        &-tutors{
+            margin:40px 0 ;
+            overflow: hidden;
+            white-space: nowrap;
+            @include respond(phone){
+                overflow:auto;
+            }
+            
+            &-box{
+                width:250px;
+                margin: 5px 10px;
+                padding:10px;
+                box-shadow: 0px 5px 10px rgba(31, 16, 53, 0.1);
+                border-radius: 10px;
+                text-align: center;
+
+                div{
+                    width:60px;
+                    height:60px;
+                    border-radius: 50%;
+                    background: #F1F5FC;
+                }
+                h5{
+                    font-size:1.3em;
+                }
+                img{
+                    width:30px
+                }
+            }
+
+            div{
+                display: inline-block;
+            }
+        }
+    }
+
+    &_purple{
+        background: #5726A6;
+        border-radius: 25px;
+        padding:50px;
+        margin:70px 50px 100px;
+        color: white;
+        @include respond(tab-land){
+            margin:50px 0 70px;
+            padding: 50px 20px;
+        }
+
+        &_txt{
+            text-align:center;
+        }
+        p{
+            font-size:1.2em;
+        }
+        h1{
+            font-size:3em;
+        }
+        &-main{
+            display: flex;
+            margin:30px 0;
+            @media(max-width:700px){
+                display:block;
+            }
+
+            &-boxes{
+                border:2px solid white;
+                border-radius: 15px;
+                margin:15px;
+                padding:20px;
+                @media(max-width:700px){
+                    margin: 30px 15px;
+                }
+
+                h4{
+                    font-size: 1.3em;
+                }
+            }
+        }
+
+        &-btn{
+            display: flex;
+            justify-content: center;
+            @media(max-width:400px){
+                display:block;
+                margin-left: 15px;
+            }
+            p{
+                cursor: pointer;
+                margin-top: 10px;
+                margin-left:10px;
+                @media(max-width:400px){
+                    margin-top: 20px;
+                    margin-left:0px;
+                }
+            }
+        }
+
     }
 
 }

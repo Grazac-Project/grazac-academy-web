@@ -1237,4 +1237,131 @@ html {
 .gua_mode-intro2 {
   text-align: center;
 }
+
+.gua_mode-tutors {
+  margin: 40px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 37.5em) {
+  .gua_mode-tutors {
+    overflow: auto;
+  }
+}
+
+.gua_mode-tutors-box {
+  width: 250px;
+  margin: 5px 10px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 5px 10px rgba(31, 16, 53, 0.1);
+          box-shadow: 0px 5px 10px rgba(31, 16, 53, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.gua_mode-tutors-box div {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #F1F5FC;
+}
+
+.gua_mode-tutors-box h5 {
+  font-size: 1.3em;
+}
+
+.gua_mode-tutors-box img {
+  width: 30px;
+}
+
+.gua_mode-tutors div {
+  display: inline-block;
+}
+
+.gua_purple {
+  background: #5726A6;
+  border-radius: 25px;
+  padding: 50px;
+  margin: 70px 50px 100px;
+  color: white;
+}
+
+@media (max-width: 75em) {
+  .gua_purple {
+    margin: 50px 0 70px;
+    padding: 50px 20px;
+  }
+}
+
+.gua_purple_txt {
+  text-align: center;
+}
+
+.gua_purple p {
+  font-size: 1.2em;
+}
+
+.gua_purple h1 {
+  font-size: 3em;
+}
+
+.gua_purple-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 30px 0;
+}
+
+@media (max-width: 700px) {
+  .gua_purple-main {
+    display: block;
+  }
+}
+
+.gua_purple-main-boxes {
+  border: 2px solid white;
+  border-radius: 15px;
+  margin: 15px;
+  padding: 20px;
+}
+
+@media (max-width: 700px) {
+  .gua_purple-main-boxes {
+    margin: 30px 15px;
+  }
+}
+
+.gua_purple-main-boxes h4 {
+  font-size: 1.3em;
+}
+
+.gua_purple-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 400px) {
+  .gua_purple-btn {
+    display: block;
+    margin-left: 15px;
+  }
+}
+
+.gua_purple-btn p {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+@media (max-width: 400px) {
+  .gua_purple-btn p {
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+}
 /*# sourceMappingURL=main.css.map */

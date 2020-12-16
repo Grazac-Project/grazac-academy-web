@@ -6,6 +6,7 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import kamala from '../images/kamala.jpg';
 import cert from '../images/svg/cert.svg';
 import quote from '../images/svg/quote.svg';
+import linkedin from '../images/svg/linked.svg';
 import sprint from '../images/sprint.png';
 
 const GraduateAccelerator = () => {
@@ -165,6 +166,71 @@ const GraduateAccelerator = () => {
                             <h2>Mode Of Teaching</h2>
                             <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
                         </div>
+                        <div className="gua_mode-tutors">
+                            <div className="gua_mode-tutors-box">
+                                <div></div>
+                                <h5>Blessing Orazalume</h5>
+                                <p>CAREER FOUNDRY</p>
+                                <p>Software Developer</p>
+                                <img src={linkedin} alt="linkedin" />
+                            </div>
+                            <div className="gua_mode-tutors-box">
+                                <div></div>
+                                <h5>Blessing Orazalume</h5>
+                                <p>CAREER FOUNDRY</p>
+                                <p>Software Developer</p>
+                                <img src={linkedin} alt="linkedin" />
+                            </div>
+                            <div className="gua_mode-tutors-box">
+                                <div></div>
+                                <h5>Blessing Orazalume</h5>
+                                <p>CAREER FOUNDRY</p>
+                                <p>Software Developer</p>
+                                <img src={linkedin} alt="linkedin" />
+                            </div>
+                            <div className="gua_mode-tutors-box">
+                                <div></div>
+                                <h5>Blessing Orazalume</h5>
+                                <p>CAREER FOUNDRY</p>
+                                <p>Software Developer</p>
+                                <img src={linkedin} alt="linkedin" />
+                            </div>
+                            <div className="gua_mode-tutors-box">
+                                <div></div>
+                                <h5>Blessing Orazalume</h5>
+                                <p>CAREER FOUNDRY</p>
+                                <p>Software Developer</p>
+                                <img src={linkedin} alt="linkedin" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="gua_purple">
+                    <div className="gua_purple_txt">
+                        <p>Pricing</p>
+                        <h1>50%</h1>
+                        <p>Scholarship Available</p>
+                    </div>
+                    <div className="gua_purple-main">
+                        <div className="gua_purple-main-boxes">
+                            <h4>FULL TUITION PAYMENT</h4>
+                            <h2>₦540,000</h2>
+                            <p>Pay your fees 100% upfront. No other charges come up during your career</p>
+                        </div>
+                        <div className="gua_purple-main-boxes">
+                            <h4>FULL TUITION PAYMENT</h4>
+                            <h2>₦540,000</h2>
+                            <p>Pay your fees 100% upfront. No other charges come up during your career</p>
+                        </div>
+                        <div className="gua_purple-main-boxes">
+                            <h4>FULL TUITION PAYMENT</h4>
+                            <h2>₦540,000</h2>
+                            <p>Pay your fees 100% upfront. No other charges come up during your career</p>
+                        </div>
+                    </div>
+                    <div className="gua_purple-btn">
+                        <PrimaryBtn>Claim Scholarship</PrimaryBtn> 
+                        <p>Talk to course rep</p>
                     </div>
                 </div>
             </div>
