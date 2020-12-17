@@ -11,7 +11,8 @@
         "component/_navbar.scss",
         "component/_footer.scss",
         "page/_landing.scss",
-        "page/_auth.scss"
+        "page/_auth.scss",
+        "page/_gua.scss"
     ],
     "names": [],
     "file": "main.css"

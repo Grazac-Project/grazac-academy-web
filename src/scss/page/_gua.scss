@@ -1,0 +1,288 @@
+.gua {
+    p{
+        font-size:1.1em;
+    }
+
+    &_hero{
+        background: #1F1035;
+        height:calc(100vh - 80px);
+        margin-top:80px;
+        color:white;
+        @include respond(phone) {
+            margin-top: 60px;
+            height:calc(100vh - 60px);
+        }
+        &-text{
+            position: relative;
+            height:calc(100vh - 80px) ;
+
+            &-b{
+                position:absolute;
+                top:18%;
+                @include respond(phone) {
+                    top:15%;
+                }
+            }
+    
+            h1{
+                font-size:5em;
+                padding-bottom:20px;
+                @include respond(phone) {
+                    font-size: 3.7em;
+                }
+            }
+    
+            p{
+                font-size: 1.2em;
+                padding-bottom:30px;
+            }
+        }
+        
+    }
+
+    &__btn{
+        margin: 0;
+        display: flex;
+    }
+
+    &_wwd{
+        margin-top:80px;
+
+        &-intro{
+            h4{
+                color: #773DD3;
+                font-size:1em;
+            }
+            span{
+                color: #773DD3;
+            }
+        }
+        &-flex{
+            display:flex;
+            max-width:90%;
+            justify-content: center;
+
+            .first-div{
+                margin-right: 50px;
+                position:relative;
+                @include respond(tab-port){
+                    display: none;
+                }
+
+                &_1{
+                    position: absolute;
+                    top:530px;
+                    left:60px;
+                    @include respond(tab-land){
+                        display: none;
+                    } 
+                }
+            }
+
+            &-inner{
+                @media(min-width:601px){
+                    display:flex;
+                }
+                @include respond(tab-port){
+                    max-width:100%;
+                }
+
+                .svg-box{
+                    width:50px;
+                    height:50px;
+                    border-radius: 15px;
+                    background: #CFB9F9 25%;
+                }
+
+                .info{
+                    width: 245px;
+                    margin:30px 30px 10px ; 
+                    @include respond(tab-port){
+                        margin:40px 20px;
+                    }
+                    @include respond(phone){
+                        width: 100%;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+        
+        &-imagebox{
+            width:400px;
+            height:600px;
+            margin-top:30px ;
+            border-radius: 20px;
+            overflow: hidden;
+            @include respond(tab-land) {
+                display:none
+            }
+
+            img{
+                width:auto;
+                height:100%;
+            }
+        }
+
+        &-btn{
+            margin: 10px 0;
+            display: flex;
+            }
+    }
+
+    &_mode{
+        margin-top:80px;
+
+        &-intro{
+            h4{
+                color: #773DD3;
+                font-size:1em;
+            }
+        }
+
+        &-container{
+            @media(min-width: 601px){
+                display:flex;
+            }
+            margin-top: 40px;
+            .svg-box{
+                width:50px;
+                height:50px;
+                border-radius: 15px;
+                background: #CFB9F9 25%;
+            }
+            .boxes{
+                margin:10px 10px 30px;
+            }
+            .mode-pic{
+                border-radius: 20px;
+                overflow:hidden;
+                margin-top:20px;
+                @include respond(tab-port){
+                    display: none;
+                }
+            }
+        }
+
+        &-quote{
+            margin:50px auto 80px;
+            text-align: center;
+            @media (min-width:900px){
+                width:850px;
+            }
+            img{
+                display:block;
+                margin:auto auto 15px;
+                width:50px;
+            }
+            p{
+                font-size: 1.6em;
+            }
+            span{
+                color: #9DA8B6;
+            }
+        }
+
+        &-intro2{
+            text-align: center;
+        }
+
+        &-tutors{
+            margin:40px 0 ;
+            overflow: hidden;
+            white-space: nowrap;
+            @include respond(phone){
+                overflow:auto;
+            }
+            
+            &-box{
+                width:250px;
+                margin: 5px 10px;
+                padding:10px;
+                box-shadow: 0px 5px 10px rgba(31, 16, 53, 0.1);
+                border-radius: 10px;
+                text-align: center;
+
+                div{
+                    width:60px;
+                    height:60px;
+                    border-radius: 50%;
+                    background: #F1F5FC;
+                }
+                h5{
+                    font-size:1.3em;
+                }
+                img{
+                    width:30px
+                }
+            }
+
+            div{
+                display: inline-block;
+            }
+        }
+    }
+
+    &_purple{
+        background: #5726A6;
+        border-radius: 25px;
+        padding:50px;
+        margin:70px 50px 100px;
+        color: white;
+        @include respond(tab-land){
+            margin:50px 0 70px;
+            padding: 50px 20px;
+        }
+
+        &_txt{
+            text-align:center;
+        }
+        p{
+            font-size:1.2em;
+        }
+        h1{
+            font-size:3em;
+        }
+        &-main{
+            display: flex;
+            margin:30px 0;
+            @media(max-width:700px){
+                display:block;
+            }
+
+            &-boxes{
+                border:2px solid white;
+                border-radius: 15px;
+                margin:15px;
+                padding:20px;
+                @media(max-width:700px){
+                    margin: 30px 15px;
+                }
+
+                h4{
+                    font-size: 1.3em;
+                }
+            }
+        }
+
+        &-btn{
+            display: flex;
+            justify-content: center;
+            @media(max-width:400px){
+                display:block;
+                margin-left: 15px;
+            }
+            p{
+                cursor: pointer;
+                margin-top: 10px;
+                margin-left:10px;
+                @media(max-width:400px){
+                    margin-top: 20px;
+                    margin-left:0px;
+                }
+            }
+        }
+
+    }
+
+}
