@@ -11,7 +11,7 @@ const Navbar = () => {
   
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset > nav.current.offsetTop)
+      if (nav.current && window.pageYOffset > nav.current.offsetTop)
         setFixed(true);
       else 
         setFixed(false);
@@ -37,7 +37,7 @@ const Navbar = () => {
         </button>
 
         <ul className="nav__list--mb">
-        <li className="nav__item"><NavItem exact link="/">About</NavItem></li>
+        <li className="nav__item"><NavItem exact link="/about-us">About</NavItem></li>
         <li className="nav__item">
           <NavItem link="/academy">Academy</NavItem>
           <svg className="mask" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,13 +51,13 @@ const Navbar = () => {
           </svg>
         </li>
         <li className="nav__item nav__item--btn">
-          <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+          <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
         </li>
       </ul>
       </div>
 
       <ul className="nav__list">
-        <li className="nav__item"><NavItem exact link="/">About</NavItem></li>
+        <li className="nav__item"><NavItem exact link="/about-us">About</NavItem></li>
         <li className="nav__item">
           <NavItem link="/academy">Academy</NavItem>
           <svg className="mask" width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +71,7 @@ const Navbar = () => {
           </svg>
         </li>
         <li className="nav__item nav__item--btn">
-          <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+          <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
         </li>
       </ul>
     </nav>
