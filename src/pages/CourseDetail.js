@@ -9,24 +9,24 @@ import quote from '../images/svg/quote.svg';
 import linkedin from '../images/svg/linked.svg';
 import sprint from '../images/sprint.png';
 
-const GraduateAccelerator = () => {
+const CourseDetail = () => {
     return(
         <div>
             <Navbar/>
-            <div className="gua">
-                <div className="gua_hero">
+            <div className="course">
+                <div className="course_hero">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <div className="gua_hero-text">
-                                    <div className="gua_hero-text-b">
+                                <div className="course_hero-text">
+                                    <div className="course_hero-text-b">
                                         <h1>
-                                            Graduate Accelerator Track
+                                            Product Design (UI/UX)
                                         </h1>
                                         <p>
                                             Rideshur sets fair rates adjusted at every turn. Safety, risk level, and claims are all managed from a single dashboard. Evolve your fleet.
                                         </p>
-                                        <div className="gua__btn">
+                                        <div className="course__btn">
                                             <PrimaryBtn link="">Download Brochure</PrimaryBtn>
                                         </div>
                                     </div>
@@ -38,15 +38,15 @@ const GraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="gua_wwd">
+                <div className="course_wwd">
                     <div className="container">
-                        <div className="gua_wwd-intro">
+                        <div className="course_wwd-intro">
                             <h4>What we do</h4>
                             <h2>What You Will <span>Learn</span></h2>
                         </div>
-                        <div className="gua_wwd-flex">
+                        <div className="course_wwd-flex">
                             <div className="first-div">
-                                <div className="gua_wwd-imagebox">
+                                <div className="course_wwd-imagebox">
                                     <img src={kamala} alt="what we do" />
                                 </div>
                                 <div className="first-div_1">
@@ -54,7 +54,7 @@ const GraduateAccelerator = () => {
                                 </div>
                             </div>
                             <div >
-                                <div className="gua_wwd-flex-inner">
+                                <div className="course_wwd-flex-inner">
                                     <div className="info">
                                         <div className="svg-box">
 
@@ -72,7 +72,7 @@ const GraduateAccelerator = () => {
 
                                     </div>
                                 </div>
-                                <div className="gua_wwd-flex-inner">
+                                <div className="course_wwd-flex-inner">
                                     <div className="info">
                                         <div className="svg-box">
 
@@ -90,7 +90,7 @@ const GraduateAccelerator = () => {
 
                                     </div>
                                 </div>
-                                <div className="gua_wwd-flex-inner">
+                                <div className="course_wwd-flex-inner">
                                     <div className="info">
                                         <div className="svg-box">
 
@@ -108,7 +108,7 @@ const GraduateAccelerator = () => {
 
                                     </div>
                                 </div>
-                                <div className="gua_wwd-btn" style={{paddingLeft:'25px'}}>
+                                <div className="course_wwd-btn" style={{paddingLeft:'25px'}}>
                                     <PrimaryBtn>Join Class Now</PrimaryBtn>
                                 </div>
                             </div>
@@ -116,14 +116,14 @@ const GraduateAccelerator = () => {
 
                     </div>
                 </div>
-                <div className="gua_mode">
+                <div className="course_mode">
                     <div className="container">
-                        <div className="gua_wwd-intro">
+                        <div className="course_wwd-intro">
                             <h4>What we do</h4>
                             <h2>Mode Of Teaching</h2>
                             <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
                         </div>
-                        <div className="gua_mode-container">
+                        <div className="course_mode-container">
                             <div className="">
                                 <div>
                                     <div className="boxes">
@@ -156,46 +156,46 @@ const GraduateAccelerator = () => {
                                 <img src={sprint} alt="jdgkj" style={{width:'100%'}} />
                             </div>
                         </div>
-                        <div className="gua_mode-quote">
+                        <div className="course_mode-quote">
                             <img src={quote} alt="quote" />
                             <p>Online learning can be a lifeline to those who have obstacles, such as geographical distances or physical disabilities.</p>
                             <span>Paul Levinson</span>
                         </div>
-                        <div className="gua_mode-intro gua_mode-intro2">
+                        <div className="course_mode-intro course_mode-intro2">
                             <h4>What we do</h4>
                             <h2>Mode Of Teaching</h2>
                             <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
                         </div>
-                        <div className="gua_mode-tutors">
-                            <div className="gua_mode-tutors-box">
+                        <div className="course_mode-tutors">
+                            <div className="course_mode-tutors-box">
                                 <div></div>
                                 <h5>Blessing Orazalume</h5>
                                 <p>CAREER FOUNDRY</p>
                                 <p>Software Developer</p>
                                 <img src={linkedin} alt="linkedin" />
                             </div>
-                            <div className="gua_mode-tutors-box">
+                            <div className="course_mode-tutors-box">
                                 <div></div>
                                 <h5>Blessing Orazalume</h5>
                                 <p>CAREER FOUNDRY</p>
                                 <p>Software Developer</p>
                                 <img src={linkedin} alt="linkedin" />
                             </div>
-                            <div className="gua_mode-tutors-box">
+                            <div className="course_mode-tutors-box">
                                 <div></div>
                                 <h5>Blessing Orazalume</h5>
                                 <p>CAREER FOUNDRY</p>
                                 <p>Software Developer</p>
                                 <img src={linkedin} alt="linkedin" />
                             </div>
-                            <div className="gua_mode-tutors-box">
+                            <div className="course_mode-tutors-box">
                                 <div></div>
                                 <h5>Blessing Orazalume</h5>
                                 <p>CAREER FOUNDRY</p>
                                 <p>Software Developer</p>
                                 <img src={linkedin} alt="linkedin" />
                             </div>
-                            <div className="gua_mode-tutors-box">
+                            <div className="course_mode-tutors-box">
                                 <div></div>
                                 <h5>Blessing Orazalume</h5>
                                 <p>CAREER FOUNDRY</p>
@@ -205,30 +205,30 @@ const GraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="gua_purple">
-                    <div className="gua_purple_txt">
+                <div className="course_purple">
+                    <div className="course_purple_txt">
                         <p>Pricing</p>
                         <h1>50%</h1>
                         <p>Scholarship Available</p>
                     </div>
-                    <div className="gua_purple-main">
-                        <div className="gua_purple-main-boxes">
+                    <div className="course_purple-main">
+                        <div className="course_purple-main-boxes">
                             <h4>FULL TUITION PAYMENT</h4>
                             <h2>₦540,000</h2>
                             <p>Pay your fees 100% upfront. No other charges come up during your career</p>
                         </div>
-                        <div className="gua_purple-main-boxes">
+                        <div className="course_purple-main-boxes">
                             <h4>FULL TUITION PAYMENT</h4>
                             <h2>₦540,000</h2>
                             <p>Pay your fees 100% upfront. No other charges come up during your career</p>
                         </div>
-                        <div className="gua_purple-main-boxes">
+                        <div className="course_purple-main-boxes">
                             <h4>FULL TUITION PAYMENT</h4>
                             <h2>₦540,000</h2>
                             <p>Pay your fees 100% upfront. No other charges come up during your career</p>
                         </div>
                     </div>
-                    <div className="gua_purple-btn">
+                    <div className="course_purple-btn">
                         <PrimaryBtn>Claim Scholarship</PrimaryBtn> 
                         <p>Talk to course rep</p>
                     </div>
@@ -239,4 +239,4 @@ const GraduateAccelerator = () => {
     );
 }
 
-export default GraduateAccelerator;
+export default CourseDetail;

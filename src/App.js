@@ -4,7 +4,7 @@ import LandingPage from "./pages/Landing";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 
-import GraduateAccelerator from "./pages/GraduateAccelerator";
+import CourseDetail from "./pages/CourseDetail";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 
@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/about-us" component={AboutUs} />
 
-        <Route path="/gua" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/course-detail" exact={true} component={CourseDetail}/> 
         <Route path="/contact" exact={true} component={Contact}/> 
       </Switch>
     </div>
