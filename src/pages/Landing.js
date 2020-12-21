@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
 import CreateAccount from "../components/CreateAccount";
 import Kamala from "../images/kamala.jpg"
+import Grazac from "../images/svg/grazac.svg";
 import Love from "../images/my_love.png";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
@@ -120,6 +121,24 @@ const Landing = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="landing__bottom">
+      <div className="landing__bottom--text">
+        <div className="landing__bottom--text--right">
+          <h5>What we do</h5>
+          <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
+          <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
+
+          <div className="landing__btn--2">
+            <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+          </div>
+        </div>
+
+        <div className="landing__bottom--text--left">
+          <img src={Grazac} alt="img" />
+        </div>
+      </div>
       </div>
 
       <CreateAccount />
