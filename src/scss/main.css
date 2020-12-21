@@ -573,6 +573,9 @@ html {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial;
   }
 }
 
@@ -1136,6 +1139,7 @@ html {
 .auth__btn:hover {
   background: #773dd3;
   color: #fff;
+  text-decoration: none;
 }
 
 .auth__btn svg {
@@ -1221,7 +1225,6 @@ html {
   font-size: 1.4rem;
   font-family: "Nunito Sans", sans-serif;
 }
-
 
 .gua p {
   font-size: 1.1em;
@@ -1593,4 +1596,187 @@ html {
   }
 }
 
+.about__nav {
+  background-color: #fff;
+  margin-top: 9rem;
+}
+
+@media (max-width: 37.5em) {
+  .about__nav {
+    margin-top: 7rem;
+  }
+}
+
+.about__header {
+  background-color: #1f1035;
+  color: #fff;
+  padding: 10rem 3rem;
+}
+
+.about__header h1 {
+  font-size: 6rem;
+  font-family: Georgia;
+}
+
+.about__header p {
+  font-size: 2rem;
+  font-family: "Nunito Sans", sans-serif;
+  margin-top: 2rem;
+}
+
+.about__header--container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about__body {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10rem 2rem;
+}
+
+@media (max-width: 37.5em) {
+  .about__body {
+    padding: 10 3rem;
+    padding-bottom: 0;
+  }
+}
+
+.about__body img {
+  border-radius: 99999px;
+  width: 463px;
+  height: 463px;
+}
+
+@media (max-width: 56.25em) {
+  .about__body img {
+    display: none;
+  }
+}
+
+.about__body p {
+  color: #9da8b6;
+  font-weight: 400;
+  margin-top: 4rem;
+}
+
+.about__bullets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 5rem;
+}
+
+@media (max-width: 37.5em) {
+  .about__bullets {
+    margin-top: 2rem;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.about__bullets--item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about__bullets--item .item-img {
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 5px;
+  background-color: #a0a8b3;
+  margin-right: 1rem;
+}
+
+.about__bullets--item .item-text h5 {
+  margin-bottom: 0;
+  color: #1f1035;
+  font-size: 2rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+
+@media (max-width: 37.5em) {
+  .about__bullets--item .item-text h5 {
+    font-size: 1.8rem;
+  }
+}
+
+.about__bullets--item .item-text p {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 37.5em) {
+  .about__bullets--item .item-text p {
+    font-size: 1.2rem;
+  }
+}
+
+.about__images {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 5px;
+  width: 100%;
+  height: 555px;
+      grid-template-areas: "a b c d" "e e c f";
+}
+
+@media (max-width: 37.5em) {
+  .about__images {
+    margin-top: 10rem;
+  }
+}
+
+.about__images div:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+}
+
+.about__images div:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: c;
+}
+
+.about__images div:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+}
+
+.about__images div:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: d;
+}
+
+.about__images div:nth-child(5) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: e;
+}
+
+.about__images div:nth-child(6) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: f;
+}
+
+.about__images--container {
+  background-image: url("../images/kamala.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+}
 /*# sourceMappingURL=main.css.map */
