@@ -1945,4 +1945,107 @@ html {
   margin: 0 10px 10px 0;
   display: inline-block;
 }
+
+.svg-box1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: #CFB9F9 25%;
+  display: block;
+  margin: auto;
+}
+
+.boxes22 {
+  width: 33%;
+}
+
+@media (max-width: 37.5em) {
+  .boxes22 {
+    width: 100%;
+  }
+}
+
+.boxes33 {
+  width: 33%;
+}
+
+@media (max-width: 56.25em) {
+  .boxes33 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .boxes33 {
+    width: 100%;
+  }
+}
+
+.gga_container {
+  margin: 70px 0;
+}
+
+@media (min-width: 601px) {
+  .gga_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.gga_cardview {
+  border: 1px solid #F1F5FC;
+  border-radius: 10px;
+  margin: 10px 15px 30px;
+}
+
+.gga_cardview-box {
+  width: 100%;
+  height: 150px;
+  background: #CFB9F9;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  display: relative;
+}
+
+.gga_cardview-text {
+  padding: 20px 15px;
+}
+
+.gga_cardview-text-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.gga_cardview-text-section-1 {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.gga_cardview-text-section span {
+  display: inline-block;
+  font-size: 1em;
+}
+
+.gga_cardview-text .circle-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #CFB9F9;
+}
+
+.gga_cardview-text h4 {
+  font-size: 1.3em;
+}
+
+.gga_cardview-text p {
+  font-size: 1.1em;
+}
 /*# sourceMappingURL=main.css.map */

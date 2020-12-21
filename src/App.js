@@ -8,6 +8,9 @@ import CourseDetail from "./pages/CourseDetail";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 
+import GraduateAccelerator from "./pages/GraduateAccelerator";
+import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
+
 const App = () => {
   return (
     <div className="App">
@@ -19,6 +22,8 @@ const App = () => {
 
         <Route path="/course-detail" exact={true} component={CourseDetail}/> 
         <Route path="/contact" exact={true} component={Contact}/> 
+        <Route path="/gga" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/gua" exact={true} component={UndergraduateAccelerator}/> 
       </Switch>
     </div>
   );
