@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
+import CreateAccount from "../components/CreateAccount"
 
 
 const GraduateAccelerator = () => {
@@ -155,6 +156,9 @@ const GraduateAccelerator = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <CreateAccount/>
                 </div>
             </div>
             <Footer/>
