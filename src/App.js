@@ -6,6 +6,7 @@ import Signup from "./auth/Signup";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -14,9 +15,10 @@ const App = () => {
         <Route path="/" exact={true} component={LandingPage}/>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        
-        <Route path="/gua" component={GraduateAccelerator}/> 
         <Route path="/about-us" component={AboutUs} />
+
+        <Route path="/gua" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/contact" exact={true} component={Contact}/> 
       </Switch>
     </div>
   );
