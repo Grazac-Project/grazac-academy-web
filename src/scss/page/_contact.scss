@@ -1,0 +1,132 @@
+.contact{
+    &_layer{
+        background: #1F1035;
+        margin-top:80px;
+        @include respond(phone) {
+            margin-top: 60px;
+        }
+    }
+
+    &_hero{
+        padding:50px 30px;
+        color:white;
+        @media(min-width:600px){
+            display: flex;
+            justify-content: center;
+        }
+        @include respond(phone) {
+            padding:30px 20px;
+        }
+
+        &_first{
+            @media(min-width:600px){
+                width:50%;
+            }
+            h1{
+                font-size:3.5em;
+                line-height: 60px;
+            }
+            p{
+                font-size:1.2em;
+                max-width:400px;
+            }
+        }
+
+        &_second{
+            @media(min-width:600px){
+                width:50%;
+            }
+            &-btn{
+                margin:20px 0 0 10px;
+                p{
+                    font-size:1.2em;
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        &_insecond{
+            @media(min-width:900px){
+                display:flex;
+            }
+            
+        }
+
+        input{
+            background: transparent;
+            margin:30px 10px 0;
+            border-radius: 10px;
+            width:81%;
+            border:2px solid white;
+            padding:10px 15px;
+            @media(min-width:900px){
+                width:91%;
+            }
+        }
+        textarea{
+            background: transparent;
+            margin:30px 10px 0;
+            border-radius: 10px;
+            width:81%;
+            border:2px solid white;
+            padding:10px 15px;
+            height:150px;
+            @media(min-width:900px){
+                width:91%;
+            }
+        }
+    }
+
+    &_campus{
+        margin:100px 0;
+        &-intro{
+            h4{
+                color: #773DD3;
+                font-size:1em;
+            }
+            p{
+                color: #9DA8B6;
+                font-size: 1.2em;
+            }
+            &-grey-box{
+                width:400px;
+                height:250px;
+                background: #C4C4C4;
+                @include respond(phone){
+                    width:100%;
+                }
+            }
+        }
+
+        &-main{
+            @media(min-width:700px){
+                display: flex;
+                justify-content: center;
+            }
+
+            &-div{
+                @media(min-width:700px){
+                    margin:30px;
+                }
+            }
+
+            p{
+                font-size: 1.2em;
+                color: #9DA8B6;
+            }
+            img{
+                width:30px;
+                height:30px;
+            }
+            .social{
+                width:30px;
+                height: 30px;
+                padding:3px;
+                border:1px solid #E9ECF5;
+                border-radius: 4px;
+                margin:0 10px 10px 0;
+                display: inline-block;
+            }
+        }
+    }
+}

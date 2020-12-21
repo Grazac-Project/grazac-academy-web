@@ -5,6 +5,7 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/create-account" component={Signup} />
         
         <Route path="/gua" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/contact" exact={true} component={Contact}/> 
       </Switch>
     </div>
   );
