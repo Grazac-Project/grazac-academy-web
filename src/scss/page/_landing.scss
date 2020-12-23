@@ -22,11 +22,7 @@
       color: $color-excellent-purple;
       font-weight: 700;
       font-size: 6rem;
-      margin-top: 5rem;
-
-      @include respond(phone) {
-        margin-top: 1rem;
-      }
+      margin-top: 10rem;
 
       @include respond(phone) {
         font-size: 5rem;
@@ -38,6 +34,7 @@
       font-size: 2rem;
       margin: 3rem 0;
       color: #9da8b6;
+      line-height: 30px;
 
       @include respond(phone) {
         margin: 2rem 0;
@@ -54,6 +51,9 @@
       margin-right: auto;
       width: fit-content;
     }
+    &--3 {
+      margin-left: auto;
+    }
   }
 
   &__bottom {
@@ -69,6 +69,14 @@
       justify-content: space-between;
       align-items: center;
       font-family: $font-secondary;
+      &2 {
+        @include respond(tab-port) {
+          width: 60%;
+        }
+        @include respond(phone) {
+          width: 90%;
+        }
+      }
 
       @include respond(phone) {
         flex-direction: column-reverse;
@@ -98,6 +106,7 @@
       h5 {
         font-size: 1.4rem;
         color: $color-base-purple;
+        margin-top: 2rem;
       }
 
       h1 {
@@ -263,7 +272,7 @@
       }
     }
 
-    background-color: $color-skyblue;
+    background-color: #fff6e9;
 
     &--img {
       border-radius: 9999px;
@@ -348,6 +357,98 @@
     }
   }
 
+  &__courses {
+    margin: 10rem 0;
+    margin-bottom: 0;
+    padding: 6rem 3rem;
+    background-color: #eff9ff;
+    margin-top: 0;
+
+    &--container {
+      &--txt {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        @include respond(phone) {
+          flex-direction: column;
+          align-items: initial;
+          padding: 0;
+        }
+      }
+    }
+
+    &--cards {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 1.5rem;
+      margin-top: 9rem;
+      @include respond(tab-port) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include respond(phone) {
+        display: block;
+      }
+    }
+
+    &--card {
+      background-color: #fff;
+      text-align: center;
+      position: relative;
+      margin-bottom: 9rem;
+      padding: 2rem;
+      padding-top: 0;
+      border-radius: 10px;
+
+      h3 {
+        font-family: $font-primary;
+        font-size: 2rem;
+        color: #1f1035;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+
+      p {
+        color: #9da8b6;
+        font-family: $font-secondary;
+        font-size: 1.4rem;
+        margin: 2rem 0;
+        margin-bottom: 3rem;
+        line-height: 28px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #773dd3;
+        font-family: $font-primary;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        transition: all 0.2s;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      div {
+        width: 100%;
+        height: 200px;
+        background-color: #62b8f3;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-4rem);
+        border-radius: 10px;
+      }
+    }
+
+    &--container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+  }
+
   &__card--box {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -404,6 +505,104 @@
           color: #682dc8;
         }
       }
+    }
+  }
+
+  &__sponsors {
+    width: 100%;
+    overflow: auto;
+    &--container {
+      max-width: 1400px;
+      margin: 6rem auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+
+      img {
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &__middle {
+    padding: 10rem 2rem;
+
+    &--container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    &--text {
+      text-align: center;
+
+      h5 {
+        font-size: 1.6rem;
+        font-family: $font-secondary;
+        color: $color-base-purple;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        color: $color-excellent-purple;
+        font-size: 5rem;
+        font-family: $font-primary;
+        margin-bottom: 2rem;
+      }
+      p {
+        color: #9da8b6;
+        font-size: 1.8rem;
+        line-height: 35px;
+      }
+    }
+
+    &--images {
+      text-align: center;
+      img {
+        border-radius: 99999px;
+      }
+      h3 {
+        color: #1f1035;
+        font-size: 2rem;
+        font-family: $font-secondary;
+        margin-top: 1.5rem;
+      }
+      h5 {
+        font-size: 1.2rem;
+        color: #1f1035;
+        font-weight: 600;
+        font-family: $font-secondary;
+        margin: 1rem 0;
+      }
+      small {
+        display: block;
+        color: #9da8b6;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+      &--box {
+        margin-top: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 5rem;
+        @include respond(tab-port) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    }
+  }
+
+  &__video {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 959px;
+    background-image: url("../images/kamala2.jpg");
+    @include respond(phone) {
+      height: 300px;
     }
   }
 }

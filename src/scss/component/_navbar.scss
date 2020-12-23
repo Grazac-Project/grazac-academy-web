@@ -93,6 +93,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     margin-right: 2rem;
+    transition: all 0.2s;
     @include respond(phone) {
       margin-right: 0;
     }

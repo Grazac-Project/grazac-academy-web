@@ -2,9 +2,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
 import CreateAccount from "../components/CreateAccount";
-import Kamala from "../images/kamala.jpg";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
+import About from "../images/about.jpg";
 
 const AboutUs = () => {
   return(
@@ -32,7 +32,7 @@ const AboutUs = () => {
             At Grazac, we believe ideas rule the world, this is why we are passionate about raising creatives that will impact socio-economic development in Africa. We believe in. Creativity and Innovation, Hardwork and Consistency, Committment and Excellence.
             </p>
           </div>
-          <img src={Kamala} alt="kamala" />
+          <img src={About} alt="kamala" />
         </div>
 
         <div className="about__bullets">
