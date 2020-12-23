@@ -107,6 +107,7 @@
     grid-template-areas:
       "a b c d"
       "e e c f";
+    margin-bottom: 10rem;
 
     @include respond(phone) {
       margin-top: 10rem;

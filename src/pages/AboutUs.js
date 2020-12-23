@@ -1,10 +1,17 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
 import CreateAccount from "../components/CreateAccount";
-import Card1 from "../images/svg/card1.svg";
-import Card2 from "../images/svg/card2.svg";
 import About from "../images/about.jpg";
+
+import Python from "../images/svg/python.svg";
+import ML from "../images/svg/ml.svg";
+import Html from "../images/svg/html.svg";
+import Node from "../images/svg/node.svg";
+import PD from "../images/svg/pd.svg";
+import Android from "../images/svg/android.svg";
+
 
 const AboutUs = () => {
   return(
@@ -79,38 +86,79 @@ const AboutUs = () => {
         <div className="about__images--container"></div>
       </div>
 
-      <div className="landing__cards" style={{marginBottom: 20}}>
-        <div className="landing__cards--container">
-          <div className="landing__bottom--text">
-            <div className="landing__bottom--text--right">
-              <h5>What we do</h5>
-              <h1>Join us today</h1>
+      <div className="landing__courses">
+        <div className="landing__courses--container">
+          <div className="landing__bottom--text landing__courses--container--txt">
+            <div className="landing__bottom--text--right landing__bottom--text2">
+              <h5>GRAZAC ACADEMY</h5>
+              <h1>Individualized attention needed for self-confidence.</h1>
+            </div>
+
+            <div className="landing__bottom--text--right--left">
+              <div className="landing__btn--2">
+                <PrimaryBtn link="/get-started">See All Courses</PrimaryBtn>
+              </div>
             </div>
           </div>
 
-          <div className="landing__card--box">
-            <div className="landing__card landing__card--1">
-            <img src={Card1} alt="illustration" />
-              <h3><span>Graduate </span><br />Accelerator Plan</h3>
-              <p>You need more than a degree to be relevant in the 21st century. We are passionate about adding value to you. Become an asset by joining Grazac today</p>
-
-              <div className="landing__btn">
-                <PrimaryBtn yellow link="/signup">Sign up</PrimaryBtn>
+          <div className="landing__courses--cards">
+            <div className="landing__courses--card">
+              <div>
+                <img src={Python} alt="python" />
               </div>
+              <h3>Python for Data Science</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
             </div>
 
-            <div className="landing__card landing__card--2">
-              <img src={Card2} alt="illustration" />
-              <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
-              <p>Get more than just a degree. Join thousands of young undergraduates who have started building their career in tech through Grazac</p>
-
-              <div className="landing__btn">
-                <PrimaryBtn link="/signup">Sign up</PrimaryBtn>
+            <div className="landing__courses--card">
+              <div style={{backgroundColor: "#75DEBE"}}>
+                <img src={Html} alt="python" />
               </div>
+              <h3>Front - End Development</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
+            </div>
+
+            <div className="landing__courses--card">
+              <div style={{backgroundColor: "#FEC952"}}>
+                <img src={Node} alt="python" />
+              </div>
+              <h3>Back - End Development</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
+            </div>
+
+            <div className="landing__courses--card">
+              <div style={{backgroundColor: "#B0B54F"}}>
+                <img src={ML} alt="python" />
+              </div>
+              <h3>Machine Learning</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
+            </div>
+
+            <div className="landing__courses--card">
+              <div style={{backgroundColor: "#F0BB8F"}}>
+                <img src={PD} alt="python" />
+              </div>
+              <h3>Product Design (UI/UX)</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
+            </div>
+
+            <div className="landing__courses--card">
+              <div style={{backgroundColor: "#DCCDF4"}}>
+                <img src={Android} alt="python" />
+              </div>
+              <h3>Android Development</h3>
+              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
+              <Link>Learn More</Link>
             </div>
           </div>
         </div>
       </div>
+
 
       <CreateAccount />
 
