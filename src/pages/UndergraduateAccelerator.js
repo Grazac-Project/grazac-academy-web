@@ -9,7 +9,7 @@ const UndergraduateAccelerator = () => {
     return(
         <div>
             <Navbar/>
-            <div className="course">
+            <div className="gua">
                 <div className="course_hero">
                     <div className="container">
                         <div className="row">

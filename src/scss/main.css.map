@@ -15,7 +15,8 @@
         "page/_coursedetail.scss",
         "page/_about.scss",
         "page/_contact.scss",
-        "page/_gga.scss"
+        "page/_gga.scss",
+        "page/_gua.scss"
     ],
     "names": [],
     "file": "main.css"
