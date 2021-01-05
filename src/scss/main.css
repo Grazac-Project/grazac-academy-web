@@ -2258,7 +2258,7 @@ html {
 .gga_cardview {
   border: 1px solid #F1F5FC;
   border-radius: 10px;
-  margin: 10px 15px 30px;
+  margin: 10px 15px 20px;
 }
 
 .gga_cardview-box {
@@ -2307,5 +2307,205 @@ html {
 
 .gga_cardview-text p {
   font-size: 1.1em;
+}
+
+.boxes44 {
+  width: 50%;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+@media (max-width: 37.5em) {
+  .boxes44 {
+    width: 100%;
+  }
+}
+
+.gua p {
+  font-size: 1.1em;
+}
+
+.gua_hero {
+  background-color: rgba(220, 205, 244, 0.2);
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+}
+
+@media (max-width: 37.5em) {
+  .gua_hero {
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+  }
+}
+
+.gua_hero-text {
+  position: relative;
+  height: calc(100vh - 80px);
+}
+
+.gua_hero-text-b {
+  position: absolute;
+  top: 18%;
+}
+
+@media (max-width: 37.5em) {
+  .gua_hero-text-b {
+    top: 15%;
+  }
+}
+
+.gua_hero-text h1 {
+  font-size: 5em;
+  padding-bottom: 20px;
+  color: #073041;
+}
+
+@media (max-width: 37.5em) {
+  .gua_hero-text h1 {
+    font-size: 3.7em;
+  }
+}
+
+.gua_hero-text p {
+  font-size: 1.2em;
+  padding-bottom: 30px;
+  color: #9DA8B6;
+}
+
+.gua_hero_search {
+  width: 100%;
+  padding: 15px 140px 15px 10px;
+  font-size: 1.1em;
+  border-radius: 7px;
+  border: 1px solid white;
+  display: block;
+}
+
+.gua_hero_search-box {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.gua_hero_search-button {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  border: 1px solid #773DD3;
+  background: #773DD3;
+  color: white;
+  border-radius: 7px;
+  padding: 8px 15px;
+}
+
+.gua_highlight {
+  margin-top: 40px;
+}
+
+@media (min-width: 601px) {
+  .gua_highlight {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 500px;
+  }
+}
+
+.gua_highlight-box1 {
+  background: url("../images/julia-cameron.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 601px) {
+  .gua_highlight-box1 {
+    height: 500px;
+    margin-bottom: 20px;
+  }
+}
+
+.gua_highlight-box2 {
+  background: url("../images/pixabay007.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 601px) {
+  .gua_highlight-box2 {
+    height: 500px;
+  }
+}
+
+.gua_highlight-box3 {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  color: white;
+  position: relative;
+}
+
+.gua_highlight-box4 {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  right: 20px;
+}
+
+.gua_cardview {
+  border: 1px solid #F1F5FC;
+  border-radius: 10px;
+  margin: 10px 15px 30px;
+  text-align: center;
+}
+
+.gua_cardview p {
+  color: #9DA8B6;
+}
+
+.gua_cardview span {
+  font-size: 1em;
+  padding-top: 40px;
+  color: #773DD3;
+  font-weight: bold;
+}
+
+.gua_cardview-box {
+  height: 150px;
+  background: #CFB9F9;
+  border-radius: 10px;
+  margin: 10px 10px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  display: relative;
+}
+
+.gua_cardview-box img {
+  width: 100%;
+  height: auto;
+}
+
+.gua_cardview-text {
+  padding: 20px 15px;
+}
+
+.gua_advice {
+  background: #FEF4BF;
+  margin-top: 70px;
+  padding: 20px 20px 0;
+}
+
+.gua_advice-box {
+  margin-top: 40px;
+}
+
+@media (min-width: 601px) {
+  .gua_advice-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 200px;
+  }
 }
 /*# sourceMappingURL=main.css.map */
