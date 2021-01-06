@@ -8,6 +8,22 @@
     }
 }
 
+.boxes55{
+    width:50%;
+    margin-right:20px;
+    border-radius: 20px;
+
+    @media(max-width: 992px){
+        width:100%;
+    }
+}
+
+.background1{
+    background: url("../images/background.png");
+    background-repeat: no-repeat;
+    margin:50px 0;
+}
+
 .gua {
     p{
         font-size: 1.1em;
@@ -16,6 +32,7 @@
         background-color: rgba(220, 205, 244, 0.2);
         height:calc(100vh - 80px);
         padding-top:80px;
+        position: relative;
         @include respond(phone) {
             margin-top: 60px;
             height:calc(100vh - 60px);
@@ -37,7 +54,7 @@
                 padding-bottom:20px;
                 color: #073041;
                 @include respond(phone) {
-                    font-size: 3.7em;
+                    font-size: 3.3em;
                 }
             }
     
@@ -54,6 +71,9 @@
             border-radius: 7px;
             border: 1px solid white;
             display: block;
+            @media(min-width:992px){
+                width: 90%;
+            }
 
             &-box{
                 position:relative;
@@ -68,6 +88,14 @@
                 color:white;
                 border-radius: 7px;
                 padding:8px 15px;
+            }
+        }
+        &-image{
+            position:absolute;
+            bottom: 0;
+            width:35%;
+            @include respond(tab-land){
+                display: none;
             }
         }
         
@@ -118,6 +146,7 @@
         border-radius: 10px;
         margin:10px 15px 30px;
         text-align: center;
+        background-color: white;
 
 
         p{
@@ -153,14 +182,49 @@
     &_advice{
         background: #FEF4BF;
         margin-top: 70px;
-        padding:20px 20px 0;
+        padding:0 20px ;
 
         &-box{
-            @media(min-width: 601px){
+            @media(min-width: 992px){
                 display:flex;
-                min-height: 200px;
             }
             margin-top: 40px;
+            overflow-x: hidden;
+
+            &-img{
+                width: 80%;
+                @media(max-width: 992px){
+                    display:none;
+                }
+            }
+            &-text{
+                max-width: 400px;
+                margin-top: 150px;
+                @media(max-width: 992px){
+                    margin: 80px auto;
+                    display: block;
+                }
+            }
+            h2{
+                font-size:3em;
+                margin-bottom: 20px;
+            }
+            p{
+                color: #9DA8B6;
+                font-size: 1.2em;
+            }
+            span{
+                color: #773DD3;
+            }
+            button{
+                color: white;
+                margin-top:15px;
+                background: #773DD3;
+                border: 1px solid #773DD3;
+                padding:10px 20px;
+                font-size: 1.1em;
+                border-radius: 10px;
+            }
         }
     }
 }

@@ -1,23 +1,131 @@
 .contact{
     &_layer{
-        background: #1F1035;
+        background: rgba(229, 229, 229, 0.2);
         margin-top:80px;
         @include respond(phone) {
             margin-top: 60px;
         }
+        &-text{
+            text-align: center;
+            h1{
+                font-size: 3.5em;
+                margin-top: 70px;
+            }
+            p{
+                font-size: 1.2em;
+                color: #9DA8B6;
+            }
+        }
+        &-circles{
+            &-1{
+                width:50px;
+                border-radius: 50%;    
+                position:absolute;
+
+            }
+        }
+        img {
+         width:50px;
+         border-radius: 50%;    
+         position:absolute;
+         @include respond(tab-port) {
+             display: none;
+         }
+        }
+        img:first-child {
+         top:25%;
+         left:20%;
+        }
+        img:nth-child(2) {
+            top:28%;
+            right:28%;
+        }
+        img:nth-child(3) {
+            top:70%;
+            left:10%;
+        }
+        img:last-child {
+            top:80%;
+            right:10%;
+        }
     }
 
     &_hero{
-        padding:50px 30px;
-        color:white;
-        @media(min-width:600px){
-            display: flex;
-            justify-content: center;
+        padding:50px 10px;
+        width:70%;
+        display: block;
+        margin: auto;
+        @include respond(tab-port) {
+            width:80%;
         }
         @include respond(phone) {
-            padding:30px 20px;
+            width:100%;
+            box-sizing: border-box;
+        }
+        &-flexdiv{
+            @media(min-width:700px){
+                display: flex;
+            }
+            &-1{
+                @media(min-width:700px){
+                    width:50%;
+                }
+            }
+            &-2{
+                @media(min-width:700px){
+                    margin-left: 10px;
+                    width:50%;
+                }
+            }
+        }
+        label{
+            color:#073041;
+            font-size: 1.1em;
+            margin-left: 5px;
+            span{
+                color: #FF570A;
+            }
         }
 
+        input{
+            background: transparent;
+            margin:10px 5px 30px;
+            border-radius: 10px;
+            width:81%;
+            border:1px solid #EFF2F7;
+            padding:10px 15px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        textarea{
+            background: transparent;
+            margin:10px 5px 30px;
+            border-radius: 10px;
+            width:81%;
+            border:1px solid #EFF2F7;
+            padding:10px 15px;
+            height:150px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        &-privacy{
+            p{
+                color: #9DA8B6;
+                font-size: 1.2em;
+            }
+            span{
+                color: #773DD3;
+            }
+            button{
+                color: white;
+                margin:15px 0 30px;
+                background: #773DD3;
+                border: 1px solid #773DD3;
+                padding:10px 20px;
+                font-size: 1.1em;
+                border-radius: 10px;
+            }
+        }
         &_first{
             @media(min-width:600px){
                 width:50%;
@@ -51,30 +159,6 @@
             }
             
         }
-
-        input{
-            background: transparent;
-            margin:30px 10px 0;
-            border-radius: 10px;
-            width:81%;
-            border:2px solid white;
-            padding:10px 15px;
-            @media(min-width:900px){
-                width:91%;
-            }
-        }
-        textarea{
-            background: transparent;
-            margin:30px 10px 0;
-            border-radius: 10px;
-            width:81%;
-            border:2px solid white;
-            padding:10px 15px;
-            height:150px;
-            @media(min-width:900px){
-                width:91%;
-            }
-        }
     }
 
     &_campus{
@@ -99,14 +183,16 @@
         }
 
         &-main{
-            @media(min-width:700px){
+            @media(min-width:601px){
                 display: flex;
-                justify-content: center;
             }
 
             &-div{
+                h3{
+                    font-size: 1.5em;
+                }
                 @media(min-width:700px){
-                    margin:30px;
+                    margin:30px 10px;
                 }
             }
 

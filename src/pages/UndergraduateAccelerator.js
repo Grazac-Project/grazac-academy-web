@@ -1,9 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import CreateAccount from "../components/CreateAccount";
+import NeedAdvice from "../components/NeedAdvice";
+import PopularCourses from "../components/PopularCourses";
+import Qualities from "../components/Qualities";
 
-import design from "../images/design.png";
+import undergraduate from "../images/undergraduate.png";
 
 
 
@@ -31,8 +33,8 @@ const UndergraduateAccelerator = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6">
-                                
+                            <div>
+                                <img src={undergraduate} alt="undergraduate"  className="gua_hero-image" />
                             </div>
                         </div>
                     </div>
@@ -67,130 +69,9 @@ const UndergraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="gga">
-                        <div className="course_mode-intro course_mode-intro">
-                            <h4 style={{marginTop:'100px'}}>How It Works</h4>
-                            <h2>Popular Courses</h2>
-                        </div>
-                        <div className="gga_container">
-                            <div className="boxes33">
-                                <div className="gua_cardview">
-                                    <div className="gua_cardview-box">
-                                        <img src={design} alt="course-desc" />
-                                    </div>
-                                    <div className="gua_cardview-text">
-                                        <p>Design</p>
-                                        <h4>UI/UX Design</h4>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-                                        <span>LEARN MORE</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gua_cardview">
-                                    <div className="gua_cardview-box">
-                                        <img src={design} alt="course-desc" />
-                                    </div>
-                                    <div className="gua_cardview-text">
-                                        <p>Design</p>
-                                        <h4>UI/UX Design</h4>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-                                        <span>LEARN MORE</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gua_cardview">
-                                    <div className="gua_cardview-box">
-                                        <img src={design} alt="course-desc" />
-                                    </div>
-                                    <div className="gua_cardview-text">
-                                        <p>Design</p>
-                                        <h4>UI/UX Design</h4>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-                                        <span>LEARN MORE</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gua_cardview">
-                                    <div className="gua_cardview-box">
-                                        <img src={design} alt="course-desc" />
-                                    </div>
-                                    <div className="gua_cardview-text">
-                                        <p>Design</p>
-                                        <h4>UI/UX Design</h4>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-                                        <span>LEARN MORE</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gua_cardview">
-                                    <div className="gua_cardview-box">
-                                        <img src={design} alt="course-desc" />
-                                    </div>
-                                    <div className="gua_cardview-text">
-                                        <p>Design</p>
-                                        <h4>UI/UX Design</h4>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-                                        <span>LEARN MORE</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="" style={{textAlign:'center'}}>
-                    <div className="container">
-                        <div className="course_wwd-intro">
-                            <h4>How It Works</h4>
-                            <h2>We stand for quality</h2>
-                            <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
-                        </div>
-                        <div className="course_mode-container">
-                            <div className="boxes22">
-                                <div className="">
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Energetic</h3>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes22">
-                                <div>
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Innovative</h3>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes22">
-                                <div>
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Social Heart</h3>
-                                        <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="gua_advice" >
-                    <div className="container">
-                        <div className="gua_advice-box">
-                            <div className="boxes44">jipef
-                            </div>
-                            <div className="boxes44">osddigoi
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <PopularCourses />
+                <Qualities />
+                <NeedAdvice />
             </div>
             <Footer/>
         </div>
