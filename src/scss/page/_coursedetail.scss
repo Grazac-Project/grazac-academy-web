@@ -45,6 +45,33 @@
         display: flex;
     }
 
+    &_learn{
+        padding:50px 0 0;
+
+        &-main{
+            &-list{
+                display:grid;
+                grid-template-columns: 50px auto;
+                
+                @media(min-width:768px){
+                    display:grid;
+                    grid-template-columns: 50px 400px auto;
+                }
+                h3{
+                    font-size: 1.5em;
+                }
+                p{
+                    font-size: 1.2em;
+                }
+                .box3{
+                    @media(max-width:768px){
+                        grid-column: 1 /-1;
+                    }
+                }
+            }
+        }
+    }
+
     &_wwd{
         margin-top:80px;
 

@@ -1531,6 +1531,40 @@ html {
   display: flex;
 }
 
+.course_learn {
+  padding: 50px 0 0;
+}
+
+.course_learn-main-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px auto;
+      grid-template-columns: 50px auto;
+}
+
+@media (min-width: 768px) {
+  .course_learn-main-list {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50px 400px auto;
+        grid-template-columns: 50px 400px auto;
+  }
+}
+
+.course_learn-main-list h3 {
+  font-size: 1.5em;
+}
+
+.course_learn-main-list p {
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .course_learn-main-list .box3 {
+    grid-column: 1 /-1;
+  }
+}
+
 .course_wwd {
   margin-top: 80px;
 }
@@ -2551,7 +2585,7 @@ html {
 
 .gua_hero-text p {
   font-size: 1.2em;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   color: #9DA8B6;
 }
 
