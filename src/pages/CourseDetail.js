@@ -3,10 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
 
-import kamala from '../images/kamala.jpg';
-import cert from '../images/svg/cert.svg';
 import quote from '../images/svg/quote.svg';
-import linkedin from '../images/svg/linked.svg';
 import sprint from '../images/sprint.png';
 
 const CourseDetail = () => {
@@ -14,106 +11,94 @@ const CourseDetail = () => {
         <div>
             <Navbar/>
             <div className="course">
-                <div className="course_hero">
+                <div className="gua_hero">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <div className="course_hero-text">
-                                    <div className="course_hero-text-b">
+                                <div className="gua_hero-text">
+                                    <div className="gua_hero-text-b">
                                         <h1>
-                                            Product Design (UI/UX)
+                                            Product<br/>Design (UI/UX)
                                         </h1>
                                         <p>
-                                            Rideshur sets fair rates adjusted at every turn. Safety, risk level, and claims are all managed from a single dashboard. Evolve your fleet.
+                                            We are bridging the gap between unemployment and entry - level jobs in the technology industry.
                                         </p>
-                                        <div className="course__btn">
-                                            <PrimaryBtn link="">Download Brochure</PrimaryBtn>
+                                        <div className="contact_hero-privacy" >
+                                            <button>Explore Courses</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6">
-                                
+                            <div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="course_wwd">
+                <div className="course_learn">
                     <div className="container">
                         <div className="course_wwd-intro">
-                            <h4>What we do</h4>
-                            <h2>What You Will <span>Learn</span></h2>
+                            <h4>GRAZAC ACADEMY</h4>
+                            <h2>What you'll Learn</h2>
                         </div>
-                        <div className="course_wwd-flex">
-                            <div className="first-div">
-                                <div className="course_wwd-imagebox">
-                                    <img src={kamala} alt="what we do" />
+                        <div className="course_learn-main">
+                            <div>
+                                <div className="course_learn-main-list">
+                                    <div className="box1">
+                                        <h3>00</h3>
+                                    </div>
+                                    <div className="box2">
+                                        <h3>Computer Science & Data Structure</h3>
+                                    </div>
+                                    <div className="box3">
+                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
+                                    </div>
                                 </div>
-                                <div className="first-div_1">
-                                    <img src={cert} alt="certificate svg" />
-                                </div>
+                                <hr/>
                             </div>
-                            <div >
-                                <div className="course_wwd-flex-inner">
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS rstanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                            <div>
+                                <div className="course_learn-main-list">
+                                    <div className="box1">
+                                        <h3>00</h3>
                                     </div>
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                                    <div className="box2">
+                                        <h3>Computer Science & Data Structure</h3>
+                                    </div>
+                                    <div className="box3">
+                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
                                     </div>
                                 </div>
-                                <div className="course_wwd-flex-inner">
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                                <hr/>
+                            </div>
+                            <div>
+                                <div className="course_learn-main-list">
+                                    <div className="box1">
+                                        <h3>00</h3>
                                     </div>
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                                    <div className="box2">
+                                        <h3>Computer Science & Data Structure</h3>
+                                    </div>
+                                    <div className="box3">
+                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
                                     </div>
                                 </div>
-                                <div className="course_wwd-flex-inner">
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                                <hr/>
+                            </div>
+                            <div>
+                                <div className="course_learn-main-list">
+                                    <div className="box1">
+                                        <h3>00</h3>
                                     </div>
-                                    <div className="info">
-                                        <div className="svg-box">
-
-                                        </div>
-                                        <h3>Understanding RDMS</h3>
-                                        <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
-
+                                    <div className="box2">
+                                        <h3>Computer Science & Data Structure</h3>
+                                    </div>
+                                    <div className="box3">
+                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
                                     </div>
                                 </div>
-                                <div className="course_wwd-btn" style={{paddingLeft:'25px'}}>
-                                    <PrimaryBtn>Join Class Now</PrimaryBtn>
-                                </div>
+                                <hr/>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className="course_mode">
@@ -160,48 +145,6 @@ const CourseDetail = () => {
                             <img src={quote} alt="quote" />
                             <p>Online learning can be a lifeline to those who have obstacles, such as geographical distances or physical disabilities.</p>
                             <span>Paul Levinson</span>
-                        </div>
-                        <div className="course_mode-intro course_mode-intro2">
-                            <h4>What we do</h4>
-                            <h2>Mode Of Teaching</h2>
-                            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
-                        </div>
-                        <div className="course_mode-tutors">
-                            <div className="course_mode-tutors-box">
-                                <div></div>
-                                <h5>Blessing Orazalume</h5>
-                                <p>CAREER FOUNDRY</p>
-                                <p>Software Developer</p>
-                                <img src={linkedin} alt="linkedin" />
-                            </div>
-                            <div className="course_mode-tutors-box">
-                                <div></div>
-                                <h5>Blessing Orazalume</h5>
-                                <p>CAREER FOUNDRY</p>
-                                <p>Software Developer</p>
-                                <img src={linkedin} alt="linkedin" />
-                            </div>
-                            <div className="course_mode-tutors-box">
-                                <div></div>
-                                <h5>Blessing Orazalume</h5>
-                                <p>CAREER FOUNDRY</p>
-                                <p>Software Developer</p>
-                                <img src={linkedin} alt="linkedin" />
-                            </div>
-                            <div className="course_mode-tutors-box">
-                                <div></div>
-                                <h5>Blessing Orazalume</h5>
-                                <p>CAREER FOUNDRY</p>
-                                <p>Software Developer</p>
-                                <img src={linkedin} alt="linkedin" />
-                            </div>
-                            <div className="course_mode-tutors-box">
-                                <div></div>
-                                <h5>Blessing Orazalume</h5>
-                                <p>CAREER FOUNDRY</p>
-                                <p>Software Developer</p>
-                                <img src={linkedin} alt="linkedin" />
-                            </div>
                         </div>
                     </div>
                 </div>

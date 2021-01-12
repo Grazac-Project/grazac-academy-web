@@ -7,6 +7,13 @@
     margin:auto;
 }
 
+.svg-box2{
+    width:50px;
+    height:50px;
+    border-radius: 15px;
+    background: #CFB9F9 25%;
+}
+
 .boxes22{
     width:33%;
     @include respond(phone){
@@ -24,6 +31,53 @@
 }
 
 .gga{
+    &_hero{
+        background-color: rgba(254, 244, 191, 0.2);
+        height:calc(100vh - 80px);
+        padding-top:80px;
+        position: relative;
+        @include respond(phone) {
+            margin-top: 60px;
+            height:calc(100vh - 60px);
+        }
+        &-text{
+            position: relative;
+            height:calc(100vh - 80px) ;
+
+            &-b{
+                position:absolute;
+                top:18%;
+                @include respond(phone) {
+                    top:15%;
+                }
+            }
+    
+            h1{
+                font-size:5em;
+                padding-bottom:20px;
+                color: #073041;
+                @include respond(phone) {
+                    font-size: 3.3em;
+                }
+            }
+    
+            p{
+                font-size: 1.2em;
+                padding-bottom:30px;
+                color: #9DA8B6;
+            }
+        }
+        &-image{
+            position:absolute;
+            width:30%;
+            top:25%;
+            left:59%;
+            @include respond(tab-land){
+                display: none;
+            }
+        }
+    }
+
     &_container{
         margin:70px 0;
         @media(min-width: 601px){
@@ -34,7 +88,7 @@
     &_cardview{
         border: 1px solid #F1F5FC;
         border-radius: 10px;
-        margin:10px 15px 30px;
+        margin:10px 15px 20px;
 
         &-box{
             width:100%;

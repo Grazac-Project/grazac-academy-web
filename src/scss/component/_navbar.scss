@@ -106,20 +106,10 @@
       background-color: $color-inspiring-purple;
       padding: 1.5rem 2rem;
       color: $color-white;
-      border-radius: 5px 0 0 5px;
+      border-radius: 5px;
 
       &--yellow {
         background-color: $color-creative-yellow;
-      }
-    }
-
-    &--arrow {
-      background-color: $color-collaborative-purple;
-      padding: 1.5rem 2rem;
-      border-radius: 0 5px 5px 0;
-
-      &--yellow {
-        background-color: $color-collaborative-yellow;
       }
     }
   }

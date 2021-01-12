@@ -3,6 +3,8 @@ import Facebook from "../images/svg/facebook.svg"
 import Instagram from "../images/svg/instagram.svg"
 import Twitter from "../images/svg/twitter.svg"
 import Youtube from "../images/svg/youtube.svg"
+import GrazacIcon from "../images/grazac-icon.png";
+import GrazacName from "../images/grazac-name.png";
 
 const Footer = () => {
   return(
@@ -10,8 +12,13 @@ const Footer = () => {
       <div className="footer__container">
         <div className="footer__links">
           <ul className="footer__list">
-            <li className="footer__item footer__item--head">LOGO</li>
-            <li className="footer__item">Graza Office Address Abeokuta.</li>
+            <li className="footer__item footer__item--head">
+              <div className="footer__logo">
+                <img src={GrazacIcon} alt="logo" />
+                <img src={GrazacName} alt="logo" />
+              </div>
+            </li>
+            <li className="footer__item">You need more than a degree to be relevant in the 21st century. We are passionate about </li>
             <li className="footer__item">+23486 089 3455</li>
           </ul>
 
@@ -30,15 +37,11 @@ const Footer = () => {
           </ul>
 
           <ul className="footer__list">
-            <li className="footer__item footer__item--head">Enterprise</li>
-            <li className="footer__item"><Link>Corporate Training</Link></li>
-            <li className="footer__item"><Link>Grazac Hire</Link></li>
-          </ul>
-
-          <ul className="footer__list">
-            <li className="footer__item footer__item--head">Resources</li>
+            <li className="footer__item footer__item--head">Teaching</li>
             <li className="footer__item"><Link>FAQ</Link></li>
             <li className="footer__item"><Link>Book a Call</Link></li>
+            <li className="footer__item"><Link>Corporate Training</Link></li>
+            <li className="footer__item"><Link>Grazac Hire</Link></li>
           </ul>
         </div>
 

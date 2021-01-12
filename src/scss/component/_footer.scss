@@ -1,15 +1,16 @@
 .footer {
-  background: $color-excellent-purple;
+  background: $color-white;
   padding: 5rem;
   padding-top: 5rem;
   padding-bottom: 3.5rem;
 
   @include respond(phone) {
     padding: 4rem;
+    padding-top: 6rem;
   }
 
   &__container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -25,11 +26,12 @@
     @include respond(tab-port) {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-column-gap: 3rem;
     }
 
     ul {
       &:first-child {
-        flex-basis: 15rem;
+        flex-basis: 25rem;
       }
 
       li {
@@ -49,17 +51,22 @@
     font-family: $font-secondary;
     font-size: 1.4rem;
     font-weight: 200;
-    color: $color-white;
+    color: $color-light-grey;
+    line-height: 32px;
+    @include respond(phone) {
+      line-height: 25px;
+    }
 
     &--head {
       font-family: $font-primary;
       font-size: 1.6rem;
-      font-weight: 600;
+      font-weight: bold;
+      color: #1d1e2c;
     }
 
     a {
       text-decoration: none;
-      color: $color-white;
+      color: $color-light-grey;
       &:hover {
         text-decoration: underline;
       }
@@ -70,7 +77,7 @@
     width: 100%;
     height: 1px;
     background-color: #e5e9f2;
-    margin-bottom: 7rem;
+    margin-bottom: 3rem;
 
     @include respond(tab-port) {
       margin-bottom: 5rem;
@@ -93,7 +100,7 @@
     a {
       text-decoration: none;
       font-size: 1.4rem;
-      color: $color-white;
+      color: $color-light-grey;
 
       &:hover {
         text-decoration: underline;
@@ -102,7 +109,7 @@
 
     p {
       font-size: 1.4rem;
-      color: $color-white;
+      color: $color-light-grey;
     }
   }
 
@@ -117,6 +124,16 @@
 
     img {
       height: 2rem;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    margin-bottom: 3rem;
+    img {
+      &:first-child {
+        margin-right: 1rem;
+      }
     }
   }
 }

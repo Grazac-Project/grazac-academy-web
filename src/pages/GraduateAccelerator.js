@@ -1,165 +1,78 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PrimaryBtn from "../components/PrimaryBtn";
-import CreateAccount from "../components/CreateAccount"
+import NeedAdvice from "../components/NeedAdvice";
+import PopularCourses from "../components/PopularCourses";
+import Qualities from "../components/Qualities";
+
+import Graduates from "../images/graduates.png";
+
 
 
 const GraduateAccelerator = () => {
     return(
         <div>
             <Navbar/>
-            <div className="course">
-                <div className="course_hero">
+            <div className="gga">
+                <div className="gga_hero">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <div className="course_hero-text">
-                                    <div className="course_hero-text-b">
+                                <div className="gga_hero-text">
+                                    <div className="gga_hero-text-b">
                                         <h1>
                                             Graduate Accelerator Track
                                         </h1>
                                         <p>
                                             We are bridging the gap between unemployment and entry - level jobs in the technology industry.
                                         </p>
-                                        <div className="course__btn">
-                                            <PrimaryBtn link="">Check Our Courses</PrimaryBtn>
+                                        <div className="gua_hero_search-box">
+                                            <input type="text" className="gua_hero_search" placeholder="Select a category" />
+                                            <button type="submit" className="gua_hero_search-button">Search Course</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="course_mode" style={{textAlign:'center'}}>
-                    <div className="container">
-                        <div className="course_wwd-intro">
-                            <h4>What we do</h4>
-                            <h2 style={{marginBottom:'70px'}}>These are some of the reasons people choose us.</h2>
-                        </div>
-                        <div className="course_mode-container">
-                            <div className="boxes22">
-                                <div className="">
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Internship Opportunities</h3>
-                                        <p>With our partnership with leading tech firms in Nigeria, we offer successful students internship opportunities to sharpen their skills.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes22">
-                                <div>
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Transfer Your Career</h3>
-                                        <p>Thinking of working in the technology industry? If Yes! you are in the right place. Make a choice to join us today and let the change begin!!</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes22">
-                                <div>
-                                    <div className="boxes">
-                                        <div className="svg-box1"></div>
-                                        <h3>Venetran Facilitators</h3>
-                                        <p>Here at Grazac, we believe in experience, our facilitators comes from leading tech firms in Africa.We are totally against mediocrity and we can assure you that we have the best guys with us!</p>
-                                    </div>
-                                </div>
+                            <div>
+                                <img src={Graduates} alt="Graduates"  className="gga_hero-image" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="container">
-                    <div className="gga">
-                        <div className="course_mode-intro course_mode-intro">
-                            <h4 style={{marginTop:'100px'}}>What we do</h4>
-                            <h2>Mode Of Teaching</h2>
+                    <div className="course_mode-container">
+                        <div className="boxes22">
+                            <div className="">
+                                <div className="boxes">
+                                    <div className="svg-box2"></div>
+                                    <h3>Expert Instructors</h3>
+                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="gga_container">
-                            <div className="boxes33">
-                                <div className="gga_cardview">
-                                    <div className="gga_cardview-box"></div>
-                                    <div className="gga_cardview-text">
-                                        <h4>UI/UX Design</h4>
-                                        <div className="gga_cardview-text-section">
-                                            <div className="gga_cardview-text-section-1">
-                                                <div className="circle-box"></div>
-                                                <span>2 Months Training</span>
-                                            </div>
-                                            <div>
-                                                <div className="circle-box"></div>
-                                                <span>Certificate Available</span>
-                                            </div>
-                                        </div>
-                                        <p>The Data Accelerator program of the Data School is designed to help professionals learn the analytics and data strategy, bringing the value of Big Data Analytics to your current role.</p>
-                                    </div>
+                        <div className="boxes22">
+                            <div className="">
+                                <div className="boxes">
+                                    <div className="svg-box2"></div>
+                                    <h3>100k+ Online Courses</h3>
+                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                 </div>
                             </div>
-                            <div className="boxes33">
-                                <div className="gga_cardview">
-                                    <div className="gga_cardview-box"></div>
-                                    <div className="gga_cardview-text">
-                                        <h4>UI/UX Design</h4>
-                                        <div className="gga_cardview-text-section">
-                                            <div className="gga_cardview-text-section-1">
-                                                <div className="circle-box"></div>
-                                                <span>2 Months Training</span>
-                                            </div>
-                                            <div>
-                                                <div className="circle-box"></div>
-                                                <span>Certificate Available</span>
-                                            </div>
-                                        </div>
-                                        <p>The Data Accelerator program of the Data School is designed to help professionals learn the analytics and data strategy, bringing the value of Big Data Analytics to your current role.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gga_cardview">
-                                    <div className="gga_cardview-box"></div>
-                                    <div className="gga_cardview-text">
-                                        <h4>UI/UX Design</h4>
-                                        <div className="gga_cardview-text-section">
-                                            <div className="gga_cardview-text-section-1">
-                                                <div className="circle-box"></div>
-                                                <span>2 Months Training</span>
-                                            </div>
-                                            <div>
-                                                <div className="circle-box"></div>
-                                                <span>Certificate Available</span>
-                                            </div>
-                                        </div>
-                                        <p>The Data Accelerator program of the Data School is designed to help professionals learn the analytics and data strategy, bringing the value of Big Data Analytics to your current role.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="boxes33">
-                                <div className="gga_cardview">
-                                    <div className="gga_cardview-box"></div>
-                                    <div className="gga_cardview-text">
-                                        <h4>UI/UX Design</h4>
-                                        <div className="gga_cardview-text-section">
-                                            <div className="gga_cardview-text-section-1">
-                                                <div className="circle-box"></div>
-                                                <span>2 Months Training</span>
-                                            </div>
-                                            <div>
-                                                <div className="circle-box"></div>
-                                                <span>Certificate Available</span>
-                                            </div>
-                                        </div>
-                                        <p>The Data Accelerator program of the Data School is designed to help professionals learn the analytics and data strategy, bringing the value of Big Data Analytics to your current role.</p>
-                                    </div>
+                        </div>
+                        <div className="boxes22">
+                            <div className="">
+                                <div className="boxes">
+                                    <div className="svg-box2"></div>
+                                    <h3>100k+ Online Courses</h3>
+                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <CreateAccount/>
-                </div>
+                <PopularCourses />
+                <Qualities />
+                <NeedAdvice />
             </div>
             <Footer/>
         </div>

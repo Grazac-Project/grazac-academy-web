@@ -3,23 +3,18 @@ import { Link } from "react-router-dom";
 import { cn } from "../utils";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Mode from "../components/Mode";
 import PrimaryBtn from "../components/PrimaryBtn";
-import CreateAccount from "../components/CreateAccount";
 import Kamala from "../images/kamala.jpg"
 import Grazac from "../images/svg/grazac.svg";
 import Love from "../images/my_love.png";
-import Man from "../images/man.jpg";
 
 import Sponsor1 from "../images/svg/sponsor1.svg";
 import Sponsor2 from "../images/svg/sponsor2.svg";
 import Sponsor3 from "../images/svg/sponsor3.svg";
 
-import Python from "../images/svg/python.svg";
-import ML from "../images/svg/ml.svg";
-import Html from "../images/svg/html.svg";
-import Node from "../images/svg/node.svg";
-import PD from "../images/svg/pd.svg";
-import Android from "../images/svg/android.svg";
+import Card1 from "../images/svg/card1.svg";
+import Card2 from "../images/svg/card1.svg";
 
 const Landing = () => {
   // const [email, setEmail] = useState("");
@@ -85,167 +80,85 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="landing__courses">
-        <div className="landing__courses--container">
-          <div className="landing__bottom--text landing__courses--container--txt">
-            <div className="landing__bottom--text--right landing__bottom--text2">
-              <h5>GRAZAC ACADEMY</h5>
+      <div className="landing__cards">
+        <div className="landing__cards--container">
+          <div className="landing__bottom--text">
+            <div className="landing__bottom--text--right">
+              <h5>What we do</h5>
               <h1>Individualized attention needed for self-confidence.</h1>
-            </div>
-
-            <div className="landing__bottom--text--right--left">
-              <div className="landing__btn--2">
-                <PrimaryBtn link="/get-started">See All Courses</PrimaryBtn>
-              </div>
             </div>
           </div>
 
-          <div className="landing__courses--cards">
-            <div className="landing__courses--card">
-              <div>
-                <img src={Python} alt="python" />
+          <div className="landing__card--box">
+            <div className="landing__card landing__card--1">
+            <img src={Card1} alt="illustration" />
+              <h3><span>Graduate </span><br />Accelerator Plan</h3>
+              <p>You need more than a degree to be relevant in the 21st century. We are passionate about adding value to you. Become an asset by joining Grazac today</p>
+
+              <div className="landing__btn">
+                <PrimaryBtn yellow link="/signup">Sign up</PrimaryBtn>
               </div>
-              <h3>Python for Data Science</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
             </div>
 
-            <div className="landing__courses--card">
-              <div style={{backgroundColor: "#75DEBE"}}>
-                <img src={Html} alt="python" />
-              </div>
-              <h3>Front - End Development</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
-            </div>
+            <div className="landing__card landing__card--2">
+              <img src={Card2} alt="illustration" />
+              <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
+              <p>Get more than just a degree. Join thousands of young undergraduates who have started building their career in tech through Grazac</p>
 
-            <div className="landing__courses--card">
-              <div style={{backgroundColor: "#FEC952"}}>
-                <img src={Node} alt="python" />
+              <div className="landing__btn">
+                <PrimaryBtn link="/signup">Sign up</PrimaryBtn>
               </div>
-              <h3>Back - End Development</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
-            </div>
-
-            <div className="landing__courses--card">
-              <div style={{backgroundColor: "#B0B54F"}}>
-                <img src={ML} alt="python" />
-              </div>
-              <h3>Machine Learning</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
-            </div>
-
-            <div className="landing__courses--card">
-              <div style={{backgroundColor: "#F0BB8F"}}>
-                <img src={PD} alt="python" />
-              </div>
-              <h3>Product Design (UI/UX)</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
-            </div>
-
-            <div className="landing__courses--card">
-              <div style={{backgroundColor: "#DCCDF4"}}>
-                <img src={Android} alt="python" />
-              </div>
-              <h3>Android Development</h3>
-              <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for Data Analytics and Visualization.</p>
-              <Link>Learn More</Link>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="landing__middle">
-        <div className="landing__middle--container">
-          <div className="landing__middle--text">
-            <h5>What we do</h5>
-            <h2>Mode of Teaching</h2>
-            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
+      <div className="landing__discover">
+        <div className="landing__bottom--text landing__bottom--text-2">
+          <div className="landing__bottom--text--right">
+            <h5>How it works</h5>
+            <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
+            <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
+          </div>
+        </div>
+
+        <div className="landing__discover--container">
+          <div className="landing__discover--images">
+            <div className="landing__discover--images-left">
+              <div></div>
+              <div></div>
+            </div>
+            <div className="landing__discover--images-right">
+              <div></div>
+            </div>
           </div>
 
-          <div className="landing__middle--images--box">
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
+          <div className="landing__discover--list">
+            <div className="landing__discover--list-item">
+              <h2>01</h2>
+              <div>
+                <h3>Discover</h3>
+                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+              </div>
             </div>
 
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
+            <div className="landing__discover--list-item">
+              <h2>02</h2>
+              <div>
+                <h3>Learn</h3>
+                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+              </div>
             </div>
 
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
+            <div className="landing__discover--list-item">
+              <h2>03</h2>
+              <div>
+                <h3>Experience</h3>
+                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+              </div>
             </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <h3>Olalekan Sogunle</h3>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.6431 0H1.35687C0.6075 0 0 0.6075 0 1.35687V13.6431C0 14.3925 0.6075 15 1.35687 15H13.6431C14.3925 15 15 14.3925 15 13.6431V1.35687C15 0.6075 14.3925 0 13.6431 0ZM4.64164 12.952C4.64164 13.1701 4.46486 13.3469 4.24677 13.3469H2.5659C2.34781 13.3469 2.17103 13.1701 2.17103 12.952V5.90588C2.17103 5.68779 2.34781 5.51101 2.5659 5.51101H4.24677C4.46486 5.51101 4.64164 5.68779 4.64164 5.90588V12.952ZM3.40634 4.84681C2.52444 4.84681 1.8095 4.13187 1.8095 3.24997C1.8095 2.36808 2.52444 1.65314 3.40634 1.65314C4.28823 1.65314 5.00317 2.36808 5.00317 3.24997C5.00317 4.13187 4.28827 4.84681 3.40634 4.84681ZM13.4258 12.9838C13.4258 13.1843 13.2632 13.3469 13.0627 13.3469H11.259C11.0585 13.3469 10.896 13.1843 10.896 12.9838V9.67877C10.896 9.18573 11.0406 7.51826 9.6075 7.51826C8.49589 7.51826 8.27042 8.65959 8.22514 9.17179V12.9838C8.22514 13.1843 8.06262 13.3469 7.86208 13.3469H6.1176C5.91711 13.3469 5.75454 13.1843 5.75454 12.9838V5.87407C5.75454 5.67357 5.91711 5.51101 6.1176 5.51101H7.86208C8.06258 5.51101 8.22514 5.67357 8.22514 5.87407V6.4888C8.63733 5.87022 9.2499 5.39277 10.5541 5.39277C13.4423 5.39277 13.4258 8.09105 13.4258 9.57361V12.9838Z" fill="#0077B7"/>
-              </svg>
-            </div>
+            <div className="landing__discover--list-item"></div>
+            <div className="landing__discover--list-item"></div>
           </div>
         </div>
       </div>
@@ -282,7 +195,7 @@ const Landing = () => {
       <div className="landing__bottom" style={{paddingBottom: 0}}>
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
-            <h5>What we do</h5>
+            <h5>How it works</h5>
             <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
             <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
 
@@ -297,7 +210,7 @@ const Landing = () => {
         </div>
       </div>
 
-      <CreateAccount />
+      <Mode />
       <Footer />
     </div>
   );
