@@ -487,7 +487,7 @@ html {
 }
 
 .landing__header {
-  background-color: #f1f5fc;
+  background-color: #fff;
   padding: 1rem;
   padding-bottom: 10rem;
 }
@@ -808,6 +808,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   padding: 5rem;
+  overflow: hidden;
 }
 
 @media (max-width: 37.5em) {

@@ -1,6 +1,6 @@
 .landing {
   &__header {
-    background-color: #f1f5fc;
+    background-color: $color-white;
     padding: 1rem;
     padding-bottom: 10rem;
 
@@ -244,6 +244,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 5rem;
+      overflow: hidden;
 
       @include respond(phone) {
         margin-bottom: 5rem;

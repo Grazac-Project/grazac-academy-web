@@ -3,8 +3,7 @@ import Facebook from "../images/svg/facebook.svg"
 import Instagram from "../images/svg/instagram.svg"
 import Twitter from "../images/svg/twitter.svg"
 import Youtube from "../images/svg/youtube.svg"
-import GrazacIcon from "../images/grazac-icon.png";
-import GrazacName from "../images/grazac-name.png";
+import Logo from "../images/grazac.png";
 
 const Footer = () => {
   return(
@@ -14,8 +13,7 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">
               <div className="footer__logo">
-                <img src={GrazacIcon} alt="logo" />
-                <img src={GrazacName} alt="logo" />
+                <img src={Logo} alt="logo" />
               </div>
             </li>
             <li className="footer__item">You need more than a degree to be relevant in the 21st century. We are passionate about </li>
