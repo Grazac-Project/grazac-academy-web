@@ -9,6 +9,9 @@ import Twitter from "../images/svg/twitter.svg";
 import Youtube from "../images/svg/youtube.svg";
 import kamala from "../images/kamala.jpg";
 
+//name
+//
+
 const Contact = () => {
     return(
         <div>

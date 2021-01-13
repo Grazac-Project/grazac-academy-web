@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 
-const NavItem = (props) => {
+const NavItem = props => {
+
   return(
     <NavLink
       to={props.link}
