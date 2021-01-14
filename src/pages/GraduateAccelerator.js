@@ -4,8 +4,10 @@ import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
 import PopularCourses from "../components/PopularCourses";
 import Qualities from "../components/Qualities";
-
+import PrimaryBtn from "../components/PrimaryBtn";
 import Graduates from "../images/graduates.png";
+import Card1 from "../images/svg/card1.svg";
+import Card2 from "../images/svg/card1.svg";
 
 
 
@@ -72,6 +74,36 @@ const GraduateAccelerator = () => {
                 </div>
                 <PopularCourses />
                 <Qualities />
+                <div className="landing__cards">
+                    <div className="landing__cards--container">
+                        <div className="landing__bottom--text">
+                            <div className="landing__bottom--text--right">
+                            <h5>What we do</h5>
+                            <h1>Get Ready For The Future Of Work</h1>
+                        </div>
+                    </div>
+
+                    <div className="landing__card--box">
+                        <div className="landing__card landing__card--1">
+                            <img src={Card1} alt="illustration" />
+                            <h3><span>Full-time </span>Plan</h3>
+                           
+                            <div className="landing__btn">
+                                <PrimaryBtn yellow link="/signup">Get Started</PrimaryBtn>
+                            </div>
+                        </div>
+
+                        <div className="landing__card landing__card--2">
+                            <img src={Card2} alt="illustration" />
+                            <h3><span>Part-time </span>Plan</h3>
+                           
+                            <div className="landing__btn">
+                                <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <NeedAdvice />
             </div>
             <Footer/>

@@ -22,9 +22,9 @@ const Footer = () => {
 
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Company</li>
-            <li className="footer__item"><Link>About</Link></li>
+            <li className="footer__item"><Link to="/about-us">About</Link></li>
             <li className="footer__item"><Link>Careers</Link></li>
-            <li className="footer__item"><Link>Contact Us</Link></li>
+            <li className="footer__item"><Link to="/contact">Contact Us</Link></li>
           </ul>
 
           <ul className="footer__list">

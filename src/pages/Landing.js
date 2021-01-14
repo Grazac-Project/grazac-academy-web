@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";   
 import { cn } from "../utils";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -96,10 +95,9 @@ const Landing = () => {
             <img src={Card1} alt="illustration" />
               <h3><span>Graduate </span><br />Accelerator Plan</h3>
               <p>An extensive program that gives you the opportunity to learn, develop your ideas and build a career in this 21st century.</p>
-              <p>You need more than a degree to be relevant in the 21st century. <br />Let’s prepare you for the future of work.</p>
+              <p>You need more than a degree to be relevant in the 21st century. Let’s prepare you for the future of work.</p>
               <p>Access to facilities and resources that aids your learning and practice.</p>
-              <p>Learn Digital Skills</p>
-              <p>Gain insights into today’s digital tools.</p>
+              <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
 
               <div className="landing__btn">
                 <PrimaryBtn yellow link="/signup">Sign up</PrimaryBtn>
@@ -111,10 +109,8 @@ const Landing = () => {
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
               <p>Set the pace for a bright future as an undergraduate by taking up skills in this 21st century.</p>
               <p>Become an asset in this 21st century before leaving the four walls of school.</p>
-              <p>Join thousands of young undergraduates now.</p>
-              <p>Access to mentorship tailored to your career path.</p>
-              <p>Be employable</p>
-              <p>Become the next best talent to be hired in this 21st century.</p>
+              <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
+              <p>Become the next best talent to be hired in this 21st century and be employable.</p>
 
               <div className="landing__btn">
                 <PrimaryBtn link="/signup">Sign up</PrimaryBtn>
@@ -207,7 +203,7 @@ const Landing = () => {
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
             <h5>How it works</h5>
-            <h1>Ger Upskilled For The Future Of Work</h1>
+            <h1>Get Upskilled For The Future Of Work</h1>
             <p>We will provide you with the tools, resources, facilities, content and mentorship needed for your relevance in the future of work.</p>
 
             <div className="landing__btn--2">
