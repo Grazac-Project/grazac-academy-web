@@ -101,7 +101,7 @@
 
     .mask {
       margin-left: 1rem;
-      transform: translateY(3px);
+      transform: translateY(2px);
       cursor: pointer;
       @include respond(phone) {
         display: none;

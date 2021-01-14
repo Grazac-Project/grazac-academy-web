@@ -500,7 +500,7 @@
       font-weight: 500;
       font-size: 1.6rem;
       text-align: center;
-      margin: 2rem 0;
+      margin: 1.5rem 0;
       color: $color-grey;
       line-height: 32px;
 
@@ -703,6 +703,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include respond(tab-land) {
+        margin-left: 3rem;
+      }
       @include respond(phone) {
         display: block;
         margin-left: 2rem;
@@ -727,10 +730,18 @@
             height: 190px;
             width: 180px;
             margin-left: auto;
+            @include respond(tab-land) {
+              height: 150px;
+              width: 130px;
+            }
           }
           &:last-child {
             height: 320px;
             width: 250px;
+            @include respond(tab-land) {
+              height: 260px;
+              width: 210px;
+            }
           }
         }
       }
@@ -744,6 +755,9 @@
           background-image: url(../images/kamala.jpg);
           background-size: cover;
           background-repeat: no-repeat;
+          @include respond(tab-land) {
+            display: none;
+          }
         }
       }
     }

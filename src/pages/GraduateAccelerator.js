@@ -24,7 +24,7 @@ const GraduateAccelerator = () => {
                                             Graduate Accelerator Track
                                         </h1>
                                         <p>
-                                            We are bridging the gap between unemployment and entry - level jobs in the technology industry.
+                                            We are bridging the gap between unemployment and entry - level jobs 21st century.
                                         </p>
                                         <div className="gua_hero_search-box">
                                             <input type="text" className="gua_hero_search" placeholder="Select a category" />
@@ -46,7 +46,7 @@ const GraduateAccelerator = () => {
                                 <div className="boxes">
                                     <div className="svg-box2"></div>
                                     <h3>Expert Instructors</h3>
-                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
+                                    <p>A wide range of industry leaders that will walk you through your career path.</p>
                                 </div>
                             </div>
                         </div>
@@ -54,8 +54,8 @@ const GraduateAccelerator = () => {
                             <div className="">
                                 <div className="boxes">
                                     <div className="svg-box2"></div>
-                                    <h3>100k+ Online Courses</h3>
-                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
+                                    <h3>Mentorship Access</h3>
+                                    <p>Set out on the right path by leveraging on the experience of those who have gone ahead.</p>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +63,8 @@ const GraduateAccelerator = () => {
                             <div className="">
                                 <div className="boxes">
                                     <div className="svg-box2"></div>
-                                    <h3>100k+ Online Courses</h3>
-                                    <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
+                                    <h3>Resources and tools</h3>
+                                    <p>Access to facilities, resources and tools needed for your quick learning.</p>
                                 </div>
                             </div>
                         </div>

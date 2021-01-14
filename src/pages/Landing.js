@@ -56,12 +56,14 @@ const Landing = () => {
 
 
         <div className="landing__text">
-          <h1>The future of insurance is data, driven</h1>
-          <p>Rideshur sets fair rates adjusted at every turn. Safety, risk level, and claims are all managed from a single dashboard. Evolve your fleet.</p>
+          <h1>UPSKILLING YOU FOR THE FUTURE OF WORK</h1>
+          <p>Be employable with direct practical experience in 21st century skills.
+          Your organization deserves one of the best future talents in our community.
+          Get tutored by industry leaders who will walk you through the path of becoming employable.</p>
         </div>
 
         <div className="landing__btn">
-          <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+          <PrimaryBtn link="/get-started">Enroll Now</PrimaryBtn>
         </div>
       </div>
 
@@ -85,7 +87,7 @@ const Landing = () => {
           <div className="landing__bottom--text">
             <div className="landing__bottom--text--right">
               <h5>What we do</h5>
-              <h1>Individualized attention needed for self-confidence.</h1>
+              <h1>Get Ready For The Future Of Work</h1>
             </div>
           </div>
 
@@ -93,7 +95,11 @@ const Landing = () => {
             <div className="landing__card landing__card--1">
             <img src={Card1} alt="illustration" />
               <h3><span>Graduate </span><br />Accelerator Plan</h3>
-              <p>You need more than a degree to be relevant in the 21st century. We are passionate about adding value to you. Become an asset by joining Grazac today</p>
+              <p>An extensive program that gives you the opportunity to learn, develop your ideas and build a career in this 21st century.</p>
+              <p>You need more than a degree to be relevant in the 21st century. <br />Let’s prepare you for the future of work.</p>
+              <p>Access to facilities and resources that aids your learning and practice.</p>
+              <p>Learn Digital Skills</p>
+              <p>Gain insights into today’s digital tools.</p>
 
               <div className="landing__btn">
                 <PrimaryBtn yellow link="/signup">Sign up</PrimaryBtn>
@@ -103,7 +109,12 @@ const Landing = () => {
             <div className="landing__card landing__card--2">
               <img src={Card2} alt="illustration" />
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
-              <p>Get more than just a degree. Join thousands of young undergraduates who have started building their career in tech through Grazac</p>
+              <p>Set the pace for a bright future as an undergraduate by taking up skills in this 21st century.</p>
+              <p>Become an asset in this 21st century before leaving the four walls of school.</p>
+              <p>Join thousands of young undergraduates now.</p>
+              <p>Access to mentorship tailored to your career path.</p>
+              <p>Be employable</p>
+              <p>Become the next best talent to be hired in this 21st century.</p>
 
               <div className="landing__btn">
                 <PrimaryBtn link="/signup">Sign up</PrimaryBtn>
@@ -196,11 +207,11 @@ const Landing = () => {
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
             <h5>How it works</h5>
-            <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
-            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
+            <h1>Ger Upskilled For The Future Of Work</h1>
+            <p>We will provide you with the tools, resources, facilities, content and mentorship needed for your relevance in the future of work.</p>
 
             <div className="landing__btn--2">
-              <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+              <PrimaryBtn link="/get-started">Enroll Now</PrimaryBtn>
             </div>
           </div>
 

@@ -36,7 +36,7 @@ const Navbar = () => {
   return(
     <nav className={cn("nav", { "nav--fixed": fixed })} ref={nav}>
       <div className="nav__logo">
-        <img src={logo} alt="logo" />
+        <Link to="/"><img src={logo} alt="logo" /></Link>
       </div>
 
       <div className={cn("nav__menu", { "nav__menu--active": active })}>
@@ -55,7 +55,7 @@ const Navbar = () => {
         <li className="nav__item"><NavItem link="gua">Undergraduate</NavItem></li>
         <li className="nav__item"><NavItem link="gga">Graduate</NavItem></li>
         <li className="nav__item nav__item--btn">
-          <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
+          <PrimaryBtn link="/signup">Enroll Now</PrimaryBtn>
         </li>
       </ul>
       </div>
@@ -87,7 +87,7 @@ const Navbar = () => {
           </svg>
         </li>
         <li className="nav__item nav__item--btn">
-          <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
+          <PrimaryBtn link="/signup">Enroll Now</PrimaryBtn>
         </li>
       </ul>
     </nav>
