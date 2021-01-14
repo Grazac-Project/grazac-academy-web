@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -41,6 +42,12 @@ const cardsInfo = [
 ]
 
 const AboutUs = () => {
+
+  useEffect(() => {
+    document.title = 'About - Grazac Academy';
+    window.scrollTo(0,0);
+  }, []);
+
   return(
     <div className="about">
       <div className="about__nav">

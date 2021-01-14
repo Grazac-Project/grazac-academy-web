@@ -9,9 +9,13 @@ import Graduates from "../images/graduates.png";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card1.svg";
 
-
-
 const GraduateAccelerator = () => {
+
+    React.useEffect(() => {
+        document.title = 'Graduate Accelerator Track - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
     return(
         <div>
             <Navbar/>

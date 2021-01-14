@@ -7,9 +7,13 @@ import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
 
-
-
 const UndergraduateAccelerator = () => {
+
+    React.useEffect(() => {
+        document.title = 'Undergraduate Accelerator Track - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
     return(
         <div>
             <Navbar/>

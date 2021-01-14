@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "../utils";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -18,6 +18,11 @@ import Card2 from "../images/svg/card1.svg";
 const Landing = () => {
   // const [email, setEmail] = useState("");
   const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    document.title = 'Welcome to Grazac Academy';
+    window.scrollTo(0,0);
+  }, [])
   
   const dots = [false, false, false, false];
   const content = [
