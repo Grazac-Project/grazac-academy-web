@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
@@ -10,6 +11,48 @@ import Youtube from "../images/svg/youtube.svg";
 import kamala from "../images/kamala.jpg";
 
 const Contact = () => {
+
+    const [ name, setName ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ subject, setSubject ] = useState('');
+    const [ message, setMessage ] = useState('');
+
+    useEffect(() => {
+        document.title = 'Contact - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
+    const handleSubmit = () => {
+        if(name.length && email.length && subject.length && message.length) {
+            const btn = document.querySelector('#submit');
+            btn.setAttribute('disabled', '');
+            btn.textContent = 'Submitting...';
+            console.log('Submitted')
+            axios.post('http://grazacacademy.com/contact/create', {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message
+            })
+            .then(resp => resp.data)
+            .then(response => {
+                if(response.success === true) {
+                    btn.removeAttribute('disabled');
+                    btn.textContent = 'Submit';
+                    alert(response.msg);
+                    setName(''); setEmail(''); setSubject(''); setMessage('');
+                } else {
+
+                }
+            })
+            .catch((err) => {
+                
+            });
+        } else {
+            alert('Invalid input');
+        }
+    }
+
     return(
         <div>
             <Navbar/>
@@ -30,24 +73,24 @@ const Contact = () => {
                             <div className="contact_hero-flexdiv">
                                 <div className="contact_hero-flexdiv-1" >
                                     <label>Full Name  <span>*</span></label>
-                                    <input type="text" placeholder="ex. John Doe" />
+                                    <input type="text" placeholder="ex. John Doe" value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div className="contact_hero-flexdiv-2">
-                                    <label>Mail  <span>*</span></label>
-                                    <input type="text" placeholder="ex. john@gmail.com" />
+                                    <label>Email  <span>*</span></label>
+                                    <input type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  />
                                 </div>
                             </div>
                             <div>
-                                <label>Select a Subject  <span>*</span></label>
-                                <input  type="text" placeholder="ex. John Doe" />
+                                <label>Subject  <span>*</span></label>
+                                <input  type="text" placeholder="ex. John Doe" value={subject} onChange={e => setSubject(e.target.value)}  />
                             </div>
                             <div>
                                 <label>Message  <span>*</span></label>
-                                <textarea  type="text" placeholder="Describe your task for us" />
+                                <textarea  type="text" placeholder="Describe your task for us" value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="contact_hero-privacy" >
                                 <p>By submitting this form your consent to us emailing you occasionally about our products and services. You can unsubscribe from emails at any time, and we will never pass your email onto third parties. <span>Privacy Policy</span></p>
-                                <button>Explore Courses</button>
+                                <button id="submit" onClick={handleSubmit}>Submit</button>
                             </div>
                         </div>
                     </div>

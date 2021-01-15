@@ -9,8 +9,8 @@ const Mode = () => {
         <div className="landing__middle--container">
           <div className="landing__middle--text">
             <h5>What we do</h5>
-            <h2>Mode of Teaching</h2>
-            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
+            <h2>Our Facilitators</h2>
+            <p>We have a good range of industry experts who are ready to hold you by the hand and lead you on your career path.</p>
           </div>
 
           <div className="landing__middle--images--box">
@@ -103,10 +103,10 @@ const Mode = () => {
             <img src={Kamala}/>
           </div>
           <div className="landing__discount--text">
-            <h3>Get 70% discount for undergraduate course</h3>
-            <p>You need more than a degree to be relevant in the 21st century. We are passionate about adding value to you. Become an asset by joining Grazac today</p>
+            <h3>Get equipped for the career you desire.</h3>
+            <p>You will gain insights into today’s digital skills and tools necessary for the future of work.</p>
             <div className="landing__btn--2">
-              <PrimaryBtn link="/get-started">Get Started</PrimaryBtn>
+              <PrimaryBtn link="/get-started">Enroll Now</PrimaryBtn>
             </div>
           </div>
         </div>

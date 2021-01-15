@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import undergraduate from "../images/undergraduate.png";
 
 const NeedAdvice = () => {
@@ -11,8 +12,11 @@ const NeedAdvice = () => {
                 <div className="boxes55">
                     <div className="gua_advice-box-text" >
                         <h2>Need Advice?</h2>
-                        <p>Do you want to include HabiTask’s learning pathways in your offer? Call <span>0803 - 302 - 4644</span> or fill in the <span>contact form</span> without obligation.</p>
-                        <button>Contact Us</button>
+                        <p>Do you need further clarification?
+Call <a href="tel:0903-526-4926">0903-526-4926</a> or Fill the contact form below
+</p>
+                        <Link to="/contact"><button>Contact Us</button></Link>
+                        
                     </div>
                 </div>
             </div>

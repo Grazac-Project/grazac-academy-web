@@ -20,6 +20,33 @@
     padding: 0;
   }
 
+  &__dropdown {
+    position: absolute;
+    background-color: $color-white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    top: 3rem;
+    left: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out;
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &--list {
+      list-style-type: none;
+      li {
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
   &__list {
     list-style-type: none;
     display: flex;
@@ -65,7 +92,6 @@
     color: $color-grey;
     display: flex;
     align-items: center;
-
     &:not(:last-child) {
       margin-right: 4rem;
       @include respond(phone) {
@@ -75,7 +101,7 @@
 
     .mask {
       margin-left: 1rem;
-      transform: translateY(3px);
+      transform: translateY(2px);
       cursor: pointer;
       @include respond(phone) {
         display: none;

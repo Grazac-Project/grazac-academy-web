@@ -7,9 +7,13 @@ import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
 
-
-
 const UndergraduateAccelerator = () => {
+
+    React.useEffect(() => {
+        document.title = 'Undergraduate Accelerator Track - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
     return(
         <div>
             <Navbar/>
@@ -24,7 +28,7 @@ const UndergraduateAccelerator = () => {
                                             Undergraduate Accelerator Track
                                         </h1>
                                         <p>
-                                            We are bridging the gap between unemployment and entry - level jobs in the technology industry.
+                                            We equip you for the future of the career you desire.
                                         </p>
                                         <div className="gua_hero_search-box">
                                             <input type="text" className="gua_hero_search" placeholder="Select a category" />
@@ -51,9 +55,9 @@ const UndergraduateAccelerator = () => {
                             <div className="gua_highlight-box3">
                                 <div className="gua_highlight-box4">
                                     <h3><strong>Student Lead</strong></h3>
-                                    <p>Learn how to use Structured Query</p>
-                                    <p>Language (SQL) to extract and analyze data stored in databases.</p>
-                                    <p>Analyze data stored in databases.</p>
+                                    <p>Become our ambassador in your institution. </p>
+                                    <p>Lead other students who are ready to prepare themselves for the future of work.</p>
+                                    <p>Apply as Student Lead</p>
                                 </div>
                             </div>
                         </div>
@@ -61,9 +65,9 @@ const UndergraduateAccelerator = () => {
                             <div  className="gua_highlight-box3">
                                 <div className="gua_highlight-box4">
                                     <h3><strong>Affiliated Campuses</strong></h3>
-                                    <p>Learn how to use Structured Query</p>
-                                    <p>Language (SQL) to extract and analyze data stored in databases.</p>
-                                    <p>Analyze data stored in databases.</p>
+                                    <p>We are well represented in various institutions of learning across Nigeria.</p>
+                                    <p>We want to prepare you for the future of work before you leave the four walls of learning.</p>
+                                    <p>Learn More</p>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,12 @@ import quote from '../images/svg/quote.svg';
 import sprint from '../images/sprint.png';
 
 const CourseDetail = () => {
+
+    React.useEffect(() => {
+        document.title = 'Course Details - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
     return(
         <div>
             <Navbar/>

@@ -130,6 +130,7 @@
   &__logo {
     display: flex;
     margin-bottom: 3rem;
+    transform: translateX(-2rem);
     img {
       &:first-child {
         margin-right: 1rem;
