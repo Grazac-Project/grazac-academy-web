@@ -5,9 +5,6 @@ const NavItem = props => {
   return(
     <NavLink
       to={props.link}
-      activeStyle={{
-        textDecoration: "underline"
-      }}
       exact={props.exact}
       className="nav__link"
     >

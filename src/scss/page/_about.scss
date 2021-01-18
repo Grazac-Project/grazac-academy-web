@@ -6,7 +6,7 @@
       margin-top: 80px;
     }
     @include respond(phone) {
-      margin-top: 7rem;
+      margin-top: 15rem;
     }
   }
 
@@ -93,6 +93,10 @@
         color: #073041;
         font-family: $font-primary;
         font-weight: bold;
+
+        @include respond(phone) {
+          font-size: 3.5rem;
+        }
       }
       p {
         font-size: 1.8rem;

@@ -73,21 +73,9 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="landing__sponsors">
-        <div className="landing__sponsors--container">
-          <img src={Sponsor1} alt="sponsor" />
-          <img src={Sponsor2} alt="sponsor" />
-          <img src={Sponsor3} alt="sponsor" />
-          <img src={Sponsor2} alt="sponsor" />
-          <img src={Sponsor3} alt="sponsor" />
-          <img src={Sponsor1} alt="sponsor" />
-        </div>
-      </div>
-
       <div className="about__middle">
         <div className="about__middle--container">
           <div className="about__middle--head">
-            <h4>How It Works</h4>
             <h2>Our Core Values</h2>
             <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
           </div>

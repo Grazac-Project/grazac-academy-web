@@ -3,7 +3,7 @@ import Facebook from "../images/svg/facebook.svg"
 import Instagram from "../images/svg/instagram.svg"
 import Twitter from "../images/svg/twitter.svg"
 import Youtube from "../images/svg/youtube.svg"
-import Logo from "../images/grazac.png";
+import Logo from "../images/svg/grazac-logo.svg";
 
 const Footer = () => {
   return(
@@ -17,7 +17,7 @@ const Footer = () => {
               </div>
             </li>
             <li className="footer__item">You need more than a degree to be relevant in the 21st century. We are passionate about </li>
-            <li className="footer__item">+23486 089 3455</li>
+            <li className="footer__item"><a href="tel:+234806 836 5951">+234806 836 5951</a></li>
           </ul>
 
           <ul className="footer__list">

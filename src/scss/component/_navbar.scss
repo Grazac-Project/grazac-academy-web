@@ -1,5 +1,4 @@
 .nav {
- 
   background-color: transparent;
   position: fixed;
   width: 100%;
@@ -7,7 +6,6 @@
   left: 0;
   z-index: 9999;
   padding: 1.5rem;
-  padding-left: 0;
   transition: all 0.3s;
 
   &--fixed {
@@ -19,11 +17,25 @@
     padding: 0;
   }
 
-  &__container{
- display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: auto;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 3rem;
+    padding-left: 0;
+    @include respond(phone) {
+      padding: 2rem 3rem;
+      padding-right: 0rem;
+    }
+
+    &__logo {
+      @include respond(phone) {
+        img {
+          height: 10px !important;
+        }
+      }
+    }
   }
 
   &__dropdown {
@@ -31,16 +43,13 @@
     background-color: $color-white;
     padding: 1rem 2rem;
     border-radius: 5px;
-<<<<<<< HEAD
     top: 3rem;
-=======
     top: 2.2rem;
->>>>>>> 6c0bc26a7e0721001a44c4b39fd8502cf86f05ae
     left: -2.5rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 
     &--active {
       opacity: 1;
@@ -89,6 +98,12 @@
 
   &__link {
     text-decoration: none;
+    color: #9da8b6;
+
+    &:hover {
+      text-decoration: underline;
+      color: #9da8b6;
+    }
 
     @include respond(phone) {
       font-size: 3rem;
@@ -98,12 +113,16 @@
 
   &__item {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: normal;
     color: $color-grey;
     display: flex;
     align-items: center;
     &:not(:last-child) {
       margin-right: 4rem;
+      @include respond(tab-port) {
+        margin-right: 2rem;
+      }
+
       @include respond(phone) {
         margin-right: 0;
       }
@@ -117,18 +136,15 @@
         display: none;
       }
     }
-
-    .arrow {
-      transform: translateY(-2px);
-    }
   }
 
   &__btn {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-family: $font-primary;
     font-weight: 500;
-    margin-right: 2rem;
+    letter-spacing: 0.04em;
+
+    // margin-right: 2rem;
     transition: all 0.2s;
     @include respond(phone) {
       margin-right: 0;

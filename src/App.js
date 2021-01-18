@@ -22,8 +22,8 @@ const App = () => {
 
         <Route path="/course-detail" exact={true} component={CourseDetail}/> 
         <Route path="/contact" exact={true} component={Contact}/> 
-        <Route path="/gga" exact={true} component={GraduateAccelerator}/> 
-        <Route path="/gua" exact={true} component={UndergraduateAccelerator}/> 
+        <Route path="/graduate-accelerator-track" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/undergraduate-accelerator-track" exact={true} component={UndergraduateAccelerator}/> 
       </Switch>
     </div>
   );

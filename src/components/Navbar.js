@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { cn } from "../utils";
 import NavItem from "./NavItem";
-import logo from "../images/grazac.png";
+import logo from "../images/svg/grazac-logo.svg";
 import PrimaryBtn from "./PrimaryBtn";
 import { Link } from "react-router-dom";
 
@@ -30,11 +30,6 @@ const Navbar = () => {
     else setActive(true);
   };
 
-  const getHoverState = (hover) => {
-    console.log(hover);
-    console.log("brrrrrrrrrrrrr");
-  };
-
   return (
     <nav className={cn("nav", { "nav--fixed": fixed })} ref={nav}>
       <div className="nav__container">
@@ -59,10 +54,10 @@ const Navbar = () => {
               <NavItem link="/about-us">About</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="gua">Undergraduate</NavItem>
+              <NavItem link="/undergraduate-accelerator-track">Undergraduate</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="gga">Graduate</NavItem>
+              <NavItem link="/graduate-accelerator-track">Graduate</NavItem>
             </li>
             <li className="nav__item nav__item--btn">
               <PrimaryBtn link="/signup">Enroll Now</PrimaryBtn>
@@ -85,7 +80,7 @@ const Navbar = () => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <a onClick={(e) => (!click ? setClick(true) : setClick(false))}>
+            <a className="nav__link" onClick={(e) => (!click ? setClick(true) : setClick(false))}>
               Academy
             </a>
             <svg
@@ -115,17 +110,19 @@ const Navbar = () => {
                 onMouseEnter={() => console.log("brrrrr")}
               >
                 <li>
-                  <Link to="gua">Undergraduate</Link>
+                  <Link to="/undergraduate-accelerator-track" className="nav__link">Undergraduate</Link>
                 </li>
                 <li>
-                  <Link to="gga">Graduate</Link>
+                  <Link to="/graduate-accelerator-track" className="nav__link">Graduate</Link>
                 </li>
               </ul>
             </div>
           </li>
-          <li className="nav__item nav__item--btn">
-            <PrimaryBtn link="/signup">Enroll Now</PrimaryBtn>
-          </li>
+          <a href="/#tracks">
+            <div className="nav__btn">
+              <div className="nav__btn--text">Enroll Now</div>
+            </div>
+          </a>
         </ul>
       </div>
     </nav>

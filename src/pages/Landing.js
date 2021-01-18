@@ -7,10 +7,14 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import Kamala from "../images/kamala.jpg"
 import Grazac from "../images/svg/grazac.svg";
 import Love from "../images/my_love.png";
+import Video from "../images/landing-video.mp4";
+import Object from "../images/svg/objects.svg";
 
-import Sponsor1 from "../images/svg/sponsor1.svg";
-import Sponsor2 from "../images/svg/sponsor2.svg";
-import Sponsor3 from "../images/svg/sponsor3.svg";
+import Sponsor1 from "../images/svg/Apple.svg";
+import Sponsor2 from "../images/svg/AWS.svg";
+import Sponsor3 from "../images/svg/Flutterwave.svg";
+import Sponsor5 from "../images/svg/Microsoft.svg";
+import Sponsor6 from "../images/svg/Google.svg";
 
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card1.svg";
@@ -21,9 +25,21 @@ const Landing = () => {
 
   useEffect(() => {
     document.title = 'Welcome to Grazac Academy';
-    window.scrollTo(0,0);
-  }, [])
-  
+    let mediaPlayer = document.querySelector('#video');
+    mediaPlayer.controls = false;
+    mediaPlayer.play();
+    changeSlider();
+  })
+
+  const changeSlider = () => {
+    setTimeout(() => {
+      if (step < 3)
+        setStep(step + 1);
+      else 
+        setStep(0);
+    }, 5000);
+  }
+
   const dots = [false, false, false, false];
   const content = [
     {
@@ -56,8 +72,8 @@ const Landing = () => {
     <div className="landing">
       <div className="landing__header">
         <Navbar />
-      <div style={{height: 10}}></div>
-
+        <img src={Object} className="bg-img"/>
+        <div style={{height: 10}}></div>
 
         <div className="landing__text">
           <h1>Upskilling You For The Future Of Work</h1>
@@ -65,14 +81,12 @@ const Landing = () => {
           Your organization deserves one of the best future talents in our community.
           Get tutored by industry leaders who will walk you through the path of becoming employable.</p>
         </div>
-
-        <div className="landing__btn">
-          <PrimaryBtn link="/get-started">Enroll Now</PrimaryBtn>
-        </div>
       </div>
 
       <div className="landing__video">
-        
+        <video id="video" width="320" height="240" autoplay loop controls>
+          <source src={Video} type="video/mp4" />
+        </video>
       </div>
 
       <div className="landing__sponsors">
@@ -80,17 +94,15 @@ const Landing = () => {
           <img src={Sponsor1} alt="sponsor" />
           <img src={Sponsor2} alt="sponsor" />
           <img src={Sponsor3} alt="sponsor" />
-          <img src={Sponsor2} alt="sponsor" />
-          <img src={Sponsor3} alt="sponsor" />
-          <img src={Sponsor1} alt="sponsor" />
+          <img src={Sponsor5} alt="sponsor" />
+          <img src={Sponsor6} alt="sponsor" />
         </div>
       </div>
 
-      <div className="landing__cards">
+      <div className="landing__cards" id="tracks">
         <div className="landing__cards--container">
           <div className="landing__bottom--text">
             <div className="landing__bottom--text--right">
-              <h5>What we do</h5>
               <h1>Get Ready For The Future Of Work</h1>
             </div>
           </div>
@@ -100,12 +112,9 @@ const Landing = () => {
             <img src={Card1} alt="illustration" />
               <h3><span>Graduate </span><br />Accelerator Plan</h3>
               <p>An extensive program that gives you the opportunity to learn, develop your ideas and build a career in this 21st century.</p>
-              <p>You need more than a degree to be relevant in the 21st century. Let’s prepare you for the future of work.</p>
-              <p>Access to facilities and resources that aids your learning and practice.</p>
-              <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
-
+             
               <div className="landing__btn">
-                <PrimaryBtn yellow link="/signup">Sign up</PrimaryBtn>
+                <PrimaryBtn yellow link="/graduate-accelerator-track">Learn More</PrimaryBtn>
               </div>
             </div>
 
@@ -113,12 +122,12 @@ const Landing = () => {
               <img src={Card2} alt="illustration" />
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
               <p>Set the pace for a bright future as an undergraduate by taking up skills in this 21st century.</p>
-              <p>Become an asset in this 21st century before leaving the four walls of school.</p>
-              <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
-              <p>Become the next best talent to be hired in this 21st century and be employable.</p>
+              {/* <p>Become an asset in this 21st century before leaving the four walls of school.</p> */}
+              {/* <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
+              <p>Become the next best talent to be hired in this 21st century and be employable.</p> */}
 
               <div className="landing__btn">
-                <PrimaryBtn link="/signup">Sign up</PrimaryBtn>
+                <PrimaryBtn link="/undergraduate-accelerator-track">Learn More</PrimaryBtn>
               </div>
             </div>
           </div>
@@ -128,7 +137,6 @@ const Landing = () => {
       <div className="landing__discover">
         <div className="landing__bottom--text landing__bottom--text-2">
           <div className="landing__bottom--text--right">
-            <h5>How it works</h5>
             <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
             <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
           </div>
@@ -207,12 +215,11 @@ const Landing = () => {
       <div className="landing__bottom" style={{paddingBottom: 0}}>
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
-            <h5>How it works</h5>
             <h1>Get Upskilled For The Future Of Work</h1>
             <p>We will provide you with the tools, resources, facilities, content and mentorship needed for your relevance in the future of work.</p>
 
             <div className="landing__btn--2">
-              <PrimaryBtn link="/get-started">Enroll Now</PrimaryBtn>
+              <PrimaryBtn link="/get-started">Learn More</PrimaryBtn>
             </div>
           </div>
 

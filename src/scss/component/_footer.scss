@@ -55,6 +55,7 @@
     line-height: 32px;
     @include respond(phone) {
       line-height: 25px;
+      font-size: 1.6rem;
     }
 
     &--head {
