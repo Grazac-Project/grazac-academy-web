@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+p{
+  font-family: "Nunito Sans", sans-serif;
+}
+a{
+  cursor: pointer;
+}
+a:hover{
+  text-decoration: none;
+}
+button:focus{
+  outline: none;
+}

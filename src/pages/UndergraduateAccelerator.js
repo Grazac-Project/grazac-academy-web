@@ -30,10 +30,6 @@ const UndergraduateAccelerator = () => {
                                         <p>
                                             We equip you for the future of the career you desire.
                                         </p>
-                                        <div className="gua_hero_search-box">
-                                            <input type="text" className="gua_hero_search" placeholder="Select a category" />
-                                            <button type="submit" className="gua_hero_search-button">Search Course</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +53,7 @@ const UndergraduateAccelerator = () => {
                                     <h3><strong>Student Lead</strong></h3>
                                     <p>Become our ambassador in your institution. </p>
                                     <p>Lead other students who are ready to prepare themselves for the future of work.</p>
-                                    <p>Apply as Student Lead</p>
+                                    <a className="white-link">Apply as Student Lead</a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +63,7 @@ const UndergraduateAccelerator = () => {
                                     <h3><strong>Affiliated Campuses</strong></h3>
                                     <p>We are well represented in various institutions of learning across Nigeria.</p>
                                     <p>We want to prepare you for the future of work before you leave the four walls of learning.</p>
-                                    <p>Learn More</p>
+                                    <a className="white-link">Learn More</a>
                                 </div>
                             </div>
                         </div>

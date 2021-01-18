@@ -1,18 +1,44 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PrimaryBtn from "../components/PrimaryBtn";
+import {productDesign} from "../content/courses.js";
 
 import quote from '../images/svg/quote.svg';
 import sprint from '../images/sprint.png';
 
-const CourseDetail = () => {
+const CourseDetail = (props) => {
+    const [course, setCourse] = useState('')
 
     React.useEffect(() => {
         document.title = 'Course Details - Grazac Academy';
         window.scrollTo(0,0);
-    }, []);
-
+        const param = props.location.search.substring(8);
+        if (param === 'productDesign'){
+            setCourse(productDesign)
+        }
+        console.log(course.benefits)
+    },[]);
+    
+    const RenderOutline = _ => {
+        const list = course.outline.map((item, index) => (
+            <div key={index}>
+                <div className="course_learn-main-list">
+                    <div className="box1">
+                        <h3>{item.id}</h3>
+                    </div>
+                    <div className="box2">
+                        <h3>{item.topic}</h3>
+                    </div>
+                    <div className="box3">
+                        <p>{item.content}</p>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+        ))
+        return(<div>{list}</div>)
+    }
     return(
         <div>
             <Navbar/>
@@ -24,13 +50,13 @@ const CourseDetail = () => {
                                 <div className="gua_hero-text">
                                     <div className="gua_hero-text-b">
                                         <h1>
-                                            Product<br/>Design (UI/UX)
+                                            {course.name}
                                         </h1>
                                         <p>
-                                            We are bridging the gap between unemployment and entry - level jobs in the technology industry.
+                                            {course.description}
                                         </p>
                                         <div className="contact_hero-privacy" >
-                                            <button>Explore Courses</button>
+                                            <button>Download Brochure</button>
                                         </div>
                                     </div>
                                 </div>
@@ -48,62 +74,7 @@ const CourseDetail = () => {
                             <h2>What you'll Learn</h2>
                         </div>
                         <div className="course_learn-main">
-                            <div>
-                                <div className="course_learn-main-list">
-                                    <div className="box1">
-                                        <h3>00</h3>
-                                    </div>
-                                    <div className="box2">
-                                        <h3>Computer Science & Data Structure</h3>
-                                    </div>
-                                    <div className="box3">
-                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
-                            <div>
-                                <div className="course_learn-main-list">
-                                    <div className="box1">
-                                        <h3>00</h3>
-                                    </div>
-                                    <div className="box2">
-                                        <h3>Computer Science & Data Structure</h3>
-                                    </div>
-                                    <div className="box3">
-                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
-                            <div>
-                                <div className="course_learn-main-list">
-                                    <div className="box1">
-                                        <h3>00</h3>
-                                    </div>
-                                    <div className="box2">
-                                        <h3>Computer Science & Data Structure</h3>
-                                    </div>
-                                    <div className="box3">
-                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
-                            <div>
-                                <div className="course_learn-main-list">
-                                    <div className="box1">
-                                        <h3>00</h3>
-                                    </div>
-                                    <div className="box2">
-                                        <h3>Computer Science & Data Structure</h3>
-                                    </div>
-                                    <div className="box3">
-                                        <p>Clustering. Time Series Analysis. Neural Network. Natural Language Processing. Sentimental Analysis. Regular Expressions.</p>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
+                            <RenderOutline/>
                         </div>
                     </div>
                 </div>
@@ -119,12 +90,12 @@ const CourseDetail = () => {
                                 <div>
                                     <div className="boxes">
                                         <div className="svg-box"></div>
-                                        <h3>Understanding RDMS</h3>
+                                        <h3></h3>
                                         <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                     </div>
                                     <div className="boxes">
                                         <div className="svg-box"></div>
-                                        <h3>Understanding RDMS</h3>
+                                        <h3></h3>
                                         <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                     </div>
                                 </div>
@@ -133,12 +104,12 @@ const CourseDetail = () => {
                                 <div>
                                     <div className="boxes">
                                         <div className="svg-box"></div>
-                                        <h3>Understanding RDMS</h3>
+                                        <h3></h3>
                                         <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                     </div>
                                     <div className="boxes">
                                         <div className="svg-box"></div>
-                                        <h3>Understanding RDMS</h3>
+                                        <h3></h3>
                                         <p>Learn the foundations of database management with focus on relational database systems and its terminologies.</p>
                                     </div>
                                 </div>

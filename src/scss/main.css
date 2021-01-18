@@ -1860,8 +1860,18 @@ html {
   font-size: 1em;
 }
 
+.course_wwd-intro h2 {
+  color: #073041;
+  font-family: Georgia;
+  font-weight: 600;
+}
+
 .course_wwd-intro span {
   color: #773DD3;
+}
+
+.course_wwd-intro p {
+  color: #9DA8B6;
 }
 
 .course_wwd-flex {
@@ -1973,6 +1983,11 @@ html {
   font-size: 1em;
 }
 
+.course_mode-intro h2 {
+  color: #073041;
+  font-family: Georgia;
+}
+
 .course_mode-container {
   margin-top: 40px;
 }
@@ -1983,6 +1998,14 @@ html {
     display: -ms-flexbox;
     display: flex;
   }
+}
+
+.course_mode-container p {
+  color: #9DA8B6;
+}
+
+.course_mode-container h3 {
+  color: #073041;
 }
 
 .course_mode-container .svg-box {
@@ -2887,6 +2910,17 @@ html {
   margin: 50px 0;
 }
 
+.white-link {
+  color: white;
+  font-size: 1.1em;
+}
+
+.white-link:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .gua p {
   font-size: 1.1em;
 }
@@ -2924,6 +2958,7 @@ html {
 .gua_hero-text h1 {
   font-size: 5em;
   padding-bottom: 20px;
+  font-family: Georgia;
   color: #073041;
 }
 
@@ -3049,8 +3084,9 @@ html {
   color: #9DA8B6;
 }
 
-.gua_cardview span {
+.gua_cardview a {
   font-size: 1em;
+  font-family: Georgia;
   padding-top: 40px;
   color: #773DD3;
   font-weight: bold;
@@ -3074,6 +3110,11 @@ html {
 
 .gua_cardview-text {
   padding: 20px 15px;
+}
+
+.gua_cardview-text h4 {
+  font-family: Georgia;
+  font-weight: 600;
 }
 
 .gua_advice {
@@ -3119,6 +3160,8 @@ html {
 
 .gua_advice-box h2 {
   font-size: 3em;
+  font-family: Georgia;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 

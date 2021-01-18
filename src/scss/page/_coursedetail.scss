@@ -80,8 +80,16 @@
                 color: #773DD3;
                 font-size:1em;
             }
+            h2{
+                color: #073041;
+                font-family: Georgia;
+                font-weight: 600;
+            }
             span{
                 color: #773DD3;
+            }
+            p{
+                color: #9DA8B6;
             }
         }
         &-flex{
@@ -165,6 +173,10 @@
                 color: #773DD3;
                 font-size:1em;
             }
+            h2{
+                color: #073041;
+                font-family: Georgia;
+            }
         }
 
         &-container{
@@ -172,6 +184,13 @@
                 display:flex;
             }
             margin-top: 40px;
+
+            p{
+                color: #9DA8B6;
+            }
+            h3{
+                color: #073041;
+            }
             .svg-box{
                 width:50px;
                 height:50px;

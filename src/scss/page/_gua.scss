@@ -24,6 +24,17 @@
     margin:50px 0;
 }
 
+.white-link{
+    color: white;
+    font-size:1.1em;
+}
+
+.white-link:hover{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .gua {
     p{
         font-size: 1.1em;
@@ -52,6 +63,7 @@
             h1{
                 font-size:5em;
                 padding-bottom:20px;
+                font-family: Georgia;
                 color: #073041;
                 @include respond(phone) {
                     font-size: 3.3em;
@@ -153,8 +165,9 @@
             color:#9DA8B6;
         }
 
-        span{
+        a{
             font-size: 1em;
+            font-family: Georgia;
             padding-top:40px;
             color:#773DD3;
             font-weight: bold;
@@ -176,6 +189,10 @@
 
         &-text{
             padding:20px 15px;
+            h4{
+                font-family: Georgia;
+                font-weight: 600;
+            }
         }
     }
 
@@ -207,6 +224,8 @@
             }
             h2{
                 font-size:3em;
+                font-family: Georgia;
+                font-weight: 600;
                 margin-bottom: 20px;
             }
             p{
