@@ -1,6 +1,5 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
+ 
   background-color: transparent;
   position: fixed;
   width: 100%;
@@ -20,17 +19,28 @@
     padding: 0;
   }
 
+  &__container{
+ display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  }
+
   &__dropdown {
     position: absolute;
     background-color: $color-white;
     padding: 1rem 2rem;
     border-radius: 5px;
+<<<<<<< HEAD
     top: 3rem;
+=======
+    top: 2.2rem;
+>>>>>>> 6c0bc26a7e0721001a44c4b39fd8502cf86f05ae
     left: -2.5rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1s ease-in-out;
+    transition: opacity .5s ease-in-out;
 
     &--active {
       opacity: 1;
