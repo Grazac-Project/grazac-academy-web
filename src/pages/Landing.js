@@ -60,7 +60,7 @@ const Landing = () => {
 
 
         <div className="landing__text">
-          <h1>UPSKILLING YOU FOR THE FUTURE OF WORK</h1>
+          <h1>Upskilling You For The Future Of Work</h1>
           <p>Be employable with direct practical experience in 21st century skills.
           Your organization deserves one of the best future talents in our community.
           Get tutored by industry leaders who will walk you through the path of becoming employable.</p>
