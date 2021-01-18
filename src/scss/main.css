@@ -72,7 +72,7 @@ html {
 }
 
 .nav--fixed {
-  background-color: #f1f5fc;
+  background-color: #ffffff;
   -webkit-box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
