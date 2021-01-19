@@ -13,7 +13,7 @@ const Linkedn = () => (
 const Mode = () => {
   return(
     <div className="mode">
-      <div className="landing__middle">
+      {/* <div className="landing__middle">
         <div className="landing__middle--container">
           <div className="landing__middle--text">
             <h2>Our Facilitators</h2>
@@ -86,7 +86,7 @@ const Mode = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="landing__discount">
         <div className="landing__discount--container">

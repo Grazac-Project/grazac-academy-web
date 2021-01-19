@@ -32,6 +32,10 @@
       font-size: 6rem;
       margin-top: 15rem;
 
+      span{
+        color: $color-inspiring-purple;
+      }
+
       @include respond(tab-port) {
         font-size: 5rem;
       }

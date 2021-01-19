@@ -22,7 +22,7 @@ const CourseDetail = (props) => {
     },[]);
     
     const RenderOutline = _ => {
-        const list = course.outline.map((item, index) => (
+        const list = outline.map((item, index) => (
             <div key={index}>
                 <div className="course_learn-main-list">
                     <div className="box1">
