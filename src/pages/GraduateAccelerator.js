@@ -33,7 +33,7 @@ const GraduateAccelerator = () => {
                                             We are bridging the gap between unemployment and entry - level jobs 21st century.
                                             You need more than a degree to be relevant in the 21st century. </p><p>Let’s prepare you for the future of work.
                                             Access to facilities and resources that aids your learning and practice.</p>
-                                            <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
+                                        <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,6 @@ const GraduateAccelerator = () => {
                     <div className="landing__cards--container">
                         <div className="landing__bottom--text">
                             <div className="landing__bottom--text--right">
-                            <h5>What we do</h5>
                             <h1>Get Ready For The Future Of Work</h1>
                         </div>
                     </div>

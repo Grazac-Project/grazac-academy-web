@@ -13,7 +13,6 @@ const PopularCourses = () => {
         <div className="container">
             <div className="gga">
                 <div className="course_mode-intro course_mode-intro">
-                    <h4 style={{marginTop:'100px'}}>How It Works</h4>
                     <h2>Popular Courses</h2>
                 </div>
                 <div className="gga_container">

@@ -60,7 +60,11 @@ const Navbar = () => {
               <NavItem link="/graduate-accelerator-track">Graduate</NavItem>
             </li>
             <li className="nav__item nav__item--btn">
-              <PrimaryBtn link="/signup">Enroll Now</PrimaryBtn>
+              <a href="/#tracks">
+                <div className="nav__btn">
+                  <div className="nav__btn--text">Enroll Now</div>
+                </div>
+              </a>
             </li>
           </ul>
         </div>

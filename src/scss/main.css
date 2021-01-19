@@ -1843,7 +1843,7 @@ html {
 }
 
 .course_hero {
-  background: #1F1035;
+  background: #1f1035;
   height: calc(100vh - 80px);
   margin-top: 80px;
   color: white;
@@ -1934,8 +1934,9 @@ html {
 }
 
 .course_wwd-intro h4 {
-  color: #773DD3;
+  color: #773dd3;
   font-size: 1em;
+  display: none;
 }
 
 .course_wwd-intro h2 {
@@ -1944,12 +1945,18 @@ html {
   font-weight: 600;
 }
 
+@media (max-width: 37.5em) {
+  .course_wwd-intro h2 {
+    font-size: 3rem;
+  }
+}
+
 .course_wwd-intro span {
-  color: #773DD3;
+  color: #773dd3;
 }
 
 .course_wwd-intro p {
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .course_wwd-flex {
@@ -2003,7 +2010,7 @@ html {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: #CFB9F9 25%;
+  background: #cfb9f9 25%;
 }
 
 .course_wwd-flex-inner .info {
@@ -2057,7 +2064,7 @@ html {
 }
 
 .course_mode-intro h4 {
-  color: #773DD3;
+  color: #773dd3;
   font-size: 1em;
 }
 
@@ -2079,18 +2086,25 @@ html {
 }
 
 .course_mode-container p {
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .course_mode-container h3 {
   color: #073041;
+  font-family: Georgia;
+}
+
+@media (max-width: 37.5em) {
+  .course_mode-container h3 {
+    font-size: 18px;
+  }
 }
 
 .course_mode-container .svg-box {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: #CFB9F9 25%;
+  background: #cfb9f9 25%;
 }
 
 .course_mode-container .boxes {
@@ -2131,7 +2145,7 @@ html {
 }
 
 .course_mode-quote span {
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .course_mode-intro2 {
@@ -2164,7 +2178,7 @@ html {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #F1F5FC;
+  background: #f1f5fc;
 }
 
 .course_mode-tutors-box h5 {
@@ -2180,7 +2194,7 @@ html {
 }
 
 .course_purple {
-  background: #5726A6;
+  background: #5726a6;
   border-radius: 25px;
   padding: 50px;
   margin: 70px 50px 100px;
@@ -2549,11 +2563,18 @@ html {
 .contact_layer-text h1 {
   font-size: 3.5em;
   margin-top: 70px;
+  font-family: Georgia;
+}
+
+@media (max-width: 37.5em) {
+  .contact_layer-text h1 {
+    font-size: 3.5rem;
+  }
 }
 
 .contact_layer-text p {
   font-size: 1.2em;
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .contact_layer-circles-1 {
@@ -2643,7 +2664,7 @@ html {
 }
 
 .contact_hero label span {
-  color: #FF570A;
+  color: #ff570a;
 }
 
 .contact_hero input {
@@ -2651,7 +2672,7 @@ html {
   margin: 10px 5px 30px;
   border-radius: 10px;
   width: 81%;
-  border: 1px solid #EFF2F7;
+  border: 1px solid #eff2f7;
   padding: 10px 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2663,7 +2684,7 @@ html {
   margin: 10px 5px 30px;
   border-radius: 10px;
   width: 81%;
-  border: 1px solid #EFF2F7;
+  border: 1px solid #eff2f7;
   padding: 10px 15px;
   height: 150px;
   -webkit-box-sizing: border-box;
@@ -2672,19 +2693,19 @@ html {
 }
 
 .contact_hero-privacy p {
-  color: #9DA8B6;
+  color: #9da8b6;
   font-size: 1.2em;
 }
 
 .contact_hero-privacy span {
-  color: #773DD3;
+  color: #773dd3;
 }
 
 .contact_hero-privacy button {
   color: white;
   margin: 15px 0 30px;
-  background: #773DD3;
-  border: 1px solid #773DD3;
+  background: #773dd3;
+  border: 1px solid #773dd3;
   padding: 10px 20px;
   font-size: 1.1em;
   border-radius: 10px;
@@ -2699,6 +2720,7 @@ html {
 .contact_hero_first h1 {
   font-size: 3.5em;
   line-height: 60px;
+  font-family: Georgia;
 }
 
 .contact_hero_first p {
@@ -2733,20 +2755,25 @@ html {
   margin: 100px 0;
 }
 
+.contact_campus-intro h2 {
+  font-family: Georgia;
+}
+
 .contact_campus-intro h4 {
-  color: #773DD3;
+  color: #773dd3;
   font-size: 1em;
+  font-family: Georgia;
 }
 
 .contact_campus-intro p {
-  color: #9DA8B6;
+  color: #9da8b6;
   font-size: 1.2em;
 }
 
 .contact_campus-intro-grey-box {
   width: 400px;
   height: 250px;
-  background: #C4C4C4;
+  background: #c4c4c4;
 }
 
 @media (max-width: 37.5em) {
@@ -2765,6 +2792,7 @@ html {
 
 .contact_campus-main-div h3 {
   font-size: 1.5em;
+  font-family: Georgia;
 }
 
 @media (min-width: 700px) {
@@ -2775,7 +2803,7 @@ html {
 
 .contact_campus-main p {
   font-size: 1.2em;
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .contact_campus-main img {
@@ -2787,7 +2815,7 @@ html {
   width: 30px;
   height: 30px;
   padding: 3px;
-  border: 1px solid #E9ECF5;
+  border: 1px solid #e9ecf5;
   border-radius: 4px;
   margin: 0 10px 10px 0;
   display: inline-block;
@@ -2845,6 +2873,7 @@ html {
 .gga_hero {
   background-color: rgba(254, 244, 191, 0.2);
   position: relative;
+  padding-top: 60px;
 }
 
 @media (max-width: 37.5em) {
@@ -2878,7 +2907,7 @@ html {
 
 @media (max-width: 37.5em) {
   .gga_hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     width: 50%;
   }
 }
@@ -3030,15 +3059,13 @@ html {
 
 .gua_hero {
   background-color: rgba(220, 205, 244, 0.2);
-  height: calc(100vh - 80px);
   padding-top: 80px;
   position: relative;
 }
 
 @media (max-width: 37.5em) {
   .gua_hero {
-    margin-top: 60px;
-    height: calc(100vh - 60px);
+    padding-top: 30px;
   }
 }
 
@@ -3067,14 +3094,15 @@ html {
 
 @media (max-width: 37.5em) {
   .gua_hero-text h1 {
-    font-size: 3.3em;
+    font-size: 4rem;
+    width: 50%;
   }
 }
 
 .gua_hero-text p {
   font-size: 1.2em;
   padding-bottom: 20px;
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .gua_hero_search {
@@ -3102,8 +3130,8 @@ html {
   position: absolute;
   top: 7px;
   right: 10px;
-  border: 1px solid #773DD3;
-  background: #773DD3;
+  border: 1px solid #773dd3;
+  background: #773dd3;
   color: white;
   border-radius: 7px;
   padding: 8px 15px;
@@ -3175,12 +3203,13 @@ html {
   right: 20px;
 }
 
-.gua_highlight-box4 h3, .gua_highlight-box4 a {
+.gua_highlight-box4 h3,
+.gua_highlight-box4 a {
   font-family: Georgia;
 }
 
 .gua_cardview {
-  border: 1px solid #F1F5FC;
+  border: 1px solid #f1f5fc;
   border-radius: 10px;
   margin: 10px 15px 30px;
   text-align: center;
@@ -3188,20 +3217,20 @@ html {
 }
 
 .gua_cardview p {
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .gua_cardview a {
   font-size: 1em;
   font-family: Georgia;
   padding-top: 40px;
-  color: #773DD3;
+  color: #773dd3;
   font-weight: bold;
 }
 
 .gua_cardview-box {
   height: 150px;
-  background: #CFB9F9;
+  background: #cfb9f9;
   border-radius: 10px;
   margin: 10px 10px 0;
   -webkit-box-sizing: border-box;
@@ -3225,7 +3254,7 @@ html {
 }
 
 .gua_advice {
-  background: #FEF4BF;
+  background: #fef4bf;
   margin-top: 70px;
   padding: 0 20px;
 }
@@ -3272,20 +3301,26 @@ html {
   margin-bottom: 20px;
 }
 
+@media (max-width: 37.5em) {
+  .gua_advice-box h2 {
+    font-size: 3.5rem;
+  }
+}
+
 .gua_advice-box p {
-  color: #9DA8B6;
+  color: #9da8b6;
   font-size: 1.2em;
 }
 
 .gua_advice-box span {
-  color: #773DD3;
+  color: #773dd3;
 }
 
 .gua_advice-box button {
   color: white;
   margin-top: 15px;
-  background: #773DD3;
-  border: 1px solid #773DD3;
+  background: #773dd3;
+  border: 1px solid #773dd3;
   padding: 10px 20px;
   font-size: 1.1em;
   border-radius: 10px;

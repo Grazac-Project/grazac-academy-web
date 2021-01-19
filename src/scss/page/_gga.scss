@@ -6,10 +6,10 @@
   display: block;
   margin: auto;
   position: relative;
-  img{
+  img {
     position: absolute;
-    top:10px;
-    left:20%;
+    top: 10px;
+    left: 20%;
   }
 }
 
@@ -40,6 +40,8 @@
   &_hero {
     background-color: rgba(254, 244, 191, 0.2);
     position: relative;
+    padding-top: 60px;
+
     @include respond(phone) {
       padding-top: 30px;
     }
@@ -61,7 +63,7 @@
         padding-bottom: 20px;
         color: #073041;
         @include respond(phone) {
-          font-size: 3.5rem;
+          font-size: 4rem;
           width: 50%;
         }
       }
