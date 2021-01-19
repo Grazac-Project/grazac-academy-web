@@ -2847,6 +2847,12 @@ html {
   position: relative;
 }
 
+@media (max-width: 37.5em) {
+  .gga_hero {
+    padding-top: 30px;
+  }
+}
+
 .gga_hero-text {
   position: relative;
   height: calc(100vh - 80px);
@@ -2872,7 +2878,8 @@ html {
 
 @media (max-width: 37.5em) {
   .gga_hero-text h1 {
-    font-size: 3.3em;
+    font-size: 3.5rem;
+    width: 50%;
   }
 }
 

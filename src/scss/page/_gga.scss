@@ -40,6 +40,9 @@
   &_hero {
     background-color: rgba(254, 244, 191, 0.2);
     position: relative;
+    @include respond(phone) {
+      padding-top: 30px;
+    }
     &-text {
       position: relative;
       height: calc(100vh - 80px);
@@ -58,7 +61,8 @@
         padding-bottom: 20px;
         color: #073041;
         @include respond(phone) {
-          font-size: 3.3em;
+          font-size: 3.5rem;
+          width: 50%;
         }
       }
 

@@ -31,10 +31,9 @@ const GraduateAccelerator = () => {
                                         </h1>
                                         <p>
                                             We are bridging the gap between unemployment and entry - level jobs 21st century.
-                                            You need more than a degree to be relevant in the 21st century. Let’s prepare you for the future of work.
-                                            Access to facilities and resources that aids your learning and practice.
-                                            Learn Digital Skills and gain insights into today’s digital tools.
-                                        </p>
+                                            You need more than a degree to be relevant in the 21st century. </p><p>Let’s prepare you for the future of work.
+                                            Access to facilities and resources that aids your learning and practice.</p>
+                                            <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
                                     </div>
                                 </div>
                             </div>
