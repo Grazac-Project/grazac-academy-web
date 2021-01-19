@@ -2797,9 +2797,16 @@ html {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: #cfb9f9 25%;
+  background: rgba(102, 92, 121, 0.25);
   display: block;
   margin: auto;
+  position: relative;
+}
+
+.svg-box1 img {
+  position: absolute;
+  top: 10px;
+  left: 20%;
 }
 
 .svg-box2 {
@@ -3001,12 +3008,13 @@ html {
 .white-link {
   color: white;
   font-size: 1.1em;
+  text-decoration: underline;
 }
 
 .white-link:hover {
   color: white;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .gua p {
@@ -3158,6 +3166,10 @@ html {
   bottom: 40px;
   left: 20px;
   right: 20px;
+}
+
+.gua_highlight-box4 h3, .gua_highlight-box4 a {
+  font-family: Georgia;
 }
 
 .gua_cardview {

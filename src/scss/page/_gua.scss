@@ -27,12 +27,13 @@
 .white-link{
     color: white;
     font-size:1.1em;
+    text-decoration: underline;
 }
 
 .white-link:hover{
     color: white;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .gua {
@@ -150,6 +151,10 @@
             bottom:40px;
             left:20px;
             right:20px;
+            
+            h3, a {
+                font-family: Georgia;
+            }
         }
     }
 

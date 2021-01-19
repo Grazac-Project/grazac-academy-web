@@ -1,3 +1,7 @@
+import heart from '../images/svg/heart.svg';
+import idea from '../images/svg/idea.svg';
+import energy from '../images/svg/renewable-energy.svg';
+
 const Qualities = () => {
   return(
     <div className="" style={{textAlign:'center'}}>
@@ -11,7 +15,9 @@ const Qualities = () => {
                 <div className="boxes22">
                     <div className="">
                         <div className="boxes">
-                            <div className="svg-box1"></div>
+                            <div className="svg-box1">
+                                <img src={energy} alt="energy"/>
+                            </div>
                             <h3>Energetic</h3>
                             <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
                         </div>
@@ -20,7 +26,9 @@ const Qualities = () => {
                 <div className="boxes22">
                     <div>
                         <div className="boxes">
-                            <div className="svg-box1"></div>
+                            <div className="svg-box1">
+                                <img src={idea} alt="energy"/>
+                            </div>
                             <h3>Innovative</h3>
                             <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
                         </div>
@@ -29,7 +37,9 @@ const Qualities = () => {
                 <div className="boxes22">
                     <div>
                         <div className="boxes">
-                            <div className="svg-box1"></div>
+                            <div className="svg-box1">
+                                <img src={heart} alt="energy"/>
+                            </div>
                             <h3>Social Heart</h3>
                             <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
                         </div>
