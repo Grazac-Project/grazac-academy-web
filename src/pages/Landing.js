@@ -78,9 +78,7 @@ const Landing = () => {
 
         <div className="landing__text">
           <h1>Upskilling You For The <span>Future</span> Of Work</h1>
-          <p>Be employable with direct practical experience in 21st century skills.
-          Your organization deserves one of the best future talents in our community.
-          Get tutored by industry leaders who will walk you through the path of becoming employable.</p>
+          <p>Learn valuable technology skills with us, we strongly believe the future of work will be skill based. Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable </p>
         </div>
       </div>
 
@@ -104,7 +102,7 @@ const Landing = () => {
         <div className="landing__cards--container">
           <div className="landing__bottom--text">
             <div className="landing__bottom--text--right">
-              <h1>Get Ready For The Future Of Work</h1>
+              <h1>Get Ready To Grow With us </h1>
             </div>
           </div>
 
@@ -112,7 +110,7 @@ const Landing = () => {
             <div className="landing__card landing__card--1">
             <img src={Card1} alt="illustration" />
               <h3><span>Graduate </span><br />Accelerator Plan</h3>
-              <p>An extensive program that gives you the opportunity to learn, develop your ideas and build a career in this 21st century.</p>
+              <p>An immersive program that gives you the opportunity to build a career and get a job in the tech industry.</p>
              
               <div className="landing__btn">
                 <PrimaryBtn yellow link="/graduate-accelerator-track">Learn More</PrimaryBtn>
@@ -122,7 +120,7 @@ const Landing = () => {
             <div className="landing__card landing__card--2">
               <img src={Card2} alt="illustration" />
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
-              <p>Set the pace for a bright future as an undergraduate by taking up skills in this 21st century.</p>
+              <p>Set the pace for a bright future as an undergraduate by acquiring technology skills now.</p>
               <div className="landing__btn">
                 <PrimaryBtn link="/undergraduate-accelerator-track">Learn More</PrimaryBtn>
               </div>
@@ -134,8 +132,8 @@ const Landing = () => {
       <div className="landing__discover">
         <div className="landing__bottom--text landing__bottom--text-2">
           <div className="landing__bottom--text--right">
-            <h1>Trusted by Entrepreneurs and Hiring Managers globally</h1>
-            <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
+            <h1>We are trusted by entrepreneurs and hiring managers globally.</h1>
+            <p>We guarantee you impact driven candidates who will impact your bottom lines positively.</p>
           </div>
         </div>
 
@@ -154,8 +152,8 @@ const Landing = () => {
             <div className="landing__discover--list-item">
               <h2>01</h2>
               <div>
-                <h3>Discover</h3>
-                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+                <h3>Enroll</h3>
+                <p>Set yourself up for success by registering for any of our courses that fits your passion and career.</p>
               </div>
             </div>
 
@@ -163,15 +161,15 @@ const Landing = () => {
               <h2>02</h2>
               <div>
                 <h3>Learn</h3>
-                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+                <p>Get trained by world class facilitators. We will provide you with the right mentorship, tools and content you need to be the best in your choosing career.</p>
               </div>
             </div>
 
             <div className="landing__discover--list-item">
               <h2>03</h2>
               <div>
-                <h3>Experience</h3>
-                <p>Find what you are interested to learn in this academy and choose what exactly best for you that you really passionate to learn and get to study about it</p>
+                <h3>Get Hired</h3>
+                <p>Join the workforce of the future as you get connected with career coaches and potential employers.</p>
               </div>
             </div>
             <div className="landing__discover--list-item"></div>
