@@ -9,6 +9,7 @@ import Grazac from "../images/svg/grazac.svg";
 import Love from "../images/my_love.png";
 import Video from "../images/landing-video.mp4";
 import Object from "../images/svg/objects.svg";
+import poster from "../images/Grazac-website/IMG_8403.JPG";
 
 import Sponsor1 from "../images/svg/Apple.svg";
 import Sponsor2 from "../images/svg/AWS.svg";
@@ -76,7 +77,7 @@ const Landing = () => {
         <div style={{height: 10}}></div>
 
         <div className="landing__text">
-          <h1>Upskilling You For The Future Of Work</h1>
+          <h1>Upskilling You For The <span>Future</span> Of Work</h1>
           <p>Be employable with direct practical experience in 21st century skills.
           Your organization deserves one of the best future talents in our community.
           Get tutored by industry leaders who will walk you through the path of becoming employable.</p>
@@ -84,7 +85,7 @@ const Landing = () => {
       </div>
 
       <div className="landing__video">
-        <video id="video" width="320" height="240" autoPlay loop controls>
+        <video id="video" width="320" height="240" autoPlay loop controls poster={poster}>
           <source src={Video} type="video/mp4" />
         </video>
       </div>

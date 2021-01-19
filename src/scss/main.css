@@ -575,6 +575,10 @@ html {
   margin-top: 15rem;
 }
 
+.landing__text h1 span {
+  color: #773dd3;
+}
+
 @media (max-width: 56.25em) {
   .landing__text h1 {
     font-size: 5rem;
