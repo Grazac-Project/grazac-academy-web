@@ -16,9 +16,9 @@ const UndergraduateAccelerator = () => {
 
     return(
         <div>
-            <Navbar/>
             <div className="gua">
                 <div className="gua_hero">
+                        <Navbar/>
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
@@ -27,9 +27,10 @@ const UndergraduateAccelerator = () => {
                                         <h1>
                                             Undergraduate Accelerator Track
                                         </h1>
-                                        <p>
-                                            We equip you for the future of the career you desire.
-                                        </p>
+                                        <p> We equip you for the future of the career you desire,
+                                        Become an asset in this 21st century before leaving the four walls of school.</p>
+                                        <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
+                                        <p>Become the next best talent to be hired in this 21st century and be employable.</p>
                                     </div>
                                 </div>
                             </div>

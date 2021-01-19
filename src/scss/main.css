@@ -2840,6 +2840,12 @@ html {
   position: relative;
 }
 
+@media (max-width: 37.5em) {
+  .gga_hero {
+    padding-top: 30px;
+  }
+}
+
 .gga_hero-text {
   position: relative;
   height: calc(100vh - 80px);
@@ -2865,7 +2871,8 @@ html {
 
 @media (max-width: 37.5em) {
   .gga_hero-text h1 {
-    font-size: 3.3em;
+    font-size: 3.5rem;
+    width: 50%;
   }
 }
 
@@ -3015,15 +3022,13 @@ html {
 
 .gua_hero {
   background-color: rgba(220, 205, 244, 0.2);
-  height: calc(100vh - 80px);
   padding-top: 80px;
   position: relative;
 }
 
 @media (max-width: 37.5em) {
   .gua_hero {
-    margin-top: 60px;
-    height: calc(100vh - 60px);
+    padding-top: 30px;
   }
 }
 
@@ -3052,14 +3057,15 @@ html {
 
 @media (max-width: 37.5em) {
   .gua_hero-text h1 {
-    font-size: 3.3em;
+    font-size: 3.5rem;
+    width: 50%;
   }
 }
 
 .gua_hero-text p {
   font-size: 1.2em;
   padding-bottom: 20px;
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .gua_hero_search {
@@ -3087,8 +3093,8 @@ html {
   position: absolute;
   top: 7px;
   right: 10px;
-  border: 1px solid #773DD3;
-  background: #773DD3;
+  border: 1px solid #773dd3;
+  background: #773dd3;
   color: white;
   border-radius: 7px;
   padding: 8px 15px;
@@ -3161,7 +3167,7 @@ html {
 }
 
 .gua_cardview {
-  border: 1px solid #F1F5FC;
+  border: 1px solid #f1f5fc;
   border-radius: 10px;
   margin: 10px 15px 30px;
   text-align: center;
@@ -3169,20 +3175,20 @@ html {
 }
 
 .gua_cardview p {
-  color: #9DA8B6;
+  color: #9da8b6;
 }
 
 .gua_cardview a {
   font-size: 1em;
   font-family: Georgia;
   padding-top: 40px;
-  color: #773DD3;
+  color: #773dd3;
   font-weight: bold;
 }
 
 .gua_cardview-box {
   height: 150px;
-  background: #CFB9F9;
+  background: #cfb9f9;
   border-radius: 10px;
   margin: 10px 10px 0;
   -webkit-box-sizing: border-box;
@@ -3206,7 +3212,7 @@ html {
 }
 
 .gua_advice {
-  background: #FEF4BF;
+  background: #fef4bf;
   margin-top: 70px;
   padding: 0 20px;
 }
@@ -3254,19 +3260,19 @@ html {
 }
 
 .gua_advice-box p {
-  color: #9DA8B6;
+  color: #9da8b6;
   font-size: 1.2em;
 }
 
 .gua_advice-box span {
-  color: #773DD3;
+  color: #773dd3;
 }
 
 .gua_advice-box button {
   color: white;
   margin-top: 15px;
-  background: #773DD3;
-  border: 1px solid #773DD3;
+  background: #773dd3;
+  border: 1px solid #773dd3;
   padding: 10px 20px;
   font-size: 1.1em;
   border-radius: 10px;

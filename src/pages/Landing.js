@@ -17,7 +17,7 @@ import Sponsor5 from "../images/svg/Microsoft.svg";
 import Sponsor6 from "../images/svg/Google.svg";
 
 import Card1 from "../images/svg/card1.svg";
-import Card2 from "../images/svg/card1.svg";
+import Card2 from "../images/svg/card2.svg"
 
 const Landing = () => {
   // const [email, setEmail] = useState("");
@@ -84,7 +84,7 @@ const Landing = () => {
       </div>
 
       <div className="landing__video">
-        <video id="video" width="320" height="240" autoplay loop controls>
+        <video id="video" width="320" height="240" autoPlay loop controls>
           <source src={Video} type="video/mp4" />
         </video>
       </div>
@@ -122,10 +122,6 @@ const Landing = () => {
               <img src={Card2} alt="illustration" />
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
               <p>Set the pace for a bright future as an undergraduate by taking up skills in this 21st century.</p>
-              {/* <p>Become an asset in this 21st century before leaving the four walls of school.</p> */}
-              {/* <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
-              <p>Become the next best talent to be hired in this 21st century and be employable.</p> */}
-
               <div className="landing__btn">
                 <PrimaryBtn link="/undergraduate-accelerator-track">Learn More</PrimaryBtn>
               </div>
