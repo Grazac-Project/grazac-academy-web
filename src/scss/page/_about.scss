@@ -36,6 +36,7 @@
           width: 24rem;
           height: 26rem;
           background-image: url(../images/Grazac-website/IMG_8350.JPG);
+          background-position: left -60px bottom 0px;
           align-self: flex-end;
           position: relative;
           @include respond(phone) {
@@ -52,6 +53,7 @@
           height: 31.5rem;
           width: 33rem;
           background-image: url(../images/Grazac-website/IMG_8304.JPG);
+          background-position: right -30px bottom 0px;
           margin-left: 2rem;
           @include respond(phone) {
             display: none;

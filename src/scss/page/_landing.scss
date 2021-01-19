@@ -562,7 +562,7 @@
       }
 
       img {
-        height: 35px;
+        height: 50px;
         @include respond(phone) {
           height: 15px;
         }
@@ -671,7 +671,7 @@
     margin-top: 6rem;
     position: relative;
     @include respond(phone) {
-      margin-top: 0;
+      margin-top: 4rem;
     }
 
     &--container {
