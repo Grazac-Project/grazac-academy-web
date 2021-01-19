@@ -1,5 +1,5 @@
-import Kamala from "../images/kamala.jpg"
-import Man from "../images/man.jpg";
+import Kamala from "../images/kamala.jpg";
+import lady from "../images/Grazac-website/IMG_8440.JPG";
 import PrimaryBtn from "../components/PrimaryBtn";
 
 const Linkedn = () => (
@@ -91,7 +91,7 @@ const Mode = () => {
       <div className="landing__discount">
         <div className="landing__discount--container">
           <div className="landing__discount--img">
-            <img src={Kamala}/>
+            <img src={lady}/>
           </div>
           <div className="landing__discount--text">
             <h3>Get equipped for the career you desire.</h3>

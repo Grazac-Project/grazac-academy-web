@@ -1396,7 +1396,7 @@ html {
 
 .landing__discount--img img {
   border-radius: 20px;
-  height: 420px;
+  height: auto;
   width: 400px;
   position: absolute;
   top: -5rem;
@@ -2340,7 +2340,7 @@ html {
 .about__top--up div:first-child {
   width: 24rem;
   height: 26rem;
-  background-image: url(../images/about-1.jpg);
+  background-image: url(../images/Grazac-website/IMG_8350.JPG);
   -ms-flex-item-align: end;
       align-self: flex-end;
   position: relative;
@@ -2362,7 +2362,7 @@ html {
 .about__top--up div:nth-child(2) {
   height: 31.5rem;
   width: 33rem;
-  background-image: url(../images/about-2.jpg);
+  background-image: url(../images/Grazac-website/IMG_8304.JPG);
   margin-left: 2rem;
 }
 
@@ -2391,14 +2391,14 @@ html {
 .about__top--down div:first-child {
   width: 38rem;
   height: 29rem;
-  background-image: url(../images/about-3.jpg);
+  background-image: url(../images/Grazac-website/IMG_8297.JPG);
 }
 
 .about__top--down div:last-child {
   width: 46rem;
   height: 35rem;
   margin-left: 2rem;
-  background-image: url(../images/about-4.jpg);
+  background-image: url(../images/Grazac-website/IMG_8324.JPG);
 }
 
 .about__top--text {
