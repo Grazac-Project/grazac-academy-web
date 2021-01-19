@@ -633,7 +633,7 @@ html {
 .landing__bottom {
   padding: 14rem 5rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 6rem;
 }
 
 @media (max-width: 37.5em) {
@@ -1363,13 +1363,13 @@ html {
 
 .landing__discount {
   background-color: #fef4bf;
-  margin-top: 6rem;
+  margin-top: 0rem;
   position: relative;
 }
 
 @media (max-width: 37.5em) {
   .landing__discount {
-    margin-top: 4rem;
+    margin-top: 0;
   }
 }
 
@@ -2437,7 +2437,7 @@ html {
 }
 
 .about__middle {
-  padding: 8rem 2rem;
+  padding: 8rem 2rem 10rem;
   background-color: #f1f5fc;
 }
 
