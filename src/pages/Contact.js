@@ -98,7 +98,6 @@ const Contact = () => {
                 <div className="container">
                     <div className="contact_campus">
                         <div className="contact_campus-intro">
-                            <h4>What we do</h4>
                             <h2>Campus Inquiries</h2>
                             <p>Connect with Us</p>
                         </div>
@@ -137,7 +136,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <div>
-                    <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=PROHUB,%20Salawu%20Olabode%20Avenue,%20Ewang%20Road,%20Idi-aba,%20110124,%20Abeokuta%20Abeokuta+(Grazac%20Office)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=16NZ9a9VhKkk2-5nnYEdL93mxq7kjDZLT" width="100%" height="600"></iframe>
                 </div>
                 {/*<extracomponent/> a component used in the landing page comes here*/}
             </div>

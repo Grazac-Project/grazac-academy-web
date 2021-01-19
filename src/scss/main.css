@@ -2766,9 +2766,15 @@ html {
   font-family: Georgia;
 }
 
+@media (max-width: 37.5em) {
+  .contact_campus-intro h2 {
+    font-size: 1.7em;
+  }
+}
+
 .contact_campus-intro h4 {
   color: #773dd3;
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: Georgia;
 }
 
@@ -2802,6 +2808,13 @@ html {
   font-family: Georgia;
 }
 
+@media (max-width: 37.5em) {
+  .contact_campus-main-div h3 {
+    font-size: 1.2em;
+    padding-top: 20px;
+  }
+}
+
 @media (min-width: 700px) {
   .contact_campus-main-div {
     margin: 30px 10px;
@@ -2809,13 +2822,26 @@ html {
 }
 
 .contact_campus-main p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #9da8b6;
+}
+
+@media (max-width: 37.5em) {
+  .contact_campus-main p {
+    font-size: 1em;
+  }
 }
 
 .contact_campus-main img {
   width: 30px;
   height: 30px;
+}
+
+@media (max-width: 37.5em) {
+  .contact_campus-main img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .contact_campus-main .social {
@@ -2826,6 +2852,13 @@ html {
   border-radius: 4px;
   margin: 0 10px 10px 0;
   display: inline-block;
+}
+
+@media (max-width: 37.5em) {
+  .contact_campus-main .social {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .svg-box1 {

@@ -170,10 +170,13 @@
     &-intro {
       h2 {
         font-family: $font-primary;
+        @include respond(phone){
+          font-size: 1.7em;
+        }
       }
       h4 {
         color: #773dd3;
-        font-size: 1em;
+        font-size: 0.9em;
         font-family: $font-primary;
       }
       p {
@@ -199,6 +202,10 @@
         h3 {
           font-size: 1.5em;
           font-family: $font-primary;
+          @include respond(phone){
+            font-size: 1.2em;
+            padding-top: 20px;
+          }
         }
         @media (min-width: 700px) {
           margin: 30px 10px;
@@ -206,12 +213,19 @@
       }
 
       p {
-        font-size: 1.2em;
+        font-size: 1.1em;
         color: #9da8b6;
+        @include respond(phone){
+          font-size: 1em;
+        }
       }
       img {
         width: 30px;
         height: 30px;
+        @include respond(phone){
+          width: 20px;
+          height: 20px;
+        }
       }
       .social {
         width: 30px;
@@ -221,6 +235,10 @@
         border-radius: 4px;
         margin: 0 10px 10px 0;
         display: inline-block;
+        @include respond(phone){
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
