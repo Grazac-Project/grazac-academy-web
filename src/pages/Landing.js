@@ -79,6 +79,14 @@ const Landing = () => {
         <div className="landing__text">
           <h1>Upskilling You For The <span>Future</span> Of Work</h1>
           <p>Learn valuable technology skills with us, we strongly believe the future of work will be skill based. Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable </p>
+
+          <div className="landing__btn">
+            <a href="/#tracks">
+              <div className="nav__btn">
+                <div className="nav__btn--text">Enroll Now</div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
