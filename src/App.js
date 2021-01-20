@@ -10,20 +10,23 @@ import Contact from "./pages/Contact";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
+import ComingSoon from "./pages/ComingSoon";
 
 const App = () => {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" exact={true} component={LandingPage}/>
+        <Route path="/" exact component={LandingPage}/>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/about-us" component={AboutUs} />
 
-        <Route path="/course-detail" exact={true} component={CourseDetail}/> 
-        <Route path="/contact" exact={true} component={Contact}/> 
-        <Route path="/graduate-accelerator-track" exact={true} component={GraduateAccelerator}/> 
-        <Route path="/undergraduate-accelerator-track" exact={true} component={UndergraduateAccelerator}/> 
+        <Route path="/course-detail" component={CourseDetail}/> 
+        <Route path="/contact" component={Contact}/> 
+        <Route path="/graduate-accelerator-track" component={GraduateAccelerator}/> 
+        <Route path="/undergraduate-accelerator-track" component={UndergraduateAccelerator}/> 
+
+        <Route path="/coming-soon" component={ComingSoon} />
       </Switch>
     </div>
   );
