@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
+import LeadForm from "./pages/LeadForm";
 
 const App = () => {
   return (
@@ -22,8 +23,9 @@ const App = () => {
 
         <Route path="/course-detail" exact={true} component={CourseDetail}/> 
         <Route path="/contact" exact={true} component={Contact}/> 
-        <Route path="/graduate-accelerator-track" exact={true} component={GraduateAccelerator}/> 
-        <Route path="/undergraduate-accelerator-track" exact={true} component={UndergraduateAccelerator}/> 
+        <Route path="/graduate-accelerator-plan" exact={true} component={GraduateAccelerator}/> 
+        <Route path="/undergraduate-accelerator-plan" exact={true} component={UndergraduateAccelerator}/>
+        <Route path="/lead" exact={true} component={LeadForm}/> 
       </Switch>
     </div>
   );

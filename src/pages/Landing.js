@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import PrimaryBtn from "../components/PrimaryBtn";
 import Kamala from "../images/kamala.jpg"
-import Grazac from "../images/svg/grazac.svg";
+import Grazac from "../images/svg/logo-round.svg";
 import Love from "../images/my_love.png";
 import Video from "../images/landing-video2.mp4";
 import Object from "../images/svg/objects.svg";

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
@@ -25,7 +26,7 @@ const UndergraduateAccelerator = () => {
                                 <div className="gua_hero-text">
                                     <div className="gua_hero-text-b">
                                         <h1>
-                                            Undergraduate Accelerator Track
+                                            Undergraduate Accelerator Plan
                                         </h1>
                                         <p> We equip you for the future of the career you desire,
                                         Become an asset in this 21st century before leaving the four walls of school.</p>
@@ -54,7 +55,7 @@ const UndergraduateAccelerator = () => {
                                     <h3><strong>Student Lead</strong></h3>
                                     <p>Become our ambassador in your institution. </p>
                                     <p>Lead other students who are ready to prepare themselves for the future of work.</p>
-                                    <a className="white-link">Apply as Student Lead</a>
+                                    <Link to="/lead"><a className="white-link">Apply as Student Lead</a></Link>
                                 </div>
                             </div>
                         </div>

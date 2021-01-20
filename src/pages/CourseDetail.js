@@ -5,6 +5,7 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import {productDesign} from "../content/courses.js";
 
 import quote from '../images/svg/quote.svg';
+import paper from '../images/svg/paper-ribbon.svg';
 import sprint from '../images/sprint.png';
 
 const CourseDetail = (props) => {
@@ -58,12 +59,13 @@ const CourseDetail = (props) => {
                                         </p>
                                         <div className="contact_hero-privacy" >
                                             <button>Download Brochure</button>
+                                            <button>Enroll now</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div>
-
+                                <img src={paper} alt="academy"  className="gga_hero-image" />
                             </div>
                         </div>
                     </div>

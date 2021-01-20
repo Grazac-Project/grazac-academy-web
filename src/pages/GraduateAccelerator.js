@@ -27,7 +27,7 @@ const GraduateAccelerator = () => {
                                 <div className="gga_hero-text">
                                     <div className="gga_hero-text-b">
                                         <h1>
-                                            Graduate Accelerator Track
+                                            Graduate Accelerator Plan
                                         </h1>
                                         <p>
                                             We are bridging the gap between unemployment and entry - level jobs 21st century.
@@ -100,35 +100,6 @@ const GraduateAccelerator = () => {
                 </div>
                 <PopularCourses />
                 <Qualities />
-                <div className="landing__cards">
-                    <div className="landing__cards--container">
-                        <div className="landing__bottom--text">
-                            <div className="landing__bottom--text--right">
-                            <h1>Get Ready For The Future Of Work</h1>
-                        </div>
-                    </div>
-
-                    <div className="landing__card--box">
-                        <div className="landing__card landing__card--1">
-                            <img src={Card1} alt="illustration" />
-                            <h3><span>Full-time </span>Plan</h3>
-                           
-                            <div className="landing__btn">
-                                <PrimaryBtn yellow link="/signup">Get Started</PrimaryBtn>
-                            </div>
-                        </div>
-
-                        <div className="landing__card landing__card--2">
-                            <img src={Card2} alt="illustration" />
-                            <h3><span>Part-time </span>Plan</h3>
-                           
-                            <div className="landing__btn">
-                                <PrimaryBtn link="/signup">Get Started</PrimaryBtn>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
                 <NeedAdvice />
             </div>
             <Footer/>

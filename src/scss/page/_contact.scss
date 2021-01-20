@@ -124,10 +124,15 @@
         color: white;
         margin: 15px 0 30px;
         background: #773dd3;
-        border: 1px solid #773dd3;
+        border: 2px solid #773dd3;
         padding: 10px 20px;
         font-size: 1.1em;
         border-radius: 10px;
+        &:last-child{ //for now this affects only course-detail route
+          color: #773dd3;
+          background: transparent;
+          margin: 15px 0 30px 15px;
+        }
       }
     }
     &_first {

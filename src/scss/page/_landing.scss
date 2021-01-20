@@ -767,12 +767,13 @@
         div {
           border-radius: 10px;
           margin-bottom: 1.5rem;
-          background-image: url(../images/kamala.jpg);
           background-size: cover;
           background-repeat: no-repeat;
           &:first-child {
             height: 190px;
             width: 180px;
+            background-image: url(../images/Grazac-website/IMG_8350.JPG);
+            background-position: left -40px bottom 0px;
             margin-left: auto;
             @include respond(tab-land) {
               height: 150px;
@@ -782,6 +783,8 @@
           &:last-child {
             height: 320px;
             width: 250px;
+            background-image: url(../images/Grazac-website/IMG_8304.JPG);
+            background-position: right 0px bottom 0px;
             @include respond(tab-land) {
               height: 260px;
               width: 210px;
@@ -796,7 +799,8 @@
           border-radius: 10px;
           margin-left: 1.5rem;
           margin-top: 10rem;
-          background-image: url(../images/kamala.jpg);
+          background-image: url(../images/Grazac-website/IMG_8324.JPG);
+          background-position: left 0px bottom 0px;
           background-size: cover;
           background-repeat: no-repeat;
           @include respond(tab-land) {

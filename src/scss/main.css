@@ -1504,7 +1504,6 @@ html {
 .landing__discover--images-left div {
   border-radius: 10px;
   margin-bottom: 1.5rem;
-  background-image: url(../images/kamala.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1512,6 +1511,8 @@ html {
 .landing__discover--images-left div:first-child {
   height: 190px;
   width: 180px;
+  background-image: url(../images/Grazac-website/IMG_8350.JPG);
+  background-position: left -40px bottom 0px;
   margin-left: auto;
 }
 
@@ -1525,6 +1526,8 @@ html {
 .landing__discover--images-left div:last-child {
   height: 320px;
   width: 250px;
+  background-image: url(../images/Grazac-website/IMG_8304.JPG);
+  background-position: right 0px bottom 0px;
 }
 
 @media (max-width: 75em) {
@@ -1540,7 +1543,8 @@ html {
   border-radius: 10px;
   margin-left: 1.5rem;
   margin-top: 10rem;
-  background-image: url(../images/kamala.jpg);
+  background-image: url(../images/Grazac-website/IMG_8324.JPG);
+  background-position: left 0px bottom 0px;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -2712,10 +2716,16 @@ html {
   color: white;
   margin: 15px 0 30px;
   background: #773dd3;
-  border: 1px solid #773dd3;
+  border: 2px solid #773dd3;
   padding: 10px 20px;
   font-size: 1.1em;
   border-radius: 10px;
+}
+
+.contact_hero-privacy button:last-child {
+  color: #773dd3;
+  background: transparent;
+  margin: 15px 0 30px 15px;
 }
 
 @media (min-width: 600px) {

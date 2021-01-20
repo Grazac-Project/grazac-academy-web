@@ -16,8 +16,8 @@ const Footer = () => {
                 <img src={Logo} alt="logo" />
               </div>
             </li>
-            <li className="footer__item">You need more than a degree to be relevant in the 21st century. We are passionate about </li>
-            <li className="footer__item"><a href="tel:+234806 836 5951">+234806 836 5951</a></li>
+            <li className="footer__item">Grazac Academy gives you the opportunity to learn in-demand skills to build your technology career.</li>
+            <li className="footer__item"><a href="tel:+234806 836 5951">+234 806 836 5951</a></li>
           </ul>
 
           <ul className="footer__list">
@@ -39,7 +39,7 @@ const Footer = () => {
             <li className="footer__item"><Link>FAQ</Link></li>
             <li className="footer__item"><Link>Book a Call</Link></li>
             <li className="footer__item"><Link>Corporate Training</Link></li>
-            <li className="footer__item"><Link>Grazac Hire</Link></li>
+            {/* <li className="footer__item"><Link>Grazac Hire</Link></li> */}
           </ul>
         </div>
 
