@@ -7,11 +7,11 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import Kamala from "../images/kamala.jpg"
 import Grazac from "../images/svg/grazac.svg";
 import Love from "../images/my_love.png";
-import Video from "../images/landing-video.mp4";
+import Video from "../images/landing-video2.mp4";
 import Object from "../images/svg/objects.svg";
 import poster from "../images/Grazac-website/IMG_8403.JPG";
 
-import Sponsor1 from "../images/ga-logo.png";
+import Sponsor1 from "../images/svg/Apple.svg";
 import Sponsor2 from "../images/svg/AWS.svg";
 import Sponsor3 from "../images/svg/Flutterwave.svg";
 import Sponsor5 from "../images/svg/Microsoft.svg";

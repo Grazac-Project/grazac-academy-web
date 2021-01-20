@@ -562,7 +562,7 @@
       }
 
       img {
-        height: 50px;
+        height: 35px;
         @include respond(phone) {
           height: 15px;
         }
