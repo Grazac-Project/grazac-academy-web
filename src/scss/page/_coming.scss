@@ -1,0 +1,85 @@
+.coming {
+  &__hero {
+    height: 100vh;
+  }
+
+  &__container {
+    display: flex;
+    height: 100%;
+    &--left {
+      flex-basis: 50%;
+      position: relative;
+      @include respond(tab-port) {
+        flex-basis: 60%;
+      }
+
+      div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+
+        h3 {
+          font-size: 1.6rem;
+          color: #773dd3;
+          font-family: $font-secondary;
+        }
+
+        h1 {
+          color: #073041;
+          font-size: 4.2rem;
+          font-family: $font-primary;
+          font-weight: bold;
+        }
+
+        form {
+          display: block;
+
+          label {
+            display: block;
+          }
+
+          input {
+            padding: 1rem;
+            border: 1px solid #eff2f7;
+            border-radius: 5px;
+            color: #9da8b6;
+            font-size: 1.6rem;
+            width: 100%;
+            outline: none;
+            transition: all 0.2s;
+            margin-top: 1rem;
+
+            &:focus {
+              border-color: #773dd3;
+            }
+          }
+
+          button {
+            display: block;
+            background-color: #773dd3;
+            font-size: 1.6rem;
+            font-family: $font-primary;
+            border: none;
+            outline: none;
+            color: $color-white;
+            padding: 1rem 2rem;
+            margin-top: 1.5rem;
+            font-weight: normal;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+    &--right {
+      flex-basis: 50%;
+      background-image: url(../images/coming-soon.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include respond(tab-port) {
+        flex-basis: 40%;
+      }
+    }
+  }
+}
