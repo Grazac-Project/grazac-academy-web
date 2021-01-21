@@ -63,12 +63,12 @@ const Contact = () => {
                             <h1>Get In Touch</h1>
                             <p>We want to hear from you. Let us know how we can help</p>
                         </div>
-                        <div classname="contact_layer-circles">
+                        {/*<div classname="contact_layer-circles">
                             <img src={kamala} alt="kamala"  classname="contact_layer-circles-1" />
                             <img src={kamala} alt="kamala"  classname="contact_layer-circles-2" />
                             <img src={kamala} alt="kamala"  classname="contact_layer-circles-3" />
                             <img src={kamala} alt="kamala"  classname="contact_layer-circles-4" />
-                        </div>
+                        </div>*/}
                         <div className="contact_hero">
                             <div className="contact_hero-flexdiv">
                                 <div className="contact_hero-flexdiv-1" >
