@@ -43,7 +43,7 @@ const CourseDetail = (props) => {
                                             {course.description}
                                         </p>
                                         <div className="contact_hero-privacy" >
-                                            <a href={course.brochure} target="_blank">Download Brochure</a>
+                                            <a href={course.brochure} className="download-brochure" target="_blank">Download Brochure</a>
                                             <Link to="/graduate-form"><button>Enroll now</button></Link>
                                         </div>
                                     </div>

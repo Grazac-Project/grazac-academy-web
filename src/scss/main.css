@@ -2764,6 +2764,16 @@ html {
   width: 100%;
 }
 
+.contact_hero-privacy .download-brochure {
+  color: white;
+  margin: 15px 0 30px;
+  background: #773dd3;
+  border: 2px solid #773dd3;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 10px;
+}
+
 .contact_hero-privacy p {
   color: #9da8b6;
   font-size: 1.2em;
