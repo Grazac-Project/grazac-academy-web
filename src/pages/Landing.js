@@ -55,7 +55,7 @@ const Landing = () => {
       id: 1,
       img: Adedamola,
       content: "I've known Grazac for over a year now and having worked with some of their successful students, I can boldly say the competency and problem solving skills of their students is top-notch and their academy is one of the best academy promoting technology skills acquisition here in Nigeria",
-      name: "Adedamola Adeleye - Consultant at Kudi",
+      name: "Samson Adedamola - Consultant at Kudi",
     },
     {
       id: 2,
