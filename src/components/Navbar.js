@@ -54,10 +54,10 @@ const Navbar = () => {
               <NavItem link="/about-us">About</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/undergraduate-accelerator-track">Undergraduate</NavItem>
+              <NavItem link="/undergraduate-accelerator-plan">Undergraduate</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/graduate-accelerator-track">Graduate</NavItem>
+              <NavItem link="/graduate-accelerator-plan">Graduate</NavItem>
             </li>
             <li className="nav__item nav__item--btn">
               <a href="/#tracks">
@@ -114,10 +114,10 @@ const Navbar = () => {
                 onMouseEnter={() => console.log("brrrrr")}
               >
                 <li>
-                  <Link to="/undergraduate-accelerator-track" className="nav__link">Undergraduate</Link>
+                  <Link to="/undergraduate-accelerator-plan" className="nav__link">Undergraduate</Link>
                 </li>
                 <li>
-                  <Link to="/graduate-accelerator-track" className="nav__link">Graduate</Link>
+                  <Link to="/graduate-accelerator-plan" className="nav__link">Graduate</Link>
                 </li>
               </ul>
             </div>

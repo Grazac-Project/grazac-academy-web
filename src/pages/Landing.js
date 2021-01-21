@@ -80,6 +80,11 @@ const Landing = () => {
           <h1>Upskilling You For The <span>Future</span> Of Work</h1>
           <p>Learn valuable technology skills with us, we strongly believe the future of work will be skill based. Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable </p>
         </div>
+        <a href="/#tracks">
+          <div className="nav__btn" style={{width:'130px', margin:'auto',textAlign:'center'}}>
+            <div className="nav__btn--text">Get Started</div>
+          </div>
+        </a>
       </div>
 
       <div className="landing__video">
@@ -113,7 +118,7 @@ const Landing = () => {
               <p>An immersive program that gives you the opportunity to build a career and get a job in the tech industry.</p>
              
               <div className="landing__btn">
-                <PrimaryBtn yellow link="/graduate-accelerator-track">Learn More</PrimaryBtn>
+                <PrimaryBtn yellow link="/graduate-accelerator-plan">Learn More</PrimaryBtn>
               </div>
             </div>
 
@@ -122,7 +127,7 @@ const Landing = () => {
               <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
               <p>Set the pace for a bright future as an undergraduate by acquiring technology skills now.</p>
               <div className="landing__btn">
-                <PrimaryBtn link="/undergraduate-accelerator-track">Learn More</PrimaryBtn>
+                <PrimaryBtn link="/undergraduate-accelerator-plan">Learn More</PrimaryBtn>
               </div>
             </div>
           </div>

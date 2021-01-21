@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
@@ -10,10 +11,19 @@ import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card1.svg";
 
 const GraduateAccelerator = () => {
+    const [courses, setCourses] = useState([]);
 
     React.useEffect(() => {
         document.title = 'Graduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
+        fetch('https://grazacacademy.com/courses/graduate',)
+            .then(resp => resp.json())
+            .then(resp => {
+                setCourses(resp.data);
+            })
+            .catch(error => {
+                alert('An error occured')
+            })
     }, []);
 
     return(
@@ -29,11 +39,7 @@ const GraduateAccelerator = () => {
                                         <h1>
                                             Graduate Accelerator Plan
                                         </h1>
-                                        <p>
-                                            We are bridging the gap between unemployment and entry - level jobs 21st century.
-                                            You need more than a degree to be relevant in the 21st century. </p><p>Let’s prepare you for the future of work.
-                                            Access to facilities and resources that aids your learning and practice.</p>
-                                        <p>Learn Digital Skills and gain insights into today’s digital tools.</p>
+                                        <p>We are bridging the gap between unemployment and entry - level jobs in the 21st century. You need more than a degree to be relevant in the digital age. Let’s prepare you for the future of work. Get access to facilities and resources that aids your learning and practice. Learn Digital Skills and gain insights into today’s digital tools.</p>
                                     </div>
                                 </div>
                             </div>
@@ -91,14 +97,39 @@ const GraduateAccelerator = () => {
                                             </mask>
                                         </svg>
                                     </div>
-                                    <h3>Resources and tools</h3>
-                                    <p>Access to facilities, resources and tools needed for your quick learning.</p>
+                                    <h3>Job Placement</h3>
+                                    <p>Enter the recruitment process with tech companies and take a stride into your dream career. </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <PopularCourses />
+                <div className="background1">
+                    <div className="container">
+                        <div className="gga">
+                            <div className="course_mode-intro course_mode-intro">
+                                <h2>Available Courses</h2>
+                            </div>
+                            <div className="gga_container">
+                                {courses.map((item,index) => (
+                                <div className="boxes33" key={index}>
+                                    <div className="gua_cardview">
+                                        <div className="gua_cardview-box">
+                                            <img src={item.thumb} alt="course-desc" />
+                                        </div>
+                                        <div className="gua_cardview-text">
+                                            <p>{item.slug}</p>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                            <Link to={"/course-detail-graduate?course="+item.slug}><a>Learn More</a></Link>
+                                        </div>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Qualities />
                 <NeedAdvice />
             </div>

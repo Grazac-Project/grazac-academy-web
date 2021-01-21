@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,10 +9,19 @@ import Qualities from "../components/Qualities";
 import undergraduate from "../images/undergraduate.png";
 
 const UndergraduateAccelerator = () => {
+    const [courses, setCourses] = useState([]);
 
     React.useEffect(() => {
         document.title = 'Undergraduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
+        fetch('https://grazacacademy.com/courses/undergraduate',)
+            .then(resp => resp.json())
+            .then(resp => {
+                setCourses(resp.data);
+            })
+            .catch(error => {
+                alert('An error occured')
+            })
     }, []);
 
     return(
@@ -28,10 +37,7 @@ const UndergraduateAccelerator = () => {
                                         <h1>
                                             Undergraduate Accelerator Plan
                                         </h1>
-                                        <p> We equip you for the future of the career you desire,
-                                        Become an asset in this 21st century before leaving the four walls of school.</p>
-                                        <p>Join thousands of young undergraduates now. Access to mentorship tailored to your career path.</p>
-                                        <p>Become the next best talent to be hired in this 21st century and be employable.</p>
+                                        <p> We equip you for the future of the career you desire. Become an asset in this 21st century before leaving the four walls of school. Join thousands of young undergraduates now, get mentorship tailored to your career path and be the next best talent to be employed. </p>
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +50,8 @@ const UndergraduateAccelerator = () => {
                 <div className="container">
                     <div className="gga">
                         <div className="course_mode-intro course_mode-intro">
-                            <h4 style={{marginTop:'100px'}}>How it works</h4>
-                            <h2>Highlighted Learning</h2>
+                            <h4 style={{marginTop:'100px'}}>We are preparing you for the future of work</h4>
+                            <h2>Find and join your community</h2>
                         </div>
                     </div>
                     <div className="gua_highlight">
@@ -71,7 +77,32 @@ const UndergraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <PopularCourses />
+                <div className="background1">
+                    <div className="container">
+                        <div className="gga">
+                            <div className="course_mode-intro course_mode-intro">
+                                <h2>Available Courses</h2>
+                            </div>
+                            <div className="gga_container">
+                                {courses.map((item,index) => (
+                                <div className="boxes33" key={index}>
+                                    <div className="gua_cardview">
+                                        <div className="gua_cardview-box">
+                                            <img src={item.thumb} alt="course-desc" />
+                                        </div>
+                                        <div className="gua_cardview-text">
+                                            <p>{item.slug}</p>
+                                            <h4>{item.name}</h4>
+                                            <p>{item.description}</p>
+                                            <Link to={"/course-detail-undergraduate?course="+item.slug}><a>Learn More</a></Link>
+                                        </div>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Qualities />
                 <NeedAdvice />
             </div>
