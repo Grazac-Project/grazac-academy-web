@@ -40,6 +40,10 @@ const GraduateAccelerator = () => {
                                             Graduate Accelerator Plan
                                         </h1>
                                         <p>We are bridging the gap between unemployment and entry - level jobs in the 21st century. You need more than a degree to be relevant in the digital age. Let’s prepare you for the future of work. Get access to facilities and resources that aids your learning and practice. Learn Digital Skills and gain insights into today’s digital tools.</p>
+                                        
+                                        <div className="contact_hero-privacy" >
+                                            <a href="#courses"><button>Join Us Today!</button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +108,7 @@ const GraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="background1">
+                <div className="background1" id="courses">
                     <div className="container">
                         <div className="gga">
                             <div className="course_mode-intro course_mode-intro">
@@ -118,7 +122,6 @@ const GraduateAccelerator = () => {
                                             <img src={item.thumb} alt="course-desc" />
                                         </div>
                                         <div className="gua_cardview-text">
-                                            <p>{item.slug}</p>
                                             <h4>{item.name}</h4>
                                             <p>{item.description}</p>
                                             <Link to={"/course-detail-graduate?course="+item.slug}><a>Learn More</a></Link>

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
-import PopularCourses from "../components/PopularCourses";
 import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
@@ -38,6 +37,11 @@ const UndergraduateAccelerator = () => {
                                             Undergraduate Accelerator Plan
                                         </h1>
                                         <p> We equip you for the future of the career you desire. Become an asset in this 21st century before leaving the four walls of school. Join thousands of young undergraduates now, get mentorship tailored to your career path and be the next best talent to be employed. </p>
+                                        
+                                        <div className="contact_hero-privacy" >
+                                            <a href="#courses"><button>Join Us Today!</button></a>
+                                            <Link to="/lead"><button>Apply as student Lead</button></Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +55,7 @@ const UndergraduateAccelerator = () => {
                     <div className="gga">
                         <div className="course_mode-intro course_mode-intro">
                             <h4 style={{marginTop:'100px'}}>We are preparing you for the future of work</h4>
-                            <h2>Find and join your community</h2>
+                            <h2>Join our community</h2>
                         </div>
                     </div>
                     <div className="gua_highlight">
@@ -77,7 +81,7 @@ const UndergraduateAccelerator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="background1">
+                <div className="background1" id="courses">
                     <div className="container">
                         <div className="gga">
                             <div className="course_mode-intro course_mode-intro">
@@ -91,7 +95,6 @@ const UndergraduateAccelerator = () => {
                                             <img src={item.thumb} alt="course-desc" />
                                         </div>
                                         <div className="gua_cardview-text">
-                                            <p>{item.slug}</p>
                                             <h4>{item.name}</h4>
                                             <p>{item.description}</p>
                                             <Link to={"/course-detail-undergraduate?course="+item.slug}><a>Learn More</a></Link>

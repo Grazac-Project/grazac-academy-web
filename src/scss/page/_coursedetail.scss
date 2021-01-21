@@ -9,7 +9,7 @@
     padding: 150px 0 70px;
     position: relative;
     @include respond(phone) {
-      padding-top: 30px;
+      padding-top: 100px;
     }
     &-text {
       position: relative;
@@ -315,6 +315,9 @@
       margin: 50px 0 70px;
       padding: 50px 20px;
     }
+    a{
+      color:white
+    }
 
     &_txt {
       text-align: center;
@@ -334,6 +337,7 @@
       }
 
       .grad-box{
+        text-align: center;
         @media (min-width: 700px) {
           width:300px
         }
@@ -356,6 +360,9 @@
 
         h4 {
           font-size: 1.3em;
+        }
+        span{
+          font-size: 0.7em;
         }
       }
     }

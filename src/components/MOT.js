@@ -8,7 +8,7 @@ const ModeOfTeaching = _ => {
                 <div className="course_wwd-intro">
                     <h4>What we do</h4>
                     <h2>Mode Of Learning</h2>
-                    <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequ</p>
+                    <p>We have designed strategic pathways that will fast track your learning curve.</p>
                 </div>
                 <div className="course_mode-container">
                     <div className="">
@@ -16,7 +16,7 @@ const ModeOfTeaching = _ => {
                             <div className="boxes">
                                 <div className="svg-box"></div>
                                 <h3>Instructor-led live classes</h3>
-                                <p>Join other students in our 90% physical classes and 10% virtual classes with experts in the industry.</p>
+                                <p>Join other students in our 100% physical classes with experts in the industry.</p>
                             </div>
                             <div className="boxes">
                                 <div className="svg-box"></div>
@@ -29,7 +29,7 @@ const ModeOfTeaching = _ => {
                         <div>
                             <div className="boxes">
                                 <div className="svg-box"></div>
-                                <h3>Case Studies</h3>
+                                <h3>Project Based Learning</h3>
                                 <p>Opportunity to work on real-life projects by applying what you learn to enhance your skills and solve related problems.</p>
                             </div>
                             <div className="boxes">

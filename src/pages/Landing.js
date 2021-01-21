@@ -4,9 +4,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import PrimaryBtn from "../components/PrimaryBtn";
-import Kamala from "../images/kamala.jpg"
+
+import Abdullahi from "../images/testimonial/abdullahi.jpeg";
+import Adedamola from "../images/testimonial/adedamola.jpeg";
+import Bosun from "../images/testimonial/bosun.jpg";
 import Grazac from "../images/svg/logo-round.svg";
-import Love from "../images/my_love.png";
 import Video from "../images/landing-video2.mp4";
 import Object from "../images/svg/objects.svg";
 import poster from "../images/Grazac-website/IMG_8403.JPG";
@@ -41,32 +43,26 @@ const Landing = () => {
     }, 5000);
   }
 
-  const dots = [false, false, false, false];
+  const dots = [false, false, false];
   const content = [
     {
       id: 0,
-      img: Kamala,
-      content: "Travelya, thank you so much for a well organized trip. We had a wonderful time. Hard to believe it’s already done and past. Weather was awesom, the hotels were nice, thanks your for everything",
-      name: "Kamala Harris - First Woman Vice President"
+      img: Bosun,
+      content: "The future of work will be filled with so many opportunities we need to prepare for, I’ve known Grazac for a while and seen them in the business of helping people lay hold of these opportunities. Grazac Academy is an excellent starting point for anyone looking into building a career in technology.",
+      name: "Bosun Egberinde - Creator of PHPSandbox.io"
     },
     {
       id: 1,
-      img: Love,
-      content: "Do whatever you want with your life, since you only get to live it once, We had a wonderful time. Hard to believe it’s already done and past. Weather was awesom, the hotels were nice, thanks your for everything",
-      name: "Adekanmbi Toyosi Adeleye"
+      img: Adedamola,
+      content: "I've known Grazac for over a year now and having worked with some of their successful students, I can boldly say the competency and problem solving skills of their students is top-notch and their academy is one of the best academy promoting technology skills acquisition here in Nigeria",
+      name: "Adedamola Adeleye - Consultant at Kudi",
     },
     {
       id: 2,
-      img: Kamala,
-      content: "Travelya, thank you so much for a well organized trip. We had a wonderful time. Hard to believe it’s already done and past. Weather was awesom, the hotels were nice, thanks your for everything",
-      name: "Jermaine Cole - J.Cole"
-    },
-    {
-      id: 3,
-      img: Love,
-      content: "Travelya, thank you so much for a well organized trip. We had a wonderful time. Hard to believe it’s already done and past. Weather was awesom, the hotels were nice, thanks your for everything",
-      name: "Kendrick Lamar"
-    },
+      img: Abdullahi,
+      content: "I passed through Grazac Academy while I was in school and that's one of the best thing that happened to me as an undergraduate. I love how the facilitators mentored everyone of us up and I must say that, we got more value than we paid for.",
+      name: "Abdullahi Olaniyan - Software Developer at Global Accelerex"
+    }
   ]
 
   return(

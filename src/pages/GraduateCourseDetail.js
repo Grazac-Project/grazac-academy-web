@@ -20,10 +20,9 @@ const CourseDetail = (props) => {
             .then(resp => {
                 setCourse(resp.data);
                 setOutline(JSON.parse(resp.data.outline));
-                console.log(resp.data)
             })
             .catch(error => {
-                alert("An error occured")
+                alert(`An error occured: ${error}`)
             })
     },[]);
     
@@ -86,22 +85,22 @@ const CourseDetail = (props) => {
                 <div className="course_purple">
                     <div className="course_purple_txt">
                         <p>Pricing</p>
-                        <h1>70%</h1>
-                        <p>Scholarship Available</p>
+                        <h1>{course.percent_off}%</h1>
+                        <p>Discount Available</p>
                     </div>
                     <div className="course_purple-main">
                         <div className="course_purple-main-boxes grad-box">
-                            <h4>Full Tuition</h4>
-                            <h2>₦{course.tuition}</h2>
+                            <h4>Tuition</h4>
+                            <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦{course.discounted_tuition}</h2>
                         </div>
                         <div className="course_purple-main-boxes grad-box">
-                            <h4>Scholarship Offer</h4>
-                            <h2>₦{course.discounted_tuition}</h2>
+                            <h4>Installmental Payment Is Allowed</h4>
+                            <h2>50% <span>Upfront</span></h2>
                         </div>
                     </div>
                     <div className="course_purple-btn">
-                        <PrimaryBtn>Claim Scholarship</PrimaryBtn> 
-                        <p>Talk to course rep</p>
+                        <PrimaryBtn to="/graduate-form">Enroll Now</PrimaryBtn>
+                        <a href="tel:+234806 836 5951"><p>Talk to course rep</p></a>
                     </div>
                 </div>
             </div>

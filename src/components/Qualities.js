@@ -8,8 +8,8 @@ const Qualities = () => {
         <div className="container">
             <div className="course_wwd-intro">
                 <h4>How It Works</h4>
-                <h2>We stand for quality</h2>
-                <p>You determine the starting points, we provide the best possible interception to achieve the goals.</p>
+                <h2>The value we offer</h2>
+                <p>Your path to employment and relevance in the digital age is optimized to the highest degree of success.</p>
             </div>
             <div className="course_mode-container">
                 <div className="boxes22">
@@ -18,8 +18,8 @@ const Qualities = () => {
                             <div className="svg-box1">
                                 <img src={energy} alt="energy"/>
                             </div>
-                            <h3>Energetic</h3>
-                            <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
+                            <h3>Internship opportunities </h3>
+                            <p>Get a chance to work with our amazing team and partner companies on different projects to jump start your career.</p>
                         </div>
                     </div>
                 </div>
@@ -29,8 +29,8 @@ const Qualities = () => {
                             <div className="svg-box1">
                                 <img src={idea} alt="energy"/>
                             </div>
-                            <h3>Innovative</h3>
-                            <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
+                            <h3>Recruitment</h3>
+                            <p>Get hired in an organization of talented people to utilize your skills and experience to launch valuable products that solve problems for the world at large.</p>
                         </div>
                     </div>
                 </div>
