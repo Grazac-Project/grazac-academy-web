@@ -1,7 +1,13 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useEffect } from "react";
 
 const ComingSoon = () => {
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  })
+
   return (
     <div className="coming">
       <div className="coming__hero">

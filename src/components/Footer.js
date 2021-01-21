@@ -29,16 +29,15 @@ const Footer = () => {
 
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Features</li>
-            <li className="footer__item"><Link>Courses</Link></li>
-            <li className="footer__item"><Link>Internship</Link></li>
-            <li className="footer__item"><Link>NYSC Members</Link></li>
+            <li className="footer__item"><Link to="/coming-soon">Internship</Link></li>
+            <li className="footer__item"><Link to="/coming-soon">NYSC Members</Link></li>
           </ul>
 
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Teaching</li>
             <li className="footer__item"><Link>FAQ</Link></li>
             <li className="footer__item"><Link>Book a Call</Link></li>
-            <li className="footer__item"><Link>Corporate Training</Link></li>
+            <li className="footer__item"><Link to="/coming-soon">Corporate Training</Link></li>
             {/* <li className="footer__item"><Link>Grazac Hire</Link></li> */}
           </ul>
         </div>

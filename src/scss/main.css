@@ -3449,6 +3449,13 @@ html {
   }
 }
 
+@media (max-width: 37.5em) {
+  .coming__container--left {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+}
+
 .coming__container--left div {
   position: absolute;
   top: 50%;
@@ -3469,6 +3476,12 @@ html {
   font-size: 4.2rem;
   font-family: Georgia;
   font-weight: bold;
+}
+
+@media (max-width: 37.5em) {
+  .coming__container--left div h1 {
+    font-size: 3.5rem;
+  }
 }
 
 .coming__container--left div form {
@@ -3522,6 +3535,12 @@ html {
   .coming__container--right {
     -ms-flex-preferred-size: 40%;
         flex-basis: 40%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .coming__container--right {
+    display: none;
   }
 }
 /*# sourceMappingURL=main.css.map */

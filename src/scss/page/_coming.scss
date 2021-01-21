@@ -12,6 +12,9 @@
       @include respond(tab-port) {
         flex-basis: 60%;
       }
+      @include respond(phone) {
+        flex-basis: 100%;
+      }
 
       div {
         position: absolute;
@@ -31,6 +34,9 @@
           font-size: 4.2rem;
           font-family: $font-primary;
           font-weight: bold;
+          @include respond(phone) {
+            font-size: 3.5rem;
+          }
         }
 
         form {
@@ -79,6 +85,9 @@
       background-size: cover;
       @include respond(tab-port) {
         flex-basis: 40%;
+      }
+      @include respond(phone) {
+        display: none;
       }
     }
   }
