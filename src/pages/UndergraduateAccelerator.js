@@ -36,8 +36,8 @@ const UndergraduateAccelerator = () => {
                                         <h1>
                                             Undergraduate Accelerator Plan
                                         </h1>
-                                        <p> We equip you for the future of the career you desire. Become an asset in this 21st century before leaving the four walls of school. Join thousands of young undergraduates now, get mentorship tailored to your career path and be the next best talent to be employed. </p>
-                                        
+                                        <p>We equip you to be an asset in the digital age before leaving the four walls of school and we believe the future of work will be strictly skill-based. Join thousands of young undergraduates to build a career in technology and be mentored by industry experts.
+                                        </p>
                                         <div className="contact_hero-privacy" >
                                             <a href="#courses"><button>Join Us Today!</button></a>
                                             <Link to="/lead"><button>Apply as student Lead</button></Link>

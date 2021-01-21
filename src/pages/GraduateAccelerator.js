@@ -39,8 +39,9 @@ const GraduateAccelerator = () => {
                                         <h1>
                                             Graduate Accelerator Plan
                                         </h1>
-                                        <p>We are bridging the gap between unemployment and entry - level jobs in the 21st century. You need more than a degree to be relevant in the digital age. Let’s prepare you for the future of work. Get access to facilities and resources that aids your learning and practice. Learn Digital Skills and gain insights into today’s digital tools.</p>
-                                        
+                                        <p>
+                                        We are bridging the gap between unemployment and entry-level jobs in the technology industry. Become employable in just 4 months by joining us today, we provide you with the right mentorship, tools and contents to upskill yourself.
+                                        </p>
                                         <div className="contact_hero-privacy" >
                                             <a href="#courses"><button>Join Us Today!</button></a>
                                         </div>
