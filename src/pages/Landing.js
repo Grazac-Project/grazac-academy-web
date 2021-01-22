@@ -36,11 +36,11 @@ const Landing = () => {
 
   const changeSlider = () => {
     setTimeout(() => {
-      if (step < 3)
+      if (step < 2)
         setStep(step + 1);
       else 
         setStep(0);
-    }, 5000);
+    }, 10000);
   }
 
   const dots = [false, false, false];

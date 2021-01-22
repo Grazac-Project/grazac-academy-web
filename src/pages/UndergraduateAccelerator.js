@@ -7,9 +7,11 @@ import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
 import loader from "../images/loader.gif";
+import SchoolList from "../components/SchoolList";
 
 const UndergraduateAccelerator = () => {
     const [courses, setCourses] = useState([]);
+    const [openListModal, setOpenListModal] = useState(false);
 
     React.useEffect(() => {
         document.title = 'Undergraduate Accelerator Track - Grazac Academy';
@@ -76,7 +78,7 @@ const UndergraduateAccelerator = () => {
                                     <h3><strong>Affiliated Campuses</strong></h3>
                                     <p>We are well represented in various institutions of learning across Nigeria.</p>
                                     <p>We want to prepare you for the future of work before you leave the four walls of learning.</p>
-                                    <a className="white-link">Learn More</a>
+                                    <a className="white-link" onClick={() => setOpenListModal(true)}>Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +117,8 @@ const UndergraduateAccelerator = () => {
                 <NeedAdvice />
             </div>
             <Footer/>
+
+           { openListModal && <SchoolList onOpen={e => setOpenListModal(e)}/> }
         </div>
     );
 }

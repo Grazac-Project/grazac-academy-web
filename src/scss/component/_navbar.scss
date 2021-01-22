@@ -74,16 +74,16 @@
     &--mb {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       position: fixed;
       top: 0;
       left: 0;
       content: "";
       width: 100vw;
       height: 100vh;
-      background: #fff6e5;
+      background: #773dd3;
       transition: all 500ms ease-in-out;
+      padding: 5rem 2rem;
+      padding-top: 12rem;
 
       // that's all the pen about
       clip-path: circle(30px at calc(100% - 65px) 65px);
@@ -100,6 +100,18 @@
     text-decoration: none;
     color: #9da8b6;
 
+    @include respond(phone) {
+      display: flex;
+    }
+
+    span {
+      font-size: 1.6rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 2rem;
+      margin-top: 5px;
+    }
+
     &:hover {
       text-decoration: underline;
       color: #9da8b6;
@@ -107,7 +119,11 @@
 
     @include respond(phone) {
       font-size: 3rem;
-      margin-bottom: 2rem;
+      margin-bottom: 5rem;
+      font-weight: bold;
+      color: $color-white;
+      font-family: $font-secondary;
+      font-size: 4rem;
     }
   }
 
@@ -223,6 +239,8 @@
       // ofcorse we should find a replacement for the focus state but it's not our topic
       &:focus {
         outline: none;
+        background-color: white;
+        border-radius: 99999px;
       }
 
       &:hover > span:after,
@@ -259,5 +277,15 @@
         }
       }
     }
+  }
+}
+
+.nav__item {
+  button {
+    background-color: $color-white;
+    padding: 2rem 2.5rem;
+    border: none;
+    color: #773dd3;
+    font-size: 2rem;
   }
 }

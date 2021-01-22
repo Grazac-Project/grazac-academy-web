@@ -150,21 +150,17 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   content: "";
   width: 100vw;
   height: 100vh;
-  background: #fff6e5;
+  background: #773dd3;
   -webkit-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
+  padding: 5rem 2rem;
+  padding-top: 12rem;
   -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
           clip-path: circle(30px at calc(100% - 65px) 65px);
   visibility: hidden;
@@ -181,6 +177,22 @@ html {
   color: #9da8b6;
 }
 
+@media (max-width: 37.5em) {
+  .nav__link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.nav__link span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 2rem;
+  margin-top: 5px;
+}
+
 .nav__link:hover {
   text-decoration: underline;
   color: #9da8b6;
@@ -189,7 +201,11 @@ html {
 @media (max-width: 37.5em) {
   .nav__link {
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 4rem;
   }
 }
 
@@ -328,6 +344,8 @@ html {
 
 .nav__menu .nav-tgl:focus {
   outline: none;
+  background-color: white;
+  border-radius: 99999px;
 }
 
 .nav__menu .nav-tgl:hover > span:after,
@@ -360,6 +378,14 @@ html {
 .nav__menu--active .nav-tgl > span:before {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+}
+
+.nav__item button {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border: none;
+  color: #773dd3;
+  font-size: 2rem;
 }
 
 .footer {
@@ -538,6 +564,82 @@ html {
 
 .footer__logo img:first-child {
   margin-right: 1rem;
+}
+
+.modal2__bg {
+  height: 100vh;
+  width: 100%;
+  background: rgba(48, 50, 75, 0.1);
+  mix-blend-mode: normal;
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000000;
+}
+
+.modal2__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 50%;
+  padding: 3rem 2rem;
+}
+
+@media (max-width: 37.5em) {
+  .modal2__content {
+    width: 90%;
+  }
+}
+
+.modal2__header {
+  font-family: Georgia;
+  font-size: 3.5rem;
+  font-weight: normal;
+  color: #1f1035;
+  margin-bottom: 2rem;
+}
+
+.modal2__table {
+  width: 100%;
+}
+
+.modal2__table tr {
+  margin-bottom: 2rem;
+}
+
+.modal2__table th {
+  color: #1f1035;
+  font-size: 1.4rem;
+  font-family: Georgia;
+  font-weight: normal;
+}
+
+.modal2__table td {
+  color: #1f1035;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.modal2__table td,
+.modal2__table th {
+  padding: 1.8rem;
+}
+
+.modal2__footer {
+  color: #575a65;
+  font-size: 1.6rem;
+  font-family: "Nunito Sans", sans-serif;
+  margin-top: 2rem;
+}
+
+.modal2__footer a {
+  color: #773dd3;
 }
 
 .loader {
@@ -3569,7 +3671,6 @@ html {
 .coming__container--right {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
-  background-image: url(../images/coming-soon.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -3585,5 +3686,21 @@ html {
   .coming__container--right {
     display: none;
   }
+}
+
+.coming__container--right-hire {
+  background-image: url(../images/hire.jpg);
+}
+
+.coming__container--right-nysc {
+  background-image: url(../images/nysc.jpg);
+}
+
+.coming__container--right-careers {
+  background-image: url(../images/careers.jpg);
+}
+
+.coming__container--right-training {
+  background-image: url(../images/training.jpg);
 }
 /*# sourceMappingURL=main.css.map */

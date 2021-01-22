@@ -1,0 +1,72 @@
+.modal2 {
+  &__bg {
+    height: 100vh;
+    width: 100%;
+    background: rgba(48, 50, 75, 0.1);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(14px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000000;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-white;
+    width: 50%;
+    padding: 3rem 2rem;
+    @include respond(phone) {
+      width: 90%;
+    }
+  }
+
+  &__header {
+    font-family: $font-primary;
+    font-size: 3.5rem;
+    font-weight: normal;
+    color: $color-excellent-purple;
+    margin-bottom: 2rem;
+  }
+
+  &__table {
+    width: 100%;
+
+    tr {
+      margin-bottom: 2rem;
+    }
+
+    th {
+      color: #1f1035;
+      font-size: 1.4rem;
+      font-family: $font-primary;
+      font-weight: normal;
+    }
+
+    td {
+      color: #1f1035;
+      font-size: 1.8rem;
+      font-weight: bold;
+      font-family: $font-secondary;
+    }
+
+    td,
+    th {
+      padding: 1.8rem;
+    }
+  }
+
+  &__footer {
+    color: $color-grey;
+    font-size: 1.6rem;
+    font-family: $font-secondary;
+    margin-top: 2rem;
+
+    a {
+      color: #773dd3;
+    }
+  }
+}

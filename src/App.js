@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/undergraduate-form" exact={true} component={UndergraduateForm}/> 
         <Route path="/lead" exact={true} component={LeadForm}/> 
 
-        <Route path="/coming-soon" component={ComingSoon} />
+        <Route path="/:name/coming-soon" component={ComingSoon} />
       </Switch>
     </div>
   );

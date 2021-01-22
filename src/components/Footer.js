@@ -23,22 +23,21 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Company</li>
             <li className="footer__item"><Link to="/about-us">About</Link></li>
-            <li className="footer__item"><Link>Careers</Link></li>
             <li className="footer__item"><Link to="/contact">Contact Us</Link></li>
           </ul>
 
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Features</li>
-            <li className="footer__item"><Link to="/coming-soon">Internship</Link></li>
-            <li className="footer__item"><Link to="/coming-soon">NYSC Members</Link></li>
+            <li className="footer__item"><Link to="/nysc/coming-soon">NYSC Members</Link></li>
+            <li className="footer__item"><Link to="/careers/coming-soon">Careers</Link></li>
           </ul>
 
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Teaching</li>
             <li className="footer__item"><Link>FAQ</Link></li>
             <li className="footer__item"><Link>Book a Call</Link></li>
-            <li className="footer__item"><Link to="/coming-soon">Corporate Training</Link></li>
-            {/* <li className="footer__item"><Link>Grazac Hire</Link></li> */}
+            <li className="footer__item"><Link to="/training/coming-soon">Corporate Training</Link></li>
+            <li className="footer__item"><Link to="/hire/coming-soon">Grazac Hire</Link></li>
           </ul>
         </div>
 

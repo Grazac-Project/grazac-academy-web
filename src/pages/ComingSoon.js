@@ -1,8 +1,11 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { cn } from "../utils";
 
 const ComingSoon = () => {
+  const { name } = useParams();
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -25,7 +28,7 @@ const ComingSoon = () => {
               </form>
             </div>
           </div>
-          <div className="coming__container--right">&nbsp;</div>
+          <div className={cn("coming__container--right", `coming__container--right-${name}`)}>&nbsp;</div>
         </div>
       </div>
 

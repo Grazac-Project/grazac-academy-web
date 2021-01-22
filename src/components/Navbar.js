@@ -2,14 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import { cn } from "../utils";
 import NavItem from "./NavItem";
 import logo from "../images/svg/grazac-logo.svg";
-import PrimaryBtn from "./PrimaryBtn";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [fixed, setFixed] = useState(false);
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
-  const [click, setClick] = useState(false);
   const nav = useRef(null);
 
   useEffect(() => {
@@ -47,23 +45,21 @@ const Navbar = () => {
           <ul className="nav__list--mb">
             <li className="nav__item">
               <NavItem exact link="/">
-                Home
+              <span>01</span>Home
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/about-us">About</NavItem>
+              <NavItem link="/about-us"><span>02</span>About</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/undergraduate-accelerator-plan">Undergraduate</NavItem>
+              <NavItem link="/undergraduate-accelerator-plan"><span>03</span>Undergraduate</NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/graduate-accelerator-plan">Graduate</NavItem>
+              <NavItem link="/graduate-accelerator-plan"><span>04</span>Graduate</NavItem>
             </li>
-            <li className="nav__item nav__item--btn">
+            <li className="nav__item">
               <a href="/#tracks">
-                <div className="nav__btn">
-                  <div className="nav__btn--text">Enroll Now</div>
-                </div>
+                <button onClick={() => setActive(false)}>Enroll Now</button>
               </a>
             </li>
           </ul>
@@ -84,7 +80,7 @@ const Navbar = () => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <a className="nav__link" onClick={(e) => (!click ? setClick(true) : setClick(false))}>
+            <a className="nav__link">
               Academy
             </a>
             <svg
@@ -105,13 +101,12 @@ const Navbar = () => {
 
             <div
               className={cn("nav__dropdown", {
-                "nav__dropdown--active": hover || click,
+                "nav__dropdown--active": hover,
               })}
             >
               <span></span>
               <ul
                 className="nav__dropdown--list"
-                onMouseEnter={() => console.log("brrrrr")}
               >
                 <li>
                   <Link to="/undergraduate-accelerator-plan" className="nav__link">Undergraduate</Link>

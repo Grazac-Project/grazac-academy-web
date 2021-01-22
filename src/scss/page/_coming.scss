@@ -80,7 +80,6 @@
     }
     &--right {
       flex-basis: 50%;
-      background-image: url(../images/coming-soon.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       @include respond(tab-port) {
@@ -88,6 +87,20 @@
       }
       @include respond(phone) {
         display: none;
+      }
+
+      &-hire {
+        background-image: url(../images/hire.jpg);
+      }
+
+      &-nysc {
+        background-image: url(../images/nysc.jpg);
+      }
+      &-careers {
+        background-image: url(../images/careers.jpg);
+      }
+      &-training {
+        background-image: url(../images/training.jpg);
       }
     }
   }
