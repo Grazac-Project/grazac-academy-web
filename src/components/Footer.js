@@ -48,13 +48,13 @@ const Footer = () => {
           <Link>Privacy & Policy</Link>
           <Link>Terms of Service</Link>
 
-          <p>©2020 Grazac Technologies. All Rights Reserved</p>
+          <p>©{new Date().getFullYear()} Grazac Technologies. All Rights Reserved</p>
 
           <div className="footer__icons">
-            <img src={Youtube} alt="icon" />
-            <img src={Twitter} alt="icon" />
-            <img src={Instagram} alt="icon" />
-            <img src={Facebook} alt="icon" />
+            <a><img src={Youtube} alt="icon" /></a>
+            <a href="https://twitter.com/grazacacademy" target="_blank"><img src={Twitter} alt="icon" /></a>
+            <a href="https://www.instagram.com/grazacacademy/" target="_blank"><img src={Instagram} alt="icon" /></a>
+            <a><img src={Facebook} alt="icon" /></a>
           </div>
         </div>
       </div>

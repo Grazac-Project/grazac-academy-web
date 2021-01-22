@@ -1,3 +1,9 @@
+.loader{
+  left:50%;
+  position: absolute;
+  width: 40px;
+}
+
 .landing {
   &__header {
     background-color: $color-white;

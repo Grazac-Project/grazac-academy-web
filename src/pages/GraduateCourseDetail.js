@@ -6,6 +6,7 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import MOT from "../components/MOT";
 
 import paper from '../images/svg/paper-ribbon.svg';
+import loader from "../images/loader.gif";
 
 const CourseDetail = (props) => {
     const [course, setCourse] = useState('');
@@ -32,27 +33,30 @@ const CourseDetail = (props) => {
             <div className="course">
                 <div className="course_hero">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <div className="course_hero-text">
-                                    <div className="course_hero-text-b">
-                                        <h1>
-                                            {course.name}
-                                        </h1>
-                                        <p>
-                                            {course.description}
-                                        </p>
-                                        <div className="contact_hero-privacy" >
-                                            <a href={course.brochure} className="download-brochure" target="_blank">Download Brochure</a>
-                                            <Link to="/graduate-form"><button>Enroll now</button></Link>
+                        {course ? 
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <div className="course_hero-text">
+                                        <div className="course_hero-text-b">
+                                            <h1>
+                                                {course.name}
+                                            </h1>
+                                            <p>
+                                                {course.description}
+                                            </p>
+                                            <div className="contact_hero-privacy" >
+                                                <a href={course.brochure} className="download-brochure" target="_blank">Download Brochure</a>
+                                                <Link to="/graduate-form"><button>Enroll now</button></Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <img src={paper} alt="academy"  className="gga_hero-image" />
-                            </div>
-                        </div>
+                                <div>
+                                    <img src={paper} alt="academy"  className="gga_hero-image" />
+                                </div>
+                            </div> : 
+                            <img src={loader} alt="loader" className="loader" />
+                        }
                     </div>
                 </div>
                 <div className="course_learn">
@@ -62,22 +66,27 @@ const CourseDetail = (props) => {
                             <h2>What you'll Learn</h2>
                         </div>
                         <div className="course_learn-main">
-                            {outline.map((item, index) => (
-                                <div key={index}>
-                                    <div className="course_learn-main-list">
-                                        <div className="box1">
-                                            <h3>{(index<10) ? '0'+index : index}</h3>
+                            {outline.length ? 
+                                outline.map((item, index) => (
+                                    <div key={index}>
+                                        <div className="course_learn-main-list">
+                                            <div className="box1">
+                                                <h3>{(index<10) ? '0'+index : index}</h3>
+                                            </div>
+                                            <div className="box2">
+                                                <h3>{item.topic}</h3>
+                                            </div>
+                                            <div className="box3">
+                                                <p>{item.summary}</p>
+                                            </div>
                                         </div>
-                                        <div className="box2">
-                                            <h3>{item.topic}</h3>
-                                        </div>
-                                        <div className="box3">
-                                            <p>{item.summary}</p>
-                                        </div>
+                                        <hr/>
                                     </div>
-                                    <hr/>
+                                )):
+                                <div>
+                                    <img src={loader} alt="loader" className="loader" />
                                 </div>
-                            ))}
+                            }
                         </div>
                     </div>
                 </div>
@@ -99,7 +108,7 @@ const CourseDetail = (props) => {
                         </div>
                     </div>
                     <div className="course_purple-btn">
-                        <PrimaryBtn to="/graduate-form">Enroll Now</PrimaryBtn>
+                        <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
                         <a href="tel:+234806 836 5951"><p>Talk to course rep</p></a>
                     </div>
                 </div>

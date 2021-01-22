@@ -3,12 +3,9 @@ import {Link} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
-import PopularCourses from "../components/PopularCourses";
 import Qualities from "../components/Qualities";
-import PrimaryBtn from "../components/PrimaryBtn";
 import Graduates from "../images/graduates.png";
-import Card1 from "../images/svg/card1.svg";
-import Card2 from "../images/svg/card1.svg";
+import loader from "../images/loader.gif";
 
 const GraduateAccelerator = () => {
     const [courses, setCourses] = useState([]);
@@ -43,7 +40,7 @@ const GraduateAccelerator = () => {
                                         We are bridging the gap between unemployment and entry-level jobs in the technology industry. Become employable in just 4 months by joining us today, we provide you with the right mentorship, tools and contents to upskill yourself.
                                         </p>
                                         <div className="contact_hero-privacy" >
-                                            <a href="#courses"><button>Join Us Today!</button></a>
+                                            <a href="#courses" className="download-brochure">Join Us Today!</a>
                                         </div>
                                     </div>
                                 </div>
@@ -116,20 +113,25 @@ const GraduateAccelerator = () => {
                                 <h2>Available Courses</h2>
                             </div>
                             <div className="gga_container">
-                                {courses.map((item,index) => (
-                                <div className="boxes33" key={index}>
-                                    <div className="gua_cardview">
-                                        <div className="gua_cardview-box">
-                                            <img src={item.thumb} alt="course-desc" />
-                                        </div>
-                                        <div className="gua_cardview-text">
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                            <Link to={"/course-detail-graduate?course="+item.slug}><a>Learn More</a></Link>
+                                {courses.length ?
+                                    courses.map((item,index) => (
+                                    <div className="boxes33" key={index}>
+                                        <div className="gua_cardview">
+                                            <div className="gua_cardview-box">
+                                                <img src={item.thumb} alt="course-desc" />
+                                            </div>
+                                            <div className="gua_cardview-text">
+                                                <h4>{item.name}</h4>
+                                                <p>{item.description}</p>
+                                                <Link to={"/course-detail-graduate?course="+item.slug}><a>Learn More</a></Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                ))}
+                                    )) :
+                                    <div>
+                                        <img src={loader} alt="loader" className="loader" />
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

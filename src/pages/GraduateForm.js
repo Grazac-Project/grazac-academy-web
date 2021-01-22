@@ -1,8 +1,14 @@
+import {useEffect} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 
 const GraduateForm = () => {
+    useEffect(() => {
+        document.title = 'Join our Graduate Track - Grazac Academy';
+        window.scrollTo(0,0);
+    }, []);
+
     return(
         <div>
             <Navbar/>

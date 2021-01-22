@@ -540,6 +540,12 @@ html {
   margin-right: 1rem;
 }
 
+.loader {
+  left: 50%;
+  position: absolute;
+  width: 40px;
+}
+
 .landing__header {
   background-color: #fff;
   padding: 1rem;
@@ -2053,7 +2059,7 @@ html {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: #cfb9f9 25%;
+  background: rgba(207, 185, 249, 0.2);
 }
 
 .course_wwd-flex-inner .info {
@@ -2147,7 +2153,20 @@ html {
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: #cfb9f9 25%;
+  background: rgba(207, 185, 249, 0.3);
+  position: relative;
+}
+
+.course_mode-container .svg-box img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+@media (min-width: 800px) {
+  .course_mode-container .lenght1 {
+    padding-right: 50px;
+  }
 }
 
 .course_mode-container .boxes {
@@ -2327,6 +2346,7 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
 }
 
 @media (max-width: 400px) {
@@ -2346,6 +2366,7 @@ html {
   .course_purple-btn p {
     margin-top: 20px;
     margin-left: 0px;
+    text-align: center;
   }
 }
 

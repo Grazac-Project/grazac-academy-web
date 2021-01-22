@@ -6,6 +6,7 @@ import NeedAdvice from "../components/NeedAdvice";
 import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
+import loader from "../images/loader.gif";
 
 const UndergraduateAccelerator = () => {
     const [courses, setCourses] = useState([]);
@@ -39,8 +40,8 @@ const UndergraduateAccelerator = () => {
                                         <p>We equip you to be an asset in the digital age before leaving the four walls of school and we believe the future of work will be strictly skill-based. Join thousands of young undergraduates to build a career in technology and be mentored by industry experts.
                                         </p>
                                         <div className="contact_hero-privacy" >
-                                            <a href="#courses"><button>Join Us Today!</button></a>
-                                            <Link to="/lead"><button>Apply as student Lead</button></Link>
+                                            <a href="#courses"  className="download-brochure">Join Us Today!</a>
+                                            <Link to="/lead"><button>Apply as Lead</button></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -88,20 +89,24 @@ const UndergraduateAccelerator = () => {
                                 <h2>Available Courses</h2>
                             </div>
                             <div className="gga_container">
-                                {courses.map((item,index) => (
-                                <div className="boxes33" key={index}>
-                                    <div className="gua_cardview">
-                                        <div className="gua_cardview-box">
-                                            <img src={item.thumb} alt="course-desc" />
+                                {courses.length ? 
+                                    courses.map((item,index) => (
+                                    <div className="boxes33" key={index}>
+                                        <div className="gua_cardview">
+                                            <div className="gua_cardview-box">
+                                                <img src={item.thumb} alt="course-desc" />
+                                            </div>
+                                            <div className="gua_cardview-text">
+                                                <h4>{item.name}</h4>
+                                                <p>{item.description}</p>
+                                                <Link to={"/course-detail-undergraduate?course="+item.slug}><a>Learn More</a></Link>
+                                            </div>
                                         </div>
-                                        <div className="gua_cardview-text">
-                                            <h4>{item.name}</h4>
-                                            <p>{item.description}</p>
-                                            <Link to={"/course-detail-undergraduate?course="+item.slug}><a>Learn More</a></Link>
-                                        </div>
+                                    </div>)) :
+                                    <div>
+                                        <img src={loader} alt="loader" className="loader" />
                                     </div>
-                                </div>
-                                ))}
+                                }
                             </div>
                         </div>
                     </div>
