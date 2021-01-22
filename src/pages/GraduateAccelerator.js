@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
 import Qualities from "../components/Qualities";
-import Graduates from "../images/graduates.png";
+import Graduates from "../images/graduate.jpeg";
 import loader from "../images/loader.gif";
 
 const GraduateAccelerator = () => {
