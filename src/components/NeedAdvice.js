@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import undergraduate from "../images/undergraduate.png";
-import needhelp from "../images/need-hel.png";
+import lady from "../images/Grazac-website/IMG_8440.JPG";
 
 const NeedAdvice = () => {
   return(
@@ -8,7 +8,7 @@ const NeedAdvice = () => {
         <div className="container">
             <div className="gua_advice-box">
                 <div className="boxes55">
-                        <img src={needhelp} alt="undergraduate" className="gua_advice-box-img" />
+                        <img src={lady} alt="undergraduate" className="gua_advice-box-img" />
                 </div>
                 <div className="boxes55">
                     <div className="gua_advice-box-text" >
