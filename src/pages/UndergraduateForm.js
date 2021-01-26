@@ -25,6 +25,9 @@ const UndergraduateForm = () => {
             <div>
                 <div className="contact_layer">
                     <div className="container">
+                        <div className>
+
+                        </div>
                         <div className="contact_layer-text">
                             <h1>Grazac Academy Undergraduate Accelerator</h1>
                             <p>We are bridging the gap between unemployment and entry-level jobs in the technology industry. Become employable in just 4 months by joining us today, we provide you with the right mentorship, tools and contents to upskill yourself.</p>
@@ -83,8 +86,7 @@ const UndergraduateForm = () => {
                                 <textarea  type="text" placeholder="Describe your task for us" value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <p>By submitting this form your consent to us emailing you occasionally about our products and services. You can unsubscribe from emails at any time, and we will never pass your email onto third parties. <span>Privacy Policy</span></p>
-                                <button id="submit" >Submit</button>
+                                <a id="submit" className="download-brochure">Submit</a>
                             </div>
                         </div>
                     </div>
