@@ -3504,7 +3504,6 @@ html {
 }
 
 .gua_advice-box {
-  margin-top: 40px;
   overflow-x: hidden;
 }
 
@@ -3702,5 +3701,161 @@ html {
 
 .coming__container--right-training {
   background-image: url(../images/training.jpg);
+}
+
+.form {
+  padding: 50px 10px;
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 56.25em) {
+  .form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .form {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+@media (min-width: 700px) {
+  .form-flexdiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width: 700px) {
+  .form-flexdiv-1 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 700px) {
+  .form-flexdiv-2 {
+    margin-left: 10px;
+    width: 50%;
+  }
+}
+
+.form label {
+  color: #073041;
+  font-size: 1.1em;
+  margin-left: 5px;
+}
+
+.form label span {
+  color: #ff570a;
+}
+
+.form .input {
+  background: transparent;
+  margin: 10px 5px 30px;
+  border-radius: 10px;
+  width: 81%;
+  border: 1px solid #eff2f7;
+  padding: 10px 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+}
+
+.form .radio-input {
+  margin: 10px 10px 10px 0;
+}
+
+.form textarea {
+  background: transparent;
+  margin: 10px 5px 30px;
+  border-radius: 10px;
+  width: 81%;
+  border: 1px solid #eff2f7;
+  padding: 10px 15px;
+  height: 150px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+}
+
+.form-privacy .download-brochure {
+  color: white;
+  margin: 15px 0 30px;
+  background: #773dd3;
+  border: 2px solid #773dd3;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 10px;
+}
+
+.form-privacy p {
+  color: #9da8b6;
+  font-size: 1.2em;
+}
+
+.form-privacy span {
+  color: #773dd3;
+}
+
+.form-privacy button {
+  color: white;
+  margin: 15px 0 30px;
+  background: #773dd3;
+  border: 2px solid #773dd3;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 10px;
+}
+
+.form-privacy button:last-child {
+  color: #773dd3;
+  background: transparent;
+  margin: 15px 0 30px 15px;
+}
+
+@media (min-width: 600px) {
+  .form_first {
+    width: 50%;
+  }
+}
+
+.form_first h1 {
+  font-size: 3.5em;
+  line-height: 60px;
+  font-family: Georgia;
+}
+
+.form_first p {
+  font-size: 1.2em;
+  max-width: 400px;
+}
+
+@media (min-width: 600px) {
+  .form_second {
+    width: 50%;
+  }
+}
+
+.form_second-btn {
+  margin: 20px 0 0 10px;
+}
+
+.form_second-btn p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .form_insecond {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 /*# sourceMappingURL=main.css.map */

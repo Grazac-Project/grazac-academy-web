@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import undergraduate from "../images/undergraduate.png";
+<<<<<<< HEAD
 import poster from "../images/Grazac-website/IMG_8440.JPG";
+=======
+import lady from "../images/Grazac-website/IMG_8440.JPG";
+>>>>>>> d7f89e17a71e49fc70d3571f44e79c2c560f52a0
 
 const NeedAdvice = () => {
   return(
@@ -8,7 +12,11 @@ const NeedAdvice = () => {
         <div className="container">
             <div className="gua_advice-box">
                 <div className="boxes55">
+<<<<<<< HEAD
                         <img src={poster} alt="undergraduate" className="gua_advice-box-img" style={{borderRadius: 30}} />
+=======
+                        <img src={lady} alt="undergraduate" className="gua_advice-box-img" />
+>>>>>>> d7f89e17a71e49fc70d3571f44e79c2c560f52a0
                 </div>
                 <div className="boxes55">
                     <div className="gua_advice-box-text">
