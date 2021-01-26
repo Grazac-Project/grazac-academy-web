@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
 import Qualities from "../components/Qualities";
-import Graduates from "../images/graduate.jpeg";
+import Graduates from "../images/graduate.png";
 import loader from "../images/loader.gif";
 
 const GraduateAccelerator = () => {
@@ -46,7 +46,7 @@ const GraduateAccelerator = () => {
                                 </div>
                             </div>
                             <div>
-                                <img src={Graduates} alt="Graduates"  className="gga_hero-image" />
+                                <img src={Graduates} alt="Graduates" className="gga_hero-image" />
                             </div>
                         </div>
                     </div>

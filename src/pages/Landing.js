@@ -37,7 +37,7 @@ const Landing = () => {
   const changeSlider = () => {
     setTimeout(() => {
       if (step < 2)
-        setStep(step + 1);
+        setStep(prev => prev + 1);
       else 
         setStep(0);
     }, 10000);
@@ -84,7 +84,7 @@ const Landing = () => {
       </div>
 
       <div className="landing__video">
-        <video id="video" width="320" height="240" autoPlay loop controls poster={poster}>
+        <video id="video" width="320" height="240" autoplay loop muted poster={poster}>
           <source src={Video} type="video/mp4" />
         </video>
       </div>

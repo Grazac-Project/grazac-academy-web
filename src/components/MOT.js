@@ -59,7 +59,7 @@ const ModeOfTeaching = _ => {
                 <div className="course_mode-quote">
                     <img src={quote} alt="quote" />
                     <p>I've known Grazac for over a year now and having worked with some of their successful students, I can boldly say the competency and problem solving skills of their students is top-notch and their academy is one of the best academy promoting technology skills acquisition here in Nigeria</p>
-                    <span>Samson Adedamola</span>
+                    <span>Samson Adedamola - Consultant at Kudi</span>
                 </div>
             </div>
         </div>
