@@ -101,7 +101,7 @@ const GraduateForm = () => {
                     <div className="container">
                         <div className="form">
                             <div className="form-flexdiv">
-                                <div className="form-flexdiv-1" >
+                                <div className="form-flexdiv-1">
                                     <label>First Name  <span>*</span></label>
                                     <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} />
                                 </div>
