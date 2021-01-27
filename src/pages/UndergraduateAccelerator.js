@@ -16,13 +16,14 @@ const UndergraduateAccelerator = () => {
     React.useEffect(() => {
         document.title = 'Undergraduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
-        fetch('https://grazacacademy.com/courses/undergraduate',)
+        fetch('https://grazacacademy.com/courses/undergraduate')
             .then(resp => resp.json())
             .then(resp => {
                 setCourses(resp.data);
             })
             .catch(error => {
-                alert('An error occured')
+                console.log('An error occurred when fetching the available courses, refreshing...')
+                window.location.reload();
             })
     }, []);
 
@@ -109,6 +110,15 @@ const UndergraduateAccelerator = () => {
                                         <img src={loader} alt="loader" className="loader" />
                                     </div>
                                 }
+                                <div className="boxes33">
+                                    <div className="gua_cardview">
+                                        <div className="gua_cardview-text">
+                                            <h4>Can't find a course you are interested in?</h4>
+                                            <p>We will be glad if you can suggest the course you'd love to learn.</p>
+                                            <Link to="/contact"><a>Contact Us</a></Link>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

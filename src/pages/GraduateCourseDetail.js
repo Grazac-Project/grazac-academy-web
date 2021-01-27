@@ -23,7 +23,8 @@ const CourseDetail = (props) => {
                 setOutline(JSON.parse(resp.data.outline));
             })
             .catch(error => {
-                alert(`An error occured: ${error}`)
+                console.log('An error occurred when fetching course details, refreshing...')
+                window.location.reload();
             })
     },[]);
     
@@ -100,7 +101,7 @@ const CourseDetail = (props) => {
                     <div className="course_purple-main">
                         <div className="course_purple-main-boxes grad-box">
                             <h4>Tuition</h4>
-                            <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦{course.discounted_tuition}</h2>
+                            <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
                         </div>
                         <div className="course_purple-main-boxes grad-box">
                             <h4>Installmental Payment Is Allowed</h4>

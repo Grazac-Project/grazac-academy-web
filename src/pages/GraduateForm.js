@@ -25,7 +25,8 @@ const GraduateForm = () => {
                 setFetched(resp.data);
             })
             .catch(error => {
-                console.log('An error occured')
+                console.log('An error occurred when fetching course details, refreshing...')
+                window.location.reload();
             })
     }, []);
 
@@ -51,14 +52,12 @@ const GraduateForm = () => {
 
     const courseChange = (e) => {
         setCourse(e.target.value)
-        //console.log(e.target.dataset.index)
         var rc = e.target.options[e.target.selectedIndex].dataset.index;
         setAmount( fetchCourses[rc].discounted_tuition );
     }
 
     const onSubmit = () => {
         if(amount){
-            console.log(message );
             handleFlutterPayment({
                 callback: (response) => {
                     if (response.status === 'successful') {

@@ -43,10 +43,10 @@ const UndergraduateForm = () => {
             .then(resp => resp.json())
             .then(resp => {
                 setFetched(resp.data);
-                console.log(resp.data)
             })
             .catch(error => {
-                console.log('An error occured')
+                console.log('An error occurred when fetching course details, refreshing...')
+                window.location.reload();
             })
     }, []);
 
@@ -59,35 +59,38 @@ const UndergraduateForm = () => {
 
     const onSubmit = () => {
         if(amount){
-            console.log(availability);
-            handleFlutterPayment({
-                callback: (response) => {
-                   if (response.status === 'successful') {
-                       fetch('https://grazacacademy.com/undergraduate/register', {
-                            method: 'POST',
-                            headers: {
-                            'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                firstname:firstname,
-                                lastname:lastname,
-                                email:email,
-                                phone:phone,
-                                institution:institution,
-                                availability:availability,
-                                course:course,
-                                expectation:message,
-                                package:'Full time',
-                                tx_ref: response.tx_ref
-                            })
-                       })
-                   };
-                    closePaymentModal() // this will close the modal programmatically
-                },
-                onClose: () => {},
-            });
+            if(availability === "1") {
+                handleFlutterPayment({
+                    callback: (response) => {
+                       if (response.status === 'successful') {
+                           fetch('https://grazacacademy.com/undergraduate/register', {
+                                method: 'POST',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    firstname:firstname,
+                                    lastname:lastname,
+                                    email:email,
+                                    phone:phone,
+                                    institution:institution,
+                                    availability:availability,
+                                    course:course,
+                                    expectation:message,
+                                    package:'Full time',
+                                    tx_ref: response.tx_ref
+                                })
+                           })
+                       };
+                        closePaymentModal() // this will close the modal programmatically
+                    },
+                    onClose: () => {},
+                });
+            } else {
+                alert('You must be available to for the undergraduate training');
+            }
         } else {
-            alert('Please select a course');
+            alert('Kindly select a course');
         }
     }
 
@@ -99,7 +102,7 @@ const UndergraduateForm = () => {
                     <div className="form_top">
                         <div>
                             <h1>Grazac Academy Undergraduate Accelerator</h1>
-                            <p>Our training starts very soon in FUNAAB, why not register now.</p>
+                            <p>FUNAAB and Osiele starts by Feb 6thandon-site classes will only be on weekends.</p>
                         </div>
                     </div>
                     <div className="container">
@@ -107,21 +110,21 @@ const UndergraduateForm = () => {
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1" >
                                     <label>First Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} />
+                                    <input className="input" type="text" maxLength="30" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} />
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Last Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)}  />
+                                    <input className="input" type="text" maxLength="30" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)}  />
                                 </div>
                             </div>
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1" >
                                     <label>Mobile Number  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} />
+                                    <input className="input" type="text" maxLength="11" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} />
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Email  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  />
+                                    <input className="input" type="email" maxLength="30" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  />
                                 </div>
                             </div>
                             <div>
