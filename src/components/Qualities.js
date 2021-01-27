@@ -8,7 +8,7 @@ const Qualities = () => {
         <div className="container">
             <div className="course_wwd-intro">
                 <h4>How It Works</h4>
-                <h2>The value we offer</h2>
+                <h2>What you stand to gain</h2>
                 <p>Your path to employment and relevance in the digital age is optimized to the highest degree of success.</p>
             </div>
             <div className="course_mode-container">
@@ -40,8 +40,8 @@ const Qualities = () => {
                             <div className="svg-box1">
                                 <img src={heart} alt="energy"/>
                             </div>
-                            <h3>Social Heart</h3>
-                            <p>This course helps you accelerate your career into Data Analytics. Learn Structured Query Language and Power BI for </p>
+                            <h3>Certification</h3>
+                            <p>Get a recognised certificate that serves as a proof that you are skilled enough to work in any organisation in or outside Nigeria.</p>
                         </div>
                     </div>
                 </div>

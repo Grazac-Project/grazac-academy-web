@@ -105,7 +105,7 @@ const CourseDetail = (props) => {
                         </div>
                         <div className="course_purple-main-boxes grad-box">
                             <h4>Installmental Payment Is Not Allowed</h4>
-                            <h2>100% <br/><span>Payment Required</span></h2>
+                            <h2>100% <br/><span>Full Payment Upfront</span></h2>
                         </div>
                     </div>
                     <div className="course_purple-btn">

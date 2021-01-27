@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 
 
 const UndergraduateForm = () => {
@@ -12,26 +13,96 @@ const UndergraduateForm = () => {
     const [availability, setAvailability] = useState('');
     const [course, setCourse] = useState('');
     const [ message, setMessage ] = useState('');
+    const [fetchCourses, setFetched] = useState([]);
+    const [amount, setAmount] = useState('');
+
+    const config = {
+        public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
+        tx_ref: Date.now(),
+        amount: amount,
+        currency: 'NGN',
+        payment_options: 'card,mobilemoney,ussd',
+        customer: {
+          email: email,
+          phonenumber: phone,
+          name: firstname+" "+lastname,
+        },
+        customizations: {
+          title: 'Grazac Undergraduate Accelerator Plan',
+          description: `Payment for ${course} at Grazac Undergraduate Accelerator Plan`,
+          logo: 'https://grazac.com.ng/assets/images/favicon.png',
+        },
+      };
+    
+      const handleFlutterPayment = useFlutterwave(config);
 
     useEffect(() => {
         document.title = 'Join our Undergraduate Track - Grazac Academy';
         window.scrollTo(0,0);
-        console.log(availability)
+        fetch('https://grazacacademy.com/courses/undergraduate',)
+            .then(resp => resp.json())
+            .then(resp => {
+                setFetched(resp.data);
+                console.log(resp.data)
+            })
+            .catch(error => {
+                console.log('An error occured')
+            })
     }, []);
+
+    const courseChange = (e) => {
+        setCourse(e.target.value)
+        //console.log(e.target.dataset.index)
+        var rc = e.target.options[e.target.selectedIndex].dataset.index;
+        setAmount( fetchCourses[rc].discounted_tuition );
+    }
+
+    const onSubmit = () => {
+        if(amount){
+            console.log(availability);
+            handleFlutterPayment({
+                callback: (response) => {
+                   if (response.status === 'successful') {
+                       fetch('https://grazacacademy.com/undergraduate/register', {
+                            method: 'POST',
+                            headers: {
+                            'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                firstname:firstname,
+                                lastname:lastname,
+                                email:email,
+                                phone:phone,
+                                institution:institution,
+                                availability:availability,
+                                course:course,
+                                expectation:message,
+                                package:'Full time',
+                                tx_ref: response.tx_ref
+                            })
+                       })
+                   };
+                    closePaymentModal() // this will close the modal programmatically
+                },
+                onClose: () => {},
+            });
+        } else {
+            alert('Please select a course');
+        }
+    }
 
     return(
         <div>
             <Navbar/>
             <div>
                 <div className="contact_layer">
-                    <div className="container">
-                        <div className>
-
-                        </div>
-                        <div className="contact_layer-text">
+                    <div className="form_top">
+                        <div>
                             <h1>Grazac Academy Undergraduate Accelerator</h1>
-                            <p>We are bridging the gap between unemployment and entry-level jobs in the technology industry. Become employable in just 4 months by joining us today, we provide you with the right mentorship, tools and contents to upskill yourself.</p>
+                            <p>Our training starts very soon in FUNAAB, why not register now.</p>
                         </div>
+                    </div>
+                    <div className="container">
                         <div className="form">
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1" >
@@ -67,26 +138,51 @@ const UndergraduateForm = () => {
                             </div>
                             <div>
                                 <label>Our classes will be on Weekends, will you be available ? </label><br/>
-                                <input type="radio" name="availability" value="yes" className="radio-input" onClick={e => setAvailability(e.target.value)}/>Yes
-                                <input type="radio" name="availability" value="no" className="radio-input" onClick={e => setAvailability(e.target.value)} style={{marginLeft:'30px'}}/>No
+                                <label><input
+                                    type="radio"
+                                    className="radio-input"
+                                    id="yes"
+                                    name="availability"
+                                    value="1"
+                                    checked={availability === "1"}
+                                    onChange={(e) => setAvailability(e.target.value)}
+                                />Yes</label>
+                                <label><input
+                                    type="radio"
+                                    className="radio-input"
+                                    id="no"
+                                    name="availability"
+                                    value="0"
+                                    checked={availability === "0"}
+                                    onChange={(e) => setAvailability(e.target.value)}
+                                    style={{marginLeft:'30px'}}
+                                />No</label>
                             </div>
                             <div>
                                 <label>Kindly choose your preferred course  <span>*</span></label><br/>
-                                <select className="input">
+                                <select className="input" onChange={courseChange}>
                                     <option>---Choose course---</option>
-                                    <option>Front End Web Development (HTML, CSS and Javascript (ReactJS)</option>
-                                    <option>Back End Web Development using Javascript (Nodejs)</option>
-                                    <option>Product Designing (UI/UX)</option>
-                                    <option>Android Development using Kotlin</option>
-                                    <option>Corporate Branding (Brand Identity Designing)</option>
+                                    {
+                                        fetchCourses.map((item,index) => (
+                                            <option key={index} data-index={index}>{item.name}</option>
+                                        ))
+                                    }
                                 </select>
                             </div>
                             <div>
+                                <label>Amount</label><br/>
+                                <p className="show-amount">
+                                    ₦{
+                                        (amount) ? new Intl.NumberFormat().format(amount) : '0'
+                                    }
+                                </p>
+                            </div>
+                            <div>
                                 <label>What do you expect at the end of this training?  <span>*</span></label>
-                                <textarea  type="text" placeholder="Describe your task for us" value={message} onChange={e => setMessage(e.target.value)}  />
+                                <textarea  type="text" placeholder="Write something" value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <a id="submit" className="download-brochure">Submit</a>
+                                <a className="download-brochure" onClick={onSubmit}>Continue</a>
                             </div>
                         </div>
                     </div>

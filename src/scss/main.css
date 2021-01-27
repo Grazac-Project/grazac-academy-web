@@ -3724,6 +3724,38 @@ html {
   }
 }
 
+.form_top {
+  padding: 60px 0;
+  background: url("../images/form.png");
+  background-color: #773dd3;
+  color: white;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.form_top h1 {
+  font-size: 2.5em;
+  font-family: Georgia;
+  width: 90%;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.form_top p {
+  font-size: 1.1em;
+  font-family: "Nunito Sans", sans-serif;
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 56.25em) {
+  .form_top p {
+    width: 90%;
+  }
+}
+
 @media (min-width: 700px) {
   .form-flexdiv {
     display: -webkit-box;
@@ -3768,7 +3800,12 @@ html {
 }
 
 .form .radio-input {
-  margin: 10px 10px 10px 0;
+  margin: 10px 10px 20px;
+}
+
+.form .show-amount {
+  font-size: 1.1em;
+  margin: 0 10px 20px;
 }
 
 .form textarea {
