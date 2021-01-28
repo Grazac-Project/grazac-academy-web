@@ -1,161 +1,176 @@
-.form{
-    padding: 50px 10px;
-    width: 70%;
-    display: block;
-    margin: auto;
-    @include respond(tab-port) {
-        width: 80%;
-    }
-    @include respond(phone) {
-        width: 100%;
-        box-sizing: border-box;
-    }
+.form {
+  padding: 50px 10px;
+  width: 70%;
+  display: block;
+  margin: auto;
+  @include respond(tab-port) {
+    width: 80%;
+  }
+  @include respond(phone) {
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-    &_top{
-        padding:60px 0;
-        background: url('../images/form.png');
-        background-color: #773dd3;
-        color: white;
-        text-align: center;
-        background-position: center;
-        background-size: cover;
+  &_top {
+    padding: 60px 0;
+    background: url("../images/form.png");
+    background-color: #773dd3;
+    color: white;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
 
-        h1{
-            font-size: 2.5em;
-            font-family: Georgia;
-            width: 90%;
-            display: block;
-            margin: 0 auto 20px;
-        }
-        p{
-            font-size: 1.1em;
-            font-family: $font-secondary;
-            width: 70%;
-            display: block;
-            margin: auto;
-            @include respond(tab-port){
-                width: 90%;
-            }
-        }
+    h1 {
+      font-size: 2.5em;
+      font-family: Georgia;
+      width: 90%;
+      display: block;
+      margin: 0 auto 20px;
     }
+    p {
+      font-size: 1.1em;
+      font-family: $font-secondary;
+      width: 70%;
+      display: block;
+      margin: auto;
+      @include respond(tab-port) {
+        width: 90%;
+      }
+    }
+  }
 
-    &-flexdiv {
-        @media (min-width: 700px) {
-        display: flex;
-        }
-        &-1 {
-        @media (min-width: 700px) {
-            width: 50%;
-        }
-        }
-        &-2 {
-        @media (min-width: 700px) {
-            margin-left: 10px;
-            width: 50%;
-        }
-        }
+  &-flexdiv {
+    @media (min-width: 700px) {
+      display: flex;
     }
-    label {
-        color: #073041;
-        font-size: 1.1em;
-        margin-left: 5px;
-        span {
-        color: #ff570a;
-        }
+    &-1 {
+      @media (min-width: 700px) {
+        width: 50%;
+      }
     }
+    &-2 {
+      @media (min-width: 700px) {
+        margin-left: 10px;
+        width: 50%;
+      }
+    }
+  }
+  label {
+    color: #073041;
+    font-size: 1.1em;
+    margin-left: 5px;
+    span {
+      color: #ff570a;
+    }
+  }
 
-    .input {
-        background: transparent;
-        margin: 10px 5px 30px;
-        border-radius: 10px;
-        width: 81%;
-        border: 1px solid #eff2f7;
-        padding: 10px 15px;
-        box-sizing: border-box;
-        width: 100%;
+  .input {
+    background: transparent;
+    margin: 10px 5px 30px;
+    border-radius: 10px;
+    width: 81%;
+    border: 1px solid #eff2f7;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .radio-input {
+    margin: 10px 10px 20px;
+  }
+  .show-amount {
+    font-size: 1.1em;
+    margin: 0 10px 20px;
+  }
+  textarea {
+    background: transparent;
+    margin: 10px 5px 30px;
+    border-radius: 10px;
+    width: 81%;
+    border: 1px solid #eff2f7;
+    padding: 10px 15px;
+    height: 150px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  &-privacy {
+    .download-brochure {
+      color: white;
+      margin: 15px 0 30px;
+      background: #773dd3;
+      border: 2px solid #773dd3;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border-radius: 10px;
     }
-    .radio-input{
-        margin: 10px 10px 20px;
+    p {
+      color: #9da8b6;
+      font-size: 1.2em;
     }
-    .show-amount{
-        font-size: 1.1em;
-        margin: 0 10px 20px;
+    span {
+      color: #773dd3;
     }
-    textarea {
-        background: transparent;
-        margin: 10px 5px 30px;
-        border-radius: 10px;
-        width: 81%;
-        border: 1px solid #eff2f7;
-        padding: 10px 15px;
-        height: 150px;
-        box-sizing: border-box;
-        width: 100%;
-    }
-    &-privacy {
-        .download-brochure{
-        color: white;
-        margin: 15px 0 30px;
-        background: #773dd3;
-        border: 2px solid #773dd3;
-        padding: 10px 20px;
-        font-size: 1.1em;
-        border-radius: 10px;
-        }
-        p {
-        color: #9da8b6;
-        font-size: 1.2em;
-        }
-        span {
+    button {
+      color: white;
+      margin: 15px 0 30px;
+      background: #773dd3;
+      border: 2px solid #773dd3;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border-radius: 10px;
+      &:last-child {
+        //for now this affects only course-detail route
         color: #773dd3;
-        }
-        button {
-        color: white;
-        margin: 15px 0 30px;
-        background: #773dd3;
-        border: 2px solid #773dd3;
-        padding: 10px 20px;
-        font-size: 1.1em;
-        border-radius: 10px;
-        &:last-child{ //for now this affects only course-detail route
-            color: #773dd3;
-            background: transparent;
-            margin: 15px 0 30px 15px;
-        }
-        }
+        background: transparent;
+        margin: 15px 0 30px 15px;
+      }
     }
-    &_first {
-        @media (min-width: 600px) {
-        width: 50%;
-        }
-        h1 {
-        font-size: 3.5em;
-        line-height: 60px;
-        font-family: $font-primary;
-        }
-        p {
+  }
+  &_first {
+    @media (min-width: 600px) {
+      width: 50%;
+    }
+    h1 {
+      font-size: 3.5em;
+      line-height: 60px;
+      font-family: $font-primary;
+    }
+    p {
+      font-size: 1.2em;
+      max-width: 400px;
+    }
+  }
+
+  &_second {
+    @media (min-width: 600px) {
+      width: 50%;
+    }
+    &-btn {
+      margin: 20px 0 0 10px;
+      p {
         font-size: 1.2em;
-        max-width: 400px;
-        }
+        margin-top: 10px;
+      }
     }
+  }
 
-    &_second {
-        @media (min-width: 600px) {
-        width: 50%;
-        }
-        &-btn {
-        margin: 20px 0 0 10px;
-        p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        }
+  &_insecond {
+    @media (min-width: 900px) {
+      display: flex;
     }
+  }
+}
 
-    &_insecond {
-        @media (min-width: 900px) {
-        display: flex;
-        }
-    }
+.form-info {
+  background-color: #773dd3;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-family: $font-secondary;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-radius: 5px;
 
+  span {
+    color: #ff570a;
+  }
 }

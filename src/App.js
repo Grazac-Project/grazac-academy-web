@@ -11,6 +11,8 @@ import Contact from "./pages/Contact";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
+import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
+import GraduateCoursePayment from "./pages/GraduateCoursePayment";
 import LeadForm from "./pages/LeadForm";
 import GraduateForm from "./pages/GraduateForm";
 import UndergraduateForm from "./pages/UndergraduateForm";
@@ -25,14 +27,16 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/about-us" component={AboutUs} />
 
-        <Route path="/course-detail-undergraduate" exact={true} component={UndergraduateCourseDetail}/>
-        <Route path="/course-detail-graduate" exact={true} component={GraduateCourseDetail}/> 
-        <Route path="/contact" exact={true} component={Contact}/> 
-        <Route path="/graduate-accelerator-plan" exact={true} component={GraduateAccelerator}/> 
-        <Route path="/undergraduate-accelerator-plan" exact={true} component={UndergraduateAccelerator}/>
-        <Route path="/graduate-form" exact={true} component={GraduateForm}/> 
-        <Route path="/undergraduate-form" exact={true} component={UndergraduateForm}/> 
-        <Route path="/lead" exact={true} component={LeadForm}/> 
+        <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail}/>
+        <Route path="/course-detail-graduate" component={GraduateCourseDetail}/> 
+        <Route path="/contact" component={Contact}/> 
+        <Route path="/graduate-accelerator-plan" component={GraduateAccelerator}/> 
+        <Route path="/undergraduate-accelerator-plan" component={UndergraduateAccelerator}/>
+        <Route path="/graduate-form" component={GraduateForm}/> 
+        <Route path="/undergraduate-form" component={UndergraduateForm}/> 
+        <Route path="/undergraduate/payment/:id" component={UndergraduateCoursePayment} />
+        <Route path="/graduate/payment/:id" component={GraduateCoursePayment} />
+        <Route path="/lead" component={LeadForm}/> 
 
         <Route path="/:name/coming-soon" component={ComingSoon} />
       </Switch>

@@ -1,9 +1,10 @@
 .contact {
   &_layer {
     background: rgba(229, 229, 229, 0.2);
-    margin-top: 80px;
+    margin-top: 87px;
+
     @include respond(phone) {
-      margin-top: 60px;
+      margin-top: 85px;
     }
     &-text {
       text-align: center;
@@ -113,7 +114,7 @@
       width: 100%;
     }
     &-privacy {
-      .download-brochure{
+      .download-brochure {
         color: white;
         margin: 15px 0 30px;
         background: #773dd3;
@@ -137,7 +138,8 @@
         padding: 10px 20px;
         font-size: 1.1em;
         border-radius: 10px;
-        &:last-child{ //for now this affects only course-detail route
+        &:last-child {
+          //for now this affects only course-detail route
           color: #773dd3;
           background: transparent;
           margin: 15px 0 30px 15px;
@@ -184,7 +186,7 @@
     &-intro {
       h2 {
         font-family: $font-primary;
-        @include respond(phone){
+        @include respond(phone) {
           font-size: 1.7em;
         }
       }
@@ -216,7 +218,7 @@
         h3 {
           font-size: 1.5em;
           font-family: $font-primary;
-          @include respond(phone){
+          @include respond(phone) {
             font-size: 1.2em;
             padding-top: 20px;
           }
@@ -229,14 +231,14 @@
       p {
         font-size: 1.1em;
         color: #9da8b6;
-        @include respond(phone){
+        @include respond(phone) {
           font-size: 1em;
         }
       }
       img {
         width: 30px;
         height: 30px;
-        @include respond(phone){
+        @include respond(phone) {
           width: 20px;
           height: 20px;
         }
@@ -249,7 +251,7 @@
         border-radius: 4px;
         margin: 0 10px 10px 0;
         display: inline-block;
-        @include respond(phone){
+        @include respond(phone) {
           width: 20px;
           height: 20px;
         }

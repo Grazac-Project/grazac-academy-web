@@ -2742,12 +2742,12 @@ html {
 
 .contact_layer {
   background: rgba(229, 229, 229, 0.2);
-  margin-top: 80px;
+  margin-top: 87px;
 }
 
 @media (max-width: 37.5em) {
   .contact_layer {
-    margin-top: 60px;
+    margin-top: 85px;
   }
 }
 
@@ -3894,5 +3894,20 @@ html {
     display: -ms-flexbox;
     display: flex;
   }
+}
+
+.form-info {
+  background-color: #773dd3;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
+
+.form-info span {
+  color: #ff570a;
 }
 /*# sourceMappingURL=main.css.map */

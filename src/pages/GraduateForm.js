@@ -1,8 +1,6 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
-
 
 const GraduateForm = () => {
     const [ firstname, setFirstName ] = useState('');
@@ -15,6 +13,7 @@ const GraduateForm = () => {
     const [course, setCourse] = useState('');
     const [ message, setMessage ] = useState('');
     const [fetchCourses, setFetched] = useState([]);
+    const formInfo = useRef();
 
     useEffect(() => {
         document.title = 'Join our Graduate Track - Grazac Academy';
@@ -30,26 +29,6 @@ const GraduateForm = () => {
             })
     }, []);
 
-    const config = {
-        public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
-        tx_ref: Date.now(),
-        amount: amount,
-        currency: 'NGN',
-        payment_options: 'card,mobilemoney,ussd',
-        customer: {
-          email: email,
-          phonenumber: phone,
-          name: firstname + lastname,
-        },
-        customizations: {
-            title: 'Grazac Graduate Accelerator Plan',
-            description: `Payment for ${course} at Grazac Graduate Accelerator Plan`,
-            logo: 'https://grazac.com.ng/assets/images/favicon.png',
-        },
-      };
-    
-    const handleFlutterPayment = useFlutterwave(config);
-
     const courseChange = (e) => {
         setCourse(e.target.value)
         var rc = e.target.options[e.target.selectedIndex].dataset.index;
@@ -57,36 +36,50 @@ const GraduateForm = () => {
     }
 
     const onSubmit = () => {
+        window.scroll(0, formInfo.current.offsetTop);
+        document.querySelector(".form-info").textContent = "Submitting, please wait..."
+        document.querySelector("#submit-btn").disabled = true;
+
         if(amount){
-            handleFlutterPayment({
-                callback: (response) => {
-                    if (response.status === 'successful') {
-                        fetch('https://grazacacademy.com/graduate/register', {
-                             method: 'POST',
-                             headers: {
-                             'Content-Type': 'application/json'
-                             },
-                             body: JSON.stringify({
-                                 firstname:firstname,
-                                 lastname: lastname,
-                                 email:email,
-                                 phone:phone,
-                                 availability:availability,
-                                 course:course,
-                                 package:plan,
-                                 expectation:message,
-                                 tx_ref: response.tx_ref
-                             })
-                        })
-                    };
-                    closePaymentModal() // this will close the modal programmatically
+            document.querySelector()
+            fetch('https://grazacacademy.com/graduate/register', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
                 },
-                onClose: () => {},
-            });
+                body: JSON.stringify({
+                    firstname:firstname,
+                    lastname: lastname,
+                    email:email,
+                    phone:phone,
+                    availability:availability,
+                    course:course,
+                    package:plan,
+                    expectation:message,
+                })
+           })
+            .then(resp => resp.json())
+            .then(data => {
+                    if (data.success === true){
+                        document.querySelector(".form-info").textContent = "Your registration was successful, To complete your registration, check your mailbox for further details";
+                        document.querySelector("#submit-btn").disabled = true;
+                        setFirstName("");
+                        setLastName("")
+                        setMessage("")
+                        setPhone("")
+                        setEmail("")
+                        setCourse("")
+                    }
+                })
+                .catch(err => {
+                    document.querySelector(".form-info").textContent = "Something went wrong, please try again";
+                    document.querySelector("#submit-btn").disabled = false;
+                })
         } else {
             alert('Please select a course');
         }
     }
+
     return(
         <div>
             <Navbar/>
@@ -100,24 +93,25 @@ const GraduateForm = () => {
                     </div>
                     <div className="container">
                         <div className="form">
+                            <div className="form-info">Note: Fields with <span>*</span> are required</div>
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1">
                                     <label>First Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} />
+                                    <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} required/>
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Last Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)}  />
+                                    <input className="input" type="text" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)} required  />
                                 </div>
                             </div>
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1" >
                                     <label>Mobile Number  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} />
+                                    <input className="input" type="text" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} required />
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Email  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  />
+                                    <input className="input" type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  required />
                                 </div>
                             </div>
                             <div>
@@ -188,7 +182,7 @@ const GraduateForm = () => {
                                 <textarea  type="text" placeholder="Say something ..." value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <a id="submit" className="download-brochure" onClick={onSubmit}>Continue</a>
+                                <a id="submit" className="download-brochure" onClick={onSubmit} id="submit-btn">Continue</a>
                             </div>
                         </div>
                     </div>
