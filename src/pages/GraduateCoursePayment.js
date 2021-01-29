@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 const UndergraduateCoursePayment = () => {
   const { id } = useParams();
+  const [payment, setPayment] = useState(true);
   const [fetched, setFetched] = useState({
     firstname: '',
     lastname: '',
@@ -22,7 +23,7 @@ const UndergraduateCoursePayment = () => {
       setFetched(data.data)
       if(data.data.tx_ref.length) {
         document.querySelector(".form-info").textContent = "You have completed your registration";
-        document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
+        setPayment(false);
       } 
     })
     .catch(err => {
@@ -53,6 +54,7 @@ const UndergraduateCoursePayment = () => {
   const handleFlutterPayment = useFlutterwave(config);
 
   const onSubmit = () => {
+    if(payment) {
     handleFlutterPayment({
       callback: (response) => {
           if (response.status === 'successful') {
@@ -80,6 +82,7 @@ const UndergraduateCoursePayment = () => {
       },
       onClose: () => {},
     });
+  }
   }
 
   return (
