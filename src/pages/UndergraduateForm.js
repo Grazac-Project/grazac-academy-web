@@ -179,7 +179,7 @@ const UndergraduateForm = () => {
                                 <textarea  type="text" placeholder="Write something" value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <a className="download-brochure" onClick={onSubmit} id="submit-btn">Continue</a>
+                                <a className="download-brochure" onClick={onSubmit} id="submit-btn">Register</a>
                             </div>
                         </div>
                     </div>

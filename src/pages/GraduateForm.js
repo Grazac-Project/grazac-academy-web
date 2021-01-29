@@ -182,7 +182,7 @@ const GraduateForm = () => {
                                 <textarea  type="text" placeholder="Say something ..." value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <a id="submit" className="download-brochure" onClick={onSubmit} id="submit-btn">Continue</a>
+                                <a id="submit" className="download-brochure" onClick={onSubmit} id="submit-btn">Register</a>
                             </div>
                         </div>
                     </div>

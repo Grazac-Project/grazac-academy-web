@@ -15,8 +15,6 @@ const UndergraduateCoursePayment = () => {
     .then(data => setFetched(data.data))
     .catch(err => {
       console.log(err);
-      // document.querySelector(".form-info").textContent = "Something went wrong, please try again";
-      // document.querySelector("#form-btn").disabled = true;
     })
   });
 
@@ -53,7 +51,7 @@ const UndergraduateCoursePayment = () => {
                   firstname: fetched.firstname,
                   email: fetched.email,
                   course: fetched.course,
-                  tx_ref: fetched.tx_ref,
+                  tx_ref: response.tx_ref,
                   id
                 })
               })
