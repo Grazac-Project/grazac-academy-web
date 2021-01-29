@@ -12,9 +12,17 @@ const UndergraduateCoursePayment = () => {
     document.title = 'Payment - Grazac Academy'
     fetch(`https://grazacacademy.com/undergraduate/details/${id}`)
     .then(resp => resp.json())
-    .then(data => setFetched(data.data))
+    .then(data => {
+      setFetched(data.data)
+      if(data.data.tx_ref.length) {
+        document.querySelector(".form-info").textContent = "You have completed your registration";
+        document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
+      } 
+    })
     .catch(err => {
-      console.log(err);
+      document.querySelector(".form-info").textContent = "Something went wrong, refreshing...";
+      window.location.reload();
+      document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
     })
   });
 

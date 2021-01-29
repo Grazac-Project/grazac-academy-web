@@ -59,7 +59,7 @@ const GraduateForm = () => {
             .then(resp => resp.json())
             .then(data => {
                     if (data.success === true){
-                        document.querySelector(".form-info").textContent = "Your registration was successful, To complete your registration, check your mailbox for further details";
+                        document.querySelector(".form-info").textContent = "Your registration was successful, kindly check your mailbox for further details";
                         document.querySelector("#submit-btn").removeAttribute('disabled');
                         setFirstName("");
                         setLastName("")
@@ -67,6 +67,9 @@ const GraduateForm = () => {
                         setPhone("")
                         setEmail("")
                         setCourse("")
+                    } else {
+                        document.querySelector(".form-info").textContent = data.msg;
+                        document.querySelector("#submit-btn").removeAttribute('disabled');
                     }
                 })
                 .catch(err => {
@@ -180,7 +183,7 @@ const GraduateForm = () => {
                                 <textarea  type="text" placeholder="Say something ..." value={message} onChange={e => setMessage(e.target.value)}  />
                             </div>
                             <div className="form-privacy" >
-                                <a id="submit" className="download-brochure" onClick={onSubmit} id="submit-btn">Register</a>
+                                <a className="download-brochure" onClick={onSubmit} id="submit-btn">Register</a>
                             </div>
                         </div>
                     </div>

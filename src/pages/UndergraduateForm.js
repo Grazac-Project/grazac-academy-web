@@ -63,7 +63,7 @@ const UndergraduateForm = () => {
                 }).then(resp => resp.json())
                   .then(data => {
                        if (data.success === true){
-                            document.querySelector(".form-info").textContent = "Your registration was successful, check your mailbox for further details.";
+                            document.querySelector(".form-info").textContent = "Your registration was successful, kindly check your mailbox for further details.";
                             document.querySelector("#submit-btn").removeAttribute('disabled');
                             setFirstName("");
                             setLastName("")
@@ -72,6 +72,9 @@ const UndergraduateForm = () => {
                             setEmail("")
                             setInstitution("")
                             setCourse("")
+                       } else {
+                        document.querySelector(".form-info").textContent = data.msg;
+                        document.querySelector("#submit-btn").removeAttribute('disabled');
                        }
                    })
                    .catch(err => {
