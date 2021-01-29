@@ -58,8 +58,8 @@ const UndergraduateCoursePayment = () => {
                   firstname: fetched.firstname,
                   email: fetched.email,
                   course: fetched.course,
-                  tx_ref: fetched.tx_ref,
-                  id
+                  tx_ref: response.tx_ref,
+                  id: id
                 })
               })
               .then(resp => resp.json())

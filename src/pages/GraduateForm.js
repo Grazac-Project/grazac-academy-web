@@ -36,12 +36,10 @@ const GraduateForm = () => {
     }
 
     const onSubmit = () => {
-        window.scroll(0, formInfo.current.offsetTop);
-        document.querySelector(".form-info").textContent = "Submitting, please wait..."
-        document.querySelector("#submit-btn").disabled = true;
-
         if(amount){
-            document.querySelector()
+            window.scroll(0, formInfo.current.offsetTop);
+            document.querySelector(".form-info").textContent = "Submitting, please wait..."
+            document.querySelector("#submit-btn").setAttribute('disabled', 'disabled');
             fetch('https://grazacacademy.com/graduate/register', {
                 method: 'POST',
                 headers: {
@@ -62,7 +60,7 @@ const GraduateForm = () => {
             .then(data => {
                     if (data.success === true){
                         document.querySelector(".form-info").textContent = "Your registration was successful, To complete your registration, check your mailbox for further details";
-                        document.querySelector("#submit-btn").disabled = true;
+                        document.querySelector("#submit-btn").removeAttribute('disabled');
                         setFirstName("");
                         setLastName("")
                         setMessage("")
@@ -73,7 +71,7 @@ const GraduateForm = () => {
                 })
                 .catch(err => {
                     document.querySelector(".form-info").textContent = "Something went wrong, please try again";
-                    document.querySelector("#submit-btn").disabled = false;
+                    document.querySelector("#submit-btn").removeAttribute('disabled');
                 })
         } else {
             alert('Please select a course');

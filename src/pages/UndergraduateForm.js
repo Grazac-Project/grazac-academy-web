@@ -38,12 +38,11 @@ const UndergraduateForm = () => {
     }
 
     const onSubmit = () => {
-        window.scroll(0, formInfo.current.offsetTop);
-        document.querySelector(".form-info").textContent = "Submitting, please wait..."
-        document.querySelector("#submit-btn").disabled = true;
-
         if(amount){
             if(availability === "1") {
+                window.scroll(0, formInfo.current.offsetTop);
+                document.querySelector(".form-info").textContent = "Submitting, please wait..."
+                document.querySelector("#submit-btn").setAttribute('disabled', 'disabled');
                 fetch('https://grazacacademy.com/undergraduate/register', {
                     method: 'POST',
                     headers: {
@@ -64,8 +63,8 @@ const UndergraduateForm = () => {
                 }).then(resp => resp.json())
                   .then(data => {
                        if (data.success === true){
-                            document.querySelector(".form-info").textContent = "Your registration was successful, To complete your registration, check your mailbox for further details";
-                            document.querySelector("#submit-btn").disabled = true;
+                            document.querySelector(".form-info").textContent = "Your registration was successful, check your mailbox for further details.";
+                            document.querySelector("#submit-btn").removeAttribute('disabled');
                             setFirstName("");
                             setLastName("")
                             setMessage("")
@@ -77,7 +76,7 @@ const UndergraduateForm = () => {
                    })
                    .catch(err => {
                         document.querySelector(".form-info").textContent = "Something went wrong, please try again";
-                        document.querySelector("#submit-btn").disabled = false;
+                        document.querySelector("#submit-btn").removeAttribute('disabled');
                    })
             } else {
                 alert('You must be available to for the undergraduate training');
