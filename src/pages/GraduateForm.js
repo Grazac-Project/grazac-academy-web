@@ -18,7 +18,7 @@ const GraduateForm = () => {
     useEffect(() => {
         document.title = 'Join our Graduate Track - Grazac Academy';
         window.scrollTo(0,0);
-        fetch('https://grazacacademy.com/courses/graduate',)
+        fetch('https://grazacacademy.com/courses/graduate')
             .then(resp => resp.json())
             .then(resp => {
                 setFetched(resp.data);
@@ -54,8 +54,9 @@ const GraduateForm = () => {
                     course:course,
                     package:plan,
                     expectation:message,
+                    tuition: amount
                 })
-           })
+            })
             .then(resp => resp.json())
             .then(data => {
                     if (data.success === true){

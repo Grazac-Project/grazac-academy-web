@@ -58,7 +58,7 @@ const UndergraduateForm = () => {
                         course:course,
                         expectation:message,
                         package:'Full time',
-                        tuition: amount,
+                        tuition: amount
                     })
                 }).then(resp => resp.json())
                   .then(data => {
@@ -97,7 +97,7 @@ const UndergraduateForm = () => {
                     <div className="form_top" ref={formInfo}>
                         <div>
                             <h1>Grazac Academy Undergraduate Accelerator</h1>
-                            <p>FUNAAB and Osiele starts by Feb 6th and on-site classes will only be on weekends.</p>
+                            <p>FUNAAB and FCE starts by Feb 13th and on-site classes will only be on weekends.</p>
                         </div>
                     </div>
                     <div className="container">

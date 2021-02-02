@@ -31,7 +31,7 @@ const UndergraduateCoursePayment = () => {
       window.location.reload();
       document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
     })
-  });
+  }, []);
 
   const config = {
     public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
@@ -55,33 +55,35 @@ const UndergraduateCoursePayment = () => {
 
   const onSubmit = () => {
     if(payment) {
-    handleFlutterPayment({
-      callback: (response) => {
-          if (response.status === 'successful') {
-              fetch("https://grazacacademy.com/graduate/update", {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  firstname: fetched.firstname,
-                  email: fetched.email,
-                  course: fetched.course,
-                  tx_ref: response.tx_ref,
-                  id: id
+      handleFlutterPayment({
+        callback: (response) => {
+            if (response.status === 'successful') {
+                fetch("https://grazacacademy.com/graduate/update", {
+                  method: 'POST',
+                  headers: {
+                  'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    firstname: fetched.firstname,
+                    email: fetched.email,
+                    course: fetched.course,
+                    tx_ref: response.tx_ref,
+                    id: id
+                  })
                 })
-              })
-              .then(resp => resp.json())
-              .then(data => {
-                if(data.success === true) {
-                  document.querySelector(".form-info").textContent = "Your payment was successful.";
-                }
-              })
-          };
-          closePaymentModal() // this will close the modal programmatically
-      },
-      onClose: () => {},
-    });
+                .then(resp => resp.json())
+                .then(data => {
+                  if(data.success === true) {
+                    document.querySelector(".form-info").textContent = "Your payment was successful.";
+                  }
+                })
+            };
+            closePaymentModal() // this will close the modal programmatically
+        },
+        onClose: () => {},
+      });
+  } else {
+    alert('You have completed your registration');
   }
   }
 

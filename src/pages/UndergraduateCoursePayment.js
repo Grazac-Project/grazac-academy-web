@@ -25,7 +25,7 @@ const UndergraduateCoursePayment = () => {
       window.location.reload();
       document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
     })
-  });
+  }, []);
 
   const config = {
     public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
@@ -49,9 +49,9 @@ const UndergraduateCoursePayment = () => {
 
   const onSubmit = () => {
     if(payment) {
-    handleFlutterPayment({
-      callback: (response) => {
-          if (response.status === 'successful') {
+      handleFlutterPayment({
+        callback: (response) => {
+            if (response.status === 'successful') {
               fetch("https://grazacacademy.com/undergraduate/update", {
                 method: 'POST',
                 headers: {
@@ -71,13 +71,15 @@ const UndergraduateCoursePayment = () => {
                   document.querySelector(".form-info").textContent = "Your payment was successful.";
                 }
               })
-          };
-          closePaymentModal() // this will close the modal programmatically
-      },
-      onClose: () => {
+            };
+            closePaymentModal() // this will close the modal programmatically
+        },
+        onClose: () => {
 
-      },
-    });
+        },
+      });
+  } else {
+    alert('You have completed your registration');
   }
   }
 
