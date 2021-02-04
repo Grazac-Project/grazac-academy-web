@@ -81,6 +81,29 @@ const UndergraduateForm = () => {
                         document.querySelector(".form-info").textContent = "Something went wrong, please try again";
                         document.querySelector("#submit-btn").removeAttribute('disabled');
                    })
+                   fetch('http://emails.grazac.com.ng/newsletter/subscribe', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name:firstname,
+                            email:email
+                        })
+                    })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        if(data.success === true){
+                            console.log('Added to newsletter')
+                        }else{
+                            console.log('Not Added to newsletter')
+                        }
+                           
+                       
+                    })
+                    .catch(err => {
+                            console.log(err)  
+                    })
             } else {
                 alert('You must be available to for the undergraduate training');
             }
