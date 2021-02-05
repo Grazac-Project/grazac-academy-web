@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from 'axios';
 
 const GraduateForm = () => {
     const [ firstname, setFirstName ] = useState('');
@@ -77,6 +78,28 @@ const GraduateForm = () => {
                     document.querySelector(".form-info").textContent = "Something went wrong, please try again";
                     document.querySelector("#submit-btn").removeAttribute('disabled');
                 })
+                let formData = new FormData();
+
+                    formData.append('name', firstname);
+                    formData.append('email', email);
+                    axios.post('http://emails.grazac.com.ng/newsletter/subscribe', formData, {
+                        headers: {
+                        'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(resp => resp.data)
+                    .then(data => {
+                    console.log(data)
+                        if(data.success === true){
+                            console.log('Added to newsletter')
+                        }else{
+                            console.log('Not Added to newsletter')
+                        }  
+                    })
+                    .catch(err => {
+                            console.log(`An error occured, please try again ${err}`);
+                    })
+                   
         } else {
             alert('Please select a course');
         }

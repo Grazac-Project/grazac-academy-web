@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import axios from 'axios';
 
 const UndergraduateForm = () => {
     const [ firstname, setFirstName ] = useState('');
@@ -81,29 +82,28 @@ const UndergraduateForm = () => {
                         document.querySelector(".form-info").textContent = "Something went wrong, please try again";
                         document.querySelector("#submit-btn").removeAttribute('disabled');
                    })
-                   fetch('http://emails.grazac.com.ng/newsletter/subscribe', {
-                        method: 'POST',
+                   let formData = new FormData();
+
+                    formData.append('name', firstname);
+                    formData.append('email', email);
+                    axios.post('http://emails.grazac.com.ng/newsletter/subscribe', formData, {
                         headers: {
                         'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            name:firstname,
-                            email:email
-                        })
+                        }
                     })
-                    .then(resp => resp.json())
+                    .then(resp => resp.data)
                     .then(data => {
+                    console.log(data)
                         if(data.success === true){
                             console.log('Added to newsletter')
                         }else{
                             console.log('Not Added to newsletter')
-                        }
-                           
-                       
+                        }  
                     })
                     .catch(err => {
-                            console.log(err)  
+                            console.log(`An error occured, please try again ${err}`);
                     })
+                   
             } else {
                 alert('You must be available to for the undergraduate training');
             }

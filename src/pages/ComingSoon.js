@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { cn } from "../utils";
+import axios from "axios";
 
 const ComingSoon = () => {
   const { name } = useParams();
@@ -17,33 +18,34 @@ const ComingSoon = () => {
     console.log(email);
     document.querySelector("#subscribe-btn").setAttribute('disabled', 'disabled');
     document.querySelector("#subscribe-btn").textContent='Please Wait..';
-    fetch('http://emails.grazac.com.ng/newsletter/subscribe', {
-        method: 'POST',
-        CORS:'no-cors',
+    
+    let formData = new FormData();
+
+    formData.append('name', 'Subscriber');
+    formData.append('email', email);
+    axios.post('http://emails.grazac.com.ng/newsletter/subscribe', formData, {
         headers: {
         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name:"Subscriber",
-            email:email
-        })
+        }
     })
-    .then(resp => resp.json())
+    .then(resp => resp.data)
     .then(data => {
+      console.log(data)
         if(data.success === true){
           document.querySelector("#subscribe-btn").removeAttribute('disabled');
           document.querySelector("#subscribe-btn").textContent='Subscribe';
-          console.log('Added to newsletter')
+          alert('You have successfully subscribed');
+          console.log(data)
         }else{
-            alert('An error occured, please try again');
             document.querySelector("#subscribe-btn").removeAttribute('disabled');
             document.querySelector("#subscribe-btn").textContent='Subscribe';
+            alert(data.msg);
         }
             
         
     })
     .catch(err => {
-            alert('An error occured, please try again');
+            alert(`An error occured, please try again ${err}`);
             document.querySelector("#subscribe-btn").removeAttribute('disabled');
             document.querySelector("#subscribe-btn").textContent='Subscribe';
     })
