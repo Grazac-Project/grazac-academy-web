@@ -121,10 +121,6 @@ const UndergraduateCoursePayment = () => {
                           </div>
                       </div>
                       <div>
-                          <label>Select your institution  <span>*</span></label><br/>
-                          <input className="input" type="text" readOnly value={fetched.institution}/>
-                      </div>
-                      <div>
                           <label>Kindly choose your preferred course  <span>*</span></label><br/>
                           <input className="input" type="text" readOnly value={fetched.course}/>
                       </div>

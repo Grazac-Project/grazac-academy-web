@@ -116,7 +116,7 @@ const GraduateForm = () => {
                             <p>We are bridging the gap between unemployment and entry-level jobs in the technology industry.</p>
                         </div>
                     </div>
-                    <div className="container">
+                    <div className="container" ref={formInfo}>
                         <div className="form">
                             <div className="form-info">Note: Fields with <span>*</span> are required</div>
                             <div className="form-flexdiv">
