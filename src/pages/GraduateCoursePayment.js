@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 const UndergraduateCoursePayment = () => {
   const { id } = useParams();
   const [payment, setPayment] = useState(true);
+  const [ plan, setPlan] = useState('');
   const [fetched, setFetched] = useState({
     firstname: '',
     lastname: '',
@@ -24,7 +25,7 @@ const UndergraduateCoursePayment = () => {
       if(data.data.tx_ref.length) {
         document.querySelector(".form-info").textContent = "You have completed your registration";
         setPayment(false);
-      } 
+      }
     })
     .catch(err => {
       document.querySelector(".form-info").textContent = "Something went wrong, refreshing...";
@@ -36,7 +37,7 @@ const UndergraduateCoursePayment = () => {
   const config = {
     public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
     tx_ref: Date.now(),
-    amount: fetched.tuition,
+    amount: plan === 'full' ? fetched.tuition : (fetched.tuition/2),
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
@@ -68,7 +69,8 @@ const UndergraduateCoursePayment = () => {
                     email: fetched.email,
                     course: fetched.course,
                     tx_ref: response.tx_ref,
-                    id: id
+                    id: id,
+                    plan: plan
                   })
                 })
                 .then(resp => resp.json())
@@ -121,10 +123,6 @@ const UndergraduateCoursePayment = () => {
                           </div>
                       </div>
                       <div>
-                          <label>Select your institution  <span>*</span></label><br/>
-                          <input className="input" type="text" readOnly value={fetched.institution}/>
-                      </div>
-                      <div>
                           <label>Kindly choose your preferred course  <span>*</span></label><br/>
                           <input className="input" type="text" readOnly value={fetched.course}/>
                       </div>
@@ -133,6 +131,29 @@ const UndergraduateCoursePayment = () => {
                           <p className="show-amount">
                               ₦{ new Intl.NumberFormat().format(fetched.tuition) }
                           </p>
+                      </div>
+
+                      <div>
+                          <label>Select payment plan</label><br/>
+                          <label><input
+                              type="radio"
+                              className="radio-input"
+                              id="full-time"
+                              name="plan"
+                              value="full"
+                              checked={plan === "full"}
+                              onChange={(e) => setPlan(e.target.value)}
+                          /> Full</label>
+                          <label><input
+                              type="radio"
+                              className="radio-input"
+                              id="part-time"
+                              name="plan"
+                              value="half"
+                              checked={plan === "half"}
+                              onChange={(e) => setPlan(e.target.value)}
+                              style={{marginLeft:'30px'}}
+                          /> 50% Upfront</label>
                       </div>
                      
                       <div className="form-privacy" >

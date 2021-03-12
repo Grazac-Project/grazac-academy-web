@@ -95,17 +95,19 @@ const CourseDetail = (props) => {
                 <div className="course_purple">
                     <div className="course_purple_txt">
                         <p>Pricing</p>
-                        <h1>{course.percent_off}%</h1>
+                        <h1>100%</h1>
                         <p>Discount Available</p>
                     </div>
                     <div className="course_purple-main">
                         <div className="course_purple-main-boxes grad-box">
                             <h4>Tuition</h4>
-                            <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
+                            <h2>
+                                FREE
+                            </h2>
                         </div>
                         <div className="course_purple-main-boxes grad-box">
-                            <h4>Installmental Payment Is Not Allowed</h4>
-                            <h2>100% <br/><span>Full Payment Upfront</span></h2>
+                            <h4>Note</h4>
+                            <p><span>You are required to pay a sum of ₦15,550 for your certificate and to ensure we secure a befitting environment to aid your learning. </span></p>
                         </div>
                     </div>
                     <div className="course_purple-btn">

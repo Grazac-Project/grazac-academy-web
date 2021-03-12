@@ -111,7 +111,7 @@ const Landing = () => {
 
             <div className="landing__card landing__card--2">
               <img src={Card2} alt="illustration" />
-              <h3><span>Undergraduate </span><br />Accelerator Plan</h3>
+              <h3><span>Undergraduate </span><br />Accelerator Plan (FREE)</h3>
               <p>Set the pace for a bright future as an undergraduate by acquiring technology skills now.</p>
               <div className="landing__btn">
                 <PrimaryBtn link="/undergraduate-accelerator-plan">Learn More</PrimaryBtn>
