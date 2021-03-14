@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import PrimaryBtn from "../components/PrimaryBtn";
+import InfoModal from "../components/InfoModal";
 
 import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 import Adedamola from "../images/testimonial/adedamola.jpeg";
@@ -26,6 +27,8 @@ import Card2 from "../images/svg/card2.svg"
 const Landing = () => {
   // const [email, setEmail] = useState("");
   const [step, setStep] = useState(0);
+  const [showModal, setShowModal] = useState(true);
+
 
   useEffect(() => {
     document.title = 'Welcome to Grazac Academy';
@@ -60,6 +63,7 @@ const Landing = () => {
     <div className="landing">
       <div className="landing__header">
         <Navbar />
+        <InfoModal/>
         <img src={Object} className="bg-img"/>
         <div style={{height: 10}}></div>
 

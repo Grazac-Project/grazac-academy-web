@@ -12,13 +12,20 @@ const GraduateForm = () => {
     const [availability, setAvailability] = useState('');
     const [amount, setAmount] = useState('');
     const [course, setCourse] = useState('');
+    const [paymentPlan, setPaymentPlan] = useState('');
     const [ message, setMessage ] = useState('');
     const [fetchCourses, setFetched] = useState([]);
     const formInfo = useRef();
+    const [showPayment, setShowPayment] = useState(true);
 
     useEffect(() => {
         document.title = 'Join our Graduate Track - Grazac Academy';
         window.scrollTo(0,0);
+        const method = window.location.search.substring(9);
+        if (method){
+            setPaymentPlan(method);
+            setShowPayment(false);
+        }
         fetch('https://grazacacademy.com/courses/graduate')
             .then(resp => resp.json())
             .then(resp => {
@@ -34,6 +41,10 @@ const GraduateForm = () => {
         setCourse(e.target.value)
         var rc = e.target.options[e.target.selectedIndex].dataset.index;
         setAmount( fetchCourses[rc].discounted_tuition );
+    }
+
+    const choosePlan = (e) => {
+        setPaymentPlan(e.target.value)
     }
 
     const onSubmit = () => {
@@ -172,6 +183,17 @@ const GraduateForm = () => {
                                     }
                                 </select>
                             </div>
+                            { showPayment &&
+                            <div>
+                                <label>Kindly choose your preferred payment plan  <span>*</span></label><br/>
+                                <select className="input" onChange={choosePlan}>
+                                    <option>---Choose Plan---</option>
+                                    <option>Full Payment</option>
+                                    <option>Installmental Payment</option>
+                                    <option>Income Split Agreement</option>
+                                </select>
+                            </div>
+                            }
                             <div>
                                 <label>Amount</label><br/>
                                 <p className="show-amount">
