@@ -99,14 +99,24 @@ const CourseDetail = (props) => {
                         <p>Discount Available</p>
                     </div>
                     <div className="course_purple-main">
-                        <div className="course_purple-main-boxes grad-box">
-                            <h4>Tuition</h4>
-                            <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
-                        </div>
-                        <div className="course_purple-main-boxes grad-box">
-                            <h4>Installmental Payment Is Allowed</h4>
-                            <h2>50% <span>Upfront</span></h2>
-                        </div>
+                        <Link to="/graduate-form?payment=fulltime">
+                            <div className="course_purple-main-boxes grad-box">
+                                <h4>Tuition</h4>
+                                <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦150,000{/*new Intl.NumberFormat().format(course.discounted_tuition)*/}</h2>
+                            </div>
+                        </Link>
+                        <Link to="/graduate-form?payment=installment">
+                            <div className="course_purple-main-boxes grad-box">
+                                <h4>Installmental Payment Is Allowed</h4>
+                                <h2>50% <span>Upfront</span></h2>
+                            </div>
+                        </Link>
+                        <Link to="/graduate-form?payment=split">
+                            <div className="course_purple-main-boxes grad-box">
+                                <h4>Income Split Agreement</h4>
+                                <h2>35% <span>Upfront</span></h2>
+                            </div>
+                        </Link>
                     </div>
                     <div className="course_purple-btn">
                         <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>

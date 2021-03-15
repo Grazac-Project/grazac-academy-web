@@ -642,6 +642,62 @@ html {
   color: #773dd3;
 }
 
+.infomodal {
+  background-color: #FEF4BF;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+}
+
+.infomodal_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 20px;
+}
+
+.infomodal_content img {
+  margin: 5px 10px;
+}
+
+.infomodal_content p {
+  margin: 5px 10px 0 20px;
+  font-size: 16px;
+}
+
+@media (max-width: 450px) {
+  .infomodal_content p {
+    margin: 5px 10px 0 10px;
+  }
+}
+
+.infomodal_content button {
+  background: #773dd3;
+  color: white;
+  margin: 0 40px 0 0;
+  padding: 4px 10px;
+  border: 1px solid #773dd3;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .infomodal_content button {
+    margin: 0 10px 0 0;
+  }
+}
+
+@media (max-width: 426px) {
+  .infomodal_content button {
+    margin: 10px 10px 0 0;
+  }
+}
+
 .loader {
   left: 50%;
   position: absolute;
