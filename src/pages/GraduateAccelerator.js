@@ -13,7 +13,7 @@ const GraduateAccelerator = () => {
     React.useEffect(() => {
         document.title = 'Graduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
-        fetch('https://grazacacademy.com/courses/graduate')
+        fetch('https://grazacacademy.com/graduate/courses')
             .then(resp => resp.json())
             .then(resp => {
                 setCourses(resp.data);

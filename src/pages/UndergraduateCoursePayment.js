@@ -11,7 +11,7 @@ const UndergraduateCoursePayment = () => {
 
   useEffect(() => {
     document.title = 'Payment - Grazac Academy'
-    fetch(`https://grazacacademy.com/undergraduate/details/${id}`)
+    fetch(`https://grazacacademy.com/undergraduate/registration/details/${id}`)
     .then(resp => resp.json())
     .then(data => {
       setFetched(data.data)
@@ -52,7 +52,7 @@ const UndergraduateCoursePayment = () => {
       handleFlutterPayment({
         callback: (response) => {
             if (response.status === 'successful') {
-              fetch("https://grazacacademy.com/undergraduate/update", {
+              fetch("https://grazacacademy.com/undergraduate/registration/update", {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
