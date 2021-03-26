@@ -650,7 +650,11 @@ html {
   right: 0px;
   z-index: 10000;
 }
-
+@media (max-width: 575px) {
+  .infomodal {
+    display: none;
+  }
+}
 .infomodal_content {
   display: -webkit-box;
   display: -ms-flexbox;

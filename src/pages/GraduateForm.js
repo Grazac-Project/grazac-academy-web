@@ -26,7 +26,7 @@ const GraduateForm = () => {
             setPaymentPlan(method);
             setShowPayment(false);
         }
-        fetch('https://grazacacademy.com/courses/graduate')
+        fetch('https://grazacacademy.com/graduate/courses')
             .then(resp => resp.json())
             .then(resp => {
                 setFetched(resp.data);
@@ -93,7 +93,7 @@ const GraduateForm = () => {
 
                     formData.append('name', firstname);
                     formData.append('email', email);
-                    axios.post('http://emails.grazac.com.ng/newsletter/subscribe', formData, {
+                    axios.post('http://grazac.com.ng/newsletter/subscribe', formData, {
                         headers: {
                         'Content-Type': 'application/json'
                         }

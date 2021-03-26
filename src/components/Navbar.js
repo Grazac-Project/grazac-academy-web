@@ -4,22 +4,30 @@ import NavItem from "./NavItem";
 import logo from "../images/svg/grazac-logo.svg";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({top}) => {
   const [fixed, setFixed] = useState(false);
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
   const nav = useRef(null);
 
   useEffect(() => {
-    if (nav.current && window.pageYOffset > nav.current.offsetTop)
+    /*if(top) {
+      let h = document.querySelector('.infomodal').offsetHeight;
+      console.log(h);
+      document.querySelector('nav.nav').style.marginTop = h+'px';
+    }*/
+    if (nav.current && window.pageYOffset > nav.current.offsetTop) {
       setFixed(true);
-    else setFixed(false);
+    } else {
+      setFixed(false);
+    }
     window.addEventListener("scroll", () => {
       if (nav.current && window.pageYOffset > nav.current.offsetTop)
         setFixed(true);
       else setFixed(false);
     });
-  });
+
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();

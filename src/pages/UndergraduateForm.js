@@ -1,7 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import axios from 'axios';
 
 const UndergraduateForm = () => {
@@ -86,7 +85,7 @@ const UndergraduateForm = () => {
 
                     formData.append('name', firstname);
                     formData.append('email', email);
-                    axios.post('http://emails.grazac.com.ng/newsletter/subscribe', formData, {
+                    axios.post('https://grazac.com.ng/newsletter/subscribe', formData, {
                         headers: {
                         'Content-Type': 'application/json'
                         }

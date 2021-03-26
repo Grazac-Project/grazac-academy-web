@@ -16,7 +16,7 @@ const CourseDetail = (props) => {
         document.title = 'Course Details - Grazac Academy';
         window.scrollTo(0,0);
         const slug = props.location.search.substring(8);
-        fetch(`https://grazacacademy.com/courses/graduate/${slug}`)
+        fetch(`https://grazacacademy.com/graduate/course/details/${slug}`)
             .then(resp => resp.json())
             .then(resp => {
                 setCourse(resp.data);
@@ -94,27 +94,33 @@ const CourseDetail = (props) => {
                 <MOT />
                 <div className="course_purple">
                     <div className="course_purple_txt">
-                        <p>Pricing</p>
+                        <p>Our Flexible Payment Plans</p>
                         <h1>{course.percent_off}%</h1>
                         <p>Discount Available</p>
                     </div>
                     <div className="course_purple-main">
                         <Link to="/graduate-form?payment=fulltime">
                             <div className="course_purple-main-boxes grad-box">
-                                <h4>Tuition</h4>
-                                <h2><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span><br/>₦150,000{/*new Intl.NumberFormat().format(course.discounted_tuition)*/}</h2>
+                                <h4>Full Package</h4>
+                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
+                                <h2>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
+                                <p>This is a one-off payment. You won't be required to pay any amount again till the end of your training.</p>
                             </div>
                         </Link>
                         <Link to="/graduate-form?payment=installment">
                             <div className="course_purple-main-boxes grad-box">
-                                <h4>Installmental Payment Is Allowed</h4>
-                                <h2>50% <span>Upfront</span></h2>
+                                <h4>Installment Plan</h4>
+                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
+                                <h2>₦{new Intl.NumberFormat().format(40000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
+                                <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
                             </div>
                         </Link>
-                        <Link to="/graduate-form?payment=split">
+                        <Link to="/graduate-form?payment=income-split">
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Income Split Agreement</h4>
-                                <h2>35% <span>Upfront</span></h2>
+                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
+                                <h2>₦{new Intl.NumberFormat().format(50000)} <span style={{fontSize: '14px'}}>upfront + 15% split income.</span></h2>
+                                <p>After the training, you get a job placement and you pay us 15% of your salary for a period of 12months.</p>
                             </div>
                         </Link>
                     </div>

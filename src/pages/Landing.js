@@ -61,9 +61,9 @@ const Landing = () => {
 
   return(
     <div className="landing">
+      <InfoModal/>
       <div className="landing__header">
-        <Navbar />
-        <InfoModal/>
+        <Navbar top={true} />
         <img src={Object} className="bg-img"/>
         <div style={{height: 10}}></div>
 

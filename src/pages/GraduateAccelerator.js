@@ -13,7 +13,7 @@ const GraduateAccelerator = () => {
     React.useEffect(() => {
         document.title = 'Graduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
-        fetch('https://grazacacademy.com/courses/graduate')
+        fetch('https://grazacacademy.com/graduate/courses')
             .then(resp => resp.json())
             .then(resp => {
                 setCourses(resp.data);
@@ -116,18 +116,18 @@ const GraduateAccelerator = () => {
                             <div className="gga_container">
                                 {courses.length ?
                                     courses.map((item,index) => (
-                                    <div className="boxes33" key={index}>
+                                    <a href={`/course-detail-graduate?course=${item.slug}`} className="boxes33" key={index}>
                                         <div className="gua_cardview">
                                             <div className="gua_cardview-box">
                                                 <img src={item.thumb} alt="course-desc" />
                                             </div>
                                             <div className="gua_cardview-text">
-                                                <h4>{item.name}</h4>
+                                                <h4 style={{color: 'rgb(51, 51, 51)'}}>{item.name}</h4>
                                                 <p>{item.description}</p>
                                                 <Link to={"/course-detail-graduate?course="+item.slug}><a>Learn More</a></Link>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                     )) :
                                     <div>
                                         <img src={loader} alt="loader" className="loader" />

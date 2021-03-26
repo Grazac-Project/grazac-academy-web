@@ -11,7 +11,7 @@ const InfoModal = () => {
             <div className="infomodal">
                 <div className="infomodal_content">
                     <img src={badge} alt="" />
-                    <p>Graduate Accelerator Track is live</p>
+                    <p>Grazac Graduate Accelerator Program is now open for enrollment.</p>
                     <Link to="/graduate-accelerator-plan"><button >Enroll</button></Link>
                     <img src={ex} alt="" onClick={()=>setShowModal(false)} style={{cursor:'pointer'}} />
                 </div>
