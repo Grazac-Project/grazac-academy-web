@@ -6,9 +6,10 @@ import { useParams } from "react-router-dom";
 
 const UndergraduateCoursePayment = () => {
   const { id } = useParams();
-  const [payment, setPayment] = useState(true);
-  const [ plan, setPlan] = useState('');
-  const [fetched, setFetched] = useState({
+  const [ payment, setPayment ] = useState(true);
+  const [ plan, setPlan ] = useState('');
+  const [ amount, setAmount ] = useState(150000);
+  const [ fetched, setFetched ] = useState({
     firstname: '',
     lastname: '',
     email: '',
@@ -34,10 +35,25 @@ const UndergraduateCoursePayment = () => {
     })
   }, []);
 
+  useEffect(_ => {
+    if(plan === 'full') {
+      setAmount(150000);
+      setPayment(true);
+    } else if(plan === 'installment') {
+      setAmount(40000);
+      setPayment(true);
+    } else if(plan === 'income-split') {
+      setAmount(50000);
+      setPayment(true);
+    } else {
+      setPayment(false);
+    }
+  }, [plan])
+
   const config = {
     public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
     tx_ref: Date.now(),
-    amount: plan === 'full' ? fetched.tuition : (fetched.tuition/2),
+    amount: amount,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
@@ -84,9 +100,9 @@ const UndergraduateCoursePayment = () => {
         },
         onClose: () => {},
       });
-  } else {
-    alert('You have completed your registration');
-  }
+    } else {
+      alert('You have completed your registration');
+    }
   }
 
   return (
@@ -135,7 +151,7 @@ const UndergraduateCoursePayment = () => {
 
                       <div>
                           <label>Select payment plan</label><br/>
-                          <label><input
+                          <label style={{marginRight:'30px'}}><input
                               type="radio"
                               className="radio-input"
                               id="full-time"
@@ -143,17 +159,26 @@ const UndergraduateCoursePayment = () => {
                               value="full"
                               checked={plan === "full"}
                               onChange={(e) => setPlan(e.target.value)}
-                          /> Full</label>
+                              style={{marginRight:'5px'}}
+                          /> Full (One-Off Payment)</label>
                           <label><input
                               type="radio"
                               className="radio-input"
                               id="part-time"
                               name="plan"
-                              value="half"
-                              checked={plan === "half"}
+                              value="installment"
+                              checked={plan === "installment"}
                               onChange={(e) => setPlan(e.target.value)}
-                              style={{marginLeft:'30px'}}
-                          /> 50% Upfront</label>
+                          /> ₦40,000 * 4 Installment Payment</label>
+                          <label><input
+                              type="radio"
+                              className="radio-input"
+                              id="part-time"
+                              name="plan"
+                              value="income-split"
+                              checked={plan === "income-split"}
+                              onChange={(e) => setPlan(e.target.value)}
+                          /> ₦50,000 upfront + 15% Split Income</label>
                       </div>
                      
                       <div className="form-privacy" >

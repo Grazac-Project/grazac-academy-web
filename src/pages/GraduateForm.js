@@ -129,35 +129,37 @@ const GraduateForm = () => {
                     </div>
                     <div className="container" ref={formInfo}>
                         <div className="form">
+                        <form onSubmit={onSubmit}>
                             <div className="form-info">Note: Fields with <span>*</span> are required</div>
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1">
                                     <label>First Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} required/>
+                                    <input className="input" type="text" placeholder="ex. John" value={firstname} onChange={e => setFirstName(e.target.value)} required="required" />
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Last Name  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)} required  />
+                                    <input className="input" type="text" placeholder="ex. Doe" value={lastname} onChange={e => setLastName(e.target.value)} required="required"  />
                                 </div>
                             </div>
                             <div className="form-flexdiv">
                                 <div className="form-flexdiv-1" >
                                     <label>Mobile Number  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} required />
+                                    <input className="input" type="text" placeholder="ex. 08133333333" value={phone} onChange={e => setPhone(e.target.value)} required="required" />
                                 </div>
                                 <div className="form-flexdiv-2">
                                     <label>Email  <span>*</span></label>
-                                    <input className="input" type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)}  required />
+                                    <input className="input" type="text" placeholder="ex. john@gmail.com" value={email} onChange={e => setEmail(e.target.value)} required="required" />
                                 </div>
                             </div>
                             <div>
-                                <label>Our classes will be on Monday, Wednesdays and Fridays, will you be available? </label><br/>
+                                <label>Our classes will be on Monday, Wednesdays and Fridays, will you be available? <span>*</span></label><br/>
                                 <label><input
                                     type="radio"
                                     className="radio-input"
                                     id="yes"
                                     name="availability"
                                     value="1"
+                                    required="required"
                                     checked={availability === "1"}
                                     onChange={(e) => setAvailability(e.target.value)}
                                 />Yes</label>
@@ -167,6 +169,7 @@ const GraduateForm = () => {
                                     id="no"
                                     name="availability"
                                     value="0"
+                                    required="required"
                                     checked={availability === "0"}
                                     onChange={(e) => setAvailability(e.target.value)}
                                     style={{marginLeft:'30px'}}
@@ -174,8 +177,8 @@ const GraduateForm = () => {
                             </div>
                             <div>
                                 <label>Kindly choose your preferred course  <span>*</span></label><br/>
-                                <select className="input" onChange={courseChange}>
-                                    <option>---Choose course---</option>
+                                <select className="input" onChange={courseChange} required="required">
+                                    <option value="">---Choose course---</option>
                                     {
                                         fetchCourses.map((item,index) => (
                                             <option key={index} data-index={index}>{item.name}</option>
@@ -186,8 +189,8 @@ const GraduateForm = () => {
                             { showPayment &&
                             <div>
                                 <label>Kindly choose your preferred payment plan  <span>*</span></label><br/>
-                                <select className="input" onChange={choosePlan}>
-                                    <option>---Choose Plan---</option>
+                                <select className="input" onChange={choosePlan} required="required">
+                                    <option value="">---Choose Plan---</option>
                                     <option>Full Payment</option>
                                     <option>Installmental Payment</option>
                                     <option>Income Split Agreement</option>
@@ -212,6 +215,7 @@ const GraduateForm = () => {
                                     value="full-time"
                                     checked={plan === "full-time"}
                                     onChange={(e) => setPlan(e.target.value)}
+                                    required="required"
                                 />Full time</label>
                                 <label><input
                                     type="radio"
@@ -222,15 +226,17 @@ const GraduateForm = () => {
                                     checked={plan === "part-time"}
                                     onChange={(e) => setPlan(e.target.value)}
                                     style={{marginLeft:'30px'}}
+                                    required="required"
                                 />Part time</label>
                             </div>
                             <div>
                                 <label>What do you expect at the end of this training?  <span>*</span></label>
-                                <textarea  type="text" placeholder="Say something ..." value={message} onChange={e => setMessage(e.target.value)}  />
+                                <textarea  type="text" placeholder="Say something ..." value={message} onChange={e => setMessage(e.target.value)} required="required" />
                             </div>
                             <div className="form-privacy" >
-                                <a className="download-brochure" onClick={onSubmit} id="submit-btn">Register</a>
+                                <button className="download-brochure" type="submit" id="submit-btn">Register</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
