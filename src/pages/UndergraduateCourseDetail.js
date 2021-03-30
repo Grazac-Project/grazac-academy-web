@@ -47,7 +47,7 @@ const CourseDetail = (props) => {
                                             </p>
                                             <div className="contact_hero-privacy" >
                                                 <a href={course.brochure} target="_blank" className="download-brochure">Download Brochure</a>
-                                                <Link to="/undergraduate-form"><button>Enroll now</button></Link>
+                                                <Link><button>Enroll now</button></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@ const CourseDetail = (props) => {
                         </div>
                     </div>
                     <div className="course_purple-btn">
-                        <PrimaryBtn link="/undergraduate-form">Enroll Now</PrimaryBtn>
+                        <PrimaryBtn>Enroll Now</PrimaryBtn>
                         <a href="tel:+234806 836 5951"><p>Talk to course rep</p></a>
                     </div>
                 </div>
