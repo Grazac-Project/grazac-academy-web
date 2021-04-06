@@ -47,7 +47,8 @@ const GraduateForm = () => {
         setPaymentPlan(e.target.value)
     }
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault();
         if(amount){
             window.scroll(0, formInfo.current.offsetTop);
             document.querySelector(".form-info").textContent = "Submitting, please wait..."
