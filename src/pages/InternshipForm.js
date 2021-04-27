@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import axios from "axios";
 
 const InternshipForm = () => {
   const [firstname, setFirstName] = useState("");
@@ -66,6 +65,7 @@ const InternshipForm = () => {
           package: "Full Time",
           expectation: message,
           tuition: amount,
+          institution: "placeholder",
         }),
       })
         .then((resp) => resp.json())
@@ -81,6 +81,7 @@ const InternshipForm = () => {
             setEmail("");
             setCourse("");
           } else {
+            console.log(data.msg);
             document.querySelector(".form-info").textContent = data.msg;
             document.querySelector("#submit-btn").removeAttribute("disabled");
           }
@@ -89,28 +90,6 @@ const InternshipForm = () => {
           document.querySelector(".form-info").textContent =
             "Something went wrong, please try again";
           document.querySelector("#submit-btn").removeAttribute("disabled");
-        });
-      let formData = new FormData();
-
-      formData.append("name", firstname);
-      formData.append("email", email);
-      axios
-        .post("http://grazac.com.ng/newsletter/subscribe", formData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((resp) => resp.data)
-        .then((data) => {
-          console.log(data);
-          if (data.success === true) {
-            console.log("Added to newsletter");
-          } else {
-            console.log("Not Added to newsletter");
-          }
-        })
-        .catch((err) => {
-          console.log(`An error occured, please try again ${err}`);
         });
     } else {
       alert("Please select a course");
@@ -239,10 +218,12 @@ const InternshipForm = () => {
                   >
                     <option value="">---Choose course---</option>
                     {fetchCourses.map((item, index) => {
-                      if (index === 0 || index === 2 || index === 5) {
+                      if (index === 0 || index === 2 || index === 3) {
                         return (
                           <option key={index} data-index={index}>
-                            {item.name}
+                            {index === 3
+                              ? `${item.name} / Content Creation`
+                              : item.name}
                           </option>
                         );
                       } else {
