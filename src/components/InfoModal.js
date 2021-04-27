@@ -16,7 +16,7 @@ const InfoModal = () => {
               Grazac Graduate Accelerator Program is closed for enrollment., You
               can apply for internship positions
             </p>
-            <Link to="/graduate-accelerator-plan">
+            <Link to="/internship">
               <button>Enroll</button>
             </Link>
             <img

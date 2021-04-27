@@ -177,7 +177,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="landing__intern--btn">
-            <PrimaryBtn link="">Enroll Now</PrimaryBtn>
+            <PrimaryBtn link="/internship">Enroll Now</PrimaryBtn>
           </div>
         </div>
       </div>
