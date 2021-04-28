@@ -65,7 +65,7 @@ const InternshipForm = () => {
           package: "Full Time",
           expectation: message,
           tuition: amount,
-          institution: "placeholder",
+          institution: "internships",
         }),
       })
         .then((resp) => resp.json())
@@ -81,7 +81,6 @@ const InternshipForm = () => {
             setEmail("");
             setCourse("");
           } else {
-            console.log(data.msg);
             document.querySelector(".form-info").textContent = data.msg;
             document.querySelector("#submit-btn").removeAttribute("disabled");
           }
@@ -156,6 +155,8 @@ const InternshipForm = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       required="required"
+                      pattern=".{11}"
+                      title="Phone number is invalid"
                     />
                   </div>
                   <div className="form-flexdiv-2">
