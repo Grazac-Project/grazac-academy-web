@@ -32,7 +32,7 @@ const InternshipForm = () => {
   }, []);
 
   const config = {
-    public_key: 'FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X',
+    public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
     tx_ref: Date.now(),
     amount: amount,
     currency: 'NGN',
@@ -54,7 +54,9 @@ const InternshipForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if ( availability === "1" ) {
-      window.scroll(0, formInfo.current.offsetTop);
+      var elmnt = document.getElementById("form_top");
+      elmnt.scrollIntoView();
+      //window.scroll(0, formInfo.current.offsetTop);
       handleFlutterPayment({
         callback: (response) => {
             if (response.status === 'successful') {
@@ -117,7 +119,7 @@ const InternshipForm = () => {
       <Navbar />
       <div>
         <div className="contact_layer">
-          <div className="form_top">
+          <div className="form_top" id="form_top">
             <div>
               <h1>Grazac Internships.</h1>
               <p>
@@ -225,30 +227,11 @@ const InternshipForm = () => {
                   </label>
                 </div>
                 <div>
-                  <label>
-                    Kindly choose your preferred course <span>*</span>
-                  </label>
+                  <label>Course</label>
                   <br />
-                  <select
-                    className="input"
-                    onChange={(e) => setCourse(e.target.value)}
-                    required="required"
-                  >
-                    <option value="">---Choose course---</option>
-                    {fetchCourses.map((item, index) => {
-                      if (index === 0 || index === 2 || index === 3) {
-                        return (
-                          <option key={index} data-index={index}>
-                            {index === 3
-                              ? `${item.name} / Content Creation`
-                              : item.name}
-                          </option>
-                        );
-                      } else {
-                        return null;
-                      }
-                    })}
-                  </select>
+                  <p className="show-amount">
+                    Website Development
+                  </p>
                 </div>
                 <div>
                   <label>Amount</label>
