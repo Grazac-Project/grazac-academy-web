@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -8,20 +9,15 @@ const InternshipForm = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [availability, setAvailability] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(40000);
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState("");
   const [fetchCourses, setFetched] = useState([]);
   const formInfo = useRef();
-  const [showPayment, setShowPayment] = useState(true);
 
   useEffect(() => {
-    document.title = "Join our Graduate Track - Grazac Academy";
+    document.title = "Internship Application - Grazac Academy";
     window.scrollTo(0, 0);
-    const method = window.location.search.substring(9);
-    if (method) {
-      setShowPayment(false);
-    }
     fetch("https://grazacacademy.com/graduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
@@ -35,63 +31,84 @@ const InternshipForm = () => {
       });
   }, []);
 
-  const courseChange = (e) => {
-    setCourse(e.target.value);
-    var rc = e.target.options[e.target.selectedIndex].dataset.index;
-    setAmount(fetchCourses[rc].discounted_tuition);
+  const config = {
+    public_key: 'FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X',
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: email,
+      phonenumber: phone,
+      name: firstname + " " + lastname,
+    },
+    customizations: {
+      title: 'Grazac Internship',
+      description: `Payment for ${course} at Grazac Internship`,
+      logo: 'https://grazac.com.ng/assets/images/favicon.png',
+    },
   };
+
+  const handleFlutterPayment = useFlutterwave(config);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (amount) {
+    if ( availability === "1" ) {
       window.scroll(0, formInfo.current.offsetTop);
-      document.querySelector(".form-info").textContent =
-        "Submitting, please wait...";
-      document
-        .querySelector("#submit-btn")
-        .setAttribute("disabled", "disabled");
-      fetch("https://grazacacademy.com/undergraduate/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      handleFlutterPayment({
+        callback: (response) => {
+            if (response.status === 'successful') {
+
+              document.querySelector(".form-info").textContent = "Submitting, please wait...";
+              document
+                .querySelector("#submit-btn")
+                .setAttribute("disabled", "disabled");
+              fetch("https://grazacacademy.com/undergraduate/intern", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  firstname: firstname,
+                  lastname: lastname,
+                  email: email,
+                  phone: phone,
+                  course: course,
+                  expectation: message,
+                  transaction_id: response.transaction_id
+                })
+              })
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data.success === true) {
+                  document.querySelector(".form-info").textContent = "Your registration was successful, kindly check your mailbox for further details";
+                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                  setFirstName("");
+                  setLastName("");
+                  setMessage("");
+                  setPhone("");
+                  setEmail("");
+                  setCourse("");
+                } else {
+                  document.querySelector(".form-info").textContent = data.msg;
+                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                }
+              })
+              .catch((err) => {
+                document.querySelector(".form-info").textContent = `Your payment was successful but something wrong while saving your details. 
+                Kindly mail us at hello@grazacacademy.com`;
+                document.querySelector("#submit-btn").removeAttribute("disabled");
+              })
+
+            };
+            closePaymentModal() // this will close the modal programmatically
         },
-        body: JSON.stringify({
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          phone: phone,
-          availability: availability,
-          course: course,
-          package: "Full Time",
-          expectation: message,
-          tuition: amount,
-          institution: "internships",
-        }),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          if (data.success === true) {
-            document.querySelector(".form-info").textContent =
-              "Your registration was successful, kindly check your mailbox for further details";
-            document.querySelector("#submit-btn").removeAttribute("disabled");
-            setFirstName("");
-            setLastName("");
-            setMessage("");
-            setPhone("");
-            setEmail("");
-            setCourse("");
-          } else {
-            document.querySelector(".form-info").textContent = data.msg;
-            document.querySelector("#submit-btn").removeAttribute("disabled");
-          }
-        })
-        .catch((err) => {
-          document.querySelector(".form-info").textContent =
-            "Something went wrong, please try again";
-          document.querySelector("#submit-btn").removeAttribute("disabled");
-        });
+        onClose: () => {
+
+        },
+      });
     } else {
-      alert("Please select a course");
+      alert("You have to be available to register");
     }
   };
 
@@ -165,8 +182,8 @@ const InternshipForm = () => {
                     </label>
                     <input
                       className="input"
-                      type="text"
-                      placeholder="ex. john@gmail.com"
+                      type="email"
+                      placeholder="ex. john@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required="required"
@@ -214,7 +231,7 @@ const InternshipForm = () => {
                   <br />
                   <select
                     className="input"
-                    onChange={courseChange}
+                    onChange={(e) => setCourse(e.target.value)}
                     required="required"
                   >
                     <option value="">---Choose course---</option>
@@ -233,21 +250,11 @@ const InternshipForm = () => {
                     })}
                   </select>
                 </div>
-                {showPayment && (
-                  <div>
-                    <label>
-                      Kindly choose your preferred payment plan <span>*</span>
-                    </label>
-                    <br />
-                    <input className="input" value="Full Payment" readOnly />
-                  </div>
-                )}
                 <div>
                   <label>Amount</label>
                   <br />
                   <p className="show-amount">
-                    ₦
-                    {amount ? new Intl.NumberFormat().format(amount) : "40,000"}
+                    ₦{new Intl.NumberFormat().format(amount)}
                   </p>
                 </div>
 
