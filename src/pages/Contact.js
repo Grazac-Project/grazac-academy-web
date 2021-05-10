@@ -8,7 +8,6 @@ import Facebook from "../images/svg/facebook.svg";
 import Instagram from "../images/svg/instagram.svg";
 import Twitter from "../images/svg/twitter.svg";
 import Youtube from "../images/svg/youtube.svg";
-import kamala from "../images/kamala.jpg";
 
 const Contact = () => {
 

@@ -651,6 +651,12 @@ html {
   z-index: 10000;
 }
 
+@media (max-width: 37.5em) {
+  .infomodal {
+    display: none;
+  }
+}
+
 .infomodal_content {
   display: -webkit-box;
   display: -ms-flexbox;

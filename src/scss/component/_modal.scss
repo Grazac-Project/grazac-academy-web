@@ -79,6 +79,10 @@
   right: 0px;
   z-index: 10000;
 
+  @include respond(phone) {
+    display: none;
+  }
+
   &_content {
     display: flex;
     justify-content: center;

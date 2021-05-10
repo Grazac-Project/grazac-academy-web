@@ -28,12 +28,12 @@ const UndergraduateCoursePayment = () => {
         setPayment(false);
       }
     })
-    .catch(err => {
+    .catch(_err => {
       document.querySelector(".form-info").textContent = "Something went wrong, refreshing...";
       window.location.reload();
       document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
     })
-  }, []);
+  }, [id]);
 
   useEffect(_ => {
     if(plan === 'full') {
@@ -182,7 +182,7 @@ const UndergraduateCoursePayment = () => {
                       </div>
                      
                       <div className="form-privacy" >
-                        <a className="download-brochure" onClick={onSubmit} id="form-btn">Pay Now</a>
+                        <a className="download-brochure" onClick={onSubmit} id="form-btn" href="#ed">Pay Now</a>
                       </div>
                   </div>
               </div>
