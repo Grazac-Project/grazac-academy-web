@@ -270,15 +270,30 @@ html {
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.nav__btn-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .nav__btn--text {
   background-color: #773dd3;
   padding: 1.5rem 2rem;
   color: #fff;
   border-radius: 5px;
+  margin-right: 20px;
 }
 
 .nav__btn--text--yellow {
   background-color: #e7a300;
+}
+
+.nav__btn--text1 {
+  background-color: transparent;
+  padding: 1.5rem 2rem;
+  color: #773dd3;
+  border-radius: 5px;
+  border: 2px solid #773dd3;
 }
 
 .nav__menu {

@@ -170,15 +170,28 @@
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     }
 
+    &-flex{
+      display: flex;
+    }
+
     &--text {
       background-color: $color-inspiring-purple;
       padding: 1.5rem 2rem;
       color: $color-white;
       border-radius: 5px;
+      margin-right: 20px;
 
       &--yellow {
         background-color: $color-creative-yellow;
       }
+    }
+
+    &--text1 {
+      background-color: transparent;
+      padding: 1.5rem 2rem;
+      color: $color-inspiring-purple;
+      border-radius: 5px;
+      border:2px solid $color-inspiring-purple;
     }
   }
 
