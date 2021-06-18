@@ -112,7 +112,7 @@ const Contact = () => {
                                 <p>We are here to help with any questions. </p>
                                 <p>Talk to our programme leads.</p>
                                 <div style={{display:'flex'}}>
-                                    <a href="tel:+2349061333395" ><div className="nav__btn--text">Book a Call</div></a>
+                                    <a href="tel:+2348068365951" ><div className="nav__btn--text">Book a Call</div></a>
                                 </div>
                             </div>
                             <div className="contact_campus-main-div boxes33">

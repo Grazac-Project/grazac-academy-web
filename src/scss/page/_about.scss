@@ -11,9 +11,9 @@
   }
 
   &__top {
-    margin-top: 13rem;
+    margin-top: 5rem;
     @include respond(phone) {
-      margin-top: 10rem;
+      margin-top: 7rem;
     }
     &--container {
       max-width: 1400px;

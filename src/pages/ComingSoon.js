@@ -54,8 +54,8 @@ const ComingSoon = () => {
 
   return (
     <div className="coming">
+      <Navbar />
       <div className="coming__hero">
-        <Navbar />
 
         <div className="coming__container">
           <div className="coming__container--left">

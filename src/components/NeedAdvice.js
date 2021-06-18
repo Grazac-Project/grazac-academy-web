@@ -17,7 +17,7 @@ const NeedAdvice = () => {
                         <p>Do you need further clarification?
                             Call <a href="tel:+2348068365951">+2348068365951</a> or Fill the contact form below
                         </p>
-                        <Link to="/contact"><button>Contact Us</button></Link>
+                        <a href="tel:+2348068365951"><button>Call us now</button></a>
                     </div>
                 </div>
             </div>

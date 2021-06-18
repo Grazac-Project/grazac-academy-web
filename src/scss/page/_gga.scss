@@ -48,6 +48,9 @@
     &-text {
       position: relative;
       height: calc(100vh - 80px);
+      @media (max-width:600px) {
+        height: 350px;
+      }
 
       &-b {
         position: absolute;
@@ -75,14 +78,30 @@
       }
     }
     &-image {
-      position: absolute;
-      width: 30%;
-      top: 25%;
-      left: 59%;
+      display: block;
+      margin: 70px auto 0;
+      width: 60%;
       @include respond(tab-land) {
         display: none;
       }
+      @media (max-width:600px) {
+        width: 100%;
+        display: block;
+      }
     }
+  }
+
+  &_flex{
+    @media (min-width: 900px) {
+      display: flex;
+      &-half1{
+        width: 50%;
+      }
+      &-half2{
+        width: 50%;
+      }
+    }
+    
   }
 
   &_container {

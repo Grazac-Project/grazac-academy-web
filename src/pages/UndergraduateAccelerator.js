@@ -29,9 +29,9 @@ const UndergraduateAccelerator = () => {
 
     return(
         <div>
+            <Navbar/>
             <div className="gua">
                 <div className="gua_hero">
-                        <Navbar/>
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">

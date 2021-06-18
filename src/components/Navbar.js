@@ -3,6 +3,7 @@ import { cn } from "../utils";
 import NavItem from "./NavItem";
 import logo from "../images/svg/grazac-logo.svg";
 import { Link } from "react-router-dom";
+import InfoModal from "../components/InfoModal";
 
 const Navbar = ({top}) => {
   const [fixed, setFixed] = useState(false);
@@ -26,7 +27,6 @@ const Navbar = ({top}) => {
         setFixed(true);
       else setFixed(false);
     });
-
   }, []);
 
   const handleClick = (e) => {
@@ -68,6 +68,11 @@ const Navbar = ({top}) => {
             <li className="nav__item">
               <a href="/#tracks">
                 <button onClick={() => setActive(false)}>Enroll Now</button>
+              </a>
+            </li>
+            <li className="nav__item" style={{marginTop:'30px'}}>
+              <a href="tel:+2348068365951">
+                <button onClick={() => setActive(false)}>Talk to us</button>
               </a>
             </li>
           </ul>
@@ -128,6 +133,11 @@ const Navbar = ({top}) => {
           <a href="/#tracks">
             <div className="nav__btn">
               <div className="nav__btn--text">Enroll Now</div>
+            </div>
+          </a>
+          <a href="tel:+2348068365951" style={{marginLeft:'20px'}}>
+            <div className="nav__btn">
+              <div className="nav__btn--text1">Talk to us</div>
             </div>
           </a>
         </ul>

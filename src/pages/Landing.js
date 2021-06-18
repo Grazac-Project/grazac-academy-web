@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {Accordion, Card} from 'react-bootstrap';
 // import { cn } from "../utils";
 import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import PrimaryBtn from "../components/PrimaryBtn";
-import InfoModal from "../components/InfoModal";
 
 import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 import Adedamola from "../images/testimonial/adedamola.jpeg";
@@ -15,6 +16,8 @@ import Video from "../images/landing-video2.mp4";
 import Object from "../images/svg/objects.svg";
 import poster from "../images/Grazac-website/IMG_8403.JPG";
 
+import badge from "../images/svg/badge.svg";
+import ex from "../images/svg/x-mark.svg";
 import Sponsor1 from "../images/svg/Apple.svg";
 import Sponsor2 from "../images/svg/AWS.svg";
 import Sponsor3 from "../images/svg/Flutterwave.svg";
@@ -25,12 +28,17 @@ import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
 
 const Landing = () => {
+  const [showModal, setShowModal] = useState(true);
   useEffect(() => {
     document.title = "Welcome to Grazac Academy";
     let mediaPlayer = document.querySelector("#video");
     mediaPlayer.controls = false;
     mediaPlayer.play();
-  });
+
+    //this gives the homepage spacing on top for the notification
+    var landingHeight = document.getElementsByClassName("landing")[0];
+    landingHeight.style.marginTop = `80px`;
+  },[]);
 
   const content = [
     {
@@ -56,9 +64,33 @@ const Landing = () => {
     },
   ];
 
+  const handleModal = () => {
+    setShowModal(false);
+    var landingHeight = document.getElementsByClassName("landing")[0];
+    landingHeight.style.marginTop = `0px`;
+  }
   return (
     <div className="landing">
-      <InfoModal />
+      {showModal && (
+        <div className="infomodal">
+          <div className="infomodal_content">
+            <img src={badge} alt="" className="infomodal_badge" />
+            <p>
+              Grazac Graduate Accelerator Program is closed for enrollment., You
+              can apply for internship positions
+            </p>
+            <Link to="/internship">
+              <button>Enroll</button>
+            </Link>
+            <img
+              src={ex}
+              alt=""
+              onClick={handleModal}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </div>
+      )}
       <div className="landing__header">
         <Navbar top={true} />
         <img src={Object} className="bg-img" alt="ccc" />
@@ -174,11 +206,20 @@ const Landing = () => {
                 a nice learning curve of digital skills, access to mentors you
                 can learn from, and little experience of the professional world.
               </p>
+              <div className="landing__btn--2">
+                {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
+                <a href="/#tracks">
+                  <div className="nav__btn nav__btn-flex ">
+                    <a className="nav__btn--text" href="tel:+2348068365951" style={{marginRight:'20px'}}>Call Us Now</a>
+                    <a href="https://wa.link/sjt0up" ><div className="nav__btn--text1">Chat With Us</div></a>
+                  </div>
+                </a>
+            </div>
             </div>
           </div>
-          <div className="landing__intern--btn">
+          {/* <div className="landing__intern--btn">
             <PrimaryBtn link="/internship">Enroll Now</PrimaryBtn>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -245,6 +286,47 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      
+      {/* FAQ section commented out till content is ready */}
+      {/* <div className="landing_faq">
+          <div className="container">
+            <h1>FAQs - Frequently Asked Questions:</h1>
+            <div>
+              <Accordion>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                    <div className="landing_faq-question">
+                      <h4>What is Grazac</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus elit, mollis eu tincidunt condimentum, consectetur eu quam. Nunc metus nisi, ultricies vel commodo ac, molestie eu lectus. Morbi accumsan nec ante quis tempus. Aliquam sodales tempus nunc, at posuere metus tempor at. In hac habitasse platea dictumst.</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr/>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="1">
+                    <div className="landing_faq-question">
+                      <h4>Do I need a personal laptop?</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="1">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus elit, mollis eu tincidunt condimentum, consectetur eu quam. Nunc metus nisi, ultricies vel commodo ac, molestie eu lectus. Morbi accumsan nec ante quis tempus. Aliquam sodales tempus nunc, at posuere metus tempor at. In hac habitasse platea dictumst.</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+              <hr/>
+            </div>
+          </div>
+      </div> */}
 
       <div className="landing__slider">
         <Slider autoplay arrows={false}>

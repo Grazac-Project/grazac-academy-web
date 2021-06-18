@@ -28,12 +28,12 @@ const GraduateAccelerator = () => {
 
   return (
     <div>
+    <Navbar />
       <div className="gga">
         <div className="gga_hero">
-          <Navbar />
           <div className="container">
-            <div className="row">
-              <div className="col-sm-6">
+            <div className="gga_flex">
+              <div className="gga_flex-half1">
                 <div className="gga_hero-text">
                   <div className="gga_hero-text-b">
                     <h1>Graduate Accelerator Plan</h1>
@@ -52,7 +52,7 @@ const GraduateAccelerator = () => {
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="gga_flex-half2">
                 <img
                   src={Graduates}
                   alt="Graduates"

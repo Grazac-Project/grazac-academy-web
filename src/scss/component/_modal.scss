@@ -80,13 +80,16 @@
   z-index: 10000;
 
   @include respond(phone) {
-    display: none;
+    //display: none;
   }
 
   &_content {
     display: flex;
     justify-content: center;
     margin: 20px 20px;
+    @include respond(phone) {
+      margin: 10px 15px;
+    }
 
     img {
       margin: 5px 10px;
@@ -112,6 +115,16 @@
       @media (max-width: 426px) {
         margin: 10px 10px 0 0;
       }
+      @include respond(phone) {
+        display: none;
+      }
+    
+    }
+  }
+
+  &_badge{
+    @include respond(phone) {
+      display: none;
     }
   }
 }

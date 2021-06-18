@@ -100,8 +100,8 @@ const Mode = () => {
               {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
               <a href="/#tracks">
                 <div className="nav__btn nav__btn-flex ">
-                  <div className="nav__btn--text">Enroll Now</div>
-                  <a href="tel:+2349061333395" ><div className="nav__btn--text1">Talk to us</div></a>
+                  <div className="nav__btn--text" style={{marginRight:'20px'}}>Enroll Now</div>
+                  <a href="tel:+2348068365951" ><div className="nav__btn--text1">Talk to us</div></a>
                 </div>
               </a>
             </div>

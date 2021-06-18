@@ -52,10 +52,7 @@ const AboutUs = () => {
 
   return (
     <div className="about">
-      <div className="about__nav">
-        <Navbar />
-      </div>
-
+      <Navbar />
       <div className="about__top">
         <div className="about__top--container">
           <div className="about__top--up">

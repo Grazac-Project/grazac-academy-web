@@ -8,7 +8,6 @@ const InfoModal = () => {
 
   return (
     <div>
-      {showModal && (
         <div className="infomodal">
           <div className="infomodal_content">
             <img src={badge} alt="" />
@@ -27,7 +26,6 @@ const InfoModal = () => {
             />
           </div>
         </div>
-      )}
     </div>
   );
 };
