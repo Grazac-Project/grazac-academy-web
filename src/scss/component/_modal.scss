@@ -101,6 +101,14 @@
         margin: 5px 10px 0 10px;
       }
     }
+    &-link{
+      font-size: 16px;
+      margin-left: 5px;
+      color:$color-inspiring-purple;
+      @media (min-width:600px) {
+        display: none;
+      }
+    }
     button {
       background: #773dd3;
       color: white;

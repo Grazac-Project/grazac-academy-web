@@ -76,11 +76,11 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Grazac Graduate Accelerator Program is closed for enrollment., You
-              can apply for internship positions
+              Grazac Graduate Accelerator Program enrollment is opening by June 25th. 
+              <a className="infomodal_content-link" href="https://grazacacademy.com/graduate-accelerator-plan">Learn more</a>
             </p>
-            <Link to="/internship">
-              <button>Enroll</button>
+            <Link to="/graduate-accelerator-plan">
+              <button>Learn more</button>
             </Link>
             <img
               src={ex}
@@ -196,15 +196,13 @@ const Landing = () => {
           <div className="landing__bottom--text landing__bottom--text-2">
             <div className="landing__intern--text">
               <h1>
-                Are you an undergraduate seeking to use your internship period
-                to acquire a digital skill?
+              Tech is Vast. Let's help you with directions.
               </h1>
               <p>
-                Grazac offers you the opportunity to arm yourself with digital
-                skills and tech tools that will make a ton of difference not
-                only in your job search but also in your future career. You get
-                a nice learning curve of digital skills, access to mentors you
-                can learn from, and little experience of the professional world.
+              Are you looking to step into the field of tech but don't know what to learn or how to begin? We can help you.
+              Tech is a broad field, and there are a lot of interesting pathways and directions you can venture into. You need all the clarity you can get so you can make informed decisions.
+
+              Consult us for free
               </p>
               <div className="landing__btn--2">
                 {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
