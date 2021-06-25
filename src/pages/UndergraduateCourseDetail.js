@@ -66,6 +66,12 @@ const CourseDetail = (props) => {
   return (
     <div>
       <Navbar />
+      {outline.length ? (<div></div>) : (
+        <div>
+          <div className="loading-blur"></div>
+          <img src={loader} alt="loader" className="loader-top" />
+        </div>
+      )}
       <div className="course">
         <div className="course_hero">
           <div className="container">
@@ -97,7 +103,9 @@ const CourseDetail = (props) => {
                 </div>
               </div>
             ) : (
-              <img src={loader} alt="loader" className="loader" />
+              <div>
+              {/*<img src={loader} alt="loader" className="loader" />*/}
+              </div>
             )}
           </div>
         </div>
@@ -127,7 +135,7 @@ const CourseDetail = (props) => {
                 ))
               ) : (
                 <div>
-                  <img src={loader} alt="loader" className="loader" />
+                  {/*<img src={loader} alt="loader" className="loader" />*/}
                 </div>
               )}
             </div>
@@ -149,7 +157,7 @@ const CourseDetail = (props) => {
               <h4>Note</h4>
               <p>
                 <span>
-                  You are required to pay a sum of ₦15,550 for your certificate
+                  You are required to pay a sum of ₦10,000 for your certificate
                   and to ensure we secure a befitting environment to aid your
                   learning.{" "}
                 </span>
@@ -158,7 +166,7 @@ const CourseDetail = (props) => {
           </div>
           <div className="course_purple-btn">
             <PrimaryBtn>Enroll Now</PrimaryBtn>
-            <a href="tel:+234806 836 5951">
+            <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}>
               <p>Talk to course rep</p>
             </a>
           </div>

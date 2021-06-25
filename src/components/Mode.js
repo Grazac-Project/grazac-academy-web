@@ -98,7 +98,7 @@ const Mode = () => {
             <p>You will gain insights into today’s digital skills and tools necessary for the future of work.</p>
             <div className="landing__btn--2">
               {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
-              <a href="/#tracks">
+              <a>
                 <div className="nav__btn nav__btn-flex ">
                   <div className="nav__btn--text" style={{marginRight:'20px'}}>Enroll Now</div>
                   <a href="tel:+2348068365951" ><div className="nav__btn--text1">Talk to us</div></a>

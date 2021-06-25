@@ -24,11 +24,23 @@ const GraduateAccelerator = () => {
         );
         window.location.reload();
       });
+    if(!courses.length){
+      console.log("dont scroll")
+      document.getElementsByClassName("gga").scroll = "no";
+document.body.style.overflow = 'hidden';
+document.height = window.innerHeight;
+    }
   }, []);
 
   return (
     <div>
     <Navbar />
+      {courses.length ? (<div></div>) : (
+        <div>
+          <div className="loading-blur"></div>
+          <img src={loader} alt="loader" className="loader-top" />
+        </div>
+      )}
       <div className="gga">
         <div className="gga_hero">
           <div className="container">
@@ -232,7 +244,7 @@ const GraduateAccelerator = () => {
                   ))
                 ) : (
                   <div>
-                    <img src={loader} alt="loader" className="loader" />
+                    {/* <img src={loader} alt="loader" className="loader" /> */}
                   </div>
                 )}
                 <div className="boxes33">

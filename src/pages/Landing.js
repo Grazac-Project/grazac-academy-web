@@ -209,10 +209,10 @@ const Landing = () => {
                 <a href="/#tracks">
                   <div className="nav__btn nav__btn-flex ">
                     <a className="nav__btn--text" href="tel:+2348068365951" style={{marginRight:'20px'}}>Call Us Now</a>
-                    <a href="https://wa.link/sjt0up" ><div className="nav__btn--text1">Chat With Us</div></a>
+                    <a href="https://wa.link/w8e0xs" ><div className="nav__btn--text1">Chat With Us</div></a>
                   </div>
                 </a>
-            </div>
+              </div>
             </div>
           </div>
           {/* <div className="landing__intern--btn">
@@ -286,7 +286,7 @@ const Landing = () => {
       </div>
       
       {/* FAQ section commented out till content is ready */}
-      {/* <div className="landing_faq">
+      <div className="landing_faq">
           <div className="container">
             <h1>FAQs - Frequently Asked Questions:</h1>
             <div>
@@ -294,13 +294,16 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
                     <div className="landing_faq-question">
-                      <h4>What is Grazac</h4>
+                      <h4>What is Grazac Academy?</h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       <div className="landing_faq-answer">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus elit, mollis eu tincidunt condimentum, consectetur eu quam. Nunc metus nisi, ultricies vel commodo ac, molestie eu lectus. Morbi accumsan nec ante quis tempus. Aliquam sodales tempus nunc, at posuere metus tempor at. In hac habitasse platea dictumst.</p>
+                        <p>Grazac Academy is closing the gap between youths and entry-level jobs in the technology industry. We strongly believe the job market for youths has changed and the future of work will be skill-based.</p>
+                        <p>We are approaching this in two ways:</p>
+                        <p>Grazac Academy Graduate Accelerator - This plan is for tertiary institutions graduates who have full time to build a career in tech. This plan has been arranged in a way to prepare them for work.</p>
+                        <p>Grazac Academy Undergraduate Accelerator - This plan is to equip undergraduates in their institutions, we believe the earlier the better and we want to prepare them for life after school by upskilling them while they are still in school.</p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -309,25 +312,89 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="1">
                     <div className="landing_faq-question">
-                      <h4>Do I need a personal laptop?</h4>
+                      <h4>When was the academy established?</h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1">
                     <Card.Body>
                       <div className="landing_faq-answer">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer purus elit, mollis eu tincidunt condimentum, consectetur eu quam. Nunc metus nisi, ultricies vel commodo ac, molestie eu lectus. Morbi accumsan nec ante quis tempus. Aliquam sodales tempus nunc, at posuere metus tempor at. In hac habitasse platea dictumst.</p>
+                        <p>Grazac Academy has been in operation since 2018</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr/>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="2">
+                    <div className="landing_faq-question">
+                      <h4>How many students have graduated from your academy?</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="2">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>Excluding our partnership with Haptics.ng in 2019 to execute Google project of upskilling 
+Nigerians on Digital skills where we trained about 500 youths, we have impacted over 2,000 
+lives through our trainings, meetups and events.</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr/>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="3">
+                    <div className="landing_faq-question">
+                      <h4>Where is the academy located?</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="3">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>Our headquarter is located at Abeokuta, Ogun State, Nigeria.</p>
+                        <p>Address: Suite 106, PROHUB, Salawu Olabode Avenue, Ewang Road, Idi-aba, Abeokuta.</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr/>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="4">
+                    <div className="landing_faq-question">
+                      <h4>How do I enroll in the academy?</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="4">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>Visit <a href="https://www.grazacacademy.com">www.grazacacademy.com</a> to enroll for your preferred course.</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr/>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="5">
+                    <div className="landing_faq-question">
+                      <h4>What are the payment options?</h4>
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="5">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>We have three (2) payment options for our Gradaute Accelerator, you can either pay once or pay installmentally.</p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
               <hr/>
+              <Link to="/faq"><p className="landing_faq-link">More frequently asked questions</p></Link>
             </div>
           </div>
-      </div> */}
+      </div>
 
       <div className="landing__slider">
-        <Slider autoplay arrows={false}>
+        <Slider arrows={true}>
           {content.map((item) => (
             <div className="landing__slider--container" key={item.id}>
               <div className="landing__slider--img">
@@ -369,9 +436,13 @@ const Landing = () => {
               We will provide you with the tools, resources, facilities, content
               and mentorship needed for your relevance in the future of work.
             </p>
-
             <div className="landing__btn--2">
-              <PrimaryBtn link="/get-started">Learn More</PrimaryBtn>
+                {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
+                <a href="/#tracks">
+                  <div className="nav__btn nav__btn-flex ">
+                    <a className="nav__btn--text" href="https://wa.link/w8e0xs">Chat with Us</a>
+                  </div>
+                </a>
             </div>
           </div>
 

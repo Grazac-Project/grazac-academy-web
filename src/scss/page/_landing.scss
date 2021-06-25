@@ -4,6 +4,29 @@
   width: 40px;
 }
 
+.loader-top {
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  width: 40px;
+  z-index: 99999;
+}
+
+.loading-blur{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+}
+
 .landing {
   &__intern {
     background-color: $color-skyblue;
@@ -307,9 +330,17 @@
       font-family: $font-primary;
       margin: 4rem 0;
     }
+    h3{
+      margin: 40px 0 20px;
+      color: $color-inspiring-purple;
+
+    }
 
     p{
       font-size: 16px;
+    }
+    &-link{
+      color: $color-inspiring-purple;
     }
     &-question{
       cursor: pointer;
@@ -344,6 +375,7 @@
       }
       @include respond(phone) {
         flex-basis: 90%;
+        margin:0 60px 0 20px;
       }
 
       p {

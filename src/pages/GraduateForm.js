@@ -8,7 +8,7 @@ const GraduateForm = () => {
   const [lastname, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [plan, setPlan] = useState("");
+  const [plan, setPlan] = useState("full-time");
   const [availability, setAvailability] = useState("");
   const [amount, setAmount] = useState("");
   const [course, setCourse] = useState("");
@@ -266,7 +266,7 @@ const GraduateForm = () => {
                       <option value="">---Choose Plan---</option>
                       <option>Full Payment</option>
                       <option>Installmental Payment</option>
-                      <option>Income Split Agreement</option>
+                      {/* <option>Income Split Agreement</option> */}
                     </select>
                   </div>
                 )}
@@ -277,7 +277,7 @@ const GraduateForm = () => {
                     ₦{amount ? new Intl.NumberFormat().format(amount) : "0"}
                   </p>
                 </div>
-                <div>
+                {/* <div>
                   <label>
                     Kindly select a package. Our Part-time students have on-site
                     classes only on Saturdays.{" "}
@@ -310,7 +310,7 @@ const GraduateForm = () => {
                     />
                     Part time
                   </label>
-                </div>
+                </div> */}
                 <div>
                   <label>
                     What do you expect at the end of this training?{" "}

@@ -105,7 +105,7 @@ const Contact = () => {
                                 <h3>Office</h3>
                                 <p>PROHUB, Salawu Olabode Avenue, Ewang Road, </p>
                                 <p>Idi-aba, 110124, Abeokuta</p>
-                                <p>0906 133 3395</p>
+                                <p>+234 806 836 5951</p>
                             </div>
                             <div className="contact_campus-main-div boxes33">
                                 <h3>Book A Call</h3>

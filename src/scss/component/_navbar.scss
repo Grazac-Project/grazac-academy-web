@@ -183,6 +183,10 @@
       color: $color-white;
       border-radius: 5px;
 
+      &:hover{
+        color: $color-white;
+      }
+
       &--yellow {
         background-color: $color-creative-yellow;
       }

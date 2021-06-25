@@ -31,6 +31,12 @@ const CourseDetail = (props) => {
     return(
         <div>
             <Navbar/>
+            {outline.length ? (<div></div>) : (
+                <div>
+                <div className="loading-blur"></div>
+                <img src={loader} alt="loader" className="loader-top" />
+                </div>
+            )}
             <div className="course">
                 <div className="course_hero">
                     <div className="container">
@@ -56,7 +62,9 @@ const CourseDetail = (props) => {
                                     <img src={paper} alt="academy"  className="gga_hero-image" />
                                 </div>
                             </div> : 
-                            <img src={loader} alt="loader" className="loader" />
+                            <div>
+                            {/*<img src={loader} alt="loader" className="loader" />*/}
+                            </div>
                         }
                     </div>
                 </div>
@@ -85,7 +93,7 @@ const CourseDetail = (props) => {
                                     </div>
                                 )):
                                 <div>
-                                    <img src={loader} alt="loader" className="loader" />
+                                    {/* <img src={loader} alt="loader" className="loader" /> */}
                                 </div>
                             }
                         </div>
@@ -111,22 +119,22 @@ const CourseDetail = (props) => {
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Installment Plan</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(40000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
-                                <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
+                                <h2>₦{new Intl.NumberFormat().format(100000)} <span style={{fontSize: '14px'}}>* first payment.</span></h2>
+                                <p>After the first payment, a fee of ₦50,000 is to be paid at the beginning of each month for the next 3 months.</p>
                             </div>
                         </Link>
-                        <Link to="/graduate-form?payment=income-split">
+                        {/* <Link to="/graduate-form?payment=income-split">
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Income Split Agreement</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
                                 <h2>₦{new Intl.NumberFormat().format(50000)} <span style={{fontSize: '14px'}}>upfront + 15% split income.</span></h2>
                                 <p>After the training, you get a job placement and you pay us 15% of your salary for a period of 12months.</p>
                             </div>
-                        </Link>
+                        </Link> */}
                     </div>
                     <div className="course_purple-btn">
                         <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
-                        <a href="tel:+234806 836 5951"><p>Talk to course rep</p></a>
+                        <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}><p>Talk to course rep</p></a>
                     </div>
                 </div>
             </div>

@@ -15,9 +15,9 @@ const NeedAdvice = () => {
                     <div className="gua_advice-box-text">
                         <h2>Need Advice?</h2>
                         <p>Do you need further clarification?
-                            Call <a href="tel:+2348068365951">+2348068365951</a> or Fill the contact form below
                         </p>
                         <a href="tel:+2348068365951"><button>Call us now</button></a>
+                        <a href="https://wa.link/w8e0xs"><button className="second-button">Chat with us</button></a>
                     </div>
                 </div>
             </div>

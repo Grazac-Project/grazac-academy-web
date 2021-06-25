@@ -8,6 +8,7 @@ import UndergraduateCourseDetail from "./pages/UndergraduateCourseDetail";
 import GraduateCourseDetail from "./pages/GraduateCourseDetail";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import Faq from "./pages/Faq";
 
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/about-us" component={AboutUs} />
+        <Route path="/faq" component={Faq} />
 
         <Route
           path="/course-detail-undergraduate"
@@ -47,11 +49,11 @@ const App = () => {
         />
         <Route path="/graduate-form" component={GraduateForm} />
         <Route path="/undergraduate-form" component={UndergraduateForm} />
-        <Route
+        {/* <Route
           path="/undergraduate/payment/:id"
           component={UndergraduateCoursePayment}
-        />
-        <Route path="/graduate/payment/:id" component={GraduateCoursePayment} />
+        /> */}
+        {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
         <Route path="/lead" component={LeadForm} />
         <Route path="/internship" component={InternshipForm} />
 

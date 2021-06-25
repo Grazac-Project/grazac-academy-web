@@ -30,6 +30,12 @@ const UndergraduateAccelerator = () => {
     return(
         <div>
             <Navbar/>
+            {courses.length ? (<div></div>) : (
+                <div>
+                <div className="loading-blur"></div>
+                <img src={loader} alt="loader" className="loader-top" />
+                </div>
+            )}
             <div className="gua">
                 <div className="gua_hero">
                     <div className="container">
@@ -107,7 +113,7 @@ const UndergraduateAccelerator = () => {
                                         </div>
                                     </div>)) :
                                     <div>
-                                        <img src={loader} alt="loader" className="loader" />
+                                        {/* <img src={loader} alt="loader" className="loader" /> */}
                                     </div>
                                 }
                                 <div className="boxes33">
