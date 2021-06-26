@@ -69,6 +69,13 @@ const Landing = () => {
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `0px`;
   }
+
+  const handleFaq = (e) => {
+    var icon = e.target.querySelector('img');
+    //console.log(icon.classList);
+    icon.classList.toggle("faq-icon_transition")  
+  }
+
   return (
     <div className="landing">
       {showModal && (
@@ -293,8 +300,8 @@ const Landing = () => {
               <Accordion>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
-                    <div className="landing_faq-question">
-                      <h4>What is Grazac Academy?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>What is Grazac Academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
@@ -311,8 +318,8 @@ const Landing = () => {
                 <hr/>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="1">
-                    <div className="landing_faq-question">
-                      <h4>When was the academy established?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>When was the academy established?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1">
@@ -326,8 +333,8 @@ const Landing = () => {
                 <hr/>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="2">
-                    <div className="landing_faq-question">
-                      <h4>How many students have graduated from your academy?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>How many students have graduated from your academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="2">
@@ -343,8 +350,8 @@ lives through our trainings, meetups and events.</p>
                 <hr/>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="3">
-                    <div className="landing_faq-question">
-                      <h4>Where is the academy located?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Where is the academy located?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="3">
@@ -359,8 +366,8 @@ lives through our trainings, meetups and events.</p>
                 <hr/>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="4">
-                    <div className="landing_faq-question">
-                      <h4>How do I enroll in the academy?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>How do I enroll in the academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="4">
@@ -374,8 +381,8 @@ lives through our trainings, meetups and events.</p>
                 <hr/>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
-                    <div className="landing_faq-question">
-                      <h4>What are the payment options?</h4>
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>What are the payment options?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="5">

@@ -838,6 +838,11 @@ html {
   z-index: 9999;
 }
 
+.faq-icon_transition {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .landing__intern {
   background-color: #f1f5fc;
   margin-bottom: 10rem;
