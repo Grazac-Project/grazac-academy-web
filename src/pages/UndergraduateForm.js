@@ -24,12 +24,14 @@ const UndergraduateForm = () => {
       .then((resp) => resp.json())
       .then((resp) => {
         setFetched(resp.data);
+        console.log(resp.data);
       })
       .catch((error) => {
         console.log(
           "An error occurred when fetching course details, refreshing..."
         );
-        window.location.reload();
+        console.log(error)
+        //window.location.reload();
       });
   }, []);
 

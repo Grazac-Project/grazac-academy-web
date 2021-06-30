@@ -22,7 +22,7 @@ const UndergraduateCoursePayment = () => {
     })
     .catch(err => {
       document.querySelector(".form-info").textContent = "Something went wrong, refreshing...";
-      window.location.reload();
+      //window.location.reload();
       document.querySelector("#form-btn").setAttribute('disabled', 'disabled');
     })
   }, []);

@@ -13,10 +13,13 @@ const GraduateAccelerator = () => {
   React.useEffect(() => {
     document.title = "Graduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
+    var blur = document.getElementById('blur');
+    blur.classList.add('blur-active');
     fetch("https://grazacacademy.com/graduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
         setCourses(resp.data);
+        blur.classList.remove('blur-active');
       })
       .catch((error) => {
         console.log(
@@ -34,13 +37,13 @@ document.height = window.innerHeight;
 
   return (
     <div>
+            {courses.length ? (<div></div>) : (
+                <div>
+                <img src={loader} alt="loader" className="loader-top" />
+                </div>
+            )}
+    <div id="blur">
     <Navbar />
-      {courses.length ? (<div></div>) : (
-        <div>
-          <div className="loading-blur"></div>
-          <img src={loader} alt="loader" className="loader-top" />
-        </div>
-      )}
       <div className="gga">
         <div className="gga_hero">
           <div className="container">
@@ -269,6 +272,7 @@ document.height = window.innerHeight;
         <NeedAdvice />
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

@@ -43,12 +43,15 @@ const CourseDetail = (props) => {
   useEffect(() => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
+    var blur = document.getElementById('blur');
+    blur.classList.add('blur-active');
     const slug = props.location.search.substring(8);
     fetch(`https://grazacacademy.com/undergraduate/course/details/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
         setCourse(resp.data);
         setOutline(JSON.parse(resp.data.outline));
+        blur.classList.remove('blur-active');
       })
       .catch(() => {
         console.log(
@@ -65,13 +68,13 @@ const CourseDetail = (props) => {
 
   return (
     <div>
+            {outline.length ? (<div></div>) : (
+                <div>
+                <img src={loader} alt="loader" className="loader-top" />
+                </div>
+            )}
+    <div id="blur">
       <Navbar />
-      {outline.length ? (<div></div>) : (
-        <div>
-          <div className="loading-blur"></div>
-          <img src={loader} alt="loader" className="loader-top" />
-        </div>
-      )}
       <div className="course">
         <div className="course_hero">
           <div className="container">
@@ -91,8 +94,8 @@ const CourseDetail = (props) => {
                         >
                           Download Brochure
                         </a>
-                        <Link>
-                          <button onClick={toggleModal}>Enroll now</button>
+                        <Link to="/undergraduate-form">
+                          <button>Enroll now</button>
                         </Link>
                       </div>
                     </div>
@@ -165,7 +168,7 @@ const CourseDetail = (props) => {
             </div>
           </div>
           <div className="course_purple-btn">
-            <PrimaryBtn>Enroll Now</PrimaryBtn>
+            <PrimaryBtn link="/undergraduate-form">Enroll Now</PrimaryBtn>
             <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}>
               <p>Talk to course rep</p>
             </a>
@@ -175,6 +178,7 @@ const CourseDetail = (props) => {
       <Footer />
 
       {showModal && <ErrorModal setShowModal={setShowModal} />}
+    </div>
     </div>
   );
 };

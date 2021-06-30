@@ -16,10 +16,14 @@ const UndergraduateAccelerator = () => {
     React.useEffect(() => {
         document.title = 'Undergraduate Accelerator Track - Grazac Academy';
         window.scrollTo(0,0);
+        var blur = document.getElementById('blur');
+        blur.classList.add('blur-active');
+        
         fetch('https://grazacacademy.com/undergraduate/courses')
             .then(resp => resp.json())
             .then(resp => {
                 setCourses(resp.data);
+                blur.classList.remove('blur-active');
             })
             .catch(error => {
                 console.log('An error occurred when fetching the available courses, refreshing...')
@@ -29,13 +33,13 @@ const UndergraduateAccelerator = () => {
 
     return(
         <div>
-            <Navbar/>
             {courses.length ? (<div></div>) : (
                 <div>
-                <div className="loading-blur"></div>
                 <img src={loader} alt="loader" className="loader-top" />
                 </div>
             )}
+        <div id="blur">
+            <Navbar/>
             <div className="gua">
                 <div className="gua_hero">
                     <div className="container">
@@ -135,6 +139,7 @@ const UndergraduateAccelerator = () => {
             <Footer/>
 
            { openListModal && <SchoolList onOpen={e => setOpenListModal(e)}/> }
+        </div>
         </div>
     );
 }

@@ -15,12 +15,16 @@ const CourseDetail = (props) => {
     React.useEffect(() => {
         document.title = 'Course Details - Grazac Academy';
         window.scrollTo(0,0);
+        var blur = document.getElementById('blur');
+        blur.classList.add('blur-active');
         const slug = props.location.search.substring(8);
         fetch(`https://grazacacademy.com/graduate/course/details/${slug}`)
             .then(resp => resp.json())
             .then(resp => {
                 setCourse(resp.data);
+                console.log(resp.data);
                 setOutline(JSON.parse(resp.data.outline));
+                blur.classList.remove('blur-active');
             })
             .catch(error => {
                 console.log('An error occurred when fetching course details, refreshing...')
@@ -30,13 +34,13 @@ const CourseDetail = (props) => {
     
     return(
         <div>
-            <Navbar/>
             {outline.length ? (<div></div>) : (
                 <div>
-                <div className="loading-blur"></div>
                 <img src={loader} alt="loader" className="loader-top" />
                 </div>
             )}
+        <div id="blur">
+            <Navbar/>
             <div className="course">
                 <div className="course_hero">
                     <div className="container">
@@ -109,7 +113,7 @@ const CourseDetail = (props) => {
                     <div className="course_purple-main">
                         <Link to="/graduate-form?payment=fulltime">
                             <div className="course_purple-main-boxes grad-box">
-                                <h4>Full Package</h4>
+                                <h4>Full Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
                                 <h2>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
                                 <p>This is a one-off payment. You won't be required to pay any amount again till the end of your training.</p>
@@ -117,20 +121,20 @@ const CourseDetail = (props) => {
                         </Link>
                         <Link to="/graduate-form?payment=installment">
                             <div className="course_purple-main-boxes grad-box">
-                                <h4>Installment Plan</h4>
+                                <h4>Installment Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(100000)} <span style={{fontSize: '14px'}}>* first payment.</span></h2>
-                                <p>After the first payment, a fee of ₦50,000 is to be paid at the beginning of each month for the next 3 months.</p>
+                                <h2>₦{new Intl.NumberFormat().format(100000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
+                                <p>To be paid at the start of the training and completed midway into the training which is after 2 months.</p>
                             </div>
                         </Link>
-                        {/* <Link to="/graduate-form?payment=income-split">
+                        <Link to="/graduate-form?payment=income-split">
                             <div className="course_purple-main-boxes grad-box">
-                                <h4>Income Split Agreement</h4>
+                                <h4>Monthly Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(50000)} <span style={{fontSize: '14px'}}>upfront + 15% split income.</span></h2>
-                                <p>After the training, you get a job placement and you pay us 15% of your salary for a period of 12months.</p>
+                                <h2>₦{new Intl.NumberFormat().format(55000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
+                                <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
                             </div>
-                        </Link> */}
+                        </Link>
                     </div>
                     <div className="course_purple-btn">
                         <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
@@ -139,6 +143,7 @@ const CourseDetail = (props) => {
                 </div>
             </div>
             <Footer/>
+        </div>
         </div>
     );
 }
