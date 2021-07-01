@@ -23,12 +23,20 @@ const Faq = () => {
     
     return (
       <div>
-        <Navbar />
+        <div className='faq_hero'>
+          <Navbar />
+          <div className='faq_hero_content'>
+            <h1>Frequently Asked Questions</h1>
+            <p>
+              To better help you learn more about Grazac Academy, we’ve compiled
+              the following Frequently Asked Questions (FAQs).
+            </p>
+          </div>
+        </div>
         <div>
           {/* FAQ section */}
           <div className='landing_faq'>
             <div className='container'>
-              <h1>FAQs - Frequently Asked Questions:</h1>
               <div>
                 <Accordion defaultActiveKey='0'>
                   <h3>Academy</h3>
