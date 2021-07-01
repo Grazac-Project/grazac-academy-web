@@ -29,7 +29,6 @@ import Sponsor6 from "../images/svg/Google.svg";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
 
-import Loader from "../components/Loader";
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
   useEffect(() => {
@@ -90,7 +89,7 @@ const Landing = () => {
   }, []);
   return (
     <div className="landing">
-      <Loader />
+
       {showModal && (
         <div className="infomodal">
           <div className="infomodal_content">
