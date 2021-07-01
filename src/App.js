@@ -21,14 +21,10 @@ import UndergraduateForm from "./pages/UndergraduateForm";
 import ComingSoon from "./pages/ComingSoon";
 import InternshipForm from "./pages/InternshipForm";
 
-import Loader from "./components/Loader";
-
-const LoaderContext = createContext(null)
-
 const App = () => {
   return (
     <div className="App">
-      <Loader />
+ 
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" component={Login} />
