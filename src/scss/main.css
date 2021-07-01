@@ -1854,6 +1854,10 @@ html {
   padding: 6rem 2rem;
 }
 
+.purple-color {
+  
+}
+
 @media (max-width: 37.5em) {
   .landing__discount--container {
     display: block;
