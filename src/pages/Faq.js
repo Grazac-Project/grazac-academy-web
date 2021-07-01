@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {Accordion, Card} from 'react-bootstrap';
 import NeedAdvice from '../components/NeedAdvice'
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
 const Faq = () => {
     React.useEffect(() => {
@@ -12,9 +12,13 @@ const Faq = () => {
     },[]);
     
     const handleFaq = (e) => {
-        var icon = e.target.querySelector('img');
-        //console.log(icon.classList);
-        icon.classList.toggle("faq-icon_transition")  
+      // const svg = e.target.querySelector("svg");
+      console.log(e)
+      let svg = e.target.parentElement.querySelector('svg')
+      if (e.target.nodeName === 'path') {
+        svg = e.target.parentElement.parentElement.querySelector('svg')
+      }
+      svg.classList.toggle('faq-icon_transition')
     }
     
     return (
@@ -32,7 +36,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='0'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What is Grazac Academy?</h4>
-                        <MdKeyboardArrowDown size='2rem' color='black' />
+                        <MdKeyboardArrowUp size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='0'>
