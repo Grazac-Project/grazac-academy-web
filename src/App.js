@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./scss/main.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing";
@@ -26,6 +26,12 @@ import Loader from "./components/Loader";
 
 const App = () => {
   const [show, setShow] = useState(true);
+
+  useEffect(() =>{
+    window.addEventListener("load", () =>{
+      setShow(false)
+    })
+  }, [])
   return (
     <LoaderContext.Provider value={{ show, setShow }} className="App">
       {show && <Loader />}

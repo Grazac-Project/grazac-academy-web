@@ -45,8 +45,7 @@ const Landing = () => {
     landingHeight.style.marginTop = `80px`;
 
     window.addEventListener("load", () => {
-      console.log(show);
-      console.log("Content Loaded")
+    
       setShow(false)
     });
   }, []);

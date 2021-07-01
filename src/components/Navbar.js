@@ -5,7 +5,7 @@ import logo from "../images/svg/grazac-logo.svg";
 import { Link } from "react-router-dom";
 import InfoModal from "../components/InfoModal";
 
-const Navbar = ({top}) => {
+const Navbar = ({ top }) => {
   const [fixed, setFixed] = useState(false);
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -53,24 +53,30 @@ const Navbar = ({top}) => {
           <ul className="nav__list--mb">
             <li className="nav__item">
               <NavItem exact link="/">
-              <span>01</span>Home
+                <span>01</span>Home
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/about-us"><span>02</span>About</NavItem>
+              <NavItem link="/about-us">
+                <span>02</span>About
+              </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/undergraduate-accelerator-plan"><span>03</span>Undergraduate</NavItem>
+              <NavItem link="/undergraduate-accelerator-plan">
+                <span>03</span>Undergraduate
+              </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/graduate-accelerator-plan"><span>04</span>Graduate</NavItem>
+              <NavItem link="/graduate-accelerator-plan">
+                <span>04</span>Graduate
+              </NavItem>
             </li>
             <li className="nav__item">
               <a href="/#tracks">
                 <button onClick={() => setActive(false)}>Enroll Now</button>
               </a>
             </li>
-            <li className="nav__item" style={{marginTop:'30px'}}>
+            <li className="nav__item" style={{ marginTop: "30px" }}>
               <a href="tel:+2348068365951">
                 <button onClick={() => setActive(false)}>Talk to us</button>
               </a>
@@ -93,9 +99,7 @@ const Navbar = ({top}) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <a className="nav__link">
-              Academy
-            </a>
+            <a className="nav__link">Academy</a>
             <svg
               className="mask"
               width="11"
@@ -118,14 +122,19 @@ const Navbar = ({top}) => {
               })}
             >
               <span></span>
-              <ul
-                className="nav__dropdown--list"
-              >
+              <ul className="nav__dropdown--list">
                 <li>
-                  <Link to="/undergraduate-accelerator-plan" className="nav__link">Undergraduate</Link>
+                  <Link
+                    to="/undergraduate-accelerator-plan"
+                    className="nav__link"
+                  >
+                    Undergraduate
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/graduate-accelerator-plan" className="nav__link">Graduate</Link>
+                  <Link to="/graduate-accelerator-plan" className="nav__link">
+                    Graduate
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -135,7 +144,7 @@ const Navbar = ({top}) => {
               <div className="nav__btn--text">Enroll Now</div>
             </div>
           </a>
-          <a href="tel:+2348068365951" style={{marginLeft:'20px'}}>
+          <a href="tel:+2348068365951" style={{ marginLeft: "20px" }}>
             <div className="nav__btn">
               <div className="nav__btn--text1">Talk to us</div>
             </div>
