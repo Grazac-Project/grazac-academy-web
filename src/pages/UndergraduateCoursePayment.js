@@ -1,20 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { useParams } from "react-router-dom";
+import { LoaderContext } from "../context";
 
 const UndergraduateCoursePayment = () => {
   const { id } = useParams();
   const [fetched, setFetched] = useState({});
   const [payment, setPayment] = useState(true);
-
+  const { setShow } = useContext(LoaderContext);
   useEffect(() => {
     document.title = 'Payment - Grazac Academy'
+setShow(true)
     fetch(`https://grazacacademy.com/undergraduate/registration/details/${id}`)
     .then(resp => resp.json())
     .then(data => {
       setFetched(data.data)
+      setShow(false)
       if(data.data.tx_ref.length) {
         document.querySelector(".form-info").textContent = "You have completed your registration";
         setPayment(false);

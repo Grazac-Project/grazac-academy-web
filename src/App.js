@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./scss/main.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing";
@@ -21,12 +21,21 @@ import UndergraduateForm from "./pages/UndergraduateForm";
 import ComingSoon from "./pages/ComingSoon";
 import InternshipForm from "./pages/InternshipForm";
 
-import LoaderProvider from  "./context"
-
+import { LoaderContext } from "./context";
+import Loader from "./components/Loader";
 
 const App = () => {
+  const [show, setShow] = useState(true);
+
+  useEffect(() =>{
+    window.addEventListener("load", () =>{
+      setShow(false)
+    })
+  }, [])
   return (
-    <LoaderProvider className="App">
+    <LoaderContext.Provider value={{ show, setShow }} className="App">
+      {show && <Loader />}
+
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" component={Login} />
@@ -63,7 +72,7 @@ const App = () => {
 
         <Route path="/:name/coming-soon" component={ComingSoon} />
       </Switch>
-    </LoaderProvider>
+    </LoaderContext.Provider>
   );
 };
 

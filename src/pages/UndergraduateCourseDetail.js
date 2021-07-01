@@ -43,15 +43,13 @@ const CourseDetail = (props) => {
   useEffect(() => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
-    var blur = document.getElementById('blur');
-    blur.classList.add('blur-active');
+  
     const slug = props.location.search.substring(8);
     fetch(`https://grazacacademy.com/undergraduate/course/details/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
         setCourse(resp.data);
         setOutline(JSON.parse(resp.data.outline));
-        blur.classList.remove('blur-active');
       })
       .catch(() => {
         console.log(

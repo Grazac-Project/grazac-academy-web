@@ -3,14 +3,14 @@ import Loading from "./components/Loader";
 
 export const LoaderContext = createContext(null);
 
-const Loader = ({ children }) => {
-  const [show, setShow] = useState(false);
+// const Loader = ({ children }) => {
+//   const [show, setShow] = useState(true);
 
-  return(
-<>
-    <LoaderContext.Provider value={{setShow}}>{show ? <Loader /> : children}</LoaderContext.Provider>;
-   </>
-    )
-};
+//   return(
+// <>
+//     {/* <LoaderContext.Provider value={{show, setShow}}>{show ? <Loader /> : children}</LoaderContext.Provider>; */}
+//    </>
+//     )
+// };
 
-export default Loader;
+// export default Loader;
