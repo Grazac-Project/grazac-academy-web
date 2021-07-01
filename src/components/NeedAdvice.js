@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import undergraduate from "../images/undergraduate.png";
-import poster from "../images/Grazac-website/IMG_8440.JPG";
 import lady from "../images/Grazac-website/IMG_8440.JPG";
 
 const NeedAdvice = () => {

@@ -32,6 +32,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='0'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What is Grazac Academy?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='0'>
@@ -66,6 +67,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='1'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>When was the academy established?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='1'>
@@ -83,6 +85,7 @@ const Faq = () => {
                         <h4>
                           How many students have graduated from your academy?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='2'>
@@ -104,6 +107,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='3'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Where is the academy located?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='3'>
@@ -126,6 +130,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='4'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>How do I enroll in the academy?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='4'>
@@ -148,6 +153,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='5'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What are the payment options?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='5'>
@@ -167,6 +173,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='6'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Do you offer discounts?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='6'>
@@ -182,6 +189,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='7'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Do you offer scholarships?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='7'>
@@ -199,6 +207,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='100'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Do you offer compensation to a referrer?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='100'>
@@ -219,6 +228,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='8'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Can I switch my payment plan?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='8'>
@@ -234,6 +244,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='9'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Can I apply for a refund?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='9'>
@@ -258,6 +269,7 @@ const Faq = () => {
                           Do I need to have any previous experience or knowledge
                           before coming to learn?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='10'>
@@ -277,6 +289,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='11'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Are classes virtual or physical?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='11'>
@@ -297,6 +310,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='12'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Can I take the course online?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='12'>
@@ -315,6 +329,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='13'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Can I take two courses at a time?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='13'>
@@ -334,6 +349,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='14'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What course is right for me?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='14'>
@@ -351,6 +367,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='15'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What is the duration of the program?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='15'>
@@ -371,6 +388,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='16'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What is the internship like?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='16'>
@@ -390,6 +408,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='17'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What courses do you offer?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='17'>
@@ -416,6 +435,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='18'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Can I enroll as a secondary school leaver?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='18'>
@@ -438,6 +458,7 @@ const Faq = () => {
                         <h4>
                           What materials do I need to enroll for the course?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='19'>
@@ -456,6 +477,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='20'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>How accessible are the tutors?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='20'>
@@ -474,6 +496,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='21'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>How can I defer a course?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='21'>
@@ -491,6 +514,7 @@ const Faq = () => {
                         <h4>
                           What happens If I miss a class due to an emergency?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='22'>
@@ -513,6 +537,7 @@ const Faq = () => {
                           Can I enroll for Graduate Accelerator If I am yet to
                           go for NYSC?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='23'>
@@ -531,6 +556,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='24'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What days of the week do the classes hold?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='24'>
@@ -546,6 +572,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='25'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>Is there an option for a full-time worker?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='25'>
@@ -565,6 +592,7 @@ const Faq = () => {
                           Will the certificate be recognized locally and
                           globally?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='26'>
@@ -587,6 +615,7 @@ const Faq = () => {
                           What’s the probability that I will be good after
                           enrolling for Grazac Academy?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='27'>
@@ -608,6 +637,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='28'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What happens if I fail an exam?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='28'>
@@ -629,6 +659,7 @@ const Faq = () => {
                         <h4>
                           What kind of certificate do I get (Soft or Hard Copy)?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='29'>
@@ -652,6 +683,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='30'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>When do I get my certificate?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='30'>
@@ -672,6 +704,7 @@ const Faq = () => {
                         <h4>
                           Is a job guaranteed for me after taking the course?
                         </h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='31'>
@@ -701,6 +734,7 @@ const Faq = () => {
                     <Accordion.Toggle as={Card.Header} eventKey='32'>
                       <div className='landing_faq-question' onClick={handleFaq}>
                         <h4>What are the prerequisites for graduation?</h4>
+                        <MdKeyboardArrowDown size='2rem' color='black' />
                       </div>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey='32'>
@@ -721,7 +755,7 @@ const Faq = () => {
           </div>
         </div>
 
-       <NeedAdvice />
+        <NeedAdvice />
         <Footer />
       </div>
     )
