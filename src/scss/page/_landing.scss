@@ -11,10 +11,10 @@
   width: 40px;
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.blur-active{
+.blur-active {
   -webkit-filter: blur(20px);
   -moz-filter: blur(20px);
   -o-filter: blur(20px);
@@ -24,8 +24,9 @@
   user-select: none;
 }
 
-.faq-icon_transition{
+.faq-icon_transition {
   transform: rotate(180deg);
+  transition : all .3s ease-in-out
 }
 
 .landing {
@@ -222,7 +223,7 @@
         font-size: 1.8rem;
         line-height: 3rem;
         margin-bottom: 2rem;
-        color: $color-light-grey;
+        color: black;
       }
     }
 
@@ -325,30 +326,33 @@
 
   &_faq {
     margin-bottom: 100px;
-    h1{
+    h1 {
       font-size: 4rem;
       font-weight: normal;
       font-family: $font-primary;
       margin: 4rem 0;
     }
-    h3{
+    h3 {
       margin: 40px 0 20px;
       color: $color-inspiring-purple;
-
     }
 
-    p{
+    p {
       font-size: 16px;
     }
-    &-link{
+    &-link {
       color: $color-inspiring-purple;
     }
-    &-question{
+    &-question {
       cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    &-answer{
-      padding:10px 15px;
-      background-color: rgba(128, 128, 128, 0.3);
+    &-answer {
+      padding: 10px 0;
+
+      // background-color: rgba(128, 128, 128, 0.3);
     }
   }
 
@@ -376,7 +380,7 @@
       }
       @include respond(phone) {
         flex-basis: 90%;
-        margin:0 60px 0 20px;
+        margin: 0 60px 0 20px;
       }
 
       p {

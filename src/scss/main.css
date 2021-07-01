@@ -809,6 +809,91 @@ html {
   font-family: Georgia;
 }
 
+.loading {
+  height: 100vh;
+  width: 100%;
+  background: #773dd3;
+  mix-blend-mode: normal;
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000000;
+}
+
+.loading_container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.lds-ring div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 104px;
+  height: 104px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+          animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+
+@-webkit-keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .loader {
   left: 50%;
   position: absolute;
@@ -842,6 +927,8 @@ html {
 .faq-icon_transition {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .landing__intern {
@@ -1088,7 +1175,7 @@ html {
   font-size: 1.8rem;
   line-height: 3rem;
   margin-bottom: 2rem;
-  color: #9da8b6;
+  color: black;
 }
 
 .landing__bottom--form {
@@ -1242,11 +1329,19 @@ html {
 
 .landing_faq-question {
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .landing_faq-answer {
-  padding: 10px 15px;
-  background-color: rgba(128, 128, 128, 0.3);
+  padding: 10px 0;
 }
 
 .landing__slider {

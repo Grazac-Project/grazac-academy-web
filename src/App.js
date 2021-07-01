@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import "./scss/main.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing";
@@ -20,9 +21,14 @@ import UndergraduateForm from "./pages/UndergraduateForm";
 import ComingSoon from "./pages/ComingSoon";
 import InternshipForm from "./pages/InternshipForm";
 
+import Loader from "./components/Loader";
+
+const LoaderContext = createContext(null)
+
 const App = () => {
   return (
     <div className="App">
+      <Loader />
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" component={Login} />
