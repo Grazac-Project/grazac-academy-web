@@ -3981,7 +3981,7 @@ html {
 }
 
 .gua_advice-box h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   font-family: Georgia;
   font-weight: 600;
   margin-bottom: 20px;
@@ -3996,6 +3996,7 @@ html {
 .gua_advice-box p {
   color: #9da8b6;
   font-size: 1.2em;
+  line-height: 30px;
 }
 
 .gua_advice-box span {

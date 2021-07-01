@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {Accordion, Card} from 'react-bootstrap';
-import NeedAdvice from '../components/NeedAdvice'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import lady from '../images/Grazac-website/IMG_8440.JPG'
 
 const Faq = () => {
     React.useEffect(() => {
@@ -273,7 +273,7 @@ const Faq = () => {
                     </Accordion.Collapse>
                   </Card>
                   <hr />
-                  <h3>Lecture/Class Model</h3>
+                  <h3>Lectures/Class Model</h3>
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey='10'>
                       <div className='landing_faq-question' onClick={handleFaq}>
@@ -596,7 +596,7 @@ const Faq = () => {
                     </Accordion.Collapse>
                   </Card>
                   <hr />
-                  <h3>Graduation and Certification</h3>
+                  <h3>Graduation and Certifications</h3>
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey='26'>
                       <div className='landing_faq-question' onClick={handleFaq}>
@@ -767,7 +767,35 @@ const Faq = () => {
           </div>
         </div>
 
-        <NeedAdvice />
+        <div className='gua_advice'>
+          <div className='container'>
+            <div className='gua_advice-box'>
+              <div className='boxes55'>
+                <img
+                  src={lady}
+                  alt='undergraduate'
+                  className='gua_advice-box-img'
+                />
+              </div>
+              <div className='boxes55'>
+                <div className='gua_advice-box-text'>
+                  <h2>Still have a questions?</h2>
+                  <p>
+                    Do you need further clarification? Call{' '}
+                    <span>0803-302-4644</span> or click on the button below to
+                    chat with us.
+                  </p>
+                  <a href='tel:+2348068365951'>
+                    <button>Call us now</button>
+                  </a>
+                  <a href='https://wa.link/w8e0xs'>
+                    <button className='second-button'>Chat with us</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>
     )
