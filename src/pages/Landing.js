@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Card } from "react-bootstrap";
 // import { cn } from "../utils";
@@ -29,8 +29,11 @@ import Sponsor6 from "../images/svg/Google.svg";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
 
+import { LoaderContext } from "../context";
+
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
+  const { setShow, show } = useContext(LoaderContext);
   useEffect(() => {
     document.title = "Welcome to Grazac Academy";
     let mediaPlayer = document.querySelector("#video");
@@ -40,6 +43,12 @@ const Landing = () => {
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `80px`;
+
+    window.addEventListener("load", () => {
+      console.log(show);
+      console.log("Content Loaded")
+      setShow(false)
+    });
   }, []);
 
   const content = [
@@ -82,14 +91,9 @@ const Landing = () => {
     svg.classList.toggle("faq-icon_transition");
   };
 
-  useEffect(() => {
-    window.addEventListener("load", (event) => {
-      console.log("The page has fully loaded");
-    });
-  }, []);
+
   return (
     <div className="landing">
-
       {showModal && (
         <div className="infomodal">
           <div className="infomodal_content">
