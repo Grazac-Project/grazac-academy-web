@@ -29,6 +29,7 @@ const GraduateForm = () => {
     fetch("https://grazacacademy.com/graduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
+        console.log(resp.data)
         setFetched(resp.data);
       })
       .catch((error) => {
@@ -266,7 +267,7 @@ const GraduateForm = () => {
                       <option value="">---Choose Plan---</option>
                       <option>Full Payment</option>
                       <option>Installmental Payment</option>
-                      {/* <option>Income Split Agreement</option> */}
+                      <option>Monthly Payment</option>
                     </select>
                   </div>
                 )}
