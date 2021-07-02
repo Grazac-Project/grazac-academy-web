@@ -12,11 +12,7 @@ const Navbar = ({ top }) => {
   const nav = useRef(null);
 
   useEffect(() => {
-    /*if(top) {
-      let h = document.querySelector('.infomodal').offsetHeight;
-      console.log(h);
-      document.querySelector('nav.nav').style.marginTop = h+'px';
-    }*/
+
     if (nav.current && window.pageYOffset > nav.current.offsetTop) {
       setFixed(true);
     } else {

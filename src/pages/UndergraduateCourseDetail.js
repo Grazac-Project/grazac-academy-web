@@ -66,11 +66,6 @@ const CourseDetail = (props) => {
 
   return (
     <div>
-            {outline.length ? (<div></div>) : (
-                <div>
-                <img src={loader} alt="loader" className="loader-top" />
-                </div>
-            )}
     <div id="blur">
       <Navbar />
       <div className="course">

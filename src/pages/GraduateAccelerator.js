@@ -11,7 +11,6 @@ const GraduateAccelerator = () => {
   const [courses, setCourses] = useState([]);
   const { setShow } = useContext(LoaderContext);
   useEffect(() => {
-    setShow(true);
     document.title = "Graduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
     setShow(true)

@@ -14,6 +14,7 @@
     -webkit-box-shadow: 0 4px 14px -6px rgba(7, 48, 65, 0.1);
     -moz-box-shadow: 0 4px 14px -6px rgba(7, 48, 65, 0.1);
     box-shadow: 0 4px 14px -6px rgba(7, 48, 65, 0.1);
+    animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;
   }
 
   @include respond(phone) {

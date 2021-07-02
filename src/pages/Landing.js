@@ -81,8 +81,6 @@ const Landing = () => {
   };
 
   const handleFaq = (e) => {
-    // const svg = e.target.querySelector("svg");
-    console.log(e);
     let svg = e.target.parentElement.querySelector("svg");
     if (e.target.nodeName === "path") {
       svg = e.target.parentElement.parentElement.querySelector("svg");
