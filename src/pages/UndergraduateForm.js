@@ -20,7 +20,7 @@ const UndergraduateForm = () => {
   useEffect(() => {
     document.title = "Join our Undergraduate Track - Grazac Academy";
     window.scrollTo(0, 0);
-    fetch("https://grazacacademy.com/courses/undergraduate")
+    fetch("https://grazacacademy.com/undergraduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
         setFetched(resp.data);
