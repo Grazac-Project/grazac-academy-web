@@ -5,7 +5,7 @@ import logo from "../images/svg/grazac-logo.svg";
 import { Link } from "react-router-dom";
 import InfoModal from "../components/InfoModal";
 
-const Navbar = ({top}) => {
+const Navbar = ({ top }) => {
   const [fixed, setFixed] = useState(false);
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -53,24 +53,30 @@ const Navbar = ({top}) => {
           <ul className="nav__list--mb">
             <li className="nav__item">
               <NavItem exact link="/">
-              <span>01</span>Home
+                <span>01</span>Home
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/about-us"><span>02</span>About</NavItem>
+              <NavItem link="/about-us">
+                <span>02</span>About
+              </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/undergraduate-accelerator-plan"><span>03</span>Undergraduate</NavItem>
+              <NavItem link="/undergraduate-accelerator-plan">
+                <span>03</span>Undergraduate
+              </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/graduate-accelerator-plan"><span>04</span>Graduate</NavItem>
+              <NavItem link="/graduate-accelerator-plan">
+                <span>04</span>Graduate
+              </NavItem>
             </li>
             <li className="nav__item">
               <a href="/#tracks">
                 <button onClick={() => setActive(false)}>Enroll Now</button>
               </a>
             </li>
-            <li className="nav__item" style={{marginTop:'30px'}}>
+            <li className="nav__item" style={{ marginTop: "30px" }}>
               <a href="tel:+2348068365951">
                 <button onClick={() => setActive(false)}>Talk to us</button>
               </a>
@@ -93,9 +99,7 @@ const Navbar = ({top}) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <a className="nav__link">
-              Academy
-            </a>
+            <a className="nav__link">Academy</a>
             <svg
               className="mask"
               width="11"
@@ -105,8 +109,8 @@ const Navbar = ({top}) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M5.50003 6C5.32089 6 5.14252 5.934 4.99716 5.80113L0.282791 1.51511C-0.0503581 1.21251 -0.0959304 0.671616 0.182218 0.308161C0.45958 -0.0552936 0.954589 -0.104154 1.28852 0.198439L5.50867 4.03529L9.72175 0.336449C10.0596 0.0398561 10.5546 0.098146 10.8265 0.466744C11.0984 0.835342 11.0449 1.37452 10.7071 1.67197L5.99268 5.81056C5.8489 5.93657 5.67446 6 5.50003 6Z"
                 fill="#575A65"
               />
@@ -118,14 +122,19 @@ const Navbar = ({top}) => {
               })}
             >
               <span></span>
-              <ul
-                className="nav__dropdown--list"
-              >
+              <ul className="nav__dropdown--list">
                 <li>
-                  <Link to="/undergraduate-accelerator-plan" className="nav__link">Undergraduate</Link>
+                  <Link
+                    to="/undergraduate-accelerator-plan"
+                    className="nav__link"
+                  >
+                    Undergraduate
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/graduate-accelerator-plan" className="nav__link">Graduate</Link>
+                  <Link to="/graduate-accelerator-plan" className="nav__link">
+                    Graduate
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -135,7 +144,7 @@ const Navbar = ({top}) => {
               <div className="nav__btn--text">Enroll Now</div>
             </div>
           </a>
-          <a href="tel:+2348068365951" style={{marginLeft:'20px'}}>
+          <a href="tel:+2348068365951" style={{ marginLeft: "20px" }}>
             <div className="nav__btn">
               <div className="nav__btn--text1">Talk to us</div>
             </div>

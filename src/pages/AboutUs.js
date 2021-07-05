@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import Dots from "../images/svg/dots.svg";
-
+import { LoaderContext } from "../context";
 const cardsInfo = [
   {
     color: "39,234,198",
@@ -45,9 +45,11 @@ const cardsInfo = [
 ];
 
 const AboutUs = () => {
+  const { setShow } = useContext(LoaderContext);
   useEffect(() => {
     document.title = "About - Grazac Academy";
     window.scrollTo(0, 0);
+   
   }, []);
 
   return (

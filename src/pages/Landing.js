@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {Accordion, Card} from 'react-bootstrap';
+import { Accordion, Card } from "react-bootstrap";
 // import { cn } from "../utils";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -27,8 +29,11 @@ import Sponsor6 from "../images/svg/Google.svg";
 import Card1 from "../images/svg/card1.svg";
 import Card2 from "../images/svg/card2.svg";
 
+import { LoaderContext } from "../context";
+
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
+  const { setShow, show } = useContext(LoaderContext);
   useEffect(() => {
     document.title = "Welcome to Grazac Academy";
     let mediaPlayer = document.querySelector("#video");
@@ -38,7 +43,12 @@ const Landing = () => {
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `80px`;
-  },[]);
+
+    window.addEventListener("load", () => {
+    
+      setShow(false)
+    });
+  }, []);
 
   const content = [
     {
@@ -68,13 +78,18 @@ const Landing = () => {
     setShowModal(false);
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `0px`;
-  }
+  };
 
   const handleFaq = (e) => {
-    var icon = e.target.querySelector('img');
-    //console.log(icon.classList);
-    icon.classList.toggle("faq-icon_transition")  
-  }
+    // const svg = e.target.querySelector("svg");
+    console.log(e);
+    let svg = e.target.parentElement.querySelector("svg");
+    if (e.target.nodeName === "path") {
+      svg = e.target.parentElement.parentElement.querySelector("svg");
+    }
+    svg.classList.toggle("faq-icon_transition");
+  };
+
 
   return (
     <div className="landing">
@@ -83,8 +98,15 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Grazac Graduate Accelerator Program enrollment is opening by June 25th. 
-              <a className="infomodal_content-link" href="https://grazacacademy.com/graduate-accelerator-plan">Learn more</a>
+              Grazac Graduate Accelerator Program enrollment is opening by June
+              25th.
+              <a
+                className="infomodal_content-link"
+                href="https://grazacacademy.com/graduate-accelerator-plan"
+                f
+              >
+                Learn more
+              </a>
             </p>
             <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
@@ -129,7 +151,7 @@ const Landing = () => {
           id="video"
           width="320"
           height="240"
-          autoplay
+          autoPlay
           loop
           muted
           poster={poster}
@@ -202,21 +224,28 @@ const Landing = () => {
           <div>&nbsp;</div>
           <div className="landing__bottom--text landing__bottom--text-2">
             <div className="landing__intern--text">
-              <h1>
-              Tech is Vast. Let's help you with directions.
-              </h1>
+              <h1>Tech is Vast. Let's help you with directions.</h1>
               <p>
-              Are you looking to step into the field of tech but don't know what to learn or how to begin? We can help you.
-              Tech is a broad field, and there are a lot of interesting pathways and directions you can venture into. You need all the clarity you can get so you can make informed decisions.
-
-              Consult us for free
+                Are you looking to step into the field of tech but don't know
+                what to learn or how to begin? We can help you. Tech is a broad
+                field, and there are a lot of interesting pathways and
+                directions you can venture into. You need all the clarity you
+                can get so you can make informed decisions. Consult us for free
               </p>
               <div className="landing__btn--2">
                 {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
                 <a href="/#tracks">
                   <div className="nav__btn nav__btn-flex ">
-                    <a className="nav__btn--text" href="tel:+2348068365951" style={{marginRight:'20px'}}>Call Us Now</a>
-                    <a href="https://wa.link/w8e0xs" ><div className="nav__btn--text1">Chat With Us</div></a>
+                    <a
+                      className="nav__btn--text"
+                      href="tel:+2348068365951"
+                      style={{ marginRight: "20px" }}
+                    >
+                      Call Us Now
+                    </a>
+                    <a href="https://wa.link/w8e0xs">
+                      <div className="nav__btn--text1">Chat With Us</div>
+                    </a>
                   </div>
                 </a>
               </div>
@@ -291,113 +320,159 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      
+
       {/* FAQ section commented out till content is ready */}
       <div className="landing_faq">
-          <div className="container">
-            <h1>FAQs - Frequently Asked Questions:</h1>
-            <div>
-              <Accordion>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What is Grazac Academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+        <div className="container">
+          <h1>FAQs</h1>
+          <div>
+            <Accordion>
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>What is Grazac Academy?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>
+                        Grazac Academy is closing the gap between youths and
+                        entry-level jobs in the technology industry. We strongly
+                        believe the job market for youths has changed and the
+                        future of work will be skill-based.
+                      </p>
+                      <p>We are approaching this in two ways:</p>
+                      <p>
+                        Grazac Academy Graduate Accelerator - This plan is for
+                        tertiary institutions graduates who have full time to
+                        build a career in tech. This plan has been arranged in a
+                        way to prepare them for work.
+                      </p>
+                      <p>
+                        Grazac Academy Undergraduate Accelerator - This plan is
+                        to equip undergraduates in their institutions, we
+                        believe the earlier the better and we want to prepare
+                        them for life after school by upskilling them while they
+                        are still in school.
+                      </p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Grazac Academy is closing the gap between youths and entry-level jobs in the technology industry. We strongly believe the job market for youths has changed and the future of work will be skill-based.</p>
-                        <p>We are approaching this in two ways:</p>
-                        <p>Grazac Academy Graduate Accelerator - This plan is for tertiary institutions graduates who have full time to build a career in tech. This plan has been arranged in a way to prepare them for work.</p>
-                        <p>Grazac Academy Undergraduate Accelerator - This plan is to equip undergraduates in their institutions, we believe the earlier the better and we want to prepare them for life after school by upskilling them while they are still in school.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr/>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>When was the academy established?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <hr />
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="1">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>When was the academy established?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="1">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>Grazac Academy has been in operation since 2018</p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Grazac Academy has been in operation since 2018</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr/>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="2">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How many students have graduated from your academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <hr />
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="2">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>How many students have graduated from your academy?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="2">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>
+                        Excluding our partnership with Haptics.ng in 2019 to
+                        execute Google project of upskilling Nigerians on
+                        Digital skills where we trained about 500 youths, we
+                        have impacted over 2,000 lives through our trainings,
+                        meetups and events.
+                      </p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="2">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Excluding our partnership with Haptics.ng in 2019 to execute Google project of upskilling 
-Nigerians on Digital skills where we trained about 500 youths, we have impacted over 2,000 
-lives through our trainings, meetups and events.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr/>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="3">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Where is the academy located?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <hr />
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="3">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>Where is the academy located?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="3">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>
+                        Our headquarter is located at Abeokuta, Ogun State,
+                        Nigeria.
+                      </p>
+                      <p>
+                        Address: Suite 106, PROHUB, Salawu Olabode Avenue, Ewang
+                        Road, Idi-aba, Abeokuta.
+                      </p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="3">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Our headquarter is located at Abeokuta, Ogun State, Nigeria.</p>
-                        <p>Address: Suite 106, PROHUB, Salawu Olabode Avenue, Ewang Road, Idi-aba, Abeokuta.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr/>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="4">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How do I enroll in the academy?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <hr />
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="4">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>How do I enroll in the academy?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="4">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>
+                        Visit{" "}
+                        <a href="https://www.grazacacademy.com">
+                          www.grazacacademy.com
+                        </a>{" "}
+                        to enroll for your preferred course.
+                      </p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="4">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Visit <a href="https://www.grazacacademy.com">www.grazacacademy.com</a> to enroll for your preferred course.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr/>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="5">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What are the payment options?<img style={{float:"right"}} src="https://img.icons8.com/ios-glyphs/30/000000/down-squared.png"/></h4>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <hr />
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <div className="landing_faq-question" onClick={handleFaq}>
+                    <h4>What are the payment options?</h4>
+                    <MdKeyboardArrowDown size="2rem" color="black" />
+                  </div>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="5">
+                  <Card.Body>
+                    <div className="landing_faq-answer">
+                      <p>
+                        We have three (2) payment options for our Gradaute
+                        Accelerator, you can either pay once or pay
+                        installmentally.
+                      </p>
                     </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="5">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>We have three (2) payment options for our Gradaute Accelerator, you can either pay once or pay installmentally.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
-              <hr/>
-              <Link to="/faq"><p className="landing_faq-link">More frequently asked questions</p></Link>
-            </div>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            </Accordion>
+            <hr />
+            <Link to="/faq">
+              <p className="landing_faq-link">
+                More frequently asked questions
+              </p>
+            </Link>
           </div>
+        </div>
       </div>
 
       <div className="landing__slider">
@@ -444,12 +519,14 @@ lives through our trainings, meetups and events.</p>
               and mentorship needed for your relevance in the future of work.
             </p>
             <div className="landing__btn--2">
-                {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
-                <a href="/#tracks">
-                  <div className="nav__btn nav__btn-flex ">
-                    <a className="nav__btn--text" href="https://wa.link/w8e0xs">Chat with Us</a>
-                  </div>
-                </a>
+              {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
+              <a href="/#tracks">
+                <div className="nav__btn nav__btn-flex ">
+                  <a className="nav__btn--text" href="https://wa.link/w8e0xs">
+                    Chat with Us
+                  </a>
+                </div>
+              </a>
             </div>
           </div>
 
