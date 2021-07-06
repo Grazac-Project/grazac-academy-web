@@ -53,6 +53,32 @@ html {
   margin: 0;
 }
 
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
 .nav {
   background-color: transparent;
   position: relative;
@@ -70,6 +96,8 @@ html {
   left: 0;
   -webkit-box-shadow: 0 4px 14px -6px rgba(7, 48, 65, 0.1);
   box-shadow: 0 4px 14px -6px rgba(7, 48, 65, 0.1);
+  -webkit-animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;
+          animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;
 }
 
 @media (max-width: 37.5em) {
@@ -1310,6 +1338,75 @@ html {
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.faq_hero {
+  height: 60vh;
+  position: relative;
+  background-color: rgba(220, 205, 244, 1);
+}
+
+.faq_hero_content {
+  padding-bottom: 100px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+.faq_hero_content h1 {
+  font-weight: bold;
+  font-size: 6rem;
+  line-height: 75px;
+  color: #073041;
+  font-family: Georgia;
+}
+
+
+@media (max-width: 56.25em) {
+
+  .faq_hero {
+    height: 60vh;
+  }
+
+  .faq_hero_content h1 {
+    font-size: 5rem;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 37.5em) {
+
+  .faq_hero {
+    height: 60vh;
+  }
+
+  .faq_hero_content h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.faq_hero_content p {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 2rem;
+  color: #9da8b6;
+  line-height: 30px;
+  font-weight: normal;
+}
+
+@media (max-width: 37.5em) {
+  .landing__text p {
+    margin: 2rem 0;
+    line-height: 25px;
+    font-size: 1.8rem;
+  }
+}
+
+>>>>>>> 8059332c2be0cb0a84f3d019a478d10543903990
+=======
+>>>>>>> 7c57132d01c2b23f8b575337d7de0515d9284a64
 .landing_faq {
   margin-bottom: 100px;
 }

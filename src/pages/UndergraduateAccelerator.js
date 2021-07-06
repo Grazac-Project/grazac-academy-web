@@ -22,6 +22,7 @@ const UndergraduateAccelerator = () => {
       fetch("https://grazacacademy.com/undergraduate/courses")
         .then((resp) => resp.json())
         .then((resp) => {
+          console.log("false")
           setCourses(resp.data);
           setShow(false);
         })

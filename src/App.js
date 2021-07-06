@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import "./scss/main.css";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/Landing";
@@ -27,51 +27,67 @@ import Loader from "./components/Loader";
 const App = () => {
   const [show, setShow] = useState(true);
 
-  useEffect(() =>{
-    window.addEventListener("load", () =>{
-      setShow(false)
-    })
-  }, [])
+  const app = useRef();
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setShow(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (show) {
+      console.log("true");
+      document.body.style.overflow = 'hidden';
+    } else {
+      console.log("false");
+      document.body.style.overflow = 'hidden';
+    }
+  }, [show]);
+
+
   return (
-    <LoaderContext.Provider value={{ show, setShow }} className="App">
+    <LoaderContext.Provider value={{ show, setShow }}>
       {show && <Loader />}
 
-      <Switch>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/about-us" component={AboutUs} />
-        <Route path="/faq" component={Faq} />
+      <div ref={app} className="App" style={{ overflow: "hidden" }}>
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/faq" component={Faq} />
 
-        <Route
-          path="/course-detail-undergraduate"
-          component={UndergraduateCourseDetail}
-        />
-        <Route
-          path="/course-detail-graduate"
-          component={GraduateCourseDetail}
-        />
-        <Route path="/contact" component={Contact} />
-        <Route
-          path="/graduate-accelerator-plan"
-          component={GraduateAccelerator}
-        />
-        <Route
-          path="/undergraduate-accelerator-plan"
-          component={UndergraduateAccelerator}
-        />
-        <Route path="/graduate-form" component={GraduateForm} />
-        <Route path="/undergraduate-form" component={UndergraduateForm} />
-        {/* <Route
+          <Route
+            path="/course-detail-undergraduate"
+            component={UndergraduateCourseDetail}
+          />
+          <Route
+            path="/course-detail-graduate"
+            component={GraduateCourseDetail}
+          />
+          <Route path="/contact" component={Contact} />
+          <Route
+            path="/graduate-accelerator-plan"
+            component={GraduateAccelerator}
+          />
+          <Route
+            path="/undergraduate-accelerator-plan"
+            component={UndergraduateAccelerator}
+          />
+          <Route path="/graduate-form" component={GraduateForm} />
+          <Route path="/undergraduate-form" component={UndergraduateForm} />
+          {/* <Route
           path="/undergraduate/payment/:id"
           component={UndergraduateCoursePayment}
         /> */}
-        {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
-        <Route path="/lead" component={LeadForm} />
-        <Route path="/internship" component={InternshipForm} />
+          {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
+          <Route path="/lead" component={LeadForm} />
+          <Route path="/internship" component={InternshipForm} />
 
-        <Route path="/:name/coming-soon" component={ComingSoon} />
-      </Switch>
+          <Route path="/:name/coming-soon" component={ComingSoon} />
+        </Switch>
+      </div>
     </LoaderContext.Provider>
   );
 };
