@@ -17,6 +17,13 @@
     }
 }
 
+.lds-img {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: 40px;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
