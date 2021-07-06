@@ -98,8 +98,8 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Grazac Graduate Accelerator Program enrollment is opening by June
-              25th.
+              Grazac Graduate Accelerator Program enrollment is opening by July
+              12th.
               <a
                 className="infomodal_content-link"
                 href="https://grazacacademy.com/graduate-accelerator-plan"

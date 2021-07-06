@@ -361,6 +361,11 @@ const GraduateForm = () => {
                     required="required"
                   />
                 </div>
+                <div>
+                  <p>
+                  <strong>Note:</strong> Intending corps member who are yet to be fully posted to Ogun State are advised to think twice as we currently don't offer refunds and we run physical classes
+                  </p>
+                </div>
                 <div className="form-privacy">
                   <button
                     className="download-brochure"

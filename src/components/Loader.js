@@ -1,6 +1,6 @@
 // import { FavIcon } from "../icons";
 import Modal from "./Modal";
-import Logo from "../images/grazac-icon.png";
+import Logo from "../images/grazac-whiteicon.png";
 
 const Loader = () => {
   return (
