@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
@@ -8,7 +9,6 @@ const GraduateForm = () => {
   const [lastname, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [plan, setPlan] = useState("full-time");
   const [availability, setAvailability] = useState("");
   const [amount, setAmount] = useState("");
   const [course, setCourse] = useState("");
@@ -47,79 +47,115 @@ const GraduateForm = () => {
   };
 
   const choosePlan = (e) => {
+    if(e.target.value === 'installmental') {
+      setAmount(100000);
+    } else if(e.target.value === 'monthly') {
+      setAmount(55000);
+    } else {
+      setAmount(200000);
+    }
     setPaymentPlan(e.target.value);
   };
+
+  const config = {
+    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: email,
+      phonenumber: phone,
+      name: firstname + " " + lastname,
+    },
+    customizations: {
+      title: "Grazac Graduate Accelerator Plan",
+      description: `Payment for ${course} at Grazac Graduate Accelerator Plan`,
+      logo: "https://grazac.com.ng/assets/images/favicon.png",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (amount) {
-      window.scroll(0, formInfo.current.offsetTop);
-      document.querySelector(".form-info").textContent =
-        "Submitting, please wait...";
-      document
-        .querySelector("#submit-btn")
-        .setAttribute("disabled", "disabled");
-      fetch("https://grazacacademy.com/graduate/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          phone: phone,
-          availability: availability,
-          course: course,
-          package: plan,
-          expectation: message,
-          tuition: amount,
-        }),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          if (data.success === true) {
+      handleFlutterPayment({
+        callback: (response) => {
+          if (response.status === "successful") {
+            window.scroll(0, formInfo.current.offsetTop);
             document.querySelector(".form-info").textContent =
-              "Your registration was successful, kindly check your mailbox for further details";
-            document.querySelector("#submit-btn").removeAttribute("disabled");
-            setFirstName("");
-            setLastName("");
-            setMessage("");
-            setPhone("");
-            setEmail("");
-            setCourse("");
-          } else {
-            document.querySelector(".form-info").textContent = data.msg;
-            document.querySelector("#submit-btn").removeAttribute("disabled");
-          }
-        })
-        .catch((err) => {
-          document.querySelector(".form-info").textContent =
-            "Something went wrong, please try again";
-          document.querySelector("#submit-btn").removeAttribute("disabled");
-        });
-      let formData = new FormData();
+              "Submitting, please wait...";
+            document
+              .querySelector("#submit-btn")
+              .setAttribute("disabled", "disabled");
+            fetch("https://grazacacademy.com/graduate/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                course: course,
+                paymentPlan: paymentPlan,
+                expectation: message,
+                tuition: amount,
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data.success === true) {
+                  document.querySelector(".form-info").textContent =
+                    "Your registration was successful, kindly check your mailbox for further details";
+                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                  setFirstName("");
+                  setLastName("");
+                  setMessage("");
+                  setPhone("");
+                  setEmail("");
+                  setCourse("");
+                } else {
+                  document.querySelector(".form-info").textContent = data.msg;
+                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                }
+              })
+              .catch((err) => {
+                document.querySelector(".form-info").textContent =
+                  "Something went wrong, please try again";
+                document.querySelector("#submit-btn").removeAttribute("disabled");
+              });
 
-      formData.append("name", firstname);
-      formData.append("email", email);
-      axios
-        .post("http://grazac.com.ng/newsletter/subscribe", formData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((resp) => resp.data)
-        .then((data) => {
-          console.log(data);
-          if (data.success === true) {
-            console.log("Added to newsletter");
+              let formData = new FormData();
+              formData.append("name", firstname);
+              formData.append("email", email);
+              axios
+                .post("http://grazac.com.ng/newsletter/subscribe", formData, {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                })
+                .then((resp) => resp.data)
+                .then((data) => {
+                  if (data.success === true) {
+                    console.log("Added to newsletter");
+                  } else {
+                    console.log("Not Added to newsletter");
+                  }
+                })
+                .catch((err) => {
+                  console.log(`An error occured, please try again ${err}`);
+                });
+
           } else {
-            console.log("Not Added to newsletter");
+            alert('Payment not successful');
           }
-        })
-        .catch((err) => {
-          console.log(`An error occured, please try again ${err}`);
-        });
+          closePaymentModal(); // this will close the modal programmatically
+        },
+        onClose: () => {},
+      });
     } else {
       alert("Please select a course");
     }
@@ -265,9 +301,9 @@ const GraduateForm = () => {
                       required="required"
                     >
                       <option value="">---Choose Plan---</option>
-                      <option>Full Payment</option>
-                      <option>Installmental Payment</option>
-                      <option>Monthly Payment</option>
+                      <option value="full">Full Payment</option>
+                      <option value="installmental">Installmental Payment</option>
+                      <option value="monthly">Monthly Payment</option>
                     </select>
                   </div>
                 )}

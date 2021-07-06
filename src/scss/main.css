@@ -863,6 +863,13 @@ html {
           align-items: center;
 }
 
+.lds-img {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: 40px;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -1332,6 +1339,7 @@ html {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .faq_hero {
   height: 60vh;
@@ -1397,6 +1405,8 @@ html {
 }
 
 >>>>>>> 8059332c2be0cb0a84f3d019a478d10543903990
+=======
+>>>>>>> 7c57132d01c2b23f8b575337d7de0515d9284a64
 .landing_faq {
   margin-bottom: 100px;
 }

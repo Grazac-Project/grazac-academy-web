@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
@@ -13,18 +14,17 @@ const UndergraduateForm = () => {
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState("");
   const [fetchCourses, setFetched] = useState([]);
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
 
   const formInfo = useRef();
 
   useEffect(() => {
     document.title = "Join our Undergraduate Track - Grazac Academy";
     window.scrollTo(0, 0);
-    fetch("https://grazacacademy.com/courses/undergraduate")
+    fetch("https://grazacacademy.com/undergraduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
         setFetched(resp.data);
-        console.log(resp.data);
       })
       .catch((error) => {
         console.log(
@@ -41,81 +41,142 @@ const UndergraduateForm = () => {
     setAmount(fetchCourses[rc].discounted_tuition);
   };
 
+  const config = {
+    public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: email,
+      phonenumber: phone,
+      name: firstname + " " + lastname,
+    },
+    customizations: {
+      title: 'Grazac Undergraduate Accelerator Plan',
+      description: `Payment for ${course} at Grazac Undergraduate Accelerator Plan`,
+      logo: 'https://grazac.com.ng/assets/images/favicon.png',
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+
   const onSubmit = () => {
     if (amount) {
-      if (availability === "1") {
-        window.scroll(0, formInfo.current.offsetTop);
-        document.querySelector(".form-info").textContent =
-          "Submitting, please wait...";
-        document
-          .querySelector("#submit-btn")
-          .setAttribute("disabled", "disabled");
-        fetch("https://grazacacademy.com/undergraduate/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            phone: phone,
-            institution: institution,
-            availability: availability,
-            course: course,
-            expectation: message,
-            package: "Full time",
-            tuition: amount,
-          }),
-        })
-          .then((resp) => resp.json())
-          .then((data) => {
-            if (data.success === true) {
+      handleFlutterPayment({
+        callback: (response) => {
+            if (response.status === 'successful') {
+              window.scroll(0, formInfo.current.offsetTop);
               document.querySelector(".form-info").textContent =
-                "Your registration was successful, kindly check your mailbox for further details.";
-              document.querySelector("#submit-btn").removeAttribute("disabled");
-              setFirstName("");
-              setLastName("");
-              setMessage("");
-              setPhone("");
-              setEmail("");
-              setInstitution("");
-              setCourse("");
-            } else {
-              document.querySelector(".form-info").textContent = data.msg;
-              document.querySelector("#submit-btn").removeAttribute("disabled");
-            }
-          })
-          .catch((err) => {
-            document.querySelector(".form-info").textContent =
-              "Something went wrong, please try again";
-            document.querySelector("#submit-btn").removeAttribute("disabled");
-          });
-        let formData = new FormData();
+                "Submitting, please wait...";
+              document
+                .querySelector("#submit-btn")
+                .setAttribute("disabled", "disabled");
+              fetch("https://grazacacademy.com/undergraduate/register", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  firstname: firstname,
+                  lastname: lastname,
+                  email: email,
+                  phone: phone,
+                  institution: institution,
+                  course: course,
+                  expectation: message,
+                  tuition: amount
+                }),
+              })
+                .then((resp) => resp.json())
+                .then((data) => {
+                  if (data.success === true) {
+                    document.querySelector(".form-info").textContent =
+                      "Your registration was successful, kindly check your mailbox for further details.";
+                    document.querySelector("#submit-btn").removeAttribute("disabled");
+                    setFirstName("");
+                    setLastName("");
+                    setMessage("");
+                    setPhone("");
+                    setEmail("");
+                    setInstitution("");
+                    setCourse("");
+                  } else {
+                    document.querySelector(".form-info").textContent = data.msg;
+                    document.querySelector("#submit-btn").removeAttribute("disabled");
+                  }
+                })
+                .catch((err) => {
+                  document.querySelector(".form-info").textContent =
+                    "Something went wrong, please try again";
+                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                });
+              let formData = new FormData();
 
-        formData.append("name", firstname);
-        formData.append("email", email);
-        axios
-          .post("https://grazac.com.ng/newsletter/subscribe", formData, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((resp) => resp.data)
-          .then((data) => {
-            console.log(data);
-            if (data.success === true) {
-              console.log("Added to newsletter");
+              formData.append("name", firstname);
+              formData.append("email", email);
+              axios
+                .post("https://grazac.com.ng/newsletter/subscribe", formData, {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                })
+                .then((resp) => resp.data)
+                .then((data) => {
+                  console.log(data);
+                  if (data.success === true) {
+                    console.log("Added to newsletter");
+                  } else {
+                    console.log("Not Added to newsletter");
+                  }
+                })
+                .catch((err) => {
+                  console.log(`An error occured, please try again ${err}`);
+                });
             } else {
-              console.log("Not Added to newsletter");
+              alert('Payment not successful');
             }
-          })
-          .catch((err) => {
-            console.log(`An error occured, please try again ${err}`);
-          });
-      } else {
-        alert("You must be available to for the undergraduate training");
-      }
+            closePaymentModal() // this will close the modal programmatically
+        },
+        onClose: (response) => {
+          if (response === true){
+            console.log("payment cancelled");
+            fetch("https://grazacacademy.com/undergraduate/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                institution: institution,
+                course: course,
+                expectation: message,
+                tuition: amount,
+                status:"cancel"
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data.success === true) {
+                  setFirstName("");
+                  setLastName("");
+                  setMessage("");
+                  setPhone("");
+                  setEmail("");
+                  setInstitution("");
+                  setCourse("");
+                } 
+              })
+              .catch((err) => {
+                console.log(err)
+              });
+          }
+        },
+      });
+
     } else {
       alert("Kindly select a course");
     }
@@ -130,7 +191,7 @@ const UndergraduateForm = () => {
             <div>
               <h1>Grazac Academy Undergraduate Accelerator</h1>
               <p>
-                FUNAAB and FCE starts by Feb 13th and on-site classes will only
+                Classes are on-site and will only
                 be on weekends.
               </p>
             </div>
@@ -211,16 +272,16 @@ const UndergraduateForm = () => {
                   required
                 >
                   <option>---Choose institution---</option>
-                  <option>
+                  <option value="FUNAAB">
                     Federal University of Agriculture, Abeokuta (FUNAAB)
                   </option>
-                  <option>
+                  <option value="FCE_OSIELE">
                     Federal College of Education, Osiele Abeokuta (FCE)
                   </option>
-                  <option>Olabisi Onabanjo University (AGO-IWOYE)</option>
-                  <option>Olabisi Onabanjo University (IBOGUN)</option>
-                  <option>University of Ibadan (UI)</option>
-                  <option>Obafemi Awolowo University (OAU)</option>
+                  <option value="OOU_AGO-IWOYE">Olabisi Onabanjo University (AGO-IWOYE)</option>
+                  <option value="OOU_IBOGUN">Olabisi Onabanjo University (IBOGUN)</option>
+                  <option value="UI">University of Ibadan (UI)</option>
+                  <option value="OAU">Obafemi Awolowo University (OAU)</option>
                 </select>
               </div>
               <div>
