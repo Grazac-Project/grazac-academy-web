@@ -21,6 +21,7 @@ const CourseDetail = (props) => {
     fetch(`https://grazacacademy.com/graduate/course/details/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
+        console.log(resp)
         setCourse(resp.data);
         setOutline(JSON.parse(resp.data.outline));
         setShow(false);
@@ -107,30 +108,6 @@ const CourseDetail = (props) => {
           </div>
           <MOT />
           <div className="course_purple">
-            <div className="course_purple_txt">
-              <p>Our Flexible Payment Plans</p>
-              <h1>{course.percent_off}%</h1>
-              <p>Discount Available</p>
-            </div>
-            <div className="course_purple-main">
-              <Link to="/graduate-form?payment=fulltime">
-                <div className="course_purple-main-boxes grad-box">
-                  <h4>Full Payment</h4>
-                  <h3>
-                    <span style={{ textDecoration: "line-through" }}>
-                      ₦{course.tuition}
-                    </span>
-                  </h3>
-                  <h2>
-                    ₦{new Intl.NumberFormat().format(course.discounted_tuition)}
-                  </h2>
-                  <p>
-                    This is a one-off payment. You won't be required to pay any
-                    amount again till the end of your training.
-                  </p>
-                </div>
-                <MOT />
-                <div className="course_purple">
                     <div className="course_purple_txt">
                         <p>Our Flexible Payment Plans</p>
                         <h1>{course.percent_off}%</h1>
@@ -166,16 +143,7 @@ const CourseDetail = (props) => {
                         <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
                         <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}><p>Talk to course rep</p></a>
                     </div>
-                </div>
-              </Link>
             </div>
-            <div className="course_purple-btn">
-              <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
-              <a href="tel:+234806 836 5951" style={{ marginTop: "7px" }}>
-                <p>Talk to course rep</p>
-              </a>
-            </div>
-          </div>
         </div>
         <Footer />
       </div>
