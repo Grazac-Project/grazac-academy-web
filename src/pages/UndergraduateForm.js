@@ -138,8 +138,42 @@ const UndergraduateForm = () => {
             }
             closePaymentModal() // this will close the modal programmatically
         },
-        onClose: () => {
-
+        onClose: (response) => {
+          if (response === true){
+            console.log("payment cancelled");
+            fetch("https://grazacacademy.com/undergraduate/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                institution: institution,
+                course: course,
+                expectation: message,
+                tuition: amount,
+                status:"cancel"
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data.success === true) {
+                  setFirstName("");
+                  setLastName("");
+                  setMessage("");
+                  setPhone("");
+                  setEmail("");
+                  setInstitution("");
+                  setCourse("");
+                } 
+              })
+              .catch((err) => {
+                console.log(err)
+              });
+          }
         },
       });
 
