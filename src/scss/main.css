@@ -1376,6 +1376,12 @@ input:focus, select:focus, textarea:focus {
   font-size: 24px !important;
 }
 
+@media (max-width: 500px) {
+  .landing_faq h4 {
+    font-size: 16px !important;
+  }
+}
+
 .landing_faq p {
   font-size: 1.4rem;
   color: #9da8b6;
@@ -4395,7 +4401,6 @@ input:focus, select:focus, textarea:focus {
   font-style: normal;
   font-weight: bold;
   font-size: 60px;
-  line-height: 75px;
   text-align: center;
   margin: auto;
   color: #073041;
@@ -4414,5 +4419,6 @@ input:focus, select:focus, textarea:focus {
   font-size: 18px;
   line-height: 30px;
   color: #9da8b6;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
