@@ -1,0 +1,36 @@
+.faq_hero {
+  background: rgba(220, 205, 244, 0.2);
+
+  &_content {
+    padding: 10rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    row-gap: 2rem;
+    h1 {
+      font-family: Georgia;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 60px;
+      text-align: center;
+      margin: auto;
+      color: #073041;
+
+      @media (max-width: 800px) {
+        font-size: 30px;
+      }
+    }
+
+    p {
+      font-family: "Nunito", "Sans";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 30px;
+
+      color: #9da8b6;
+      text-align: center;
+    }
+  }
+}
