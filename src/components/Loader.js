@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import Logo from "../images/logo.png";
+import Logo from "../images/svg/grazac-icon.svg";
 
 const Loader = () => {
   return (

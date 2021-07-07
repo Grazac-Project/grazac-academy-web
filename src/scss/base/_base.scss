@@ -22,3 +22,9 @@ html {
     font-size: 75%; //1rem = 12
   }
 }
+
+
+input:focus, select:focus, textarea:focus{
+  outline: 1px solid #ccc;
+  border-radius: 10px;
+}

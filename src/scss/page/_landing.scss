@@ -26,7 +26,7 @@
 
 .faq-icon_transition {
   transform: rotate(180deg);
-  transition : all .3s ease-in-out
+  transition: all 0.3s ease-in-out;
 }
 
 .landing {
@@ -326,19 +326,30 @@
 
   &_faq {
     margin-bottom: 100px;
+    font-family: Georgia;
     h1 {
-      font-size: 4rem;
       font-weight: normal;
       font-family: $font-primary;
       margin: 4rem 0;
+      color: #1f1035;
+      font-family: Georgia;
+      font-size: 24px;
     }
     h3 {
       margin: 40px 0 20px;
       color: $color-inspiring-purple;
     }
 
+    h4 {
+      color: #1f1035;
+      font-size: 24px !important;
+    }
+
     p {
-      font-size: 16px;
+      // font-size: 16px;
+      font-size: 1.4rem;
+      color: #9da8b6;
+      line-height: 35px;
     }
     &-link {
       color: $color-inspiring-purple;

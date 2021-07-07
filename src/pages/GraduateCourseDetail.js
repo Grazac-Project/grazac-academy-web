@@ -126,7 +126,7 @@ const CourseDetail = (props) => {
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Installment Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(100000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
+                                <h2>₦{new Intl.NumberFormat().format(105000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
                                 <p>To be paid at the start of the training and completed midway into the training which is after 2 months.</p>
                             </div>
                         </div>

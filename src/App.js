@@ -9,24 +9,24 @@ import {
 import "./scss/main.css";
 import { Switch, Route } from "react-router-dom";
 // import LandingPage from "./pages/Landing";
-import Login from "./auth/Login";
-import Signup from "./auth/Signup";
+// import Login from "./auth/Login";
+// import Signup from "./auth/Signup";
 
-import UndergraduateCourseDetail from "./pages/UndergraduateCourseDetail";
-import GraduateCourseDetail from "./pages/GraduateCourseDetail";
+// import UndergraduateCourseDetail from "./pages/UndergraduateCourseDetail";
+// import GraduateCourseDetail from "./pages/GraduateCourseDetail";
 // import AboutUs from "./pages/AboutUs";
-import Contact from "./pages/Contact";
-import Faq from "./pages/Faq";
+// import Contact from "./pages/Contact";
+// import Faq from "./pages/Faq";
 
 // import GraduateAccelerator from "./pages/GraduateAccelerator";
 // import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
-import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
-import GraduateCoursePayment from "./pages/GraduateCoursePayment";
-import LeadForm from "./pages/LeadForm";
-import GraduateForm from "./pages/GraduateForm";
-import UndergraduateForm from "./pages/UndergraduateForm";
+// import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
+// import GraduateCoursePayment from "./pages/GraduateCoursePayment";
+// import LeadForm from "./pages/LeadForm";
+// import GraduateForm from "./pages/GraduateForm";
+// import UndergraduateForm from "./pages/UndergraduateForm";
 import ComingSoon from "./pages/ComingSoon";
-import InternshipForm from "./pages/InternshipForm";
+// import InternshipForm from "./pages/InternshipForm";
 
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
@@ -46,11 +46,58 @@ const UndergraduateAccelerator = lazy(() => {
   return import("./pages/UndergraduateAccelerator");
 });
 
+const UndergraduateCoursePayment = lazy(() => {
+  return import("./pages/UndergraduateCoursePayment");
+});
+
+const Login = lazy(() => {
+  return import("./auth/Login");
+});
+
+const Signup = lazy(() => {
+  return import("./auth/Signup");
+});
+
+const UndergraduateCourseDetail = lazy(() => {
+  return import("./pages/UndergraduateCourseDetail");
+});
+
+const GraduateCourseDetail = lazy(() => {
+  return import("./pages/GraduateCourseDetail");
+});
+
+const Faq = lazy(() => {
+  return import("./pages/Faq");
+});
+
+const Contact = lazy(() => {
+  return import("./pages/Contact");
+});
+
+const GraduateCoursePayment = lazy(() => {
+  return import("./pages/GraduateCoursePayment");
+});
+
+const LeadForm = lazy(() => {
+  return import("./pages/LeadForm");
+});
+
+const GraduateForm = lazy(() => {
+  return import("./pages/GraduateForm");
+});
+
+const UndergraduateForm = lazy(() => {
+  return import("./pages/UndergraduateForm");
+});
+
+const InternshipForm = lazy(() => {
+  return import("./pages/InternshipForm");
+});
+
 const App = () => {
   const [show, setShow] = useState(true);
 
   const app = useRef();
-
 
   return (
     <LoaderContext.Provider value={{ show, setShow }}>
