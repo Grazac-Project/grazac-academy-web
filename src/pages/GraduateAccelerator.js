@@ -18,6 +18,7 @@ const GraduateAccelerator = () => {
         .then((resp) => resp.json())
         .then((resp) => {
           setCourses(resp.data);
+          console.log(resp.data);
           setShow(false);
         })
         .catch((error) => {
