@@ -352,7 +352,7 @@
     p {
       // font-size: 16px;
       font-size: 1.4rem;
-      color: #9da8b6;
+      color: black;
       line-height: 35px;
     }
     &-link {
@@ -380,6 +380,34 @@
       align-items: center;
       padding: 5rem;
       overflow: hidden;
+
+      .hide-phone{
+        @media(max-width:1300px){
+          display: none;
+        }
+      }
+
+      .hide-desktop{
+        @media(min-width:1300px){
+          display: none;
+        }
+      }
+
+      .video-width{
+        box-sizing: border-box;
+        width: 560px;
+        height: 315px;
+        @media(max-width:1300px){
+          display: block;
+          margin:auto;
+        } 
+        @media(max-width:700px){
+          display: block;
+          margin:auto 30px auto auto;
+          width:90%;
+          height: 250px;
+        } 
+      }
 
       @include respond(phone) {
         margin-bottom: 5rem;

@@ -181,12 +181,7 @@ const GraduateForm = () => {
               .then((data) => {
                 console.log(data);
                 if (data.success === true) {
-                  setFirstName("");
-                  setLastName("");
-                  setMessage("");
-                  setPhone("");
-                  setEmail("");
-                  setCourse("");
+                  console.log('user cancelled and data is recorded')
                 } 
               })
               .catch((err) => {
@@ -256,6 +251,7 @@ const GraduateForm = () => {
                     <input
                       className="input"
                       type="text"
+                      maxLength="11"
                       placeholder="ex. 08133333333"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}

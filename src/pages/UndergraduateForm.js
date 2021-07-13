@@ -78,7 +78,7 @@ const UndergraduateForm = () => {
   const handleFlutterPayment = useFlutterwave(config);
 
   const onSubmit = () => {
-    if (amount) {
+    if (institution === "OOU_IBOGUN") {
       handleFlutterPayment({
         callback: (response) => {
             if (response.status === 'successful') {
@@ -160,7 +160,7 @@ const UndergraduateForm = () => {
       });
 
     } else {
-      alert("Kindly select a course");
+      alert("We don't have any open enrollment in your institution at the moment. Please check back later.");
     }
   };
 

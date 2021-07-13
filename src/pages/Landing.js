@@ -475,7 +475,7 @@ const Landing = () => {
 
       <div className="landing__slider">
         <Slider arrows={true}>
-          {content.map((item) => (
+          {/* {content.map((item) => (
             <div className="landing__slider--container" key={item.id}>
               <div className="landing__slider--img">
                 <img src={item.img} alt="img" />
@@ -504,7 +504,28 @@ const Landing = () => {
                 <small>{item.name}</small>
               </div>
             </div>
-          ))}
+          ))} */}
+            <div className="landing__slider--container" >
+              <div>
+                <iframe className="video-width" src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div className="hide-phone">
+                <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="landing__slider--container" >
+              <div>
+                <iframe className="video-width" src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div className="hide-phone">
+                <iframe className="video-width" src="https://www.youtube.com/embed/1KkiCbKrG-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="landing__slider--container hide-desktop" >
+              <div className="video-width">
+                <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
         </Slider>
       </div>
 
