@@ -7,40 +7,24 @@ import Qualities from "../components/Qualities";
 import Graduates from "../images/graduate.png";
 import loader from "../images/loader.gif";
 import { LoaderContext } from "../context";
+
+import coursesApi from "../api/graduate";
 const GraduateAccelerator = () => {
   const [courses, setCourses] = useState([]);
   const { setShow } = useContext(LoaderContext);
+
+  const course = coursesApi();
+
   useEffect(() => {
     document.title = "Graduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
-    setShow(true)
-      fetch("https://grazacacademy.com/graduate/courses")
-        .then((resp) => resp.json())
-        .then((resp) => {
-          setCourses(resp.data);
-          setShow(false);
-        })
-        .catch((error) => {
-          console.log(
-            "An error occurred when fetching the available courses, refreshing..."
-          );
-          //
-    });
-  
+ 
+      setCourses(course.data)
   }, []);
-
-
 
   return (
     <div>
-      {/* {courses.length ? (
-        <div></div>
-      ) : (
-        <div>
-          <img src={loader} alt="loader" className="loader-top" />
-        </div>
-      )} */}
-      <div id="blur">
+      <div>
         <Navbar />
         <div className="gga">
           <div className="gga_hero">
@@ -237,7 +221,7 @@ const GraduateAccelerator = () => {
                             <Link
                               to={"/course-detail-graduate?course=" + item.slug}
                             >
-                            Learn More
+                              Learn More
                             </Link>
                           </div>
                         </div>
