@@ -194,6 +194,10 @@ const GraduateForm = () => {
       alert("Please select a course");
     }
   };
+  
+  const handlePhone = (e) => {
+    setPhone(e.target.value.slice(0, 11));
+  }
 
   return (
     <div>
@@ -250,11 +254,10 @@ const GraduateForm = () => {
                     </label>
                     <input
                       className="input"
-                      type="text"
-                      maxLength="11"
+                      type="number"
                       placeholder="ex. 08133333333"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={handlePhone}
                       required="required"
                     />
                   </div>

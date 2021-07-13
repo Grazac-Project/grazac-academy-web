@@ -164,6 +164,10 @@ const UndergraduateForm = () => {
     }
   };
 
+  const handlePhone = (e) => {
+    setPhone(e.target.value.slice(0, 11));
+  }
+
   return (
     <div>
       <Navbar />
@@ -220,11 +224,10 @@ const UndergraduateForm = () => {
                   </label>
                   <input
                     className="input"
-                    type="text"
-                    maxLength="11"
+                    type="number"
                     placeholder="ex. 08133333333"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={handlePhone}
                     required
                   />
                 </div>
