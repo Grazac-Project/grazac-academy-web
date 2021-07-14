@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -255,6 +255,9 @@ const GraduateAccelerator = () => {
         </div>
         <Footer />
       </div>
+      ) : (
+          <Loader />
+      )}
     </div>
   );
 };

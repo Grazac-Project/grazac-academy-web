@@ -14,6 +14,7 @@ const GraduateForm = () => {
   const [course, setCourse] = useState("");
   const [paymentPlan, setPaymentPlan] = useState("");
   const [message, setMessage] = useState("");
+  const [txref, setTxref] = useState("");
   const [fetchCourses, setFetched] = useState([]);
   const formInfo = useRef();
   const [showPayment, setShowPayment] = useState(true);
@@ -29,7 +30,6 @@ const GraduateForm = () => {
     fetch("https://grazacacademy.com/graduate/courses")
       .then((resp) => resp.json())
       .then((resp) => {
-        console.log(resp.data)
         setFetched(resp.data);
       })
       .catch((error) => {
@@ -83,7 +83,8 @@ const GraduateForm = () => {
       handleFlutterPayment({
         callback: (response) => {
           if (response.status === "successful") {
-            window.scroll(0, formInfo.current.offsetTop);
+            setTxref(response.tx_ref);
+            //window.scroll(0, formInfo.current.offsetTop);
             document.querySelector(".form-info").textContent =
               "Submitting, please wait...";
             document
@@ -103,6 +104,7 @@ const GraduateForm = () => {
                 paymentPlan: paymentPlan,
                 expectation: message,
                 tuition: amount,
+                tx_ref: txref,
               }),
             })
               .then((resp) => resp.json())
@@ -154,12 +156,48 @@ const GraduateForm = () => {
           }
           closePaymentModal(); // this will close the modal programmatically
         },
-        onClose: () => {},
+        onClose: (response) => {
+          if (response === true){
+            console.log(response);
+            //Payment has been cancelled
+            fetch("https://grazacacademy.com/graduate/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                course: course,
+                paymentPlan:paymentPlan,
+                tuition: amount,
+                expectation: message,
+                status:"Attempted Payment"
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                console.log(data);
+                if (data.success === true) {
+                  console.log('user cancelled and data is recorded')
+                } 
+              })
+              .catch((err) => {
+                console.log(err)
+              });
+            }
+        },
       });
     } else {
       alert("Please select a course");
     }
   };
+  
+  const handlePhone = (e) => {
+    setPhone(e.target.value.slice(0, 11));
+  }
 
   return (
     <div>
@@ -216,10 +254,10 @@ const GraduateForm = () => {
                     </label>
                     <input
                       className="input"
-                      type="text"
+                      type="number"
                       placeholder="ex. 08133333333"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={handlePhone}
                       required="required"
                     />
                   </div>
@@ -360,6 +398,11 @@ const GraduateForm = () => {
                     onChange={(e) => setMessage(e.target.value)}
                     required="required"
                   />
+                </div>
+                <div>
+                  <p>
+                  <strong>Note:</strong> Intending corps member who are yet to be fully posted to Ogun State are advised to think twice as we currently don't offer refunds and we run physical classes
+                  </p>
                 </div>
                 <div className="form-privacy">
                   <button

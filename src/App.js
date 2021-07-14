@@ -1,7 +1,5 @@
 import {
-  createContext,
   useState,
-  useEffect,
   useRef,
   lazy,
   Suspense,
@@ -18,7 +16,7 @@ import { Switch, Route } from "react-router-dom";
 // import Contact from "./pages/Contact";
 // import Faq from "./pages/Faq";
 
-// import GraduateAccelerator from "./pages/GraduateAccelerator";
+import GraduateAccelerator from "./pages/GraduateAccelerator";
 // import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
 // import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
 // import GraduateCoursePayment from "./pages/GraduateCoursePayment";
@@ -39,9 +37,9 @@ const About = lazy(() => {
   return import("./pages/AboutUs");
 });
 
-const GraduateAccelerator = lazy(() => {
-  return import("./pages/GraduateAccelerator");
-});
+// const GraduateAccelerator = lazy(() => {
+//   return import("./pages/GraduateAccelerator");
+// });
 const UndergraduateAccelerator = lazy(() => {
   return import("./pages/UndergraduateAccelerator");
 });
@@ -94,6 +92,10 @@ const InternshipForm = lazy(() => {
   return import("./pages/InternshipForm");
 });
 
+const Hire = lazy(() => {
+  return import("./pages/Hire");
+});
+
 const App = () => {
   const [show, setShow] = useState(true);
 
@@ -138,6 +140,7 @@ const App = () => {
             {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
             <Route path="/lead" component={LeadForm} />
             <Route path="/internship" component={InternshipForm} />
+            <Route path="/hire" component={Hire} />
 
             <Route path="/:name/coming-soon" component={ComingSoon} />
           </Switch>

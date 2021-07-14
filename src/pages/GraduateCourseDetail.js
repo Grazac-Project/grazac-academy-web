@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,25 +6,22 @@ import PrimaryBtn from "../components/PrimaryBtn";
 import MOT from "../components/MOT";
 
 import paper from "../images/svg/paper-ribbon.svg";
-import { LoaderContext } from "../context";
+import Loader from "../components/Loader";
 
 const CourseDetail = (props) => {
   const [course, setCourse] = useState("");
   const [outline, setOutline] = useState([]);
-  const { setShow } = useContext(LoaderContext);
 
   React.useEffect(() => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
-    setShow(true);
     fetch(`https://grazacacademy.com/graduate/course/details/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
         console.log(resp)
         setCourse(resp.data);
         setOutline(JSON.parse(resp.data.outline));
-        setShow(false);
       })
       .catch((error) => {
         console.log(
@@ -36,7 +33,8 @@ const CourseDetail = (props) => {
 
   return (
     <div>
-      <div id="blur">
+      {outline.length ? (
+        <div id="blur">
         <Navbar />
         <div className="course">
           <div className="course_hero">
@@ -64,7 +62,7 @@ const CourseDetail = (props) => {
                     </div>
                   </div>
                   <div>
-                    <img src={paper} alt="academy" className="gga_hero-image" />
+                    {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
                   </div>
                 </div>
               ) : (
@@ -147,8 +145,12 @@ const CourseDetail = (props) => {
         </div>
         <Footer />
       </div>
+      ) : (
+          <Loader />
+      )}
     </div>
   );
+
 };
 
 export default CourseDetail;

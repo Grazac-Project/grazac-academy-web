@@ -10,9 +10,11 @@ const UndergraduateForm = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [institution, setInstitution] = useState("");
+  const [institutionlist, setInstitutionlist] = useState([]);
   const [availability, setAvailability] = useState("");
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState("");
+  const [txref, setTxref] = useState("");
   const [fetchCourses, setFetched] = useState([]);
   const [amount, setAmount] = useState(0);
 
@@ -33,6 +35,20 @@ const UndergraduateForm = () => {
         console.log(error)
         //window.location.reload();
       });
+
+      //endpoint to fetch all institutions
+      fetch("https://grazacacademy.com/undergraduate/institutions")
+        .then((resp) => resp.json())
+        .then((resp) => {
+          console.log(resp);
+          setInstitutionlist(resp.data);
+        })
+        .catch((error) => {
+          console.log(
+            "An error occurred when fetching all institutions, refreshing..."
+          );
+          console.log(error)
+        });
   }, []);
 
   const courseChange = (e) => {
@@ -62,11 +78,12 @@ const UndergraduateForm = () => {
   const handleFlutterPayment = useFlutterwave(config);
 
   const onSubmit = () => {
-    if (amount) {
+    if (institution === "OOU_IBOGUN") {
       handleFlutterPayment({
         callback: (response) => {
             if (response.status === 'successful') {
-              window.scroll(0, formInfo.current.offsetTop);
+              setTxref(response.tx_ref);
+              //window.scroll(0, formInfo.current.offsetTop);
               document.querySelector(".form-info").textContent =
                 "Submitting, please wait...";
               document
@@ -85,11 +102,13 @@ const UndergraduateForm = () => {
                   institution: institution,
                   course: course,
                   expectation: message,
-                  tuition: amount
+                  tuition: amount,
+                  tx_ref: txref,
                 }),
               })
                 .then((resp) => resp.json())
                 .then((data) => {
+                  console.log(data);
                   if (data.success === true) {
                     document.querySelector(".form-info").textContent =
                       "Your registration was successful, kindly check your mailbox for further details.";
@@ -123,7 +142,6 @@ const UndergraduateForm = () => {
                 })
                 .then((resp) => resp.data)
                 .then((data) => {
-                  console.log(data);
                   if (data.success === true) {
                     console.log("Added to newsletter");
                   } else {
@@ -138,49 +156,17 @@ const UndergraduateForm = () => {
             }
             closePaymentModal() // this will close the modal programmatically
         },
-        onClose: (response) => {
-          if (response === true){
-            console.log("payment cancelled");
-            fetch("https://grazacacademy.com/undergraduate/register", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                firstname: firstname,
-                lastname: lastname,
-                email: email,
-                phone: phone,
-                institution: institution,
-                course: course,
-                expectation: message,
-                tuition: amount,
-                status:"cancel"
-              }),
-            })
-              .then((resp) => resp.json())
-              .then((data) => {
-                if (data.success === true) {
-                  setFirstName("");
-                  setLastName("");
-                  setMessage("");
-                  setPhone("");
-                  setEmail("");
-                  setInstitution("");
-                  setCourse("");
-                } 
-              })
-              .catch((err) => {
-                console.log(err)
-              });
-          }
-        },
+        onClose: () => {},
       });
 
     } else {
-      alert("Kindly select a course");
+      alert("We don't have any open enrollment in your institution at the moment. Please check back later.");
     }
   };
+
+  const handlePhone = (e) => {
+    setPhone(e.target.value.slice(0, 11));
+  }
 
   return (
     <div>
@@ -238,11 +224,10 @@ const UndergraduateForm = () => {
                   </label>
                   <input
                     className="input"
-                    type="text"
-                    maxLength="11"
+                    type="number"
                     placeholder="ex. 08133333333"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={handlePhone}
                     required
                   />
                 </div>
@@ -272,16 +257,10 @@ const UndergraduateForm = () => {
                   required
                 >
                   <option>---Choose institution---</option>
-                  <option value="FUNAAB">
-                    Federal University of Agriculture, Abeokuta (FUNAAB)
-                  </option>
-                  <option value="FCE_OSIELE">
-                    Federal College of Education, Osiele Abeokuta (FCE)
-                  </option>
-                  <option value="OOU_AGO-IWOYE">Olabisi Onabanjo University (AGO-IWOYE)</option>
-                  <option value="OOU_IBOGUN">Olabisi Onabanjo University (IBOGUN)</option>
-                  <option value="UI">University of Ibadan (UI)</option>
-                  <option value="OAU">Obafemi Awolowo University (OAU)</option>
+                  {institutionlist.length ? (
+                    institutionlist.map((item, index) =>  (
+                    <option value={item.ref} key={index}>{item.name}</option>)))
+                    :(<option>Loading Institutions ...</option>)}
                 </select>
               </div>
               <div>

@@ -881,7 +881,7 @@ input:focus, select:focus, textarea:focus {
   position: absolute;
   width: 40px;
   height: 40px;
-  margin: 40px;
+  margin: 40px 50px 50px 40px;
 }
 
 .lds-ring {
@@ -1384,7 +1384,7 @@ input:focus, select:focus, textarea:focus {
 
 .landing_faq p {
   font-size: 1.4rem;
-  color: #9da8b6;
+  color: black;
   line-height: 35px;
 }
 
@@ -1427,6 +1427,41 @@ input:focus, select:focus, textarea:focus {
           align-items: center;
   padding: 5rem;
   overflow: hidden;
+}
+
+@media (max-width: 1300px) {
+  .landing__slider--container .hide-phone {
+    display: none;
+  }
+}
+
+@media (min-width: 1300px) {
+  .landing__slider--container .hide-desktop {
+    display: none;
+  }
+}
+
+.landing__slider--container .video-width {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 560px;
+  height: 315px;
+}
+
+@media (max-width: 1300px) {
+  .landing__slider--container .video-width {
+    display: block;
+    margin: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .landing__slider--container .video-width {
+    display: block;
+    margin: auto 30px auto auto;
+    width: 90%;
+    height: 250px;
+  }
 }
 
 @media (max-width: 37.5em) {
