@@ -1,25 +1,21 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NeedAdvice from "../components/NeedAdvice";
 import Qualities from "../components/Qualities";
 import Graduates from "../images/graduate.png";
-import loader from "../images/loader.gif";
-import { LoaderContext } from "../context";
+import Loader from "../components/Loader";
 const GraduateAccelerator = () => {
   const [courses, setCourses] = useState([]);
-  const { setShow } = useContext(LoaderContext);
   useEffect(() => {
     document.title = "Graduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
-    setShow(true)
       fetch("https://grazacacademy.com/graduate/courses")
         .then((resp) => resp.json())
         .then((resp) => {
           setCourses(resp.data);
           console.log(resp.data);
-          setShow(false);
         })
         .catch((error) => {
           console.log(
@@ -34,14 +30,8 @@ const GraduateAccelerator = () => {
 
   return (
     <div>
-      {/* {courses.length ? (
-        <div></div>
-      ) : (
-        <div>
-          <img src={loader} alt="loader" className="loader-top" />
-        </div>
-      )} */}
-      <div id="blur">
+      {courses.length ? (
+        <div id="blur">
         <Navbar />
         <div className="gga">
           <div className="gga_hero">
@@ -272,6 +262,9 @@ const GraduateAccelerator = () => {
         </div>
         <Footer />
       </div>
+      ) : (
+          <Loader />
+      )}
     </div>
   );
 };

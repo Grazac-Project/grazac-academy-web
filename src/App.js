@@ -1,7 +1,5 @@
 import {
-  createContext,
   useState,
-  useEffect,
   useRef,
   lazy,
   Suspense,
@@ -18,7 +16,7 @@ import { Switch, Route } from "react-router-dom";
 // import Contact from "./pages/Contact";
 // import Faq from "./pages/Faq";
 
-// import GraduateAccelerator from "./pages/GraduateAccelerator";
+import GraduateAccelerator from "./pages/GraduateAccelerator";
 // import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
 // import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
 // import GraduateCoursePayment from "./pages/GraduateCoursePayment";
@@ -39,9 +37,9 @@ const About = lazy(() => {
   return import("./pages/AboutUs");
 });
 
-const GraduateAccelerator = lazy(() => {
-  return import("./pages/GraduateAccelerator");
-});
+// const GraduateAccelerator = lazy(() => {
+//   return import("./pages/GraduateAccelerator");
+// });
 const UndergraduateAccelerator = lazy(() => {
   return import("./pages/UndergraduateAccelerator");
 });

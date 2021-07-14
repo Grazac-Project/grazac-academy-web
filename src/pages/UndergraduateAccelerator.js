@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,11 +6,10 @@ import NeedAdvice from "../components/NeedAdvice";
 import Qualities from "../components/Qualities";
 
 import undergraduate from "../images/undergraduate.png";
-import loader from "../images/loader.gif";
 import SchoolList from "../components/SchoolList";
-import { LoaderContext } from "../context";
+import Loader from "../components/Loader";
+
 const UndergraduateAccelerator = () => {
-  const { setShow } = useContext(LoaderContext);
   const [courses, setCourses] = useState([]);
   const [openListModal, setOpenListModal] = useState(false);
 
@@ -18,13 +17,11 @@ const UndergraduateAccelerator = () => {
     console.log("Undergraduate Accelaerator");
     document.title = "Undergraduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
-    setShow(true);
       fetch("https://grazacacademy.com/undergraduate/courses")
         .then((resp) => resp.json())
         .then((resp) => {
           console.log("false")
           setCourses(resp.data);
-          setShow(false);
         })
         .catch((error) => {
           console.log(
@@ -35,7 +32,8 @@ const UndergraduateAccelerator = () => {
 
   return (
     <div>
-      <div id="blur">
+      {courses.length ? (
+        <div id="blur">
         <Navbar />
         <div className="gua">
           <div className="gua_hero">
@@ -184,8 +182,12 @@ const UndergraduateAccelerator = () => {
 
         {openListModal && <SchoolList onOpen={(e) => setOpenListModal(e)} />}
       </div>
+      ) : (
+          <Loader />
+      )}
     </div>
   );
+
 };
 
 export default UndergraduateAccelerator;
