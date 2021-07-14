@@ -43,7 +43,7 @@
   &_hero {
     background-color: rgba(220, 205, 244, 0.2);
     // height:calc(100vh - 80px);
-    padding-top: 80px;
+    padding-top: 40px;
     position: relative;
     @include respond(phone) {
       padding-top: 30px;

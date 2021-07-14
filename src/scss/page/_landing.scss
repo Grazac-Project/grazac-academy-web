@@ -381,18 +381,6 @@
       padding: 5rem;
       overflow: hidden;
 
-      .hide-phone{
-        @media(max-width:1300px){
-          display: none;
-        }
-      }
-
-      .hide-desktop{
-        @media(min-width:1300px){
-          display: none;
-        }
-      }
-
       .video-width{
         box-sizing: border-box;
         width: 560px;
@@ -400,18 +388,34 @@
         @media(max-width:1300px){
           display: block;
           margin:auto;
-        } 
-        @media(max-width:700px){
-          display: block;
-          margin:auto 30px auto auto;
-          width:90%;
-          height: 250px;
+          width: 450px;
+        height: 230px;
         } 
       }
 
       @include respond(phone) {
         margin-bottom: 5rem;
         padding-left: 3rem;
+      }
+    }
+
+    &-desktop{
+      @media(max-width:900px){
+        display:none;
+      }
+    }
+
+    &-mobile{
+      padding:70px 0;
+      @media(min-width:900px){
+        display:none;
+      }
+
+      iframe{
+        width:90%;
+        height: 50vw;
+        margin: 5vw auto;
+        display: block;
       }
     }
 

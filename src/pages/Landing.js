@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Accordion, Card } from "react-bootstrap";
 // import { cn } from "../utils";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -474,7 +473,7 @@ const Landing = () => {
       </div>
 
       <div className="landing__slider">
-        <Slider arrows={true}>
+        <Slider arrows={true}  className="landing__slider-desktop">
           {/* {content.map((item) => (
             <div className="landing__slider--container" key={item.id}>
               <div className="landing__slider--img">
@@ -509,7 +508,7 @@ const Landing = () => {
               <div className="video-width">
                 <iframe className="video-width" src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-              <div className="hide-phone">
+              <div>
                 <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
@@ -517,16 +516,16 @@ const Landing = () => {
               <div className="video-width">
                 <iframe className="video-width" src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-              <div className="hide-phone">
+              <div>
                 <iframe className="video-width" src="https://www.youtube.com/embed/1KkiCbKrG-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
-            <div className="landing__slider--container hide-phone" >
-              <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
         </Slider>
+        <div className="landing__slider-mobile">
+            <iframe src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
 
       <div className="landing__bottom" style={{ paddingBottom: 0 }}>

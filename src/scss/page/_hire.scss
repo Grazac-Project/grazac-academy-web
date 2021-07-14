@@ -1,0 +1,22 @@
+.hire{
+    //margin: 100px 0;
+
+    &_dev{
+        border: 1px solid #E5E9F2;
+        border-radius: 15px;
+        padding:20px;
+
+        &-picture{
+            width: 100%;
+            height: 150px;
+            border:1px solid blue;
+            border-radius: 15px;
+            overflow: hidden;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
