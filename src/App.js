@@ -96,6 +96,15 @@ const Hire = lazy(() => {
   return import("./pages/Hire");
 });
 
+const Profile = lazy(() => {
+  return import("./pages/Profile");
+});
+
+
+const Project = lazy(() => {
+  return import("./pages/Project");
+});
+
 const App = () => {
   const [show, setShow] = useState(true);
 
@@ -140,7 +149,10 @@ const App = () => {
             {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
             <Route path="/lead" component={LeadForm} />
             <Route path="/internship" component={InternshipForm} />
+
             <Route path="/hire" component={Hire} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/project" component={Project} />
 
             <Route path="/:name/coming-soon" component={ComingSoon} />
           </Switch>

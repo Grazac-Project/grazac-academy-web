@@ -6,6 +6,7 @@ import Slider from "infinite-react-carousel";
 import Mode from "../components/Mode";
 
 import undergraduate from "../images/undergraduate.png";
+import student from "../images/student.png";
 import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 import Adedamola from "../images/testimonial/adedamola.jpeg";
 import Bosun from "../images/testimonial/bosun.jpg";
@@ -58,8 +59,9 @@ const Hire = () => {
                     <p>
                       We are bridging the gap between unemployment and entry - level jobs in the technology industry.
                     </p>
-                    <div className="contact_hero-privacy">
-                      {/**search input */}
+                    <div className="contact_hero-privacy" style={{position:'relative'}}>
+                      <input type="text" className="hire_search" placeholder="Search skills, titles..." />
+                      <input type="submit" className="hire_search-button"/>
                     </div>
                   </div>
                 </div>
@@ -75,30 +77,78 @@ const Hire = () => {
           </div>
         </div>
 
-        <div style={{boxSizing:'border-box'}}>
+        <div style={{boxSizing:'border-box', margin:'80px 0'}}>
           <Container>
             <Row>
-              <Col lg={4}>
+              <Col sm={6} lg={4}>
                 <div className="hire_dev">
                   <div className="hire_dev-picture">
-                    <img src={undergraduate} alt="profile" />
+                    <img src={student} alt="profile" />
                   </div>
-                  <h3>Samuel Peter</h3>
-                  <p>Product Designer</p>
-                  <p>View Profile</p>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
                 </div>
               </Col>
-              <Col lg={4}>
-                <div style={{width:"100%", margin:'0', boxSizing:'border-box', height:'200px', border:'2px solid red'}}></div>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
               </Col>
-              <Col lg={4}>
-                <div style={{width:"100%", margin:'0', boxSizing:'border-box', height:'200px', border:'2px solid red'}}></div>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
               </Col>
-              <Col lg={4}>
-                <div style={{width:"100%", margin:'0', boxSizing:'border-box', height:'200px', border:'2px solid red'}}></div>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
               </Col>
-              <Col lg={4}>
-                <div style={{width:"100%", margin:'0', boxSizing:'border-box', height:'200px', border:'2px solid red'}}></div>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
+              </Col>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
+              </Col>
+              <Col sm={6} lg={4}>
+                <div className="hire_dev">
+                  <div className="hire_dev-picture">
+                    <img src={student} alt="profile" />
+                  </div>
+                  <h4>Samuel Peter</h4>
+                  <p className="hire_dev-grey">Product Designer</p>
+                  <p className="hire_dev-purple">View Profile</p>
+                </div>
               </Col>
             </Row>
           </Container>
@@ -142,7 +192,7 @@ const Hire = () => {
         <div className="" style={{textAlign:'center', margin: '70px 0 100px'}}>
           <div className="container">
               <div className="course_wwd-intro">
-                  <h4>How It Works</h4>
+                  <p style={{color:'#773dd3'}}>Our Approach</p>
                   <h2>What you stand to gain</h2>
                   <p>Your path to employment and relevance in the digital age is optimized to the highest degree of success.</p>
               </div>
@@ -153,7 +203,7 @@ const Hire = () => {
                               <div className="svg-box1">
                                   <img src={energy} alt="energy"/>
                               </div>
-                              <h3>Internship opportunities </h3>
+                              <h3>Energetic</h3>
                               <p>Get a chance to work with our amazing team and partner companies on different projects to jump start your career.</p>
                           </div>
                       </div>
@@ -164,7 +214,7 @@ const Hire = () => {
                               <div className="svg-box1">
                                   <img src={idea} alt="energy"/>
                               </div>
-                              <h3>Recruitment</h3>
+                              <h3>Innovative</h3>
                               <p>Get hired in an organization of talented people to utilize your skills and experience to launch valuable products that solve problems for the world at large.</p>
                           </div>
                       </div>
@@ -175,7 +225,7 @@ const Hire = () => {
                               <div className="svg-box1">
                                   <img src={heart} alt="energy"/>
                               </div>
-                              <h3>Certification</h3>
+                              <h3>Social Heart</h3>
                               <p>Get a recognised certificate that serves as a proof that you are skilled enough to work in any organisation in or outside Nigeria.</p>
                           </div>
                       </div>
