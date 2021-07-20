@@ -59,7 +59,7 @@ const Hire = () => {
                     <p>
                       We are bridging the gap between unemployment and entry - level jobs in the technology industry.
                     </p>
-                    <div className="contact_hero-privacy" style={{position:'relative'}}>
+                    <div className="contact_hero-privacy" style={{position:'relative', boxSizing:'border-box'}}>
                       <input type="text" className="hire_search" placeholder="Search skills, titles..." />
                       <input type="submit" className="hire_search-button"/>
                     </div>

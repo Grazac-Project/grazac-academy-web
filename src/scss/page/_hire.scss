@@ -35,7 +35,8 @@
         border-radius: 6px;
         width:100%;
         padding:10px;
-        height:40px;
+        height:65px;
+        font-size: 16px;
 
         &-button{
             color:white;
@@ -51,15 +52,34 @@
     }
 
     &_profile{
+        @media(min-width:900px){
+            margin-left: 150px;
+        }
+        @media(max-width:969px){
+            margin: 0 30px;
+        }
+
+        &_hero{
+            background: rgba(220, 205, 244, 0.2);
+            box-sizing: border-box;
+            padding: 50px 0 70px;
+        }
+
         &-image{
-            width: 50%;
-            height: 80vw;
+            width: 70%;
+            height: 80vh;
             border-radius: 15px;
             overflow: hidden;
-            border: 2px solid green;
             img{
                 width: auto;
                 height: 100%;
+                display: block;
+                margin: auto;
+            }
+
+            @media(max-width:1000px){
+                display: block;
+                margin: auto;
             }
         }
         p{

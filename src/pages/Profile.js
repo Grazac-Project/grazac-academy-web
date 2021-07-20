@@ -19,10 +19,10 @@ const Profile = () => {
   return (
     <div>
       <Navbar/>
-        <div className="gua_hero">
+        <div className="hire_profile_hero">
           <Container>
             <Row>
-              <Col md={6}>
+              <Col sm={6}>
                 <div className="hire_profile">
                   <div>
                     <div className="hire_profile-text1">
@@ -54,14 +54,14 @@ const Profile = () => {
                   </div>
                 </div>
               </Col>
-              <Col md={6}>
-                  {/* <div className="hire_profile-image">
+              <Col sm={6}>
+                  <div className="hire_profile-image">
                     <img
                       src={student}
                       alt="student"
-                      className="gua_hero-image"
+                      className=""
                     />
-                  </div> */}
+                  </div>
               </Col>
             </Row>
           </Container>
