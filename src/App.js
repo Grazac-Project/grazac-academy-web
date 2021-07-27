@@ -105,6 +105,10 @@ const Project = lazy(() => {
   return import("./pages/Project");
 });
 
+const Join = lazy(() => {
+  return import("./pages/Join");
+});
+
 const App = () => {
   const [show, setShow] = useState(true);
 
@@ -153,6 +157,7 @@ const App = () => {
             <Route path="/hire" component={Hire} />
             <Route path="/profile" component={Profile} />
             <Route path="/project" component={Project} />
+            <Route path="/join" component={Join} />
 
             <Route path="/:name/coming-soon" component={ComingSoon} />
           </Switch>

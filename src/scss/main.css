@@ -4614,4 +4614,9 @@ input:focus, select:focus, textarea:focus {
 .hire_project-essay p {
   font-size: 16px;
 }
+
+.join_bg1 {
+  background: #F1F5FC;
+  margin: 50px 0;
+}
 /*# sourceMappingURL=main.css.map */
