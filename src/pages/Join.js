@@ -7,8 +7,8 @@ import Mode from "../components/Mode";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import PrimaryBtn from "../components/PrimaryBtn";
 
-import student from "../images/student.png";
-import Object from "../images/svg/objects.svg";
+import join from "../images/svg/join.svg";
+import object from "../images/svg/objects.svg";
 
 const Join = () => {
 
@@ -44,7 +44,7 @@ const Join = () => {
     <div>
       <Navbar/>
         <div className="landing__header">
-            <img src={Object} className="bg-img" alt="ccc" />
+            <img src={object} className="bg-img" alt="ccc" />
             <div style={{ height: 10 }}></div>
 
             <div className="landing__text">
@@ -71,7 +71,8 @@ const Join = () => {
             <div className="container">
               <div className="gga">
                 <div className="course_mode-intro course_mode-intro">
-                  <h2>Available Courses</h2>
+                  <h2 style={{textAlign:'center'}}>Available Courses</h2>
+                  <p style={{textAlign:'center'}}>Learn any of these 6 hot tech courses today at 20% off</p>
                 </div>
                 <div className="gga_container">
                   {courses.length ? (
@@ -116,82 +117,67 @@ const Join = () => {
               </div>
             </div>
         </div>
+        <div>
+            <div className="course_mode-intro course_mode-intro">
+                <h2 style={{textAlign:'center'}}>Tech is needed</h2>
+                <p>The good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet.⁣⁣⁣⁣⁣⁣These skills allow you to work remotely and on your own terms.
+                    These are hot courses that are in-demand and have come to stay. These skills are highly needed and will be needed in years to come. Stay on top and leverage on this opportunity to land your dream career.
+                </p>
+            </div>
+        </div>
 
 
         <div style={{boxSizing:'border-box', margin:'80px 0'}}>
+            <h2 style={{textAlign:'center'}}>Tech is needed</h2>
           <Container>
             <Row>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
+              <Col md={6}>
+                <div className="">
+                  <div className="">
+                    <img src={join} alt="profile" />
                   </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
+                  <h4>Job placement upon graduation</h4>
+                  <p className="hire_dev-grey">We match you with employers and you enter the recruitment process to land your dream job in tech. In less than 4-months of landing your dream job, you will make the money of this course back and still have more left with you.</p>
                 </div>
               </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
+              <Col md={6}>
+                <div className="">
+                  <div className="">
+                    <img src={join} alt="profile" />
                   </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
-                </div>
-              </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
-                  </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
-                </div>
-              </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
-                  </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
-                </div>
-              </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
-                  </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
-                </div>
-              </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
-                  </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
-                </div>
-              </Col>
-              <Col sm={6} lg={4}>
-                <div className="hire_dev">
-                  <div className="hire_dev-picture">
-                    <img src={student} alt="profile" />
-                  </div>
-                  <h4>Samuel Peter</h4>
-                  <p className="hire_dev-grey">Product Designer</p>
-                  <p className="hire_dev-purple">View Profile</p>
+                  <h4>1:1 access to mentorship and support</h4>
+                  <p className="hire_dev-grey">You gain 24/7 access to a wide range of industry experts that will walk you through your career path and increase your visibility to potential employers.</p>
                 </div>
               </Col>
             </Row>
+            <Row>
+              <Col md={6}>
+                <div className="">
+                  <div className="">
+                    <img src={join} alt="profile" />
+                  </div>
+                  <h4>Job placement upon graduation</h4>
+                  <p className="hire_dev-grey">We match you with employers and you enter the recruitment process to land your dream job in tech. In less than 4-months of landing your dream job, you will make the money of this course back and still have more left with you.</p>
+                </div>
+              </Col>
+              <Col md={6}>
+                <div className="">
+                  <div className="">
+                    <img src={join} alt="profile" />
+                  </div>
+                  <h4>1:1 access to mentorship and support</h4>
+                  <p className="hire_dev-grey">You gain 24/7 access to a wide range of industry experts that will walk you through your career path and increase your visibility to potential employers.</p>
+                </div>
+              </Col>
+            </Row>
+            <a href="/#tracks">
+                    <div
+                        className="nav__btn"
+                        style={{ width: "130px", margin: "auto", textAlign: "center" }}
+                    >
+                        <div className="nav__btn--text">Enroll Now</div>
+                    </div>
+            </a>
           </Container>
         </div>
 
