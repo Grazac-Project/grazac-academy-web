@@ -74,7 +74,7 @@ const Join = () => {
                   <h2 style={{textAlign:'center'}}>Available Courses</h2>
                   <p style={{textAlign:'center'}}>Learn any of these 6 hot tech courses today at 20% off</p>
                 </div>
-                <div className="gga_container">
+                <div className="join_container">
                   {courses.length ? (
                     courses.map((item, index) => (
                       <Link
@@ -120,19 +120,18 @@ const Join = () => {
         <div>
             <div className="course_mode-intro course_mode-intro">
                 <h2 style={{textAlign:'center'}}>Tech is needed</h2>
-                <p>The good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet.⁣⁣⁣⁣⁣⁣These skills allow you to work remotely and on your own terms.
+                <p className="join_needed">The good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet.⁣⁣⁣⁣⁣⁣These skills allow you to work remotely and on your own terms.
                     These are hot courses that are in-demand and have come to stay. These skills are highly needed and will be needed in years to come. Stay on top and leverage on this opportunity to land your dream career.
                 </p>
+                <h2 style={{textAlign:'center', margin:"80px 0 30px"}}>Why you should join our 3-months immersive training</h2>
             </div>
         </div>
 
-
-        <div style={{boxSizing:'border-box', margin:'80px 0'}}>
-            <h2 style={{textAlign:'center'}}>Tech is needed</h2>
+        <div style={{boxSizing:'border-box', margin:'0 0 80px'}}>
           <Container>
             <Row>
               <Col md={6}>
-                <div className="">
+                <div className="join_box1">
                   <div className="">
                     <img src={join} alt="profile" />
                   </div>
@@ -141,7 +140,7 @@ const Join = () => {
                 </div>
               </Col>
               <Col md={6}>
-                <div className="">
+                <div className="join_box1">
                   <div className="">
                     <img src={join} alt="profile" />
                   </div>
@@ -152,7 +151,7 @@ const Join = () => {
             </Row>
             <Row>
               <Col md={6}>
-                <div className="">
+                <div className="join_box1">
                   <div className="">
                     <img src={join} alt="profile" />
                   </div>
@@ -161,7 +160,7 @@ const Join = () => {
                 </div>
               </Col>
               <Col md={6}>
-                <div className="">
+                <div className="join_box1">
                   <div className="">
                     <img src={join} alt="profile" />
                   </div>
@@ -179,6 +178,13 @@ const Join = () => {
                     </div>
             </a>
           </Container>
+        </div>
+
+        <div>
+            <div className="course_mode-intro course_mode-intro">
+                <h2 style={{textAlign:'center'}}>Testimonials</h2>
+                <p className="join_needed">The success stories, testimonials and other examples of our students are exceptional. These are our students that put in deliberate efforts and have been intentional and consistent in implementing what they learnt from the course.</p>
+            </div>
         </div>
 
 

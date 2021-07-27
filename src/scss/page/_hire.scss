@@ -145,5 +145,28 @@
     &_bg1{
         background: #F1F5FC;
         margin: 50px 0;
+        padding: 50px 0;
+    }
+    &_container {
+        margin: 50px 0 20px;
+        @media (min-width: 601px) {
+          display: flex;
+          flex-wrap: wrap;
+        }
+    }
+    &_needed{
+        width:70%;
+        margin: 20px auto;
+        color: #9DA8B6;
+        font-size: 16px;
+        @include respond(tab-port){
+            width: 90%;
+        }
+    }
+    &_box1{
+        margin: 30px 30px 10px;
+        @include respond(tab-port){
+            margin: 20px;
+        }
     }
 }

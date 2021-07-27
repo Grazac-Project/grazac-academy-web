@@ -4618,5 +4618,43 @@ input:focus, select:focus, textarea:focus {
 .join_bg1 {
   background: #F1F5FC;
   margin: 50px 0;
+  padding: 50px 0;
+}
+
+.join_container {
+  margin: 50px 0 20px;
+}
+
+@media (min-width: 601px) {
+  .join_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.join_needed {
+  width: 70%;
+  margin: 20px auto;
+  color: #9DA8B6;
+  font-size: 16px;
+}
+
+@media (max-width: 56.25em) {
+  .join_needed {
+    width: 90%;
+  }
+}
+
+.join_box1 {
+  margin: 30px 30px 10px;
+}
+
+@media (max-width: 56.25em) {
+  .join_box1 {
+    margin: 20px;
+  }
 }
 /*# sourceMappingURL=main.css.map */
