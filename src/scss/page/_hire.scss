@@ -142,6 +142,16 @@
 
 
 .join{
+    &_header{
+        background: rgba(220, 205, 244, 0.2);
+        margin-bottom: 70px;
+    }
+
+    &_heading{
+        text-align: center;
+        font-weight: bold;
+    }
+
     &_bg1{
         background: #F1F5FC;
         margin: 50px 0;
@@ -167,6 +177,82 @@
         margin: 30px 30px 10px;
         @include respond(tab-port){
             margin: 20px;
+            img{
+                display: block;
+                margin: 40px auto 0;
+            }
         }
     }
+
+    &_gallery{
+        @media(min-width:700px){
+            &-top{
+                display: flex;
+
+                &-left{
+                    width:60%;
+                    margin:20px 15px;
+                    overflow:hidden;
+                    height:25vw;
+                    border-radius: 20px;
+
+                    img{
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+                &-right{
+                    width:40%;
+                    margin:20px 15px;
+                    overflow:hidden;
+                    height:25vw;
+                    border-radius: 20px;
+
+                    img{
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+            }
+            &-bottom{
+                display: flex;
+
+                &-left{
+                    width:45%;
+                    margin:20px 15px;
+                    overflow:hidden;
+                    height:25vw;
+                    border-radius: 20px;
+
+                    img{
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+                &-right{
+                    width:55%;
+                    margin:20px 15px;
+                    overflow:hidden;
+                    height:25vw;
+                    border-radius: 20px;
+
+                    img{
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        @media(max-width:700px){
+            img{
+                width: 90%;
+                display: block;
+                margin: 20px auto;
+                border-radius: 15px;
+            }
+        }
+    }
+
+
 }
