@@ -49,7 +49,7 @@ const Join = () => {
     <div>
         <div className="landing__header join_header">
           <Navbar/>
-            <img src={object} className="bg-img" alt="ccc" />
+            {/* <img src={object} className="bg-img" alt="ccc" /> */}
             <div style={{ height: 10 }}></div>
 
             <div className="landing__text">
@@ -73,12 +73,14 @@ const Join = () => {
         </div>
 
         <div>
+          <Container>
             <div className="course_mode-intro course_mode-intro">
                 <h2 className="join_heading">Why you should embrace digital skills</h2>
                 <p className="join_needed">As the demand for advanced tech skills rises, many companies are looking into recruiting, hiring, and nurturing the right talent that will move their organization forward. This means that people who are willing to spend time developing tech skills will have the upper hand in landing some of the most profitable jobs in the tech industry.</p>
                 <p className="join_needed">Now, the good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet. These skills allow you to work remotely and on your own terms. Stay on top and leverage on this opportunity to land your dream career in tech.</p>
                 <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the best for you</h2>
             </div>
+          </Container>
         </div>
 
         <div style={{boxSizing:'border-box', margin:'0 0 80px'}}>
@@ -126,7 +128,7 @@ const Join = () => {
             <a href="/#tracks">
                     <div
                         className="nav__btn"
-                        style={{ width: "130px", margin: "auto", textAlign: "center" }}
+                        style={{ width: "130px", margin: " 30px auto", textAlign: "center" }}
                     >
                         <div className="nav__btn--text">Enroll Now</div>
                     </div>
@@ -262,7 +264,7 @@ const Join = () => {
                 <div>
                     <div className="course_purple-main-boxes grad-box">
                         <h4>Monthly Payment</h4>
-                        <h2>₦105,000 <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
+                        <h2>₦55,000 <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
                     </div>
                 </div>
             </div>

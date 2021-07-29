@@ -145,6 +145,7 @@
     &_header{
         background: rgba(220, 205, 244, 0.2);
         margin-bottom: 70px;
+        background-image: url("../images/svg/objects.svg");
     }
 
     &_heading{
@@ -174,12 +175,11 @@
         }
     }
     &_box1{
-        margin: 30px 30px 10px;
+        margin: 30px 10px 10px;
         @include respond(tab-port){
             margin: 20px;
             img{
-                display: block;
-                margin: 40px auto 0;
+                margin-top: 40px;
             }
         }
     }
