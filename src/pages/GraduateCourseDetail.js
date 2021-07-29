@@ -112,7 +112,7 @@ const CourseDetail = (props) => {
                         <p>Discount Available</p>
                     </div>
                     <div className="course_purple-main">
-                        <div>
+                    <div>
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Full Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
