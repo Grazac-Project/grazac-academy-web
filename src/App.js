@@ -5,7 +5,7 @@ import {
   Suspense,
 } from "react";
 import "./scss/main.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 // import LandingPage from "./pages/Landing";
 // import Login from "./auth/Login";
 // import Signup from "./auth/Signup";
@@ -111,6 +111,7 @@ const Join = lazy(() => {
 
 const App = () => {
   const [show, setShow] = useState(true);
+  const [redirect, setRedirect] = useState(false);
 
   const app = useRef();
 
@@ -121,7 +122,9 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
-            <Route path="/" exact component={LandingPage} />
+            <Route path="/" exact component={LandingPage}>
+              <Redirect to="/join"/> 
+            </Route>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/about-us" component={About} />
