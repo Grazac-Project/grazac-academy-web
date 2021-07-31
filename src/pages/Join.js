@@ -61,14 +61,14 @@ const Join = () => {
             We are bridging the gap between unemployment and entry-level jobs in the technology industry.{" "}
             </p>
             </div>
-            <a href="/#tracks">
+            <Link to="/graduate-form">
             <div
                 className="nav__btn"
                 style={{ width: "130px", margin: "auto", textAlign: "center" }}
             >
                 <div className="nav__btn--text">Enroll Now</div>
             </div>
-            </a>
+            </Link>
         </div>
 
         <div>
@@ -124,14 +124,14 @@ const Join = () => {
                 </div>
               </Col>
             </Row>
-            <a href="/#tracks">
+            <Link to="/graduate-form">
                     <div
                         className="nav__btn"
                         style={{ width: "130px", margin: " 30px auto", textAlign: "center" }}
                     >
                         <div className="nav__btn--text">Enroll Now</div>
                     </div>
-            </a>
+            </Link>
           </Container>
         </div>
 
@@ -430,7 +430,6 @@ const Join = () => {
           </div>
         </div>
       </div>
-
       <Mode />
       <Footer />
     </div>
