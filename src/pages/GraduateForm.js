@@ -341,7 +341,7 @@ const GraduateForm = () => {
                       <option value="">---Choose Plan---</option>
                       <option value="full">Full Payment</option>
                       <option value="installmental">Installmental Payment</option>
-                      <option value="monthly">Monthly Payment</option>
+                      {/* <option value="monthly">Monthly Payment</option> */}
                     </select>
                   </div>
                 )}

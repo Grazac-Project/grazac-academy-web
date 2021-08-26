@@ -76,13 +76,13 @@ const Join = () => {
             <div className="course_mode-intro course_mode-intro">
                 <h2 className="join_heading">Why you should embrace digital skills</h2>
                 <p className="join_needed">As the demand for advanced tech skills rises, many companies are looking into recruiting, hiring, and nurturing the right talent that will move their organization forward. This means that people who are willing to spend time developing tech skills will have the upper hand in landing some of the most profitable jobs in the tech industry.</p>
-                <p className="join_needed">Now, the good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet. These skills allow you to work remotely and on your own terms. Stay on top and leverage on this opportunity to land your dream career in tech.</p>
-                <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the best for you</h2>
+                <p style={{ marginBottom:"80px"}} className="join_needed">Now, the good thing about tech skills is that you can make money from anywhere in the world with just a computer or mobile device connected to the internet. These skills allow you to work remotely and on your own terms. Stay on top and leverage on this opportunity to land your dream career in tech.</p>
+                {/* <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the best for you</h2> */}
             </div>
           </Container>
         </div>
 
-        <div style={{boxSizing:'border-box', margin:'0 0 80px'}}>
+        {/* <div style={{boxSizing:'border-box', margin:'0 0 80px'}}>
           <Container>
             <Row>
               <Col md={6}>
@@ -133,7 +133,7 @@ const Join = () => {
                     </div>
             </Link>
           </Container>
-        </div>
+        </div> */}
 
         <div>
             <div className="course_mode-intro course_mode-intro">
@@ -244,7 +244,7 @@ const Join = () => {
       <div className="course_purple">
             <div className="course_purple_txt">
                 <p>Our Flexible Payment Plans</p>
-                <h1>20%</h1>
+                <h1>70%</h1>
                 <p>Discount Available</p>
             </div>
             <div className="course_purple-main">
@@ -252,7 +252,7 @@ const Join = () => {
                   <div className="course_purple-main-boxes grad-box">
                       <h4>Full Payment</h4>
                       <h3><span style={{textDecoration:'line-through'}}>₦250,000</span></h3>
-                      <h2>₦200,000</h2>
+                      <h2>₦75,000</h2>
                       <p>This is a one-off payment. You won't be required to pay any amount again till the end of your training.</p>
                   </div>
               </div>
@@ -260,18 +260,18 @@ const Join = () => {
                   <div className="course_purple-main-boxes grad-box">
                       <h4>Installment Payment</h4>
                       <h3><span style={{textDecoration:'line-through'}}>₦250,000</span></h3>
-                      <h2>₦105,000 <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
+                      <h2>₦40,000 <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
                       <p>To be paid at the start of the training and completed midway into the training which is after 2 months.</p>
                   </div>
               </div>
-              <div>
+              {/* <div>
                   <div className="course_purple-main-boxes grad-box">
                       <h4>Monthly Payment</h4>
                       <h3><span style={{textDecoration:'line-through'}}>₦250,000</span></h3>
                       <h2>₦55000 <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
                       <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
                   </div>
-              </div>
+              </div> */}
             </div>
             <div className="course_purple-btn">
                 <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>

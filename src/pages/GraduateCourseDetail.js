@@ -123,8 +123,8 @@ const CourseDetail = (props) => {
                         <div>
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Installment Payment</h4>
-                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(105000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
+                                <h3><span style={{textDecoration:'line-through'}}>₦{/*course.tuition*/}</span></h3>
+                                <h2>₦{new Intl.NumberFormat().format(75000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
                                 <p>To be paid at the start of the training and completed midway into the training which is after 2 months.</p>
                             </div>
                         </div>
@@ -132,7 +132,7 @@ const CourseDetail = (props) => {
                             <div className="course_purple-main-boxes grad-box">
                                 <h4>Monthly Payment</h4>
                                 <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(55000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
+                                <h2>₦{new Intl.NumberFormat().format(40000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
                                 <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
                             </div>
                         </div>
