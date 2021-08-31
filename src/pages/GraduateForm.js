@@ -48,11 +48,11 @@ const GraduateForm = () => {
 
   const choosePlan = (e) => {
     if(e.target.value === 'installmental') {
-      setAmount(105000);
+      setAmount(40000);
     } else if(e.target.value === 'monthly') {
       setAmount(55000);
     } else {
-      setAmount(200000);
+      setAmount(75000);
     }
     setPaymentPlan(e.target.value);
   };
