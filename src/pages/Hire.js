@@ -48,7 +48,7 @@ const Hire = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar/> 
         <div className="gua_hero">
           <div className="container">
             <div className="row">
