@@ -47,12 +47,6 @@ const Landing = () => {
     
       setShow(false)
     });
-    
-    //this redirects to the /join page when a user opens grazacacademy.com on their browser
-    // if(window.location.pathname = "/"){
-    //   window.location.pathname = "/join"
-    // } //end
-
   }, []);
 
   const content = [

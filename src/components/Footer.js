@@ -29,7 +29,7 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">Features</li>
             <li className="footer__item"><Link to="/nysc/coming-soon">NYSC Members</Link></li>
-            <li className="footer__item"><Link to="/careers/coming-soon">Careers</Link></li>
+            <li className="footer__item"><a href="https://grazac-technologies-limited.breezy.hr/" target="_blank">Careers</a></li>
           </ul>
 
           <ul className="footer__list">

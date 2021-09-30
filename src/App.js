@@ -123,7 +123,7 @@ const App = () => {
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
             <Route path="/" exact component={LandingPage}>
-              <Redirect to="/join"/> 
+              {/* <Redirect to="/join"/>  */}
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
