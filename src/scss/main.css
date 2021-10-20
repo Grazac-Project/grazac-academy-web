@@ -84,6 +84,35 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+.layout_auth-main {
+  width: 65vw;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@media (max-width: 769px) {
+  .layout_auth-main {
+    width: 100%;
+  }
+}
+
+.layout_auth-image {
+  width: 35vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: url("../images/auth.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 769px) {
+  .layout_auth-image {
+    display: none;
+  }
+}
+
 .nav {
   background-color: transparent;
   position: relative;
@@ -2195,232 +2224,104 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-.auth__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
+.auth_container-logo {
+  width: 450px;
+  margin: 50px auto 20px;
 }
 
-@media (max-width: 56.25em) {
-  .auth__body {
-    min-height: initial;
-    display: block;
+@media (max-width: 560px) {
+  .auth_container-logo {
+    width: 100%;
+    margin: 30px 20px 0;
   }
 }
 
-.auth__hero {
-  -ms-flex-preferred-size: 55%;
-      flex-basis: 55%;
-  background-color: #dccdf4;
-  -webkit-box-shadow: 0px 20px 200px rgba(214, 214, 214, 0.25);
-          box-shadow: 0px 20px 200px rgba(214, 214, 214, 0.25);
-  border-radius: 0px 22px 22px 0px;
-  padding: 6rem;
-}
-
-@media (max-width: 56.25em) {
-  .auth__hero {
-    background-color: initial;
-    padding: 1rem 2rem;
-  }
-}
-
-@media (max-width: 56.25em) and (max-width: 56.25em) {
-  .auth__hero img {
-    margin: 0 auto;
-    display: block;
-  }
-}
-
-.auth__form {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
-}
-
-@media (max-width: 56.25em) {
-  .auth__form {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-  }
-}
-
-.auth__form--container {
-  max-width: 60%;
-  margin: 0 auto;
-  margin-top: 7rem;
-}
-
-@media (max-width: 56.25em) {
-  .auth__form--container {
-    max-width: 70%;
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 37.5em) {
-  .auth__form--container {
-    max-width: 90%;
-  }
-}
-
-.auth__form--container h1 {
-  font-family: Georgia;
-  font-weight: bold;
-  font-size: 3.25rem;
-  color: #2b5491;
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 56.25em) {
-  .auth__form--container h1 {
-    text-align: center;
-  }
-}
-
-.auth__line {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 4rem 0;
-}
-
-.auth__line div {
-  height: 1px;
-  width: 100%;
-  background-color: #dadada;
-}
-
-.auth__line span {
+.auth_container_form {
+  -webkit-box-shadow: 0px 1px 10px rgba(120, 118, 118, 0.15);
+          box-shadow: 0px 1px 10px rgba(120, 118, 118, 0.15);
+  border-radius: 10px;
+  width: 450px;
   display: block;
-  margin: 0 1rem;
-  color: #575a65;
-  font-size: 1.5rem;
-}
-
-.auth__btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.auth__btn {
-  margin-right: 1rem;
-  background: transparent;
-  border: 1px solid #dadada;
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-family: Georgia;
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: #575a65;
-  padding: 1.2rem 3rem;
-  text-decoration: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  margin-bottom: 2rem;
-}
-
-.auth__btn:hover {
-  background: #773dd3;
-  color: #fff;
-  text-decoration: none;
-}
-
-.auth__btn svg {
-  margin-right: 1.5rem;
-}
-
-.form__group {
-  display: block;
-}
-
-.form__group label {
-  display: block;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: #575a65;
-  margin-bottom: 1rem;
-}
-
-.form__group--half {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media (max-width: 37.5em) {
-  .form__group--half {
-    display: block;
-  }
-}
-
-.form__group--half .form__group:first-child {
-  margin-right: 2rem;
-}
-
-.form__input {
-  width: 100%;
-  height: 5rem;
-  border: 1px solid #dadada;
+  margin: 40px auto;
+  padding: 30px 40px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 5px;
-  margin-bottom: 3rem;
-  outline: none;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  font-size: 1.6rem;
-  padding: 0 2rem;
-  color: #575a65;
 }
 
-.form__input:focus {
-  border-color: #773dd3;
-  border-width: 1px;
-}
-
-.form__input--err:focus {
-  border-color: red;
-  border-width: 1px;
-}
-
-.form__btn {
-  display: block;
-  background: none;
-  border: none;
-  margin-top: 3.5rem;
-}
-
-@media (max-width: 56.25em) {
-  .form__btn {
-    margin: 0 auto;
-    margin-top: 3.5rem;
+@media (max-width: 560px) {
+  .auth_container_form {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    width: 100%;
+    padding: 20px 20px 30px;
+    margin-top: 20px;
   }
 }
 
-.form__btn .nav__btn {
-  margin: 0;
+.auth_container_form-email {
+  width: 70px;
 }
 
-.form__link {
-  text-decoration: none;
+.auth_container_form-text {
+  margin-bottom: 20px;
+}
+
+.auth_container_form-password {
+  position: relative;
+}
+
+.auth_container_form-password div {
+  width: 25px;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+}
+
+.auth_container_form-password div img {
+  width: 20px;
+}
+
+.auth_container_form h3 {
+  font-weight: 700;
+}
+
+.auth_container_form p {
+  color: #787676;
+}
+
+.auth_container_form label {
+  color: #333333;
+}
+
+.auth_container_form input {
+  border: 1px solid #D9DCE1;
+  border-radius: 7px;
+  padding: 10px 20px;
+  margin: 5px 0 20px;
+  width: 100%;
+  color: #787676;
+}
+
+.auth_container_form input:focus {
+  outline: none;
+}
+
+.auth_container_form button {
+  background: #773dd3;
+  border: 1px solid #773dd3;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin: 10px 0 20px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.auth_container_form span {
   color: #773dd3;
-  font-size: 1.4rem;
-  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .course p {

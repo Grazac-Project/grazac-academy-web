@@ -1,0 +1,25 @@
+.layout{
+    &_auth{
+        &-main{
+            width: 65vw;
+            font-family: $font-secondary;
+            @media(max-width:769px) {
+                width: 100%;
+            }
+        }
+        &-image{
+            width: 35vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: url('../images/auth.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            @media(max-width:769px) {
+                display: none;
+            }
+        }
+    }
+}

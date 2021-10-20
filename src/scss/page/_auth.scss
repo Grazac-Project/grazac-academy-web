@@ -1,187 +1,86 @@
 .auth {
-  &__body {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-
-    @include respond(tab-port) {
-      min-height: initial;
-      display: block;
+  &_container{
+    &-logo{
+      width: 450px;
+      margin: 50px auto 20px;
+      @media(max-width:560px) {
+        width: 100%;
+        margin: 30px 20px 0;
+      }
     }
-  }
 
-  &__hero {
-    flex-basis: 55%;
-    background-color: $color-pale-purple;
-    box-shadow: 0px 20px 200px rgba(214, 214, 214, 0.25);
-    border-radius: 0px 22px 22px 0px;
-    padding: 6rem;
+    &_form{
+      box-shadow: 0px 1px 10px rgba(120, 118, 118, 0.15);
+      border-radius: 10px;
+      width: 450px;
+      display: block;
+      margin: 40px auto;
+      padding: 30px 40px;
+      box-sizing: border-box;
+      @media(max-width:560px) {
+        box-shadow: none;
+        width: 100%;
+        padding: 20px 20px 30px;
+        margin-top: 20px;
+      }
 
-    @include respond(tab-port) {
-      background-color: initial;
-      padding: 1rem 2rem;
-      img {
-        @include respond(tab-port) {
-          margin: 0 auto;
-          display: block;
+      &-email{
+        width: 70px;
+      }
+
+      &-text{
+        margin-bottom: 20px;
+      }
+
+      &-password{
+        position: relative;
+        div{
+          width: 25px;
+          position: absolute;
+          top: 40px;
+          right: 15px;
+          img{
+            width: 20px;
+          }
         }
       }
-    }
-  }
 
-  &__form {
-    flex-basis: 45%;
-    @include respond(tab-port) {
-      flex-basis: 100%;
-    }
-
-    &--container {
-      max-width: 60%;
-      margin: 0 auto;
-      margin-top: 7rem;
-      @include respond(tab-port) {
-        max-width: 70%;
-        margin-top: 2rem;
+      h3{
+        font-weight: 700;
       }
-      @include respond(phone) {
-        max-width: 90%;
+      p{
+        color: $color-formgrey;
       }
-      h1 {
-        font-family: Georgia;
-        font-weight: bold;
-        font-size: 3.25rem;
-        color: #2b5491;
-        margin-bottom: 3rem;
-
-        @include respond(tab-port) {
-          text-align: center;
+      label{
+        color: #333333;
+      }
+      input{
+        border: 1px solid #D9DCE1;
+        border-radius: 7px;
+        padding: 10px 20px;
+        margin: 5px 0 20px;
+        width: 100%;
+        color: $color-formgrey;
+        &:focus{
+          outline: none;
         }
       }
-    }
-  }
-  &__line {
-    display: flex;
-    align-items: center;
-    margin: 4rem 0;
-
-    div {
-      height: 1px;
-      width: 100%;
-      background-color: #dadada;
-    }
-    span {
-      display: block;
-      margin: 0 1rem;
-      color: #575a65;
-      font-size: 1.5rem;
-    }
-  }
-
-  &__btns {
-    display: flex;
-    justify-content: center;
-  }
-
-  &__btn {
-    margin-right: 1rem;
-    background: transparent;
-    border: 1px solid #dadada;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    font-family: $font-primary;
-    font-weight: 500;
-    font-size: 1.4rem;
-    color: #575a65;
-    padding: 1.2rem 3rem;
-    text-decoration: none;
-    transition: all 0.3s;
-    margin-bottom: 2rem;
-
-    &:hover {
-      background: $color-inspiring-purple;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    svg {
-      margin-right: 1.5rem;
-    }
-  }
-}
-
-.form {
-  &__group {
-    display: block;
-    label {
-      display: block;
-      font-family: $font-secondary;
-      font-weight: 500;
-      font-size: 1.5rem;
-      color: #575a65;
-      margin-bottom: 1rem;
-    }
-
-    &--half {
-      display: flex;
-
-      @include respond(phone) {
-        display: block;
+      button{
+        background: $color-inspiring-purple;
+        border: 1px solid $color-inspiring-purple;
+        width: 100%;
+        padding: 10px 0;
+        border-radius: 10px;
+        margin: 10px 0 20px;
+        text-align: center;
+        color: white;
+        font-weight: 600;
       }
-
-      .form__group {
-        &:first-child {
-          margin-right: 2rem;
-        }
+      span{
+        color: $color-inspiring-purple;
+        font-weight: 700;
+        cursor: pointer;
       }
     }
-  }
-
-  &__input {
-    width: 100%;
-    height: 5rem;
-    border: 1px solid #dadada;
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin-bottom: 3rem;
-    outline: none;
-    transition: all 0.5s;
-    font-size: 1.6rem;
-    padding: 0 2rem;
-    color: $color-grey;
-
-    &:focus {
-      border-color: $color-inspiring-purple;
-      border-width: 1px;
-    }
-
-    &--err {
-      &:focus {
-        border-color: red;
-        border-width: 1px;
-      }
-    }
-  }
-
-  &__btn {
-    display: block;
-    background: none;
-    border: none;
-    margin-top: 3.5rem;
-    @include respond(tab-port) {
-      margin: 0 auto;
-      margin-top: 3.5rem;
-    }
-
-    .nav__btn {
-      margin: 0;
-    }
-  }
-
-  &__link {
-    text-decoration: none;
-    color: #773dd3;
-    font-size: 1.4rem;
-    font-family: $font-secondary;
   }
 }
