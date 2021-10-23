@@ -1,0 +1,34 @@
+.sidebar{
+    padding: 0 0 0 15%;
+    @media(max-width:769px){
+        transition: 3s;
+    }
+
+    .logo{
+        width: 150px;
+        margin: 20px 0 40px;
+        @media(max-width:992px){
+            width: 100px;
+        }
+    }
+
+    &-portal{
+        &-heading{
+            color: #333333;
+            font-size: 19px !important;
+            margin-bottom: 30px;
+        }
+        &-links{
+            display: flex;
+            margin: 10px 0;
+            p{
+                margin-top: 3px;
+                margin-left: 10px;
+            }
+        }
+
+        .signout{
+            margin-top: 45vh;
+        }
+    }
+}

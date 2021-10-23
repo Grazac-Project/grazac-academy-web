@@ -95,6 +95,10 @@ const VerifyMail = lazy(() => {
   return import("./pages/graduateCohort/auth/VerifyMail");
 });
 
+const DashBoardHome = lazy(() => {
+  return import("./pages/graduateCohort/dashboard/Main");
+});
+
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -116,6 +120,9 @@ const App = () => {
             <Route path="/reset-password" component={Reset} />
             <Route path="/mail-sent" component={MailSent} />
             <Route path="/verify-mail" component={VerifyMail} />
+
+            {/* Graduate dashboard */}
+            <Route path="/dashboard" component={DashBoardHome} />
 
             {/* main pages */}
             <Route path="/" exact component={LandingPage}>
