@@ -194,5 +194,126 @@
                 }
             }
         }
+
+        &-detail{
+            display: flex;
+            padding: 10px 20px;
+            &-p{
+                padding: 7px 20px;
+                margin-right: 10px;
+                border-radius: 20px;
+                cursor: pointer;
+            }
+            .active{
+                color: white;
+                background: $color-inspiring-purple;
+            }
+        }
+
+        &-modal{
+            &-backdrop{
+                background: black;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                position: fixed;
+                overflow: hidden;
+                z-index: 1000;
+                opacity: .5;
+            }
+            &-container{
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                position: fixed;
+                overflow: hidden;
+                z-index: 1001;
+            }
+            &-main{
+                width: 600px;
+                background: white;
+                border-radius: 10px;
+                position: fixed;
+                height: 350px;
+                padding: 0 20px;
+                box-sizing: border-box;
+                margin: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                @media(min-width:769px){
+                    top: 0;
+                }
+                @media(max-width:769px){
+                    width: 100%;
+                    border-radius: 20px 20px 0 0;
+                    margin: 0;
+                    height: 400px;
+                }
+
+                &-text{
+                    display: flex;
+                    img{
+                        margin-left: auto;
+                    }
+                    h4{
+                        font-size: 21px;
+                    }
+                }
+
+                &-frame1{
+                    border: 1px solid #E5E9F2;
+                    border-radius: 10px;
+                    padding: 10px 20px;
+                    margin-top: 20px;
+                    display: flex;
+                    cursor: pointer;
+
+                    div{
+                        border: 1px solid #E5E9F2;
+                        border-radius: 50px;
+                        width: 30px;
+                        height: 30px;
+                        margin: 5px 15px 0 0;
+                    }
+                    p{
+                        margin-top: 10px;
+                        color: #52575C !important;
+                    }
+                }
+                
+                .active{
+                    border: 1px solid $color-inspiring-purple;
+                    border-radius: 10px;
+                    padding: 10px 20px;
+                    margin-top: 20px;
+                    display: flex;
+                    cursor: pointer;
+
+                    div{
+                        border: 1px solid $color-inspiring-purple;
+                        border-radius: 50px;
+                        background: $color-inspiring-purple;
+                        width: 30px;
+                        height: 30px;
+                        margin: 5px 15px 0 0;
+                    }
+                    p{
+                        margin-top: 10px;
+                        color: #52575C !important;
+                    }
+                }
+                button{
+                    width: 100%;
+                    font-size: 17px;
+                    padding: 10px;
+                }
+            }
+            &-back{
+                padding-top: 0;
+            }
+        }
     }
 }

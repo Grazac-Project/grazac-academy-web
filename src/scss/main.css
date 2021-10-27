@@ -1036,11 +1036,30 @@ input:focus, select:focus, textarea:focus {
   display: -ms-flexbox;
   display: flex;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 .sidebar-portal-links p {
   margin-top: 3px;
   margin-left: 10px;
+}
+
+.sidebar-portal .active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar-portal .active p {
+  margin-top: 3px;
+  margin-left: 10px;
+  color: #333333;
+}
+
+.sidebar-portal .active path {
+  fill: #333333;
 }
 
 .sidebar-portal .signout {
@@ -4954,5 +4973,149 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid #787676 !important;
   margin: 20px 15px 20px 0 !important;
   float: right;
+}
+
+.dashboard-content-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 20px;
+}
+
+.dashboard-content-detail-p {
+  padding: 7px 20px;
+  margin-right: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.dashboard-content-detail .active {
+  color: white;
+  background: #773dd3;
+}
+
+.dashboard-content-modal-backdrop {
+  background: black;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: .5;
+}
+
+.dashboard-content-modal-container {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.dashboard-content-modal-main {
+  width: 600px;
+  background: white;
+  border-radius: 10px;
+  position: fixed;
+  height: 350px;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 769px) {
+  .dashboard-content-modal-main {
+    top: 0;
+  }
+}
+
+@media (max-width: 769px) {
+  .dashboard-content-modal-main {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    height: 400px;
+  }
+}
+
+.dashboard-content-modal-main-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dashboard-content-modal-main-text img {
+  margin-left: auto;
+}
+
+.dashboard-content-modal-main-text h4 {
+  font-size: 21px;
+}
+
+.dashboard-content-modal-main-frame1 {
+  border: 1px solid #E5E9F2;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+}
+
+.dashboard-content-modal-main-frame1 div {
+  border: 1px solid #E5E9F2;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  margin: 5px 15px 0 0;
+}
+
+.dashboard-content-modal-main-frame1 p {
+  margin-top: 10px;
+  color: #52575C !important;
+}
+
+.dashboard-content-modal-main .active {
+  border: 1px solid #773dd3;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+}
+
+.dashboard-content-modal-main .active div {
+  border: 1px solid #773dd3;
+  border-radius: 50px;
+  background: #773dd3;
+  width: 30px;
+  height: 30px;
+  margin: 5px 15px 0 0;
+}
+
+.dashboard-content-modal-main .active p {
+  margin-top: 10px;
+  color: #52575C !important;
+}
+
+.dashboard-content-modal-main button {
+  width: 100%;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.dashboard-content-modal-back {
+  padding-top: 0;
 }
 /*# sourceMappingURL=main.css.map */

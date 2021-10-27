@@ -8,9 +8,9 @@ import "./scss/main.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import GraduateAccelerator from "./pages/GraduateAccelerator";
 import ComingSoon from "./pages/ComingSoon";
-
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
+import 'react-toastify/dist/ReactToastify.css';
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
