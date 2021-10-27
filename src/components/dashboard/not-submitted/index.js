@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import { submitDetails } from "../../../api/dashboard/data";
 
-import arrow from "../../../images/svg/dashboard/arrow.svg"
+import arrow from "../../../images/svg/dashboard/arrow.svg";
+import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function NotSubmitted () {
@@ -35,12 +37,10 @@ function NotSubmitted () {
             ...bioData,
             [e.target.name]: e.target.value
         })
-        console.log(bioData)
         setEducation({
             ...education,
             [e.target.name]: e.target.value
         })
-        console.log(education)
     }
 
     const showForm = () => {
@@ -53,12 +53,59 @@ function NotSubmitted () {
         }
     }
 
-    const showEduForm = () => {
+    const showEduForm = (e) => {
+        e.preventDefault();
         setFormActive("education")
     }
 
-    const submitForm = () => {
-        //do form submit
+    const submitForm = (e) => {
+        e.preventDefault();
+        var btn = document.getElementById("actionBtn");
+        btn.innerHTML = `<img src=${loader} width="20px" />`;
+        const payload = JSON.stringify({
+            firstName: bioData.firstName,
+            lastName: bioData.lastName,
+            email: bioData.email,
+            phone: bioData.phone,
+            dob: bioData.dob,
+            gender: bioData.gender,
+            course: bioData.course,
+            state: bioData.state,
+            city: bioData.city,
+            id: "means of identification",
+            courseOfStudy: education.courseOfStudy,
+            grade: education.grade,
+            qualification: education.qualification,
+            experience: education.experience,
+            nyscStatus: education.nyscStatus,
+            reason: education.reason,
+            availability: education.availability,
+            legalFee: education.legalFee
+            
+        })
+        submitDetails(payload)
+            .then((response) => response.data)
+            .then((res) => {
+                console.log(res);
+                if (res.success === true) {
+                    toast.success("Submission successful! Your Application is now under review.");
+                    btn.innerHTML = `Submit`;
+        // setSelectStatus("paid") //after payment is made
+                } else {
+                    toast.error("Submission not successful, try again!!!")
+                    btn.innerHTML = `Submit`;
+                }
+            })
+            .catch((err) => {
+                if(err.response){
+                    toast.error(err.response);
+                    btn.innerHTML = `Submit`;
+                } else{
+                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                    btn.innerHTML = `Submit`;
+                }
+            });
+        
     }
 
     return (
@@ -108,32 +155,32 @@ function NotSubmitted () {
                         <h4 style={{marginLeft:"20px"}}>Apply</h4>
                         {formActive === "bio-data" && (
                             <div className="dashboard-content-form">
-                                <div>
+                                <form onSubmit={showEduForm}>
                                     <p>Step 1 of 2</p>
                                     <p>BIO DATA</p>
                                     <div className="dashboard-content-form-container">
                                         <label>First Name</label>
-                                        <input type="text" name="firstName" placeholder="FirstName" onChange={handleChange} />
+                                        <input type="text" required name="firstName" placeholder="FirstName" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Last Name</label>
-                                        <input type="text" name="lastName" placeholder="LastName" onChange={handleChange} />
+                                        <input type="text" required name="lastName" placeholder="LastName" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Email Address</label>
-                                        <input type="email" name="email" placeholder="Email Address" onChange={handleChange} />
+                                        <input type="email" required name="email" placeholder="Email Address" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Phone Number</label>
-                                        <input type="number" name="phone" placeholder="Phone Number" onChange={handleChange} />
+                                        <input type="number" required name="phone" placeholder="Phone Number" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Date of Birth</label>
-                                        <input type="date" name="dob" placeholder="31/01/2021" onChange={handleChange} />
+                                        <input type="date" required name="dob" placeholder="31/01/2021" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Gender</label>
-                                        <select name="gender" onChange={handleChange}>
+                                        <select name="gender" required onChange={handleChange}>
                                             <option>Select Gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -142,7 +189,7 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Preferred course at Grazac</label>
-                                        <select name="course" onChange={handleChange}>
+                                        <select name="course" required onChange={handleChange}>
                                             <option>Select Preferred Course</option>
                                             <option value="Product Design">Product Design</option>
                                             <option value="Frontend Web Development">Front-end Web Development</option>
@@ -152,7 +199,7 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>State of residence</label>
-                                        <select name="state" onChange={handleChange}>
+                                        <select name="state" required onChange={handleChange}>
                                             <option>Select State</option>
                                             <option value="Ogun">Ogun</option>
                                             <option value="Lagos">Lagos</option>
@@ -160,34 +207,34 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label name="city" onChange={handleChange}>Current city and Location</label>
-                                        <input type="text" name="city" placeholder="Current City and Location" onChange={handleChange} />
+                                        <input type="text" required name="city" placeholder="Current City and Location" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Means of Identification (NIN/ Voter's Card)</label>
-                                        <input type="file"  name="id" onChange={handleChange}/>
+                                        <input type="file" required  name="id" onChange={handleChange}/>
                                     </div>
-                                    <button style={{float:"right"}} onClick={showEduForm}>Continue</button>
-                                </div>
+                                    <button style={{float:"right"}} type="submit">Continue</button>
+                                </form>
                             </div>
                         )}
                         
                         {formActive === "education" && (
                             <div className="dashboard-content-form">
-                                <div>
+                                <form onSubmit={submitForm}>
                                     <p>Step 2 of 2</p>
                                     <p>Educational Background</p>
                                     <div className="dashboard-content-form-container">
                                         <label>Course of Study</label>
-                                        <input type="text" name="courseOfStudy" placeholder="Course of Study" onChange={handleChange} />
+                                        <input type="text" required name="courseOfStudy" placeholder="Course of Study" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Grade Achieved</label>
-                                        <input type="text" name="grade" placeholder="Grade Achieved" onChange={handleChange} />
+                                        <input type="text" required name="grade" placeholder="Grade Achieved" onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Qualification</label>
-                                        <select name="qualification" onChange={handleChange}>
-                                            <option>Select Qualification</option>
+                                        <select name="qualification" required onChange={handleChange}>
+                                            <option value="">Select Qualification</option>
                                             <option value="B.Sc">B.Sc</option>
                                             <option value="ND">ND</option>
                                             <option value="HND">HND</option>
@@ -198,8 +245,8 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Programming/Design Experience</label>
-                                        <select name="experience" onChange={handleChange}>
-                                            <option>Select Programming/Design Experience</option>
+                                        <select name="experience" required onChange={handleChange}>
+                                            <option value="">Select Programming/Design Experience</option>
                                             <option value="No skill">No skill</option>
                                             <option value="Basic skill">Basic skill</option>
                                             <option value="Mid-level skill">Mid-level Skill</option>
@@ -207,8 +254,8 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Nysc Status</label>
-                                        <select name="nyscStatus" onChange={handleChange}>
-                                            <option>Select Nysc Status</option>
+                                        <select name="nyscStatus" required onChange={handleChange}>
+                                            <option value="">Select Nysc Status</option>
                                             <option value="Service">Service</option>
                                             <option value="Exemption">Exemption</option>
                                             <option value="Use period to learn">I will use my period of service to learn</option>
@@ -217,27 +264,27 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Why do you think you should be selected as a part of this cohort?</label>
-                                        <textarea type="text" name="reason" placeholder="Write your reasons here..." onChange={handleChange} />
+                                        <textarea type="text" required name="reason" placeholder="Write your reasons here..." onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Will you be physically available for the next 6 months?</label>
-                                        <select name="availability" onChange={handleChange}>
-                                            <option>Select Availability</option>
+                                        <select name="availability" required onChange={handleChange}>
+                                            <option value="">Select Availability</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>If selected, will you be able to pay the legal fees of #30,000?</label>
-                                        <select name="legalFee" onChange={handleChange}>
-                                            <option>Select</option>
+                                        <select name="legalFee" required onChange={handleChange}>
+                                            <option value="">Select</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
                                     </div>
-                                    <button style={{float:"right"}} onClick={submitForm}>Submit</button>
+                                    <button style={{float:"right", width: "50px"}} type="submit" id="actionBtn">Submit</button>
                                     <button className="dashboard-content-form-container-prev" onClick={()=>setFormActive("bio-data")}>Previous</button>
-                                </div>
+                                </form>
                             </div>
                         )}
                     </div>
