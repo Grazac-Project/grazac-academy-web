@@ -54,7 +54,7 @@ const CourseDetail = (props) => {
                           >
                             Download Brochure
                           </a>
-                          <Link to="/graduate-form">
+                          <Link to="/login">
                             <button>Enroll now</button>
                           </Link>
                         </div>
@@ -138,7 +138,7 @@ const CourseDetail = (props) => {
                         </div>
                     </div>
                     <div className="course_purple-btn">
-                        <PrimaryBtn link="/graduate-form">Enroll Now</PrimaryBtn>
+                        <PrimaryBtn link="/login">Enroll Now</PrimaryBtn>
                         <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}><p>Talk to course rep</p></a>
                     </div>
             </div>
