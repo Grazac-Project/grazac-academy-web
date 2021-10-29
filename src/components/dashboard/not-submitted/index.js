@@ -62,41 +62,41 @@ function NotSubmitted () {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
         btn.innerHTML = `<img src=${loader} width="20px" />`;
-        const payload = JSON.stringify({
-            firstName: bioData.firstName,
-            lastName: bioData.lastName,
-            email: bioData.email,
-            phone: bioData.phone,
-            dob: bioData.dob,
-            gender: bioData.gender,
-            course: bioData.course,
-            state: bioData.state,
-            city: bioData.city,
-            id: "means of identification",
-            courseOfStudy: education.courseOfStudy,
-            grade: education.grade,
-            qualification: education.qualification,
-            experience: education.experience,
-            nyscStatus: education.nyscStatus,
-            reason: education.reason,
-            availability: education.availability,
-            legalFee: education.legalFee
-            
-        })
-        submitDetails(payload)
+        var data  = new FormData();
+
+        // data.append("firstName", bioData.firstName);
+        // data.append("lastName", bioData.lastName);
+        // data.append("email", bioData.email);
+        // data.append("phoneNumber", bioData.phone);
+        data.append("dob", bioData.dob);
+        data.append("gender", bioData.gender);
+        data.append("preferred_course", bioData.course);
+        data.append("state_of_residence", bioData.state);
+        data.append("current_city_and_location", bioData.city);
+        data.append("means_of_identification", 'means of id');
+        data.append("course_of_study", education.courseOfStudy);
+        data.append("grade_achieved", education.grade);
+        data.append("qualifications", education.qualification);
+        data.append("programming_skills", education.experience);
+        data.append("nysc_status", education.nyscStatus);
+        data.append("why_selected_for_cohort", education.reason);
+        data.append("physically_available", education.availability);
+        data.append("will_you_pay_legal_fees", education.legalFee);
+        
+        submitDetails(data)
             .then((response) => response.data)
             .then((res) => {
                 console.log(res);
                 if (res.success === true) {
                     toast.success("Submission successful! Your Application is now under review.");
                     btn.innerHTML = `Submit`;
-        // setSelectStatus("paid") //after payment is made
                 } else {
                     toast.error("Submission not successful, try again!!!")
                     btn.innerHTML = `Submit`;
                 }
             })
             .catch((err) => {
+                console.log(err)
                 if(err.response){
                     toast.error(err.response);
                     btn.innerHTML = `Submit`;

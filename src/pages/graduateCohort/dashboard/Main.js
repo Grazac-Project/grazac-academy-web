@@ -18,11 +18,13 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function Dashboard () {
-    const [status, setStatus] = useState("selected");
+    const [status, setStatus] = useState("Selected");
     const [selectStatus, setSelectStatus] = useState("congrats");
     const [selectStatus2, setSelectStatus2] = useState("");
     const [sidebarClick, setSidebarClick] =  useState("dashboard");
     const [payOpt, setPayOpt] = useState("");
+    const [amount, setAmount] = useState(0);
+    const [currency, setCurrency] = useState(0);
     const [guarantor, setGuarantor] = useState({
         firstName: "",
         lastName: "",
@@ -42,9 +44,11 @@ function Dashboard () {
     useEffect(() => {
         try {
             let details = sessionStorage.getItem('user_details');
-            //parse data instead
+            // console.log(JSON.parse(details));
+            setStatus(JSON.parse(details).status);
+            
             if(!details){
-                // window.location = '/login';
+                window.location = '/login';
              }
         } catch (err) {
             //redirect to login
@@ -68,14 +72,36 @@ function Dashboard () {
         }
     }
 
+    const flutterWavePayment = () => {
+        handleFlutterPayment({
+            callback: (response) => {
+                console.log(response);
+                if (response.status === "successful"){
+                    toast.success("Payment successful!")
+                    setSelectStatus("paid");
+                }else{
+                    toast.error("Payment unsuccessful!")
+                }
+                closePaymentModal() // this will close the modal programmatically
+            },
+            onClose: (response) => {
+                console.log(response);
+            },
+        });
+    }
+
     const makePayment = () => {
         if(payOpt==="part"){
+            setAmount(30000);
+            setCurrency('NGN');
             setSelectStatus2("");
             setSelectStatus("pay-as-you-earn");
         } else if (payOpt==="full"){
+            setAmount(1000);
+            setCurrency('USD');
             setSelectStatus2("");
-            //do payment, if succesful
             setSelectStatus("paid");
+            flutterWavePayment()
         } else {
             toast.info("You need to select a payment option to continue!");
         }
@@ -116,20 +142,7 @@ function Dashboard () {
                 if (res.success === true) {
                     toast.success("Submission successful");
                     btn.innerHTML = `Submit & Pay`;
-                    handleFlutterPayment({
-                        callback: (response) => {
-                            console.log(response);
-                            if (response.status === "successful"){
-                                toast.success("Payment successful!")
-                            }else{
-                                toast.error("Payment unsuccessful!")
-                            }
-                            closePaymentModal() // this will close the modal programmatically
-                        },
-                        onClose: () => {
-                            setSelectStatus("paid");
-                        },
-                    });
+                    flutterWavePayment();
                 } else {
                     toast.error("Submission not successful, try again!!!")
                     btn.innerHTML = `Submit & Pay`;
@@ -149,8 +162,8 @@ function Dashboard () {
     const config = {
         public_key: 'FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X',
         tx_ref: Date.now(),
-        amount: 100,
-        currency: 'NGN',
+        amount: amount,
+        currency: currency,
         payment_options: 'card,mobilemoney,ussd',
         customer: {
           email: 'user@gmail.com',
@@ -175,7 +188,7 @@ function Dashboard () {
                 }}
                 >
                 <div className="layout_dashboard-sidebar" id="sidebar">
-                    <Sidebar clicked={sidebarClick} clickedDashboard={setSidebarClick} clickedDetails={setSidebarClick} />
+                    <Sidebar clicked={sidebarClick} showDetails={status} clickedDashboard={setSidebarClick} clickedDetails={setSidebarClick} />
                 </div>
             </OutsideClickHandler>
             <div className="layout_dashboard-content">
@@ -183,7 +196,12 @@ function Dashboard () {
                     <img src={menu} alt="menu" className="dashboard-nav-menu" onClick={showNavMobile} />
                     <div className="dashboard-nav-status">
                         <h3>Status: {status}</h3>
-                        <div className={`dashboard-nav-status-dot ${status}`}></div>
+                        <div className={
+                                status==="Not Submitted" ? `dashboard-nav-status-dot not-submitted` :
+                                status==="Under Review" ? `dashboard-nav-status-dot under-review` :
+                                `dashboard-nav-status-dot ${status}`
+                            }
+                        ></div>
                     </div>
                     <div className="dashboard-nav-user">
                         <div>
@@ -194,13 +212,13 @@ function Dashboard () {
                 </div>
                 { sidebarClick==="dashboard" &&
                     <div className="dashboard-content" >
-                        {status === "not-submitted" && (
+                        {status === "Not Submitted" && (
                             <NotSubmitted />
                         )}
-                        {status === "under-review" && (
+                        {status === "Under Review" && (
                             <UnderReview/>
                         )}
-                        {status === "selected" && (
+                        {status === "Selected" && (
                             <div>
                                 { selectStatus === "congrats" &&
                                     <div>
@@ -346,10 +364,10 @@ function Dashboard () {
                                 }
                             </div>
                         )}
-                        {status === "admitted" && (
+                        {status === "Admitted" && (
                             <Admitted/>
                         )}
-                        {status === "rejected" && (
+                        {status === "Rejected" && (
                             <Rejected />
                         )}
                     </div>

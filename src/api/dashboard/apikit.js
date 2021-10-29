@@ -6,7 +6,8 @@ let APIKit = axios.create({
     baseURL: 'http://api.grazacacademy.com/api/v1/user',
     timeout: 10000, // timeout can be increased
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data',
+        "Access-Control-Allow-Origin": "*"
     }
 });
 

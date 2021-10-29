@@ -27,43 +27,35 @@ function Login () {
         var btn = document.getElementById("actionBtn");
         btn.innerHTML=`<img src=${loader} width="20px" />`;
         const { email, password } = form;
-        let payload = JSON.stringify({
-            email: email,
-            password: password
-        });
-        LoginAction(payload)
+        var data  = new FormData();
+
+        data.append("email", email);
+        data.append("password", password);
+
+        LoginAction(data)
             .then((response) => response.data)
             .then((res) => {
                 console.log(res);
-                if (res.success === true) {
-                    toast.success("Login successful! Redirecting to dashboard.");
-                    // const info = res.payload.data;
-                    // let admin_detail = {
-                    //     name: info.name,
-                    //     email: info.email,
-                    //     gender: info.gender,
-                    //     id: info.staff_id,
-                    //     phone: info.phone,
-                    //     image: info.image,
-                    //     role: info.roles,
-                    //     permissions: info.permissions
-                    // };
-                    // sessionStorage.setItem(
-                    //     "admin_details",
-                    //     JSON.stringify({
-                    //     data: admin_detail,
-                    //     token: res.payload.access_token
-                    //     })
-                    // ); 
+                if (res.status === 201) {
+                    toast.success(`${res.message}! Redirecting to dashboard...`);
+
+                    sessionStorage.setItem(
+                        "user_details",
+                        JSON.stringify({
+                        email: res.data.payload.email,
+                        status: res.data.status,
+                        token: res.data.token
+                        })
+                    ); 
                     btn.innerHTML=`Sign in`;
-                    window.location = '/';
+                    setTimeout( function (){window.location = '/dashboard';}, 2500)
                 } else {
                     toast.error("Something went wrong, please try again!!!")
                 }
             })
             .catch((err) => {
-                if(err.response){
-                    toast.error(err.response);
+                if(err.response.data.message){
+                    toast.error(err.response.data.message);
                     btn.innerHTML=`Sign in`;
                 } else{
                     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");

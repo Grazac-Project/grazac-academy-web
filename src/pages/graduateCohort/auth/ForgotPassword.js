@@ -18,14 +18,15 @@ function ForgotPassword () {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
         btn.innerHTML = `<img src=${loader} width="20px" />`;
-        let payload = JSON.stringify({
-            email: email
-        });
-        ForgotPasswordAction(payload)
+        var data  = new FormData();
+
+        data.append("email", email);
+
+        ForgotPasswordAction(data)
             .then((response) => response.data)
             .then((res) => {
                 console.log(res);
-                if (res.success === true) {
+                if (res.status === 201) {
                     toast.success("Mail sent! Proceed to check your mail.");
                     btn.innerHTML=`Send Email`;
                 } else {
@@ -33,8 +34,8 @@ function ForgotPassword () {
                 }
             })
             .catch((err) => {
-                if(err.response){
-                    toast.error(err.response);
+                if(err.response.data.message){
+                    toast.error(err.response.data.message);
                     btn.innerHTML=`Send Email`;
                 } else{
                     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");

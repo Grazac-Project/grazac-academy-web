@@ -4797,17 +4797,17 @@ input:focus, select:focus, textarea:focus {
   background: #E7A300;
 }
 
-.dashboard-nav-status .selected {
+.dashboard-nav-status .Selected {
   border: 1px solid #773dd3;
   background: #773dd3;
 }
 
-.dashboard-nav-status .admitted {
+.dashboard-nav-status .Admitted {
   border: 1px solid #29EB7F;
   background: #29EB7F;
 }
 
-.dashboard-nav-status .rejected {
+.dashboard-nav-status .Rejected {
   border: 1px solid #CC2E2E;
   background: #CC2E2E;
 }

@@ -17,9 +17,10 @@ function Verify () {
                         <p className="auth_container_form-text">
                             Learn valuable technology skills with us, we strongly believe the future of work will be skill based. <br/>
                             Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable. <br/>
-                            There is just one extra thing to do. Please check your email to verify your account.<br/>
+                            {/* There is just one extra thing to do. Please check your email to verify your account.<br/> */}
                         </p>
-                        <p>Didn't get an email? <span>Resend Link</span></p>
+                        {/* <p>Didn't get an email? <span>Resend Link</span></p> */}
+                        <p>Proceed to <Link to="/login"><span>Login</span></Link></p>
                     </div>
                 </div>
             </div>

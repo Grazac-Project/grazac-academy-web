@@ -9,16 +9,16 @@ try {
     //err
 }
 
-export const submitDetails = (payload) => {
-    return APIKit.post(`/v1/onboaring/me`, payload, {
+export const submitDetails = (data) => {
+    return APIKit.put(`/apply/1`, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
 }
 
-export const submitGuarantor = (payload) => {
-    return APIKit.post(`/v1/onbarding/me`, payload, {
+export const submitGuarantor = (data) => {
+    return APIKit.post(`/v1/onbarding/me`, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }

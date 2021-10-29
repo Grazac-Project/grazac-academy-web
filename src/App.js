@@ -119,7 +119,7 @@ const App = () => {
             <Route path="/forgot-password" component={Forgot} />
             <Route path="/reset-password" component={Reset} />
             <Route path="/mail-sent" component={MailSent} />
-            <Route path="/verify-mail" component={VerifyMail} />
+            <Route path="/account-created" component={VerifyMail} />
 
             {/* Graduate dashboard */}
             <Route path="/dashboard" component={DashBoardHome} />

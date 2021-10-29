@@ -10,6 +10,8 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function ResetPassword () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const reset_token = urlParams.get('token');
     const [form, setForm] = useState({
         password: "",
         confirmpassword: ""
@@ -28,31 +30,39 @@ function ResetPassword () {
             toast.info("Please make sure no field is empty!")
         }else if(form.password != form.confirmpassword){
             toast.error("Passwords do not match!")
+        }else if(form.password.length<6 || form.confirmpassword<6){
+            toast.error("Passwords should be at least 6 characters!")
         } else{
             var btn = document.getElementById("actionBtn");
             btn.innerHTML = `<img src=${loader} width="20px" />`;
-            let payload = JSON.stringify({
-                password: form.password
-            });
-            ResetPasswordAction(payload)
+            var data  = new FormData();
+    
+            data.append("token", reset_token);
+            data.append("password", form.password);
+            data.append("confirmPassword", form.confirmpassword);
+    
+            ResetPasswordAction(data)
                 .then((response) => response.data)
                 .then((res) => {
                     console.log(res);
-                    if (res.success === true) {
-                        toast.success("Password reset successful! Proceed to check your login.");
+                    if (res.status === 200) {
+                        toast.success("Password reset successful! Proceed to login.");
                         btn.innerHTML=`Reset Password`;
                     } else {
                         toast.error("Something went wrong, please try again!!!")
+                        btn.innerHTML=`Reset Password`;
                     }
                 })
                 .catch((err) => {
-                    if(err.response){
-                        toast.error(err.response);
-                        btn.innerHTML=`Reset Password`;
-                    } else{
-                        toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                        btn.innerHTML=`Reset Password`;
-                    }
+                    console.log(err.response)//modify the errors
+                    toast.error("Unable to reset password! Try again");
+                //     if(err.response.data.message){
+                //         toast.error(err.response.data.message);
+                //         btn.innerHTML=`Reset Password`;
+                //     } else{
+                //         toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                //         btn.innerHTML=`Reset Password`;
+                //     }
                 });
         }
     }
