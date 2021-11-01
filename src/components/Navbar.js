@@ -58,18 +58,18 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/undergraduate-accelerator-plan">
-                <span>03</span>Undergraduate
+              <NavItem link="/faq">
+                <span>03</span>FAQs
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/graduate-accelerator-plan">
-                <span>04</span>Graduate
+              <NavItem link="/hire">
+                <span>04</span>Hire
               </NavItem>
             </li>
             <li className="nav__item">
-              <a href="/#tracks">
-                <button onClick={() => setActive(false)}>Enroll Now</button>
+              <a href="/login">
+                <button onClick={() => setActive(false)}>Apply Now</button>
               </a>
             </li>
             <li className="nav__item" style={{ marginTop: "30px" }}>
@@ -89,55 +89,15 @@ const Navbar = ({ top }) => {
           <li className="nav__item">
             <NavItem link="/about-us">About</NavItem>
           </li>
-          <li
-            className="nav__item"
-            style={{ position: "relative", cursor: "pointer" }}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            <a className="nav__link">Academy</a>
-            <svg
-              className="mask"
-              width="11"
-              height="6"
-              viewBox="0 0 11 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M5.50003 6C5.32089 6 5.14252 5.934 4.99716 5.80113L0.282791 1.51511C-0.0503581 1.21251 -0.0959304 0.671616 0.182218 0.308161C0.45958 -0.0552936 0.954589 -0.104154 1.28852 0.198439L5.50867 4.03529L9.72175 0.336449C10.0596 0.0398561 10.5546 0.098146 10.8265 0.466744C11.0984 0.835342 11.0449 1.37452 10.7071 1.67197L5.99268 5.81056C5.8489 5.93657 5.67446 6 5.50003 6Z"
-                fill="#575A65"
-              />
-            </svg>
-
-            <div
-              className={cn("nav__dropdown", {
-                "nav__dropdown--active": hover,
-              })}
-            >
-              <span></span>
-              <ul className="nav__dropdown--list">
-                <li>
-                  <Link
-                    to="/undergraduate-accelerator-plan"
-                    className="nav__link"
-                  >
-                    Undergraduate
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/graduate-accelerator-plan" className="nav__link">
-                    Graduate
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <li className="nav__item">
+            <NavItem link="/faq">FAQs</NavItem>
           </li>
-          <a href="/#tracks">
+          <li className="nav__item">
+            <NavItem link="/hire">Hire</NavItem>
+          </li>
+          <a href="/login">
             <div className="nav__btn">
-              <div className="nav__btn--text">Enroll Now</div>
+              <div className="nav__btn--text">Apply Now</div>
             </div>
           </a>
           <a href="tel:+2348068365951" style={{ marginLeft: "20px" }}>

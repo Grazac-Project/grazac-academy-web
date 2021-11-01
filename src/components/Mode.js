@@ -1,6 +1,5 @@
-import Kamala from "../images/kamala.jpg";
 import lady from "../images/Grazac-website/IMG_8440.JPG";
-import PrimaryBtn from "../components/PrimaryBtn";
+
 
 const Linkedn = () => (
   <a>
@@ -13,81 +12,6 @@ const Linkedn = () => (
 const Mode = () => {
   return(
     <div className="mode">
-      {/* <div className="landing__middle">
-        <div className="landing__middle--container">
-          <div className="landing__middle--text">
-            <h2>Our Facilitators</h2>
-            <p>We have a good range of industry experts who are ready to hold you by the hand and lead you on your career path.</p>
-          </div>
-
-          <div className="landing__middle--images--box">
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-
-            <div className="landing__middle--images">
-              <img src={Man}/>
-              <a>Olalekan Sogunle</a>
-              <h5>CAREERFOUNDRY</h5>
-              <small>Software Engineer</small>
-              <Linkedn />
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <div className="landing__discount">
         <div className="landing__discount--container">
           <div className="landing__discount--img">
@@ -97,10 +21,9 @@ const Mode = () => {
             <h3>Get equipped for the career you desire.</h3>
             <p>You will gain insights into today’s digital skills and tools necessary for the future of work.</p>
             <div className="landing__btn--2">
-              {/* <PrimaryBtn link="/">Enroll Now</PrimaryBtn> */}
               <a>
                 <div className="nav__btn nav__btn-flex ">
-                  <a href="/#tracks"><div className="nav__btn--text" style={{marginRight:'20px'}}>Enroll Now</div></a>
+                  <a href="/login"><div className="nav__btn--text" style={{marginRight:'20px'}}>Apply Now</div></a>
                   <a href="tel:+2348068365951" ><div className="nav__btn--text1">Talk to us</div></a>
                 </div>
               </a>

@@ -42,7 +42,11 @@ function Login () {
                     sessionStorage.setItem(
                         "user_details",
                         JSON.stringify({
+                        firstName: res.data.payload.FirstName,
+                        lastName: res.data.payload.LastName,
                         email: res.data.payload.email,
+                        id: res.data.payload.id,
+                        phone: res.data.phoneNumber,
                         status: res.data.status,
                         token: res.data.token
                         })

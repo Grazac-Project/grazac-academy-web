@@ -2,17 +2,17 @@ import APIKit from './apikit';
 
 
 export const SignupAction = (data) => {
-    return APIKit.post(`/create`, data)
+    return APIKit.post(`/user/create`, data)
 }
 
 export const LoginAction = (data) => {
-    return APIKit.post(`/login`, data)
+    return APIKit.post(`/user/login`, data)
 }
 
 export const ForgotPasswordAction = (data) => {
-    return APIKit.post(`/forgetPassword`, data)
+    return APIKit.post(`/user/forgetPassword`, data)
 }
 
 export const ResetPasswordAction = (data) => {
-    return APIKit.post(`/resetPassword`, data)
+    return APIKit.post(`/user/resetPassword`, data)
 }

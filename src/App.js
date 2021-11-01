@@ -24,7 +24,6 @@ const UndergraduateAccelerator = lazy(() => {
   return import("./pages/UndergraduateAccelerator");
 });
 
-
 const UndergraduateCourseDetail = lazy(() => {
   return import("./pages/UndergraduateCourseDetail");
 });
@@ -61,7 +60,6 @@ const Hire = lazy(() => {
 const Profile = lazy(() => {
   return import("./pages/Profile");
 });
-
 
 const Project = lazy(() => {
   return import("./pages/Project");
@@ -128,6 +126,7 @@ const App = () => {
             <Route path="/" exact component={LandingPage}>
               {/* <Redirect to="/join"/>  */}
             </Route>
+            <Route path="/join" component={Join}/>
             <Route path="/about-us" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/faq" component={Faq} />

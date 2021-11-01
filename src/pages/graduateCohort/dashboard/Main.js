@@ -18,10 +18,11 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function Dashboard () {
-    const [status, setStatus] = useState("Selected");
+    const [status, setStatus] = useState("Under Review");
     const [selectStatus, setSelectStatus] = useState("congrats");
     const [selectStatus2, setSelectStatus2] = useState("");
     const [sidebarClick, setSidebarClick] =  useState("dashboard");
+    const [details, setDetails] = useState({})
     const [payOpt, setPayOpt] = useState("");
     const [amount, setAmount] = useState(0);
     const [currency, setCurrency] = useState(0);
@@ -46,6 +47,8 @@ function Dashboard () {
             let details = sessionStorage.getItem('user_details');
             // console.log(JSON.parse(details));
             setStatus(JSON.parse(details).status);
+            setDetails(JSON.parse(details));
+            console.log(JSON.parse(details));
             
             if(!details){
                 window.location = '/login';
@@ -205,18 +208,18 @@ function Dashboard () {
                     </div>
                     <div className="dashboard-nav-user">
                         <div>
-                            <h2>JD</h2>
+                            <h2>{details.firstName?.substring(0,1)}{details?.lastName?.substring(0,1)}</h2>
                         </div>
-                        <p>John Doe</p>
+                        <p>{details.firstName} {details.lastName}</p>
                     </div>
                 </div>
                 { sidebarClick==="dashboard" &&
                     <div className="dashboard-content" >
                         {status === "Not Submitted" && (
-                            <NotSubmitted />
+                            <NotSubmitted fname={details.firstName} lname={details.lastName} email={details.email} phone={details.phone} setNewStatus={()=>{setStatus("Under Review")}} />
                         )}
                         {status === "Under Review" && (
-                            <UnderReview/>
+                            <UnderReview fname={details.firstName}/>
                         )}
                         {status === "Selected" && (
                             <div>
@@ -360,15 +363,15 @@ function Dashboard () {
                                     </div>
                                 }
                                 { selectStatus === "paid" &&
-                                    <PaymentReceived />
+                                    <PaymentReceived fname={details.firstName} />
                                 }
                             </div>
                         )}
                         {status === "Admitted" && (
-                            <Admitted/>
+                            <Admitted fname={details.firstName}/>
                         )}
                         {status === "Rejected" && (
-                            <Rejected />
+                            <Rejected fname={details.firstName} />
                         )}
                     </div>
                 }

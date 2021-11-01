@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { submitDetails } from "../../../api/dashboard/data";
 
@@ -6,20 +6,21 @@ import arrow from "../../../images/svg/dashboard/arrow.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
 
 
-function NotSubmitted () {
+function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     const [active, setActive] = useState("welcome");
     const [formActive, setFormActive] = useState("");
+    const [userId, setUserId] = useState(0);
     const [bioData, setBioData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
+        firstName: `${fname}`,
+        lastName: `${lname}`,
+        email: `${email}`,
+        phone: `${phone}`,
         dob: "",
         gender: "",
         course: "",
         state: "",
         city: "",
-        id: ""
+        id: null
     });
     const [education, setEducation] = useState({
         courseOfStudy: "",
@@ -32,6 +33,14 @@ function NotSubmitted () {
         legalFee: ""
     });
     
+    useEffect(()=>{
+        try {
+            let details = sessionStorage.getItem('user_details');
+            setUserId(JSON.parse(details).id);  
+        } catch (err) {
+            console.log()
+        }
+    })
     const handleChange = (e) => {
         setBioData({
             ...bioData,
@@ -40,6 +49,13 @@ function NotSubmitted () {
         setEducation({
             ...education,
             [e.target.name]: e.target.value
+        })
+    }
+
+    const handleImage = (e) => {
+        setBioData({
+            ...bioData,
+            id: e.target.files[0]
         })
     }
 
@@ -73,7 +89,7 @@ function NotSubmitted () {
         data.append("preferred_course", bioData.course);
         data.append("state_of_residence", bioData.state);
         data.append("current_city_and_location", bioData.city);
-        data.append("means_of_identification", 'means of id');
+        data.append("means_of_identification", bioData.id);
         data.append("course_of_study", education.courseOfStudy);
         data.append("grade_achieved", education.grade);
         data.append("qualifications", education.qualification);
@@ -83,13 +99,14 @@ function NotSubmitted () {
         data.append("physically_available", education.availability);
         data.append("will_you_pay_legal_fees", education.legalFee);
         
-        submitDetails(data)
+        submitDetails(data, userId)
             .then((response) => response.data)
             .then((res) => {
                 console.log(res);
-                if (res.success === true) {
+                if (res.status === 200) {
                     toast.success("Submission successful! Your Application is now under review.");
                     btn.innerHTML = `Submit`;
+                    setNewStatus();
                 } else {
                     toast.error("Submission not successful, try again!!!")
                     btn.innerHTML = `Submit`;
@@ -113,7 +130,7 @@ function NotSubmitted () {
             <ToastContainer closeButton={false}/>
             {active === "welcome" &&
                 <div>
-                    <h3>Hello John</h3>
+                    <h3>Hello {fname}</h3>
                     <p className="text1">Learn with us for 5 months and pay no tuition till you’re hired!</p>
                     <p>Grazac Accelerator Program is a full time, 5-month training program focused on building in-demand tech skills at an accelerated pace. This program goes above and beyond to provide a superior educational experience, allowing students to develop a successful career in the tech industry through intensive training and internships.</p>
                     <p>Our curriculum covers 4 basic tech disciplines that includes;</p>
@@ -160,19 +177,19 @@ function NotSubmitted () {
                                     <p>BIO DATA</p>
                                     <div className="dashboard-content-form-container">
                                         <label>First Name</label>
-                                        <input type="text" required name="firstName" placeholder="FirstName" onChange={handleChange} />
+                                        <input type="text" required name="firstName" placeholder="FirstName" value={bioData.firstName} onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Last Name</label>
-                                        <input type="text" required name="lastName" placeholder="LastName" onChange={handleChange} />
+                                        <input type="text" required name="lastName" placeholder="LastName" value={bioData.lastName} onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Email Address</label>
-                                        <input type="email" required name="email" placeholder="Email Address" onChange={handleChange} />
+                                        <input type="email" required name="email" placeholder="Email Address" value={email} onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Phone Number</label>
-                                        <input type="number" required name="phone" placeholder="Phone Number" onChange={handleChange} />
+                                        <input type="number" required name="phone" placeholder="Phone Number" value={bioData.phone} onChange={handleChange} />
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Date of Birth</label>
@@ -211,7 +228,7 @@ function NotSubmitted () {
                                     </div>
                                     <div className="dashboard-content-form-container">
                                         <label>Means of Identification (NIN/ Voter's Card)</label>
-                                        <input type="file" required  name="id" onChange={handleChange}/>
+                                        <input type="file" required  name="id" accept="image/*" onChange={handleImage}/>
                                     </div>
                                     <button style={{float:"right"}} type="submit">Continue</button>
                                 </form>

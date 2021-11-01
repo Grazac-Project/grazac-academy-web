@@ -1168,6 +1168,30 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
 }
 
+.landing__text-below {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+}
+
+.landing__text-below div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landing__text-below div img {
+  margin: 0 10px 0 40px;
+}
+
+.landing__text-below div h6 {
+  font-size: 16px;
+}
+
 .landing__text h1 {
   font-family: Georgia;
   color: #1f1035;
@@ -1243,6 +1267,24 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+.landing__bottom--text1 {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@media (min-width: 900px) {
+  .landing__bottom--text1 {
+    width: 500px;
+    margin-left: 15rem;
+  }
+}
+
+.landing__bottom--text1 h1 {
+  font-family: Georgia;
+}
+
 .landing__bottom--text {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1254,6 +1296,12 @@ input:focus, select:focus, textarea:focus {
       -ms-flex-align: center;
           align-items: center;
   font-family: "Nunito Sans", sans-serif;
+}
+
+.landing__bottom--text h2 {
+  font-family: Georgia;
+  width: 100vw;
+  text-align: center !important;
 }
 
 .landing__bottom--text-2 {
@@ -1533,7 +1581,20 @@ input:focus, select:focus, textarea:focus {
 }
 
 .landing__slider {
+  max-width: 100vw;
   background-color: #f1f5fc;
+}
+
+.landing__slider-text1 {
+  display: block;
+  margin: auto;
+  max-width: 900px;
+}
+
+.landing__slider-text1 p {
+  color: #787676;
+  text-align: center;
+  margin: 0 20px;
 }
 
 .landing__slider--container {
@@ -3665,7 +3726,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .gga_container {
-  margin: 70px 0;
+  margin: 70px 0 20px;
 }
 
 @media (min-width: 601px) {
