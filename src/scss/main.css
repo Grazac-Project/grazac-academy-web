@@ -1318,6 +1318,12 @@ input:focus, select:focus, textarea:focus {
   font-family: "Nunito Sans", sans-serif;
 }
 
+@media (max-width: 37.5em) {
+  .landing__bottom--text {
+    display: block;
+  }
+}
+
 .landing__bottom--text h2 {
   font-family: Georgia;
   width: 100vw;
@@ -1367,6 +1373,12 @@ input:focus, select:focus, textarea:focus {
   .landing__bottom--text--right {
     -ms-flex-preferred-size: initial;
         flex-basis: initial;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .landing__bottom--text--right {
+    margin-top: 40px;
   }
 }
 

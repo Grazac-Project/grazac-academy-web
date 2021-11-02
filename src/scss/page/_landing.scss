@@ -193,6 +193,9 @@
       justify-content: space-between;
       align-items: center;
       font-family: $font-secondary;
+      @include respond(phone) {
+        display: block;
+      }
       h2{
         font-family: $font-primary;
         width: 100vw;
@@ -227,6 +230,9 @@
 
         @include respond(tab-port) {
           flex-basis: initial;
+        }
+        @include respond(phone) {
+          margin-top: 40px;
         }
       }
 
