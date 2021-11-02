@@ -568,7 +568,7 @@ input:focus, select:focus, textarea:focus {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 200;
-  color: #9da8b6;
+  color: #787676;
   line-height: 32px;
 }
 
@@ -588,7 +588,7 @@ input:focus, select:focus, textarea:focus {
 
 .footer__item a {
   text-decoration: none;
-  color: #9da8b6;
+  color: #787676;
 }
 
 .footer__item a:hover {
@@ -632,7 +632,7 @@ input:focus, select:focus, textarea:focus {
 .footer__bottom a {
   text-decoration: none;
   font-size: 1.4rem;
-  color: #9da8b6;
+  color: #787676;
 }
 
 .footer__bottom a:hover {
@@ -641,7 +641,7 @@ input:focus, select:focus, textarea:focus {
 
 .footer__bottom p {
   font-size: 1.4rem;
-  color: #9da8b6;
+  color: #787676;
 }
 
 .footer__icons {
@@ -1178,6 +1178,14 @@ input:focus, select:focus, textarea:focus {
   margin-top: 30px;
 }
 
+@media (max-width: 600px) {
+  .landing__text-below {
+    display: block;
+    margin: 30px auto 0;
+    width: 250px;
+  }
+}
+
 .landing__text-below div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1186,6 +1194,12 @@ input:focus, select:focus, textarea:focus {
 
 .landing__text-below div img {
   margin: 0 10px 0 40px;
+}
+
+@media (max-width: 600px) {
+  .landing__text-below div img {
+    margin: 0 10px 0 0;
+  }
 }
 
 .landing__text-below div h6 {
@@ -1197,7 +1211,7 @@ input:focus, select:focus, textarea:focus {
   color: #1f1035;
   font-weight: 700;
   font-size: 6rem;
-  margin-top: 15rem;
+  margin-top: 8rem;
 }
 
 .landing__text h1 span {
@@ -1272,6 +1286,7 @@ input:focus, select:focus, textarea:focus {
       -ms-flex-align: center;
           align-items: center;
   font-family: "Nunito Sans", sans-serif;
+  margin: 0 25px;
 }
 
 @media (min-width: 900px) {
@@ -1283,6 +1298,11 @@ input:focus, select:focus, textarea:focus {
 
 .landing__bottom--text1 h1 {
   font-family: Georgia;
+}
+
+.landing__bottom--text1 p {
+  font-size: 16px;
+  color: #787676;
 }
 
 .landing__bottom--text {
@@ -1392,10 +1412,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .landing__bottom--text p {
-  font-size: 1.8rem;
+  font-size: 16px;
   line-height: 3rem;
   margin-bottom: 2rem;
-  color: black;
+  color: #787676;
 }
 
 .landing__bottom--form {
@@ -1544,7 +1564,7 @@ input:focus, select:focus, textarea:focus {
 
 .landing_faq h4 {
   color: #1f1035;
-  font-size: 24px !important;
+  font-size: 20px !important;
 }
 
 @media (max-width: 500px) {
@@ -1555,7 +1575,7 @@ input:focus, select:focus, textarea:focus {
 
 .landing_faq p {
   font-size: 1.4rem;
-  color: black;
+  color: #787676;
   line-height: 35px;
 }
 
@@ -1597,42 +1617,86 @@ input:focus, select:focus, textarea:focus {
   margin: 0 20px;
 }
 
+.landing__slider-contain {
+  width: 100vw;
+  position: relative;
+}
+
 .landing__slider--container {
   max-width: 1200px;
   margin: 0 auto;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  overflow-x: scroll;
   padding: 5rem;
-  overflow: hidden;
+}
+
+.landing__slider--container::-webkit-scrollbar {
+  display: none;
+}
+
+.landing__slider--container .scroll-left {
+  position: absolute;
+  top: 170px;
+  left: 30px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .landing__slider--container .scroll-left {
+    width: 40px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .landing__slider--container .scroll-left {
+    display: none;
+  }
+}
+
+.landing__slider--container .scroll-right {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  top: 170px;
+  right: 30px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .landing__slider--container .scroll-right {
+    width: 40px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .landing__slider--container .scroll-right {
+    display: none;
+  }
 }
 
 .landing__slider--container .video-width {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 560px;
+  border-radius: 20px;
   height: 315px;
+  margin-right: 30px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 700px) {
   .landing__slider--container .video-width {
-    display: block;
-    margin: auto;
-    width: 450px;
-    height: 230px;
-  }
-}
-
-@media (max-width: 37.5em) {
-  .landing__slider--container {
-    margin-bottom: 5rem;
-    padding-left: 3rem;
+    width: 320px;
+    height: 200px;
   }
 }
 
@@ -2343,7 +2407,7 @@ input:focus, select:focus, textarea:focus {
 
 .landing__discover--list-item p {
   font-size: 1.6rem;
-  color: #9da8b6;
+  color: #787676;
   line-height: 35px;
 }
 
@@ -3623,7 +3687,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .boxes33 {
-  width: 33%;
+  width: 50%;
 }
 
 @media (max-width: 56.25em) {
@@ -3726,7 +3790,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .gga_container {
-  margin: 70px 0 20px;
+  margin: 70px auto 20px;
+  max-width: 900px;
 }
 
 @media (min-width: 601px) {
@@ -4006,12 +4071,11 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid #f1f5fc;
   border-radius: 10px;
   margin: 10px 15px 30px;
-  text-align: center;
   background-color: white;
 }
 
 .gua_cardview p {
-  color: #9da8b6;
+  color: #787676;
 }
 
 .gua_cardview a {
@@ -4537,7 +4601,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hire_dev-grey {
-  color: #9DA8B6;
+  color: #787676;
   font-size: 14px;
 }
 
@@ -4704,7 +4768,7 @@ input:focus, select:focus, textarea:focus {
 .join_needed {
   width: 70%;
   margin: 20px auto;
-  color: #9DA8B6;
+  color: #787676;
   font-size: 16px;
 }
 
@@ -4725,6 +4789,16 @@ input:focus, select:focus, textarea:focus {
   .join_box1 img {
     margin-top: 40px;
   }
+}
+
+.join_box1 h4 {
+  font-family: Georgia;
+  font-weight: 600;
+  color: #073041;
+}
+
+.join_box1 p {
+  color: #787676;
 }
 
 @media (min-width: 700px) {

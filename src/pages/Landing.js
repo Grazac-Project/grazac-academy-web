@@ -19,6 +19,7 @@ import grad1 from "../images/grad1.png";
 import grad2 from "../images/grad2.png";
 import grad3 from "../images/grad3.png";
 import grad4 from "../images/grad4.png";
+import scroll from "../images/testimonial-scroll.png";
 
 import badge from "../images/svg/badge.svg";
 import ex from "../images/svg/x-mark.svg";
@@ -29,6 +30,10 @@ import Sponsor5 from "../images/svg/Microsoft.svg";
 import Sponsor6 from "../images/svg/Google.svg";
 import mark from "../images/svg/mark.svg";
 import join from "../images/svg/join.svg";
+import why1 from "../images/svg/why1.svg";
+import why2 from "../images/svg/why2.svg";
+import why3 from "../images/svg/why3.svg";
+import why4 from "../images/svg/why4.svg";
 import product from "../images/product.png";
 import frontend from "../images/frontend.png";
 import backend from "../images/backend.png";
@@ -55,30 +60,6 @@ const Landing = () => {
     });
   }, []);
 
-  const content = [
-    {
-      id: 0,
-      img: Bosun,
-      content:
-        "The future of work will be filled with so many opportunities we need to prepare for, I’ve known Grazac for a while and seen them in the business of helping people lay hold of these opportunities. Grazac Academy is an excellent starting point for anyone looking into building a career in technology.",
-      name: "Bosun Egberinde - Creator of PHPSandbox.io",
-    },
-    {
-      id: 1,
-      img: Adedamola,
-      content:
-        "I've known Grazac for over a year now and having worked with some of their successful students, I can boldly say the competency and problem solving skills of their students is top-notch and their academy is one of the best academy promoting technology skills acquisition here in Nigeria",
-      name: "Samson Adedamola - Consultant at Kudi",
-    },
-    {
-      id: 2,
-      img: Abdullahi,
-      content:
-        "I passed through Grazac Academy while I was in school and that's one of the best thing that happened to me as an undergraduate. I love how the facilitators mentored everyone of us up and I must say that, we got more value than we paid for.",
-      name: "Abdullahi Olaniyan - Software Developer at Global Accelerex",
-    },
-  ];
-
   const handleModal = () => {
     setShowModal(false);
     var landingHeight = document.getElementsByClassName("landing")[0];
@@ -93,6 +74,13 @@ const Landing = () => {
     svg.classList.toggle("faq-icon_transition");
   };
 
+  const scrolLeft = () => {
+    document.getElementById('scrolltainer').scrollLeft -= 200;
+  }
+  
+  const scrolRight = () => {
+    document.getElementById('scrolltainer').scrollLeft += 200;
+  }
 
   return (
     <div className="landing">
@@ -133,7 +121,7 @@ const Landing = () => {
             Upskilling You For The <span>Future</span> Of Work
           </h1>
           <p>
-            Learn valuable technology skills with our wide range of courses and land your dream job.{" "}
+            Learn valuable technology skills with our wide range of courses <br className="hide-at-600"/> and land your dream job.{" "}
           </p>
         </div>
         <a href="/login">
@@ -183,7 +171,7 @@ const Landing = () => {
       <div>
           <Container>
             <div className="course_mode-intro course_mode-intro">
-                <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the best for you</h2>
+                <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the<br className="hide-at-600"/> best for you</h2>
             </div>
           </Container>
         </div>
@@ -194,7 +182,7 @@ const Landing = () => {
             <Col md={6}>
               <div className="join_box1">
                 <div className="">
-                  <img src={join} alt="profile" />
+                  <img src={why1} alt="profile" />
                 </div>
                 <h4>Pay no tuition until you’re hired</h4>
                 <p className="hire_dev-grey">We make starting a career in tech accessible to anyone. You won’t be required to pay any tuition for your learning until you get a job. We match you with employers within 9-12 months of learning to land your dream job in tech.</p>
@@ -203,7 +191,7 @@ const Landing = () => {
             <Col md={6}>
               <div className="join_box1">
                 <div className="">
-                  <img src={join} alt="profile" />
+                  <img src={why2} alt="profile" />
                 </div>
                 <h4>1:1 access to mentorship and support</h4>
                 <p className="hire_dev-grey">You gain 24/7 access to a wide range of industry experts that will walk you through your career path and increase your visibility to potential employers.</p>
@@ -214,7 +202,7 @@ const Landing = () => {
             <Col md={6}>
               <div className="join_box1">
                 <div className="">
-                  <img src={join} alt="profile" />
+                  <img src={why3} alt="profile" />
                 </div>
                 <h4>Recognized Certification</h4>
                 <p className="hire_dev-grey">You get a recognized certificate that serves as a proof that you are skilled enough to work in any organization in or outside Nigeria.</p>
@@ -223,7 +211,7 @@ const Landing = () => {
             <Col md={6}>
               <div className="join_box1">
                 <div className="">
-                  <img src={join} alt="profile" />
+                  <img src={why4} alt="profile" />
                 </div>
                 <h4>2-months Compulsory Internship</h4>
                 <p className="hire_dev-grey">Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve related problems so you can build your portfolio for at least 2-months.</p>
@@ -341,8 +329,8 @@ const Landing = () => {
 
       <div className="landing__discover">
         <div className="landing__bottom--text1">
-            <h1>How the Admission Process Works</h1>
-            <p>Understand our admission process in 3 easy steps</p>
+            <h1>How the Admission <br className="hide-at-600"/>Process Works</h1>
+            <p>Understand our admission process <br className="hide-at-600"/>in 3 easy steps</p>
         </div>
         <div className="landing__discover--container">
           <div className="landing__discover--images">
@@ -399,44 +387,32 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="landing__slider">
+      <div>
           <div className="landing__bottom--text">
               <h2>Testimonials</h2>         
           </div>
           <div className="landing__slider-text1">
             <p>The success stories, testimonials and reviews from our students are exceptional. These are our students that put in deliberate efforts and have been intentional and consistent in implementing what they learnt from the course.</p>   
           </div>
-        <Slider arrows={false}  className="landing__slider-desktop">
-          {/* {content.map((item) => (
-            <div className="landing__slider--container" key={item.id}>
-              <div className="landing__slider--img">
-                <img src={item.img} alt="img" />
+          <div className="landing__slider-contain">
+            <div className="landing__slider--container" id="scrolltainer" >
+              <img src={scroll} alt="scroll" className="scroll-left" onClick={scrolLeft} />
+              <img src={scroll} alt="scroll" className="scroll-right" onClick={scrolRight} />
+              <div className="video-width">
+                <iframe className="video-width" src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
-
-              <div className="landing__slider--text">
-                <svg
-                  width="30"
-                  height="28"
-                  viewBox="0 0 30 28"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.3993 5.56001C13.1711 5.22699 13.4948 4.27918 13.1462 3.51069L11.9262 0.872185C11.5777 0.129562 10.7311 -0.203709 9.98417 0.129562C7.86782 1.05176 6.05026 2.25573 4.60616 3.71587C2.83839 5.43192 1.64328 7.4044 0.995927 9.5818C0.348574 11.7851 0 14.782 0 18.5988V26.4631C0 27.3084 0.672251 28.0001 1.49389 28.0001H11.2789C12.1005 28.0001 12.7728 27.3084 12.7728 26.4631V16.3958C12.7728 15.5502 12.1005 14.8588 11.2789 14.8588H6.59802C6.64781 12.2713 7.24537 10.1966 8.34089 8.63373C9.23722 7.37904 10.5817 6.35438 12.3993 5.56001Z"
-                    fill="#4B004B"
-                  />
-                  <path
-                    d="M29.1127 5.53403C29.8845 5.20102 30.2079 4.25321 29.8596 3.48471L28.6396 0.872082C28.291 0.129203 27.4445 -0.203812 26.6976 0.129203C24.6061 1.0514 22.8132 2.25537 21.3444 3.6899C19.5764 5.43182 18.3567 7.40429 17.7091 9.5817C17.0617 11.7332 16.7383 14.7306 16.7383 18.5731V26.4374C16.7383 27.2827 17.4105 27.9744 18.2322 27.9744H28.0172C28.8388 27.9744 29.511 27.2827 29.511 26.4374V16.3701C29.511 15.5245 28.8388 14.8331 28.0172 14.8331H23.3114C23.3612 12.2456 23.959 10.1709 25.0543 8.60801C25.9506 7.35306 27.2951 6.3284 29.1127 5.53403Z"
-                    fill="#4B004B"
-                  />
-                </svg>
-
-                <p>{item.content}</p>
-
-                <small>{item.name}</small>
+              <div>
+                <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div className="video-width">
+                <iframe className="video-width" src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div>
+                <iframe className="video-width" src="https://www.youtube.com/embed/1KkiCbKrG-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
-          ))} */}
+          </div>
+        {/* <Slider arrows={false}  className="landing__slider-desktop">
             <div className="landing__slider--container" >
               <div className="video-width">
                 <iframe className="video-width" src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -453,18 +429,18 @@ const Landing = () => {
                 <iframe className="video-width" src="https://www.youtube.com/embed/1KkiCbKrG-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
-        </Slider>
-        <div className="landing__slider-mobile">
+        </Slider> */}
+        {/* <div className="landing__slider-mobile">
             <iframe src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <iframe src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <iframe src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+        </div> */}
       </div>
 
       <div>
           <div className="course_mode-intro course_mode-intro" style={{textAlign:'center'}}>
               <h2 className="join_heading" style={{ marginTop:"80px"}}>Gallery</h2>
-              <p className="join_needed">Images of our students that put in deliberate efforts and have been intentional and consistent in implementing what they learnt from the course.</p>
+              <p className="join_needed">Images of our students that put in deliberate efforts and have been intentional and consistent in implementing <br className="hide-at-600"/>what they learnt from the course.</p>
           </div>
           <Container>
             <div className="join_gallery">
@@ -520,7 +496,7 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>What is Grazac Academy?</h4>
+                    <h4>How do I register?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -528,24 +504,7 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        Grazac Academy is closing the gap between youths and
-                        entry-level jobs in the technology industry. We strongly
-                        believe the job market for youths has changed and the
-                        future of work will be skill-based.
-                      </p>
-                      <p>We are approaching this in two ways:</p>
-                      <p>
-                        Grazac Academy Graduate Accelerator - This plan is for
-                        tertiary institutions graduates who have full time to
-                        build a career in tech. This plan has been arranged in a
-                        way to prepare them for work.
-                      </p>
-                      <p>
-                        Grazac Academy Undergraduate Accelerator - This plan is
-                        to equip undergraduates in their institutions, we
-                        believe the earlier the better and we want to prepare
-                        them for life after school by upskilling them while they
-                        are still in school.
+                        Visit www.grazacacademy.com and click the “apply now” button to create an account. Login to your dashboard to complete your application.
                       </p>
                     </div>
                   </Card.Body>
@@ -555,14 +514,14 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>When was the academy established?</h4>
+                    <h4>After registration, what next?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
                     <div className="landing_faq-answer">
-                      <p>Grazac Academy has been in operation since 2018</p>
+                      <p>Once you have successfully registered, an email will be sent to you detailing the next steps of the registration process. Ensure that you provide a valid email address and keep an eye on your inbox.</p>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -571,7 +530,7 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="2">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>How many students have graduated from your academy?</h4>
+                    <h4>Do I have to be physically present to register?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -579,11 +538,7 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        Excluding our partnership with Haptics.ng in 2019 to
-                        execute Google project of upskilling Nigerians on
-                        Digital skills where we trained about 500 youths, we
-                        have impacted over 2,000 lives through our trainings,
-                        meetups and events.
+                      No. Registration can be done online but applicants have to be physically present to write the assessment test.
                       </p>
                     </div>
                   </Card.Body>
@@ -593,7 +548,7 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="3">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>Where is the academy located?</h4>
+                    <h4>Do I need to have any previous experience or knowledge before coming to learn?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -601,12 +556,7 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        Our headquarter is located at Abeokuta, Ogun State,
-                        Nigeria.
-                      </p>
-                      <p>
-                        Address: Suite 106, PROHUB, Salawu Olabode Avenue, Ewang
-                        Road, Idi-aba, Abeokuta.
+                      Not at all. All our courses are designed to help people from any educational background and experience level, achieve a successful career in tech.
                       </p>
                     </div>
                   </Card.Body>
@@ -616,7 +566,7 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="4">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>How do I enroll in the academy?</h4>
+                    <h4>Are classes virtual or physical?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -624,11 +574,7 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        Visit{" "}
-                        <a href="https://www.grazacacademy.com">
-                          www.grazacacademy.com
-                        </a>{" "}
-                        to enroll for your preferred course.
+                      Classes are 100% physical and this is to ensure students get maximum support and mentorship from their tutors.
                       </p>
                     </div>
                   </Card.Body>
@@ -638,7 +584,7 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="5">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>What are the payment options?</h4>
+                    <h4>What is the duration of the program?</h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -646,21 +592,13 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        We have three (2) payment options for our Gradaute
-                        Accelerator, you can either pay once or pay
-                        installmentally.
+                      The program runs for at least 5 months (3 months of immersive training and 2 months internship)
                       </p>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-            <hr />
-            <Link to="/faq">
-              <p className="landing_faq-link">
-                More frequently asked questions
-              </p>
-            </Link>
           </div>
         </div>
       </div>

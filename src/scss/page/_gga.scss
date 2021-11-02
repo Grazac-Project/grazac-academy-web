@@ -27,7 +27,7 @@
   }
 }
 .boxes33 {
-  width: 33%;
+  width: 50%;
   @include respond(tab-port) {
     width: 50%;
   }
@@ -105,7 +105,9 @@
   }
 
   &_container {
-    margin: 70px 0 20px;
+    margin: 70px auto 20px;
+    max-width: 900px;
+
     @media (min-width: 601px) {
       display: flex;
       flex-wrap: wrap;

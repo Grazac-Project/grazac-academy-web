@@ -51,7 +51,7 @@
     font-family: $font-secondary;
     font-size: 1.4rem;
     font-weight: 200;
-    color: $color-light-grey;
+    color: #787676;
     line-height: 32px;
     @include respond(phone) {
       line-height: 25px;
@@ -67,7 +67,7 @@
 
     a {
       text-decoration: none;
-      color: $color-light-grey;
+      color: #787676;
       &:hover {
         text-decoration: underline;
       }
@@ -101,7 +101,7 @@
     a {
       text-decoration: none;
       font-size: 1.4rem;
-      color: $color-light-grey;
+      color: #787676;
 
       &:hover {
         text-decoration: underline;
@@ -110,7 +110,7 @@
 
     p {
       font-size: 1.4rem;
-      color: $color-light-grey;
+      color: #787676;
     }
   }
 

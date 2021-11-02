@@ -24,3 +24,9 @@ a:hover{
 button:focus{
   outline: none;
 }
+
+@media(max-width:600px){
+  .hide-at-600{
+    display: none;
+  }
+}

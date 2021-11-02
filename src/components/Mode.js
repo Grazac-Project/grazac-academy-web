@@ -18,13 +18,13 @@ const Mode = () => {
             <img src={lady}/>
           </div>
           <div className="landing__discount--text">
-            <h3>Get equipped for the career you desire.</h3>
-            <p>You will gain insights into today’s digital skills and tools necessary for the future of work.</p>
+            <h3>Want to build a career in tech?</h3>
+            <p>Interested in building a career in tech? Grazac Academy is the right solution for you. Learn valuable skills with us and pay no tuition until you are hired.</p>
             <div className="landing__btn--2">
               <a>
                 <div className="nav__btn nav__btn-flex ">
                   <a href="/login"><div className="nav__btn--text" style={{marginRight:'20px'}}>Apply Now</div></a>
-                  <a href="tel:+2348068365951" ><div className="nav__btn--text1">Talk to us</div></a>
+                  <a href="tel:+2348068365951" ><div className="nav__btn--text1">Call us</div></a>
                 </div>
               </a>
             </div>

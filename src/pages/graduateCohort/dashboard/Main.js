@@ -18,14 +18,15 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function Dashboard () {
-    const [status, setStatus] = useState("Under Review");
-    const [selectStatus, setSelectStatus] = useState("congrats");
+    const [status, setStatus] = useState("Selected");
+    const [selectStatus, setSelectStatus] = useState("paid");
     const [selectStatus2, setSelectStatus2] = useState("");
     const [sidebarClick, setSidebarClick] =  useState("dashboard");
     const [details, setDetails] = useState({})
     const [payOpt, setPayOpt] = useState("");
     const [amount, setAmount] = useState(0);
     const [currency, setCurrency] = useState(0);
+    const [userId, setUserId] = useState(0);
     const [guarantor, setGuarantor] = useState({
         firstName: "",
         lastName: "",
@@ -48,7 +49,7 @@ function Dashboard () {
             // console.log(JSON.parse(details));
             setStatus(JSON.parse(details).status);
             setDetails(JSON.parse(details));
-            console.log(JSON.parse(details));
+            setUserId(JSON.parse(details).id);
             
             if(!details){
                 window.location = '/login';
@@ -103,7 +104,6 @@ function Dashboard () {
             setAmount(1000);
             setCurrency('USD');
             setSelectStatus2("");
-            setSelectStatus("paid");
             flutterWavePayment()
         } else {
             toast.info("You need to select a payment option to continue!");
@@ -122,27 +122,28 @@ function Dashboard () {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
         btn.innerHTML = `<img src=${loader} width="20px" />`;
+        var data  = new FormData();
 
-        const payload = JSON.stringify({
-            firstName: guarantor.firstName,
-            lastName: guarantor.lastName,
-            email: guarantor.email,
-            phone: guarantor.phone,
-            gender: guarantor.gender,
-            officeAddress: guarantor.officeAddress,
-            homeAddress: guarantor.homeAddress,
-            profession: guarantor.profession,
-            organisation: guarantor.organisation,
-            employer: guarantor.employer,
-            employerMail: guarantor.employerMail,
-            employerPhone: guarantor.employerPhone,
-            relationship: guarantor.relationship
-        })
-        submitGuarantor(payload)
+        data.append("firstname", guarantor.firstName);
+        data.append("lastname", guarantor.lastName);
+        data.append("email", guarantor.email);
+        data.append("phone_number", guarantor.phone);
+        data.append("gender", guarantor.gender);
+        data.append("office_address", guarantor.officeAddress);
+        data.append("home_address", guarantor.homeAddress);
+        data.append("profession", guarantor.profession);
+        data.append("name_of_organization", guarantor.organisation);
+        data.append("name_of_employer", guarantor.employer);
+        data.append("email_address_of_employer", guarantor.employerMail);
+        data.append("phone_number_of_employer", guarantor.employerPhone);
+        data.append("relationship_with_the_guarantor", guarantor.relationship);
+        data.append("user_id", userId);
+
+        submitGuarantor(data)
             .then((response) => response.data)
             .then((res) => {
                 console.log(res);
-                if (res.success === true) {
+                if (res.status === 200) {
                     toast.success("Submission successful");
                     btn.innerHTML = `Submit & Pay`;
                     flutterWavePayment();

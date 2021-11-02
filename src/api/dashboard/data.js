@@ -27,8 +27,16 @@ export const getDetails = () => {
     })
 }
 
+export const addPlan = () => {
+    return APIKit.put(`/user/paymentPlan?id=${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
 export const submitGuarantor = (data) => {
-    return APIKit.post(``, data, {
+    return APIKit.post(`/user/guarantorDetails?payment_plan=pay-as-you-earn`, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }

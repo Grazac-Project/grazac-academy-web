@@ -20,7 +20,7 @@
         }
 
         &-grey{
-            color: #9DA8B6;
+            color: #787676;
             font-size: 14px;
         }
         &-purple{
@@ -167,7 +167,7 @@
     &_needed{
         width:70%;
         margin: 20px auto;
-        color: #9DA8B6;
+        color: #787676;
         font-size: 16px;
         @include respond(tab-port){
             width: 90%;
@@ -180,6 +180,14 @@
             img{
                 margin-top: 40px;
             }
+        }
+        h4{
+            font-family: $font-primary;
+            font-weight: 600;
+            color: #073041;
+        }
+        p{
+            color: #787676;
         }
     }
 
