@@ -377,8 +377,8 @@ const Landing = () => {
             <div className="landing__discover--list-item"></div>
             <Link to="/login">
             <div
-                className="nav__btn"
-                style={{ width: "130px", marginLeft: "75px", marginTop: "25px", textAlign: "center" }}
+                className="nav__btn one-btn"
+                
             >
                 <div className="nav__btn--text">Apply Now</div>
             </div>

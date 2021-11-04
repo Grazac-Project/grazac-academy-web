@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+
 import Logo from "../../images/svg/grazac-logo.svg";
 
 function Sidebar ({clicked, clickedDashboard, clickedDetails, showDetails}) {
@@ -12,8 +14,10 @@ function Sidebar ({clicked, clickedDashboard, clickedDetails, showDetails}) {
 
     return(
         <div className="sidebar">
-            <ToastContainer/>
-            <img src={Logo} alt="logo" className="logo" />
+            <ToastContainer closeButton={false}/>
+            <Link to="/">
+                <img src={Logo} alt="logo" className="logo" />
+            </Link>
             <div className="sidebar-portal">
                 <p className="sidebar-portal-heading">PORTAL</p>
                 <div className={clicked==="dashboard" ? "active":"sidebar-portal-links"} onClick={()=>clickedDashboard("dashboard")}>            

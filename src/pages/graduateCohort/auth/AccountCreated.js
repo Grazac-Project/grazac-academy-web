@@ -13,7 +13,9 @@ function Verify () {
             <div className="layout_auth-main">
                 <div className="auth_container">
                     <div className="auth_container-logo" >
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img src={logo} alt="logo" />
+                        </Link>
                     </div>
                     <div className="auth_container_form">
                         <img src={email} alt="email" className="auth_container_form-email" />

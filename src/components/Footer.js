@@ -13,7 +13,9 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">
               <div className="footer__logo">
-                <img src={Logo} alt="logo" />
+                <Link to="/">
+                  <img src={Logo} alt="logo" />
+                </Link>
               </div>
             </li>
             <li className="footer__item">Grazac Academy gives you the opportunity to learn in-demand skills to build your technology career.</li>

@@ -58,14 +58,15 @@ function Login () {
                 }
             })
             .catch((err) => {
-                console.log(err.response)
-                // if(err.response.data.message){
-                //     toast.error(err.response.data.message);
-                //     btn.innerHTML=`Sign in`;
-                // } else{
-                //     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                //     btn.innerHTML=`Sign in`;
-                // }
+                console.log(err.response);
+                console.log(err);
+                if(err.response.data.message){
+                    toast.error(err.response.data.message);
+                    btn.innerHTML=`Sign in`;
+                } else{
+                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                    btn.innerHTML=`Sign in`;
+                }
             });
     }
 
@@ -87,7 +88,9 @@ function Login () {
             <div className="layout_auth-main">
                 <div className="auth_container">
                     <div className="auth_container-logo" >
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img src={logo} alt="logo" />
+                        </Link>
                     </div>
                     <div className="auth_container_form">
                         <h3>Login to your account</h3>
