@@ -58,13 +58,14 @@ function Login () {
                 }
             })
             .catch((err) => {
-                if(err.response.data.message){
-                    toast.error(err.response.data.message);
-                    btn.innerHTML=`Sign in`;
-                } else{
-                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                    btn.innerHTML=`Sign in`;
-                }
+                console.log(err.response)
+                // if(err.response.data.message){
+                //     toast.error(err.response.data.message);
+                //     btn.innerHTML=`Sign in`;
+                // } else{
+                //     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                //     btn.innerHTML=`Sign in`;
+                // }
             });
     }
 

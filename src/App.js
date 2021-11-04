@@ -93,6 +93,10 @@ const VerifyMail = lazy(() => {
   return import("./pages/graduateCohort/auth/VerifyMail");
 });
 
+const AccountCreated = lazy(() => {
+  return import("./pages/graduateCohort/auth/AccountCreated");
+});
+
 const DashBoardHome = lazy(() => {
   return import("./pages/graduateCohort/dashboard/Main");
 });
@@ -117,7 +121,8 @@ const App = () => {
             <Route path="/forgot-password" component={Forgot} />
             <Route path="/reset-password" component={Reset} />
             <Route path="/mail-sent" component={MailSent} />
-            <Route path="/account-created" component={VerifyMail} />
+            <Route path="/account-created" component={AccountCreated} />
+            <Route path="/verification" component={VerifyMail} />
 
             {/* Graduate dashboard */}
             <Route path="/dashboard" component={DashBoardHome} />

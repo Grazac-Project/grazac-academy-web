@@ -5,6 +5,10 @@ export const SignupAction = (data) => {
     return APIKit.post(`/user/create`, data)
 }
 
+export const VerifyEmail = (data) => {
+    return APIKit.get(`/user/resetPassword`, data)
+}
+
 export const LoginAction = (data) => {
     return APIKit.post(`/user/login`, data)
 }

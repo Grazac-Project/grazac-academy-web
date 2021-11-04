@@ -42,3 +42,11 @@ export const submitGuarantor = (data) => {
         }
     })
 }
+
+export const sendFlutterTx = () => {
+    return APIKit.post(`/user/pay`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}

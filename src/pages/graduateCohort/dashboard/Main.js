@@ -8,7 +8,7 @@ import Admitted from "../../../components/dashboard/Admitted";
 import Rejected from "../../../components/dashboard/Rejected";
 import OutsideClickHandler from 'react-outside-click-handler';
 import { ToastContainer, toast } from 'react-toastify';
-import { submitGuarantor } from "../../../api/dashboard/data";
+import { submitGuarantor, sendFlutterTx } from "../../../api/dashboard/data";
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -19,13 +19,13 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 function Dashboard () {
     const [status, setStatus] = useState("Selected");
-    const [selectStatus, setSelectStatus] = useState("paid");
+    const [selectStatus, setSelectStatus] = useState("congrats");
     const [selectStatus2, setSelectStatus2] = useState("");
     const [sidebarClick, setSidebarClick] =  useState("dashboard");
     const [details, setDetails] = useState({})
     const [payOpt, setPayOpt] = useState("");
     const [amount, setAmount] = useState(0);
-    const [currency, setCurrency] = useState(0);
+    const [currency, setCurrency] = useState("");
     const [userId, setUserId] = useState(0);
     const [guarantor, setGuarantor] = useState({
         firstName: "",
@@ -47,7 +47,7 @@ function Dashboard () {
         try {
             let details = sessionStorage.getItem('user_details');
             // console.log(JSON.parse(details));
-            setStatus(JSON.parse(details).status);
+            // setStatus(JSON.parse(details).status);
             setDetails(JSON.parse(details));
             setUserId(JSON.parse(details).id);
             
@@ -79,10 +79,25 @@ function Dashboard () {
     const flutterWavePayment = () => {
         handleFlutterPayment({
             callback: (response) => {
-                console.log(response);
                 if (response.status === "successful"){
+                    console.log(response.tx_ref);
                     toast.success("Payment successful!")
                     setSelectStatus("paid");
+                    var data  = new FormData();
+                    data.append("transaction_ref", response.tx_ref);
+                    sendFlutterTx(data)
+                        .then((response) => response.data)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                console.log("success")
+                            } else {
+                                console.log("not successful")
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        });
+                    
                 }else{
                     toast.error("Payment unsuccessful!")
                 }
@@ -96,13 +111,9 @@ function Dashboard () {
 
     const makePayment = () => {
         if(payOpt==="part"){
-            setAmount(30000);
-            setCurrency('NGN');
             setSelectStatus2("");
             setSelectStatus("pay-as-you-earn");
         } else if (payOpt==="full"){
-            setAmount(1000);
-            setCurrency('USD');
             setSelectStatus2("");
             flutterWavePayment()
         } else {
@@ -153,6 +164,7 @@ function Dashboard () {
                 }
             })
             .catch((err) => {
+                console.log(err)
                 if(err.response){
                     toast.error(err.response);
                     btn.innerHTML = `Submit & Pay`;
@@ -170,14 +182,14 @@ function Dashboard () {
         currency: currency,
         payment_options: 'card,mobilemoney,ussd',
         customer: {
-          email: 'user@gmail.com',
-          phonenumber: '07064586146',
-          name: 'joel ugwumadu',
+          email: `${details.email}`,
+          phonenumber: `${details.phone}`,
+          name: `${details.firstName} ${details.lastName}`,
         },
         customizations: {
-          title: 'my Payment Title',
-          description: 'Payment for items in cart',
-          logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+          title: 'Grazac Academy',
+          description: 'Payment for Graduate Cohort',
+          logo: 'https://grazac.com.ng/assets/images/favicon.png',
         },
       };
     
@@ -241,11 +253,11 @@ function Dashboard () {
                                                     <h4>Choose Payment Option</h4>
                                                     <img src={cancel} alt="cancel" onClick={()=>setSelectStatus2("")} />
                                                 </div>
-                                                <div className={payOpt==="part" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>setPayOpt("part")}>
+                                                <div className={payOpt==="part" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("part"); setAmount(30000); setCurrency("NGN")}}>
                                                     <div></div>
                                                     <p>Pay as you earn (NGN 30,000 legal fee)</p>
                                                 </div>
-                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>setPayOpt("full")}>
+                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(1000); setCurrency("NGN")}}>
                                                     <div></div>
                                                     <p>Pay at once (USD 1,000)</p>
                                                 </div>

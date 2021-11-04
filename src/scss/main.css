@@ -2555,6 +2555,16 @@ input:focus, select:focus, textarea:focus {
   cursor: pointer;
 }
 
+.auth_verify {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.auth_verify img {
+  display: block;
+  margin: auto;
+}
+
 .course p {
   font-size: 1.1em;
 }

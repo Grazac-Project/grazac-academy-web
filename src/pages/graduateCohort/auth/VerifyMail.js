@@ -1,9 +1,29 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { VerifyEmail } from "../../../api/dashboard/auth";
 import logo from '../../../images/svg/academy-logo.svg';
 import email from '../../../images/svg/email.svg';
+import loader from '../../../images/loader-purple.gif';
 
 
 function Verify () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailAddress = urlParams.get('email');
+    console.log(emailAddress);
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        VerifyEmail()
+            .then(response => response)
+            .then(resp => {
+                console.log(resp)
+                setTimeout( function (){setLoading(false);}, 2500)
+            })
+            .catch((err)=> {
+
+            });
+    });
+
     return(
         <div className="layout_auth">
             <div className="layout_auth-main">
@@ -12,15 +32,19 @@ function Verify () {
                         <img src={logo} alt="logo" />
                     </div>
                     <div className="auth_container_form">
-                        <img src={email} alt="email" className="auth_container_form-email" />
-                        <h3>Welcome to Grazac Academy!</h3>
-                        <p className="auth_container_form-text">
-                            Learn valuable technology skills with us, we strongly believe the future of work will be skill based. <br/>
-                            Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable. <br/>
-                            There is just one extra thing to do. Please check your email to verify your account.<br/>
-                        </p>
-                        {/* <p>Didn't get an email? <span>Resend Link</span></p> */}
-                        <p>Proceed to <Link to="/login"><span>Login</span></Link></p>
+                        {loading && <div className="auth_verify">
+                            <img src={loader} alt="loading" width="100px" />
+                            <h3>Verifying, please wait...</h3>
+                        </div>}
+                        {!loading && <div>
+                            <img src={email} alt="email" className="auth_container_form-email" />
+                            <h3>Email Verified!</h3>
+                            <p className="auth_container_form-text">
+                                Learn valuable technology skills with us, we strongly believe the future of work will be skill based. <br/>
+                                Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable. <br/>
+                            </p>
+                            <p>Proceed to <Link to="/login"><span>Login</span></Link></p>
+                        </div>}
                     </div>
                 </div>
             </div>

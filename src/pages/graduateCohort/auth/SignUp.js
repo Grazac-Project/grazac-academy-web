@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { SignupAction } from "../../../api/dashboard/auth";
-import axios from 'axios';
+
 import logo from '../../../images/svg/academy-logo.svg';
 import visible from '../../../images/svg/visible.svg';
 import notvisible from '../../../images/svg/notvisible.svg';
@@ -46,7 +46,7 @@ function SignUp () {
                     if (res.status === 201) {
                         toast.success(`${res.message} Proceed to login.`);
                         btn.innerHTML=`Create account`;
-                        window.location = "/account-created";
+                        window.location = `/account-created?email=${email}`;
                     } else {
                         toast.error("Something went wrong, please try again!!!")
                     }

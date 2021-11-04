@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { cn } from "../utils";
 import NavItem from "./NavItem";
-import logo from "../images/footer-logo.png";
+import logo from "../images/svg/grazac-logo.svg";
 import { Link } from "react-router-dom";
 import InfoModal from "../components/InfoModal";
 

@@ -55,7 +55,7 @@ const CourseDetail = (props) => {
                             Download Brochure
                           </a>
                           <Link to="/login">
-                            <button>Enroll now</button>
+                            <button>Apply now</button>
                           </Link>
                         </div>
                       </div>
@@ -105,43 +105,6 @@ const CourseDetail = (props) => {
             </div>
           </div>
           <MOT />
-          <div className="course_purple">
-                    <div className="course_purple_txt">
-                        <p>Our Flexible Payment Plans</p>
-                        <h1>{course.percent_off}%</h1>
-                        <p>Discount Available</p>
-                    </div>
-                    <div className="course_purple-main">
-                    <div>
-                            <div className="course_purple-main-boxes grad-box">
-                                <h4>Full Payment</h4>
-                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(course.discounted_tuition)}</h2>
-                                <p>This is a one-off payment. You won't be required to pay any amount again till the end of your training.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="course_purple-main-boxes grad-box">
-                                <h4>Installment Payment</h4>
-                                <h3><span style={{textDecoration:'line-through'}}>₦{/*course.tuition*/}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(75000)} <span style={{fontSize: '14px'}}>* 2 months.</span></h2>
-                                <p>To be paid at the start of the training and completed midway into the training which is after 2 months.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="course_purple-main-boxes grad-box">
-                                <h4>Monthly Payment</h4>
-                                <h3><span style={{textDecoration:'line-through'}}>₦{course.tuition}</span></h3>
-                                <h2>₦{new Intl.NumberFormat().format(40000)} <span style={{fontSize: '14px'}}>* 4 months.</span></h2>
-                                <p>To be paid at the beginning of each month for the duration of the training which is 4 months.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="course_purple-btn">
-                        <PrimaryBtn link="/login">Enroll Now</PrimaryBtn>
-                        <a href="tel:+234806 836 5951" style={{marginTop:"7px"}}><p>Talk to course rep</p></a>
-                    </div>
-            </div>
         </div>
         <Footer />
       </div>
