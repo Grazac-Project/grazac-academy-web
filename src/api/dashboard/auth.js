@@ -5,8 +5,8 @@ export const SignupAction = (data) => {
     return APIKit.post(`/user/create`, data)
 }
 
-export const VerifyEmail = (data) => {
-    return APIKit.get(`/user/resetPassword`, data)
+export const VerifyEmail = (token) => {
+    return APIKit.post(`/user/verify-email?token=${token}`)
 }
 
 export const LoginAction = (data) => {

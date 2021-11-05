@@ -4560,6 +4560,7 @@ input:focus, select:focus, textarea:focus {
 
 .faq_hero {
   background: rgba(220, 205, 244, 0.2);
+  margin-bottom: 30px;
 }
 
 .faq_hero_content {

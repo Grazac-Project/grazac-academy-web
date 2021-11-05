@@ -575,6 +575,7 @@ const Landing = () => {
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
+              <Link to="/faq" className="link-view"><h5>View All</h5></Link>
             </Accordion>
           </div>
         </div>

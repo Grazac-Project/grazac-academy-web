@@ -131,7 +131,7 @@ const App = () => {
             <Route path="/" exact component={LandingPage}>
               {/* <Redirect to="/join"/>  */}
             </Route>
-            <Route path="/join" component={Join}/>
+            {/* <Route path="/join" component={Join}/> */}
             <Route path="/about-us" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/faq" component={Faq} />
@@ -139,11 +139,11 @@ const App = () => {
             {/* Courses (both graduate and undergraduate) and internship */}
             <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail} />
             <Route path="/course-detail-graduate" component={GraduateCourseDetail} />
-            <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
+            {/* <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
             <Route path="/undergraduate-accelerator-plan" component={UndergraduateAccelerator}/>
             <Route path="/graduate-form" component={GraduateForm} />
             <Route path="/undergraduate-form" component={UndergraduateForm} />
-            <Route path="/internship" component={InternshipForm} />
+            <Route path="/internship" component={InternshipForm} /> */}
 
             {/*   hire pages */}
             <Route path="/hire" component={Hire} />
@@ -151,7 +151,7 @@ const App = () => {
             <Route path="/project" component={Project} />
 
             {/* Coming soon page */}
-            <Route path="/:name/coming-soon" component={ComingSoon} />
+            {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
           </Switch>
         </div>
       </Suspense>

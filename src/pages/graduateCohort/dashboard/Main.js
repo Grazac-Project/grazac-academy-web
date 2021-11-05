@@ -80,7 +80,7 @@ function Dashboard () {
         handleFlutterPayment({
             callback: (response) => {
                 if (response.status === "successful"){
-                    console.log(response.tx_ref);
+                    console.log(response);
                     toast.success("Payment successful!")
                     setSelectStatus("paid");
                     var data  = new FormData();
@@ -257,7 +257,7 @@ function Dashboard () {
                                                     <div></div>
                                                     <p>Pay as you earn (NGN 30,000 legal fee)</p>
                                                 </div>
-                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(1000); setCurrency("NGN")}}>
+                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(2000); setCurrency("NGN")}}>
                                                     <div></div>
                                                     <p>Pay at once (USD 1,000)</p>
                                                 </div>

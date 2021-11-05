@@ -8,12 +8,11 @@ import loader from '../../../images/loader-purple.gif';
 
 function Verify () {
     const urlParams = new URLSearchParams(window.location.search);
-    const emailAddress = urlParams.get('email');
-    console.log(emailAddress);
+    const token = urlParams.get('token');
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        VerifyEmail()
+        VerifyEmail(token)
             .then(response => response)
             .then(resp => {
                 console.log(resp)
