@@ -225,6 +225,14 @@
                     margin: 20px 15px 20px 0 !important;
                     float:right;
                 }
+
+                &-image{
+                    width:300px;
+                    margin-top: 10px;
+                    @media(max-width:400px){
+                        width: 100%;
+                    }
+                }
             }
         }
 

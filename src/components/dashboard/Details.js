@@ -5,6 +5,7 @@ import { getDetails } from "../../api/dashboard/data";
 function Details () {
     const [clicked, setClicked] = useState("bio");
     const [userDetails, setUserDetails] = useState({});
+    const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`
 
     useEffect(()=>{
         getDetails()
@@ -82,7 +83,7 @@ function Details () {
                         <hr/>
                         <div className="dashboard-content-form-container">
                             <h5>Means of Identification (NIN/ Voter's Card)</h5>
-                            <p>{userDetails?.means_of_identification}</p>
+                            <img className="dashboard-content-form-container-image" src={userImage} alt={userDetails.means_of_identification} />
                         </div>
                     </form>
                 </div>

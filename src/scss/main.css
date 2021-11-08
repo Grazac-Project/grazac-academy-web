@@ -1009,8 +1009,8 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 769px) {
   .sidebar {
-    -webkit-transition: 3s;
-    transition: 3s;
+    -webkit-transition: 1s;
+    transition: 1s;
   }
 }
 
@@ -5164,6 +5164,17 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid #787676 !important;
   margin: 20px 15px 20px 0 !important;
   float: right;
+}
+
+.dashboard-content-form-container-image {
+  width: 300px;
+  margin-top: 10px;
+}
+
+@media (max-width: 400px) {
+  .dashboard-content-form-container-image {
+    width: 100%;
+  }
 }
 
 .dashboard-content-detail {

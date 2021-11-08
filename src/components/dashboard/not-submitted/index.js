@@ -6,6 +6,7 @@ import axios from "axios";
 import arrow from "../../../images/svg/dashboard/arrow.svg";
 import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
+import termsandconds from "../../../images/terms.pdf";
 
 
 function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
@@ -174,7 +175,7 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                     </ul>
                     <div className="checkbox">
                         <input type="checkbox" id="check" onClick={confirmCheck} />
-                        <p>I accept the <a onClick={()=>window.open('https://docs.google.com/document/d/1CErKz7PaXPJy64dc7RYB1syGbaYY085f/edit?usp=sharing&ouid=110105908198198891405&rtpof=true&sd=true')} target="_blank">Terms ‌and‌ ‌Conditions‌</a></p>
+                        <p>I accept the <a href={termsandconds} download target="_blank">Terms ‌and‌ ‌Conditions‌</a></p>
                     </div>
                     <button className={!checkAct ? "disable-btn" : "button"} onClick={showForm}>Apply Now</button>
                 </div>

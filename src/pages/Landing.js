@@ -399,16 +399,22 @@ const Landing = () => {
               <img src={scroll} alt="scroll" className="scroll-left" onClick={scrolLeft} />
               <img src={scroll} alt="scroll" className="scroll-right" onClick={scrolRight} />
               <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/HQYKZ6RaZ6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div>
-                <iframe className="video-width" src="https://www.youtube.com/embed/CVDQuO2KMCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe className="video-width" src="https://www.youtube.com/embed/ht8l30MozEM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/yfP88Mr_Ixw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe className="video-width" src="https://www.youtube.com/embed/ck-f8UD8RqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div className="video-width">
+                <iframe className="video-width" src="https://www.youtube.com/embed/IG5cs69PmBo" title="YouTube video player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div>
-                <iframe className="video-width" src="https://www.youtube.com/embed/1KkiCbKrG-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe className="video-width" src="https://www.youtube.com/embed/l5FVImbxdqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div className="video-width">
+                <iframe className="video-width" src="https://www.youtube.com/embed/6_ILohsUndE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div>
+                <iframe className="video-width" src="https://www.youtube.com/embed/M8mStqg17cQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
