@@ -25,8 +25,8 @@ function Verify () {
                             Join us to build a career in tech and get tutored by industry leaders who will walk you through the path of becoming highly valuable and employable. <br/>
                             There is just one extra thing to do. Please check your email to verify your account.<br/>
                         </p>
-                        <p>Didn't get an email? <span>Resend Link</span></p>
-                        {/* <p>Proceed to <Link to="/login"><span>Login</span></Link></p> */}
+                        {/* <p>Didn't get an email? <span>Resend Link</span></p> */}
+                        <p>Proceed to <Link to="/login"><span>Login</span></Link></p>
                     </div>
                 </div>
             </div>

@@ -5056,6 +5056,12 @@ input:focus, select:focus, textarea:focus {
   text-decoration: underline;
 }
 
+.dashboard-content .disable-btn {
+  color: #E0E0E0;
+  background: #FAFAFA !important;
+  border: 1px solid #FAFAFA;
+}
+
 .dashboard-content button {
   color: white;
   padding: 7px 25px;
@@ -5063,7 +5069,7 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid #773dd3;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 10px;
+  border-radius: 6px;
   margin: 20px 0;
 }
 
@@ -5121,8 +5127,35 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid #D9DCE1;
 }
 
+.dashboard-content-form-container option {
+  text-transform: capitalize;
+}
+
 .dashboard-content-form-container textarea {
   height: 200px;
+}
+
+.dashboard-content-form-container input[type=file]::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}
+
+.dashboard-content-form-container .upload-text {
+  font-size: 16px;
+  color: #787676;
+  position: absolute;
+  background: white;
+  bottom: -2px;
+  left: 20px;
+  min-width: 200px;
+}
+
+.dashboard-content-form-container .upload-img {
+  width: 20px;
+  position: absolute;
+  bottom: 9px;
+  right: 20px;
 }
 
 .dashboard-content-form-container-prev {

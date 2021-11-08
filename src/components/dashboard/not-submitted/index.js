@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { submitDetails } from "../../../api/dashboard/data";
+import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
+import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
 
 
@@ -10,6 +12,8 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     const [active, setActive] = useState("welcome");
     const [formActive, setFormActive] = useState("");
     const [userId, setUserId] = useState(0);
+    const [checkAct, setCheckAct] = useState(false);
+    const [nigerianStates, setNigerianStates] = useState([]);
     const [bioData, setBioData] = useState({
         firstName: `${fname}`,
         lastName: `${lname}`,
@@ -40,7 +44,11 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
         } catch (err) {
             console.log()
         }
-    })
+        axios.get('https://nigerian-states-info.herokuapp.com/api/v1/states')
+            .then(response => {
+                setNigerianStates(response.data.data);
+            });
+    },[])
     const handleChange = (e) => {
         setBioData({
             ...bioData,
@@ -57,6 +65,15 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
             ...bioData,
             id: e.target.files[0]
         })
+    }
+    
+    const confirmCheck = () => {
+        var check = document.getElementById("check");
+        if(check.checked){
+            setCheckAct(true);
+        } else{
+            setCheckAct(false)
+        }
     }
 
     const showForm = () => {
@@ -156,152 +173,164 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                         <li>Note that you will be mandated to provide guarantors and pay the sum of #30,000 legal fee if selected for this cohort. This must be paid within a week after selection if you have chosen our Pay as you Earn option.</li>
                     </ul>
                     <div className="checkbox">
-                        <input type="checkbox" id="check" />
-                        <p>I accept the <a href="#">Terms ‌and‌ ‌Conditions‌</a></p>
+                        <input type="checkbox" id="check" onClick={confirmCheck} />
+                        <p>I accept the <a onClick={()=>window.open('https://docs.google.com/document/d/1CErKz7PaXPJy64dc7RYB1syGbaYY085f/edit?usp=sharing&ouid=110105908198198891405&rtpof=true&sd=true')} target="_blank">Terms ‌and‌ ‌Conditions‌</a></p>
                     </div>
-                    <button className="button" onClick={showForm}>Apply Now</button>
+                    <button className={!checkAct ? "disable-btn" : "button"} onClick={showForm}>Apply Now</button>
                 </div>
             }
             {active === "form"  &&
                 <div>
                     <div>
-                        <div className="dashboard-content-back" onClick={()=>setActive("welcome")} >
-                            <img src={arrow} alt="back" />
-                            <p>Back</p>
-                        </div>
-                        <h4 style={{marginLeft:"20px"}}>Apply</h4>
                         {formActive === "bio-data" && (
-                            <div className="dashboard-content-form">
-                                <form onSubmit={showEduForm}>
-                                    <p>Step 1 of 2</p>
-                                    <p>BIO DATA</p>
-                                    <div className="dashboard-content-form-container">
-                                        <label>First Name</label>
-                                        <input type="text" required name="firstName" placeholder="FirstName" value={bioData.firstName} onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Last Name</label>
-                                        <input type="text" required name="lastName" placeholder="LastName" value={bioData.lastName} onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Email Address</label>
-                                        <input type="email" required name="email" placeholder="Email Address" value={email} onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Phone Number</label>
-                                        <input type="number" required name="phone" placeholder="Phone Number" value={bioData.phone} onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Date of Birth</label>
-                                        <input type="date" required name="dob" placeholder="31/01/2021" onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Gender</label>
-                                        <select name="gender" required onChange={handleChange}>
-                                            <option>Select Gender</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
+                            <div>
+                                <div className="dashboard-content-back" onClick={()=>{setActive("welcome");setCheckAct(false);}} >
+                                    <img src={arrow} alt="back" />
+                                    <p>Back</p>
+                                </div>
+                                <h4 style={{marginLeft:"20px"}}>Apply</h4>
+                                <div className="dashboard-content-form">
+                                    <form onSubmit={showEduForm}>
+                                        <p>Step 1 of 2</p>
+                                        <p>BIO DATA</p>
+                                        <div className="dashboard-content-form-container">
+                                            <label>First Name</label>
+                                            <input type="text" required name="firstName" placeholder="FirstName" value={bioData.firstName} onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Last Name</label>
+                                            <input type="text" required name="lastName" placeholder="LastName" value={bioData.lastName} onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Email Address</label>
+                                            <input type="email" required name="email" placeholder="Email Address" value={email} onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Phone Number</label>
+                                            <input type="number" required name="phone" placeholder="Phone Number" value={bioData.phone} onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Date of Birth</label>
+                                            <input type="date" required name="dob" placeholder="31/01/2021" value={bioData.dob} onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Gender</label>
+                                            <select name="gender" required value={bioData.gender} onChange={handleChange}>
+                                                <option>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
 
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Preferred course at Grazac</label>
-                                        <select name="course" required onChange={handleChange}>
-                                            <option>Select Preferred Course</option>
-                                            <option value="Product Design">Product Design</option>
-                                            <option value="Frontend Web Development">Front-end Web Development</option>
-                                            <option value="Backend Web Development">Back-end Web Development</option>
-                                            <option value="Android Development">Android Development</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>State of residence</label>
-                                        <select name="state" required onChange={handleChange}>
-                                            <option>Select State</option>
-                                            <option value="Ogun">Ogun</option>
-                                            <option value="Lagos">Lagos</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label name="city" onChange={handleChange}>Current city and Location</label>
-                                        <input type="text" required name="city" placeholder="Current City and Location" onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Means of Identification (NIN/ Voter's Card)</label>
-                                        <input type="file" required  name="id" accept="image/*" onChange={handleImage}/>
-                                    </div>
-                                    <button style={{float:"right"}} type="submit">Continue</button>
-                                </form>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Preferred course at Grazac</label>
+                                            <select name="course" required value={bioData.course} onChange={handleChange}>
+                                                <option>Select Preferred Course</option>
+                                                <option value="Product Design">Product Design</option>
+                                                <option value="Frontend Web Development">Front-end Web Development</option>
+                                                <option value="Backend Web Development">Back-end Web Development</option>
+                                                <option value="Android Development">Android Development</option>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>State of residence</label>
+                                            <select name="state" required value={bioData.state} onChange={handleChange}>
+                                                <option>Select State</option>
+                                                {nigerianStates.map(function(nigerianStates, index){
+                                                    return <option value={nigerianStates.Name} key={ index }>{nigerianStates.Name}</option>;
+                                                })}
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label name="city" onChange={handleChange}>Current city and Location</label>
+                                            <input type="text" required name="city" value={bioData.city} placeholder="Current City and Location" onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Means of Identification (NIN/ Voter's Card)</label>
+                                            <input type="file" required  name="id" onChange={handleImage}/>
+                                            <p className="upload-text">{bioData.id ? `${bioData.id.name}` : "Upload means of identification"}</p>
+                                            <img src={upload} alt="upload" className="upload-img" />
+                                        </div>
+                                        <button style={{float:"right"}} type="submit">Continue</button>
+                                    </form>
+                                </div>
                             </div>
                         )}
                         
                         {formActive === "education" && (
-                            <div className="dashboard-content-form">
-                                <form onSubmit={submitForm}>
-                                    <p>Step 2 of 2</p>
-                                    <p>Educational Background</p>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Course of Study</label>
-                                        <input type="text" required name="courseOfStudy" placeholder="Course of Study" onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Grade Achieved</label>
-                                        <input type="text" required name="grade" placeholder="Grade Achieved" onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Qualification</label>
-                                        <select name="qualification" required onChange={handleChange}>
-                                            <option value="">Select Qualification</option>
-                                            <option value="B.Sc">B.Sc</option>
-                                            <option value="ND">ND</option>
-                                            <option value="HND">HND</option>
-                                            <option value="M.Sc">M.Sc</option>
-                                            <option value="PhD">PhD</option>
-                                            <option value="other">other</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Programming/Design Experience</label>
-                                        <select name="experience" required onChange={handleChange}>
-                                            <option value="">Select Programming/Design Experience</option>
-                                            <option value="No skill">No skill</option>
-                                            <option value="Basic skill">Basic skill</option>
-                                            <option value="Mid-level skill">Mid-level Skill</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Nysc Status</label>
-                                        <select name="nyscStatus" required onChange={handleChange}>
-                                            <option value="">Select Nysc Status</option>
-                                            <option value="Service">Service</option>
-                                            <option value="Exemption">Exemption</option>
-                                            <option value="Use period to learn">I will use my period of service to learn</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Why do you think you should be selected as a part of this cohort?</label>
-                                        <textarea type="text" required name="reason" placeholder="Write your reasons here..." onChange={handleChange} />
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>Will you be physically available for the next 6 months?</label>
-                                        <select name="availability" required onChange={handleChange}>
-                                            <option value="">Select Availability</option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                    <div className="dashboard-content-form-container">
-                                        <label>If selected, will you be able to pay the legal fees of #30,000?</label>
-                                        <select name="legalFee" required onChange={handleChange}>
-                                            <option value="">Select</option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                    <button style={{float:"right", width: "50px"}} type="submit" id="actionBtn">Submit</button>
-                                    <button className="dashboard-content-form-container-prev" onClick={()=>setFormActive("bio-data")}>Previous</button>
-                                </form>
+                            <div>
+                                <div className="dashboard-content-back" onClick={()=>setFormActive("bio-data")} >
+                                    <img src={arrow} alt="back" />
+                                    <p>Back</p>
+                                </div>
+                                <h4 style={{marginLeft:"20px"}}>Apply</h4>
+                                <div className="dashboard-content-form">
+                                    <form onSubmit={submitForm}>
+                                        <p>Step 2 of 2</p>
+                                        <p>Educational Background</p>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Course of Study</label>
+                                            <input type="text" required name="courseOfStudy" value={education.courseOfStudy} placeholder="Course of Study" onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Grade Achieved</label>
+                                            <input type="text" required name="grade" value={education.grade} placeholder="Grade Achieved" onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Qualification</label>
+                                            <select name="qualification" value={education.qualification} required onChange={handleChange}>
+                                                <option value="">Select Qualification</option>
+                                                <option value="B.Sc">B.Sc</option>
+                                                <option value="ND">ND</option>
+                                                <option value="HND">HND</option>
+                                                <option value="M.Sc">M.Sc</option>
+                                                <option value="PhD">PhD</option>
+                                                <option value="other">other</option>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Programming/Design Experience</label>
+                                            <select name="experience" value={education.experience} required onChange={handleChange}>
+                                                <option value="">Select Programming/Design Experience</option>
+                                                <option value="No skill">No skill</option>
+                                                <option value="Basic skill">Basic skill</option>
+                                                <option value="Mid-level skill">Mid-level Skill</option>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Nysc Status</label>
+                                            <select name="nyscStatus" value={education.nyscStatus} required onChange={handleChange}>
+                                                <option value="">Select Nysc Status</option>
+                                                <option value="Service">Completed</option>
+                                                <option value="Exemption">Exemption</option>
+                                                <option value="Use period to learn">I will use my period of service to learn</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Why do you think you should be selected as a part of this cohort?</label>
+                                            <textarea type="text" required name="reason" value={education.reason} placeholder="Write your reasons here..." onChange={handleChange} />
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>Will you be physically available for the next 6 months?</label>
+                                            <select name="availability" value={education.availability} required onChange={handleChange}>
+                                                <option value="">Select Availability</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <div className="dashboard-content-form-container">
+                                            <label>If selected, will you be able to pay the legal fees of #30,000?</label>
+                                            <select name="legalFee" value={education.legalFee} required onChange={handleChange}>
+                                                <option value="">Select</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <button style={{float:"right", width: "50px"}} type="submit" id="actionBtn">Submit</button>
+                                        <button className="dashboard-content-form-container-prev" onClick={()=>setFormActive("bio-data")}>Previous</button>
+                                    </form>
+                                </div>
                             </div>
                         )}
                     </div>

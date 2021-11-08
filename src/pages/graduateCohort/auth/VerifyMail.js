@@ -19,7 +19,7 @@ function Verify () {
                 setTimeout( function (){setLoading(false);}, 2500)
             })
             .catch((err)=> {
-
+                console.log(err.response)
             });
     });
 

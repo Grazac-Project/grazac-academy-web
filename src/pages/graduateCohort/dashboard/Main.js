@@ -47,7 +47,7 @@ function Dashboard () {
         try {
             let details = sessionStorage.getItem('user_details');
             // console.log(JSON.parse(details));
-            // setStatus(JSON.parse(details).status);
+            setStatus(JSON.parse(details).status);
             setDetails(JSON.parse(details));
             setUserId(JSON.parse(details).id);
             
@@ -81,21 +81,21 @@ function Dashboard () {
             callback: (response) => {
                 if (response.status === "successful"){
                     console.log(response);
-                    toast.success("Payment successful!")
-                    setSelectStatus("paid");
+                    toast.success("Payment successful! Verifying payment...");
                     var data  = new FormData();
-                    data.append("transaction_ref", response.tx_ref);
+                    data.append("transaction_id", response.transaction_id);
                     sendFlutterTx(data)
                         .then((response) => response.data)
                         .then((res) => {
-                            if (res.status === 200) {
-                                console.log("success")
+                            console.log(res)
+                            if (res.data.status === "successful") {
+                                setSelectStatus("paid");
                             } else {
                                 console.log("not successful")
                             }
                         })
                         .catch((err) => {
-                            console.log(err)
+                            console.log(err.response)
                         });
                     
                 }else{

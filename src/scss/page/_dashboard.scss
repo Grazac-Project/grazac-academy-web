@@ -127,6 +127,12 @@
             }
         }
 
+        .disable-btn{
+            color: #E0E0E0;
+            background: #FAFAFA !important;
+            border: 1px solid #FAFAFA;
+        }
+
         button{
             color: white;
             padding: 7px 25px;
@@ -134,7 +140,7 @@
             border: 1px solid $color-inspiring-purple;
             font-size: 16px;
             font-weight: 500;
-            border-radius: 10px;
+            border-radius: 6px;
             margin: 20px 0;
         }
 
@@ -181,8 +187,35 @@
                     border-radius: 10px;
                     border: 1px solid #D9DCE1;
                 }
+                option{
+                    text-transform: capitalize;
+                }
                 textarea{
                     height: 200px;
+                }
+                input[type = file] {
+                    &::-webkit-file-upload-button {
+                        visibility: hidden;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+
+                .upload-text{
+                    font-size: 16px;
+                    color: $color-formgrey;
+                    position: absolute;
+                    background: white;
+                    bottom: -2px;
+                    left: 20px;
+                    min-width: 200px;
+                }
+
+                .upload-img{
+                    width: 20px;
+                    position: absolute;
+                    bottom: 9px;
+                    right: 20px;
                 }
 
                 &-prev{
