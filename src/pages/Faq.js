@@ -59,13 +59,13 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
+                  <Accordion.Toggle as={Card.Header} eventKey="11">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>After registration, what next?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
+                  <Accordion.Collapse eventKey="11">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>Once you have successfully registered, an email will be sent to you detailing the next steps of the registration process. Ensure that you provide a valid email address and keep an eye on your inbox.</p>
@@ -75,13 +75,13 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="2">
+                  <Accordion.Toggle as={Card.Header} eventKey="12">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Do I have to be physically present to register?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="2">
+                  <Accordion.Collapse eventKey="12">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
@@ -93,13 +93,13 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="3">
+                  <Accordion.Toggle as={Card.Header} eventKey="13">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Do I need to have any previous experience or knowledge before coming to learn?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="3">
+                  <Accordion.Collapse eventKey="13">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
@@ -111,13 +111,13 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="4">
+                  <Accordion.Toggle as={Card.Header} eventKey="14">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Are classes virtual or physical?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="4">
+                  <Accordion.Collapse eventKey="14">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
@@ -129,13 +129,13 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <Accordion.Toggle as={Card.Header} eventKey="15">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>What is the duration of the program?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="5">
+                  <Accordion.Collapse eventKey="15">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
@@ -147,17 +147,17 @@ const Faq = () => {
                 </Card>
                 <hr/>
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <Accordion.Toggle as={Card.Header} eventKey="8">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>How much do I pay back after getting a job?</h4>
                       <MdKeyboardArrowUp size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
+                  <Accordion.Collapse eventKey="8">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The sum of 1500 dollars is to be paid back within the period of 18-months after securing a job.
+                        The sum of 1200 dollars is to be paid back within the period of 18-months after securing a job.
                         </p>
                       </div>
                     </Card.Body>
@@ -211,7 +211,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The actual cost of learning is 1000 dollars if you pay your tuition before classes commence. If you wait till you get a job, you pay back the sum of 1500 dollars within a period of 18 months.
+                        The actual cost of learning is 1000 dollars if you pay your tuition before classes commence. If you wait till you get a job, you pay back the sum of 1200 dollars within a period of 18 months.
                         </p>
                       </div>
                     </Card.Body>
@@ -267,7 +267,7 @@ const Faq = () => {
                         <p>Product Design</p>
                         <p>Front-end Web Development (HTML, CSS, Javascript [ReactJS] )</p>
                         <p>Back-end Web Development with NodeJS</p>
-                        <p>Mobile Application Development (Android and Kotlin)</p>
+                        <p>Mobile Application Development </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -330,7 +330,7 @@ const Faq = () => {
                 <h2>Still have a questions?</h2>
                 <p>
                   Do you need further clarification? Call{" "}
-                  <span>0803-302-4644</span> or click on the button below to
+                  <span>08068365951</span> or click on the button below to
                   chat with us.
                 </p>
                 <a href="tel:+2348068365951">

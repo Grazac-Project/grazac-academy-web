@@ -6,7 +6,7 @@ import axios from "axios";
 import arrow from "../../../images/svg/dashboard/arrow.svg";
 import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
-import termsandconds from "../../../images/terms.pdf";
+import termsandconds from "../../../content/TermsandCondition.pdf";
 
 
 function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {

@@ -16,12 +16,12 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
-    fetch(`https://grazacacademy.com/graduate/course/details/${slug}`)
+    fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
-        console.log(resp)
-        setCourse(resp.data);
-        setOutline(JSON.parse(resp.data.outline));
+        // console.log(JSON.parse(resp.details.outline))
+        setCourse(resp.details);
+        setOutline(JSON.parse(resp.details.outline));
       })
       .catch((error) => {
         console.log(error);

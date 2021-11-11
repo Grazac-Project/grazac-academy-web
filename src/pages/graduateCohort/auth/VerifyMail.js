@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { VerifyEmail } from "../../../api/dashboard/auth";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import authImg from '../../../images/auth.png';
 import logo from '../../../images/svg/academy-logo.svg';
 import email from '../../../images/svg/email.svg';
 import loader from '../../../images/loader-purple.gif';
@@ -12,16 +14,19 @@ function Verify () {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        VerifyEmail(token)
-            .then(response => response)
-            .then(resp => {
-                console.log(resp)
-                setTimeout( function (){setLoading(false);}, 2500)
-            })
-            .catch((err)=> {
-                console.log(err.response)
-            });
-    });
+        verify();
+    },[]);
+
+    async function verify () {
+        try {
+            const response = await VerifyEmail(token);
+            const res = await response;
+            console.log(res);
+            setTimeout( function (){setLoading(false);}, 2500)
+        } catch (err) {
+            console.log(err.response)
+        }
+    }
 
     return(
         <div className="layout_auth">
@@ -50,7 +55,7 @@ function Verify () {
                 </div>
             </div>
             <div className="layout_auth-image">
-
+                <LazyLoadImage src={authImg} effect="blur" alt="auth" height="auto" width="100%" />
             </div>
         </div>
     )

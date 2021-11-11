@@ -62,11 +62,11 @@ const Navbar = ({ top }) => {
                 <span>03</span>FAQs
               </NavItem>
             </li>
-            <li className="nav__item">
+            {/* <li className="nav__item">
               <NavItem link="/hire">
                 <span>04</span>Hire
               </NavItem>
-            </li>
+            </li> */}
             <li className="nav__item">
               <a href="/login">
                 <button onClick={() => setActive(false)}>Apply Now</button>
@@ -92,9 +92,9 @@ const Navbar = ({ top }) => {
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>
           </li>
-          <li className="nav__item">
+          {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>
-          </li>
+          </li> */}
           <a href="/login">
             <div className="nav__btn">
               <div className="nav__btn--text">Apply Now</div>

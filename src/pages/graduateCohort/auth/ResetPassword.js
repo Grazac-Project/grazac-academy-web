@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { ResetPasswordAction } from "../../../api/dashboard/auth";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import authImg from '../../../images/auth.png';
 
 import logo from '../../../images/svg/academy-logo.svg';
 import visible from '../../../images/svg/visible.svg';
@@ -122,7 +124,7 @@ function ResetPassword () {
                 </div>
             </div>
             <div className="layout_auth-image">
-
+                <LazyLoadImage src={authImg} effect="blur" alt="auth" height="auto" width="100%" />
             </div>
         </div>
     )

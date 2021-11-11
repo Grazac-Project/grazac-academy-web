@@ -42,6 +42,12 @@ button:focus{
   color: #773dd3;;
 }
 
+.disable-btn{
+  color: #E0E0E0 !important;
+  background: #FAFAFA !important;
+  border: 1px solid #FAFAFA;
+}
+
 @media(max-width:600px){
   .hide-at-600{
     display: none;

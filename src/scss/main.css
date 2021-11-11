@@ -101,10 +101,6 @@ input:focus, select:focus, textarea:focus {
   position: fixed;
   top: 0;
   right: 0;
-  background: url("../images/auth.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 @media (max-width: 769px) {
@@ -756,7 +752,7 @@ input:focus, select:focus, textarea:focus {
 
 .infomodal {
   background-color: #fef4bf;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0px;
   right: 0px;

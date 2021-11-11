@@ -47,7 +47,7 @@ function Dashboard () {
         try {
             let details = sessionStorage.getItem('user_details');
             // console.log(JSON.parse(details));
-            setStatus(JSON.parse(details).status);
+            setStatus(sessionStorage.getItem('status'));
             setDetails(JSON.parse(details));
             setUserId(JSON.parse(details).id);
             
@@ -195,6 +195,11 @@ function Dashboard () {
     
     const handleFlutterPayment = useFlutterwave(config);
 
+    const changeStatus = (par1)=> {
+        setStatus(`${par1}`);
+        sessionStorage.setItem('status', `${par1}`);
+    }
+
     return(
         <div>
             <ToastContainer closeButton={false} />
@@ -229,7 +234,7 @@ function Dashboard () {
                 { sidebarClick==="dashboard" &&
                     <div className="dashboard-content" >
                         {status === "Not Submitted" && (
-                            <NotSubmitted fname={details.firstName} lname={details.lastName} email={details.email} phone={details.phone} setNewStatus={()=>{setStatus("Under Review")}} />
+                            <NotSubmitted fname={details.firstName} lname={details.lastName} email={details.email} phone={details.phone} setNewStatus={()=>changeStatus("Under Review")} />
                         )}
                         {status === "Under Review" && (
                             <UnderReview fname={details.firstName}/>

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import authImg from '../../../images/auth.png';
 import logo from '../../../images/svg/academy-logo.svg';
 import email from '../../../images/svg/email.svg';
 
@@ -31,7 +33,7 @@ function Verify () {
                 </div>
             </div>
             <div className="layout_auth-image">
-
+                <LazyLoadImage src={authImg} effect="blur" alt="auth" height="auto" width="100%" />
             </div>
         </div>
     )

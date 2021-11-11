@@ -42,17 +42,17 @@ import android from "../images/android.png";
 import { LoaderContext } from "../context";
 
 const Landing = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const { setShow, show } = useContext(LoaderContext);
   useEffect(() => {
-    document.title = "Welcome to Grazac Academy";
+    // document.title = "Welcome to Grazac Academy";
     let mediaPlayer = document.querySelector("#video");
     mediaPlayer.controls = false;
     mediaPlayer.play();
 
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
-    landingHeight.style.marginTop = `0px`;
+    landingHeight.style.marginTop = `70px`;
 
     window.addEventListener("load", () => {
     
@@ -89,19 +89,17 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Grazac Graduate Accelerator Program enrollment is opening by July
-              12th.
+            Application into Cohort (CH011) is currently on. Application closes on the 19th of November
               <a
                 className="infomodal_content-link"
-                href="https://grazacacademy.com/graduate-accelerator-plan"
-                f
+                href="/login"
               >
-                Learn more
+                Apply Now
               </a>
             </p>
-            <Link to="/graduate-accelerator-plan">
+            {/* <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
-            </Link>
+            </Link> */}
             <img
               src={ex}
               alt=""
@@ -294,7 +292,7 @@ const Landing = () => {
               </div>
             </Link>
             <Link
-              to={`/course-detail-graduate?course=android-development-kotlin`}
+              to={`/course-detail-graduate?course=mobile-application-development`}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -305,9 +303,9 @@ const Landing = () => {
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>
                   Mobile App Developement
                   </h4>
-                  <p>Android software development is the process by which new applications are created for devices running the Android operating system.</p>
+                  <p>Flutter is an incredible user interface (UI) toolkit that lets you build apps for iOS and Android — and even the web and desktop platforms like macOS, Windows and Linux — all from a single codebase.</p>
                   <Link
-                    to={`/course-detail-graduate?course=android-development-kotlin`}
+                    to={`/course-detail-graduate?course=mobile-application-development`}
                   >
                   Learn More
                   </Link>
@@ -457,7 +455,7 @@ const Landing = () => {
             </p>
             <div className="landing__btn--2">
                 <div className="nav__btn nav__btn-flex ">
-                  <a className="nav__btn--text" href="/hire">
+                  <a className="nav__btn--text disable-btn">
                     Hire our grads
                   </a>
                 </div>

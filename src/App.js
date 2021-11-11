@@ -6,11 +6,10 @@ import {
 } from "react";
 import "./scss/main.css";
 import { Switch, Route, Redirect } from "react-router-dom";
-import GraduateAccelerator from "./pages/GraduateAccelerator";
-import ComingSoon from "./pages/ComingSoon";
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -18,14 +17,6 @@ const LandingPage = lazy(() => {
 
 const About = lazy(() => {
   return import("./pages/AboutUs");
-});
-
-const UndergraduateAccelerator = lazy(() => {
-  return import("./pages/UndergraduateAccelerator");
-});
-
-const UndergraduateCourseDetail = lazy(() => {
-  return import("./pages/UndergraduateCourseDetail");
 });
 
 const GraduateCourseDetail = lazy(() => {
@@ -40,19 +31,6 @@ const Contact = lazy(() => {
   return import("./pages/Contact");
 });
 
-
-const GraduateForm = lazy(() => {
-  return import("./pages/GraduateForm");
-});
-
-const UndergraduateForm = lazy(() => {
-  return import("./pages/UndergraduateForm");
-});
-
-const InternshipForm = lazy(() => {
-  return import("./pages/InternshipForm");
-});
-
 const Hire = lazy(() => {
   return import("./pages/Hire");
 });
@@ -63,10 +41,6 @@ const Profile = lazy(() => {
 
 const Project = lazy(() => {
   return import("./pages/Project");
-});
-
-const Join = lazy(() => {
-  return import("./pages/Join");
 });
 
 const SignUp = lazy(() => {
@@ -137,9 +111,9 @@ const App = () => {
             <Route path="/faq" component={Faq} />
 
             {/* Courses (both graduate and undergraduate) and internship */}
-            <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail} />
             <Route path="/course-detail-graduate" component={GraduateCourseDetail} />
             {/* <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
+            <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail} />
             <Route path="/undergraduate-accelerator-plan" component={UndergraduateAccelerator}/>
             <Route path="/graduate-form" component={GraduateForm} />
             <Route path="/undergraduate-form" component={UndergraduateForm} />

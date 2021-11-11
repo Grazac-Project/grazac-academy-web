@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { LoginAction } from "../../../api/dashboard/auth";
 import { ToastContainer, toast } from 'react-toastify';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import logo from '../../../images/svg/academy-logo.svg';
 import visible from '../../../images/svg/visible.svg';
 import notvisible from '../../../images/svg/notvisible.svg';
 import loader from "../../../images/svg/dashboard/loader.gif";
+import authImg from '../../../images/auth.png';
 
 
 function Login () {
@@ -47,10 +49,13 @@ function Login () {
                         email: res.data.payload.email,
                         id: res.data.payload.id,
                         phone: res.data.phoneNumber,
-                        status: res.data.status,
                         token: res.data.token
                         })
                     ); 
+                    sessionStorage.setItem(
+                        "status", `${res.data.status}`
+                    ); 
+                
                     btn.innerHTML=`Sign in`;
                     setTimeout( function (){window.location = '/dashboard';}, 2500)
                 } else {
@@ -113,7 +118,7 @@ function Login () {
                 </div>
             </div>
             <div className="layout_auth-image">
-
+                <LazyLoadImage src={authImg} effect="blur" alt="auth" height="auto" width="100%" />
             </div>
         </div>
     )

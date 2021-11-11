@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { SignupAction } from "../../../api/dashboard/auth";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import authImg from '../../../images/auth.png';
 import logo from '../../../images/svg/academy-logo.svg';
 import visible from '../../../images/svg/visible.svg';
 import notvisible from '../../../images/svg/notvisible.svg';
@@ -25,7 +27,7 @@ function SignUp () {
         })
     }
 
-    const doSignUp = (e) => {
+    async function doSignUp  (e)  {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
         if (form.password.length > 5){
@@ -39,28 +41,51 @@ function SignUp () {
             data.append("phoneNumber", phone);
             data.append("password", password);
 
-            SignupAction(data)
-                .then((response) => response.data)
-                .then((res) => {
-                    // console.log(res);
-                    if (res.status === 201) {
-                        toast.success(`${res.message} Proceed to login.`);
-                        btn.innerHTML=`Create account`;
-                        window.location = `/account-created?email=${email}`;
-                    } else {
-                        toast.error("Something went wrong, please try again!!!")
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    if(err.response.data.message){
-                        toast.error(err.response.data.message);
-                        btn.innerHTML=`Create account`;
-                    } else{
-                        toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                        btn.innerHTML=`Create account`;
-                    }
-                });
+
+            try {
+                const response = await SignupAction(data);
+        
+                const res = await response;
+                console.log(res);
+                if (res.data.status === 201) {
+                    toast.success(`${res.data.message} Proceed to login.`);
+                    btn.innerHTML=`Create account`;
+                    window.location = `/account-created?email=${email}`;
+                } else {
+                    toast.error("Something went wrong, please try again!!!")
+                }
+            } catch (err) {
+                console.log(err.response)
+                if(err.response.data.message){
+                    toast.error(err.response.data.message);
+                    btn.innerHTML=`Create account`;
+                } else{
+                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                    btn.innerHTML=`Create account`;
+                }
+            }
+            // SignupAction(data)
+            //     .then((response) => response.data)
+            //     .then((res) => {
+            //         console.log(res);
+            //         if (res.status === 201) {
+            //             toast.success(`${res.message} Proceed to login.`);
+            //             btn.innerHTML=`Create account`;
+            //             // window.location = `/account-created?email=${email}`;
+            //         } else {
+            //             toast.error("Something went wrong, please try again!!!")
+            //         }
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //         if(err.response.data.message){
+            //             toast.error(err.response.data.message);
+            //             btn.innerHTML=`Create account`;
+            //         } else{
+            //             toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+            //             btn.innerHTML=`Create account`;
+            //         }
+            //     });
         } else {
             toast.error("Password must be at least 6 characters!");
         }
@@ -120,7 +145,7 @@ function SignUp () {
                 </div>
             </div>
             <div className="layout_auth-image">
-
+                <LazyLoadImage src={authImg} effect="blur" alt="auth" height="auto" width="100%" />
             </div>
         </div>
     )
