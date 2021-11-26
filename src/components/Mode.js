@@ -23,7 +23,7 @@ const Mode = () => {
             <div className="landing__btn--2">
               <a>
                 <div className="nav__btn nav__btn-flex ">
-                  <a href="/login"><div className="nav__btn--text" style={{marginRight:'20px'}}>Apply Now</div></a>
+                  <a href="/login"><div className="nav__btn--text" style={{marginRight:'20px'}}>Go to Dashboard</div></a>
                   <a href="tel:+2348068365951" ><div className="nav__btn--text1">Call us</div></a>
                 </div>
               </a>

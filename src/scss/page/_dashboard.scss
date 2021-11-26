@@ -236,18 +236,32 @@
             }
         }
 
+        .det-btn-container{
+            @media(max-width: 600px){
+                overflow-x: scroll;
+            }
+        }
+
         &-detail{
             display: flex;
             padding: 10px 20px;
+            @media(max-width:600px){
+                padding: 10px 0px;
+                width: 600px;
+            }
             &-p{
                 padding: 7px 20px;
-                margin-right: 10px;
-                border-radius: 20px;
+                margin-right: 10px !important;
+                border-radius: 20px !important;
+                background: transparent !important;
+                color: #787676 !important;
+                font-weight: 500;
+                border: 1px solid transparent !important;
                 cursor: pointer;
             }
             .active{
-                color: white;
-                background: $color-inspiring-purple;
+                color: white !important;
+                background: $color-inspiring-purple !important;
             }
         }
 

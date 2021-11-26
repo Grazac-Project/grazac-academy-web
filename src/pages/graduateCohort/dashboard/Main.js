@@ -4,11 +4,11 @@ import Details from "../../../components/dashboard/Details";
 import NotSubmitted from "../../../components/dashboard/not-submitted";
 import UnderReview from "../../../components/dashboard/UnderReview";
 import PaymentReceived from "../../../components/dashboard/selected/PaymentReceived";
-import Admitted from "../../../components/dashboard/Admitted";
+import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
 import OutsideClickHandler from 'react-outside-click-handler';
 import { ToastContainer, toast } from 'react-toastify';
-import { submitGuarantor, sendFlutterTx } from "../../../api/dashboard/data";
+import { submitGuarantor, sendFlutterTx, addPlan } from "../../../api/dashboard/data";
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -18,7 +18,7 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 
 function Dashboard () {
-    const [status, setStatus] = useState("Selected");
+    const [status, setStatus] = useState("Not Submitted");
     const [selectStatus, setSelectStatus] = useState("congrats");
     const [selectStatus2, setSelectStatus2] = useState("");
     const [sidebarClick, setSidebarClick] =  useState("dashboard");
@@ -50,6 +50,10 @@ function Dashboard () {
             setStatus(sessionStorage.getItem('status'));
             setDetails(JSON.parse(details));
             setUserId(JSON.parse(details).id);
+
+            if(JSON.parse(details).isPaid === 1){
+                setSelectStatus("paid");
+            }
             
             if(!details){
                 window.location = '/login';
@@ -83,8 +87,9 @@ function Dashboard () {
                     console.log(response);
                     toast.success("Payment successful! Verifying payment...");
                     var data  = new FormData();
-                    data.append("transaction_id", response.transaction_id);
-                    sendFlutterTx(data)
+                    data.append("email", `${details.email}`);
+                    console.log(data)
+                    sendFlutterTx(response.transaction_id, data)
                         .then((response) => response.data)
                         .then((res) => {
                             console.log(res)
@@ -95,7 +100,7 @@ function Dashboard () {
                             }
                         })
                         .catch((err) => {
-                            console.log(err.response)
+                            console.log(err)
                         });
                     
                 }else{
@@ -115,6 +120,18 @@ function Dashboard () {
             setSelectStatus("pay-as-you-earn");
         } else if (payOpt==="full"){
             setSelectStatus2("");
+
+            var planData  = new FormData();
+            planData.append("payment_plan", "pay at once");
+            addPlan(planData)
+                .then((response) => response.data)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
             flutterWavePayment()
         } else {
             toast.info("You need to select a payment option to continue!");
@@ -123,7 +140,7 @@ function Dashboard () {
 
     const showForm = () => {
         if(document.getElementById("mark").checked){
-            setSelectStatus("form")
+            setSelectStatus("form");
         }else{
             toast.info("You need to accept our terms and conditions to continue");
         }
@@ -155,7 +172,7 @@ function Dashboard () {
             .then((res) => {
                 console.log(res);
                 if (res.status === 200) {
-                    toast.success("Submission successful");
+                    // toast.success("Submission successful");
                     btn.innerHTML = `Submit & Pay`;
                     flutterWavePayment();
                 } else {
@@ -172,6 +189,18 @@ function Dashboard () {
                     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
                     btn.innerHTML = `Submit & Pay`;
                 }
+            });
+
+        
+        var planData  = new FormData();
+        planData.append("payment_plan", "pay as you earn");
+        addPlan(planData)
+            .then((response) => response.data)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
             });
     }
 
@@ -240,10 +269,14 @@ function Dashboard () {
                             <UnderReview fname={details.firstName}/>
                         )}
                         {status === "Selected" && (
+                            <Selected fname={details.firstName}/>
+                            
+                        )}
+                        {status === "Admitted" && (
                             <div>
                                 { selectStatus === "congrats" &&
                                     <div>
-                                        <h3>Hello John</h3>
+                                        <h3>Hello {details.firstName}</h3>
                                         <p className="text1">Congratulations!</p>
                                         <p>Your application has been selected. Click on the button below to continue you admission process.</p>
                                         <button onClick={()=>setSelectStatus2("pay")}>Continue admission process</button>
@@ -262,7 +295,7 @@ function Dashboard () {
                                                     <div></div>
                                                     <p>Pay as you earn (NGN 30,000 legal fee)</p>
                                                 </div>
-                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(2000); setCurrency("NGN")}}>
+                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(1000); setCurrency("USD")}}>
                                                     <div></div>
                                                     <p>Pay at once (USD 1,000)</p>
                                                 </div>
@@ -384,9 +417,6 @@ function Dashboard () {
                                     <PaymentReceived fname={details.firstName} />
                                 }
                             </div>
-                        )}
-                        {status === "Admitted" && (
-                            <Admitted fname={details.firstName}/>
                         )}
                         {status === "Rejected" && (
                             <Rejected fname={details.firstName} />

@@ -62,10 +62,14 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     }
 
     const handleImage = (e) => {
-        setBioData({
-            ...bioData,
-            id: e.target.files[0]
-        })
+        if (e.target.files[0].size > 2097152){
+            toast.error("File too large! A maximum of 2MB is allowed.")
+        } else{
+            setBioData({
+                ...bioData,
+                id: e.target.files[0]
+            })
+        }
     }
     
     const confirmCheck = () => {
@@ -78,13 +82,14 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     }
 
     const showForm = () => {
-        var check = document.getElementById("check");
-        if(check.checked){
-            setActive("form");
-            setFormActive("bio-data")
-        } else {
-            toast.warn("You need to accept the terms and conditions to proceed!")
-        }
+        toast.info("Application for this cohort has ended. Please check back later!!!")
+        // var check = document.getElementById("check");
+        // if(check.checked){
+        //     setActive("form");
+        //     setFormActive("bio-data")
+        // } else {
+        //     toast.warn("You need to accept the terms and conditions to proceed!")
+        // }
     }
 
     const showEduForm = (e) => {
@@ -249,7 +254,7 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                                         <div className="dashboard-content-form-container">
                                             <label>Means of Identification (NIN/ Voter's Card)</label>
                                             <input type="file" required  name="id" onChange={handleImage}/>
-                                            <p className="upload-text">{bioData.id ? `${bioData.id.name}` : "Upload means of identification"}</p>
+                                            <p className="upload-text">{bioData.id ? `${bioData.id.name}` : "Upload means of identification (max 2MB file size)"}</p>
                                             <img src={upload} alt="upload" className="upload-img" />
                                         </div>
                                         <button style={{float:"right"}} type="submit">Continue</button>

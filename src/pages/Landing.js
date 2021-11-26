@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import { Container, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
 
 import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 import Adedamola from "../images/testimonial/adedamola.jpeg";
@@ -82,20 +83,25 @@ const Landing = () => {
     document.getElementById('scrolltainer').scrollLeft += 200;
   }
 
+  const showToast = () => {
+    toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022.')
+  }
+
   return (
     <div className="landing">
+      <ToastContainer closeButton={false} position="bottom-right" />
       {showModal && (
         <div className="infomodal">
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-            Application into Cohort (CH011) is currently on. Application closes on the 19th of November
-              <a
+            Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022
+              {/* <a
                 className="infomodal_content-link"
                 href="/login"
               >
                 Apply Now
-              </a>
+              </a> */}
             </p>
             {/* <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
@@ -122,7 +128,7 @@ const Landing = () => {
             Learn valuable technology skills with our wide range of courses <br className="hide-at-600"/> and land your dream job.{" "}
           </p>
         </div>
-        <a href="/login">
+        <a onClick={showToast}> {/*href="/login" */}
           <div
             className="nav__btn"
             style={{ width: "130px", margin: "auto", textAlign: "center" }}
@@ -313,14 +319,15 @@ const Landing = () => {
               </div>
             </Link>
           </div>
-            <Link to="/login">
+            {/* <Link to="/login"> */}
             <div
                 className="nav__btn"
                 style={{ width: "130px", margin: "auto", textAlign: "center" }}
+                onClick={showToast}
             >
                 <div className="nav__btn--text">Apply Now</div>
             </div>
-            </Link>
+            {/* </Link> */}
         </div>
       </div>
 
@@ -373,14 +380,15 @@ const Landing = () => {
             </div>
             <div className="landing__discover--list-item"></div>
             <div className="landing__discover--list-item"></div>
-            <Link to="/login">
+            {/* <Link to="/login"> */}
             <div
                 className="nav__btn one-btn"
-                
+                onClick={showToast}
             >
                 <div className="nav__btn--text">Apply Now</div>
             </div>
-            </Link>
+            
+            {/* </Link> */}
           </div>
         </div>
       </div>

@@ -27,8 +27,16 @@ export const getDetails = () => {
     })
 }
 
-export const addPlan = () => {
-    return APIKit.put(`/user/paymentPlan?id=${userId}`, {
+export const getGuarantor = () => {
+    return APIKit.get(`/user/fetchGuarantorData?user_id=${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+export const addPlan = (planData) => {
+    return APIKit.put(`/user/paymentPlan?id=${userId}`, planData, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -43,6 +51,6 @@ export const submitGuarantor = (data) => {
     })
 }
 
-export const sendFlutterTx = (data) => {
-    return APIKit.post(`/user/pay`, data)
+export const sendFlutterTx = (trans_id, data) => {
+    return APIKit.post(`/user/pay?transaction_id=${trans_id}`, data)
 }

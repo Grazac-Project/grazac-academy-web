@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { getDetails } from "../../api/dashboard/data";
+import { getDetails, getGuarantor } from "../../api/dashboard/data";
 
 function Details () {
     const [clicked, setClicked] = useState("bio");
     const [userDetails, setUserDetails] = useState({});
+    const [guarantorDetails, setGuarantorDetails] = useState({});
     const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`
 
     useEffect(()=>{
@@ -12,7 +13,21 @@ function Details () {
             .then((response) => response.data)
             .then((res) => {
                 setUserDetails(res.data.result[0]);
-                console.log(res.data.result)
+                // console.log(res.data.result)
+            })
+            .catch((err) => {
+                console.log(err)
+                if(err.response){
+                    toast.error(err.response);
+                } else{
+                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                }
+            });
+        getGuarantor()
+            .then((response) => response.data)
+            .then((res) => {
+                setGuarantorDetails(res.data[0]);
+                console.log(res)
             })
             .catch((err) => {
                 console.log(err)
@@ -28,10 +43,13 @@ function Details () {
     return(
         <div className="dashboard-content" >
             <ToastContainer/>
-            <h3 style={{marginLeft:"20px", marginBottom:"30px"}}>Details</h3>
-            <div  className="dashboard-content-detail">
-                <p className={clicked==="bio" ? "dashboard-content-detail-p active":"dashboard-content-detail-p"} onClick={()=>setClicked("bio")}>Bio Data</p>
-                <p className={clicked==="edu" ? "dashboard-content-detail-p active":"dashboard-content-detail-p"} onClick={()=>setClicked("edu")}>Educational Background</p>
+            <h3 style={{marginLeft:"20px", marginBottom:"20px"}}>Details</h3>
+            <div className="det-btn-container">
+                <div  className="dashboard-content-detail">
+                    <button className={clicked==="bio" ? "dashboard-content-detail-p active":"dashboard-content-detail-p"} onClick={()=>setClicked("bio")}>Bio Data</button>
+                    <button className={clicked==="edu" ? "dashboard-content-detail-p active":"dashboard-content-detail-p"} onClick={()=>setClicked("edu")}>Educational Background</button>
+                    {userDetails.payment_plan==="pay as you earn" && <button className={clicked==="gua" ? "dashboard-content-detail-p active":"dashboard-content-detail-p"} onClick={()=>setClicked("gua")}>Guarantor Data</button>}
+                </div>
             </div>
             {clicked === "bio" && (
                 <div className="dashboard-content-form">
@@ -129,6 +147,76 @@ function Details () {
                         <div className="dashboard-content-form-container">
                             <h5>If selected, will you be able to pay the legal fees of #30,000?</h5>
                             <p>{userDetails?.physically_available}</p>
+                        </div>
+                    </form>
+                </div>
+            )}
+            {clicked === "gua" && (
+                <div className="dashboard-content-form">
+                    <form>
+                        <div className="dashboard-content-form-container">
+                            <h5>First Name</h5>
+                            <p>{guarantorDetails?.firstname}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Last Name</h5>
+                            <p>{guarantorDetails?.lastname}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Email Address</h5>
+                            <p>{guarantorDetails?.email}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Phone Number</h5>
+                            <p>{guarantorDetails?.phone_number}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Gender</h5>
+                            <p>{guarantorDetails?.gender}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Office Address</h5>
+                            <p>{guarantorDetails?.office_address}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Home Address</h5>
+                            <p>{guarantorDetails?.home_address}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Profession</h5>
+                            <p>{guarantorDetails?.profession}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Name of Organization</h5>
+                            <p>{guarantorDetails?.name_of_organization}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Relationship with guarantor</h5>
+                            <p>{guarantorDetails?.name_of_employer}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Email Address of Employer</h5>
+                            <p>{guarantorDetails?.email_address_of_employer}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Phone Number of Employer</h5>
+                            <p>{guarantorDetails?.phone_number_of_employer}</p>
+                        </div>
+                        <hr />
+                        <div className="dashboard-content-form-container">
+                            <h5>Relationship with guarantor</h5>
+                            <p>{guarantorDetails?.relationship_with_the_guarantor}</p>
                         </div>
                     </form>
                 </div>

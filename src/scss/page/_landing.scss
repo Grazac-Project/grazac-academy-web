@@ -916,7 +916,7 @@
   }
 
   &__discount {
-    background-color: $color-cream;
+    background-color: rgba(254, 244, 191, 0.4);
     margin-top: 0rem;
     position: relative;
     @include respond(phone) {
