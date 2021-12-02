@@ -42,9 +42,9 @@ function Listing () {
                                 <img src={man} alt="man" />
                             </div>
                             <div className="hire_listing-text">
-                                <div className="disp-flex">
+                                <div className="d-flx">
                                     <p className="hire_listing-text-1">Jonathan Doe</p>
-                                    <p className={item.availability==="hired" ? "hire_listing-text-2-hired":"hire_listing-text-2-available"}>{item.availability}</p>
+                                    <span className={item.availability==="hired" ? "hire_listing-text-2-hired":"hire_listing-text-2-available"}>{item.availability}</span>
                                 </div>
                                 <p>Front end Developer <span>Lagos, Nigeria</span></p>
                                 <p>Travelya, thank you so much for a well organized trip. We had a wonderful time. Hard to believe it’s already done and past. Weather was awesom, the hotels were nice, thanks your for everything</p>

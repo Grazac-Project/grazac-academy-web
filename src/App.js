@@ -39,6 +39,14 @@ const Listing = lazy(() => {
   return import("./pages/hire/Listing");
 });
 
+const Profile = lazy(() => {
+  return import("./pages/hire/Profile");
+});
+
+const HireContact = lazy(() => {
+  return import("./pages/hire/Contact");
+});
+
 const SignUp = lazy(() => {
   return import("./pages/graduateCohort/auth/SignUp");
 });
@@ -118,6 +126,8 @@ const App = () => {
             {/*   hire pages */}
             <Route path="/hire" exact component={Hire} />
             <Route path="/hire/listing" component={Listing} />
+            <Route path="/hire/profile" component={Profile} />
+            <Route path="/hire/contact" component={HireContact} />
 
             {/* Coming soon page */}
             {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}

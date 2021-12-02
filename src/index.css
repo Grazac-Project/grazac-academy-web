@@ -52,6 +52,10 @@ button:focus{
   display: flex;
 }
 
+.crs-bg{
+  border: 2px solid #773dd3;
+}
+
 @media(max-width:600px){
   .hide-at-600{
     display: none;

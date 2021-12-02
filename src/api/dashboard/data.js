@@ -51,6 +51,6 @@ export const submitGuarantor = (data) => {
     })
 }
 
-export const sendFlutterTx = (trans_id, data) => {
-    return APIKit.post(`/user/pay?transaction_id=${trans_id}`, data)
+export const sendFlutterTx = (trans_id) => {
+    return APIKit.post(`/user/pay?transaction_id=${trans_id}`)
 }

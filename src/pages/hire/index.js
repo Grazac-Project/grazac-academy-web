@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -11,14 +11,42 @@ import Sponsor5 from "../../images/svg/Microsoft.svg";
 import Sponsor6 from "../../images/svg/Google.svg";
 import whyHire from "../../images/why-hire.png";
 import man from "../../images/man.jpg";
+import my_love from "../../images/my_love.png";
+import kamala from "../../images/kamala.jpg";
 import arrow from "../../images/svg/arrow-front.svg";
+import star from "../../images/svg/star.svg";
 
 
 const Hire = () => {
+  const [carousel, setCarousel] = useState("one");
+  const [carouselInfo, setCarouselInfo] = useState({
+    name: "Jonathan Doe",
+    position: "Product Designer",
+    stars: 4
+  });
+
   React.useEffect(() => {
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
   }, []);
+
+  const carouselPple = [
+    {
+      name: "Jonathan Doe",
+      position: "Software Engineer, Primer AI",
+      stars: 4
+    },
+    {
+      name: "Miracle Shadare",
+      position: "Content Writer, Grazac",
+      stars: 4
+    },
+    {
+      name: "Rebecca West",
+      position: "Product Designer, Google LLC",
+      stars: 4
+    }
+  ]
 
   const whyContent = [
     {
@@ -89,6 +117,38 @@ const Hire = () => {
                 </div>
               </Col>
               <Col md={6}>
+                <div className="hire_hero-carousel">
+                  {carousel==="one" && <img src={man} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  {carousel==="two" && <img src={my_love} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  {carousel==="three" && <img src={kamala} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  <div className={carousel==="one"? "hire_hero-carousel-frame box1 crs-bg":"hire_hero-carousel-frame box1"}>
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("one"); setCarouselInfo(carouselPple[0])}}>
+                      <img src={man} alt="picx" />
+                    </div>
+                  </div>
+                  <div className={carousel==="two"? "hire_hero-carousel-frame box2 crs-bg":"hire_hero-carousel-frame box2"}>
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("two"); setCarouselInfo(carouselPple[1])}}>
+                      <img src={my_love} alt="picx" />
+                    </div>
+                  </div>
+                  <div className={carousel==="three"? "hire_hero-carousel-frame box3 crs-bg":"hire_hero-carousel-frame box3"}>
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("three"); setCarouselInfo(carouselPple[2])}}>
+                      <img src={kamala} alt="picx" />
+                    </div>
+                  </div>
+                  <div className="hire_hero-carousel-textbox">
+                    <div>
+                    <h4>{carouselInfo.name}</h4>
+                    <p>{carouselInfo.position}</p>
+                      <div>
+                        <img src={star} alt="star" />
+                        <img src={star} alt="star" />
+                        <img src={star} alt="star" />
+                        <img src={star} alt="star" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Container>

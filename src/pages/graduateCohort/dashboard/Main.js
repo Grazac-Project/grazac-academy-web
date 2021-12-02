@@ -27,6 +27,7 @@ function Dashboard () {
     const [amount, setAmount] = useState(0);
     const [currency, setCurrency] = useState("");
     const [userId, setUserId] = useState(0);
+    const [guarantorForm1, setGuarantorForm1] = useState(true)
     const [guarantor, setGuarantor] = useState({
         firstName: "",
         lastName: "",
@@ -46,7 +47,6 @@ function Dashboard () {
     useEffect(() => {
         try {
             let details = sessionStorage.getItem('user_details');
-            // console.log(JSON.parse(details));
             setStatus(sessionStorage.getItem('status'));
             setDetails(JSON.parse(details));
             setUserId(JSON.parse(details).id);
@@ -86,10 +86,7 @@ function Dashboard () {
                 if (response.status === "successful"){
                     console.log(response);
                     toast.success("Payment successful! Verifying payment...");
-                    var data  = new FormData();
-                    data.append("email", `${details.email}`);
-                    console.log(data)
-                    sendFlutterTx(response.transaction_id, data)
+                    sendFlutterTx(response.transaction_id)
                         .then((response) => response.data)
                         .then((res) => {
                             console.log(res)
@@ -146,7 +143,7 @@ function Dashboard () {
         }
     }
 
-    const submitForm = (e) => {
+    const submitForm = (e, whichForm) => {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
         btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -167,43 +164,69 @@ function Dashboard () {
         data.append("relationship_with_the_guarantor", guarantor.relationship);
         data.append("user_id", userId);
 
-        submitGuarantor(data)
-            .then((response) => response.data)
-            .then((res) => {
-                console.log(res);
-                if (res.status === 200) {
-                    // toast.success("Submission successful");
-                    btn.innerHTML = `Submit & Pay`;
-                    flutterWavePayment();
-                } else {
-                    toast.error("Submission not successful, try again!!!")
-                    btn.innerHTML = `Submit & Pay`;
-                }
-            })
-            .catch((err) => {
-                console.log(err)
-                if(err.response){
-                    toast.error(err.response);
-                    btn.innerHTML = `Submit & Pay`;
-                } else{
-                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                    btn.innerHTML = `Submit & Pay`;
-                }
-            });
+        if(whichForm==="guarantor1"){
+            submitGuarantor(data)
+                .then((response) => response.data)
+                .then((res) => {
+                    if (res.status === 200) {
+                        toast.success("Submission successful");
+                        btn.innerHTML = `Proceed`;
+                        setGuarantorForm1(false);
+                        window.scrollTo(0, 0);
+                        document.getElementById("guarantorForm2").reset();
+                    } else {
+                        toast.error("Submission not successful, try again!!!")
+                        btn.innerHTML = `Proceed`;
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    if(err.response){
+                        toast.error(err.response);
+                        btn.innerHTML = `Proceed`;
+                    } else{
+                        toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                        btn.innerHTML = `Proceed`;
+                    }
+                });
+        } else {
+            submitGuarantor(data)
+                .then((response) => response.data)
+                .then((res) => {
+                    if (res.status === 200) {
+                        // toast.success("Submission successful");
+                        btn.innerHTML = `Submit & Pay`;
+                        flutterWavePayment();
+                    } else {
+                        toast.error("Submission not successful, try again!!!")
+                        btn.innerHTML = `Submit & Pay`;
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    if(err.response){
+                        toast.error(err.response);
+                        btn.innerHTML = `Submit & Pay`;
+                    } else{
+                        toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                        btn.innerHTML = `Submit & Pay`;
+                    }
+                });
 
-        
-        var planData  = new FormData();
-        planData.append("payment_plan", "pay as you earn");
-        addPlan(planData)
-            .then((response) => response.data)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+            
+            var planData  = new FormData();
+            planData.append("payment_plan", "pay as you earn");
+            addPlan(planData)
+                .then((response) => response.data)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
     }
-
+// FLWPUBK-006bdc82ad878f1518af32f44af6478f-X
     const config = {
         public_key: 'FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X',
         tx_ref: Date.now(),
@@ -295,9 +318,9 @@ function Dashboard () {
                                                     <div></div>
                                                     <p>Pay as you earn (NGN 30,000 legal fee)</p>
                                                 </div>
-                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(1000); setCurrency("USD")}}>
+                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(411000); setCurrency("NGN")}}>
                                                     <div></div>
-                                                    <p>Pay at once (USD 1,000)</p>
+                                                    <p>Pay at once (USD 1,000 = NGN 411,000)</p>
                                                 </div>
                                                 <button onClick={makePayment}>Proceed</button>
                                             </div>
@@ -336,81 +359,159 @@ function Dashboard () {
                                             <img src={arrow} alt="back" />
                                             <p>Back</p>
                                         </div>
-                                        <h4 style={{marginLeft:"20px"}}>Guarantor Form</h4>
-                                        <div className="dashboard-content-form">
-                                            <form onSubmit={submitForm}>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>First Name</label>
-                                                    <input type="text" required name="firstName" placeholder="FirstName" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Last Name</label>
-                                                    <input type="text" required name="lastName" placeholder="LastName" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Email Address</label>
-                                                    <input type="email" required name="email" placeholder="Email Address" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Phone Number</label>
-                                                    <input type="number" required name="phone" placeholder="Phone Number" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Gender</label>
-                                                    <select name="gender" required onChange={handleChange}>
-                                                        <option value="">Select Gender</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
+                                        <h4 style={{marginLeft:"20px"}}>Guarantor Form {guarantorForm1?"1":"2"}</h4>
+                                        {
+                                            guarantorForm1 ?
+                                            <div className="dashboard-content-form">
+                                                <form onSubmit={(e)=>submitForm(e, "guarantor1")}>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>First Name</label>
+                                                        <input type="text" required name="firstName" placeholder="FirstName" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Last Name</label>
+                                                        <input type="text" required name="lastName" placeholder="LastName" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Email Address</label>
+                                                        <input type="email" required name="email" placeholder="Email Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Phone Number</label>
+                                                        <input type="number" required name="phone" placeholder="Phone Number" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Gender</label>
+                                                        <select name="gender" required onChange={handleChange}>
+                                                            <option value="">Select Gender</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
 
-                                                    </select>
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Office Address</label>
-                                                    <input type="text" required name="officeAddress" placeholder="Office Address" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Home Address</label>
-                                                    <input type="text" required name="homeAddress" placeholder="Home Address" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Profession</label>
-                                                    <select name="profession" required onChange={handleChange}>
-                                                        <option value="">Choose Profession</option>
-                                                        <option value="Civil Servant">Civil Servant</option>
-                                                        <option value="Self Employed">Self Employed</option>
-                                                        <option value="Private worker">Private worker</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Name of Organisation</label>
-                                                    <input type="text" required name="organisation" placeholder="Name of organisation" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Name of Employer</label>
-                                                    <input type="text" required name="employer" placeholder="Name of employer" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Email Address of Employer</label>
-                                                    <input type="email" required name="employerMail" placeholder="Email Address of Employer" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Phone of Employer</label>
-                                                    <input type="phone" required name="employerPhone" placeholder="Phone of Employer" onChange={handleChange} />
-                                                </div>
-                                                <div className="dashboard-content-form-container">
-                                                    <label>Relationship with guarantor</label>
-                                                    <select name="relationship" required onChange={handleChange}>
-                                                        <option value="">Select Relationship</option>
-                                                        <option value="Parents">Parents</option>
-                                                        <option value="Legal Guardian">Legal Guardian</option>
-                                                        <option value="Employer">Employer</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <button style={{float:"right", width:"100px"}} type="submit" id="actionBtn">Submit & Pay</button>
-                                            </form>
-                                        </div>
+                                                        </select>
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Office Address</label>
+                                                        <input type="text" required name="officeAddress" placeholder="Office Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Home Address</label>
+                                                        <input type="text" required name="homeAddress" placeholder="Home Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Profession</label>
+                                                        <select name="profession" required onChange={handleChange}>
+                                                            <option value="">Choose Profession</option>
+                                                            <option value="Civil Servant">Civil Servant</option>
+                                                            <option value="Self Employed">Self Employed</option>
+                                                            <option value="Private worker">Private worker</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Name of Organisation</label>
+                                                        <input type="text" required name="organisation" placeholder="Name of organisation" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Name of Employer</label>
+                                                        <input type="text" required name="employer" placeholder="Name of employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Email Address of Employer</label>
+                                                        <input type="email" required name="employerMail" placeholder="Email Address of Employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Phone of Employer</label>
+                                                        <input type="phone" required name="employerPhone" placeholder="Phone of Employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Relationship with guarantor</label>
+                                                        <select name="relationship" required onChange={handleChange}>
+                                                            <option value="">Select Relationship</option>
+                                                            <option value="Parents">Parents</option>
+                                                            <option value="Legal Guardian">Legal Guardian</option>
+                                                            <option value="Employer">Employer</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <button style={{float:"right", width:"100px"}} type="submit" id="actionBtn">Proceed</button>
+                                                </form>
+                                            </div>
+                                            :
+                                            <div className="dashboard-content-form">
+                                                <form onSubmit={(e)=>submitForm(e, "guarantor2")} id="guarantorForm2">
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>First Name</label>
+                                                        <input type="text" required name="firstName" placeholder="FirstName" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Last Name</label>
+                                                        <input type="text" required name="lastName" placeholder="LastName" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Email Address</label>
+                                                        <input type="email" required name="email" placeholder="Email Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Phone Number</label>
+                                                        <input type="number" required name="phone" placeholder="Phone Number" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Gender</label>
+                                                        <select name="gender" required onChange={handleChange}>
+                                                            <option value="">Select Gender</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Office Address</label>
+                                                        <input type="text" required name="officeAddress" placeholder="Office Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Home Address</label>
+                                                        <input type="text" required name="homeAddress" placeholder="Home Address" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Profession</label>
+                                                        <select name="profession" required onChange={handleChange}>
+                                                            <option value="">Choose Profession</option>
+                                                            <option value="Civil Servant">Civil Servant</option>
+                                                            <option value="Self Employed">Self Employed</option>
+                                                            <option value="Private worker">Private worker</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Name of Organisation</label>
+                                                        <input type="text" required name="organisation" placeholder="Name of organisation" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Name of Employer</label>
+                                                        <input type="text" required name="employer" placeholder="Name of employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Email Address of Employer</label>
+                                                        <input type="email" required name="employerMail" placeholder="Email Address of Employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Phone of Employer</label>
+                                                        <input type="phone" required name="employerPhone" placeholder="Phone of Employer" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="dashboard-content-form-container">
+                                                        <label>Relationship with guarantor</label>
+                                                        <select name="relationship" required onChange={handleChange}>
+                                                            <option value="">Select Relationship</option>
+                                                            <option value="Parents">Parents</option>
+                                                            <option value="Legal Guardian">Legal Guardian</option>
+                                                            <option value="Employer">Employer</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <button style={{float:"right", width:"100px"}} type="submit" id="actionBtn">Submit & Pay</button>
+                                                </form>
+                                            </div>
+                                        }
                                     </div>
                                 }
                                 { selectStatus === "paid" &&
