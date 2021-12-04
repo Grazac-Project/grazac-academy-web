@@ -226,9 +226,9 @@ function Dashboard () {
                 });
         }
     }
-// FLWPUBK-006bdc82ad878f1518af32f44af6478f-X
+// FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X
     const config = {
-        public_key: 'FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X',
+        public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
         tx_ref: Date.now(),
         amount: amount,
         currency: currency,
