@@ -318,9 +318,9 @@ function Dashboard () {
                                                     <div></div>
                                                     <p>Pay as you earn (NGN 30,000 legal fee)</p>
                                                 </div>
-                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(411000); setCurrency("NGN")}}>
+                                                <div className={payOpt==="full" ? "active":"dashboard-content-modal-main-frame1"} onClick={()=>{setPayOpt("full"); setAmount(565000); setCurrency("NGN")}}>
                                                     <div></div>
-                                                    <p>Pay at once (USD 1,000 = NGN 411,000)</p>
+                                                    <p>Pay at once (USD 1,000 = NGN 565,000)</p>
                                                 </div>
                                                 <button onClick={makePayment}>Proceed</button>
                                             </div>
