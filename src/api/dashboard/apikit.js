@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //tis creates axios client pre-configured with base URL
 
-let APIKit = axios.create({
+export const APIKit = axios.create({
     baseURL: 'https://api.grazacacademy.com/api/v1',
     timeout: 20000, // timeout can be i5ncreased
     headers: {
@@ -11,4 +11,11 @@ let APIKit = axios.create({
     }
 });
 
-export default APIKit;
+export const forHire = axios.create({
+    baseURL: 'https://grazachire.smartvesty.com/',
+    timeout: 20000, // timeout can be i5ncreased
+    headers: {
+        'Content-Type': 'multipart/form-data',
+        "Access-Control-Allow-Origin": "*"
+    }
+});

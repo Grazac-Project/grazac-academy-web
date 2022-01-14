@@ -82,14 +82,14 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     }
 
     const showForm = () => {
-        toast.info("Application for this cohort has ended. Please check back later!!!")
-        // var check = document.getElementById("check");
-        // if(check.checked){
-        //     setActive("form");
-        //     setFormActive("bio-data")
-        // } else {
-        //     toast.warn("You need to accept the terms and conditions to proceed!")
-        // }
+        // toast.info("Application for this cohort has ended. Please check back later!!!")
+        var check = document.getElementById("check");
+        if(check.checked){
+            setActive("form");
+            setFormActive("bio-data")
+        } else {
+            toast.warn("You need to accept the terms and conditions to proceed!")
+        }
     }
 
     const showEduForm = (e) => {

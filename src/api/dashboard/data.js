@@ -1,4 +1,4 @@
-import APIKit from './apikit';
+import { APIKit } from './apikit';
 
 let token = '';
 let userId = 0;

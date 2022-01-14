@@ -95,7 +95,7 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-            Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022
+              Application into Cohort (012) begins March, 2022. Class commences by June, 2022
               {/* <a
                 className="infomodal_content-link"
                 href="/login"

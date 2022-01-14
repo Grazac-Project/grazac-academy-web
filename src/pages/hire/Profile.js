@@ -1,6 +1,9 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { getOneTalent } from "../../api/dashboard/hire";
+import { Link } from 'react-router-dom';
 
 import arrow from "../../images/svg/arrow-front.svg";
 import purpleBack from "../../images/svg/purple-back.svg";
@@ -10,6 +13,26 @@ import profile from "../../images/man.jpg";
 
 
 function Profile () {
+    const talentId = new URLSearchParams(window.location.search).get('id');
+    const [talentInfo, setTalentInfo] = useState({})
+
+    useEffect(()=>{
+        getOneTalent(talentId)
+            .then(response => response)
+            .then(resp => {
+                console.log(resp.data.result[0]);
+                if(resp.status===200){
+                    setTalentInfo(resp.data.result[0])
+                } else {
+                    alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                alert(`Something went wrong, please try again!!!`)
+            })
+    }, []);
+
     return (
         <div className="hire-bg">
             <Navbar/>
@@ -18,7 +41,7 @@ function Profile () {
                     <div className="hire_profile">
                         <div className="hire_profile-main">
                             <div>
-                                <img src={purpleBack} alt="back" width="100px" className="purpleBack" />
+                                <Link to="/hire/listing"><img src={purpleBack} alt="back" width="100px" className="purpleBack" /></Link>
                                 <div className="hire_profile-main-bio">
                                     <div className="hire_profile-main-bio-image1">
                                         <div className="hire_profile-main-bio-image">
@@ -32,9 +55,9 @@ function Profile () {
                                     <div className="hire_profile-main-bio-text">
                                         <div className="hire_profile-main-info">
                                             <p className="text-1">Fedxderal Univerity Abeokuta</p>
-                                            <p>Product Designer <span>Lagos, Nigeria</span></p>
-                                            <p className={false ? "available" : "hired"}>hired</p>
-                                            <p>Proficiency in English and Yoruba language, Self-awareness, Interpersonal communication and, proficient in English Language, Operations and Entrepreneurial, Git, Digital Marketing, HTML/CSS,JavaScript,BootStrap4, Nodejs, Reactjs</p>
+                                            <p>{talentInfo.talent} <span>{talentInfo.region}</span></p>
+                                            <p className={talentInfo.status==="available" ? "available" : "hired"}>{talentInfo.status}</p>
+                                            <p>{talentInfo.description}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -42,6 +65,19 @@ function Profile () {
                             <div className="hire_profile-main-info">
                                 <div>
                                     <h4>Education</h4>
+                                    <hr/>
+                                    <div className="hire_profile-main-info-shift">
+                                        <p className="text-1">Fedxderal Univerity Abeokuta</p>
+                                        <p>Computer science</p>
+                                        <p>2004 - 2014</p>
+                                        <hr/>
+                                        <p className="text-1">Fedxderal Univerity Abeokuta</p>
+                                        <p>Computer science</p>
+                                        <p>2004 - 2014</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>Award &#38; Certification</h4>
                                     <hr/>
                                     <div className="hire_profile-main-info-shift">
                                         <p className="text-1">Fedxderal Univerity Abeokuta</p>
@@ -73,7 +109,7 @@ function Profile () {
                                 </div>
                             </div>
                         </div>
-                        <button className="hire_profile-backBtn"><img src={arrow} alt="alt" />Back To Listing</button>
+                        <Link to="/hire/listing"><button className="hire_profile-backBtn"><img src={arrow} alt="alt" />Back To Listing</button></Link>
                     </div>
                 </Container>
             </div>

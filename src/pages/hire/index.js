@@ -3,6 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Mode from "../../components/Mode";
+import { Link } from "react-router-dom";
+import { getAllTalents } from "../../api/dashboard/hire";
 
 import Sponsor1 from "../../images/svg/Apple.svg";
 import Sponsor2 from "../../images/svg/AWS.svg";
@@ -24,10 +26,25 @@ const Hire = () => {
     position: "Product Designer",
     stars: 4
   });
+  const [talents, setTalents] = useState([]);
 
   React.useEffect(() => {
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
+    getAllTalents()
+      .then(response => response)
+      .then(resp => {
+          console.log(resp);
+          if(resp.status===200){
+            setTalents(resp.data.result)
+          } else {
+            alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
+          }
+      })
+      .catch(err => {
+          console.log(err)
+          alert(`Something went wrong, please try again!!!`)
+      })
   }, []);
 
   const carouselPple = [
@@ -67,40 +84,6 @@ const Hire = () => {
     }
   ];
 
-  const talents = [
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"available"
-    },
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"hired"
-    },
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"available"
-    },
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"available"
-    },
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"hired"
-    },
-    {
-      name:"Jonathan Doe",
-      jd:"FrontEnd Developer",
-      availability:"hired"
-    }
-  ]
-
-
 
   return (
     <div>
@@ -113,7 +96,7 @@ const Hire = () => {
                 <div>
                   <h1>Hire top tech talents from our pool</h1>
                   <p>Attracting the best tech talent is competitive, let’s pull them out from our pool.</p>
-                  <button>Hire from Us</button>
+                  <Link to="/hire/listing"><button>Hire from Us</button></Link>
                 </div>
               </Col>
               <Col md={6}>
@@ -194,18 +177,18 @@ const Hire = () => {
               <Container>
                 <Row>
                     {talents.map((item, idx) => (
-                      <Col md={4} key={idx}>
+                      <Col md={4} sm={6} key={idx}>
                         <div className="hire_talents-cards-box">
                           <div className="hire_talents-cards-box-image">
                             <img src={man} alt="talent" />
                           </div>
                           <div className="hire_talents-cards-box-text">
-                            <h4>{item.name}</h4>
-                            <p className="hire_talents-cards-box-text-1">{item.jd}</p>
-                            <div className={item.availability==="hired" ? "hire_talents-cards-box-text-hired" 
+                            <h4>{item.fullName}</h4>
+                            <p className="hire_talents-cards-box-text-1">{item.talent}</p>
+                            <div className={item.status==="hired" ? "hire_talents-cards-box-text-hired" 
                                             : "hire_talents-cards-box-text-available"}
                             >
-                              <p>{item.availability}</p>
+                              <p>{item.status}</p>
                             </div>
                           </div>
                         </div>
@@ -213,7 +196,7 @@ const Hire = () => {
                     ))}
                 </Row>
               </Container>
-              <button>View more<img src={arrow} alt="alt" /></button>
+              <Link to="/hire/listing"><button>View more<img src={arrow} alt="alt" /></button></Link>
           </div>
         </div>
       </div>

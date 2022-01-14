@@ -4624,6 +4624,7 @@ input:focus, select:focus, textarea:focus {
 
 .hire_hero h1 {
   font-size: 5em;
+  font-weight: 500;
 }
 
 .hire_hero p {
@@ -4857,8 +4858,7 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   padding: 20px;
   margin: 40px;
-  background: -webkit-gradient(linear, left bottom, left top, from(#FFFFFF), to(#FFFFFF)), #773DD3;
-  background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #773DD3;
+  background-color: #fff;
 }
 
 @media (max-width: 769px) {
@@ -4870,15 +4870,21 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hire_listing:hover {
-  background: #773DD3;
+  background-color: #773DD3;
+  -webkit-transition: background-color 800ms linear;
+  transition: background-color 800ms linear;
 }
 
 .hire_listing:hover p {
   color: white;
+  -webkit-transition: color 800ms linear;
+  transition: color 800ms linear;
 }
 
 .hire_listing:hover span:nth-child(2) {
-  background: white !important;
+  background-color: white !important;
+  -webkit-transition: background-color 800ms linear;
+  transition: background-color 800ms linear;
   color: #773dd3;
 }
 
@@ -4913,6 +4919,13 @@ input:focus, select:focus, textarea:focus {
       flex-shrink: 0;
 }
 
+@media (max-width: 560px) {
+  .hire_listing-image {
+    margin: auto;
+    display: block;
+  }
+}
+
 .hire_listing-image img {
   width: 100%;
   height: auto;
@@ -4920,6 +4933,13 @@ input:focus, select:focus, textarea:focus {
 
 .hire_listing-text {
   padding: 0 0 0 20px;
+}
+
+@media (max-width: 560px) {
+  .hire_listing-text {
+    text-align: center;
+    padding: 0px;
+  }
 }
 
 @media (min-width: 769px) {
@@ -4938,7 +4958,7 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 769px) {
   .hire_listing-text-1 {
-    margin: 10px 0 15px !important;
+    margin: 10px 0 0px !important;
   }
 }
 
@@ -4946,8 +4966,9 @@ input:focus, select:focus, textarea:focus {
   text-transform: uppercase;
   color: white;
   background: #773dd3;
-  padding: 5px 25px 5px;
+  padding: 7px 25px 5px;
   font-weight: 600;
+  height: 23px;
   font-size: 1em !important;
   margin-left: auto;
   border-radius: 30px;
@@ -4957,11 +4978,60 @@ input:focus, select:focus, textarea:focus {
   text-transform: uppercase;
   font-size: 1em !important;
   color: black;
+  height: 23px;
   background: #D2D2D2;
-  padding: 5px 25px 5px;
+  padding: 7px 25px 5px;
   font-weight: 600;
   margin-left: auto;
   border-radius: 30px;
+}
+
+@media (max-width: 769px) {
+  .hire_listing-text-3 {
+    margin: 20px 0 0px !important;
+  }
+}
+
+.hire_listing-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 30px 0 70px;
+}
+
+@media (max-width: 769px) {
+  .hire_listing-pagination {
+    margin: 10px 0 30px;
+  }
+}
+
+.hire_listing-pagination-number {
+  width: 40px;
+  padding-top: 10px;
+  margin: 0 3px;
+  height: 30px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.hire_listing-pagination-text {
+  padding: 10px 15px 0;
+  margin: 0 3px;
+  height: 30px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.hire_listing-pagination .activePage {
+  background-color: #773DD3;
+  color: white;
 }
 
 .hire_profile-main {
@@ -5083,6 +5153,18 @@ input:focus, select:focus, textarea:focus {
   margin: 0 10px 0;
 }
 
+@media (min-width: 992px) {
+  .hire_profile-main-info {
+    margin-right: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hire_profile-main-info {
+    margin-right: 100px;
+  }
+}
+
 .hire_profile-main-info h4, .hire_profile-main-info p {
   color: #777777;
 }
@@ -5200,6 +5282,12 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+@media (max-width: 560px) {
+  .hire_contact-text {
+    padding: 0 15px;
+  }
+}
+
 .hire_contact-text h2 {
   color: white;
   font-weight: 600;
@@ -5215,12 +5303,25 @@ input:focus, select:focus, textarea:focus {
 .hire_contact-text-1 {
   font-size: 1.2em;
   margin-bottom: 50px;
+  max-width: 400px;
+}
+
+@media (min-width: 992px) {
+  .hire_contact-text-1 {
+    max-width: 350px;
+  }
 }
 
 .hire_contact-text-box {
   border-radius: 10px;
   padding: 5px 20px;
-  width: 280px;
+  max-width: 280px;
+}
+
+@media (max-width: 560px) {
+  .hire_contact-text-box {
+    padding: 5px 0;
+  }
 }
 
 .hire_contact-text-box:hover {
@@ -5235,6 +5336,7 @@ input:focus, select:focus, textarea:focus {
 
 .hire_contact-text-box-flx img {
   width: 15px;
+  height: 35px;
   margin-right: 10px;
 }
 
@@ -5245,7 +5347,16 @@ input:focus, select:focus, textarea:focus {
 .hire_contact-form {
   background: white;
   border-radius: 12px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 35px 20px;
+  margin-right: 50px;
+}
+
+@media (max-width: 992px) {
+  .hire_contact-form {
+    margin: 0 10px;
+  }
 }
 
 .hire_contact-form input, .hire_contact-form textarea {

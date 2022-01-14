@@ -52,10 +52,10 @@ const Footer = () => {
           <p>©{new Date().getFullYear()} Grazac Technologies. All Rights Reserved</p>
 
           <div className="footer__icons">
-            <a href="https://www.youtube.com/channel/UCAQ_Q8wYZloETgrdlBbwMtg"><img src={Youtube} alt="icon" /></a>
+            <a href="https://www.youtube.com/channel/UCAQ_Q8wYZloETgrdlBbwMtg" target="_blank"><img src={Youtube} alt="icon" /></a>
             <a href="https://twitter.com/grazacacademy" target="_blank"><img src={Twitter} alt="icon" /></a>
             <a href="https://www.instagram.com/grazacacademy/" target="_blank"><img src={Instagram} alt="icon" /></a>
-            <a href="https://www.facebook.com/grazacng"><img src={Facebook} alt="icon" /></a>
+            <a href="https://www.facebook.com/grazacng" target="_blank"><img src={Facebook} alt="icon" /></a>
           </div>
         </div>
       </div>

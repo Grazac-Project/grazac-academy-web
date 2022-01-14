@@ -1,4 +1,4 @@
-import APIKit from './apikit';
+import { APIKit } from './apikit';
 
 
 export const SignupAction = (data) => {
