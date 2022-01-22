@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const APIKit = axios.create({
     baseURL: 'https://api.grazacacademy.com/api/v1',
-    timeout: 20000, // timeout can be i5ncreased
+    timeout: 20000, // timeout can be increased
     headers: {
         'Content-Type': 'multipart/form-data',
         "Access-Control-Allow-Origin": "*"
@@ -12,10 +12,19 @@ export const APIKit = axios.create({
 });
 
 export const forHire = axios.create({
-    baseURL: 'https://grazachire.smartvesty.com/',
-    timeout: 20000, // timeout can be i5ncreased
+    baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    timeout: 10000, // timeout can be increased
     headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+    }
+});
+
+export const forHireContact = axios.create({
+    baseURL: 'https://grazachire.smartvesty.com',
+    timeout: 10000, // timeout can be increased
+    headers: {
+        'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*"
     }
 });

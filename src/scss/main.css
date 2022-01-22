@@ -4932,6 +4932,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hire_listing-text {
+  width: 100%;
   padding: 0 0 0 20px;
 }
 
@@ -5143,13 +5144,13 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hire_profile-main-bio-icons {
-  width: 80px;
+  width: 200px;
   display: block;
   margin: 15px auto 0;
 }
 
 .hire_profile-main-bio-icons img {
-  width: 20px;
+  width: 30px;
   margin: 0 10px 0;
 }
 

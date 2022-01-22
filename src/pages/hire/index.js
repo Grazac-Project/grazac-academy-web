@@ -36,7 +36,7 @@ const Hire = () => {
       .then(resp => {
           console.log(resp);
           if(resp.status===200){
-            setTalents(resp.data.result)
+            setTalents(resp.data.data.users)
           } else {
             alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
           }
@@ -176,16 +176,16 @@ const Hire = () => {
           <div className="hire_talents-cards">
               <Container>
                 <Row>
-                    {talents.map((item, idx) => (
+                    {talents.slice(0, 6).map((item, idx) => (
                       <Col md={4} sm={6} key={idx}>
                         <div className="hire_talents-cards-box">
                           <div className="hire_talents-cards-box-image">
-                            <img src={man} alt="talent" />
+                            <img src={item.profile_upload} alt="talent" />
                           </div>
                           <div className="hire_talents-cards-box-text">
-                            <h4>{item.fullName}</h4>
-                            <p className="hire_talents-cards-box-text-1">{item.talent}</p>
-                            <div className={item.status==="hired" ? "hire_talents-cards-box-text-hired" 
+                            <h4>{item.firstName} {item.lastName}</h4>
+                            <p className="hire_talents-cards-box-text-1">{item.profession}</p>
+                            <div className={item.status==="Hired" ? "hire_talents-cards-box-text-hired" 
                                             : "hire_talents-cards-box-text-available"}
                             >
                               <p>{item.status}</p>

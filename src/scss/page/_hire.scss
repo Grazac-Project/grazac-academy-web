@@ -286,6 +286,7 @@
         }
 
         &-text{
+            width: 100%;
             padding: 0 0 0 20px;
             @media(max-width:560px){
                 text-align: center;
@@ -461,12 +462,12 @@
                 }
 
                 &-icons{
-                    width: 80px;
+                    width: 200px;
                     display: block;
                     margin: 15px auto 0;
 
                     img{
-                        width: 20px;
+                        width: 30px;
                         margin: 0 10px 0;
                     }
                 }
