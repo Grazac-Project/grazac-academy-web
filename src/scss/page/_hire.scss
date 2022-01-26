@@ -50,8 +50,9 @@
             }
 
             &-mainImage{
-                height: 100%;
-                width: auto;
+                object-fit: cover;
+                height: 90%;
+                width: 100%;
             }
 
             &-frame{

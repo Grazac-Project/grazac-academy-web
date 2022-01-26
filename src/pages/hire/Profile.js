@@ -22,6 +22,7 @@ function Profile () {
     const [project, setProject] = useState([]);
     const [talent, setTalent] = useState({});
 
+
     useEffect(()=>{
         getOneTalent(talentId)
             .then(response => response)
@@ -64,11 +65,13 @@ function Profile () {
                                             {talent?.instagram===""?<div></div>:<a href={talent?.instagram}><img src={instagram} alt="instagram" /></a>}
                                         </div>
                                     </div>
+
                                     <div className="hire_profile-main-bio-text">
                                         <div className="hire_profile-main-info">
                                             <p className="text-1">{talent?.firstName} {talent?.lastName}</p>
                                             <p>{talent?.profession} <span>{talent?.location}</span></p>
-                                            <p className={talent?.status==="Available" ? "available" : "hired"}>{talent?.status}</p>
+                                            <p className={talent?.status==="Unhired" ? "available" : "hired"}>{talent?.status =="Unhired" ? "Available":"Unavailable"}</p>
+                                            {/* {console.log(talent.status)} */}
                                             <p>{talent?.shortBio}</p>
                                         </div>
                                     </div>
@@ -116,7 +119,12 @@ function Profile () {
                                                     </div>
                                                     <div className="hire_profile-main-info-shift-flx-2">
                                                         <p className="text-1">{item.title}</p>
-                                                        <p>{item.description}</p>
+                                                        {console.log(item)}
+                                                        <p>
+                                                            {item.description}
+                                                        </p>
+                                                      
+                                                        <p>  <a href={item.project_link}>{item.project_link}</a>  </p>
                                                     </div>
                                                 </div>
                                                 <hr/>

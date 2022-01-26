@@ -4659,8 +4659,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hire_hero-carousel-mainImage {
-  height: 100%;
-  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 90%;
+  width: 100%;
 }
 
 .hire_hero-carousel-frame {

@@ -39,7 +39,7 @@ const Hire = () => {
           if(resp.status===200){
             setTalents(resp.data.data.users)
             setCarouselInfo(resp.data.data.users[0])
-            console.log(resp.data.data.users[0])
+            // console.log(resp.data.data.users[0])
           } else {
             alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
           }
