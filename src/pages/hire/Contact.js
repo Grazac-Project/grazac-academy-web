@@ -7,6 +7,7 @@ import { submitContact } from "../../api/dashboard/hire";
 import telephone from "../../images/svg/telephone.svg";
 import location from "../../images/svg/location.svg";
 import email from "../../images/svg/email-white.svg";
+import loader from "../../images/loader.gif";
 
 
 function Contact () {
@@ -26,20 +27,31 @@ function Contact () {
 
     const submitForm = (e) => {
         e.preventDefault();
-        let payload = JSON.stringify({data});
+        const btn = document.getElementById("contact_submit")
+        btn.innerHTML=`<img src=${loader} alt="loader" width="20px" />`;
+        let payload = JSON.stringify({
+            your_name: data.your_name,
+            email_address: data.email_address,
+            subject: data.subject,
+            inquiry: data.inquiry
+        });
+        console.log(payload);
         submitContact(payload)
             .then(response => response)
             .then(resp => {
                 console.log(resp);
                 if(resp.status===200){
-                    // setTalents(resp.data.result)
+                    alert(`${resp.data.message}`);
+                    document.getElementById("contact_form").reset()
                 } else {
                     alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
                 }
+                btn.innerHTML=`Send Message`;
             })
             .catch(err => {
                 console.log(err)
-                alert(`Something went wrong, please try again!!!`)
+                alert(`Something went wrong, please try again!!!`);
+                btn.innerHTML=`Send Message`;
             })
     };
 
@@ -77,12 +89,12 @@ function Contact () {
                                 </Col>
                                 <Col md={6}>
                                     <div className="hire_contact-form">
-                                        <form onSubmit={submitForm}>
-                                            <input type="text" name="your_name" placeholder="Your Name" onChange={handleChange} />
-                                            <input type="email" name="email_address" required placeholder="Email Address" onChange={handleChange} />
-                                            <input type="text" name="subject" placeholder="Subject" onChange={handleChange} />
+                                        <form onSubmit={submitForm} id="contact_form">
+                                            <input type="text" required name="your_name" placeholder="Your Name" onChange={handleChange} />
+                                            <input type="email" required name="email_address" placeholder="Email Address" onChange={handleChange} />
+                                            <input type="text" required name="subject" placeholder="Subject" onChange={handleChange} />
                                             <textarea placeholder="Message" name="inquiry" required rows="6" onChange={handleChange} />
-                                            <button type="submit">Send Message</button>
+                                            <button type="submit" id="contact_submit">Send Message</button>
                                         </form>
                                     </div>
                                 </Col>

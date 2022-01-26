@@ -9,6 +9,6 @@ export const getOneTalent = (talentId) => {
     return forHire.get(`/hire/details/${talentId}`)
 }
 
-export const submitContact = (data) => {
-    return forHireContact.post(`api/contactUs`, data)
+export const submitContact = (payload) => {
+    return forHire.post(`/hire/contact`, payload)
 } 

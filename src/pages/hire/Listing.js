@@ -12,7 +12,7 @@ import arrow from "../../images/svg/arrow-front.svg";
 
 function Listing () {
     const [talents, setTalents] = useState([]);
-    const [fetchedPage, setFetchedPage] = useState("");
+    const [fetchedPage, setFetchedPage] = useState("1");
     let [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false)
 
@@ -47,6 +47,7 @@ function Listing () {
         if(type==="next"){
             setLoading(true);
             setPage(page++);
+            // console.log(page)
             fetchTalents();
         } else {
             if(fetchedPage==="1"){
@@ -74,10 +75,10 @@ function Listing () {
                         :
                         <div>
                             {talents.map((item, idx)=> (
-                                <Link style={{color:"black"}} to={`/hire/profile?id=${item.id}`} key={idx}>
+                                <Link style={{color:"black"}} to={`/hire/profile?id=${item.id}&/${item.firstName}-${item.lastName}`} key={idx}>
                                     <div className="hire_listing">
                                         <div className="hire_listing-image">
-                                            <img src={man} alt="man" />
+                                            <img src={item.profile_upload} alt="man" />
                                         </div>
                                         <div className="hire_listing-text">
                                             <div className="d-flx">
@@ -85,7 +86,9 @@ function Listing () {
                                                     <p className="hire_listing-text-1">{item.firstName} {item.lastName}</p>
                                                     <p>{item.profession} <span>{item.location}</span></p>
                                                 </div>
-                                                <span className={item.status==="Hired" ? "hire_listing-text-2-hired":"hire_listing-text-2-available"}>{item.status}</span>
+                                                <span className={item.status==="Hired" ? "hire_listing-text-2-hired":"hire_listing-text-2-available"}>
+                                                    {item.status==="Hired"?"HIRED":"AVAILABLE"}
+                                                </span>
                                             </div>
                                             <p className="hire_listing-text-3">{item.shortBio}</p>
                                         </div>

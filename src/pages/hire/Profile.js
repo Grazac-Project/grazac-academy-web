@@ -17,15 +17,21 @@ import profile from "../../images/man.jpg";
 
 function Profile () {
     const talentId = new URLSearchParams(window.location.search).get('id');
-    const [talentInfo, setTalentInfo] = useState({})
+    const [education, setEducation] = useState([]);
+    const [award, setAward] = useState([]);
+    const [project, setProject] = useState([]);
+    const [talent, setTalent] = useState({});
 
     useEffect(()=>{
         getOneTalent(talentId)
             .then(response => response)
             .then(resp => {
-                console.log(resp.data.profile);
+                console.log(resp);
                 if(resp.status===200){
-                    setTalentInfo(resp.data.profile)
+                    setTalent(resp.data.profile.user);
+                    setEducation(resp.data.profile.education);
+                    setAward(resp.data.profile.award);
+                    setProject(resp.data.profile.project);
                 } else {
                     alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
                 }
@@ -48,22 +54,22 @@ function Profile () {
                                 <div className="hire_profile-main-bio">
                                     <div className="hire_profile-main-bio-image1">
                                         <div className="hire_profile-main-bio-image">
-                                            <img src={profile} alt="profile" />
+                                            <img src={talent.profile_upload} alt="profile" />
                                         </div>
                                         <div className="hire_profile-main-bio-icons">
-                                            {talentInfo?.user.github===""?<div></div>:<a href={talentInfo?.user.github}><img src={github} alt="github" /></a>}
-                                            {talentInfo?.user.linkedin===""?<div></div>:<a href={talentInfo?.user.linkedin}><img src={linkedin} alt="linkedin" /></a>}
-                                            {talentInfo?.user.twitter===""?<div></div>:<a href={talentInfo?.user.twitter}><img src={twitter} alt="twitter" /></a>}
-                                            {/* <a href={talentInfo?.user.facebook}><img src={facebook} alt="facebook" /></a> */}
-                                            {talentInfo?.user.instagram===""?<div></div>:<a href={talentInfo?.user.instagram}><img src={instagram} alt="instagram" /></a>}
+                                            {talent?.github===""?<div></div>:<a href={talent?.github}><img src={github} alt="github" /></a>}
+                                            {talent?.linkedin===""?<div></div>:<a href={talent?.linkedin}><img src={linkedin} alt="linkedin" /></a>}
+                                            {talent?.twitter===""?<div></div>:<a href={talent?.twitter}><img src={twitter} alt="twitter" /></a>}
+                                            {/* <a href={talent?.facebook}><img src={facebook} alt="facebook" /></a> */}
+                                            {talent?.instagram===""?<div></div>:<a href={talent?.instagram}><img src={instagram} alt="instagram" /></a>}
                                         </div>
                                     </div>
                                     <div className="hire_profile-main-bio-text">
                                         <div className="hire_profile-main-info">
-                                            <p className="text-1">{talentInfo?.user.firstName} {talentInfo?.user.lastName}</p>
-                                            <p>{talentInfo?.user.profession} <span>{talentInfo?.user.location}</span></p>
-                                            <p className={talentInfo?.user.status==="Available" ? "available" : "hired"}>{talentInfo?.user.status}</p>
-                                            <p>{talentInfo?.user.shortBio}</p>
+                                            <p className="text-1">{talent?.firstName} {talent?.lastName}</p>
+                                            <p>{talent?.profession} <span>{talent?.location}</span></p>
+                                            <p className={talent?.status==="Available" ? "available" : "hired"}>{talent?.status}</p>
+                                            <p>{talent?.shortBio}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +79,7 @@ function Profile () {
                                     <h4>Education</h4>
                                     <hr/>
                                     <div className="hire_profile-main-info-shift">
-                                        {talentInfo?.education.map((item, idx)=> (
+                                        {education?.map((item, idx)=> (
                                             <div key={idx}>
                                                 <p className="text-1">{item.institution}</p>
                                                 <p>{item.course}</p>
@@ -87,7 +93,7 @@ function Profile () {
                                     <h4>Award &#38; Certification</h4>
                                     <hr/>
                                     <div className="hire_profile-main-info-shift">
-                                        {talentInfo?.award.map((item, idx)=> (
+                                        {award?.map((item, idx)=> (
                                             <div key={idx}>
                                                 <p className="text-1">{item.title}</p>
                                                 <p>{item.awarder}</p>
@@ -101,7 +107,7 @@ function Profile () {
                                     <h4>Projects and Experience</h4>
                                     <hr/>
                                     <div className="hire_profile-main-info-shift">
-                                        {talentInfo?.project.map((item, idx)=> (
+                                        {project?.map((item, idx)=> (
                                             <div key={idx}>
                                                 <div className="hire_profile-main-info-shift-flx">
                                                     <div className="hire_profile-main-info-shift-flx-1">
@@ -120,7 +126,10 @@ function Profile () {
                                 </div>
                             </div>
                         </div>
-                        <Link to="/hire/listing"><button className="hire_profile-backBtn"><img src={arrow} alt="alt" />Back To Listing</button></Link>
+                        <div style={{display:"flex", justifyContent:"center"}}>
+                            <Link to="/hire/listing"><button className="hire_profile-backBtn"><img src={arrow} alt="alt" />Back To Listing</button></Link>
+                            <Link to="/hire/contact"><button className="hire_profile-backBtn2">Contact Us<img src={arrow} alt="alt" /></button></Link>
+                        </div>
                     </div>
                 </Container>
             </div>

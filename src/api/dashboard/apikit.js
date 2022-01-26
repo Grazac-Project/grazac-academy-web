@@ -20,11 +20,11 @@ export const forHire = axios.create({
     }
 });
 
-export const forHireContact = axios.create({
-    baseURL: 'https://grazachire.smartvesty.com',
-    timeout: 10000, // timeout can be increased
-    headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
-    }
-});
+// export const forHireContact = axios.create({
+//     baseURL: 'https://grazachire.smartvesty.com',
+//     timeout: 10000, // timeout can be increased
+//     headers: {
+//         'Content-Type': 'application/json',
+//         "Access-Control-Allow-Origin": "*"
+//     }
+// });

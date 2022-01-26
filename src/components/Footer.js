@@ -31,7 +31,7 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">What We Offer</li>
             <li className="footer__item"><Link to="/login">Learn with us</Link></li>
-            {/* <li className="footer__item"><a href="/hire" target="_blank">Hire our Talents</a></li> */}
+            <li className="footer__item"><Link to="/hire">Hire our Talents</Link></li>
           </ul>
 
           <ul className="footer__list">

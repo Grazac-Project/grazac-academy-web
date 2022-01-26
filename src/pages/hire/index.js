@@ -22,8 +22,9 @@ import star from "../../images/svg/star.svg";
 const Hire = () => {
   const [carousel, setCarousel] = useState("one");
   const [carouselInfo, setCarouselInfo] = useState({
-    name: "Jonathan Doe",
-    position: "Product Designer",
+    firstName: "Jonathan Doe",
+    profession: "Product Designer",
+    profile_upload: man,
     stars: 4
   });
   const [talents, setTalents] = useState([]);
@@ -31,12 +32,14 @@ const Hire = () => {
   React.useEffect(() => {
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
-    getAllTalents()
+    getAllTalents(1)
       .then(response => response)
       .then(resp => {
-          console.log(resp);
+          // console.log(resp);
           if(resp.status===200){
             setTalents(resp.data.data.users)
+            setCarouselInfo(resp.data.data.users[0])
+            console.log(resp.data.data.users[0])
           } else {
             alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
           }
@@ -101,28 +104,28 @@ const Hire = () => {
               </Col>
               <Col md={6}>
                 <div className="hire_hero-carousel">
-                  {carousel==="one" && <img src={man} alt="main-image" className="hire_hero-carousel-mainImage" />}
-                  {carousel==="two" && <img src={my_love} alt="main-image" className="hire_hero-carousel-mainImage" />}
-                  {carousel==="three" && <img src={kamala} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  {carousel==="one" && <img src={talents[0]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  {carousel==="two" && <img src={talents[1]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
+                  {carousel==="three" && <img src={talents[2]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
                   <div className={carousel==="one"? "hire_hero-carousel-frame box1 crs-bg":"hire_hero-carousel-frame box1"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("one"); setCarouselInfo(carouselPple[0])}}>
-                      <img src={man} alt="picx" />
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("one"); setCarouselInfo(talents[0])}}>
+                      <img src={talents[0]?.profile_upload} alt="picx" />
                     </div>
                   </div>
                   <div className={carousel==="two"? "hire_hero-carousel-frame box2 crs-bg":"hire_hero-carousel-frame box2"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("two"); setCarouselInfo(carouselPple[1])}}>
-                      <img src={my_love} alt="picx" />
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("two"); setCarouselInfo(talents[1])}}>
+                      <img src={talents[1]?.profile_upload} alt="picx" />
                     </div>
                   </div>
                   <div className={carousel==="three"? "hire_hero-carousel-frame box3 crs-bg":"hire_hero-carousel-frame box3"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("three"); setCarouselInfo(carouselPple[2])}}>
-                      <img src={kamala} alt="picx" />
+                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("three"); setCarouselInfo(talents[2])}}>
+                      <img src={talents[2]?.profile_upload} alt="picx" />
                     </div>
                   </div>
                   <div className="hire_hero-carousel-textbox">
                     <div>
-                    <h4>{carouselInfo.name}</h4>
-                    <p>{carouselInfo.position}</p>
+                    <h4>{carouselInfo?.firstName} {carouselInfo?.lastName}</h4>
+                    <p>{carouselInfo?.profession}</p>
                       <div>
                         <img src={star} alt="star" />
                         <img src={star} alt="star" />
@@ -178,7 +181,8 @@ const Hire = () => {
                 <Row>
                     {talents.slice(0, 6).map((item, idx) => (
                       <Col md={4} sm={6} key={idx}>
-                        <div className="hire_talents-cards-box">
+                        <Link to={`/hire/profile?id=${item.id}&/${item.firstName}-${item.lastName}`}>
+                        <div className="hire_talents-cards-box" >
                           <div className="hire_talents-cards-box-image">
                             <img src={item.profile_upload} alt="talent" />
                           </div>
@@ -188,10 +192,11 @@ const Hire = () => {
                             <div className={item.status==="Hired" ? "hire_talents-cards-box-text-hired" 
                                             : "hire_talents-cards-box-text-available"}
                             >
-                              <p>{item.status}</p>
+                              <p>{item.status==="Hired"?"HIRED":"AVAILABLE"}</p>
                             </div>
                           </div>
                         </div>
+                        </Link>
                       </Col>
                     ))}
                 </Row>

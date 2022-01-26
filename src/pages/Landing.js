@@ -462,11 +462,13 @@ const Landing = () => {
               and mentorship needed for your relevance in the future of work.
             </p>
             <div className="landing__btn--2">
+              <Link to="/hire">
                 <div className="nav__btn nav__btn-flex ">
-                  <a className="nav__btn--text disable-btn">
+                  <a className="nav__btn--text">
                     Hire our grads
                   </a>
                 </div>
+              </Link>
             </div>
           </div>
 

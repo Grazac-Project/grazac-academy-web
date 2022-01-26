@@ -231,6 +231,7 @@
         border-radius: 10px;
         display: flex;
         padding: 20px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         margin: 40px;
         background-color: #fff;
         @media(max-width:769px){
@@ -378,7 +379,9 @@
             padding: 20px;
             margin-top: 40px;
             position: relative;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
             border: 10px;
+            border-radius: 20px;
             background: white;
 
             .purpleBack{
@@ -544,9 +547,33 @@
             font-size: 1.2em;
             border-radius: 5px;
             display: block;
+            @media(max-width:560px){
+                font-size: 1em;
+                padding: 6px 15px;
+
+            }
             img{
                 margin: -5px 15px 0 0;
                 transform: rotate(180deg);
+            }
+        }
+        &-backBtn2{
+            color: white;
+            background: $color-inspiring-purple;
+            border: 1px solid $color-inspiring-purple;
+            padding: 10px 30px;
+            margin: 40px 0 50px 15px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            display: block;
+            @media(max-width:560px){
+                font-size: 1em;
+                padding: 6px 15px;
+
+            }
+            img{
+                margin: -5px 0 0 15px;
+                // transform: rotate(180deg);
             }
         }
     }
