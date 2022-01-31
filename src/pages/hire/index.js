@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -20,16 +20,11 @@ import star from "../../images/svg/star.svg";
 
 
 const Hire = () => {
-  const [carousel, setCarousel] = useState("one");
-  const [carouselInfo, setCarouselInfo] = useState({
-    firstName: "Jonathan Doe",
-    profession: "Product Designer",
-    profile_upload: man,
-    stars: 4
-  });
   const [talents, setTalents] = useState([]);
+  const [index, setIndex] = useState(0);
 
-  React.useEffect(() => {
+
+  useEffect(() => {
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
     getAllTalents(1)
@@ -38,7 +33,7 @@ const Hire = () => {
           // console.log(resp);
           if(resp.status===200){
             setTalents(resp.data.data.users)
-            setCarouselInfo(resp.data.data.users[0])
+            console.log(resp.data.data.users[0])
             // console.log(resp.data.data.users[0])
           } else {
             alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
@@ -48,25 +43,14 @@ const Hire = () => {
           console.log(err)
           alert(`Something went wrong, please try again!!!`)
       })
+
+    // the lines below help with making the carousel automatically change every 5secs
+    const tick = () => setIndex(i => i + 1);
+    const id = setInterval(tick, 5000);
+    return () => clearInterval(id);
   }, []);
 
-  const carouselPple = [
-    {
-      name: "Jonathan Doe",
-      position: "Software Engineer, Primer AI",
-      stars: 4
-    },
-    {
-      name: "Miracle Shadare",
-      position: "Content Writer, Grazac",
-      stars: 4
-    },
-    {
-      name: "Rebecca West",
-      position: "Product Designer, Google LLC",
-      stars: 4
-    }
-  ]
+  const carouselCount = [ 1,2,3 ]
 
   const whyContent = [
     {
@@ -104,28 +88,26 @@ const Hire = () => {
               </Col>
               <Col md={6}>
                 <div className="hire_hero-carousel">
-                  {carousel==="one" && <img src={talents[0]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
-                  {carousel==="two" && <img src={talents[1]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
-                  {carousel==="three" && <img src={talents[2]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />}
-                  <div className={carousel==="one"? "hire_hero-carousel-frame box1 crs-bg":"hire_hero-carousel-frame box1"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("one"); setCarouselInfo(talents[0])}}>
+                  <img src={talents[index % carouselCount.length]?.profile_upload} alt="main-image" className="hire_hero-carousel-mainImage" />
+                  <div className={carouselCount[index % carouselCount.length]===1? "hire_hero-carousel-frame box1 crs-bg":"hire_hero-carousel-frame box1"}>
+                    <div className="hire_hero-carousel-frame-image">
                       <img src={talents[0]?.profile_upload} alt="picx" />
                     </div>
                   </div>
-                  <div className={carousel==="two"? "hire_hero-carousel-frame box2 crs-bg":"hire_hero-carousel-frame box2"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("two"); setCarouselInfo(talents[1])}}>
+                  <div className={carouselCount[index % carouselCount.length]===2? "hire_hero-carousel-frame box2 crs-bg":"hire_hero-carousel-frame box2"}>
+                    <div className="hire_hero-carousel-frame-image">
                       <img src={talents[1]?.profile_upload} alt="picx" />
                     </div>
                   </div>
-                  <div className={carousel==="three"? "hire_hero-carousel-frame box3 crs-bg":"hire_hero-carousel-frame box3"}>
-                    <div className="hire_hero-carousel-frame-image" onClick={()=>{setCarousel("three"); setCarouselInfo(talents[2])}}>
+                  <div className={carouselCount[index % carouselCount.length]===3? "hire_hero-carousel-frame box3 crs-bg":"hire_hero-carousel-frame box3"}>
+                    <div className="hire_hero-carousel-frame-image">
                       <img src={talents[2]?.profile_upload} alt="picx" />
                     </div>
                   </div>
                   <div className="hire_hero-carousel-textbox">
                     <div>
-                    <h4>{carouselInfo?.firstName} {carouselInfo?.lastName}</h4>
-                    <p>{carouselInfo?.profession}</p>
+                    <h4>{talents[index % carouselCount.length]?.firstName} {talents[index % carouselCount.length]?.lastName}</h4>
+                    <p>{talents[index % carouselCount.length]?.profession}</p>
                       <div>
                         <img src={star} alt="star" />
                         <img src={star} alt="star" />

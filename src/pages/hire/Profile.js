@@ -70,7 +70,7 @@ function Profile () {
                                         <div className="hire_profile-main-info">
                                             <p className="text-1">{talent?.firstName} {talent?.lastName}</p>
                                             <p>{talent?.profession} <span>{talent?.location}</span></p>
-                                            <p className={talent?.status==="Unhired" ? "available" : "hired"}>{talent?.status =="Unhired" ? "Available":"Unavailable"}</p>
+                                            <p className={talent?.status==="Unhired" ? "available" : "hired"}>{talent?.status =="Unhired" ? "AVAILABLE":"HIRED"}</p>
                                             {/* {console.log(talent.status)} */}
                                             <p>{talent?.shortBio}</p>
                                         </div>
