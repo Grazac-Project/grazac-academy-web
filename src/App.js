@@ -6,28 +6,10 @@ import {
 } from "react";
 import "./scss/main.css";
 import { Switch, Route, Redirect } from "react-router-dom";
-// import LandingPage from "./pages/Landing";
-// import Login from "./auth/Login";
-// import Signup from "./auth/Signup";
-
-// import UndergraduateCourseDetail from "./pages/UndergraduateCourseDetail";
-// import GraduateCourseDetail from "./pages/GraduateCourseDetail";
-// import AboutUs from "./pages/AboutUs";
-// import Contact from "./pages/Contact";
-// import Faq from "./pages/Faq";
-
-import GraduateAccelerator from "./pages/GraduateAccelerator";
-// import UndergraduateAccelerator from "./pages/UndergraduateAccelerator";
-// import UndergraduateCoursePayment from "./pages/UndergraduateCoursePayment";
-// import GraduateCoursePayment from "./pages/GraduateCoursePayment";
-// import LeadForm from "./pages/LeadForm";
-// import GraduateForm from "./pages/GraduateForm";
-// import UndergraduateForm from "./pages/UndergraduateForm";
-import ComingSoon from "./pages/ComingSoon";
-// import InternshipForm from "./pages/InternshipForm";
-
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -35,29 +17,6 @@ const LandingPage = lazy(() => {
 
 const About = lazy(() => {
   return import("./pages/AboutUs");
-});
-
-// const GraduateAccelerator = lazy(() => {
-//   return import("./pages/GraduateAccelerator");
-// });
-const UndergraduateAccelerator = lazy(() => {
-  return import("./pages/UndergraduateAccelerator");
-});
-
-const UndergraduateCoursePayment = lazy(() => {
-  return import("./pages/UndergraduateCoursePayment");
-});
-
-const Login = lazy(() => {
-  return import("./auth/Login");
-});
-
-const Signup = lazy(() => {
-  return import("./auth/Signup");
-});
-
-const UndergraduateCourseDetail = lazy(() => {
-  return import("./pages/UndergraduateCourseDetail");
 });
 
 const GraduateCourseDetail = lazy(() => {
@@ -72,42 +31,54 @@ const Contact = lazy(() => {
   return import("./pages/Contact");
 });
 
-const GraduateCoursePayment = lazy(() => {
-  return import("./pages/GraduateCoursePayment");
-});
-
-const LeadForm = lazy(() => {
-  return import("./pages/LeadForm");
-});
-
-const GraduateForm = lazy(() => {
-  return import("./pages/GraduateForm");
-});
-
-const UndergraduateForm = lazy(() => {
-  return import("./pages/UndergraduateForm");
-});
-
-const InternshipForm = lazy(() => {
-  return import("./pages/InternshipForm");
-});
-
 const Hire = lazy(() => {
-  return import("./pages/Hire");
+  return import("./pages/hire");
+});
+
+const Listing = lazy(() => {
+  return import("./pages/hire/Listing");
 });
 
 const Profile = lazy(() => {
-  return import("./pages/Profile");
+  return import("./pages/hire/Profile");
 });
 
-
-const Project = lazy(() => {
-  return import("./pages/Project");
+const HireContact = lazy(() => {
+  return import("./pages/hire/Contact");
 });
 
-const Join = lazy(() => {
-  return import("./pages/Join");
+const SignUp = lazy(() => {
+  return import("./pages/graduateCohort/auth/SignUp");
 });
+
+const Login = lazy(() => {
+  return import("./pages/graduateCohort/auth/Login");
+});
+
+const Forgot = lazy(() => {
+  return import("./pages/graduateCohort/auth/ForgotPassword");
+});
+
+const Reset = lazy(() => {
+  return import("./pages/graduateCohort/auth/ResetPassword");
+});
+
+const MailSent = lazy(() => {
+  return import("./pages/graduateCohort/auth/MailSent");
+});
+
+const VerifyMail = lazy(() => {
+  return import("./pages/graduateCohort/auth/VerifyMail");
+});
+
+const AccountCreated = lazy(() => {
+  return import("./pages/graduateCohort/auth/AccountCreated");
+});
+
+const DashBoardHome = lazy(() => {
+  return import("./pages/graduateCohort/dashboard/Main");
+});
+
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -122,47 +93,44 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
+            {/* authentication pages */}
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/forgot-password" component={Forgot} />
+            <Route path="/resetPassword" component={Reset} />
+            <Route path="/mail-sent" component={MailSent} />
+            <Route path="/account-created" component={AccountCreated} />
+            <Route path="/verification" component={VerifyMail} />
+
+            {/* Graduate dashboard */}
+            <Route path="/dashboard" component={DashBoardHome} />
+
+            {/* main pages */}
             <Route path="/" exact component={LandingPage}>
               {/* <Redirect to="/join"/>  */}
             </Route>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            {/* <Route path="/join" component={Join}/> */}
             <Route path="/about-us" component={About} />
+            <Route path="/contact" component={Contact} />
             <Route path="/faq" component={Faq} />
 
-            <Route
-              path="/course-detail-undergraduate"
-              component={UndergraduateCourseDetail}
-            />
-            <Route
-              path="/course-detail-graduate"
-              component={GraduateCourseDetail}
-            />
-            <Route path="/contact" component={Contact} />
-            <Route
-              path="/graduate-accelerator-plan"
-              component={GraduateAccelerator}
-            />
-            <Route
-              path="/undergraduate-accelerator-plan"
-              component={UndergraduateAccelerator}
-            />
+            {/* Courses (both graduate and undergraduate) and internship */}
+            <Route path="/course-detail-graduate" component={GraduateCourseDetail} />
+            {/* <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
+            <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail} />
+            <Route path="/undergraduate-accelerator-plan" component={UndergraduateAccelerator}/>
             <Route path="/graduate-form" component={GraduateForm} />
             <Route path="/undergraduate-form" component={UndergraduateForm} />
-            {/* <Route
-          path="/undergraduate/payment/:id"
-          component={UndergraduateCoursePayment}
-        /> */}
-            {/* <Route path="/graduate/payment/:id" component={GraduateCoursePayment} /> */}
-            <Route path="/lead" component={LeadForm} />
-            <Route path="/internship" component={InternshipForm} />
+            <Route path="/internship" component={InternshipForm} /> */}
 
-            <Route path="/hire" component={Hire} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/project" component={Project} />
-            <Route path="/join" component={Join} />
+            {/*   hire pages */}
+            <Route path="/hire" exact component={Hire} />
+            <Route path="/hire/listing" component={Listing} />
+            <Route path="/hire/profile" component={Profile} />
+            <Route path="/hire/contact" component={HireContact} />
 
-            <Route path="/:name/coming-soon" component={ComingSoon} />
+            {/* Coming soon page */}
+            {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
           </Switch>
         </div>
       </Suspense>

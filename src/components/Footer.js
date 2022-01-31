@@ -13,7 +13,9 @@ const Footer = () => {
           <ul className="footer__list">
             <li className="footer__item footer__item--head">
               <div className="footer__logo">
-                <img src={Logo} alt="logo" />
+                <Link to="/">
+                  <img src={Logo} alt="logo" />
+                </Link>
               </div>
             </li>
             <li className="footer__item">Grazac Academy gives you the opportunity to learn in-demand skills to build your technology career.</li>
@@ -27,17 +29,17 @@ const Footer = () => {
           </ul>
 
           <ul className="footer__list">
-            <li className="footer__item footer__item--head">Features</li>
-            <li className="footer__item"><Link to="/nysc/coming-soon">NYSC Members</Link></li>
-            <li className="footer__item"><a href="https://grazac-technologies-limited.breezy.hr/" target="_blank">Careers</a></li>
+            <li className="footer__item footer__item--head">What We Offer</li>
+            <li className="footer__item"><Link to="/login">Learn with us</Link></li>
+            <li className="footer__item"><Link to="/hire">Hire our Talents</Link></li>
           </ul>
 
           <ul className="footer__list">
-            <li className="footer__item footer__item--head">Teaching</li>
-            <li className="footer__item"><Link to="/faq">FAQ</Link></li>
+            <li className="footer__item footer__item--head">Discover</li>
+            <li className="footer__item"><Link to="/faq">FAQs</Link></li>
             {/* <li className="footer__item"><Link>Book a Call</Link></li> */}
-            <li className="footer__item"><Link to="/training/coming-soon">Corporate Training</Link></li>
-            <li className="footer__item"><Link to="/hire/coming-soon">Grazac Hire</Link></li>
+            {/* <li className="footer__item"><Link to="/training/coming-soon">Corporate Training</Link></li>
+            <li className="footer__item"><Link to="/hire/coming-soon">Grazac Hire</Link></li> */}
           </ul>
         </div>
 
@@ -50,10 +52,10 @@ const Footer = () => {
           <p>©{new Date().getFullYear()} Grazac Technologies. All Rights Reserved</p>
 
           <div className="footer__icons">
-            <a><img src={Youtube} alt="icon" /></a>
+            <a href="https://www.youtube.com/channel/UCAQ_Q8wYZloETgrdlBbwMtg" target="_blank"><img src={Youtube} alt="icon" /></a>
             <a href="https://twitter.com/grazacacademy" target="_blank"><img src={Twitter} alt="icon" /></a>
             <a href="https://www.instagram.com/grazacacademy/" target="_blank"><img src={Instagram} alt="icon" /></a>
-            <a><img src={Facebook} alt="icon" /></a>
+            <a href="https://www.facebook.com/grazacng" target="_blank"><img src={Facebook} alt="icon" /></a>
           </div>
         </div>
       </div>

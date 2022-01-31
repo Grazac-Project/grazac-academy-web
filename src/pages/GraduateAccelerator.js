@@ -15,13 +15,12 @@ const GraduateAccelerator = () => {
         .then((resp) => resp.json())
         .then((resp) => {
           setCourses(resp.data);
-          console.log(resp.data);
         })
         .catch((error) => {
           console.log(
             "An error occurred when fetching the available courses, refreshing..."
           );
-          //
+          
     });
   
   }, []);

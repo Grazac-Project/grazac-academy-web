@@ -1,0 +1,46 @@
+.layout{
+    &_auth{
+        &-main{
+            width: 65vw;
+            font-family: $font-secondary;
+            @media(max-width:769px) {
+                width: 100%;
+            }
+        }
+        &-image{
+            width: 35vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+            @media(max-width:769px) {
+                display: none;
+            }
+        }
+    }
+
+    &_dashboard{
+        &-sidebar{
+            position: fixed;
+            width: 20vw;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: #F8F8F8;
+            height: 100vh;
+            @media(max-width:769px){
+                z-index: 2;
+                width: 200px;
+                transition: 3s;
+                left: -210px;
+            }
+        }
+        &-content{
+            width: 80vw;
+            float: right;
+            @media(max-width:769px){
+                width: 100vw;
+            }
+        }
+    }
+}

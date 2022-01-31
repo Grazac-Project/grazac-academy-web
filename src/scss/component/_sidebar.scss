@@ -1,0 +1,49 @@
+.sidebar{
+    padding: 0 0 0 15%;
+    @media(max-width:769px){
+        transition: 1s;
+    }
+
+    .logo{
+        width: 150px;
+        margin: 20px 0 40px;
+        @media(max-width:992px){
+            width: 100px;
+        }
+    }
+
+    &-portal{
+        &-heading{
+            color: #333333;
+            font-size: 19px !important;
+            margin-bottom: 30px;
+        }
+        &-links{
+            display: flex;
+            margin: 10px 0;
+            cursor: pointer;
+            p{
+                margin-top: 3px;
+                margin-left: 10px;
+            }
+        }
+
+        .active{
+            display: flex;
+            margin: 10px 0;
+            cursor: pointer;
+            p{
+                margin-top: 3px;
+                margin-left: 10px;
+                color: #333333;
+            }
+            path{
+                fill:#333333;
+            }
+        }
+
+        .signout{
+            margin-top: 45vh;
+        }
+    }
+}
