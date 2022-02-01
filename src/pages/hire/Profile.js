@@ -27,7 +27,6 @@ function Profile () {
         getOneTalent(talentId)
             .then(response => response)
             .then(resp => {
-                console.log(resp);
                 if(resp.status===200){
                     setTalent(resp.data.profile.user);
                     setEducation(resp.data.profile.education);
@@ -86,7 +85,7 @@ function Profile () {
                                             <div key={idx}>
                                                 <p className="text-1">{item.institution}</p>
                                                 <p>{item.course}</p>
-                                                <p>{item.startYear} - {item.endYear}</p>
+                                                <p>{item.startMonth} {item.startYear} - {item.endMonth} {item.endYear}</p>
                                                 <hr/>
                                             </div>
                                         ))}
@@ -100,7 +99,8 @@ function Profile () {
                                             <div key={idx}>
                                                 <p className="text-1">{item.title}</p>
                                                 <p>{item.awarder}</p>
-                                                <p>{item.yearAwarded}</p>
+                                                <p>{item.monthAwarded} {item.yearAwarded}</p>
+                                                <p>  <a href={item.certificate_link}>{item.certificate_link}</a>  </p>
                                                 <hr/>
                                             </div>
                                         ))}
@@ -115,7 +115,7 @@ function Profile () {
                                                 <div className="hire_profile-main-info-shift-flx">
                                                     <div className="hire_profile-main-info-shift-flx-1">
                                                         <p className="text-1">{item.role}</p>
-                                                        <p>{item.startYear} - {item.endYear}</p>
+                                                        <p>{item.startMonth} {item.startYear} - {item.endMonth} {item.endYear}</p>
                                                     </div>
                                                     <div className="hire_profile-main-info-shift-flx-2">
                                                         <p className="text-1">{item.title}</p>
