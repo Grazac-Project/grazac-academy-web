@@ -70,13 +70,13 @@ function Contact () {
                                         <div className="hire_contact-text-box">
                                             <div className="hire_contact-text-box-flx">
                                                 <img src={telephone} alt="icon" />
-                                                <p>917q83612368</p>
+                                                <p>+234 806 836 5951</p>
                                             </div>
                                         </div>
                                         <div className="hire_contact-text-box">
                                             <div className="hire_contact-text-box-flx">
                                                 <img src={email} alt="icon" />
-                                                <p>917q83612368</p>
+                                                <p>support@grazacacademy.com</p>
                                             </div>
                                         </div>
                                         <div className="hire_contact-text-box">
