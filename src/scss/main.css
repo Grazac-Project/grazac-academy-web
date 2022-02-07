@@ -4832,7 +4832,7 @@ input:focus, select:focus, textarea:focus {
   color: black;
   width: 150px;
   background: #D2D2D2;
-  padding: 10px 25px 1px;
+  padding: 10rem;
   font-weight: 600;
   margin: 0 auto 20px;
   border-radius: 30px;
@@ -5105,7 +5105,7 @@ input:focus, select:focus, textarea:focus {
   width: 85px;
 }
 
-.hire_profile-main-bio-text .hired {
+.hire_profile-main-bio-text .unavailable {
   text-transform: uppercase;
   color: black;
   background: #D2D2D2;
@@ -5113,8 +5113,8 @@ input:focus, select:focus, textarea:focus {
   margin: 10px 0 20px;
   font-size: 15px !important;
   border-radius: 30px;
-  padding: 0 15px;
-  width: 50px;
+  padding: 0 19px;
+  width: 10rem;
 }
 
 .hire_profile-main-bio-image1 {
