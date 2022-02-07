@@ -37,7 +37,6 @@ function Profile () {
         getOneTalent(talentId)
             .then(response => response)
             .then(resp => {
-                console.log(resp);
                 if(resp.status===200){
                     setTalent(resp.data.profile.user);
                     setEducation(resp.data.profile.education);
@@ -86,7 +85,7 @@ function Profile () {
                                     <div className="hire_profile-main-info">
                                         <p className="text-1">{talent?.firstName} {talent?.lastName}</p>
                                         <p>{talent?.profession} <span>{talent?.location}</span></p>
-                                        <p className={talent?.status==="Unhired" ? "available" : "unavailable"}>{talent?.status =="Unhired" ? "Available":"Unavailable"}</p>
+                                        <p className={talent?.status==="Unhired" ? "available" : "hired"}>{talent?.status =="Unhired" ? "Available":"Unavailable"}</p>
                                         {/* {console.log(talent.status)} */}
                                         <p>{talent?.shortBio}</p>
                                     </div>

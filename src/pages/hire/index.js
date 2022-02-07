@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -28,8 +28,10 @@ const Hire = () => {
     stars: 4,
   });
   const [talents, setTalents] = useState([]);
+  const [index, setIndex] = useState(0);
 
-  React.useEffect(() => {
+
+  useEffect(() => {
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
     getAllTalents(1)

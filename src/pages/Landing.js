@@ -456,16 +456,15 @@ const Landing = () => {
       <div className="landing__bottom" style={{ paddingBottom: 0 }}>
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
-            <h1>Get Upskilled For The Future Of Work</h1>
+            <h1>Discover Top Tech <br/>Talent Here</h1>
             <p>
-              We will provide you with the tools, resources, facilities, content
-              and mentorship needed for your relevance in the future of work.
+            Find experienced fresh tech talents and professionals with authentic background that match your requirements.
             </p>
             <div className="landing__btn--2">
               <Link to="/hire">
                 <div className="nav__btn nav__btn-flex ">
                   <a className="nav__btn--text">
-                    Hire our grads
+                    Hire our  Talents
                   </a>
                 </div>
               </Link>
