@@ -32,6 +32,9 @@ const Hire = () => {
 
 
   useEffect(() => {
+
+    
+
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
     getAllTalents(1)
@@ -101,7 +104,7 @@ const Hire = () => {
 
   return (
     <div>
-      {console.log(talents)}
+      {/* {console.log(talents)} */}
 
       {talents.length != 0 ? (
         <div>

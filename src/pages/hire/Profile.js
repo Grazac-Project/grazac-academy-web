@@ -54,7 +54,7 @@ function Profile () {
 
     return (
         <div>
-      {console.log(isEmptyObject(talent))}
+      {/* {console.log(isEmptyObject(talent))} */}
 
        
         {isEmptyObject(talent) == false ? 
@@ -134,7 +134,7 @@ function Profile () {
                                                 </div>
                                                 <div className="hire_profile-main-info-shift-flx-2">
                                                     <p className="text-1">{item.title}</p>
-                                                    {console.log(item)}
+                                                    {/* {console.log(item)} */}
                                                     <p>
                                                         {item.description}
                                                     </p>

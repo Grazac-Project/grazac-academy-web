@@ -13,10 +13,10 @@ function Contact() {
   const [data, setData] = useState({
     your_name: "",
     email_address: "",
-    contact_number: "",
+    // contact_number: "",
     company_name: "",
-    company_website: "",
-    hiring_location: "",
+    // company_website: "",
+    // hiring_location: "",
     subject: "",
     inquiry: "",
   });
@@ -37,10 +37,10 @@ function Contact() {
       email_address: data.email_address,
       subject: data.subject,
       inquiry: data.inquiry,
-      contact_number: data.contact_number,
+      // contact_number: data.contact_number,
       company_name: data.contact_number,
-      company_website: data.company_website,
-      hiring_location: data.hiring_location,
+      // company_website: data.company_website,
+      // hiring_location: data.hiring_location,
     });
 
     console.log(payload);
@@ -89,7 +89,7 @@ function Contact() {
                     <div className="hire_contact-text-box">
                       <div className="hire_contact-text-box-flx">
                         <img src={email} alt="icon" />
-                        <p>support@grazacacademy.com</p>
+                        <p>hire@grazacacademy.com</p>
                       </div>
                     </div>
                     <div className="hire_contact-text-box">
@@ -113,13 +113,13 @@ function Contact() {
                         placeholder="Your Name"
                         onChange={handleChange}
                       />
-                      <input
+                      {/* <input
                         type="text"
                         required
                         name="contact_number"
                         placeholder="Contact Number"
                         onChange={handleChange}
-                      />
+                      /> */}
                       <input
                         type="text"
                         required
@@ -127,21 +127,21 @@ function Contact() {
                         placeholder="Company Name"
                         onChange={handleChange}
                       />
-
+{/* 
                       <input
                         type="text"
                         required
                         name="company_website"
                         placeholder="Company Website"
                         onChange={handleChange}
-                      />
-                      <input
+                      /> */}
+                      {/* <input
                         type="text"
                         required
                         name="hiring_location"
                         placeholder="Hiring Location"
                         onChange={handleChange}
-                      />
+                      /> */}
 
                       <input
                         type="email"

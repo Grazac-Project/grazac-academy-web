@@ -37,7 +37,7 @@ function Listing() {
     getAllTalents(page)
       .then((response) => response)
       .then((resp) => {
-        console.log(resp.data.data.pageNumber);
+        // console.log(resp.data.data.pageNumber);
         setLoading(false);
         if (resp.status === 200) {
           setTalents(resp.data.data.users);
@@ -74,7 +74,7 @@ function Listing() {
 
   return (
     <div>
-      {console.log(isEmptyObject(talents))}
+      {/* {console.log(isEmptyObject(talents))} */}
 
       {isEmptyObject(talents) == false ? (
         <div>
