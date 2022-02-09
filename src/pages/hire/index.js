@@ -310,7 +310,7 @@ const Hire = () => {
               </div>
             </div>
           </div>
-          <Mode />
+          <Mode  text={"Make your dream job your real job  Learn in-demand tech skills with us and become globally sought-after in the digital space."} button_1={"Learn with us"} button_2={"Chat with us"}/>
           <Footer />
         </div>
     

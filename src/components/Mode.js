@@ -9,7 +9,7 @@ const Linkedn = () => (
   </a>
 )
 
-const Mode = () => {
+const Mode = ({text,button_1, button_2}) => {
   return(
     <div className="mode">
       <div className="landing__discount">
@@ -19,12 +19,12 @@ const Mode = () => {
           </div>
           <div className="landing__discount--text">
             <h3>Ready to fill your vacant position?</h3>
-            <p>Explore diverse tech talents of your choice with genuine skillsets and good workplace ethics.</p>
+            <p>{text}</p>
             <div className="landing__btn--2">
               <a>
                 <div className="nav__btn nav__btn-flex">
-                  <a href="/hire"><div className="nav__btn--text" style={{marginRight:'20px'}}>Start Hiring</div></a>
-                  <a href="/hire/contact" ><div className="nav__btn--text1">Contact us</div></a>
+                  <a href="/hire"><div className="nav__btn--text" style={{marginRight:'20px'}}>{button_1}</div></a>
+                  <a href="/hire/contact" ><div className="nav__btn--text1">{button_2}</div></a>
                 </div>
               </a>
             </div>
