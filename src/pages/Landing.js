@@ -593,8 +593,8 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      <Mode page={"home"} title={"Ready to fill your vacant position?"} text={"Explore diverse tech talents of your choice with genuine skillsets and good workplace ethics."} button_1={"Hire from us"} button_2={"Contact us"}/>
 
-      <Mode />
       <Footer />
     </div>
   );

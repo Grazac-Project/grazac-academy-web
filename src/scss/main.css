@@ -5113,8 +5113,8 @@ input:focus, select:focus, textarea:focus {
   margin: 10px 0 20px;
   font-size: 15px !important;
   border-radius: 30px;
-  padding: 0 15px;
-  width: 50px;
+  padding: 0 19px;
+  width: 10rem;
 }
 
 .hire_profile-main-bio-image1 {
