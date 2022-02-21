@@ -30,11 +30,7 @@ const Hire = () => {
   const [talents, setTalents] = useState([]);
   const [index, setIndex] = useState(0);
 
-
   useEffect(() => {
-
-    
-
     document.title = "Hire - Grazac Academy";
     // window.scrollTo(0, 0);
     getAllTalents(1)
@@ -313,15 +309,20 @@ const Hire = () => {
               </div>
             </div>
           </div>
-          <Mode page={"hire"} title={"Make your dream job your real job"} text={"Learn in-demand tech skills with us and become globally sought-after in the digital space."} button_1={"Learn with us"} button_2={"Chat with us"}/>
+          <Mode
+            page={"hire"}
+            title={"Make your dream job your real job"}
+            text={
+              "Learn in-demand tech skills with us and become globally sought-after in the digital space."
+            }
+            button_1={"Learn with us"}
+            button_2={"Chat with us"}
+          />
           <Footer />
         </div>
-    
-      )
-      :
-      <Loader />
-    
-    }
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
