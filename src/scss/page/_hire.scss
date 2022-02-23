@@ -115,6 +115,13 @@
     &_why{
         box-sizing: border-box;
 
+        &-img{
+            width:55rem;
+            height:63rem;
+            object-fit: cover;
+            margin-top: 6rem;
+        }
+
         &-content{
             h2{
                 font-size: 3em;
@@ -193,7 +200,7 @@
                         text-transform: uppercase;
                         color: white;
                         width: 150px;
-                        background: $color-inspiring-purple;
+                        background: $color-creative-yellow;
                         padding: 10px 25px 1px;
                         font-weight: 600;
                         margin: 0 auto 20px;
@@ -313,7 +320,7 @@
                 &-available{
                     text-transform: uppercase;
                     color: white;
-                    background: $color-inspiring-purple;
+                    background:$color-creative-yellow;
                     padding: 7px 25px 5px;
                     font-weight: 600;
                     height: 23px;
@@ -416,7 +423,7 @@
                     .available{
                         text-transform: uppercase;
                         color: white;
-                        background: $color-inspiring-purple;
+                        background: $color-creative-yellow;
                         font-weight: 600;
                         margin: 10px 0 20px;
                         font-size: 15px !important;

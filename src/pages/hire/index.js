@@ -11,7 +11,9 @@ import Sponsor2 from "../../images/svg/AWS.svg";
 import Sponsor3 from "../../images/svg/Flutterwave.svg";
 import Sponsor5 from "../../images/svg/Microsoft.svg";
 import Sponsor6 from "../../images/svg/Google.svg";
-import whyHire from "../../images/why-hire.png";
+// import whyHire from "../../images/why-hire.png";
+import whyHire from "../../images/why_hire_2.jpg";
+
 import man from "../../images/man.jpg";
 import my_love from "../../images/my_love.png";
 import kamala from "../../images/kamala.jpg";
@@ -229,7 +231,7 @@ const Hire = () => {
               <Container>
                 <Row>
                   <Col md={6}>
-                    <img src={whyHire} alt="why-hire" />
+                    <img src={whyHire} alt="why-hire" className="hire_why-img" />
                   </Col>
                   <Col md={6}>
                     <div className="hire_why-content">

@@ -31,41 +31,37 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
             <div className="landing__btn--2">
               <a>
                 <div className="nav__btn nav__btn-flex">
-                 
                   {page == "hire" ? (
                     <>
-                     <a href="/">
-                     <div
-                       className="nav__btn--text"
-                       style={{ marginRight: "20px" }}
-                     >
-                       {button_1}
-                     </div>
-                   </a>
+                      <a href="/">
+                        <div
+                          className="nav__btn--text"
+                          style={{ marginRight: "20px" }}
+                        >
+                          {button_1}
+                        </div>
+                      </a>
 
-                    <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">
-                      <div className="nav__btn--text1">{button_2}</div>
-                    </a>
+                      <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">
+                        <div className="nav__btn--text1">{button_2}</div>
+                      </a>
                     </>
                   ) : (
-
                     <>
-                        <a href="/hire">
-                     <div
-                       className="nav__btn--text"
-                       style={{ marginRight: "20px" }}
-                     >
-                       {button_1}
-                     </div>
-                   </a>
+                      <a href="/hire">
+                        <div
+                          className="nav__btn--text"
+                          style={{ marginRight: "20px" }}
+                        >
+                          {button_1}
+                        </div>
+                      </a>
 
-                   <a href="/hire/contact ">
-                      <div className="nav__btn--text1">{button_2}</div>
-                    </a>
+                      <a href="/hire/contact ">
+                        <div className="nav__btn--text1">{button_2}</div>
+                      </a>
                     </>
-                   
                   )}
-                  
                 </div>
               </a>
             </div>
