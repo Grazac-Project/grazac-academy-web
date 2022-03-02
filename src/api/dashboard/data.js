@@ -1,4 +1,4 @@
-import { APIKit } from './apikit';
+import { APIKit, AdminApiKit } from './apikit';
 
 let token = '';
 let userId = 0;
@@ -6,6 +6,7 @@ try {
     let details = sessionStorage.getItem('user_details');
     token = JSON.parse(details).token;
     userId = JSON.parse(details).id;
+    console.log(userId)
     console.log(token)
 } catch (err) {
     //err
@@ -19,6 +20,8 @@ export const submitDetails = (data, id) => {
     })
 }
 
+
+
 export const getDetails = () => {
     return APIKit.get(`/admin/fetchData/${userId}`, {
         headers: {
@@ -27,6 +30,19 @@ export const getDetails = () => {
     })
 }
 
+
+export const getDetailsB = () => {
+    return AdminApiKit.get(`/fetchDataB/${userId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+
+
+
+
 export const getGuarantor = () => {
     return APIKit.get(`/user/fetchGuarantorData?user_id=${userId}`, {
         headers: {
@@ -34,6 +50,24 @@ export const getGuarantor = () => {
         }
     })
 }
+
+
+export const editGuarantor = (data, guaID) => {
+    console.log(guaID)
+    console.log(guaID)
+    console.log(guaID)
+    console.log(guaID)
+    console.log(guaID)
+    console.log(guaID)
+    console.log(guaID)
+    console.log(data[0]['firstname'])
+    return AdminApiKit.post(`/user/edit-gurantor/${guaID}`, {data}, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
 
 export const addPlan = (planData) => {
     return APIKit.put(`/user/paymentPlan?id=${userId}`, planData, {

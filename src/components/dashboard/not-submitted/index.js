@@ -12,6 +12,8 @@ import termsandconds from "../../../content/TermsandCondition.pdf";
 function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
     const [active, setActive] = useState("welcome");
     const [formActive, setFormActive] = useState("");
+        // const [formActive, setFormActive] = useState("education");
+
     const [userId, setUserId] = useState(0);
     const [checkAct, setCheckAct] = useState(false);
     const [nigerianStates, setNigerianStates] = useState([]);
@@ -22,6 +24,9 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
         phone: `${phone}`,
         dob: "",
         gender: "",
+        maritalStatus:"",
+        haveKids:"",
+        ageRange:"",
         course: "",
         state: "",
         city: "",
@@ -87,6 +92,8 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
         if(check.checked){
             setActive("form");
             setFormActive("bio-data")
+
+
         } else {
             toast.warn("You need to accept the terms and conditions to proceed!")
         }
@@ -147,6 +154,8 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
             });
         
     }
+
+
 
     return (
         <div>
@@ -222,12 +231,47 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                                         <div className="dashboard-content-form-container">
                                             <label>Gender</label>
                                             <select name="gender" required value={bioData.gender} onChange={handleChange}>
-                                                <option>Select Gender</option>
+                                                <option>Select an option</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
 
                                             </select>
                                         </div>
+
+                                        <div className="dashboard-content-form-container">
+                                            <label>Marital Status</label>
+                                            <select name="maritalStatus" required value={bioData.maritalStatus} onChange={handleChange}>
+                                                <option>Select an option</option>
+                                                <option value="single">Single</option>
+                                                <option value="Married">Married</option>
+
+                                            </select>
+                                        </div>
+
+                                        {/* kid status */}
+                                        <div className="dashboard-content-form-container">
+                                            <label>Do you have Kids</label>
+                                            <select name="haveKids" required value={bioData.haveKids} onChange={handleChange}>
+                                                <option>Select an option</option>
+                                                <option value="yes">Yes</option>
+                                                <option value="No">No</option>
+
+                                            </select>
+                                        </div>
+                                        {/* age range */}
+                                        <div className="dashboard-content-form-container">
+                                            <label>What's Your Age Range?</label>
+                                            <select name="ageRange" required value={bioData.ageRange} onChange={handleChange}>
+                                                <option>Select an option</option>
+                                                <option value="18 - 24">18 - 24</option>
+                                                <option value="25 - 30">25 - 30</option>
+                                                <option value="31 - 35">31 - 35</option>
+                                                <option value="36 and above">36 and above</option>
+
+                                            </select>
+                                        </div>
+
+
                                         <div className="dashboard-content-form-container">
                                             <label>Preferred course at Grazac</label>
                                             <select name="course" required value={bioData.course} onChange={handleChange}>
@@ -251,8 +295,9 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                                             <label name="city" onChange={handleChange}>Current city and Location</label>
                                             <input type="text" required name="city" value={bioData.city} placeholder="Current City and Location" onChange={handleChange} />
                                         </div>
+                                        
                                         <div className="dashboard-content-form-container">
-                                            <label>Means of Identification (NIN/ Voter's Card)</label>
+                                            <label>Means of Identification (NIN / Voter's Card / Driver’s License / Green Passport)</label>
                                             <input type="file" required  name="id" onChange={handleImage}/>
                                             <p className="upload-text">{bioData.id ? `${bioData.id.name}` : "Upload means of identification (max 2MB file size)"}</p>
                                             <img src={upload} alt="upload" className="upload-img" />
@@ -310,7 +355,8 @@ function NotSubmitted ({fname, lname, phone, email, setNewStatus}) {
                                                 <option value="Service">Completed</option>
                                                 <option value="Exemption">Exemption</option>
                                                 <option value="Use period to learn">I will use my period of service to learn</option>
-                                                <option value="Other">Other</option>
+                                                <option value="nd_graduate">ND Graduate</option>
+                                                <option value="other">Other</option>
                                             </select>
                                         </div>
                                         <div className="dashboard-content-form-container">

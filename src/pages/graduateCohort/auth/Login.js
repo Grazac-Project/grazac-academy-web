@@ -64,11 +64,20 @@ function Login () {
                 }
             })
             .catch((err) => {
-                console.log(err.response);
-                console.log(err);
+
+                console.log(err.response)
+                console.log(err)
+
+
                 if(err.response.data.message){
+
+                    console.log(err.response.data.message)
+                    console.log(err.response.data)
+                    console.log(err.response)
+                    console.log(err)
                     toast.error(err.response.data.message);
                     btn.innerHTML=`Sign in`;
+
                 } else{
                     toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
                     btn.innerHTML=`Sign in`;

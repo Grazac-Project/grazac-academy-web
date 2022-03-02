@@ -11,6 +11,16 @@ export const APIKit = axios.create({
     }
 });
 
+export const AdminApiKit = axios.create({
+    baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    timeout: 10000, // timeout can be increased
+    headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+    }
+});
+
+
 export const forHire = axios.create({
     baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
     timeout: 10000, // timeout can be increased
