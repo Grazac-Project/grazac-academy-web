@@ -229,6 +229,7 @@ function Dashboard() {
     data.append("user_id", userId);
 
     if (whichForm === "guarantor1") {
+
       submitGuarantor(data)
         .then((response) => response.data)
         .then((res) => {
@@ -293,6 +294,7 @@ function Dashboard() {
         });
     }
   };
+
   // FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X
   const config = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
@@ -370,8 +372,11 @@ function Dashboard() {
         </div>
         {sidebarClick === "dashboard" && (
           <div className="dashboard-content">
+            {console.log(details)}
             {status === "Not Submitted" && (
+              
               <NotSubmitted
+              userDetails={details}
                 fname={details.firstName}
                 lname={details.lastName}
                 email={details.email}
@@ -729,6 +734,9 @@ function Dashboard() {
                             Proceed
                           </button>
                         </form>
+
+
+
                       </div>
                     ) : (
                       <div className="dashboard-content-form">

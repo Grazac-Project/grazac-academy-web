@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
 import { Container, Row, Col } from "react-bootstrap";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 import Adedamola from "../images/testimonial/adedamola.jpeg";
@@ -56,8 +56,7 @@ const Landing = () => {
     landingHeight.style.marginTop = `70px`;
 
     window.addEventListener("load", () => {
-    
-      setShow(false)
+      setShow(false);
     });
   }, []);
 
@@ -76,16 +75,18 @@ const Landing = () => {
   };
 
   const scrolLeft = () => {
-    document.getElementById('scrolltainer').scrollLeft -= 200;
-  }
-  
+    document.getElementById("scrolltainer").scrollLeft -= 200;
+  };
+
   const scrolRight = () => {
-    document.getElementById('scrolltainer').scrollLeft += 200;
-  }
+    document.getElementById("scrolltainer").scrollLeft += 200;
+  };
 
   const showToast = () => {
-    toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022.')
-  }
+    toast.info(
+      "Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022."
+    );
+  };
 
   return (
     <div className="landing">
@@ -95,7 +96,8 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Application into Cohort (012) begins March, 2022. Class commences by June, 2022
+              Application into Cohort (012) begins March, 2022. Class commences
+              by June, 2022
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -117,7 +119,7 @@ const Landing = () => {
       )}
       <div className="landing__header">
         <Navbar top={true} />
-        <img src={Object} className="bg-img" alt="ccc" />
+        {/* <img src={Object} className="bg-img" alt="ccc" /> */}
         <div style={{ height: 10 }}></div>
 
         <div className="landing__text">
@@ -125,17 +127,30 @@ const Landing = () => {
             Upskilling You For The <span>Future</span> Of Work
           </h1>
           <p>
-            Learn valuable technology skills with our wide range of courses <br className="hide-at-600"/> and land your dream job.{" "}
+            Learn valuable technology skills with our wide range of courses{" "}
+            <br className="hide-at-600" /> and land your dream job.{" "}
           </p>
         </div>
-        <a onClick={showToast}> {/*href="/login" */}
+
+        {/* <a onClick={showToast}> */}
+        <Link to="/login">
+        
+          
+
           <div
             className="nav__btn"
-            style={{ width: "130px", margin: "auto", textAlign: "center" }}
+            style={{ width: "130px", margin: "auto", textAlign: "center"}}
           >
+            {/* <a href="/login" > */}
             <div className="nav__btn--text">Apply Now</div>
+            {/* <div className="nav__btn">Apply Now</div> */}
+         
           </div>
-        </a>
+         
+          </Link>
+             {/* </a> */}
+
+
         <div className="landing__text-below">
           <div>
             <img src={mark} alt="mark" />
@@ -171,16 +186,19 @@ const Landing = () => {
           <img src={Sponsor6} alt="sponsor" />
         </div>
       </div>
-      
-      <div>
-          <Container>
-            <div className="course_mode-intro course_mode-intro">
-                <h2 style={{ margin:"80px 0 30px"}} className="join_heading">Why Grazac Academy is the<br className="hide-at-600"/> best for you</h2>
-            </div>
-          </Container>
-        </div>
 
-      <div style={{boxSizing:'border-box', margin:'0 0 80px'}}>
+      <div>
+        <Container>
+          <div className="course_mode-intro course_mode-intro">
+            <h2 style={{ margin: "80px 0 30px" }} className="join_heading">
+              Why Grazac Academy is the
+              <br className="hide-at-600" /> best for you
+            </h2>
+          </div>
+        </Container>
+      </div>
+
+      <div style={{ boxSizing: "border-box", margin: "0 0 80px" }}>
         <Container>
           <Row>
             <Col md={6}>
@@ -189,7 +207,12 @@ const Landing = () => {
                   <img src={why1} alt="profile" />
                 </div>
                 <h4>Pay no tuition until you’re hired</h4>
-                <p className="hire_dev-grey">We make starting a career in tech accessible to anyone. You won’t be required to pay any tuition for your learning until you get a job. We match you with employers within 9-12 months of learning to land your dream job in tech.</p>
+                <p className="hire_dev-grey">
+                  We make starting a career in tech accessible to anyone. You
+                  won’t be required to pay any tuition for your learning until
+                  you get a job. We match you with employers within 9-12 months
+                  of learning to land your dream job in tech.
+                </p>
               </div>
             </Col>
             <Col md={6}>
@@ -198,7 +221,11 @@ const Landing = () => {
                   <img src={why2} alt="profile" />
                 </div>
                 <h4>1:1 access to mentorship and support</h4>
-                <p className="hire_dev-grey">You gain 24/7 access to a wide range of industry experts that will walk you through your career path and increase your visibility to potential employers.</p>
+                <p className="hire_dev-grey">
+                  You gain 24/7 access to a wide range of industry experts that
+                  will walk you through your career path and increase your
+                  visibility to potential employers.
+                </p>
               </div>
             </Col>
           </Row>
@@ -209,7 +236,11 @@ const Landing = () => {
                   <img src={why3} alt="profile" />
                 </div>
                 <h4>Recognized Certification</h4>
-                <p className="hire_dev-grey">You get a recognized certificate that serves as a proof that you are skilled enough to work in any organization in or outside Nigeria.</p>
+                <p className="hire_dev-grey">
+                  You get a recognized certificate that serves as a proof that
+                  you are skilled enough to work in any organization in or
+                  outside Nigeria.
+                </p>
               </div>
             </Col>
             <Col md={6}>
@@ -218,7 +249,11 @@ const Landing = () => {
                   <img src={why4} alt="profile" />
                 </div>
                 <h4>2-months Compulsory Internship</h4>
-                <p className="hire_dev-grey">Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve related problems so you can build your portfolio for at least 2-months.</p>
+                <p className="hire_dev-grey">
+                  Get real workplace experience. You stand a chance to work with
+                  amazing teams on real-life projects to solve related problems
+                  so you can build your portfolio for at least 2-months.
+                </p>
               </div>
             </Col>
           </Row>
@@ -228,11 +263,14 @@ const Landing = () => {
       <div className="landing__intern">
         <div className="landing__intern--content">
           <div className="landing__bottom--text">
-              <h2>Available Courses</h2>         
+            <h2>Available Courses</h2>
           </div>
           <div className="landing__slider-text1">
-            <p>Learn any of these tech courses today for free and pay back when you are hired.</p>   
-          </div> 
+            <p>
+              Learn any of these tech courses today for free and pay back when
+              you are hired.
+            </p>
+          </div>
           <div className="gga_container">
             <Link
               to={`/course-detail-graduate?course=product-designing-ui-ux`}
@@ -246,11 +284,17 @@ const Landing = () => {
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>
                     Product Design (UI/UX)
                   </h4>
-                  <p>User interface design or user interface engineering is the design of user interfaces for machines and software, such as computers, home appliances, mobile devices, and other electronic devices, with the focus on maximizing usability and the user experience.</p>
+                  <p>
+                    User interface design or user interface engineering is the
+                    design of user interfaces for machines and software, such as
+                    computers, home appliances, mobile devices, and other
+                    electronic devices, with the focus on maximizing usability
+                    and the user experience.
+                  </p>
                   <Link
                     to={`/course-detail-graduate?course=product-designing-ui-ux`}
                   >
-                  Learn More
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -265,13 +309,18 @@ const Landing = () => {
                 </div>
                 <div className="gua_cardview-text">
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                  Front-End Development
+                    Front-End Development
                   </h4>
-                  <p>Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application so that a user can see and interact with them directly.</p>
+                  <p>
+                    Front-end web development, also known as client-side
+                    development is the practice of producing HTML, CSS and
+                    JavaScript for a website or Web Application so that a user
+                    can see and interact with them directly.
+                  </p>
                   <Link
                     to={`/course-detail-graduate?course=frontend-web-development`}
                   >
-                  Learn More
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -286,13 +335,18 @@ const Landing = () => {
                 </div>
                 <div className="gua_cardview-text">
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                  Back-End Development
+                    Back-End Development
                   </h4>
-                  <p>Node.js is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news feeds and web push notifications.</p>
+                  <p>
+                    Node.js is useful for developing applications that require a
+                    persistent connection from the browser to the server and is
+                    often used for real-time applications such as chat, news
+                    feeds and web push notifications.
+                  </p>
                   <Link
                     to={`/course-detail-graduate?course=backend-web-development`}
                   >
-                  Learn More
+                    Learn More
                   </Link>
                 </div>
               </div>
@@ -307,35 +361,45 @@ const Landing = () => {
                 </div>
                 <div className="gua_cardview-text">
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                  Mobile App Developement
+                    Mobile App Developement
                   </h4>
-                  <p>Flutter is an incredible user interface (UI) toolkit that lets you build apps for iOS and Android — and even the web and desktop platforms like macOS, Windows and Linux — all from a single codebase.</p>
+                  <p>
+                    Flutter is an incredible user interface (UI) toolkit that
+                    lets you build apps for iOS and Android — and even the web
+                    and desktop platforms like macOS, Windows and Linux — all
+                    from a single codebase.
+                  </p>
                   <Link
                     to={`/course-detail-graduate?course=mobile-application-development`}
                   >
-                  Learn More
+                    Learn More
                   </Link>
                 </div>
               </div>
             </Link>
           </div>
-            {/* <Link to="/login"> */}
-            <div
-                className="nav__btn"
-                style={{ width: "130px", margin: "auto", textAlign: "center" }}
-                onClick={showToast}
-            >
-                <div className="nav__btn--text">Apply Now</div>
-            </div>
-            {/* </Link> */}
+          <Link to="/login">
+          <div
+            className="nav__btn"
+            style={{ width: "130px", margin: "auto", textAlign: "center" }}
+            // onClick={showToast}
+          >
+            <div className="nav__btn--text">Apply Now</div>
+          </div>
+          </Link>
         </div>
       </div>
 
-
       <div className="landing__discover">
         <div className="landing__bottom--text1">
-            <h1>How the Admission <br className="hide-at-600"/>Process Works</h1>
-            <p>Understand our admission process <br className="hide-at-600"/>in 3 easy steps</p>
+          <h1>
+            How the Admission <br className="hide-at-600" />
+            Process Works
+          </h1>
+          <p>
+            Understand our admission process <br className="hide-at-600" />
+            in 3 easy steps
+          </p>
         </div>
         <div className="landing__discover--container">
           <div className="landing__discover--images">
@@ -354,7 +418,8 @@ const Landing = () => {
               <div>
                 <h3>Fill and submit the application form</h3>
                 <p>
-                Create an account to start your application. Login to your dashboard and fill in your correct details. 
+                  Create an account to start your application. Login to your
+                  dashboard and fill in your correct details.
                 </p>
               </div>
             </div>
@@ -364,7 +429,9 @@ const Landing = () => {
               <div>
                 <h3>Pass the assessment tests</h3>
                 <p>
-                If your application is successful, you will be contacted via mail to take a physical assessment test to ensure your commitment meets our standard.
+                  If your application is successful, you will be contacted via
+                  mail to take a physical assessment test to ensure your
+                  commitment meets our standard.
                 </p>
               </div>
             </div>
@@ -374,98 +441,168 @@ const Landing = () => {
               <div>
                 <h3>Complete the process and begin your journey into Tech</h3>
                 <p>
-                Once you pass the assessment test, you are eligible for admission. You will receive a mail on how to complete your admission process. 
+                  Once you pass the assessment test, you are eligible for
+                  admission. You will receive a mail on how to complete your
+                  admission process.
                 </p>
               </div>
             </div>
             <div className="landing__discover--list-item"></div>
             <div className="landing__discover--list-item"></div>
-            {/* <Link to="/login"> */}
-            <div
-                className="nav__btn one-btn"
-                onClick={showToast}
-            >
-                <div className="nav__btn--text">Apply Now</div>
+            <Link to="/login">
+            {/* <div className="nav__btn one-btn" onClick={showToast}> */}
+            <div className="nav__btn one-btn" >
+              <div className="nav__btn--text">Apply Now</div>
             </div>
-            
-            {/* </Link> */}
+
+            </Link>
           </div>
         </div>
       </div>
 
       <div>
-          <div className="landing__bottom--text">
-              <h2>Testimonials</h2>         
-          </div>
-          <div className="landing__slider-text1">
-            <p>The success stories, testimonials and reviews from our students are exceptional. These are our students that put in deliberate efforts and have been intentional and consistent in implementing what they learnt from the course.</p>   
-          </div>
-          <div className="landing__slider-contain">
-            <div className="landing__slider--container" id="scrolltainer" >
-              <img src={scroll} alt="scroll" className="scroll-left" onClick={scrolLeft} />
-              <img src={scroll} alt="scroll" className="scroll-right" onClick={scrolRight} />
-              <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/ht8l30MozEM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/ck-f8UD8RqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/IG5cs69PmBo" title="YouTube video player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div>
-                <iframe className="video-width" src="https://www.youtube.com/embed/l5FVImbxdqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div className="video-width">
-                <iframe className="video-width" src="https://www.youtube.com/embed/6_ILohsUndE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div>
-                <iframe className="video-width" src="https://www.youtube.com/embed/M8mStqg17cQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
+        <div className="landing__bottom--text">
+          <h2>Testimonials</h2>
+        </div>
+        <div className="landing__slider-text1">
+          <p>
+            The success stories, testimonials and reviews from our students are
+            exceptional. These are our students that put in deliberate efforts
+            and have been intentional and consistent in implementing what they
+            learnt from the course.
+          </p>
+        </div>
+        <div className="landing__slider-contain">
+          <div className="landing__slider--container" id="scrolltainer">
+            <img
+              src={scroll}
+              alt="scroll"
+              className="scroll-left"
+              onClick={scrolLeft}
+            />
+            <img
+              src={scroll}
+              alt="scroll"
+              className="scroll-right"
+              onClick={scrolRight}
+            />
+            <div className="video-width">
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/ht8l30MozEM"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div className="video-width">
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/ck-f8UD8RqU"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div className="video-width">
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/IG5cs69PmBo"
+                title="YouTube video player"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div>
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/l5FVImbxdqw"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div className="video-width">
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/6_ILohsUndE"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div>
+              <iframe
+                className="video-width"
+                src="https://www.youtube.com/embed/M8mStqg17cQ"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
+        </div>
       </div>
 
       <div>
-          <div className="course_mode-intro course_mode-intro" style={{textAlign:'center'}}>
-              <h2 className="join_heading" style={{ marginTop:"80px"}}>Gallery</h2>
-              <p className="join_needed">Images of our students that put in deliberate efforts and have been intentional and consistent in implementing <br className="hide-at-600"/>what they learnt from the course.</p>
-          </div>
-          <Container>
-            <div className="join_gallery">
-              <div className="join_gallery-top">
-                <div className="join_gallery-top-left" >
-                  <img src={grad1} />
-                </div>
-                <div className="join_gallery-top-right" >
-                  <img src={grad4} />
-                </div>
+        <div
+          className="course_mode-intro course_mode-intro"
+          style={{ textAlign: "center" }}
+        >
+          <h2 className="join_heading" style={{ marginTop: "80px" }}>
+            Gallery
+          </h2>
+          <p className="join_needed">
+            Images of our students that put in deliberate efforts and have been
+            intentional and consistent in implementing{" "}
+            <br className="hide-at-600" />
+            what they learnt from the course.
+          </p>
+        </div>
+        <Container>
+          <div className="join_gallery">
+            <div className="join_gallery-top">
+              <div className="join_gallery-top-left">
+                <img src={grad1} />
               </div>
-              <div className="join_gallery-bottom">
-                <div className="join_gallery-bottom-left" >
-                  <img src={grad2} />
-                </div>
-                <div className="join_gallery-bottom-right" >
-                  <img src={grad3} />
-                </div>
+              <div className="join_gallery-top-right">
+                <img src={grad4} />
               </div>
             </div>
-          </Container>
+            <div className="join_gallery-bottom">
+              <div className="join_gallery-bottom-left">
+                <img src={grad2} />
+              </div>
+              <div className="join_gallery-bottom-right">
+                <img src={grad3} />
+              </div>
+            </div>
+          </div>
+        </Container>
       </div>
 
       <div className="landing__bottom" style={{ paddingBottom: 0 }}>
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
-            <h1>Discover Top Tech <br/>Talent Here</h1>
+            <h1>
+              Discover Top Tech <br />
+              Talent Here
+            </h1>
             <p>
-            Find experienced fresh tech talents and professionals with authentic background that match your requirements.
+              Find experienced fresh tech talents and professionals with
+              authentic background that match your requirements.
             </p>
             <div className="landing__btn--2">
               <Link to="/hire">
                 <div className="nav__btn nav__btn-flex ">
-                  <a className="nav__btn--text">
-                    Hire our  Talents
-                  </a>
+                  <a className="nav__btn--text">Hire our Talents</a>
                 </div>
               </Link>
             </div>
@@ -494,7 +631,9 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        Visit www.grazacacademy.com and click the “apply now” button to create an account. Login to your dashboard to complete your application.
+                        Visit www.grazacacademy.com and click the “apply now”
+                        button to create an account. Login to your dashboard to
+                        complete your application.
                       </p>
                     </div>
                   </Card.Body>
@@ -511,7 +650,12 @@ const Landing = () => {
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
                     <div className="landing_faq-answer">
-                      <p>Once you have successfully registered, an email will be sent to you detailing the next steps of the registration process. Ensure that you provide a valid email address and keep an eye on your inbox.</p>
+                      <p>
+                        Once you have successfully registered, an email will be
+                        sent to you detailing the next steps of the registration
+                        process. Ensure that you provide a valid email address
+                        and keep an eye on your inbox.
+                      </p>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -528,7 +672,8 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                      No. Registration can be done online but applicants have to be physically present to write the assessment test.
+                        No. Registration can be done online but applicants have
+                        to be physically present to write the assessment test.
                       </p>
                     </div>
                   </Card.Body>
@@ -538,7 +683,10 @@ const Landing = () => {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="3">
                   <div className="landing_faq-question" onClick={handleFaq}>
-                    <h4>Do I need to have any previous experience or knowledge before coming to learn?</h4>
+                    <h4>
+                      Do I need to have any previous experience or knowledge
+                      before coming to learn?
+                    </h4>
                     <MdKeyboardArrowDown size="2rem" color="black" />
                   </div>
                 </Accordion.Toggle>
@@ -546,7 +694,9 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                      Not at all. All our courses are designed to help people from any educational background and experience level, achieve a successful career in tech.
+                        Not at all. All our courses are designed to help people
+                        from any educational background and experience level,
+                        achieve a successful career in tech.
                       </p>
                     </div>
                   </Card.Body>
@@ -564,7 +714,8 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                      Classes are 100% physical and this is to ensure students get maximum support and mentorship from their tutors.
+                        Classes are 100% physical and this is to ensure students
+                        get maximum support and mentorship from their tutors.
                       </p>
                     </div>
                   </Card.Body>
@@ -582,18 +733,29 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                      The program runs for at least 5 months (3 months of immersive training and 2 months internship)
+                        The program runs for at least 5 months (3 months of
+                        immersive training and 2 months internship)
                       </p>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
-              <Link to="/faq" className="link-view"><h5>View All</h5></Link>
+              <Link to="/faq" className="link-view">
+                <h5>View All</h5>
+              </Link>
             </Accordion>
           </div>
         </div>
       </div>
-      <Mode page={"home"} title={"Ready to fill your vacant position?"} text={"Explore diverse tech talents of your choice with genuine skillsets and good workplace ethics."} button_1={"Hire from us"} button_2={"Contact us"}/>
+      <Mode
+        page={"home"}
+        title={"Ready to fill your vacant position?"}
+        text={
+          "Explore diverse tech talents of your choice with genuine skillsets and good workplace ethics."
+        }
+        button_1={"Hire from us"}
+        button_2={"Contact us"}
+      />
 
       <Footer />
     </div>

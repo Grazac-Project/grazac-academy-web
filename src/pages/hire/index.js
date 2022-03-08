@@ -229,7 +229,7 @@ const Hire = () => {
 
             <div className="hire_why">
               <Container>
-                <Row>
+                <Row> 
                   <Col md={6}>
                     <img src={whyHire} alt="why-hire" className="hire_why-img" />
                   </Col>

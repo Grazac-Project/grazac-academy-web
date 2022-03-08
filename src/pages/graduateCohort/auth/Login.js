@@ -67,6 +67,7 @@ function Login () {
 
                 console.log(err.response)
                 console.log(err)
+                toast.error(err.response.data.message);
 
 
                 if(err.response.data.message){
@@ -122,8 +123,8 @@ function Login () {
                             </div>
                             <button type="submit" id="actionBtn">Sign in</button>
                             <p><Link to="/forgot-password"><span>Forgot your password?</span></Link></p>
-                            {/* <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p> */}
-                            <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p>
+                            <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
+                            {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
                         </form>
                     </div>
                 </div>

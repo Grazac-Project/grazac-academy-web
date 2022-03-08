@@ -5,50 +5,174 @@ import {
   getGuarantor,
   getDetailsB,
   editGuarantor,
+  submitGuarantor,
 } from "../../api/dashboard/data";
-
+import loader from "../../images/svg/dashboard/loader.gif";
+// "src\images\svg\dashboard\loader.gif"
 import axios from "axios";
+// import Loader from "../Loader";
 
 function Details() {
+  const [isLoading, setIsLoading] = useState(false);
   const [clicked, setClicked] = useState("bio");
   const [userDetails, setUserDetails] = useState({});
-  const [guarantorDetails, setGuarantorDetails] = useState([]);
-  const [guarantorId, setGuarantorId] = useState(0);
-  const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
-  //   const userImage = "";
-  // console.log(userDetails)
+  const [guarantorDetails_1, setGuarantorDetails_1] = useState([]);
+  const [guarantorDetails_2, setGuarantorDetails_2] = useState([]);
 
-  const handleChange = (e) => {
-    let guarantorData = [...guarantorDetails][0];
+  const [guarantorId_1, setGuarantorId_1] = useState(0);
+  const [guarantorId_2, setGuarantorId_2] = useState(0);
+
+  const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
+
+  const handleChange_1 = (e) => {
+    console.log(guarantorDetails_1[0]);
+
+    let guarantorData = [...guarantorDetails_1][0];
     guarantorData[e.target.name] = e.target.value;
-    // console.log(guarantoraData);
-    setGuarantorDetails([guarantorData]);
+
+    setGuarantorDetails_1([guarantorData]);
+    setGuarantorId_1(guarantorDetails_1[0].id);
+
+    console.log(guarantorData, guarantorId_1,guarantorDetails_1[0].id);
   };
 
-  const SubmitGuarantorChange = () => {
+
+  const handleChange_2 = (e) => {
+    console.log(guarantorDetails_2[0]);
+
+    let guarantorData = [...guarantorDetails_2][0];
+    guarantorData[e.target.name] = e.target.value;
+
+    setGuarantorDetails_2([guarantorData]);
+    // setGuarantorId_1(guarantorDetails_1[0]?.id);
+    setGuarantorId_2(guarantorDetails_2[0].id); 
+    console.log(guarantorDetails_2[0].id)
+
+    console.log(guarantorData, guarantorId_2);
+  };
+
+
+
+  const SubmitGuarantorChange_1 = (e) => {
+    e.preventDefault();
+
+    const data = guarantorDetails_1;
+    console.log(data);
+    const final_data = [];
+    const new_data_1 = {};
+
+    for (let index = 0; index < data.length; index++) {
+      new_data_1["firstname"] = data[0]["firstname"];
+      new_data_1["lastname"] = data[0]["lastname"];
+      new_data_1["email"] = data[0]["email"];
+      new_data_1["phone_number"] = data[0]["phone_number"];
+      new_data_1["gender"] = data[0]["gender"];
+      new_data_1["office_address"] = data[0]["office_address"];
+      new_data_1["home_address"] = data[0]["home_address"];
+      new_data_1["profession"] = data[0]["profession"];
+      new_data_1["name_of_organization"] = data[0]["name_of_organization"];
+      new_data_1["name_of_employer"] = data[0]["name_of_employer"];
+      new_data_1["email_address_of_employer"] =
+        data[0]["email_address_of_employer"];
+      new_data_1["phone_number_of_employer"] =
+        data[0]["phone_number_of_employer"];
+      new_data_1["relationship_with_the_guarantor"] =
+        data[0]["relationship_with_the_guarantor"];
+      new_data_1["user_id"] = data[0]["user_id"];
+      console.log("end");
+    }
+
+    console.log(new_data_1);
+    console.log(guarantorId_1)
+
     axios
-      .post(
-        `https://admin-api.grazacacademy.com/api/v1/user/edit-gurantor/${guarantorId}`,
-        { guarantorDetails }
+      .put(
+        `https://api.grazacacademy.com/api/v1/user/edit-gurantor/${guarantorId_1}`,
+        new_data_1
       )
       .then(function (response) {
+        console.log(guarantorId_1)
         console.log(response);
+        toast.success("saved successfully");
       })
       .catch((res) => {
         console.log(res.data);
       });
 
-    console.log(guarantorDetails);
-
-    editGuarantor(guarantorDetails, guarantorId).then((res) =>
-      console.log(res.data)
-    );
+    // editGuarantor(final_data, guaID)
+    // .then((res) =>{
+    //   console.log(res)
+    //   toast.success(res.data)}
+    // )
+    // .catch((res) => {
+    //   toast.error(res.response)
+    //   console.log(res)
+    // })
   };
+
+  const SubmitGuarantorChange_2 = (e) => {
+    e.preventDefault();
+
+    const data = guarantorDetails_2;
+    const new_data_1 = {};
+
+    for (let index = 0; index < data.length; index++) {
+      new_data_1["firstname"] = data[0]["firstname"];
+      new_data_1["lastname"] = data[0]["lastname"];
+      new_data_1["email"] = data[0]["email"];
+      new_data_1["phone_number"] = data[0]["phone_number"];
+      new_data_1["gender"] = data[0]["gender"];
+      new_data_1["office_address"] = data[0]["office_address"];
+      new_data_1["home_address"] = data[0]["home_address"];
+      new_data_1["profession"] = data[0]["profession"];
+      new_data_1["name_of_organization"] = data[0]["name_of_organization"];
+      new_data_1["name_of_employer"] = data[0]["name_of_employer"];
+      new_data_1["email_address_of_employer"] =
+        data[0]["email_address_of_employer"];
+      new_data_1["phone_number_of_employer"] =
+        data[0]["phone_number_of_employer"];
+      new_data_1["relationship_with_the_guarantor"] =
+        data[0]["relationship_with_the_guarantor"];
+      new_data_1["user_id"] = data[0]["user_id"];
+      console.log("end");
+    }
+    console.log(new_data_1);
+    console.log(guarantorId_2)
+    setIsLoading(true)
+    axios
+      .put(
+        `https://api.grazacacademy.com/api/v1/user/edit-gurantor/${guarantorId_2}`,
+        new_data_1
+      )
+      .then(function (response) {
+        console.log(response);
+        toast.success("saving");
+        setTimeout(()=>{toast.success("saved Successfully")} ,5000)
+        toast.success("saved Successfully");
+        setIsLoading(false)
+      })
+      .catch((res) => {
+        console.log(res.data);
+      });
+
+    // editGuarantor(final_data, guaID)
+    // .then((res) =>{
+    //   console.log(res)
+    //   toast.success(res.data)}
+    // )
+    // .catch((res) => {
+    //   toast.error(res.response)
+    //   console.log(res)
+    // })
+  };
+
   useEffect(() => {
     getDetailsB()
       //   .then((res) => console.log(res.data['data']['results'][0]))
       .then((res) => {
+        setIsLoading(true);
         setUserDetails(res.data["data"]["results"][0]);
+        setIsLoading(false);
         // console.log(userDetails)
         // console.log(res.data['data']['results'][0])
       })
@@ -66,10 +190,11 @@ function Details() {
     getGuarantor()
       .then((response) => response.data)
       .then((res) => {
-        setGuarantorDetails(res.data);
-        // console.log()
-        setGuarantorId(res.data[0]["id"]);
-        // console.log(guarantorDetails)
+        setGuarantorDetails_1([res.data[0]]);
+        setGuarantorDetails_2([res.data[1]]);
+        // console.log(res.data);
+        // setGuarantorId(res.data[0]["id"]);
+        // console.log(guarantorDetails);
       })
       .catch((err) => {
         console.log(err);
@@ -81,10 +206,12 @@ function Details() {
           );
         }
       });
-  }, []);
+  }, [true]);
 
   return (
     <div className="dashboard-content">
+      {/* {console.log(isLoading)} */}
+      {isLoading ? <img src={loader} alt="" /> : <div></div>}
       <ToastContainer />
       <h3 style={{ marginLeft: "20px", marginBottom: "20px" }}>Details</h3>
       <div className="det-btn-container">
@@ -110,7 +237,7 @@ function Details() {
             Educational Background
           </button>
 
-          {userDetails.payment_plan !== "pay as you earn" && (
+          {userDetails.payment_plan === "pay as you earn" && (
             <button
               className={
                 clicked === "gua"
@@ -236,304 +363,324 @@ function Details() {
       )}
       {clicked === "gua" && (
         <div className="dashboard-content-form">
-          <form onSubmit={SubmitGuarantorChange()}>
+          <form
+            onSubmit={(e) => {
+              SubmitGuarantorChange_1(e);
+              setGuarantorId_1(guarantorDetails_1[0]?.id);
+            }}
+          >
             <h4>Guarantor details 1</h4>
-            <div className="dashboard-content-form-container">
+            <div className="dashboard-content-form-container"
+            
+            id={guarantorDetails_1[0]?.id}
+            >
+
+              {console.log(guarantorDetails_1[0]?.id)}
+
               <h5>First Name</h5>
-              {/* <p>{guarantorDetails[0]?.firstname}</p> */}
+              {/* {console.log(guarantorId_1)} */}
+              {/* <p>{guarantorDetails_1[0]?.firstname}</p> */}
+              {/* {console.log(guarantorDetails_1[0]?.id)} */}
               <input
                 type="text"
                 name="firstname"
-                value={guarantorDetails[0]?.firstname}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.firstname}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Last Name</h5>
-              {/* <p>{guarantorDetails[0]?.lastname}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.lastname}</p> */}
               <input
                 type="text"
                 name="lastname"
-                value={guarantorDetails[0]?.lastname}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.lastname}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Email Address</h5>
-              {/* <p>{guarantorDetails[0]?.email}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.email}</p> */}
               <input
                 type="text"
                 name="email"
-                value={guarantorDetails[0]?.email}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.email}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Phone Number</h5>
-              {/* <p>{guarantorDetails[0]?.phone_number}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.phone_number}</p> */}
               <input
                 type="text"
                 name="phone_number"
-                value={guarantorDetails[0]?.phone_number}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.phone_number}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Gender</h5>
-              {/* <p>{guarantorDetails[0]?.gender}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.gender}</p> */}
               <input
                 type="text"
                 name="gender"
-                value={guarantorDetails[0]?.gender}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.gender}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Office Address</h5>
-              {/* <p>{guarantorDetails[0]?.office_address}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.office_address}</p> */}
               <input
                 type="text"
                 name="office_address"
-                value={guarantorDetails[0]?.office_address}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.office_address}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Home Address</h5>
-              {/* <p>{guarantorDetails[0]?.home_address}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.home_address}</p> */}
               <input
                 type="text"
                 name="home_address"
-                value={guarantorDetails[0]?.home_address}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.home_address}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Profession</h5>
-              {/* <p>{guarantorDetails[0]?.profession}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.profession}</p> */}
               <input
                 type="text"
                 name="profession"
-                value={guarantorDetails[0]?.profession}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.profession}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Name of Organization</h5>
-              {/* <p>{guarantorDetails[0]?.name_of_organization}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.name_of_organization}</p> */}
               <input
                 type="text"
                 name="name_of_organization"
-                value={guarantorDetails[0]?.name_of_organization}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.name_of_organization}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Relationship with guarantor</h5>
-              {/* <p>{guarantorDetails[0]?.name_of_employer}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.name_of_employer}</p> */}
               <input
                 type="text"
                 name="name_of_employer"
-                value={guarantorDetails[0]?.name_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.name_of_employer}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Email Address of Employer</h5>
-              {/* <p>{guarantorDetails[0]?.email_address_of_employer}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.email_address_of_employer}</p> */}
               <input
                 type="text"
                 name="email_address_of_employer"
-                value={guarantorDetails[0]?.email_address_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.email_address_of_employer}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Phone Number of Employer</h5>
-              {/* <p>{guarantorDetails[0]?.phone_number_of_employer}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.phone_number_of_employer}</p> */}
               <input
                 type="text"
                 name="phone_number_of_employer"
-                value={guarantorDetails[0]?.phone_number_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.phone_number_of_employer}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Relationship with guarantor</h5>
-              {/* <p>{guarantorDetails[0]?.relationship_with_the_guarantor}</p> */}
+              {/* <p>{guarantorDetails_1[0]?.relationship_with_the_guarantor}</p> */}
               <input
                 type="text"
                 name="relationship_with_the_guarantor"
-                value={guarantorDetails[0]?.relationship_with_the_guarantor}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_1[0]?.relationship_with_the_guarantor}
+                onChange={(e) => handleChange_1(e)}
               />
             </div>
 
+            <button type="submit">Save</button>
+          </form>
+
+          <form
+            onSubmit={(e) => {
+              SubmitGuarantorChange_2(e);
+              setGuarantorId_2(guarantorDetails_2[0]?.id);
+            }}
+          >
             <h4 style={{ marginTop: "40px" }}>Guarantor details 2</h4>
-
-            {/*  */}
-            {/*  */}
-
-            <div className="dashboard-content-form-container">
+            <div
+              className="dashboard-content-form-container"
+              id={guarantorDetails_2[0]?.id}
+              key={guarantorDetails_2[0]?.id}
+            >
               <h5>First Name</h5>
-              {/* <p>{guarantorDetails[0]?.firstname}</p> */}
               <input
                 type="text"
                 name="firstname"
-                value={guarantorDetails[1]?.firstname}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.firstname}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
+            {/* {console.log(guarantorDetails_2[0])} */}
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Last Name</h5>
-              {/* <p>{guarantorDetails[1]?.lastname}</p> */}
+              {/* <p>{guarantorDetails_2?.lastname}</p> */}
               <input
                 type="text"
                 name="lastname"
-                value={guarantorDetails[1]?.lastname}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.lastname}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Email Address</h5>
-              {/* <p>{guarantorDetails[1]?.email}</p> */}
+              {/* <p>{guarantorDetails_2?.email}</p> */}
               <input
                 type="text"
                 name="email"
-                value={guarantorDetails[1]?.email}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.email}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Phone Number</h5>
-              {/* <p>{guarantorDetails[1]?.phone_number}</p> */}
+              {/* <p>{guarantorDetails_2?.phone_number}</p> */}
               <input
                 type="text"
                 name="phone_number"
-                value={guarantorDetails[1]?.phone_number}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.phone_number}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Gender</h5>
-              {/* <p>{guarantorDetails[1]?.gender}</p> */}
+              {/* <p>{guarantorDetails_2?.gender}</p> */}
               <input
                 type="text"
                 name="gender"
-                value={guarantorDetails[1]?.gender}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.gender}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Office Address</h5>
-              {/* <p>{guarantorDetails[1]?.office_address}</p> */}
+              {/* <p>{guarantorDetails_2?.office_address}</p> */}
               <input
                 type="text"
                 name="office_address"
-                value={guarantorDetails[1]?.office_address}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.office_address}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Home Address</h5>
-              {/* <p>{guarantorDetails[1]?.home_address}</p> */}
+              {/* <p>{guarantorDetails_2?.home_address}</p> */}
               <input
                 type="text"
                 name="home_address"
-                value={guarantorDetails[1]?.home_address}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.home_address}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Profession</h5>
-              {/* <p>{guarantorDetails[1]?.profession}</p> */}
+              {/* <p>{guarantorDetails_2?.profession}</p> */}
               <input
                 type="text"
                 name="profession"
-                value={guarantorDetails[1]?.profession}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.profession}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Name of Organization</h5>
-              {/* <p>{guarantorDetails[1]?.name_of_organization}</p> */}
+              {/* <p>{guarantorDetails_2?.name_of_organization}</p> */}
               <input
                 type="text"
                 name="name_of_organization"
-                value={guarantorDetails[1]?.name_of_organization}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.name_of_organization}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Relationship with guarantor</h5>
-              {/* <p>{guarantorDetails[1]?.name_of_employer}</p> */}
+              {/* <p>{guarantorDetails_2?.name_of_employer}</p> */}
               <input
                 type="text"
                 name="name_of_employer"
-                value={guarantorDetails[1]?.name_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.name_of_employer}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Email Address of Employer</h5>
-              {/* <p>{guarantorDetails[1]?.email_address_of_employer}</p> */}
+              {/* <p>{guarantorDetails_2?.email_address_of_employer}</p> */}
               <input
                 type="text"
                 name="email_address_of_employer"
-                value={guarantorDetails[1]?.email_address_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.email_address_of_employer}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Phone Number of Employer</h5>
-              {/* <p>{guarantorDetails[1]?.phone_number_of_employer}</p> */}
+              {/* <p>{guarantorDetails_2?.phone_number_of_employer}</p> */}
               <input
                 type="text"
                 name="phone_number_of_employer"
-                value={guarantorDetails[1]?.phone_number_of_employer}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.phone_number_of_employer}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
             <hr />
             <div className="dashboard-content-form-container">
               <h5>Relationship with guarantor</h5>
-              {/* <p>{guarantorDetails[1]?.relationship_with_the_guarantor}</p> */}
+              {/* <p>{guarantorDetails_2?.relationship_with_the_guarantor}</p> */}
               <input
                 type="text"
                 name="relationship_with_the_guarantor"
-                value={guarantorDetails[1]?.relationship_with_the_guarantor}
-                onChange={(e) => handleChange(e)}
+                value={guarantorDetails_2[0]?.relationship_with_the_guarantor}
+                onChange={(e) => handleChange_2(e)}
               />
             </div>
 
             {/*  */}
             {/*  */}
-            <button type="submit" onSubmit={(e) => e.preventDefault()}>
-              Submit
-            </button>
+            <button type="submit">Save</button>
           </form>
         </div>
       )}

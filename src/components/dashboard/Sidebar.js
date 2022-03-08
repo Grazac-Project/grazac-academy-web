@@ -17,6 +17,7 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, showDetails }) {
       window.location = "/dashboard";
     }, 2500);
   };
+  
 
   return (
     <div className="sidebar">

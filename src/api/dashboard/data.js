@@ -53,20 +53,14 @@ export const getGuarantor = () => {
 
 
 export const editGuarantor = (data, guaID) => {
-    console.log(guaID)
-    console.log(guaID)
-    console.log(guaID)
-    console.log(guaID)
-    console.log(guaID)
-    console.log(guaID)
-    console.log(guaID)
-    console.log(data[0]['firstname'])
-    return AdminApiKit.post(`/user/edit-gurantor/${guaID}`, {data}, {
+console.log(data)
+    return APIKit.put(`/user/edit-gurantor/${guaID}`, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
 }
+
 
 
 export const addPlan = (planData) => {
