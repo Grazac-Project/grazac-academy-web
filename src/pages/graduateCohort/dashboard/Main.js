@@ -12,6 +12,7 @@ import {
   submitGuarantor,
   sendFlutterTx,
   addPlan,
+  getGuarantor,
 } from "../../../api/dashboard/data";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
@@ -21,8 +22,6 @@ import cancel from "../../../images/svg/dashboard/cancel.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
 
 import termsandconds from "../../../content/TermsandCondition.pdf";
-
-
 
 function Dashboard() {
   const [status, setStatus] = useState("Not Submitted");
@@ -39,6 +38,9 @@ function Dashboard() {
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
+
+  const [guarantorStatus, setGuarantorStatus] = useState(false);
+  // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
 
   const [guarantor, setGuarantor] = useState({
     firstName: "",
@@ -57,13 +59,12 @@ function Dashboard() {
   });
 
   useEffect(() => {
-
     // setSelectStatus("paid");
-
 
     try {
       let details = sessionStorage.getItem("user_details");
-      setStatus(sessionStorage.getItem('status'));
+      setStatus(sessionStorage.getItem("status"));
+      // console.log(details)
 
       // setStatus("Admitted");
 
@@ -84,6 +85,34 @@ function Dashboard() {
       //redirect to login
       window.location = "/login";
     }
+
+    // console.log(guarantorDetails_1)
+
+    getGuarantor()
+      .then((response) => response.data)
+      .then((res) => {
+        // setGuarantorDetails_1([res.data[0]]);
+        // setGuarantorDetails_2([res.data[1]]);
+        if (res.data[0]["firstname"]) {
+          // console.log(res.data.length)
+          console.log();
+
+          setGuarantorStatus(true);
+        }
+        // console.log(res.data.length);
+        // setGuarantorId(res.data[0]["id"]);
+        // console.log(guarantorDetails);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response) {
+          toast.error(err.response);
+        } else {
+          toast.error(
+            "Something went wrong!!! Please make sure you have a good internet connection."
+          );
+        }
+      });
   }, []);
 
   const handleChange = (e) => {
@@ -94,7 +123,6 @@ function Dashboard() {
   };
 
   useEffect(() => {
-
     if (guarantor.profession === "Other") {
       setShowProfessionalInput1(true);
     }
@@ -110,12 +138,9 @@ function Dashboard() {
     if (guarantor.profession === "Private worker") {
       setShowProfessionalInput1(false);
     }
-
   }, [guarantor.profession]);
 
-  
   useEffect(() => {
-
     if (guarantor.relationship === "Other") {
       setShowGuarantorRelationshipInput1(true);
     }
@@ -131,9 +156,7 @@ function Dashboard() {
     if (guarantor.relationship === "Employer") {
       setShowGuarantorRelationshipInput1(false);
     }
-
   }, [guarantor.relationship]);
-
 
   const showNavMobile = () => {
     document.getElementById("sidebar").style.left = "0px";
@@ -150,6 +173,7 @@ function Dashboard() {
         if (response.status === "successful") {
           console.log(response);
           toast.success("Payment successful! Verifying payment...");
+
           sendFlutterTx(response.transaction_id)
             .then((response) => response.data)
             .then((res) => {
@@ -229,7 +253,6 @@ function Dashboard() {
     data.append("user_id", userId);
 
     if (whichForm === "guarantor1") {
-
       submitGuarantor(data)
         .then((response) => response.data)
         .then((res) => {
@@ -261,9 +284,10 @@ function Dashboard() {
         .then((response) => response.data)
         .then((res) => {
           if (res.status === 200) {
+            window.location="/dashboard"
             // toast.success("Submission successful");
             btn.innerHTML = `Submit & Pay`;
-            flutterWavePayment();
+            // flutterWavePayment();
           } else {
             toast.error("Submission not successful, try again!!!");
             btn.innerHTML = `Submit & Pay`;
@@ -296,6 +320,7 @@ function Dashboard() {
   };
 
   // FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X
+  // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
   const config = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
@@ -372,11 +397,10 @@ function Dashboard() {
         </div>
         {sidebarClick === "dashboard" && (
           <div className="dashboard-content">
-            {console.log(details)}
+            {/* {console.log(details)} */}
             {status === "Not Submitted" && (
-              
               <NotSubmitted
-              userDetails={details}
+                userDetails={details}
                 fname={details.firstName}
                 lname={details.lastName}
                 email={details.email}
@@ -384,531 +408,603 @@ function Dashboard() {
                 setNewStatus={() => changeStatus("Under Review")}
               />
             )}
+            {/* {console.log(details.phone)}   */}
             {status === "Under Review" && (
               <UnderReview fname={details.firstName} />
             )}
             {status === "Selected" && <Selected fname={details.firstName} />}
+
             {status === "Admitted" && (
               <div>
-                {selectStatus === "congrats" && (
-                  <div>
-                    <h3>Hello {details.firstName}</h3>
-                    <p className="text1">Congratulations!</p>
-                    <p>
-                      Your application has been selected. Click on the button
-                      below to continue you admission process.
-                    </p>
-                    <button onClick={() => setSelectStatus2("pay")}>
-                      Continue admission process
-                    </button>
-                  </div>
-                )}
-                {selectStatus2 === "pay" && (
-                  <div className="dashboard-content-modal">
-                    <div className="dashboard-content-modal-backdrop"></div>
-                    <div className="dashboard-content-modal-container">
-                      <div className="dashboard-content-modal-main">
-                        <div className="dashboard-content-modal-main-text">
-                          <h4>Choose Payment Option</h4>
-                          <img
-                            src={cancel}
-                            alt="cancel"
-                            onClick={() => setSelectStatus2("")}
-                          />
+                {/* {console.log(Object.values(guarantor).length)} */}
+                {console.log(guarantorStatus)}
+                {guarantorStatus === false ? (
+                <div>
+                  {selectStatus === "congrats" && (
+                    <div>
+                      <h3>Hello {details.firstName}</h3>
+                      <p className="text1">Congratulations!</p>
+                      <p>
+                        Your application has been selected. Click on the button
+                        below to continue you admission process.
+                      </p>
+                      <button onClick={() => setSelectStatus2("pay")}>
+                        Continue admission process
+                      </button>
+                    </div>
+                  )}
+
+                  {selectStatus2 === "pay" && (
+                    <div className="dashboard-content-modal">
+                      <div className="dashboard-content-modal-backdrop"></div>
+                      <div className="dashboard-content-modal-container">
+                        <div className="dashboard-content-modal-main">
+                          <div className="dashboard-content-modal-main-text">
+                            <h4>Choose Payment Option</h4>
+                            <img
+                              src={cancel}
+                              alt="cancel"
+                              onClick={() => setSelectStatus2("")}
+                            />
+                          </div>
+                          <div
+                            className={
+                              payOpt === "part"
+                                ? "active"
+                                : "dashboard-content-modal-main-frame1"
+                            }
+                            onClick={() => {
+                              setPayOpt("part");
+                              setAmount(30000);
+                              setCurrency("NGN");
+                            }}
+                          >
+                            <div></div>
+                            <p>Pay as you earn (NGN 30,000 legal fee)</p>
+                          </div>
+                          <div
+                            className={
+                              payOpt === "full"
+                                ? "active"
+                                : "dashboard-content-modal-main-frame1"
+                            }
+                            onClick={() => {
+                              setPayOpt("full");
+                              setAmount(565000);
+                              setCurrency("NGN");
+                            }}
+                          >
+                            <div></div>
+                            <p>Pay at once (USD 1,000 = NGN 565,000)</p>
+                          </div>
+                          <button onClick={makePayment}>Proceed</button>
                         </div>
-                        <div
-                          className={
-                            payOpt === "part"
-                              ? "active"
-                              : "dashboard-content-modal-main-frame1"
-                          }
-                          onClick={() => {
-                            setPayOpt("part");
-                            setAmount(30000);
-                            setCurrency("NGN");
-                          }}
-                        >
-                          <div></div>
-                          <p>Pay as you earn (NGN 30,000 legal fee)</p>
-                        </div>
-                        <div
-                          className={
-                            payOpt === "full"
-                              ? "active"
-                              : "dashboard-content-modal-main-frame1"
-                          }
-                          onClick={() => {
-                            setPayOpt("full");
-                            setAmount(565000);
-                            setCurrency("NGN");
-                          }}
-                        >
-                          <div></div>
-                          <p>Pay at once (USD 1,000 = NGN 565,000)</p>
-                        </div>
-                        <button onClick={makePayment}>Proceed</button>
                       </div>
                     </div>
-                  </div>
-                )}
-                {selectStatus === "pay-as-you-earn" && (
-                  <div>
-                    <div
-                      className="dashboard-content-back"
-                      onClick={() => setSelectStatus("congrats")}
-                    >
-                      <img src={arrow} alt="back" />
-                      <p>Back</p>
+                  )}
+                  {selectStatus === "pay-as-you-earn" && (
+                    <div>
+                      <div
+                        className="dashboard-content-back"
+                        onClick={() => setSelectStatus("congrats")}
+                      >
+                        <img src={arrow} alt="back" />
+                        <p>Back</p>
+                      </div>
+                      <h3>Pay as you earn</h3>
+                      <div className="dashboard-content-guarantor_paragraph_text">
+                        <p className="text1">
+                          Learn with us for 5 months and pay no tuition till
+                          you’re hired!
+                        </p>
+                        <p>
+                          The Pay as You Earn is a financial instrument to help
+                          you participate in our training for FREE. You are
+                          expected to start repaying the credit once you get a
+                          job at the end of the program. It is governed by a
+                          legally binding contract. The repayment procedure can
+                          be found in our terms and conditions. This contract is
+                          bonded by the law firm.
+                        </p>
+                        <p>
+                          Note that: This policy requires you bringing two
+                          guarantors and making a one-time payment for legal
+                          fees bonded by the law firm.
+                        </p>
+                        <p>
+                          The legal fee cost is a total of 30,000 Naira. Kindly
+                          note that this amount is not refundable under any
+                          circumstance.
+                        </p>
+                      </div>
+
+                      <ul>
+                        <p>
+                          The following are of utmost necessity when bringing
+                          your guarantors;
+                        </p>
+                        <li>
+                          You must bring 2 guarantors who are over 18 years of
+                          age and must have completed a higher institution of
+                          learning.
+                        </li>
+                        <li>Guarantors must have a stable source of income.</li>
+
+                        <li>
+                          They must be residents within the locality of
+                          Abeokuta, Ogun State.
+                        </li>
+                        <li>
+                          If your guarantor does not meet our eligibility
+                          status, you'll be asked to get a replacement.
+                        </li>
+                        <li>
+                          Kindly seek the consent of your guarantors before
+                          filling their details as we will contact them on your
+                          behalf.
+                        </li>
+                        <li>
+                          You can also share our terms and conditions with your
+                          guarantor to keep them informed.
+                        </li>
+                      </ul>
+                      <div className="checkbox">
+                        <input type="checkbox" id="mark" />
+                        {/* <p>I accept the <a href="#">Terms ‌and‌ ‌Conditions‌</a></p> */}
+                        <p>
+                          I accept the{" "}
+                          <a href={termsandconds} download target="_blank">
+                            Terms ‌and‌ ‌Conditions‌
+                          </a>
+                        </p>
+                      </div>
+
+                      <button onClick={showForm}>
+                        Upload Guarantor Details
+                      </button>
                     </div>
-                    <h3>Pay as you earn</h3>
-                    <div className="dashboard-content-guarantor_paragraph_text">
-                      <p className="text1">
-                        Learn with us for 5 months and pay no tuition till
-                        you’re hired!
-                      </p>
-                      <p>
-                        The Pay as You Earn is a financial instrument to help
-                        you participate in our training for FREE. You are
-                        expected to start repaying the credit once you get a job
-                        at the end of the program. It is governed by a legally
-                        binding contract. The repayment procedure can be found
-                        in our terms and conditions. This contract is bonded by
-                        the law firm.
-                      </p>
-                      <p>
-                        Note that: This policy requires you bringing two
-                        guarantors and making a one-time payment for legal fees
-                        bonded by the law firm.
-                      </p>
-                      <p>
-                        The legal fee cost is a total of 30,000 Naira. Kindly
-                        note that this amount is not refundable under any
-                        circumstance.
-                      </p>
-                    </div>
-
-                    <ul>
-                      <p>
-                        The following are of utmost necessity when bringing your
-                        guarantors;
-                      </p>
-                      <li>
-                        You must bring 2 guarantors who are over 18 years of age
-                        and must have completed a higher institution of
-                        learning.
-                      </li>
-                      <li>Guarantors must have a stable source of income.</li>
-
-                      <li>
-                        They must be residents within the locality of Abeokuta,
-                        Ogun State.
-                      </li>
-                      <li>
-                        If your guarantor does not meet our eligibility status,
-                        you'll be asked to get a replacement.
-                      </li>
-                      <li>
-                        Kindly seek the consent of your guarantors before
-                        filling their details as we will contact them on your
-                        behalf.
-                      </li>
-                      <li>
-                        You can also share our terms and conditions with your
-                        guarantor to keep them informed.
-                      </li>
-                    </ul>
-                    <div className="checkbox">
-                      <input type="checkbox" id="mark" />
-                      {/* <p>I accept the <a href="#">Terms ‌and‌ ‌Conditions‌</a></p> */}
-                      <p>
-                        I accept the{" "}
-                        <a href={termsandconds} download target="_blank">
-                          Terms ‌and‌ ‌Conditions‌
-                        </a>
-                      </p>
-                    </div>
-
-                    <button onClick={showForm}>Upload Guarantor Details</button>
-                  </div>
-                )}
-                {selectStatus === "form" && (
-                  <div>
-                    <div
-                      className="dashboard-content-back"
-                      onClick={() => setSelectStatus("pay-as-you-earn")}
-                    >
-                      <img src={arrow} alt="back" />
-                      <p>Back</p>
-                    </div>
-                    <h4 style={{ marginLeft: "20px" }}>
-                      Guarantor Form {guarantorForm1 ? "1" : "2"}
-                    </h4>
-                    {guarantorForm1 ? (
-                      <div className="dashboard-content-form">
-                        <form onSubmit={(e) => submitForm(e, "guarantor1")}>
-                          <div className="dashboard-content-form-container">
-                            <label>First Name</label>
-                            <input
-                              type="text"
-                              required
-                              name="firstName"
-                              placeholder="FirstName"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Last Name</label>
-                            <input
-                              type="text"
-                              required
-                              name="lastName"
-                              placeholder="LastName"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Email Address</label>
-                            <input
-                              type="email"
-                              required
-                              name="email"
-                              placeholder="Email Address"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Phone Number</label>
-                            <input
-                              type="number"
-                              required
-                              name="phone"
-                              placeholder="Phone Number"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Gender</label>
-                            <select
-                              name="gender"
-                              required
-                              onChange={handleChange}
-                            >
-                              <option value="">Select Gender</option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                            </select>
-                          </div>
-
-                          <div className="dashboard-content-form-container">
-                            <label>Office Address</label>
-                            <input
-                              type="text"
-                              required
-                              name="officeAddress"
-                              placeholder="Office Address"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Home Address</label>
-                            <input
-                              type="text"
-                              required
-                              name="homeAddress"
-                              placeholder="Home Address"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Profession</label>
-                            <select
-                              name="profession"
-                              required
-                              onChange={handleChange}
-                            >
-                              <option value="">Choose Profession</option>
-                              <option value="Civil Servant">
-                                Civil Servant
-                              </option>
-                              <option value="Self Employed">
-                                Self Employed
-                              </option>
-                              <option value="Private worker">
-                                Private worker
-                              </option>
-
-                              <option
-                                className="other"
-                                key="Other"
-                                value="Other"
+                  )}
+                  {selectStatus === "form" && (
+                    <div>
+                      <div
+                        className="dashboard-content-back"
+                        onClick={() => setSelectStatus("pay-as-you-earn")}
+                      >
+                        <img src={arrow} alt="back" />
+                        <p>Back</p>
+                      </div>
+                      <h4 style={{ marginLeft: "20px" }}>
+                        Guarantor Form {guarantorForm1 ? "1" : "2"}
+                      </h4>
+                      {guarantorForm1 ? (
+                        <div className="dashboard-content-form">
+                          <form onSubmit={(e) => submitForm(e, "guarantor1")}>
+                            <div className="dashboard-content-form-container">
+                              <label>First Name</label>
+                              <input
+                                type="text"
+                                required
+                                name="firstName"
+                                placeholder="FirstName"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Last Name</label>
+                              <input
+                                type="text"
+                                required
+                                name="lastName"
+                                placeholder="LastName"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Email Address</label>
+                              <input
+                                type="email"
+                                required
+                                name="email"
+                                placeholder="Email Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Phone Number</label>
+                              <input
+                                type="number"
+                                required
+                                name="phone"
+                                placeholder="Phone Number"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Gender</label>
+                              <select
+                                name="gender"
+                                required
+                                onChange={handleChange}
                               >
-                                Other
-                              </option>
-                            </select>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </div>
 
-                            {showProfessionalInput1 ? (
+                            <div className="dashboard-content-form-container">
+                              <label>Office Address</label>
                               <input
-                                onChange={handleChange}
-                                name="profession"
                                 type="text"
-                                placeholder="Enter Profession"
-                              ></input>
-                            ) : (
-                              <></>
-                            )}
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Name of Organisation</label>
-                            <input
-                              type="text"
-                              required
-                              name="organisation"
-                              placeholder="Name of organisation"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Name of Employer</label>
-                            <input
-                              type="text"
-                              required
-                              name="employer"
-                              placeholder="Name of employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Email Address of Employer</label>
-                            <input
-                              type="email"
-                              required
-                              name="employerMail"
-                              placeholder="Email Address of Employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Phone of Employer</label>
-                            <input
-                              type="phone"
-                              required
-                              name="employerPhone"
-                              placeholder="Phone of Employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>
-                              Relationship with guarantor (Who is your guarantor
-                              to you?)
-                            </label>
-                            <select
-                              name="relationship"
-                              required
-                              onChange={handleChange}
-                            >
-                              <option value="">Select Relationship</option>
-                              <option value="Parents">Parents</option>
-                              <option value="Legal Guardian">
-                                Legal Guardian
-                              </option>
-                              <option value="Employer">Employer</option>
-                              <option value="Other">Other</option>
-                            </select>
-                            {showGuarantorRelationshipInput1 ? (
+                                required
+                                name="officeAddress"
+                                placeholder="Office Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Home Address</label>
                               <input
-                                onChange={handleChange}
-                                name="profession"
                                 type="text"
-                                placeholder="Enter Relationship"
-                              ></input>
-                            ) : (
-                              <></>
-                            )}
-                          </div>
-                          <button
-                            style={{ float: "right", width: "100px" }}
-                            type="submit"
-                            id="actionBtn"
+                                required
+                                name="homeAddress"
+                                placeholder="Home Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Profession</label>
+                              <select
+                                name="profession"
+                                required
+                                onChange={handleChange}
+                              >
+                                <option value="">Choose Profession</option>
+                                <option value="Civil Servant">
+                                  Civil Servant
+                                </option>
+                                <option value="Self Employed">
+                                  Self Employed
+                                </option>
+                                <option value="Private worker">
+                                  Private worker
+                                </option>
+
+                                <option
+                                  className="other"
+                                  key="Other"
+                                  value="Other"
+                                >
+                                  Other
+                                </option>
+                              </select>
+
+                              {showProfessionalInput1 ? (
+                                <input
+                                  onChange={handleChange}
+                                  name="profession"
+                                  type="text"
+                                  placeholder="Enter Profession"
+                                ></input>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Name of Organisation</label>
+                              <input
+                                type="text"
+                                required
+                                name="organisation"
+                                placeholder="Name of organisation"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Name of Employer</label>
+                              <input
+                                type="text"
+                                required
+                                name="employer"
+                                placeholder="Name of employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Email Address of Employer</label>
+                              <input
+                                type="email"
+                                required
+                                name="employerMail"
+                                placeholder="Email Address of Employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Phone of Employer</label>
+                              <input
+                                type="phone"
+                                required
+                                name="employerPhone"
+                                placeholder="Phone of Employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>
+                                Relationship with guarantor (Who is your
+                                guarantor to you?)
+                              </label>
+                              <select
+                                name="relationship"
+                                required
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Relationship</option>
+                                <option value="Parents">Parents</option>
+                                <option value="Legal Guardian">
+                                  Legal Guardian
+                                </option>
+                                <option value="Employer">Employer</option>
+                                <option value="Other">Other</option>
+                              </select>
+                              {showGuarantorRelationshipInput1 ? (
+                                <input
+                                  onChange={handleChange}
+                                  name="profession"
+                                  type="text"
+                                  placeholder="Enter Relationship"
+                                ></input>
+                              ) : (
+                                <></>
+                              )}
+                            </div>
+                            <button
+                              style={{ float: "right", width: "100px" }}
+                              type="submit"
+                              id="actionBtn"
+                            >
+                              Proceed
+                            </button>
+                          </form>
+                        </div>
+                      ) : (
+                        <div className="dashboard-content-form">
+                          <form
+                            onSubmit={(e) => submitForm(e, "guarantor2")}
+                            id="guarantorForm2"
                           >
-                            Proceed
-                          </button>
-                        </form>
-
-
-
-                      </div>
-                    ) : (
-                      <div className="dashboard-content-form">
-                        <form
-                          onSubmit={(e) => submitForm(e, "guarantor2")}
-                          id="guarantorForm2"
-                        >
-                          <div className="dashboard-content-form-container">
-                            <label>First Name</label>
-                            <input
-                              type="text"
-                              required
-                              name="firstName"
-                              placeholder="FirstName"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Last Name</label>
-                            <input
-                              type="text"
-                              required
-                              name="lastName"
-                              placeholder="LastName"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Email Address</label>
-                            <input
-                              type="email"
-                              required
-                              name="email"
-                              placeholder="Email Address"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Phone Number</label>
-                            <input
-                              type="number"
-                              required
-                              name="phone"
-                              placeholder="Phone Number"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Gender</label>
-                            <select
-                              name="gender"
-                              required
-                              onChange={handleChange}
+                            <div className="dashboard-content-form-container">
+                              <label>First Name</label>
+                              <input
+                                type="text"
+                                required
+                                name="firstName"
+                                placeholder="FirstName"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Last Name</label>
+                              <input
+                                type="text"
+                                required
+                                name="lastName"
+                                placeholder="LastName"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Email Address</label>
+                              <input
+                                type="email"
+                                required
+                                name="email"
+                                placeholder="Email Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Phone Number</label>
+                              <input
+                                type="number"
+                                required
+                                name="phone"
+                                placeholder="Phone Number"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Gender</label>
+                              <select
+                                name="gender"
+                                required
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Office Address</label>
+                              <input
+                                type="text"
+                                required
+                                name="officeAddress"
+                                placeholder="Office Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Home Address</label>
+                              <input
+                                type="text"
+                                required
+                                name="homeAddress"
+                                placeholder="Home Address"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Profession</label>
+                              <select
+                                name="profession"
+                                required
+                                onChange={handleChange}
+                              >
+                                <option value="">Choose Profession</option>
+                                <option value="Civil Servant">
+                                  Civil Servant
+                                </option>
+                                <option value="Self Employed">
+                                  Self Employed
+                                </option>
+                                <option value="Private worker">
+                                  Private worker
+                                </option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Name of Organisation</label>
+                              <input
+                                type="text"
+                                required
+                                name="organisation"
+                                placeholder="Name of organisation"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Name of Employer</label>
+                              <input
+                                type="text"
+                                required
+                                name="employer"
+                                placeholder="Name of employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Email Address of Employer</label>
+                              <input
+                                type="email"
+                                required
+                                name="employerMail"
+                                placeholder="Email Address of Employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Phone of Employer</label>
+                              <input
+                                type="phone"
+                                required
+                                name="employerPhone"
+                                placeholder="Phone of Employer"
+                                onChange={handleChange}
+                              />
+                            </div>
+                            <div className="dashboard-content-form-container">
+                              <label>Relationship with guarantor</label>
+                              <select
+                                name="relationship"
+                                required
+                                onChange={handleChange}
+                              >
+                                <option value="">Select Relationship</option>
+                                <option value="Parents">Parents</option>
+                                <option value="Legal Guardian">
+                                  Legal Guardian
+                                </option>
+                                <option value="Employer">Employer</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                            <button
+                              style={{ float: "right", width: "100px" }}
+                              type="submit"
+                              id="actionBtn"
                             >
-                              <option value="">Select Gender</option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                            </select>
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Office Address</label>
-                            <input
-                              type="text"
-                              required
-                              name="officeAddress"
-                              placeholder="Office Address"
-                              onChange={handleChange}
+                              Submit 
+                            </button>
+                          </form>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>)
+                :
+                <div>
+                  {selectStatus === "congrats" && (
+                    <div>
+                      <h3>Hello {details.firstName}</h3>
+                      <p className="text1">Congratulations!</p>
+                      <p>
+                        Your application has been Admitted. Click on the button
+                        below to Pay Now.
+                      </p>
+                      <button onClick={()=>setSelectStatus2("pay")}>Pay Now</button>
+
+                      {selectStatus2 === "pay" && (
+                    <div className="dashboard-content-modal">
+                      <div className="dashboard-content-modal-backdrop"></div>
+                      <div className="dashboard-content-modal-container">
+                        <div className="dashboard-content-modal-main">
+                          <div className="dashboard-content-modal-main-text">
+                            <h4>Choose Payment Option</h4>
+                            <img
+                              src={cancel}
+                              alt="cancel"
+                              onClick={() => setSelectStatus2("")}
                             />
                           </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Home Address</label>
-                            <input
-                              type="text"
-                              required
-                              name="homeAddress"
-                              placeholder="Home Address"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Profession</label>
-                            <select
-                              name="profession"
-                              required
-                              onChange={handleChange}
-                            >
-                              <option value="">Choose Profession</option>
-                              <option value="Civil Servant">
-                                Civil Servant
-                              </option>
-                              <option value="Self Employed">
-                                Self Employed
-                              </option>
-                              <option value="Private worker">
-                                Private worker
-                              </option>
-                              <option value="Other">Other</option>
-                            </select>
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Name of Organisation</label>
-                            <input
-                              type="text"
-                              required
-                              name="organisation"
-                              placeholder="Name of organisation"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Name of Employer</label>
-                            <input
-                              type="text"
-                              required
-                              name="employer"
-                              placeholder="Name of employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Email Address of Employer</label>
-                            <input
-                              type="email"
-                              required
-                              name="employerMail"
-                              placeholder="Email Address of Employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Phone of Employer</label>
-                            <input
-                              type="phone"
-                              required
-                              name="employerPhone"
-                              placeholder="Phone of Employer"
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="dashboard-content-form-container">
-                            <label>Relationship with guarantor</label>
-                            <select
-                              name="relationship"
-                              required
-                              onChange={handleChange}
-                            >
-                              <option value="">Select Relationship</option>
-                              <option value="Parents">Parents</option>
-                              <option value="Legal Guardian">
-                                Legal Guardian
-                              </option>
-                              <option value="Employer">Employer</option>
-                              <option value="Other">Other</option>
-                            </select>
-                          </div>
-                          <button
-                            style={{ float: "right", width: "100px" }}
-                            type="submit"
-                            id="actionBtn"
+                          <div
+                            className={
+                              payOpt === "part"
+                                ? "active"
+                                : "dashboard-content-modal-main-frame1"
+                            }
+                            onClick={() => {
+                              setPayOpt("part");
+                              setAmount(30000);
+                              setCurrency("NGN");
+                            }}
                           >
-                            Submit & Pay
-                          </button>
-                        </form>
+                            <div></div>
+                            <p>Pay as you earn (NGN 30,000 legal fee)</p>
+                          </div>
+                          <div
+                            className={
+                              payOpt === "full"
+                                ? "active"
+                                : "dashboard-content-modal-main-frame1"
+                            }
+                            onClick={() => {
+                              setPayOpt("full");
+                              setAmount(565000);
+                              setCurrency("NGN");
+                            }}
+                          >
+                            <div></div>
+                            <p>Pay at once (USD 1,000 = NGN 565,000)</p>
+                          </div>
+                          <button onClick={()=>flutterWavePayment()}>Proceed</button>
+                        </div>
                       </div>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  )}
+                    </div>
+                  )}
+                </div>
+}
                 {selectStatus === "paid" && (
                   <PaymentReceived fname={details.firstName} />
                 )}
               </div>
             )}
+
             {status === "Rejected" && <Rejected fname={details.firstName} />}
           </div>
         )}

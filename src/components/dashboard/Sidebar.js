@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
-
 import Logo from "../../images/svg/grazac-logo.svg";
+
 
 function Sidebar({ clicked, clickedDashboard, clickedDetails, showDetails }) {
   // console.log(clickedDashboard)
 
   const [clickLink, setClickLink] = useState(false);
-  console.log(clickLink);
+  // console.log(clickLink);
 
   const signOut = () => {
     sessionStorage.clear();

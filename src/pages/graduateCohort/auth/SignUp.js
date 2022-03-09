@@ -30,40 +30,62 @@ function SignUp () {
     async function doSignUp  (e)  {
         e.preventDefault();
         var btn = document.getElementById("actionBtn");
+    
+
         if (form.password.length > 5){
             btn.innerHTML=`<img src=${loader} width="20px" />`;
             const {firstName, lastName, email, phone, password} = form;
             var data  = new FormData();
+            const phone_length=phone.length
+            console.log(phone, phone_length)
 
-            data.append("firstName", firstName);
-            data.append("lastName", lastName);
-            data.append("email", email);
-            data.append("phoneNumber", phone);
-            data.append("password", password);
+            if (phone_length == 11 || phone_length > 11 ){
+                data.append("firstName", firstName);
+                data.append("lastName", lastName);
+                data.append("email", email);
+                data.append("phoneNumber", phone);
+                data.append("password", password);
 
+                // btn.innerHTML=`<img src=${loader} width="20px" />`
 
-            try {
-                const response = await SignupAction(data);
-        
-                const res = await response;
-                console.log(res);
-                if (res.data.status === 201) {
-                    toast.success(`${res.data.message} Proceed to login.`);
-                    btn.innerHTML=`Create account`;
-                    window.location = `/account-created?email=${email}`;
-                } else {
-                    toast.error("Something went wrong, please try again!!!")
-                }
-            } catch (err) {
-                console.log(err.response)
-                if(err.response.data.message){
-                    toast.error(err.response.data.message);
-                    btn.innerHTML=`Create account`;
-                } else{
-                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                    btn.innerHTML=`Create account`;
+                try {
+
+                    const response = await SignupAction(data);
+            
+                    const res = await response;
+                    // const res.data.status ==201
+                    console.log(res);
+                        if (res.data.status === 201) {
+                        toast.success(`${res.data.message} Proceed to login.`);
+                        // btn.innerHTML=`Create account`;
+                        // btn.innerHTML="<p>Create account</p>";
+                        
+                        window.location = `/account-created?email=${email}`;
+                    } 
+                    else {
+                        toast.error("Something went wrong, please try again!!!")
+                        btn.innerHTML="<p>Create account</p>";
+                    }
+    
+                } catch (err) {
+                    console.log(err.response)
+                    if(err.response.data.message){
+                        toast.error(err.response.data.message);
+                        btn.innerHTML=`Create account`;
+                    } else{
+                        toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
+                        btn.innerHTML=`Create account`;
+                    }
                 }
             }
+            else{
+                toast.error("please enter correct phone number")
+            }
+
+            
+
+
+       
             // SignupAction(data)
             //     .then((response) => response.data)
             //     .then((res) => {
@@ -138,7 +160,7 @@ function SignUp () {
                                 <input type="password" id="password" required placeholder="Password" name="password" onChange={handleChange} />
                                 <div id="toggle" onClick={toggleIcon} ><img src={visible} /></div>
                             </div>
-                            <button type="submit" id="actionBtn">Create account</button>
+                            <button type="submit" id="actionBtn">Create Account</button>
                             <p>Already have an account? <Link to="/login"><span>Login</span></Link></p>
                         </form>
                     </div>
