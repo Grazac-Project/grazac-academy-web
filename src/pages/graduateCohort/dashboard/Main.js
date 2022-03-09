@@ -63,9 +63,9 @@ function Dashboard() {
 
     try {
       let details = sessionStorage.getItem("user_details");
-      // setStatus(sessionStorage.getItem('status'));
+      setStatus(sessionStorage.getItem('status'));
 
-      setStatus("Admitted");
+      // setStatus("Admitted");
 
       // console.log(details)
 

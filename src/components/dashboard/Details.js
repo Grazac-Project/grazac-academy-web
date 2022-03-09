@@ -23,7 +23,7 @@ function Details() {
   const [guarantorId_2, setGuarantorId_2] = useState(0);
 
   const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
-
+// console.log(guarantorDetails_1,userDetails)
   const handleChange_1 = (e) => {
     console.log(guarantorDetails_1[0]);
 
@@ -210,8 +210,8 @@ function Details() {
 
   return (
     <div className="dashboard-content">
-      {/* {console.log(isLoading)} */}
-      {isLoading ? <img src={loader} alt="" /> : <div></div>}
+      {console.log()}
+      {Object.keys(userDetails).length === 0 ? <div>Loading</div> : <div>Not Loading</div>}
       <ToastContainer />
       <h3 style={{ marginLeft: "20px", marginBottom: "20px" }}>Details</h3>
       <div className="det-btn-container">
@@ -311,6 +311,7 @@ function Details() {
           </form>
         </div>
       )}
+
       {clicked === "edu" && (
         <div className="dashboard-content-form">
           <form>
