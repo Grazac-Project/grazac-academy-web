@@ -33,7 +33,7 @@ function SignUp () {
     
 
         if (form.password.length > 5){
-            btn.innerHTML=`<img src=${loader} width="20px" />`;
+            // btn.innerHTML=`<img src=${loader} width="20px" />`;
             const {firstName, lastName, email, phone, password} = form;
             var data  = new FormData();
             const phone_length=phone.length
@@ -46,7 +46,7 @@ function SignUp () {
                 data.append("phoneNumber", phone);
                 data.append("password", password);
 
-                // btn.innerHTML=`<img src=${loader} width="20px" />`
+                btn.innerHTML=`<img src=${loader} width="20px" />`
 
                 try {
 

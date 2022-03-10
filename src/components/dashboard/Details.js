@@ -7,10 +7,7 @@ import {
   editGuarantor,
   submitGuarantor,
 } from "../../api/dashboard/data";
-import loader from "../../images/svg/dashboard/loader.gif";
-// "src\images\svg\dashboard\loader.gif"
 import axios from "axios";
-// import Loader from "../Loader";
 
 function Details() {
   const [isLoading, setIsLoading] = useState(false);
