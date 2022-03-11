@@ -8,6 +8,9 @@ import {
   submitGuarantor,
 } from "../../api/dashboard/data";
 import axios from "axios";
+// import Loader from "../Loader";
+
+import loader from "../../images/loader-purple.gif"
 
 function Details() {
   const [isLoading, setIsLoading] = useState(false);
@@ -203,12 +206,20 @@ function Details() {
           );
         }
       });
-  }, [true]);
+  }, [true])
+
+
 
   return (
     <div className="dashboard-content">
       {console.log()}
-      {Object.keys(userDetails).length === 0 ? <div>Loading</div> : <div>Not Loading</div>}
+      {Object.keys(userDetails).length === 0 ?
+      <div>
+       <img style={{ marginLeft: "30rem", marginTop: "20rem" }} src={loader} />
+       </div> : 
+   
+       
+      <div>
       <ToastContainer />
       <h3 style={{ marginLeft: "20px", marginBottom: "20px" }}>Details</h3>
       <div className="det-btn-container">
@@ -682,6 +693,10 @@ function Details() {
           </form>
         </div>
       )}
+</div>
+
+}
+
     </div>
   );
 }
