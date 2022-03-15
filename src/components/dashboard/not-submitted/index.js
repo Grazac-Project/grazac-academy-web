@@ -17,14 +17,14 @@ function NotSubmitted({
   userDetails,
 }) {
 
+
   const [active, setActive] = useState("welcome");
   const [formActive, setFormActive] = useState("");
+
+  // const [isError, setIsError] = useState("");
   // const [formActive, setFormActive] = useState("education");
 //   console.log(userDetails);
-//   console.log( fname,
-//     lname,
-//     phone,
-//     email)
+
   const [userId, setUserId] = useState(0);
   const [checkAct, setCheckAct] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
@@ -44,6 +44,7 @@ function NotSubmitted({
     city: "",
     id: null,
   });
+
 
 
   const [education, setEducation] = useState({
@@ -66,7 +67,7 @@ window.onload = (event) => {
   };
 
   useEffect(() => {
-    
+
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
@@ -89,14 +90,16 @@ window.onload = (event) => {
 //   console.log(bioData.firstName)
 
   const handleChange = (e) => {
-    setBioData({
-      ...bioData,
-      [e.target.name]: e.target.value,
-    });
-    setEducation({
-      ...education,
-      [e.target.name]: e.target.value,
-    });
+    
+
+  setBioData({
+    ...bioData,
+    [e.target.name]: e.target.value,
+  });
+  setEducation({
+    ...education,
+    [e.target.name]: e.target.value,
+  });
   };
 
   const handleImage = (e) => {
@@ -141,6 +144,14 @@ window.onload = (event) => {
     btn.innerHTML = `<img src=${loader} width="20px" />`;
     var data = new FormData();
 
+    if (!(bioData.phone.length>10)){
+
+      toast.error("please check enter a valid phone number")
+
+    }
+    else{
+      // toast.success('Successful')
+
     data.append("firstName", bioData.firstName);
     data.append("lastName", bioData.lastName);
     data.append("email", bioData.email);
@@ -160,6 +171,7 @@ window.onload = (event) => {
     data.append("physically_available", education.availability);
     data.append("will_you_pay_legal_fees", education.legalFee);
 
+    }
     submitDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
@@ -176,7 +188,11 @@ window.onload = (event) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
+        
+        if(err.response.data==="File size limit has been reached"){
+          toast.error("File size exceeded for Means of Identification Field");
+        }
         if (err.response) {
           toast.error(err.response);
           btn.innerHTML = `Submit`;
@@ -285,6 +301,7 @@ window.onload = (event) => {
                 <h4 style={{ marginLeft: "20px" }}>Apply</h4>
                 <div className="dashboard-content-form">
                   <form onSubmit={showEduForm}>
+                  {/* <form onSubmit={submitForm}> */}
                     <p>Step 1 of 2</p>
                     <p>BIO DATA</p>
                     <div className="dashboard-content-form-container">
@@ -324,7 +341,7 @@ window.onload = (event) => {
                     <div className="dashboard-content-form-container">
                       <label>Phone Number</label>
                       <input
-                        type="number"
+                        // type="number"
                         required
                         name="phone"
                         placeholder="Phone Number"
