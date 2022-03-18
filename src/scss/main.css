@@ -4859,9 +4859,9 @@ input:focus, select:focus, textarea:focus {
 
 .hire_talents-cards-box-text-available {
   text-transform: uppercase;
-  color: white;
+  color: #CC9600;
+  background: #FFFADE;
   width: 150px;
-  background: #e7a300;
   padding: 10px 25px 1px;
   font-weight: 600;
   margin: 0 auto 20px;
@@ -4870,9 +4870,9 @@ input:focus, select:focus, textarea:focus {
 
 .hire_talents-cards-box-text-hired {
   text-transform: uppercase;
-  color: black;
+  color: #188F32;
   width: 150px;
-  background: #D2D2D2;
+  background: #DEFFE5;
   padding: 10px 25px 1px;
   font-weight: 600;
   margin: 0 auto 20px;
@@ -5010,8 +5010,8 @@ input:focus, select:focus, textarea:focus {
 
 .hire_listing-text-2-available {
   text-transform: uppercase;
-  color: white;
-  background: #e7a300;
+  color: #CC9600;
+  background: #FFFADE;
   padding: 7px 25px 5px;
   font-weight: 600;
   height: 23px;
@@ -5023,9 +5023,9 @@ input:focus, select:focus, textarea:focus {
 .hire_listing-text-2-hired {
   text-transform: uppercase;
   font-size: 1em !important;
-  color: black;
   height: 23px;
-  background: #D2D2D2;
+  background: #DEFFE5;
+  color: #188F32;
   padding: 7px 25px 5px;
   font-weight: 600;
   margin-left: auto;
@@ -5136,8 +5136,8 @@ input:focus, select:focus, textarea:focus {
 
 .hire_profile-main-bio-text .available {
   text-transform: uppercase;
-  color: white;
-  background: #e7a300;
+  color: #CC9600;
+  background: #FFFADE;
   font-weight: 600;
   margin: 10px 0 20px;
   font-size: 15px !important;
@@ -5148,8 +5148,8 @@ input:focus, select:focus, textarea:focus {
 
 .hire_profile-main-bio-text .hired {
   text-transform: uppercase;
-  color: black;
-  background: #D2D2D2;
+  background: #DEFFE5;
+  color: #188F32;
   font-weight: 600;
   margin: 10px 0 20px;
   font-size: 15px !important;
