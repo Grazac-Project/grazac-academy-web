@@ -42,9 +42,11 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                         </div>
                       </a>
 
-                      <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">
+                      <a href="/hire/contact ">
                         <div className="nav__btn--text1">{button_2}</div>
                       </a>
+
+                      
                     </>
                   ) : (
                     <>
@@ -57,7 +59,7 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                         </div>
                       </a>
 
-                      <a href="/hire/contact ">
+                      <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">
                         <div className="nav__btn--text1">{button_2}</div>
                       </a>
                     </>

@@ -16,6 +16,7 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
+    console.log(props)
     fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
