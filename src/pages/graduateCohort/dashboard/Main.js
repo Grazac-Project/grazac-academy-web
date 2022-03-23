@@ -64,11 +64,9 @@ function Dashboard() {
   const item = 1;
 
   useEffect(() => {
-
     // setSelectStatus("paid");
     // console.log(selectStatus);
     // setSelectStatus("paid")
-    
 
     try {
       let details = sessionStorage.getItem("user_details");
@@ -79,7 +77,7 @@ function Dashboard() {
 
       setUserId(JSON.parse(details).id);
 
-      console.log(guarantorForm1)
+      console.log(guarantorForm1);
 
       if (JSON.parse(details).isPaid === 1) {
         setSelectStatus("paid");
@@ -105,7 +103,7 @@ function Dashboard() {
         }
 
         // work on this part for the payment page
-        if (res.data.length == 2) {
+        if (res.data.length > 2 || res.data.length == 2) {
           setGuarantorForm1(false);
           setGuarantorStatus(true);
         }
@@ -204,196 +202,210 @@ function Dashboard() {
     }
   };
 
-   
-const SubmitGuarantorForm_1 =(e)=>{
-  e.preventDefault();
-  var data = new FormData();
-
-  var btn = document.getElementById("actionBtn");
-  btn.innerHTML = `<img src=${loader} width="20px" />`;
-  btn.disabled = false
-
- 
-  if (!(guarantor.phone.length > 10)) {
+  const SubmitGuarantorForm_1 = (e) => {
+    e.preventDefault();
+    var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
 
-    toast.error("please enter a correct phone number");
-    setIsError(true);
-    btn.innerHTML = `Proceed`;
+    getGuarantor()
+      .then((response) => response.data)
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+
+        if (!(res.data.length == 1 || res.data.length > 1)) {
+          // setGuarantorForm1(false);
+          console.log(res.data.length);
+          console.log("the guarantor data not full");
+
+          e.preventDefault();
+          var data = new FormData();
+
+          var btn = document.getElementById("actionBtn");
+          btn.innerHTML = `<img src=${loader} width="20px" />`;
+          btn.disabled = false;
+
+          if (!(guarantor.phone.length > 10)) {
+            btn.innerHTML = `<img src=${loader} width="20px" />`;
+
+            toast.error("please enter a correct phone number");
+            setIsError(true);
+            btn.innerHTML = `Proceed`;
+            // btn.disabled = true
+          }
+
+          if (!(guarantor.employerPhone.length > 10)) {
+            btn.innerHTML = `<img src=${loader} width="20px" />`;
+
+            toast.error("please enter a correct employer's phone number");
+            setIsError(true);
+            btn.innerHTML = `Proceed`;
+            // btn.disabled = true
+          }
+
+          if (
+            guarantor.phone.length > 10 ||
+            guarantor.employerPhone.length > 10
+          ) {
+            // btn.disabled = false
+          }
+
+          if (
+            guarantor.phone.length > 10 &&
+            guarantor.employerPhone.length > 10
+          ) {
+            console.log(guarantor.phone.length, guarantor.employerPhone.length);
+            setIsError(false);
+            console.log("no errors");
+            // btn.disabled = false
+
+            // btn.innerHTML = `<img src=${loader} width="20px" />`;
+            data.append("firstname", guarantor.firstName);
+            data.append("lastname", guarantor.lastName);
+            data.append("email", guarantor.email);
+            data.append("phone_number", guarantor.phone);
+            data.append("gender", guarantor.gender);
+            data.append("office_address", guarantor.officeAddress);
+            data.append("home_address", guarantor.homeAddress);
+            data.append("profession", guarantor.profession);
+            data.append("name_of_organization", guarantor.organisation);
+            data.append("name_of_employer", guarantor.employer);
+            data.append("email_address_of_employer", guarantor.employerMail);
+            data.append("phone_number_of_employer", guarantor.employerPhone);
+            data.append(
+              "relationship_with_the_guarantor",
+              guarantor.relationship
+            );
+            data.append("user_id", userId);
+
+            submitGuarantor(data)
+              .then((response) => response.data)
+              .then((res) => {
+                if (res.status === 200) {
+                  // window.location = "/dashboard";
+                  window.scrollTo(0, 0);
+                  // document.getElementById("guarantorForm2").reset()
+                  setGuarantorForm1(false);
+                  btn.disabled = true;
+                  toast.success("Submission successful");
+                  btn.innerHTML = `<img src=${loader} width="20px" />`;
+                  btn.disabled = true;
+                  // flutterWavePayment();
+                } else {
+                  toast.error("Submission not successful, try again!!!");
+                  // btn.innerHTML = `<img src=${loader} width="20px" />`;
+                  btn.innerHTML = `Procede`;
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+                if (err.response) {
+                  toast.error(err.response);
+                  btn.innerHTML = `Procede`;
+                }
+                // else {
+                //   toast.error(
+                //     "Something went wrong!!! Please make sure you have a good internet connection."
+                //   );
+                //   btn.innerHTML = `Procede`;
+                // }
+              });
+          }
+        }
+      });
+  };
+
+  const SubmitGuarantorForm_2 = (e) => {
+    e.preventDefault();
+    var data = new FormData();
+
+    var btn = document.getElementById("actionBtn");
+    btn.innerHTML = `<img src=${loader} width="20px" />`;
     // btn.disabled = true
 
-  }
+    if (!(guarantor.phone.length > 10)) {
+      btn.innerHTML = `<img src=${loader} width="20px" />`;
 
-  if (!(guarantor.employerPhone.length > 10)) {
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
+      toast.error("please enter a correct phone number");
+      setIsError(true);
+      btn.innerHTML = `Proceed`;
+      // btn.disabled = true
+    }
 
-    toast.error("please enter a correct employer's phone number");
-    setIsError(true);
-    btn.innerHTML = `Proceed`;
-    // btn.disabled = true
-  } 
+    if (!(guarantor.employerPhone.length > 10)) {
+      btn.innerHTML = `<img src=${loader} width="20px" />`;
 
-  if (guarantor.phone.length > 10 || guarantor.employerPhone.length > 10) {
-    // btn.disabled = false
-  }
+      toast.error("please enter a correct employer's phone number");
+      setIsError(true);
+      btn.innerHTML = `Proceed`;
+      // btn.disabled = false
+    }
 
-  if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-    console.log(guarantor.phone.length, guarantor.employerPhone.length)
-    setIsError(false);
-    console.log('no errors')
-    // btn.disabled = false
-    
-    // btn.innerHTML = `<img src=${loader} width="20px" />`;
-    data.append("firstname", guarantor.firstName);
-    data.append("lastname", guarantor.lastName);
-    data.append("email", guarantor.email);
-    data.append("phone_number", guarantor.phone);
-    data.append("gender", guarantor.gender);
-    data.append("office_address", guarantor.officeAddress);
-    data.append("home_address", guarantor.homeAddress);
-    data.append("profession", guarantor.profession);
-    data.append("name_of_organization", guarantor.organisation);
-    data.append("name_of_employer", guarantor.employer);
-    data.append("email_address_of_employer", guarantor.employerMail);
-    data.append("phone_number_of_employer", guarantor.employerPhone);
-    data.append("relationship_with_the_guarantor", guarantor.relationship);
-    data.append("user_id", userId);
+    if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
+      console.log(guarantor.phone.length, guarantor.employerPhone.length);
+      setIsError(false);
+      console.log("no errors");
 
+      // btn.innerHTML = `<img src=${loader} width="20px" />`;
+      data.append("firstname", guarantor.firstName);
+      data.append("lastname", guarantor.lastName);
+      data.append("email", guarantor.email);
+      data.append("phone_number", guarantor.phone);
+      data.append("gender", guarantor.gender);
+      data.append("office_address", guarantor.officeAddress);
+      data.append("home_address", guarantor.homeAddress);
+      data.append("profession", guarantor.profession);
+      data.append("name_of_organization", guarantor.organisation);
+      data.append("name_of_employer", guarantor.employer);
+      data.append("email_address_of_employer", guarantor.employerMail);
+      data.append("phone_number_of_employer", guarantor.employerPhone);
+      data.append("relationship_with_the_guarantor", guarantor.relationship);
+      data.append("user_id", userId);
 
-    submitGuarantor(data)
-    .then((response) => response.data)
-    .then((res) => {
-      if (res.status === 200) {
-        // window.location = "/dashboard";
-        window.scrollTo(0, 0);
-        // document.getElementById("guarantorForm2").reset()
-        setGuarantorForm1(false)
-        toast.success("Submission successful");
-        btn.innerHTML = `<img src=${loader} width="20px" />`;
-        btn.disabled = true
-        // flutterWavePayment();
-      } else {
-        toast.error("Submission not successful, try again!!!");
-        // btn.innerHTML = `<img src=${loader} width="20px" />`;
-        btn.innerHTML =`Procede`;
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      if (err.response) {
-        toast.error(err.response);
-        btn.innerHTML =`Procede`;
-      } 
-      // else {
-      //   toast.error(
-      //     "Something went wrong!!! Please make sure you have a good internet connection."
-      //   );
-      //   btn.innerHTML = `Procede`;
-      // }
-    });
+      submitGuarantor(data)
+        .then((response) => response.data)
+        .then((res) => {
+          if (res.status === 200) {
+            btn.disabled = true;
+            window.location = "/dashboard";
+            // toast.success("Submission successful");
+            btn.innerHTML = `Submit & Pay`;
 
-  }
-}
+            // flutterWavePayment();
+          } else {
+            toast.error("Submission not successful, try again!!!");
+            btn.innerHTML = `Submit & Pay`;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response) {
+            toast.error(err.response);
+            btn.innerHTML = `Submit & Pay`;
+          }
 
+          // else {
+          //   toast.error(
+          //     "Something went wrong!!! Please make sure you have a good internet connection."
+          //   );
+          //   btn.innerHTML = `Submit & Pay`;
+          // }
+        });
 
-
-
-const SubmitGuarantorForm_2 =(e)=>{
-  e.preventDefault();
-  var data = new FormData();
-
-  var btn = document.getElementById("actionBtn");
-  btn.innerHTML = `<img src=${loader} width="20px" />`;
-  // btn.disabled = true
-
-  if (!(guarantor.phone.length > 10)) {
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-    toast.error("please enter a correct phone number");
-    setIsError(true);
-    btn.innerHTML = `Proceed`;
-    // btn.disabled = true
-
-  }
-
-  if (!(guarantor.employerPhone.length > 10)) {
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-    toast.error("please enter a correct employer's phone number");
-    setIsError(true);
-    btn.innerHTML = `Proceed`;
-    // btn.disabled = false
-  } 
-
-  if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-    console.log(guarantor.phone.length, guarantor.employerPhone.length)
-    setIsError(false);
-    console.log('no errors')
-    
-    // btn.innerHTML = `<img src=${loader} width="20px" />`;
-    data.append("firstname", guarantor.firstName);
-    data.append("lastname", guarantor.lastName);
-    data.append("email", guarantor.email);
-    data.append("phone_number", guarantor.phone);
-    data.append("gender", guarantor.gender);
-    data.append("office_address", guarantor.officeAddress);
-    data.append("home_address", guarantor.homeAddress);
-    data.append("profession", guarantor.profession);
-    data.append("name_of_organization", guarantor.organisation);
-    data.append("name_of_employer", guarantor.employer);
-    data.append("email_address_of_employer", guarantor.employerMail);
-    data.append("phone_number_of_employer", guarantor.employerPhone);
-    data.append("relationship_with_the_guarantor", guarantor.relationship);
-    data.append("user_id", userId);
-
-
-    submitGuarantor(data)
-    .then((response) => response.data)
-    .then((res) => {
-      if (res.status === 200) {
-        window.location = "/dashboard";
-        // toast.success("Submission successful");
-        btn.innerHTML = `Submit & Pay`;
-        
-        // flutterWavePayment();
-      } else {
-        toast.error("Submission not successful, try again!!!");
-        btn.innerHTML = `Submit & Pay`;
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      if (err.response) {
-        toast.error(err.response);
-        btn.innerHTML = `Submit & Pay`;
-      } 
-      
-      // else {
-      //   toast.error(
-      //     "Something went wrong!!! Please make sure you have a good internet connection."
-      //   );
-      //   btn.innerHTML = `Submit & Pay`;
-      // }
-    });
-
-  var planData = new FormData();
-  planData.append("payment_plan", "pay as you earn");
-  addPlan(planData)
-    .then((response) => response.data)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-} else {
-  btn.innerHTML = `Proceed`;
-}
-}
-
-
-
-
+      var planData = new FormData();
+      planData.append("payment_plan", "pay as you earn");
+      addPlan(planData)
+        .then((response) => response.data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      btn.innerHTML = `Proceed`;
+    }
+  };
 
   const submitForm = (e, whichForm) => {
     e.preventDefault();
@@ -410,24 +422,22 @@ const SubmitGuarantorForm_2 =(e)=>{
       toast.error("please enter a correct phone number");
       setIsError(true);
       btn.innerHTML = `Proceed`;
-
     }
-    
+
     if (!(guarantor.employerPhone.length > 10)) {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
 
       toast.error("please enter a correct employer's phone number");
       setIsError(true);
       btn.innerHTML = `Proceed`;
-    } 
+    }
 
     if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-      console.log(guarantor.phone.length, guarantor.employerPhone.length)
+      console.log(guarantor.phone.length, guarantor.employerPhone.length);
       setIsError(false);
     }
-   
-    
-    if(isError === false) {
+
+    if (isError === false) {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
       data.append("firstname", guarantor.firstName);
       data.append("lastname", guarantor.lastName);
@@ -445,7 +455,6 @@ const SubmitGuarantorForm_2 =(e)=>{
       data.append("user_id", userId);
 
       if (whichForm === "guarantor1" && isError === false) {
-
         var btn = document.getElementById("actionBtn");
 
         btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -806,7 +815,6 @@ const SubmitGuarantorForm_2 =(e)=>{
                                   // onSubmit={(e) => submitForm(e, "guarantor1")}
                                   onSubmit={(e) => SubmitGuarantorForm_1(e)}
                                 >
-
                                   <div className="dashboard-content-form-container">
                                     <label>First Name</label>
                                     <input
