@@ -192,7 +192,7 @@ function Details() {
       .then((res) => {
         setGuarantorDetails_1([res.data[0]]);
         setGuarantorDetails_2([res.data[1]]);
-        // console.log(res.data);
+        console.log(res.data);
         // setGuarantorId(res.data[0]["id"]);
         // console.log(guarantorDetails);
       })

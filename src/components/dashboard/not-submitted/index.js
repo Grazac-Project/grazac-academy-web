@@ -143,13 +143,20 @@ window.onload = (event) => {
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
     var data = new FormData();
+    
+    try {
+   
+      btn.innerHTML = `Submit`;
 
     if (!(bioData.phone.length>10)){
+      btn.innerHTML = `Submit`;
+
 
       toast.error("please check enter a valid phone number")
 
     }
     else{
+      btn.innerHTML = `Submit`;
       // toast.success('Successful')
 
     data.append("firstName", bioData.firstName);
@@ -172,6 +179,12 @@ window.onload = (event) => {
     data.append("will_you_pay_legal_fees", education.legalFee);
 
     }
+  }
+    catch(err) {
+      toast.error("please check enter a valid phone number")
+
+    }
+
     submitDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {

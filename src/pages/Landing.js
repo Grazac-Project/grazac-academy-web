@@ -754,7 +754,8 @@ const Landing = () => {
           "Explore diverse tech talents of your choice with genuine skillsets and good workplace ethics."
         }
         button_1={"Hire from us"}
-        button_2={"Contact us"}
+        button_2={"Chat with us"}
+        
       />
 
       <Footer />

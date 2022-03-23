@@ -5142,7 +5142,7 @@ input:focus, select:focus, textarea:focus {
   margin: 10px 0 20px;
   font-size: 15px !important;
   border-radius: 30px;
-  padding: 0 19px;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   width: 85px;
 }
 
@@ -5154,8 +5154,8 @@ input:focus, select:focus, textarea:focus {
   margin: 10px 0 20px;
   font-size: 15px !important;
   border-radius: 30px;
-  padding: 0 19px;
-  width: 10rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  width: 6rem;
 }
 
 .hire_profile-main-bio-image1 {

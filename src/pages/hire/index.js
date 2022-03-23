@@ -102,7 +102,7 @@ const Hire = () => {
 
   return (
     <div>
-      {/* {console.log(talents)} */}
+      {console.log(talents)}
 
       {talents.length != 0 ? (
         <div>
@@ -318,7 +318,7 @@ const Hire = () => {
               "Learn in-demand tech skills with us and become globally sought-after in the digital space."
             }
             button_1={"Learn with us"}
-            button_2={"Chat with us"}
+            button_2={"Contact us"}
           />
           <Footer />
         </div>
