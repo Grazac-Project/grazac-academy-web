@@ -41,6 +41,7 @@ function Listing() {
         setLoading(false);
         if (resp.status === 200) {
           setTalents(resp.data.data.users);
+          console.log(resp.data.data.users)
           setFetchedPage(resp.data.data.pageNumber);
         } else {
           alert(

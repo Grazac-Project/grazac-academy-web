@@ -23,6 +23,7 @@ function Profile () {
     const [project, setProject] = useState([]);
     const [talent, setTalent] = useState({});
 
+
     const isEmptyObject=(obj)=> {
         var name;
         for (name in obj) {
@@ -52,6 +53,7 @@ function Profile () {
             })
     }, []);
 
+    
     return (
         <div>
       {/* {console.log(isEmptyObject(talent))} */}
@@ -92,6 +94,7 @@ function Profile () {
                                 </div>
                             </div>
                         </div> 
+
                         <div className="hire_profile-main-info">
                             <div>
                                 <h4>Education</h4>

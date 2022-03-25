@@ -17,7 +17,6 @@ function NotSubmitted({
   userDetails,
 }) {
 
-
   const [active, setActive] = useState("welcome");
   const [formActive, setFormActive] = useState("");
 
@@ -145,18 +144,15 @@ window.onload = (event) => {
     var data = new FormData();
     
     try {
-   
-      btn.innerHTML = `Submit`;
-
+        //  btn.innerHTML = `Submit`;
+        btn.innerHTML = `<img src=${loader} width="20px" />`;
     if (!(bioData.phone.length>10)){
       btn.innerHTML = `Submit`;
-
-
       toast.error("please check enter a valid phone number")
-
     }
     else{
-      btn.innerHTML = `Submit`;
+      // btn.innerHTML = `Submit`;
+      btn.innerHTML = `<img src=${loader} width="20px" />`;
       // toast.success('Successful')
 
     data.append("firstName", bioData.firstName);
@@ -177,12 +173,11 @@ window.onload = (event) => {
     data.append("why_selected_for_cohort", education.reason);
     data.append("physically_available", education.availability);
     data.append("will_you_pay_legal_fees", education.legalFee);
-
     }
   }
     catch(err) {
       toast.error("please check enter a valid phone number")
-
+      btn.innerHTML = `Submit`
     }
 
     submitDetails(data, userId)
@@ -450,6 +445,9 @@ window.onload = (event) => {
                         </option>
                         <option value="Android Development">
                           Android Development
+                        </option>
+                        <option value="Product Management">
+                        Product Management
                         </option>
                       </select>
                     </div>
