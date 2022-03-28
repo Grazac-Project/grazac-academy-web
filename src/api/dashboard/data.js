@@ -6,8 +6,7 @@ try {
     let details = sessionStorage.getItem('user_details');
     token = JSON.parse(details).token;
     userId = JSON.parse(details).id;
-    console.log(userId)
-    console.log(token)
+
 } catch (err) {
     //err
 }
@@ -19,7 +18,6 @@ export const submitDetails = (data, id) => {
         }
     })
 }
-
 
 
 export const getDetails = () => {

@@ -92,6 +92,7 @@ function Dashboard() {
 
     console.log("page loaded");
     setLoading(true);
+    
     getGuarantor()
       .then((response) => response.data)
       .then((res) => {

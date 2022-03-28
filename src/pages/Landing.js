@@ -96,8 +96,7 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Application into Cohort (012) begins March, 2022. Class commences
-              by June, 2022
+              Application into Cohort (012) is Opened, Classes begin by June 2022.
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -108,6 +107,7 @@ const Landing = () => {
             {/* <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
             </Link> */}
+
             <img
               src={ex}
               alt=""
@@ -134,22 +134,16 @@ const Landing = () => {
 
         {/* <a onClick={showToast}> */}
         <Link to="/login">
-        
-          
-
           <div
             className="nav__btn"
-            style={{ width: "130px", margin: "auto", textAlign: "center"}}
+            style={{ width: "130px", margin: "auto", textAlign: "center" }}
           >
             {/* <a href="/login" > */}
             <div className="nav__btn--text">Apply Now</div>
             {/* <div className="nav__btn">Apply Now</div> */}
-         
           </div>
-         
-          </Link>
-             {/* </a> */}
-
+        </Link>
+        {/* </a> */}
 
         <div className="landing__text-below">
           <div>
@@ -379,13 +373,13 @@ const Landing = () => {
             </Link>
           </div>
           <Link to="/login">
-          <div
-            className="nav__btn"
-            style={{ width: "130px", margin: "auto", textAlign: "center" }}
-            // onClick={showToast}
-          >
-            <div className="nav__btn--text">Apply Now</div>
-          </div>
+            <div
+              className="nav__btn"
+              style={{ width: "130px", margin: "auto", textAlign: "center" }}
+              // onClick={showToast}
+            >
+              <div className="nav__btn--text">Apply Now</div>
+            </div>
           </Link>
         </div>
       </div>
@@ -450,11 +444,10 @@ const Landing = () => {
             <div className="landing__discover--list-item"></div>
             <div className="landing__discover--list-item"></div>
             <Link to="/login">
-            {/* <div className="nav__btn one-btn" onClick={showToast}> */}
-            <div className="nav__btn one-btn" >
-              <div className="nav__btn--text">Apply Now</div>
-            </div>
-
+              {/* <div className="nav__btn one-btn" onClick={showToast}> */}
+              <div className="nav__btn one-btn">
+                <div className="nav__btn--text">Apply Now</div>
+              </div>
             </Link>
           </div>
         </div>
@@ -588,7 +581,7 @@ const Landing = () => {
         </Container>
       </div>
 
-      <div className="landing__bottom" style={{ paddingBottom: 0 }}>
+      <div className="landing__bottom" id="landing__bottom" style={{ paddingBottom: 0 }}>
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
             <h1>
@@ -600,11 +593,15 @@ const Landing = () => {
               authentic background that match your requirements.
             </p>
             <div className="landing__btn--2">
-              <Link to="/hire">
-                <div className="nav__btn nav__btn-flex ">
+
+              <Link to="#landing__bottom">
+                <div className="nav__btn nav__btn-flex " onClick={() => toast.info("Coming Soon")}>
                   <a className="nav__btn--text">Hire our Talents</a>
                 </div>
+
               </Link>
+
+             
             </div>
           </div>
 
@@ -748,6 +745,7 @@ const Landing = () => {
         </div>
       </div>
       <Mode
+      id="landing_page_mode"
         page={"home"}
         title={"Ready to fill your vacant position?"}
         text={
@@ -755,7 +753,6 @@ const Landing = () => {
         }
         button_1={"Hire from us"}
         button_2={"Chat with us"}
-        
       />
 
       <Footer />

@@ -1,4 +1,6 @@
 import lady from "../images/Grazac-website/IMG_8440.JPG";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Linkedn = () => (
   <a>
@@ -20,6 +22,7 @@ const Linkedn = () => (
 const Mode = ({ title, page, text, button_1, button_2 }) => {
   return (
     <div className="mode">
+      {/* <ToastContainer/> */}
       <div className="landing__discount">
         <div className="landing__discount--container">
           <div className="landing__discount--img">
@@ -45,18 +48,26 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                       <a href="/hire/contact ">
                         <div className="nav__btn--text1">{button_2}</div>
                       </a>
-
-                      
                     </>
                   ) : (
                     <>
-                      <a href="/hire">
+                      {/* <a href="/hire">
                         <div
                           className="nav__btn--text"
                           style={{ marginRight: "20px" }}
                         >
                           {button_1}
                         </div>
+                      </a> */}
+                      {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
+
+                      <a
+                        href="#landing_page_mode"
+                        onClick={()=>toast.info('Coming Soon')}
+                        className="nav__btn--text"
+                        style={{ marginRight: "20px" }}
+                      >
+                        {button_1}
                       </a>
 
                       <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">

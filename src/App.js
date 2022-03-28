@@ -124,7 +124,8 @@ const App = () => {
             <Route path="/internship" component={InternshipForm} /> */}
 
             {/*   hire pages */}
-            <Route path="/hire" exact component={Hire} />
+
+            {/* <Route path="/hire" exact component={Hire} /> */}
             <Route path="/hire/listing" component={Listing} />
             <Route path="/hire/profile" component={Profile} />
             <Route path="/hire/contact" component={HireContact} />

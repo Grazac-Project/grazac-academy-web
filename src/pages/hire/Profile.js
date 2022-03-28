@@ -33,6 +33,7 @@ function Profile () {
         }
         return true;
     }
+    
 
     useEffect(()=>{
         getOneTalent(talentId)
@@ -43,6 +44,7 @@ function Profile () {
                     setEducation(resp.data.profile.education);
                     setAward(resp.data.profile.award);
                     setProject(resp.data.profile.project);
+                    console.log(resp.data.profile.project)
                 } else {
                     alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
                 }
@@ -138,7 +140,7 @@ function Profile () {
                                                 <div className="hire_profile-main-info-shift-flx-2">
                                                     <p className="text-1">{item.title}</p>
                                                     {/* {console.log(item)} */}
-                                                    <p>
+                                                    <p className="text__1__description">
                                                         {item.description}
                                                     </p>
                                                   
