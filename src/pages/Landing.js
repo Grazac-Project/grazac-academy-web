@@ -39,6 +39,7 @@ import product from "../images/product.png";
 import frontend from "../images/frontend.png";
 import backend from "../images/backend.png";
 import android from "../images/android.png";
+import product_management from "../images/product_management.png";
 
 import { LoaderContext } from "../context";
 
@@ -96,7 +97,8 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Application into Cohort (012) is Opened, Classes begin by June 2022.
+              Application into Cohort (012) is Opened, Classes begin by June
+              2022.
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -371,6 +373,35 @@ const Landing = () => {
                 </div>
               </div>
             </Link>
+
+            <Link
+              to={`/course-detail-graduate?course=product-management`}
+              className="boxes33"
+            >
+              <div className="gua_cardview">
+                <div className="gua_cardview-box">
+                  <img src={product_management} alt="course-desc" />
+                </div>
+                <div className="gua_cardview-text">
+                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                    Product Management
+                  </h4>
+                  <p>
+                    Product management is the process of strategically guiding a
+                    company's product development, market launch, ongoing
+                    support and improvement of a product. It is basically making
+                    a product the best version it can be and fine-tuning a
+                    company’s product in order to make it appeal to the
+                    organization’s target audience and customers
+                  </p>
+                  <Link
+                    to={`/course-detail-graduate?course=product-management`}
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </Link>
           </div>
           <Link to="/login">
             <div
@@ -581,7 +612,11 @@ const Landing = () => {
         </Container>
       </div>
 
-      <div className="landing__bottom" id="landing__bottom" style={{ paddingBottom: 0 }}>
+      <div
+        className="landing__bottom"
+        id="landing__bottom"
+        style={{ paddingBottom: 0 }}
+      >
         <div className="landing__bottom--text">
           <div className="landing__bottom--text--right">
             <h1>
@@ -593,15 +628,14 @@ const Landing = () => {
               authentic background that match your requirements.
             </p>
             <div className="landing__btn--2">
-
               <Link to="#landing__bottom">
-                <div className="nav__btn nav__btn-flex " onClick={() => toast.info("Coming Soon")}>
+                <div
+                  className="nav__btn nav__btn-flex "
+                  onClick={() => toast.info("Coming Soon")}
+                >
                   <a className="nav__btn--text">Hire our Talents</a>
                 </div>
-
               </Link>
-
-             
             </div>
           </div>
 
@@ -745,7 +779,7 @@ const Landing = () => {
         </div>
       </div>
       <Mode
-      id="landing_page_mode"
+        id="landing_page_mode"
         page={"home"}
         title={"Ready to fill your vacant position?"}
         text={
