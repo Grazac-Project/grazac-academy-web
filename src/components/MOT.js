@@ -53,7 +53,7 @@ const ModeOfTeaching = _ => {
                         </div>
                     </div>
                     <div className="mode-pic">
-                        <img src={sprint} alt="jdgkj" style={{width:'100%'}} />
+                        {/* <img src={sprint} alt="jdgkj" style={{width:'100%'}} /> */}
                     </div>
                 </div>
                 <div className="course_mode-quote">

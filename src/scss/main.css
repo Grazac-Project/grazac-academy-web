@@ -5045,6 +5045,7 @@ input:focus, select:focus, textarea:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
   margin: 30px 0 70px;
 }
 

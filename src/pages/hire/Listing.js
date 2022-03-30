@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import { Container } from "react-bootstrap";
 import { getAllTalents } from "../../api/dashboard/hire";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
 import man from "../../images/man.jpg";
 import loader from "../../images/loader-purple.gif";
 import arrow from "../../images/svg/arrow-front.svg";
@@ -37,11 +37,16 @@ function Listing() {
     getAllTalents(page)
       .then((response) => response)
       .then((resp) => {
-        // console.log(resp.data.data.pageNumber);
         setLoading(false);
         if (resp.status === 200) {
+          // console.log(resp.data.data.pageNumber)
           setTalents(resp.data.data.users);
-          console.log(resp.data.data.users)
+          console.log(resp.data.data.users.length)
+          if (resp.data.data.users.length===0){
+            window.location="/hire/listing"
+            toast.error("End Of List")
+          }
+          
           setFetchedPage(resp.data.data.pageNumber);
         } else {
           alert(
@@ -56,15 +61,18 @@ function Listing() {
       });
   };
 
+  const selectPage=(page)=>{
+    setLoading(true);
+      setPage(page);
+      fetchTalents();
+  }
   const pagination = (type) => {
     if (type === "next") {
       setLoading(true);
       setPage(page++);
-      // console.log(page)
       fetchTalents();
     } else {
       if (fetchedPage === "1") {
-        console.log("dont paginate");
       } else {
         setLoading(true);
         setPage(page--);
@@ -75,9 +83,9 @@ function Listing() {
 
   return (
     <div>
-      {/* {console.log(isEmptyObject(talents))} */}
-
+<ToastContainer/> 
       {isEmptyObject(talents) == false ? (
+
         <div>
           <div className="hire-bg">
             <Navbar />
@@ -148,16 +156,17 @@ function Listing() {
                   {fetchedPage === "1" ? (
                     <div></div>
                   ) : (
-                    <div className="hire_listing-pagination-number">
-                      <p>{parseInt(fetchedPage) - 1}</p>
+                    <div onClick={()=>selectPage(parseInt(fetchedPage) - 1)} className="hire_listing-pagination-number">
+                      <p >{parseInt(fetchedPage) - 1}</p>
                     </div>
                   )}
                   <div className="hire_listing-pagination-number activePage">
                     <p>{fetchedPage}</p>
                   </div>
-                  <div className="hire_listing-pagination-number">
-                    <p>{parseInt(fetchedPage) + 1}</p>
+                  <div onClick={()=>selectPage(parseInt(fetchedPage) + 1)} className="hire_listing-pagination-number">
+                    <p >{parseInt(fetchedPage) + 1}</p>
                   </div>
+                  {console.log(fetchedPage)}
                   <div
                     className="hire_listing-pagination-text"
                     onClick={() => pagination("next")}
