@@ -693,12 +693,12 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(565000);
+                                    setAmount(585000);
                                     setCurrency("NGN");
                                   }}
                                 >
                                   <div></div>
-                                  <p>Pay at once (USD 1,000 = NGN 565,000)</p>
+                                  <p>Pay at once (USD 1,000 = NGN 585,000)</p>
                                 </div>
                                 <button onClick={makePayment}>Proceed</button>
                               </div>
@@ -1268,13 +1268,13 @@ function Dashboard() {
                                         }
                                         onClick={() => {
                                           setPayOpt("full");
-                                          setAmount(565000);
+                                          setAmount(585000);
                                           setCurrency("NGN");
                                         }}
                                       >
                                         <div></div>
                                         <p>
-                                          Pay at once (USD 1,000 = NGN 565,000)
+                                          Pay at once (USD 1,000 = NGN 585,000)
                                         </p>
                                       </div>
                                       <button
