@@ -29,10 +29,10 @@ function Listing() {
   useEffect(() => {
     document.title = "Hire - Grazac Academy";
     window.scrollTo(0, 0);
-    fetchTalents();
-  }, []);
+    fetchTalents(page);
+  }, [page]);
 
-  const fetchTalents = () => {
+  const fetchTalents = (page) => {
     setLoading(true);
     getAllTalents(page)
       .then((response) => response)
@@ -40,24 +40,38 @@ function Listing() {
         setLoading(false);
         if (resp.status === 200) {
           // console.log(resp.data.data.pageNumber)
-          setTalents(resp.data.data.users);
+          
           console.log(resp.data.data.users.length)
-          if (resp.data.data.users.length===0){
-            window.location="/hire/listing"
-            toast.error("End Of List")
+          if (resp.data.data.users.length!==0){
+            setFetchedPage(resp.data.data.pageNumber);
+            setTalents(resp.data.data.users);
+            // setTimeout((() => toast.error("End Of List")), 5000)
+            // toast.error("End Of List")
+            // console.log("end of list")
+            // // window.location="/hire/listing"
+          }
+          else{
+            toast.error("End of List!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
           }
           
-          setFetchedPage(resp.data.data.pageNumber);
-        } else {
-          alert(
-            `Something went wrong, please try again!!! Message: ${resp.data.message}`
-          );
-        }
+          
+        } else{
+          toast.error("End of List!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        };
+        
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
-        alert(`Something went wrong, please try again!!!`);
+        toast.error("End of List!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        })
+      
+        // alert(`Something went wrong, please try again!!!`);
       });
   };
 
@@ -69,13 +83,13 @@ function Listing() {
   const pagination = (type) => {
     if (type === "next") {
       setLoading(true);
-      setPage(page++);
+      setPage(prev => prev + 1);
       fetchTalents();
     } else {
       if (fetchedPage === "1") {
       } else {
         setLoading(true);
-        setPage(page--);
+        setPage(prev => prev - 1);
         fetchTalents();
       }
     }
@@ -156,17 +170,20 @@ function Listing() {
                   {fetchedPage === "1" ? (
                     <div></div>
                   ) : (
+
                     <div onClick={()=>selectPage(parseInt(fetchedPage) - 1)} className="hire_listing-pagination-number">
-                      <p >{parseInt(fetchedPage) - 1}</p>
+                      <p onClick={()=>selectPage(parseInt(fetchedPage) - 1)}>{parseInt(fetchedPage) - 1}</p>
                     </div>
                   )}
+
                   <div className="hire_listing-pagination-number activePage">
                     <p>{fetchedPage}</p>
                   </div>
-                  <div onClick={()=>selectPage(parseInt(fetchedPage) + 1)} className="hire_listing-pagination-number">
-                    <p >{parseInt(fetchedPage) + 1}</p>
-                  </div>
                   {console.log(fetchedPage)}
+                  
+                  <div onClick={()=>selectPage(parseInt(fetchedPage) + 1)} className="hire_listing-pagination-number">
+                    <p onClick={()=>selectPage(parseInt(fetchedPage) + 1)}>{parseInt(fetchedPage) + 1}</p>
+                  </div>
                   <div
                     className="hire_listing-pagination-text"
                     onClick={() => pagination("next")}
