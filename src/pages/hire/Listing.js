@@ -39,16 +39,12 @@ function Listing() {
       .then((resp) => {
         setLoading(false);
         if (resp.status === 200) {
-          // console.log(resp.data.data.pageNumber)
           
           console.log(resp.data.data.users.length)
           if (resp.data.data.users.length!==0){
             setFetchedPage(resp.data.data.pageNumber);
             setTalents(resp.data.data.users);
-            // setTimeout((() => toast.error("End Of List")), 5000)
-            // toast.error("End Of List")
-            // console.log("end of list")
-            // // window.location="/hire/listing"
+        
           }
           else{
             toast.error("End of List!", {
@@ -57,21 +53,17 @@ function Listing() {
           }
           
           
-        } else{
-          toast.error("End of List!", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-        };
+        } 
+        
         
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
-        toast.error("End of List!", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        })
+        // console.log(err);
+        // toast.error("There was an error, please try again", {
+        //   position: toast.POSITION.BOTTOM_RIGHT,
+        // })
       
-        // alert(`Something went wrong, please try again!!!`);
       });
   };
 
