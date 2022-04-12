@@ -51,24 +51,25 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                     </>
                   ) : (
                     <>
-                      {/* <a href="/hire">
+                      <a href="/hire">
                         <div
                           className="nav__btn--text"
                           style={{ marginRight: "20px" }}
                         >
                           {button_1}
                         </div>
-                      </a> */}
-                      {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
+                      </a> 
+                      
+                       {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
 
-                      <a
+                      {/* <a
                         href="#landing_page_mode"
                         onClick={()=>toast.info('Coming Soon')}
                         className="nav__btn--text"
                         style={{ marginRight: "20px" }}
                       >
                         {button_1}
-                      </a>
+                      </a> */}
 
                       <a href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL">
                         <div className="nav__btn--text1">{button_2}</div>

@@ -628,10 +628,10 @@ const Landing = () => {
               authentic background that match your requirements.
             </p>
             <div className="landing__btn--2">
-              <Link to="#landing__bottom">
+              <Link to="/hire">
                 <div
                   className="nav__btn nav__btn-flex "
-                  onClick={() => toast.info("Coming Soon")}
+                  // onClick={() => toast.info("Coming Soon")}
                 >
                   <a className="nav__btn--text">Hire our Talents</a>
                 </div>
