@@ -221,18 +221,19 @@ window.onload = (event) => {
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
-            Learn with us for 5 months and pay no tuition till you’re hired!
+            Learn with us for 6 months and pay no tuition till you’re hired!
           </p>
           <p>
-            Grazac Accelerator Program is a full time, 5-month training program
+            Grazac Accelerator Program is a full time, 6-month training program
             focused on building in-demand tech skills at an accelerated pace.
             This program goes above and beyond to provide a superior educational
             experience, allowing students to develop a successful career in the
             tech industry through intensive training and internships.
           </p>
-          <p>Our curriculum covers 4 basic tech disciplines that includes;</p>
+          <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
           <ul>
             <li>Product Designing (UI/UX)</li>
+            <li>Product Management</li>
             <li>
               Front end web development (HTML, CSS, and Javascript (React.js)
             </li>
@@ -259,7 +260,7 @@ window.onload = (event) => {
           </ul>
           <h4>Duration</h4>
           <ul>
-            <li>5months ( 3months intensive training + 2months internship).</li>
+            <li>6 months ( 3 months intensive training + 3 months internship).</li>
           </ul>
           <h4>Basic Criteria to be met</h4>
           <ul>
@@ -269,7 +270,7 @@ window.onload = (event) => {
             </li>
             <li>
               Note that you will be mandated to provide guarantors and pay the
-              sum of #30,000 legal fee if selected for this cohort. This must be
+              sum of N50,000 legal fee if selected for this cohort. This must be
               paid within a week after selection if you have chosen our Pay as
               you Earn option.
             </li>
@@ -630,7 +631,7 @@ window.onload = (event) => {
                     <div className="dashboard-content-form-container">
                       <label>
                         If selected, will you be able to pay the legal fees of
-                        #30,000?
+                        N50,000?
                       </label>
                       <select
                         name="legalFee"

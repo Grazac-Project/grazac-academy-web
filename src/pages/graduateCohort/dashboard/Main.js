@@ -678,12 +678,12 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("part");
-                                    setAmount(30000);
+                                    setAmount(50000);
                                     setCurrency("NGN");
                                   }}
                                 >
                                   <div></div>
-                                  <p>Pay as you earn (NGN 30,000 legal fee)</p>
+                                  <p>Pay as you earn (NGN 50,000 legal fee)</p>
                                 </div>
                                 <div
                                   className={
@@ -693,12 +693,12 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(585000);
+                                    setAmount(702000);
                                     setCurrency("NGN");
                                   }}
                                 >
                                   <div></div>
-                                  <p>Pay at once (USD 1,000 = NGN 585,000)</p>
+                                  <p>Pay at once (USD 1,200 = NGN 702,000)</p>
                                 </div>
                                 <button onClick={makePayment}>Proceed</button>
                               </div>
@@ -737,7 +737,7 @@ function Dashboard() {
                                 legal fees bonded by the law firm.
                               </p>
                               <p>
-                                The legal fee cost is a total of 30,000 Naira.
+                                The legal fee cost is a total of 50,000 Naira.
                                 Kindly note that this amount is not refundable
                                 under any circumstance.
                               </p>
@@ -1251,13 +1251,13 @@ function Dashboard() {
                                         }
                                         onClick={() => {
                                           setPayOpt("part");
-                                          setAmount(30000);
+                                          setAmount(50000);
                                           setCurrency("NGN");
                                         }}
                                       >
                                         <div></div>
                                         <p>
-                                          Pay as you earn (NGN 30,000 legal fee)
+                                          Pay as you earn (NGN 50,000 legal fee)
                                         </p>
                                       </div>
                                       <div
@@ -1268,13 +1268,13 @@ function Dashboard() {
                                         }
                                         onClick={() => {
                                           setPayOpt("full");
-                                          setAmount(585000);
+                                          setAmount(702000);
                                           setCurrency("NGN");
                                         }}
                                       >
                                         <div></div>
                                         <p>
-                                          Pay at once (USD 1,000 = NGN 585,000)
+                                          Pay at once (USD 1,200 = NGN 702,000)
                                         </p>
                                       </div>
                                       <button

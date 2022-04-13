@@ -327,7 +327,7 @@ const Faq = () => {
             </div>
             <div className="boxes55">
               <div className="gua_advice-box-text">
-                <h2>Still have a questions?</h2>
+                <h2>Still Have A Question?</h2>
                 <p>
                   Do you need further clarification? Call{" "}
                   <span>08068365951</span> or click on the button below to

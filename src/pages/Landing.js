@@ -244,11 +244,11 @@ const Landing = () => {
                 <div className="">
                   <img src={why4} alt="profile" />
                 </div>
-                <h4>2-months Compulsory Internship</h4>
+                <h4>3-months Compulsory Internship</h4>
                 <p className="hire_dev-grey">
                   Get real workplace experience. You stand a chance to work with
                   amazing teams on real-life projects to solve related problems
-                  so you can build your portfolio for at least 2-months.
+                  so you can build your portfolio for at least 3-months.
                 </p>
               </div>
             </Col>
