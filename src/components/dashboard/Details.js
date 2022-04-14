@@ -363,7 +363,7 @@ function Details() {
             <hr />
             <div className="dashboard-content-form-container">
               <h5>
-                If selected, will you be able to pay the legal fees of #30,000?
+                If selected, will you be able to pay the legal fees of #50,000?
               </h5>
               <p>{userDetails?.physically_available}</p>
             </div>

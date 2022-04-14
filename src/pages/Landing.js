@@ -764,8 +764,8 @@ const Landing = () => {
                   <Card.Body>
                     <div className="landing_faq-answer">
                       <p>
-                        The program runs for at least 5 months (3 months of
-                        immersive training and 2 months internship)
+                        The program runs for at least 6 months (3 months of
+                        immersive training and 3 months internship)
                       </p>
                     </div>
                   </Card.Body>

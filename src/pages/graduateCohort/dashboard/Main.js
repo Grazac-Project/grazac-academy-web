@@ -758,8 +758,7 @@ function Dashboard() {
                               </li>
 
                               <li>
-                                They must be residents within the locality of
-                                Abeokuta, Ogun State.
+                                They must be residents within Nigeria.
                               </li>
                               <li>
                                 If your guarantor does not meet our eligibility
