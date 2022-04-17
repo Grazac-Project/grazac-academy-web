@@ -139,7 +139,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The program runs for at least 5 months (3 months of immersive training and 2 months internship)
+                        The program runs for at least 6 months (3 months of immersive training and 3 months internship)
                         </p>
                       </div>
                     </Card.Body>
@@ -157,7 +157,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The sum of 1200 dollars is to be paid back within the period of 18-months after securing a job.
+                        The sum of 1500 dollars is to be paid back within the period of 18-months after securing a job.
                         </p>
                       </div>
                     </Card.Body>
@@ -211,7 +211,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The actual cost of learning is 1000 dollars if you pay your tuition before classes commence. If you wait till you get a job, you pay back the sum of 1200 dollars within a period of 18 months.
+                        The actual cost of learning is 1200 dollars if you pay your tuition before classes commence. If you wait till you get a job, you pay back the sum of 1500 dollars within a period of 18 months.
                         </p>
                       </div>
                     </Card.Body>
@@ -265,6 +265,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>Product Design</p>
+                        <p>Product Management</p>
                         <p>Front-end Web Development (HTML, CSS, Javascript [ReactJS] )</p>
                         <p>Back-end Web Development with NodeJS</p>
                         <p>Mobile Application Development </p>

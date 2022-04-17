@@ -1,4 +1,5 @@
 function Payment ({fname}) {
+    
     return(
         <div>
             <h3>Hello {fname}</h3>

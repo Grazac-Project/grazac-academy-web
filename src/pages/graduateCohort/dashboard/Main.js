@@ -718,7 +718,7 @@ function Dashboard() {
                             <h3>Pay as you earn</h3>
                             <div className="dashboard-content-guarantor_paragraph_text">
                               <p className="text1">
-                                Learn with us for 5 months and pay no tuition
+                                Learn with us for 6 months and pay no tuition
                                 till you’re hired!
                               </p>
                               <p>
