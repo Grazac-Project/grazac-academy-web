@@ -257,7 +257,7 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="6">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What are the available courses?</h4>
+                      <h4>What are the available courses ?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
