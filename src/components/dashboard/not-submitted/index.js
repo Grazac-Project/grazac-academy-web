@@ -158,7 +158,7 @@ function NotSubmitted({
         data.append("state_of_residence", bioData.state);
         data.append("current_city_and_location", bioData.city);
         data.append("means_of_identification", bioData.id);
-        
+
         data.append("maritalStatus", bioData.maritalStatus);
         data.append("haveKids", bioData.haveKids);
         data.append("ageRange", bioData.ageRange);
@@ -194,19 +194,29 @@ function NotSubmitted({
       })
 
       .catch((err) => {
-
-        if (err.response.data === "File size limit has been reached") {
-          toast.error("File size exceeded for Means of Identification Field");
-        }
-        if (err.response) {
-          toast.error(err.response);
-          btn.innerHTML = `Submit`;
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-          btn.innerHTML = `Submit`;
-        }
+try{
+  console.log(err)
+  if (err.response.data === "File size limit has been reached") {
+    toast.error("File size exceeded for Means of Identification Field");
+  }
+  if (err.response) {
+    toast.error(err.response);
+    btn.innerHTML = `Submit`;
+  } else {
+    toast.error(
+      "Something went wrong!!! Please make sure you have a good internet connection."
+    );
+    btn.innerHTML = `Submit`;
+  }
+}
+catch{
+  console.log(err)
+  toast.error(
+    "Something went wrong!!! Please Try Again"
+  );
+  btn.innerHTML = `Submit`;
+}
+       
       });
   };
 
@@ -349,7 +359,7 @@ function NotSubmitted({
                     <div className="dashboard-content-form-container">
                       <label>Phone Number</label>
                       <input
-                        // type="number"
+                        type="number"
                         required
                         name="phone"
                         placeholder="Phone Number"

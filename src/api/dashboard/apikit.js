@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const APIKit = axios.create({
     baseURL: 'https://api.grazacacademy.com/api/v1',
-    timeout: 20000, // timeout can be increased
+    timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'multipart/form-data',
         "Access-Control-Allow-Origin": "*"
