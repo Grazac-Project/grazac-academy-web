@@ -16,13 +16,12 @@ function NotSubmitted({
   setNewStatus,
   userDetails,
 }) {
-
   const [active, setActive] = useState("welcome");
   const [formActive, setFormActive] = useState("");
 
   // const [isError, setIsError] = useState("");
   // const [formActive, setFormActive] = useState("education");
-//   console.log(userDetails);
+  //   console.log(userDetails);
 
   const [userId, setUserId] = useState(0);
   const [checkAct, setCheckAct] = useState(false);
@@ -32,7 +31,7 @@ function NotSubmitted({
     lastName: `${lname}`,
     email: `${email}`,
     phone: `${phone}`,
-    phone:"",
+    phone: "",
     dob: "",
     gender: "",
     maritalStatus: "",
@@ -44,8 +43,6 @@ function NotSubmitted({
     id: null,
   });
 
-
-
   const [education, setEducation] = useState({
     courseOfStudy: "",
     grade: "",
@@ -56,17 +53,16 @@ function NotSubmitted({
     availability: "",
     legalFee: "",
   });
-//   setBioData(userDetails)
-//   console.log("i ran ooh ")
+  //   setBioData(userDetails)
+  //   console.log("i ran ooh ")
 
-window.onload = (event) => {
+  window.onload = (event) => {
     // console.log('page is fully loaded');
     // removeQuestions();
-    setBioData(userDetails)
+    setBioData(userDetails);
   };
 
   useEffect(() => {
-
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
@@ -81,24 +77,22 @@ window.onload = (event) => {
       });
   }, []);
 
+  //   setBioData(userDetails)
+  //   console.log(bioData)
+  //   console.log(userDetails)
 
-//   setBioData(userDetails)
-//   console.log(bioData)
-//   console.log(userDetails)
- 
-//   console.log(bioData.firstName)
+  //   console.log(bioData.firstName)
 
   const handleChange = (e) => {
-    
+    setBioData({
+      ...bioData,
+      [e.target.name]: e.target.value,
+    });
 
-  setBioData({
-    ...bioData,
-    [e.target.name]: e.target.value,
-  });
-  setEducation({
-    ...education,
-    [e.target.name]: e.target.value,
-  });
+    setEducation({
+      ...education,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleImage = (e) => {
@@ -142,48 +136,51 @@ window.onload = (event) => {
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
     var data = new FormData();
-    
-    try {
-        //  btn.innerHTML = `Submit`;
-        btn.innerHTML = `<img src=${loader} width="20px" />`;
-    if (!(bioData.phone.length>10)){
-      btn.innerHTML = `Submit`;
-      toast.error("please check enter a valid phone number")
-    }
-    else{
-      // btn.innerHTML = `Submit`;
-      btn.innerHTML = `<img src=${loader} width="20px" />`;
-      // toast.success('Successful')
 
-    data.append("firstName", bioData.firstName);
-    data.append("lastName", bioData.lastName);
-    data.append("email", bioData.email);
-    data.append("phoneNumber", bioData.phone);
-    data.append("dob", bioData.dob);
-    data.append("gender", bioData.gender);
-    data.append("preferred_course", bioData.course);
-    data.append("state_of_residence", bioData.state);
-    data.append("current_city_and_location", bioData.city);
-    data.append("means_of_identification", bioData.id);
-    data.append("course_of_study", education.courseOfStudy);
-    data.append("grade_achieved", education.grade);
-    data.append("qualifications", education.qualification);
-    data.append("programming_skills", education.experience);
-    data.append("nysc_status", education.nyscStatus);
-    data.append("why_selected_for_cohort", education.reason);
-    data.append("physically_available", education.availability);
-    data.append("will_you_pay_legal_fees", education.legalFee);
-    }
-  }
-    catch(err) {
-      toast.error("please check enter a valid phone number")
-      btn.innerHTML = `Submit`
+    try {
+      //  btn.innerHTML = `Submit`;
+      btn.innerHTML = `<img src=${loader} width="20px" />`;
+      if (!(bioData.phone.length > 10)) {
+        btn.innerHTML = `Submit`;
+        toast.error("please check enter a valid phone number");
+      } else {
+        // btn.innerHTML = `Submit`;
+        btn.innerHTML = `<img src=${loader} width="20px" />`;
+        // toast.success('Successful')
+
+        data.append("firstName", bioData.firstName);
+        data.append("lastName", bioData.lastName);
+        data.append("email", bioData.email);
+        data.append("phoneNumber", bioData.phone);
+        data.append("dob", bioData.dob);
+        data.append("gender", bioData.gender);
+        data.append("preferred_course", bioData.course);
+        data.append("state_of_residence", bioData.state);
+        data.append("current_city_and_location", bioData.city);
+        data.append("means_of_identification", bioData.id);
+        
+        data.append("maritalStatus", bioData.maritalStatus);
+        data.append("haveKids", bioData.haveKids);
+        data.append("ageRange", bioData.ageRange);
+
+        data.append("course_of_study", education.courseOfStudy);
+        data.append("grade_achieved", education.grade);
+        data.append("qualifications", education.qualification);
+        data.append("programming_skills", education.experience);
+        data.append("nysc_status", education.nyscStatus);
+        data.append("why_selected_for_cohort", education.reason);
+        data.append("physically_available", education.availability);
+        data.append("will_you_pay_legal_fees", education.legalFee);
+      }
+    } catch (err) {
+      toast.error("please check enter a valid phone number");
+      btn.innerHTML = `Submit`;
     }
 
     submitDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
-        console.log(res);
+        
         if (res.status === 200) {
           toast.success(
             "Submission successful! Your Application is now under review."
@@ -195,10 +192,10 @@ window.onload = (event) => {
           btn.innerHTML = `Submit`;
         }
       })
+
       .catch((err) => {
-        console.log(err.response.data);
-        
-        if(err.response.data==="File size limit has been reached"){
+
+        if (err.response.data === "File size limit has been reached") {
           toast.error("File size exceeded for Means of Identification Field");
         }
         if (err.response) {
@@ -215,7 +212,7 @@ window.onload = (event) => {
 
   return (
     <div>
-        {/* {setBioData(userDetails)} */}
+      {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
       {active === "welcome" && (
         <div>
@@ -260,7 +257,9 @@ window.onload = (event) => {
           </ul>
           <h4>Duration</h4>
           <ul>
-            <li>6 months ( 3 months intensive training + 3 months internship).</li>
+            <li>
+              6 months ( 3 months intensive training + 3 months internship).
+            </li>
           </ul>
           <h4>Basic Criteria to be met</h4>
           <ul>
@@ -310,7 +309,7 @@ window.onload = (event) => {
                 <h4 style={{ marginLeft: "20px" }}>Apply</h4>
                 <div className="dashboard-content-form">
                   <form onSubmit={showEduForm}>
-                  {/* <form onSubmit={submitForm}> */}
+                    {/* <form onSubmit={submitForm}> */}
                     <p>Step 1 of 2</p>
                     <p>BIO DATA</p>
                     <div className="dashboard-content-form-container">
@@ -393,7 +392,7 @@ window.onload = (event) => {
                       >
                         <option>Select an option</option>
                         <option value="single">Single</option>
-                        <option value="Married">Married</option>
+                        <option value="married">Married</option>
                       </select>
                     </div>
 
@@ -408,7 +407,7 @@ window.onload = (event) => {
                       >
                         <option>Select an option</option>
                         <option value="yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value="no">No</option>
                       </select>
                     </div>
                     {/* age range */}
@@ -430,6 +429,7 @@ window.onload = (event) => {
 
                     <div className="dashboard-content-form-container">
                       <label>Preferred course at Grazac</label>
+
                       <select
                         name="course"
                         required
@@ -448,7 +448,7 @@ window.onload = (event) => {
                           Android Development
                         </option>
                         <option value="Product Management">
-                        Product Management
+                          Product Management
                         </option>
                       </select>
                     </div>
@@ -496,7 +496,7 @@ window.onload = (event) => {
                         name="id"
                         onChange={handleImage}
                       />
-                      
+
                       <p className="upload-text">
                         {bioData.id
                           ? `${bioData.id.name}`
