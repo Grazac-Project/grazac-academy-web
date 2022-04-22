@@ -147,7 +147,6 @@ function NotSubmitted({
         // btn.innerHTML = `Submit`;
         btn.innerHTML = `<img src=${loader} width="20px" />`;
         // toast.success('Successful')
-
         data.append("firstName", bioData.firstName);
         data.append("lastName", bioData.lastName);
         data.append("email", bioData.email);
@@ -158,11 +157,9 @@ function NotSubmitted({
         data.append("state_of_residence", bioData.state);
         data.append("current_city_and_location", bioData.city);
         data.append("means_of_identification", bioData.id);
-
         data.append("maritalStatus", bioData.maritalStatus);
         data.append("haveKids", bioData.haveKids);
         data.append("ageRange", bioData.ageRange);
-
         data.append("course_of_study", education.courseOfStudy);
         data.append("grade_achieved", education.grade);
         data.append("qualifications", education.qualification);
@@ -177,10 +174,10 @@ function NotSubmitted({
       btn.innerHTML = `Submit`;
     }
 
+
     submitDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
-        
         if (res.status === 200) {
           toast.success(
             "Submission successful! Your Application is now under review."
@@ -194,29 +191,25 @@ function NotSubmitted({
       })
 
       .catch((err) => {
-try{
-  console.log(err)
-  if (err.response.data === "File size limit has been reached") {
-    toast.error("File size exceeded for Means of Identification Field");
-  }
-  if (err.response) {
-    toast.error(err.response);
-    btn.innerHTML = `Submit`;
-  } else {
-    toast.error(
-      "Something went wrong!!! Please make sure you have a good internet connection."
-    );
-    btn.innerHTML = `Submit`;
-  }
-}
-catch{
-  console.log(err)
-  toast.error(
-    "Something went wrong!!! Please Try Again"
-  );
-  btn.innerHTML = `Submit`;
-}
-       
+        try {
+          console.log(err);
+          if (err.response.data === "File size limit has been reached") {
+            toast.error("File size exceeded for Means of Identification Field");
+          }
+          if (err.response) {
+            toast.error(err.response);
+            btn.innerHTML = `Submit`;
+          } else {
+            toast.error(
+              "Something went wrong!!! Please make sure you have a good internet connection."
+            );
+            btn.innerHTML = `Submit`;
+          }
+        } catch {
+          console.log(err);
+          toast.error("Something went wrong!!! Please Try Again");
+          btn.innerHTML = `Submit`;
+        }
       });
   };
 
@@ -381,12 +374,12 @@ catch{
                     <div className="dashboard-content-form-container">
                       <label>Gender</label>
                       <select
-                        name="gender"
                         required
+                        name="gender"
                         value={bioData.gender}
                         onChange={handleChange}
                       >
-                        <option>Select an option</option>
+                        <option  value="">Select an option</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
@@ -395,12 +388,12 @@ catch{
                     <div className="dashboard-content-form-container">
                       <label>Marital Status</label>
                       <select
-                        name="maritalStatus"
                         required
+                        name="maritalStatus"
                         value={bioData.maritalStatus}
                         onChange={handleChange}
                       >
-                        <option>Select an option</option>
+                        <option  value="">Select an option</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                       </select>
@@ -410,12 +403,12 @@ catch{
                     <div className="dashboard-content-form-container">
                       <label>Do you have Kids</label>
                       <select
-                        name="haveKids"
                         required
+                        name="haveKids"
                         value={bioData.haveKids}
                         onChange={handleChange}
                       >
-                        <option>Select an option</option>
+                        <option value="">Select an option</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                       </select>
@@ -424,12 +417,12 @@ catch{
                     <div className="dashboard-content-form-container">
                       <label>What's Your Age Range?</label>
                       <select
-                        name="ageRange"
                         required
+                        name="ageRange"
                         value={bioData.ageRange}
                         onChange={handleChange}
                       >
-                        <option>Select an option</option>
+                        <option value="">Select an option</option>
                         <option value="18 - 24">18 - 24</option>
                         <option value="25 - 30">25 - 30</option>
                         <option value="31 - 35">31 - 35</option>
@@ -441,12 +434,12 @@ catch{
                       <label>Preferred course at Grazac</label>
 
                       <select
-                        name="course"
                         required
+                        name="course"
                         value={bioData.course}
                         onChange={handleChange}
                       >
-                        <option>Select Preferred Course</option>
+                        <option value="">Select Preferred Course</option>
                         <option value="Product Design">Product Design</option>
                         <option value="Frontend Web Development">
                           Front-end Web Development
@@ -465,12 +458,12 @@ catch{
                     <div className="dashboard-content-form-container">
                       <label>State of residence</label>
                       <select
-                        name="state"
                         required
+                        name="state"
                         value={bioData.state}
                         onChange={handleChange}
                       >
-                        <option>Select State</option>
+                        <option value="">Select State</option>
                         {nigerianStates.map(function (nigerianStates, index) {
                           return (
                             <option value={nigerianStates.Name} key={index}>
@@ -501,8 +494,8 @@ catch{
                       </label>
 
                       <input
-                        type="file"
                         required
+                        type="file"
                         name="id"
                         onChange={handleImage}
                       />

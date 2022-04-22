@@ -3,14 +3,14 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   getGuarantor,
   getDetailsB,
-  submitDetails,
+  editDetails,
 } from "../../api/dashboard/data";
 import axios from "axios";
 
 // import Loader from "../Loader";
 
 import loader from "../../images/loader-purple.gif";
-
+import btn_loader from "../../images/svg/dashboard/loader.gif";
 function Details() {
   const [userId, setUserId] = useState(0);
 
@@ -21,15 +21,7 @@ function Details() {
   const [guarantorDetails_2, setGuarantorDetails_2] = useState([]);
   const [guarantorId_1, setGuarantorId_1] = useState(0);
   const [guarantorId_2, setGuarantorId_2] = useState(0);
-
-  const [userData, setUserData] = useState({
-    maritalStatus: `${userDetails.maritalStatus}`,
-    haveKids: `${userDetails.haveKids}`,
-    ageRange: `${userDetails.ageRange}`,
-    means_of_identification: `${userDetails.means_of_identification}`,
-  });
-
-  console.log(userDetails.means_of_identification);
+  const [submitted, setSubmitted] = useState(true);
 
   useEffect(() => {
     try {
@@ -40,26 +32,51 @@ function Details() {
     }
     // setBioData(userDetails)
   }, []);
+  useEffect(() => {
+
+    //remove the submit button if there is data for agerange have kids and marital status
+    {
+      !userDetails?.ageRange &&
+      !userDetails?.haveKids &&
+      !userDetails?.maritalStatus
+        ? setSubmitted(true)
+        : setSubmitted(false);
+    }
+  }, []);
 
   const submitData = (e) => {
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
+    btn.innerHTML = `<img src=${btn_loader} width="20px" />`;
 
     var data = new FormData();
 
-    data.append("maritalStatus", userData?.maritalStatus);
-    data.append("haveKids", userData?.haveKids);
-    data.append("ageRange", userData?.ageRange);
-    console.log(data, userData);
-    submitDetails(data, userId)
+    data.append("maritalStatus", userDetails?.maritalStatus);
+    data.append("haveKids", userDetails?.haveKids);
+    data.append("ageRange", userDetails?.ageRange);
+
+    data.append("dob", userDetails.dob);
+    
+    data.append("gender", userDetails.gender);
+    data.append("preferred_course", userDetails.preferred_course);
+    data.append("state_of_residence", userDetails.state_of_residence);
+    data.append("current_city_and_location", userDetails.current_city_and_location);
+    // data.append("means_of_identification", bioData.id);
+
+
+    console.log(data);
+
+    editDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
-        if (res.status === 200) {
-          toast.success(
-            "Submission successful!"
-          );
+        console.log(res);
+        if (res.status == 201) {
+          toast.success("Submission successful!");
           btn.innerHTML = `Submit`;
+
+          setSubmitted(false);
+
+          window.location = "/dashboard";
         } else {
           toast.error("Submission not successful, try again!!!");
           btn.innerHTML = `Submit`;
@@ -112,11 +129,22 @@ function Details() {
     console.log(guarantorData, guarantorId_2);
   };
 
+
+
   const handleDataChange = (e) => {
-    setUserData({
-      ...userData,
-      [e.target.name]: e.target.value,
-    });
+    if (
+      e.target.value != "" ||
+      e.target.value != undefined ||
+      !e.target.value
+    ) {
+      let userData = { ...userDetails };
+      console.log(userData);
+
+      setUserDetails({
+        ...userData,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const SubmitGuarantorChange_1 = (e) => {
@@ -237,7 +265,9 @@ function Details() {
       .then((res) => {
         setIsLoading(true);
         setUserDetails(res.data["data"]["results"][0]);
-        setIsLoading(false);
+        setIsLoading(false);   
+         console.log(userDetails.gender,userDetails.current_city_and_location,userDetails.state)
+
 
         // console.log(res.data['data']['results'][0])
       })
@@ -381,13 +411,16 @@ function Details() {
                     alt={userDetails.means_of_identification}
                   />
                 </div>
-                <hr />
-                {(!userDetails?.ageRange ||
-                    !userDetails?.haveKids ||
-                    !userDetails?.maritalStatus) && (
-                      <h3>Edit Data</h3>
 
-                    )}
+                {(!userDetails?.ageRange ||
+                  !userDetails?.haveKids ||
+                  !userDetails?.maritalStatus) && (
+                  <>
+                    <hr />
+                    <h3>Edit Data</h3>
+                  </>
+                )}
+
                 <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Marital Status</h5>
@@ -397,10 +430,10 @@ function Details() {
                     <select
                       name="maritalStatus"
                       required
-                      value={userData?.maritalStatus}
+                      value={userDetails?.maritalStatus}
                       onChange={handleDataChange}
                     >
-                      <option>Select an option</option>
+                      <option value="">Select an option</option>
                       <option value="single">Single</option>
                       <option value="married">Married</option>
                     </select>
@@ -416,10 +449,10 @@ function Details() {
                     <select
                       name="haveKids"
                       required
-                      value={userData?.haveKids}
+                      value={userDetails?.haveKids}
                       onChange={handleDataChange}
                     >
-                      <option>Select an option</option>
+                      <option value="">Select an option</option>
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                     </select>
@@ -436,10 +469,10 @@ function Details() {
                     <select
                       name="ageRange"
                       required
-                      value={userData?.ageRange}
+                      value={userDetails?.ageRange}
                       onChange={handleDataChange}
                     >
-                      <option>Select an option</option>
+                      <option value="">Select an option</option>
                       <option value="18 - 24">18 - 24</option>
                       <option value="25 - 30">25 - 30</option>
                       <option value="31 - 35">31 - 35</option>
@@ -447,13 +480,17 @@ function Details() {
                     </select>
                   )}
 
-                  {(!userDetails?.ageRange ||
+                  <button id="actionBtn" type="submit">
+                    Save
+                  </button>
+                  {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
-                    !userDetails?.maritalStatus) && (
-                      <button id="actionBtn" type="submit">
-                        Save
-                      </button>
-                    )}
+                    !userDetails?.maritalStatus ||
+                    submitted) && (
+                    <button id="actionBtn" type="submit">
+                      Save
+                    </button>
+                  )} */}
                 </div>
               </form>
             </div>
@@ -525,12 +562,8 @@ function Details() {
                   className="dashboard-content-form-container"
                   id={guarantorDetails_1[0]?.id}
                 >
-                  {console.log(guarantorDetails_1[0]?.id)}
-
                   <h5>First Name</h5>
-                  {/* {console.log(guarantorId_1)} */}
-                  {/* <p>{guarantorDetails_1[0]?.firstname}</p> */}
-                  {/* {console.log(guarantorDetails_1[0]?.id)} */}
+
                   <input
                     type="text"
                     name="firstname"

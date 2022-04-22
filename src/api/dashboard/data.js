@@ -1,4 +1,4 @@
-import { APIKit, AdminApiKit } from './apikit';
+import { APIKit, AdminApiKit,AdminApi } from './apikit';
 
 let token = '';
 let userId = 0;
@@ -13,6 +13,13 @@ try {
 
 export const submitDetails = (data, id) => {
     return APIKit.put(`/user/apply/${id}`, data, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+export const editDetails = (data, id) => {
+    return APIKit.put(`/user/edit-dashboard/${id}`, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }
