@@ -64,7 +64,7 @@ function Details() {
     // data.append("means_of_identification", bioData.id);
 
 
-    console.log(data);
+    
 
     editDetails(data, userId)
       .then((response) => response.data)
@@ -259,16 +259,15 @@ function Details() {
     // })
   };
 
+  const [tempData, setTemData] = useState(null)
   useEffect(() => {
     getDetailsB()
       //   .then((res) => console.log(res.data['data']['results'][0]))
       .then((res) => {
         setIsLoading(true);
         setUserDetails(res.data["data"]["results"][0]);
+        setTemData(res.data["data"]["results"][0]);
         setIsLoading(false);   
-         console.log(userDetails.gender,userDetails.current_city_and_location,userDetails.state)
-
-
         // console.log(res.data['data']['results'][0])
       })
       .catch((err) => {
@@ -479,10 +478,12 @@ function Details() {
                       <option value="36 and above">36 and above</option>
                     </select>
                   )}
-
-                  <button id="actionBtn" type="submit">
+                {!(tempData?.ageRange && tempData?.maritalStatus && tempData?.haveKids) && (
+                 <button id="actionBtn" type="submit">
                     Save
-                  </button>
+                   </button>
+                )}
+
                   {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
                     !userDetails?.maritalStatus ||
