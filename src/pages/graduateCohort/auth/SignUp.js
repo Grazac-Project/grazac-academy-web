@@ -37,7 +37,6 @@ function SignUp () {
             const {firstName, lastName, email, phone, password} = form;
             var data  = new FormData();
             const phone_length=phone.length
-            console.log(phone, phone_length)
 
             if (phone_length == 11 || phone_length > 11 ){
                 data.append("firstName", firstName);
@@ -54,7 +53,6 @@ function SignUp () {
             
                     const res = await response;
                     // const res.data.status ==201
-                    console.log(res);
                         if (res.data.status === 201) {
                         toast.success(`${res.data.message} Proceed to login.`);
                         // btn.innerHTML=`Create account`;
@@ -68,7 +66,6 @@ function SignUp () {
                     }
     
                 } catch (err) {
-                    console.log(err.response)
                     if(err.response.data.message){
                         toast.error(err.response.data.message);
                         btn.innerHTML=`Create account`;
@@ -86,28 +83,6 @@ function SignUp () {
 
 
        
-            // SignupAction(data)
-            //     .then((response) => response.data)
-            //     .then((res) => {
-            //         console.log(res);
-            //         if (res.status === 201) {
-            //             toast.success(`${res.message} Proceed to login.`);
-            //             btn.innerHTML=`Create account`;
-            //             // window.location = `/account-created?email=${email}`;
-            //         } else {
-            //             toast.error("Something went wrong, please try again!!!")
-            //         }
-            //     })
-            //     .catch((err) => {
-            //         console.log(err);
-            //         if(err.response.data.message){
-            //             toast.error(err.response.data.message);
-            //             btn.innerHTML=`Create account`;
-            //         } else{
-            //             toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-            //             btn.innerHTML=`Create account`;
-            //         }
-            //     });
         } else {
             toast.error("Password must be at least 6 characters!");
         }

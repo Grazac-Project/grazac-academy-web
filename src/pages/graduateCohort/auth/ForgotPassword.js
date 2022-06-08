@@ -27,7 +27,6 @@ function ForgotPassword () {
         ForgotPasswordAction(data)
             .then((response) => response.data)
             .then((res) => {
-                console.log(res);
                 if (res.status === 201) {
                     toast.success("Mail sent! Proceed to check your mail.");
                     btn.innerHTML=`Send Email`;

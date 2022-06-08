@@ -43,11 +43,9 @@ function Contact() {
       // hiring_location: data.hiring_location,
     });
 
-    console.log(payload);
     submitContact(payload)
       .then((response) => response)
       .then((resp) => {
-        console.log(resp);
         if (resp.status === 200) {
           alert(`${resp.data.message}`);
           document.getElementById("contact_form").reset();
@@ -59,7 +57,6 @@ function Contact() {
         btn.innerHTML = `Send Message`;
       })
       .catch((err) => {
-        console.log(err);
         alert(`Something went wrong, please try again!!!`);
         btn.innerHTML = `Send Message`;
       });

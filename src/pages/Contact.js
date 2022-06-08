@@ -26,7 +26,6 @@ const Contact = () => {
             const btn = document.querySelector('#submit');
             btn.setAttribute('disabled', '');
             btn.textContent = 'Submitting...';
-            console.log('Submitted')
             axios.post('http://grazacacademy.com/contact/create', {
                 name: name,
                 email: email,

@@ -52,9 +52,7 @@ const CourseDetail = (props) => {
         setOutline(JSON.parse(resp.data.outline));
       })
       .catch(() => {
-        console.log(
-          "An error occurred when fetching course details, refreshing..."
-        );
+       
         window.location.reload();
       });
   }, [props.location.search]);

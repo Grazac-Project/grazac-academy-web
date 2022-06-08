@@ -37,7 +37,6 @@ function Login () {
         LoginAction(data)
             .then((response) => response.data)
             .then((res) => {
-                console.log(res);
                 if (res.status === 201) {
                     toast.success(`${res.message}! Redirecting to dashboard...`);
 
@@ -65,17 +64,12 @@ function Login () {
             })
             .catch((err) => {
 
-                console.log(err.response)
-                console.log(err)
+              
                 toast.error(err.response.data.message);
 
 
                 if(err.response.data.message){
 
-                    console.log(err.response.data.message)
-                    console.log(err.response.data)
-                    console.log(err.response)
-                    console.log(err)
                     toast.error(err.response.data.message);
                     btn.innerHTML=`Sign in`;
 
@@ -124,7 +118,7 @@ function Login () {
                             <button type="submit" id="actionBtn">Sign in</button>
                             <p><Link to="/forgot-password"><span>Forgot your password?</span></Link></p>
                             <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
-                            {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
+                            {/* <p>Don't have an account? <span onClick={()=>toast.info('Application is Closed. Enrollment into Cohort 013 begins September 2022')}>Sign up</span></p> */}
                         </form>
                     </div>
                 </div>

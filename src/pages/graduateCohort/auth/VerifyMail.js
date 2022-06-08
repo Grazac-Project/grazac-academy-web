@@ -21,10 +21,8 @@ function Verify () {
         try {
             const response = await VerifyEmail(token);
             const res = await response;
-            console.log(res);
             setTimeout( function (){setLoading(false);}, 2500)
         } catch (err) {
-            console.log(err.response)
         }
     }
 

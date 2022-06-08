@@ -97,8 +97,7 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Application into Cohort (012) is Opened, Classes begin by June
-              2022.
+            Application is Closed. Enrollment into Cohort 013 begins September 2022.
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -534,7 +533,6 @@ const Landing = () => {
               <iframe
                 className="video-width"
                 src="https://www.youtube.com/embed/IG5cs69PmBo"
-                title="YouTube video player"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

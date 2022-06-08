@@ -38,13 +38,10 @@ const Hire = () => {
     getAllTalents(1)
       .then((response) => response)
       .then((resp) => {
-        // console.log(resp);
         if (resp.status === 200) {
           setTalents(resp.data.data.users);
-          // console.log(resp.data.data.users)
 
           setCarouselInfo(resp.data.data.users[0]);
-          // console.log(resp.data.data.users[0])
         } else {
           alert(
             `Something went wrong, please try again!!! Message: ${resp.data.message}`
@@ -52,12 +49,10 @@ const Hire = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         alert(`Something went wrong, please try again!!!`);
       });
   }, []);
 
-  // console.log(talents)
 
   const carouselPple = [
     {
@@ -102,7 +97,6 @@ const Hire = () => {
 
   return (
     <div>
-      {console.log(talents)}
 
       {talents.length != 0 ? (
         <div>

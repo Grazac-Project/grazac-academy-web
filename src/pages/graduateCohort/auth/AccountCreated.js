@@ -8,7 +8,6 @@ import email from '../../../images/svg/email.svg';
 function Verify () {
     const urlParams = new URLSearchParams(window.location.search);
     const emailAddress = urlParams.get('email');
-    console.log(emailAddress);
 
     return(
         <div className="layout_auth">

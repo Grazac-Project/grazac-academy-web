@@ -44,13 +44,11 @@ function Profile () {
                     setEducation(resp.data.profile.education);
                     setAward(resp.data.profile.award);
                     setProject(resp.data.profile.project);
-                    console.log(resp.data.profile.project)
                 } else {
                     alert(`Something went wrong, please try again!!! Message: ${resp.data.message}`)
                 }
             })
             .catch(err => {
-                console.log(err)
                 alert(`Something went wrong, please try again!!!`)
             })
     }, []);
@@ -58,7 +56,6 @@ function Profile () {
     
     return (
         <div>
-      {/* {console.log(isEmptyObject(talent))} */}
 
        
         {isEmptyObject(talent) == false ? 
@@ -77,12 +74,13 @@ function Profile () {
                                         <img src={talent.profile_upload} alt="profile" />
                                     </div>
                                     <div className="hire_profile-main-bio-icons">
-                                        {talent?.github===""?<div></div>:<a href={talent?.github}><img src={github} alt="github" /></a>}
-                                        {talent?.linkedin===""?<div></div>:<a href={talent?.linkedin}><img src={linkedin} alt="linkedin" /></a>}
-                                        {talent?.twitter===""?<div></div>:<a href={talent?.twitter}><img src={twitter} alt="twitter" /></a>}
+                                        {talent?.github===""?<div></div>:<a href={talent?.github.includes("https") ? talent?.github : "https://"+talent?.github}><img src={github} alt="github" /></a>}
+                                        {talent?.linkedin===""?<div></div>:<a href={talent?.linkedin.includes("https") ? talent?.linkedin : "https://"+talent?.linkedin }><img src={linkedin} alt="linkedin" /></a>}
+                                        {talent?.twitter===""?<div></div>:<a href={talent?.twitter.includes("https") ? talent?.twitter : "https://"+talent?.twitter }><img src={twitter} alt="twitter" /></a>}
                                         {/* <a href={talent?.facebook}><img src={facebook} alt="facebook" /></a> */}
-                                        {talent?.instagram===""?<div></div>:<a href={talent?.instagram}><img src={instagram} alt="instagram" /></a>}
+                                        {talent?.instagram===""?<div></div>:<a href={ talent?.instagram.includes("https") ? talent?.instagram : "https://"+talent?.instagram}><img src={instagram} alt="instagram" /></a>}
                                     </div>
+                                    {console.log(talent?.instagram.includes("https"))}
                                 </div>
 
                                 <div className="hire_profile-main-bio-text">
@@ -90,7 +88,6 @@ function Profile () {
                                         <p className="text-1">{talent?.firstName} {talent?.lastName}</p>
                                         <p>{talent?.profession} <span>{talent?.location}</span></p>
                                         <p className={talent?.status==="Unhired" ? "available" : "hired"}>{talent?.status =="Unhired" ? "Available":"Hired"}</p>
-                                        {/* {console.log(talent.status)} */}
                                         <p>{talent?.shortBio}</p>
                                     </div>
                                 </div>
@@ -139,7 +136,6 @@ function Profile () {
                                                 </div>
                                                 <div className="hire_profile-main-info-shift-flx-2">
                                                     <p className="text-1">{item.title}</p>
-                                                    {/* {console.log(item)} */}
                                                     <p className="text__1__description">
                                                         {item.description}
                                                     </p>

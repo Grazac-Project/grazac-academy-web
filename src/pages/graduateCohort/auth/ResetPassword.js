@@ -46,7 +46,6 @@ function ResetPassword () {
             ResetPasswordAction(data)
                 .then((response) => response.data)
                 .then((res) => {
-                    console.log(res);
                     if (res.status === 200) {
                         toast.success("Password reset successful! Proceed to login.");
                         btn.innerHTML=`Reset Password`;
@@ -56,7 +55,6 @@ function ResetPassword () {
                     }
                 })
                 .catch((err) => {
-                    console.log(err.response)//modify the errors
                     toast.error("Unable to reset password! Try again");
                 //     if(err.response.data.message){
                 //         toast.error(err.response.data.message);

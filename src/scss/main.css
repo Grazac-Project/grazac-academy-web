@@ -5900,6 +5900,13 @@ input:focus, select:focus, textarea:focus {
   .dashboard-content-detail {
     padding: 10px 0px;
     width: 600px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
 }
 

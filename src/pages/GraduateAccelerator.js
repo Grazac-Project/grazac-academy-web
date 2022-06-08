@@ -17,9 +17,7 @@ const GraduateAccelerator = () => {
           setCourses(resp.data);
         })
         .catch((error) => {
-          console.log(
-            "An error occurred when fetching the available courses, refreshing..."
-          );
+         
           
     });
   

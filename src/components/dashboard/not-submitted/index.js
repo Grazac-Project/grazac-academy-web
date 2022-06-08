@@ -21,7 +21,6 @@ function NotSubmitted({
 
   // const [isError, setIsError] = useState("");
   // const [formActive, setFormActive] = useState("education");
-  //   console.log(userDetails);
 
   const [userId, setUserId] = useState(0);
   const [checkAct, setCheckAct] = useState(false);
@@ -54,10 +53,8 @@ function NotSubmitted({
     legalFee: "",
   });
   //   setBioData(userDetails)
-  //   console.log("i ran ooh ")
 
   window.onload = (event) => {
-    // console.log('page is fully loaded');
     // removeQuestions();
     setBioData(userDetails);
   };
@@ -66,22 +63,29 @@ function NotSubmitted({
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
     // setBioData(userDetails)
+
     axios
       .get("https://nigerian-states-info.herokuapp.com/api/v1/states")
       .then((response) => {
         setNigerianStates(response.data.data);
       });
+
+
+    {
+      nigerianStates.length === 0 &&
+        axios
+          .post("https://countriesnow.space/api/v0.1/countries/states", {
+            country: "Nigeria",
+          })
+          .then((response) => {
+            setNigerianStates(response.data.data.states);
+          });
+    }
   }, []);
 
   //   setBioData(userDetails)
-  //   console.log(bioData)
-  //   console.log(userDetails)
-
-  //   console.log(bioData.firstName)
 
   const handleChange = (e) => {
     setBioData({
@@ -174,7 +178,6 @@ function NotSubmitted({
       btn.innerHTML = `Submit`;
     }
 
-
     submitDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
@@ -192,7 +195,6 @@ function NotSubmitted({
 
       .catch((err) => {
         try {
-          console.log(err);
           if (err.response.data === "File size limit has been reached") {
             toast.error("File size exceeded for Means of Identification Field");
           }
@@ -206,7 +208,6 @@ function NotSubmitted({
             btn.innerHTML = `Submit`;
           }
         } catch {
-          console.log(err);
           toast.error("Something went wrong!!! Please Try Again");
           btn.innerHTML = `Submit`;
         }
@@ -325,7 +326,6 @@ function NotSubmitted({
                         value={bioData.firstName}
                         onChange={handleChange}
                       />
-                      {/* {console.log(bioData.firstName)} */}
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>Last Name</label>
@@ -379,7 +379,7 @@ function NotSubmitted({
                         value={bioData.gender}
                         onChange={handleChange}
                       >
-                        <option  value="">Select an option</option>
+                        <option value="">Select an option</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
@@ -393,7 +393,7 @@ function NotSubmitted({
                         value={bioData.maritalStatus}
                         onChange={handleChange}
                       >
-                        <option  value="">Select an option</option>
+                        <option value="">Select an option</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                       </select>
@@ -466,8 +466,13 @@ function NotSubmitted({
                         <option value="">Select State</option>
                         {nigerianStates.map(function (nigerianStates, index) {
                           return (
-                            <option value={nigerianStates.Name} key={index}>
-                              {nigerianStates.Name}
+                            <option
+                              value={
+                                nigerianStates?.name || nigerianStates?.Name
+                              }
+                              key={index}
+                            >
+                              {nigerianStates?.name || nigerianStates?.Name}
                             </option>
                           );
                         })}

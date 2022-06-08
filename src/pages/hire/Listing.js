@@ -40,7 +40,6 @@ function Listing() {
         setLoading(false);
         if (resp.status === 200) {
           
-          console.log(resp.data.data.users.length)
           if (resp.data.data.users.length!==0){
             setFetchedPage(resp.data.data.pageNumber);
             setTalents(resp.data.data.users);
@@ -59,7 +58,6 @@ function Listing() {
       })
       .catch((err) => {
         setLoading(false);
-        // console.log(err);
         // toast.error("There was an error, please try again", {
         //   position: toast.POSITION.BOTTOM_RIGHT,
         // })
@@ -171,7 +169,6 @@ function Listing() {
                   <div className="hire_listing-pagination-number activePage">
                     <p>{fetchedPage}</p>
                   </div>
-                  {console.log(fetchedPage)}
                   
                   <div onClick={()=>selectPage(parseInt(fetchedPage) + 1)} className="hire_listing-pagination-number">
                     <p onClick={()=>selectPage(parseInt(fetchedPage) + 1)}>{parseInt(fetchedPage) + 1}</p>

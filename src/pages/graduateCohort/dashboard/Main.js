@@ -7,6 +7,7 @@ import PaymentReceived from "../../../components/dashboard/selected/PaymentRecei
 import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
 import OutsideClickHandler from "react-outside-click-handler";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import {
   submitGuarantor,
@@ -23,6 +24,7 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
+import { usePayercoins } from 'payercoins-react'
 
 function Dashboard() {
   const [status, setStatus] = useState("Not Submitted");
@@ -44,7 +46,6 @@ function Dashboard() {
 
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
-  // console.log("nothing")
   const [guarantor, setGuarantor] = useState({
     firstName: "",
     lastName: "",
@@ -63,21 +64,20 @@ function Dashboard() {
 
   const item = 1;
 
+  const usdValue='10'
+  const ngnValue='720000'
+
   useEffect(() => {
     // setSelectStatus("paid");
-    // console.log(selectStatus);
     // setSelectStatus("paid")
 
     try {
       let details = sessionStorage.getItem("user_details");
       setStatus(sessionStorage.getItem("status"));
-      console.log("doing good");
 
       setDetails(JSON.parse(details));
 
       setUserId(JSON.parse(details).id);
-
-      console.log(guarantorForm1);
 
       if (JSON.parse(details).isPaid === 1) {
         setSelectStatus("paid");
@@ -90,13 +90,11 @@ function Dashboard() {
       window.location = "/login";
     }
 
-    console.log("page loaded");
     setLoading(true);
-    
+
     getGuarantor()
       .then((response) => response.data)
       .then((res) => {
-        console.log(res.data);
         setLoading(false);
 
         if (res.data.length > 1 || res.data.length === 1) {
@@ -111,7 +109,6 @@ function Dashboard() {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
         if (err.response) {
           toast.error(err.response);
         } else {
@@ -139,35 +136,52 @@ function Dashboard() {
   };
 
   const flutterWavePayment = () => {
+
+    // const url =
+    //   "https://admin-api.grazacacademy.com/api/v1/admin/download?status=Under Review";
+
+ 
+
+    //   axios({
+    //     url: url, //your url
+    //     method: 'GET',
+    //     responseType: 'blob', // important
+    // }).then((response) => {
+    //     const url = window.URL.createObjectURL(new Blob([response.data]));
+    //     const link = document.createElement('a');
+    //     link.href = url;
+    //     link.setAttribute('download', 'file.csv'); //or any other extension
+    //     document.body.appendChild(link);
+    //     link.click();
+    // });
+
+
+ 
     handleFlutterPayment({
       callback: (response) => {
         if (response.status === "successful") {
-          console.log(response);
           toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard";
+          // window.location = "/dashboard";
+          console.log(response);
+          console.log(response);
+          console.log(response);
 
           sendFlutterTx(response.transaction_id)
             .then((response) => response.data)
             .then((res) => {
-              console.log(res);
               if (res.data.status === "successful") {
                 setSelectStatus("paid");
-                window.location = "/dashboard";
+                // window.location = "/dashboard";
               } else {
-                console.log("not successful");
               }
             })
-            .catch((err) => {
-              console.log(err);
-            });
+            .catch((err) => {});
         } else {
           toast.error("Payment unsuccessful!");
         }
         closePaymentModal(); // this will close the modal programmatically
       },
-      onClose: (response) => {
-        console.log(response);
-      },
+      onClose: (response) => {},
     });
   };
 
@@ -182,12 +196,8 @@ function Dashboard() {
       planData.append("payment_plan", "pay at once");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        .then((res) => {})
+        .catch((err) => {});
 
       flutterWavePayment();
     } else {
@@ -211,13 +221,10 @@ function Dashboard() {
     getGuarantor()
       .then((response) => response.data)
       .then((res) => {
-        console.log(res.data);
         setLoading(false);
 
         if (!(res.data.length == 1 || res.data.length > 1)) {
           // setGuarantorForm1(false);
-          console.log(res.data.length);
-          console.log("the guarantor data not full");
 
           e.preventDefault();
           var data = new FormData();
@@ -255,9 +262,7 @@ function Dashboard() {
             guarantor.phone.length > 10 &&
             guarantor.employerPhone.length > 10
           ) {
-            console.log(guarantor.phone.length, guarantor.employerPhone.length);
             setIsError(false);
-            console.log("no errors");
             // btn.disabled = false
 
             // btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -299,7 +304,6 @@ function Dashboard() {
                 }
               })
               .catch((err) => {
-                console.log(err);
                 if (err.response) {
                   toast.error(err.response);
                   btn.innerHTML = `Procede`;
@@ -343,9 +347,7 @@ function Dashboard() {
     }
 
     if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-      console.log(guarantor.phone.length, guarantor.employerPhone.length);
       setIsError(false);
-      console.log("no errors");
 
       // btn.innerHTML = `<img src=${loader} width="20px" />`;
       data.append("firstname", guarantor.firstName);
@@ -379,7 +381,6 @@ function Dashboard() {
           }
         })
         .catch((err) => {
-          console.log(err);
           if (err.response) {
             toast.error(err.response);
             btn.innerHTML = `Submit & Pay`;
@@ -397,12 +398,8 @@ function Dashboard() {
       planData.append("payment_plan", "pay as you earn");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        .then((res) => {})
+        .catch((err) => {});
     } else {
       btn.innerHTML = `Proceed`;
     }
@@ -414,8 +411,6 @@ function Dashboard() {
     btn.innerHTML = `<img src=${loader} width="20px" />`;
 
     var data = new FormData();
-
-    // console.log(guarantor.firstName, guarantor.lastName);
 
     if (!(guarantor.phone.length > 10)) {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -434,7 +429,6 @@ function Dashboard() {
     }
 
     if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-      console.log(guarantor.phone.length, guarantor.employerPhone.length);
       setIsError(false);
     }
 
@@ -476,7 +470,6 @@ function Dashboard() {
             }
           })
           .catch((err) => {
-            console.log(err);
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Proceed`;
@@ -509,7 +502,6 @@ function Dashboard() {
             }
           })
           .catch((err) => {
-            console.log(err);
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Submit & Pay`;
@@ -525,12 +517,8 @@ function Dashboard() {
         planData.append("payment_plan", "pay as you earn");
         addPlan(planData)
           .then((response) => response.data)
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+          .then((res) => {})
+          .catch((err) => {});
       } else {
         btn.innerHTML = `Proceed`;
       }
@@ -539,7 +527,6 @@ function Dashboard() {
 
   // FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
-
   const config = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
@@ -565,6 +552,23 @@ function Dashboard() {
     setStatus(`${par1}`);
     sessionStorage.setItem("status", `${par1}`);
   };
+
+  //payercoins public key PYC-PUB_339d368f5254b0149ad6c7
+  const payercoinsConfig = {
+    key: 'PYC-PUB_339d368f5254b0149ad6c7',
+    customer_name: "Grazac Academy",
+    customer_email: "CUSTOMERS EMAIL",
+    amount:  parseFloat(usdValue),  // amount as a number or string
+    currency: 'ethereum', // ethereum, bitcoin, usdt-eth.  optional, if not provided will use your default currencies activated in your account
+    description: 'Test Payment', // optional
+    redirect_url: '', // optional - will default to current page
+    invoice_id: "239313200190.40646", // optional - unique identifier for your payment and minLength 8, else we will automatically generate one
+    callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
+    }                                                                                                                                                                                               
+    const [initializePayment] = usePayercoins();
+    const handlePayercoinsPayment = async () => {
+      initializePayment(payercoinsConfig);
+    };
 
   return (
     <>
@@ -619,7 +623,6 @@ function Dashboard() {
             </div>
             {sidebarClick === "dashboard" && (
               <div className="dashboard-content">
-                {/* {console.log(details)} */}
                 {status === "Not Submitted" && (
                   <NotSubmitted
                     userDetails={details}
@@ -630,7 +633,6 @@ function Dashboard() {
                     setNewStatus={() => changeStatus("Under Review")}
                   />
                 )}
-                {/* {console.log(details)}   */}
                 {status === "Under Review" && (
                   <UnderReview fname={details.firstName} />
                 )}
@@ -693,12 +695,12 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(702000);
+                                    setAmount(720000);
                                     setCurrency("NGN");
                                   }}
                                 >
                                   <div></div>
-                                  <p>Pay at once (USD 1,200 = NGN 702,000)</p>
+                                  <p>Pay at once (USD 1,200 = NGN 720,000)</p>
                                 </div>
                                 <button onClick={makePayment}>Proceed</button>
                               </div>
@@ -757,9 +759,7 @@ function Dashboard() {
                                 Guarantors must have a stable source of income.
                               </li>
 
-                              <li>
-                                They must be residents within Nigeria.
-                              </li>
+                              <li>They must be residents within Nigeria.</li>
                               <li>
                                 If your guarantor does not meet our eligibility
                                 status, you'll be asked to get a replacement.
@@ -808,7 +808,6 @@ function Dashboard() {
                               Guarantor Form {guarantorForm1 ? "1" : "2"}
                             </h4>
 
-                            {console.log(guarantorForm1)}
                             {guarantorForm1 ? (
                               <div className="dashboard-content-form">
                                 <form
@@ -1267,17 +1266,18 @@ function Dashboard() {
                                         }
                                         onClick={() => {
                                           setPayOpt("full");
-                                          setAmount(702000);
+                                          setAmount(720000);
                                           setCurrency("NGN");
                                         }}
                                       >
                                         <div></div>
                                         <p>
-                                          Pay at once (USD 1,200 = NGN 702,000)
+                                          Pay at once (USD 1,200 = NGN 720,000)
                                         </p>
                                       </div>
                                       <button
-                                        onClick={() => flutterWavePayment()}
+                                        // onClick={() => flutterWavePayment()}
+                                        onClick={() => handlePayercoinsPayment()}
                                       >
                                         Proceed
                                       </button>

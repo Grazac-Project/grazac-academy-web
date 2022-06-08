@@ -14,19 +14,15 @@ const UndergraduateAccelerator = () => {
   const [openListModal, setOpenListModal] = useState(false);
 
   React.useEffect(() => {
-    console.log("Undergraduate Accelaerator");
     document.title = "Undergraduate Accelerator Track - Grazac Academy";
     window.scrollTo(0, 0);
       fetch("https://grazacacademy.com/undergraduate/courses")
         .then((resp) => resp.json())
         .then((resp) => {
-          console.log("false")
           setCourses(resp.data);
         })
         .catch((error) => {
-          console.log(
-            "An error occurred when fetching the available courses, refreshing..."
-          );
+      
         });
   }, []);
 

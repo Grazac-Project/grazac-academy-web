@@ -29,25 +29,17 @@ const UndergraduateForm = () => {
         setFetched(resp.data);
       })
       .catch((error) => {
-        console.log(
-          "An error occurred when fetching course details, refreshing..."
-        );
-        console.log(error)
-        //window.location.reload();
+     
       });
 
       //endpoint to fetch all institutions
       fetch("https://grazacacademy.com/undergraduate/institutions")
         .then((resp) => resp.json())
         .then((resp) => {
-          console.log(resp);
           setInstitutionlist(resp.data);
         })
         .catch((error) => {
-          console.log(
-            "An error occurred when fetching all institutions, refreshing..."
-          );
-          console.log(error)
+        
         });
   }, []);
 
@@ -108,7 +100,6 @@ const UndergraduateForm = () => {
               })
                 .then((resp) => resp.json())
                 .then((data) => {
-                  console.log(data);
                   if (data.success === true) {
                     document.querySelector(".form-info").textContent =
                       "Your registration was successful, kindly check your mailbox for further details.";
@@ -142,14 +133,9 @@ const UndergraduateForm = () => {
                 })
                 .then((resp) => resp.data)
                 .then((data) => {
-                  if (data.success === true) {
-                    console.log("Added to newsletter");
-                  } else {
-                    console.log("Not Added to newsletter");
-                  }
+              
                 })
                 .catch((err) => {
-                  console.log(`An error occured, please try again ${err}`);
                 });
             } else {
               alert('Payment not successful');

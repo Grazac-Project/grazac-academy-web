@@ -15,7 +15,6 @@ const ComingSoon = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
     document
       .querySelector("#subscribe-btn")
       .setAttribute("disabled", "disabled");
@@ -33,12 +32,10 @@ const ComingSoon = () => {
       })
       .then((resp) => resp.data)
       .then((data) => {
-        console.log(data);
         if (data.success === true) {
           document.querySelector("#subscribe-btn").removeAttribute("disabled");
           document.querySelector("#subscribe-btn").textContent = "Subscribe";
           alert("You have successfully subscribed");
-          console.log(data);
         } else {
           document.querySelector("#subscribe-btn").removeAttribute("disabled");
           document.querySelector("#subscribe-btn").textContent = "Subscribe";

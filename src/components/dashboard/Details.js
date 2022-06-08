@@ -27,13 +27,10 @@ function Details() {
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
     // setBioData(userDetails)
   }, []);
   useEffect(() => {
-
     //remove the submit button if there is data for agerange have kids and marital status
     {
       !userDetails?.ageRange &&
@@ -56,20 +53,19 @@ function Details() {
     data.append("ageRange", userDetails?.ageRange);
 
     data.append("dob", userDetails.dob);
-    
+
     data.append("gender", userDetails.gender);
     data.append("preferred_course", userDetails.preferred_course);
     data.append("state_of_residence", userDetails.state_of_residence);
-    data.append("current_city_and_location", userDetails.current_city_and_location);
+    data.append(
+      "current_city_and_location",
+      userDetails.current_city_and_location
+    );
     // data.append("means_of_identification", bioData.id);
-
-
-    
 
     editDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
-        console.log(res);
         if (res.status == 201) {
           toast.success("Submission successful!");
           btn.innerHTML = `Submit`;
@@ -84,7 +80,6 @@ function Details() {
       })
 
       .catch((err) => {
-        console.log(err.response.data);
         if (err.response.data === "File size limit has been reached") {
           toast.error("File size exceeded for Means of Identification Field");
         }
@@ -101,35 +96,23 @@ function Details() {
   };
 
   const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
-  // console.log(guarantorDetails_1,userDetails)
 
   const handleChange_1 = (e) => {
-    console.log(guarantorDetails_1[0]);
-
     let guarantorData = [...guarantorDetails_1][0];
     guarantorData[e.target.name] = e.target.value;
 
     setGuarantorDetails_1([guarantorData]);
     setGuarantorId_1(guarantorDetails_1[0].id);
-
-    console.log(guarantorData, guarantorId_1, guarantorDetails_1[0].id);
   };
 
   const handleChange_2 = (e) => {
-    console.log(guarantorDetails_2[0]);
-
     let guarantorData = [...guarantorDetails_2][0];
     guarantorData[e.target.name] = e.target.value;
 
     setGuarantorDetails_2([guarantorData]);
     // setGuarantorId_1(guarantorDetails_1[0]?.id);
     setGuarantorId_2(guarantorDetails_2[0].id);
-    console.log(guarantorDetails_2[0].id);
-
-    console.log(guarantorData, guarantorId_2);
   };
-
-
 
   const handleDataChange = (e) => {
     if (
@@ -138,7 +121,6 @@ function Details() {
       !e.target.value
     ) {
       let userData = { ...userDetails };
-      console.log(userData);
 
       setUserDetails({
         ...userData,
@@ -151,7 +133,6 @@ function Details() {
     e.preventDefault();
 
     const data = guarantorDetails_1;
-    console.log(data);
     const final_data = [];
     const new_data_1 = {};
 
@@ -173,7 +154,6 @@ function Details() {
       new_data_1["relationship_with_the_guarantor"] =
         data[0]["relationship_with_the_guarantor"];
       new_data_1["user_id"] = data[0]["user_id"];
-      console.log("end");
     }
 
     axios
@@ -182,22 +162,18 @@ function Details() {
         new_data_1
       )
       .then(function (response) {
-        console.log(guarantorId_1);
-        console.log(response);
+     
         toast.success("saved successfully");
       })
       .catch((res) => {
-        console.log(res.data);
       });
 
     // editGuarantor(final_data, guaID)
     // .then((res) =>{
-    //   console.log(res)
     //   toast.success(res.data)}
     // )
     // .catch((res) => {
     //   toast.error(res.response)
-    //   console.log(res)
     // })
   };
 
@@ -225,10 +201,8 @@ function Details() {
       new_data_1["relationship_with_the_guarantor"] =
         data[0]["relationship_with_the_guarantor"];
       new_data_1["user_id"] = data[0]["user_id"];
-      console.log("end");
     }
-    console.log(new_data_1);
-    console.log(guarantorId_2);
+
     setIsLoading(true);
     axios
       .put(
@@ -236,7 +210,6 @@ function Details() {
         new_data_1
       )
       .then(function (response) {
-        console.log(response);
         toast.success("saving");
         setTimeout(() => {
           toast.success("saved Successfully");
@@ -245,33 +218,20 @@ function Details() {
         setIsLoading(false);
       })
       .catch((res) => {
-        console.log(res.data);
       });
 
-    // editGuarantor(final_data, guaID)
-    // .then((res) =>{
-    //   console.log(res)
-    //   toast.success(res.data)}
-    // )
-    // .catch((res) => {
-    //   toast.error(res.response)
-    //   console.log(res)
-    // })
   };
 
-  const [tempData, setTemData] = useState(null)
+  const [tempData, setTemData] = useState(null);
   useEffect(() => {
     getDetailsB()
-      //   .then((res) => console.log(res.data['data']['results'][0]))
       .then((res) => {
         setIsLoading(true);
         setUserDetails(res.data["data"]["results"][0]);
         setTemData(res.data["data"]["results"][0]);
-        setIsLoading(false);   
-        // console.log(res.data['data']['results'][0])
+        setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
         if (err.response) {
           toast.error(err.response);
         } else {
@@ -287,10 +247,8 @@ function Details() {
         setGuarantorDetails_1([res.data[0]]);
         setGuarantorDetails_2([res.data[1]]);
         // setGuarantorId(res.data[0]["id"]);
-        // console.log(guarantorDetails);
       })
       .catch((err) => {
-        console.log(err);
         if (err.response) {
           toast.error(err.response);
         } else {
@@ -478,11 +436,15 @@ function Details() {
                       <option value="36 and above">36 and above</option>
                     </select>
                   )}
-                {!(tempData?.ageRange && tempData?.maritalStatus && tempData?.haveKids) && (
-                 <button id="actionBtn" type="submit">
-                    Save
-                   </button>
-                )}
+                  {!(
+                    tempData?.ageRange &&
+                    tempData?.maritalStatus &&
+                    tempData?.haveKids
+                  ) && (
+                    <button id="actionBtn" type="submit">
+                      Save
+                    </button>
+                  )}
 
                   {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
@@ -730,7 +692,6 @@ function Details() {
                     onChange={(e) => handleChange_2(e)}
                   />
                 </div>
-                {/* {console.log(guarantorDetails_2[0])} */}
                 <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Last Name</h5>

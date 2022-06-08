@@ -16,23 +16,15 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
-    console.log(slug)
-    // console.log(props)
     
     fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
-        // console.log(JSON.parse(resp.details.outline))
         setCourse(resp.details);
         setOutline(JSON.parse(resp.details.outline));
-        console.log(resp)
-        // console.log(outline)
       })
       .catch((error) => {
-        console.log(error);
-        console.log(
-          "An error occurred when fetching course details, refreshing..."
-        );
+        
         // window.location.reload();
       });
 

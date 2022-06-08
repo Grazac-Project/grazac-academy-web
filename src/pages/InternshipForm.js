@@ -24,9 +24,7 @@ const InternshipForm = () => {
         setFetched(resp.data);
       })
       .catch((error) => {
-        console.log(
-          "An error occurred when fetching course details, refreshing..."
-        );
+   
         window.location.reload();
       });
   }, []);
