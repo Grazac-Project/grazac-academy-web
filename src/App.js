@@ -94,7 +94,7 @@ const App = () => {
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
             {/* authentication pages */}
-            <Route path="/signup" component={SignUp} />
+            {/* <Route path="/signup" component={SignUp} /> */}
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={Forgot} />
             <Route path="/resetPassword" component={Reset} />

@@ -117,8 +117,8 @@ function Login () {
                             </div>
                             <button type="submit" id="actionBtn">Sign in</button>
                             <p><Link to="/forgot-password"><span>Forgot your password?</span></Link></p>
-                            <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
-                            {/* <p>Don't have an account? <span onClick={()=>toast.info('Application is Closed. Enrollment into Cohort 013 begins September 2022')}>Sign up</span></p> */}
+                            {/* <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p> */}
+                            <p>Don't have an account? <span onClick={()=>toast.info('Application is Closed. Enrollment into Cohort 013 begins September 2022')}>Sign up</span></p>
                         </form>
                     </div>
                 </div>

@@ -557,13 +557,14 @@ function Dashboard() {
   const payercoinsConfig = {
     key: 'PYC-PUB_339d368f5254b0149ad6c7',
     customer_name: "Grazac Academy",
-    customer_email: "CUSTOMERS EMAIL",
+    customer_email: "mitchelinajuo@gmail.com",
     amount:  parseFloat(usdValue),  // amount as a number or string
     currency: 'ethereum', // ethereum, bitcoin, usdt-eth.  optional, if not provided will use your default currencies activated in your account
     description: 'Test Payment', // optional
     redirect_url: '', // optional - will default to current page
     invoice_id: "239313200190.40646", // optional - unique identifier for your payment and minLength 8, else we will automatically generate one
-    callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
+    // callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
+    callback_url: 'https://webhook.site/5fde6c13-5873-4c5c-9fea-0da42b83e232' //This is just a test sandbox
     }                                                                                                                                                                                               
     const [initializePayment] = usePayercoins();
     const handlePayercoinsPayment = async () => {
