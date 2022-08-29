@@ -4,28 +4,30 @@ import Footer from "../../components/Footer";
 import { Container } from "react-bootstrap";
 import { getAllTalents } from "../../api/dashboard/hire";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import man from "../../images/man.jpg";
 import loader from "../../images/loader-purple.gif";
 import arrow from "../../images/svg/arrow-front.svg";
 import Loader from "../../components/Loader";
-
+import { saveHireId } from "../../redux/slice/pageData.js";
+import { useSelector, useDispatch } from "react-redux";
 
 function Listing() {
+  let dispatch = useDispatch();
   const [talents, setTalents] = useState([]);
   const [fetchedPage, setFetchedPage] = useState("1");
   let [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const isEmptyObject=(obj)=> {
+  const isEmptyObject = (obj) => {
     var name;
     for (name in obj) {
-        if (obj.hasOwnProperty(name)) {
-            return false;
-        }
+      if (obj.hasOwnProperty(name)) {
+        return false;
+      }
     }
     return true;
-}
+  };
   useEffect(() => {
     document.title = "Hire - Grazac Academy";
     window.scrollTo(0, 0);
@@ -39,47 +41,41 @@ function Listing() {
       .then((resp) => {
         setLoading(false);
         if (resp.status === 200) {
-          
-          if (resp.data.data.users.length!==0){
+          if (resp.data.data.users.length !== 0) {
             setFetchedPage(resp.data.data.pageNumber);
             setTalents(resp.data.data.users);
-        
-          }
-          else{
+          } else {
             toast.error("End of List!", {
               position: toast.POSITION.BOTTOM_RIGHT,
             });
           }
-          
-          
-        } 
-        
-        
+        }
       })
       .catch((err) => {
         setLoading(false);
+
         // toast.error("There was an error, please try again", {
         //   position: toast.POSITION.BOTTOM_RIGHT,
         // })
-      
+        
       });
   };
 
-  const selectPage=(page)=>{
+  const selectPage = (page) => {
     setLoading(true);
-      setPage(page);
-      fetchTalents();
-  }
+    setPage(page);
+    fetchTalents();
+  };
   const pagination = (type) => {
     if (type === "next") {
       setLoading(true);
-      setPage(prev => prev + 1);
+      setPage((prev) => prev + 1);
       fetchTalents();
     } else {
       if (fetchedPage === "1") {
       } else {
         setLoading(true);
-        setPage(prev => prev - 1);
+        setPage((prev) => prev - 1);
         fetchTalents();
       }
     }
@@ -87,9 +83,8 @@ function Listing() {
 
   return (
     <div>
-<ToastContainer/> 
+      <ToastContainer />
       {isEmptyObject(talents) == false ? (
-
         <div>
           <div className="hire-bg">
             <Navbar />
@@ -109,13 +104,20 @@ function Listing() {
                   </div>
                 ) : (
                   <div>
+
                     {talents.map((item, idx) => (
                       <Link
                         style={{ color: "black" }}
-                        to={`/hire/profile?id=${item.id}&/${item.firstName}-${item.lastName}`}
+                        to={`/hire/${item.firstName}${item.lastName}`}
                         key={idx}
+                       
                       >
-                        <div className="hire_listing">
+                        <div
+                          className="hire_listing"
+                          // key={idx}
+                          onClick={()=>dispatch(saveHireId(item.id))}
+                          
+                        >
                           <div className="hire_listing-image">
                             <img src={item.profile_upload} alt="man" />
                           </div>
@@ -160,18 +162,27 @@ function Listing() {
                   {fetchedPage === "1" ? (
                     <div></div>
                   ) : (
-
-                    <div onClick={()=>selectPage(parseInt(fetchedPage) - 1)} className="hire_listing-pagination-number">
-                      <p onClick={()=>selectPage(parseInt(fetchedPage) - 1)}>{parseInt(fetchedPage) - 1}</p>
+                    <div
+                      onClick={() => selectPage(parseInt(fetchedPage) - 1)}
+                      className="hire_listing-pagination-number"
+                    >
+                      <p onClick={() => selectPage(parseInt(fetchedPage) - 1)}>
+                        {parseInt(fetchedPage) - 1}
+                      </p>
                     </div>
                   )}
 
                   <div className="hire_listing-pagination-number activePage">
                     <p>{fetchedPage}</p>
                   </div>
-                  
-                  <div onClick={()=>selectPage(parseInt(fetchedPage) + 1)} className="hire_listing-pagination-number">
-                    <p onClick={()=>selectPage(parseInt(fetchedPage) + 1)}>{parseInt(fetchedPage) + 1}</p>
+
+                  <div
+                    onClick={() => selectPage(parseInt(fetchedPage) + 1)}
+                    className="hire_listing-pagination-number"
+                  >
+                    <p onClick={() => selectPage(parseInt(fetchedPage) + 1)}>
+                      {parseInt(fetchedPage) + 1}
+                    </p>
                   </div>
                   <div
                     className="hire_listing-pagination-text"

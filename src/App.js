@@ -10,6 +10,8 @@ import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -78,6 +80,9 @@ const AccountCreated = lazy(() => {
 const DashBoardHome = lazy(() => {
   return import("./pages/graduateCohort/dashboard/Main");
 });
+const ComponentPage = lazy(() => {
+  return import("./components/shared/index");
+});
 
 
 const App = () => {
@@ -87,14 +92,16 @@ const App = () => {
   const app = useRef();
 
   return (
+    <Provider store={store}>
     <LoaderContext.Provider value={{ show, setShow }}>
       {/* {show && <Loader />} */}
 
       <Suspense fallback={<Loader />}>
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
+            <Route path="/component" component={ComponentPage} />
             {/* authentication pages */}
-            {/* <Route path="/signup" component={SignUp} /> */}
+            <Route path="/signup" component={SignUp} />
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={Forgot} />
             <Route path="/resetPassword" component={Reset} />
@@ -127,7 +134,7 @@ const App = () => {
 
             <Route path="/hire" exact component={Hire} />
             <Route path="/hire/listing" component={Listing} />
-            <Route path="/hire/profile" component={Profile} />
+            <Route path="/hire/:username" component={Profile} />
             <Route path="/hire/contact" component={HireContact} />
 
             {/* Coming soon page */}
@@ -136,6 +143,7 @@ const App = () => {
         </div>
       </Suspense>
     </LoaderContext.Provider>
+    </Provider>
   );
 };
 

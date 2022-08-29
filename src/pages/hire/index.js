@@ -20,8 +20,12 @@ import kamala from "../../images/kamala.jpg";
 import arrow from "../../images/svg/arrow-front.svg";
 import star from "../../images/svg/star.svg";
 import Loader from "../../components/Loader";
+import { saveHireId } from "../../redux/slice/pageData.js";
+import { useSelector, useDispatch } from "react-redux";
 
 const Hire = () => {
+  let dispatch = useDispatch();
+
   const [carousel, setCarousel] = useState("one");
   const [carouselInfo, setCarouselInfo] = useState({
     firstName: "Jonathan Doe",
@@ -29,6 +33,7 @@ const Hire = () => {
     profile_upload: man,
     stars: 4,
   });
+
   const [talents, setTalents] = useState([]);
   const [index, setIndex] = useState(0);
 
@@ -40,7 +45,6 @@ const Hire = () => {
       .then((resp) => {
         if (resp.status === 200) {
           setTalents(resp.data.data.users);
-
           setCarouselInfo(resp.data.data.users[0]);
         } else {
           alert(
@@ -262,10 +266,16 @@ const Hire = () => {
                   <Row>
                     {talents.slice(0, 6).map((item, idx) => (
                       <Col md={4} sm={6} key={idx}>
-                        <Link
-                          to={`/hire/profile?id=${item.id}&/${item.firstName}-${item.lastName}`}
-                        >
-                          <div className="hire_talents-cards-box">
+                     <Link
+                        style={{ color: "black" }}
+                        to={`/hire/${item.firstName}${item.lastName}`}
+                        key={idx}
+                       
+                      >
+               
+                          <div
+                            onClick={()=>dispatch(saveHireId(item.id))}
+                          className="hire_talents-cards-box">
                             <div className="hire_talents-cards-box-image">
                               <img src={item.profile_upload} alt="talent" />
                             </div>

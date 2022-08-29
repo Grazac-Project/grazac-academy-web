@@ -24,7 +24,7 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
-import { usePayercoins } from 'payercoins-react'
+import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
   const [status, setStatus] = useState("Not Submitted");
@@ -64,8 +64,8 @@ function Dashboard() {
 
   const item = 1;
 
-  const usdValue='10'
-  const ngnValue='720000'
+  const usdValue = "10";
+  const ngnValue = "720000";
 
   useEffect(() => {
     // setSelectStatus("paid");
@@ -136,11 +136,8 @@ function Dashboard() {
   };
 
   const flutterWavePayment = () => {
-
     // const url =
     //   "https://admin-api.grazacacademy.com/api/v1/admin/download?status=Under Review";
-
- 
 
     //   axios({
     //     url: url, //your url
@@ -155,8 +152,6 @@ function Dashboard() {
     //     link.click();
     // });
 
-
- 
     handleFlutterPayment({
       callback: (response) => {
         if (response.status === "successful") {
@@ -553,23 +548,24 @@ function Dashboard() {
     sessionStorage.setItem("status", `${par1}`);
   };
 
-  //payercoins public key PYC-PUB_339d368f5254b0149ad6c7
+  //payercoins LIVE public key PYC-PUB_339d368f5254b0149ad6c7
+  //payercoins TEST public key PYC-PUB_a04caeeba00b80ae762bbe_TEST
   const payercoinsConfig = {
-    key: 'PYC-PUB_339d368f5254b0149ad6c7',
+    key: "PYC-PUB_a04caeeba00b80ae762bbe_TEST",
     customer_name: "Grazac Academy",
     customer_email: "mitchelinajuo@gmail.com",
-    amount:  parseFloat(usdValue),  // amount as a number or string
-    currency: 'ethereum', // ethereum, bitcoin, usdt-eth.  optional, if not provided will use your default currencies activated in your account
-    description: 'Test Payment', // optional
-    redirect_url: '', // optional - will default to current page
+    amount: parseFloat(usdValue), // amount as a number or string
+    currency: "ethereum", // [ethereum, bitcoin, usdt-eth].  optional, if not provided will use your default currencies activated in your account
+    // description: "Test Payment", // optional
+    redirect_url: "", // optional - will default to current page
     invoice_id: "239313200190.40646", // optional - unique identifier for your payment and minLength 8, else we will automatically generate one
     // callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
-    callback_url: 'https://webhook.site/5fde6c13-5873-4c5c-9fea-0da42b83e232' //This is just a test sandbox
-    }                                                                                                                                                                                               
-    const [initializePayment] = usePayercoins();
-    const handlePayercoinsPayment = async () => {
-      initializePayment(payercoinsConfig);
-    };
+    callback_url: "https://webhook.site/c573fd7d-2e6f-478d-b16d-b97e15c533c1", //This is just a test sandbox
+  };
+  const [initializePayment] = usePayercoins();
+  const handlePayercoinsPayment = async () => {
+    initializePayment(payercoinsConfig);
+  };
 
   return (
     <>
@@ -1277,8 +1273,10 @@ function Dashboard() {
                                         </p>
                                       </div>
                                       <button
-                                        // onClick={() => flutterWavePayment()}
-                                        onClick={() => handlePayercoinsPayment()}
+                                        onClick={() => flutterWavePayment()}
+                                        // onClick={() =>
+                                        //   handlePayercoinsPayment()
+                                        // }
                                       >
                                         Proceed
                                       </button>
