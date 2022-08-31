@@ -1,0 +1,50 @@
+
+/* Mini Card Styling */
+.mini-progress__card{
+  height: 250px;
+  width: 250px;
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer !important;
+}
+
+
+
+
+.mini-progress__card h2{
+  font-size: 20px;
+  font-weight: 600;
+  color: #2F2F2F;
+  margin-bottom: 10px;
+}
+
+.caption{
+  display: block;
+  font-weight: 600;
+  color: #9A9A9A;
+}
+
+
+.values{
+  color: #000;
+}
+
+
+
+
+.mini-progress__card-information{
+  margin: 20px 0;
+}
+
+.sub-heading{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #9A9A9A;
+}
+
+
+.mini-progress__card:hover{
+  background: #773DD3;
+  display: none;
+}

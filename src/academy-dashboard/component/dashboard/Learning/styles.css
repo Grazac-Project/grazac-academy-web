@@ -1,0 +1,33 @@
+.progress__card{
+  width: 400px;
+  height: 234px;
+
+  background: #F8F5FD;
+  border-radius: 20px;
+  background-color: #F8F5FD;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  padding: 0 20px;
+}
+
+.progress__card-heading{
+  font-weight: 600;
+  font-size: 20px;  
+}
+
+.progress__card-badges{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress__card-badges-earned{
+  display: inline-block;
+  padding: 10px 0;
+  font-weight: 600;
+}

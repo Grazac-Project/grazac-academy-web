@@ -85,7 +85,7 @@ const ComponentPage = lazy(() => {
 });
 
 const AcademyDashboardPage = lazy(() => {
-  return import("../src/academy-dashboard/Main");
+  return import("../src/academy-dashboard/pages/dashboard/Dashboard");
 });
 const AcademyChallengePage = lazy(() => {
   return import("../src/academy-dashboard/pages/challenge/Challenge");
