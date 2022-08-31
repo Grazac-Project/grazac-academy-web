@@ -6,6 +6,7 @@
   border-radius: 20px;
   padding: 20px;
   cursor: pointer !important;
+
 }
 
 
@@ -46,5 +47,11 @@
 
 .mini-progress__card:hover{
   background: #773DD3;
-  display: none;
+  /* display: none; */
+}
+
+
+.mini-progress__card{
+  color:red;
+
 }

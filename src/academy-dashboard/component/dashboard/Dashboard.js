@@ -7,6 +7,14 @@ function DashboardComponent() {
       <LearningProgress />
       <Progress
         bgColor="#FBFAF1"
+        hoverBgColor="#FBFAF1"
+        price={true}
+        title="Learning"
+        current={600}
+        maximum={1200}
+      />
+      {/* <Progress
+        bgColor="#FBFAF1"
         price={true}
         title="Learning"
         current={600}
@@ -18,7 +26,7 @@ function DashboardComponent() {
         title="Challenge"
         current={0}
         maximum={3}
-      />
+      /> */}
     </div>
   );
 }
