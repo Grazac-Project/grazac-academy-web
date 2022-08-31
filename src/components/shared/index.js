@@ -1,5 +1,5 @@
 import React from 'react'
-import ChallengeProgress from '../challenges/ChallengeProgress'
+import ChallengeProgress from '../../academy-dashboard/component/challenge/challenges/ChallengeProgress'
 
 function index() {
   return (

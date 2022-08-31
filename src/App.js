@@ -84,6 +84,22 @@ const ComponentPage = lazy(() => {
   return import("./components/shared/index");
 });
 
+const AcademyDashboardPage = lazy(() => {
+  return import("../src/academy-dashboard/Main");
+});
+const AcademyChallengePage = lazy(() => {
+  return import("../src/academy-dashboard/pages/challenge/Challenge");
+});
+const AcademyPaymentPage = lazy(() => {
+  return import("../src/academy-dashboard/pages/payment/Payment");
+});
+const AcademyPortfolioPage = lazy(() => {
+  return import("../src/academy-dashboard/pages/portfolio/Portfolio");
+});
+const AcademySettingsPage = lazy(() => {
+  return import("../src/academy-dashboard/pages/settings/Settings");
+});
+
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -99,6 +115,16 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <div ref={app} className="App" style={{ overflow: "hidden" }}>
           <Switch>
+          <Route path="/academy" component={AcademyDashboardPage}/>
+ 
+
+     
+          <Route path="/challenge" component={AcademyChallengePage}/>
+          <Route path="/payment" component={AcademyPaymentPage}/>
+          <Route path="/portfolio" component={AcademyPortfolioPage}/>
+          <Route path="/settings" component={AcademySettingsPage}/>
+
+
             <Route path="/component" component={ComponentPage} />
             {/* authentication pages */}
             <Route path="/signup" component={SignUp} />
