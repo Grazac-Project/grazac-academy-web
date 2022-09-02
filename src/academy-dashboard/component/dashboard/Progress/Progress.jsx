@@ -27,9 +27,7 @@ const Progress = ({ title, price, current, maximum, bgColor }) => {
     <div
       style={{ background: `${colorState}` }}
       onMouseOver={() => setShowPay(true)}
-      // onMouseOver={() => setColorState("red")}
       onMouseLeave={() => setShowPay(false)}
-      // onMouseLeave={() => setColorState(bgColor)}
       className="mini-progress__card"
     >
       {showPay ? (
