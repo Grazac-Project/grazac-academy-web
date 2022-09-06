@@ -1,0 +1,23 @@
+.lockedchallenge {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: rem(40px)  rem(20px);
+    // gap: rem(10px);
+
+    width: rem(340px);
+    // height: rem(234px);
+
+    background: #f9f9f9;
+    border-radius: rem(20px);
+    p {
+      font-size: rem(14px);
+      font-weight: 600;
+      color: #000000;
+
+    }
+ 
+  }
+}

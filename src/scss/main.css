@@ -13,6 +13,7 @@ $breakpoint argument choices
 - big-desktop
 
 */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
 *,
 *::after,
 *::before {
@@ -1060,6 +1061,267 @@ input:focus, select:focus, textarea:focus {
 
 .sidebar-portal .signout {
   margin-top: 45vh;
+}
+
+.short {
+  width: 34rem;
+}
+
+.long {
+  width: 65.4rem;
+}
+
+.challenge-card__submit {
+  margin-top: 1.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.challenge-card__submit-text p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.challlenge-card .h1,
+.challlenge-card .h2,
+.challlenge-card .h3,
+.challlenge-card h1,
+.challlenge-card h2,
+.challlenge-card h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.challlenge-card__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  border-radius: 2rem;
+}
+
+.challlenge-card__container-top__long {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.challlenge-card__container span {
+  color: #9a9a9a;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.challlenge-card__container h4 {
+  margin-bottom: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  /* identical to box height */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.challlenge-card__scores h3 {
+  margin-bottom: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.8rem;
+  /* identical to box height */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.challlenge-card__scores-span {
+  font-weight: 600 !important;
+  font-size: 1.8rem !important;
+}
+
+.lockedchallenge__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 4rem 2rem;
+  width: 34rem;
+  background: #f9f9f9;
+  border-radius: 2rem;
+}
+
+.lockedchallenge__container p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.challengetext__container h3 {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  /* identical to box height, or 115% */
+  color: #000000;
+}
+
+.challengetext__container p {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  /* or 164% */
+  color: #606060;
+}
+
+.button__container {
+  outline: none;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3.5rem;
+  border-radius: 0.8rem;
+}
+
+.button__container p {
+  margin: 1rem 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.profilecard__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1rem;
+  height: 4.586rem;
+}
+
+.profilecard-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profilecard-details-name {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.profilecard-details-cohort {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.cohortcard__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 1rem 2rem;
+  gap: 0.3rem;
+  width: 21rem;
+  height: 6.5rem;
+  background: #f4f4f4;
+  border-radius: 1rem;
+}
+
+.cohortcard-heading {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+}
+
+.cohortcard-status {
+  font-weight: 600;
+  font-size: 1.4rem;
 }
 
 .loader {
