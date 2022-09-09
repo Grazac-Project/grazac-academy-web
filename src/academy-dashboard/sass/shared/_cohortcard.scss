@@ -1,0 +1,32 @@
+.cohortcard {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: rem(10px) rem(20px);
+    gap: rem(3px);
+    width: rem(210px);
+    height: rem(65px);
+    background: #f4f4f4;
+    border-radius: rem(10px);
+  }
+  &-heading {
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    align-items: center;
+    gap:1rem;
+    font-weight: 600;
+    font-size: rem(14px);
+    line-height: rem(23px);
+  }
+  &-status {
+    // display:flex;
+    // flex-direction: row;
+    // gap:0.2rem;
+    font-weight: 600;
+    font-size: rem(14px);
+  }
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import "./challengeprogress.css";
 
 function ChallengeProgress({ percentage, noCompleted }) {
   return (

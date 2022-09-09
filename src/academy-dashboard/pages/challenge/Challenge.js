@@ -6,6 +6,8 @@ import ChallengeText from "../../component/challenge/challenges/challengetext/Ch
 import ProfileCard from "../../component/shared/profilecard/ProfileCard";
 import CohortCard from "../../component/shared/cohortcard/CohortCard";
 import img from "../../static/profile_image.png"
+import Carousel from "../../component/carousel/Carousel";
+import CarouselDiv from "../../component/carousel/Carousel";
 const Component1 = ({ String }) => {
   return <div dangerouslySetInnerHTML={{ __html: String }} />;
 };
@@ -45,7 +47,9 @@ I wish you best of luck
 `;
 function Challenge() {
   return (
-    <div>
+      <div className="challengepage__container">
+   
+
       <ChallengeProgress percentage={70} noCompleted={2} />
 
       <ChallengeCard

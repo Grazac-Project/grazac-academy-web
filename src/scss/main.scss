@@ -15,12 +15,16 @@
 @import "../scss/component/modal";
 @import "../scss/component/loader";
 @import "../scss/component/sidebar";
-@import "../scss/component/challenges/challengecard";
-@import "../scss/component/challenges/lockedchallenge";
-@import "../scss/component/challenges/challengetext";
-@import "../scss/component/shared/button";
-@import "../scss/component/shared/profilecard";
-@import "../scss/component/shared/cohortcard";
+
+@import "../academy-dashboard/sass/challenges/challengecard";
+@import "../academy-dashboard/sass/challenges/lockedchallenge";
+@import "../academy-dashboard/sass/challenges/challengetext";
+@import "../academy-dashboard/sass/shared/button";
+@import "../academy-dashboard/sass/shared/profilecard";
+@import "../academy-dashboard/sass/shared/cohortcard";
+@import "../academy-dashboard/sass/challenges/challengeprogress";
+@import "../academy-dashboard/sass/shared/academysidebar/academysidebar";
+// academy component
 
 // pages
 @import "../scss/page/landing";

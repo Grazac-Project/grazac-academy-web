@@ -11,7 +11,7 @@ function CohortCard({ cohort, status }) {
         </>
       </div>
       <div className="cohortcard-status">
-        <img src={status === "Admitted" ? green : grey}></img>
+        <img src={status === "Admitted" ? green : null}></img>
         {status}
       </div>
     </div>

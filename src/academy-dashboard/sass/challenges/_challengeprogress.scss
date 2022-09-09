@@ -1,0 +1,50 @@
+// .challengeprogress__container > * {
+//   margin: 0;
+//   padding: 0;
+// }
+.challengeprogress__container {
+  // margin-left: 5rem;
+  font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: rem(40px) rem(20px);
+  width: rem(500px);
+  background: #f9f9f9;
+  border-radius: rem(20px);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.challengeprogress__title {
+  font-weight: 600;
+  font-size: rem(14px);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+.challengeprogress__number {
+  display: flex;
+  flex-direction: column;
+}
+h5 {
+  font-weight: 600;
+  font-size: rem(18px);
+
+  color: #000000;
+}
+h5 > span {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: rem(12px);
+  display: flex;
+  align-items: center;
+
+  color: #9a9a9a;
+}
+
+.challengeprogress__nocompleted {
+  margin-top: 1.5rem;
+}

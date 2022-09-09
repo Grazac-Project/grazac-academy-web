@@ -1,0 +1,20 @@
+.challengetext {
+  &__container {
+    h3 {
+      font-weight: 700;
+      font-size: rem(20px);
+      line-height: rem(23px);
+      /* identical to box height, or 115% */
+
+      color: #000000;
+    }
+    p {
+      font-weight: 400;
+      font-size: rem(14px);
+      line-height: rem(23px);
+      /* or 164% */
+
+      color: #606060;
+    }
+  }
+}

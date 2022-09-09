@@ -1,0 +1,92 @@
+.short {
+  width: rem(340px);
+}
+.long {
+  width: rem(654px);
+}
+.challenge-card__submit {
+  margin-top: rem(16px);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  &-text {
+    p {
+      font-size: rem(14px);
+      font-weight: 400;
+      align-items: center;
+      text-align: center;
+
+      // color: #000000;
+    }
+  }
+}
+.challlenge-card {
+  .h1,
+  .h2,
+  .h3,
+  h1,
+  h2,
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: rem(40px) rem(20px);
+    background: #f9f9f9;
+    border-radius: rem(20px);
+
+    &-top__long {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    span {
+      color: #9a9a9a;
+      font-weight: 600;
+      font-size: rem(12px);
+      display: flex;
+      align-items: center;
+    }
+
+    h4 {
+      margin-bottom: 0;
+      font-style: normal;
+      font-weight: 600;
+      font-size: rem(14px);
+      // line-height: rem(19px);
+      /* identical to box height */
+
+      display: flex;
+      align-items: center;
+
+      // color: #000000;
+    }
+  }
+
+  &__scores {
+    h3 {
+      margin-bottom: 0;
+      font-style: normal;
+      font-weight: 600;
+      font-size: rem(18px);
+      // line-height: rem(25px);
+      /* identical to box height */
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      // color: #000000;
+    }
+    &-span {
+      font-weight: 600 !important;
+      font-size: rem(18px) !important;
+    }
+  }
+}

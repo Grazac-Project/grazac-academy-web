@@ -1,0 +1,21 @@
+.profilecard {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    height: rem(45.86px);
+  }
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    &-name {
+      font-weight: 600;
+      font-size: rem(16px);
+    }
+    &-cohort {
+      font-weight: 600;
+      font-size: rem(12px);
+    }
+  }
+}

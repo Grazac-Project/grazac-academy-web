@@ -1324,6 +1324,217 @@ input:focus, select:focus, textarea:focus {
   font-size: 1.4rem;
 }
 
+.challengeprogress__container {
+  font-family: "Nunito Sans", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 4rem 2rem;
+  width: 50rem;
+  background: #f9f9f9;
+  border-radius: 2rem;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+}
+
+.challengeprogress__title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.challengeprogress__number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+h5 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #000000;
+}
+
+h5 > span {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #9a9a9a;
+}
+
+.challengeprogress__nocompleted {
+  margin-top: 1.5rem;
+}
+
+.academysidebar > a {
+  text-decoration: none;
+  color: white;
+}
+
+.academysidebar > a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.academysidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.academysidebar a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.academysidebar__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.academysidebar__sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0rem 2rem;
+  background: #f8f8f8;
+  color: #fff;
+  height: 100vh;
+  max-width: 27rem;
+}
+
+.academysidebar__sidebar-top_section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 15px;
+}
+
+.academysidebar__sidebar-top_section-logo {
+  font-size: 30px;
+}
+
+.academysidebar__sidebar-top_section-bars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 25px;
+  margin-left: 50px;
+}
+
+.academysidebar__sidebar-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 15px;
+  gap: 10px;
+}
+
+.academysidebar__sidebar-link-icon, .academysidebar__sidebar-link-link_text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  /* identical to box height, or 144% */
+  color: #333333;
+}
+
+main {
+  width: 100%;
+  padding: 4rem;
+}
+
+.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+  background: #773dd3;
+  border-radius: 8px;
+  width: 210px;
+}
+
+.active > .academysidebar__sidebar-link-link_text {
+  text-decoration: none;
+  color: white;
+}
+
+.active > .academysidebar__sidebar-link-link_text > a {
+  text-decoration: none;
+  color: white;
+}
+
+.active > .academysidebar__sidebar-link-link_text > a:hover {
+  color: white;
+}
+
+.active > div > svg > g > path {
+  fill: white;
+}
+
+.active > div > svg > path {
+  fill: white;
+}
+
+div > svg > g > path {
+  fill: #333333;
+}
+
+div > svg > path {
+  fill: #333333;
+}
+
 .loader {
   left: 50%;
   position: absolute;

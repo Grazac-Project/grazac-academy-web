@@ -1,0 +1,116 @@
+// *{
+//     margin:0;
+//     padding:0;
+//     text-decoration: none;
+//   }
+.academysidebar > a {
+  text-decoration: none;
+  color: white;
+}
+.academysidebar > a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.academysidebar {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
+  &__container {
+    display: flex;
+  }
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: rem(0px) rem(20px);
+    background: #f8f8f8;
+
+    color: #fff;
+    height: 100vh;
+    max-width: rem(270px);
+    // transition: all 0.5s;
+    &-top_section {
+      display: flex;
+      align-items: center;
+      padding: 20px 15px;
+      &-logo {
+        font-size: 30px;
+      }
+      &-bars {
+        display: flex;
+        font-size: 25px;
+        margin-left: 50px;
+      }
+    }
+
+    &-link {
+      display: flex;
+
+      padding: 10px 15px;
+      gap: 10px;
+      // transition: all 0.5s;
+
+      &-icon,
+      &-link_text {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 23px;
+        /* identical to box height, or 144% */
+
+        color: #333333;
+      }
+    }
+    // &-link:hover {
+    //   background: lightskyblue;
+    //   color: #000;
+    //   transition: all 0.5s;
+    // }
+  }
+}
+
+main {
+  width: 100%;
+  padding: rem(40px);
+}
+
+.active {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+  background: #773dd3;
+  border-radius: 8px;
+  width: 210px;
+}
+
+.active > .academysidebar__sidebar-link-link_text  {
+  text-decoration: none;
+  color: white;
+}
+.active > .academysidebar__sidebar-link-link_text > a {
+  text-decoration: none;
+  color: white;
+}
+.active > .academysidebar__sidebar-link-link_text > a:hover {
+  color: white;
+}
+.active > div > svg > g > path {
+  fill: white;
+}
+.active > div > svg > path {
+  fill: white;
+}
+div > svg > g > path {
+  fill: #333333;
+}
+div > svg > path {
+  fill: #333333;
+}

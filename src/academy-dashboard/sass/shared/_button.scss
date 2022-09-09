@@ -1,0 +1,15 @@
+.button__container {
+  outline: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: rem(35px);
+  border-radius: rem(8px);
+  p {
+    margin: rem(10px) rem(10px);
+    font-weight: 600;
+    font-size: rem(12px);
+  }
+}
