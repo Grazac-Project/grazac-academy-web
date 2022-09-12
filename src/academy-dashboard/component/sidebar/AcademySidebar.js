@@ -14,7 +14,7 @@ import DashboardIcon from '../../icons/DashboardIcon';
 import PaymentIcon from '../../icons/PaymentIcon';
 import PortfolioIcon from '../../icons/PortfolioIcon';
 import SettingsIcon from '../../icons/SettingsIcon';
-
+import CohortCard from "../shared/cohortcard/CohortCard"
 
 const AcademySidebar = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ const AcademySidebar = ({children}) => {
         {
             path:"/academy",
             name:"Academy",
-            icon:<DashboardIcon />
+            icon:<DashboardIcon /> 
         },
         {
             path:"/challenge",
@@ -44,22 +44,21 @@ const AcademySidebar = ({children}) => {
             path:"/settings",
             name:"Settings",
             icon:<SettingsIcon />
-        },
-
-        
+        },      
     ]
     return (
         <div className="academysidebar__container">
            <div className="academysidebar__sidebar">
                <div className="academysidebar__sidebar-top_section">
-                   <h1  className="academysidebar__sidebar-top_section-logo">Logo</h1>
+
+                <CohortCard status={"Admitted"} cohort={"001"} />
+                   {/* <h1  className="academysidebar__sidebar-top_section-logo">Logo</h1> */}
                    <div  className="academysidebar__sidebar-top_section-bars">
                        {/* <FaBars onClick={toggle}/> */}
                    </div>
                </div>
 
-               {
-                   menuItem.map((item, index)=>(
+               {menuItem.map((item, index)=>(
                        <NavLink to={item.path} key={index} className="academysidebar__sidebar-link" activeclassName="active">
                            <div className="academysidebar__sidebar-link-icon">{item.icon}</div>
                            <div className="academysidebar__sidebar-link-link_text">{item.name}</div>

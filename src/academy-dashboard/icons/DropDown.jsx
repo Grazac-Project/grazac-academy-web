@@ -1,0 +1,17 @@
+import React from "react";
+
+function DropDown() {
+  return (
+    <svg
+      width="9"
+      height="6"
+      viewBox="0 0 9 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M1 1L4.53553 4.53553L8.07107 1" stroke="black" />
+    </svg>
+  );
+}
+
+export default DropDown;

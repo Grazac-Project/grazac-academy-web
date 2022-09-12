@@ -15,7 +15,7 @@
 @import "../scss/component/modal";
 @import "../scss/component/loader";
 @import "../scss/component/sidebar";
-
+// academy component
 @import "../academy-dashboard/sass/challenges/challengecard";
 @import "../academy-dashboard/sass/challenges/lockedchallenge";
 @import "../academy-dashboard/sass/challenges/challengetext";
@@ -24,8 +24,9 @@
 @import "../academy-dashboard/sass/shared/cohortcard";
 @import "../academy-dashboard/sass/challenges/challengeprogress";
 @import "../academy-dashboard/sass/shared/academysidebar/academysidebar";
-// academy component
 
+// academy page
+@import "../academy-dashboard/sass/page/challengepage";
 // pages
 @import "../scss/page/landing";
 @import "../scss/page/auth";

@@ -4,18 +4,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: rem(10px) rem(20px);
+    padding: rem(20px) rem(20px);
     gap: rem(3px);
-    width: rem(210px);
+    // width: rem(210px);
     height: rem(65px);
     background: #f4f4f4;
     border-radius: rem(10px);
+    border: 1px solid red;
   }
   &-heading {
-    width:100%;
+    border: 1px solid red;
+    // width:100%;
     display:flex;
     flex-direction: row;
-    // justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     gap:1rem;
     font-weight: 600;
@@ -23,9 +25,9 @@
     line-height: rem(23px);
   }
   &-status {
-    // display:flex;
-    // flex-direction: row;
-    // gap:0.2rem;
+    display:flex;
+    flex-direction: row;
+    gap:0.2rem;
     font-weight: 600;
     font-size: rem(14px);
   }

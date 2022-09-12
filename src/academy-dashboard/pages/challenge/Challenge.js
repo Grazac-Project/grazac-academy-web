@@ -5,7 +5,7 @@ import ChallengeProgress from "../../component/challenge/challenges/ChallengePro
 import ChallengeText from "../../component/challenge/challenges/challengetext/ChallengeText";
 import ProfileCard from "../../component/shared/profilecard/ProfileCard";
 import CohortCard from "../../component/shared/cohortcard/CohortCard";
-import img from "../../static/profile_image.png"
+import img from "../../static/profile_image.png";
 import Carousel from "../../component/carousel/Carousel";
 import CarouselDiv from "../../component/carousel/Carousel";
 const Component1 = ({ String }) => {
@@ -47,10 +47,45 @@ I wish you best of luck
 `;
 function Challenge() {
   return (
-      <div className="challengepage__container">
-   
-
+    <div className="challengepage__container">
+      <div className="challengepage-headtext">
+        <h3>Challenges</h3>
+      </div>
       <ChallengeProgress percentage={70} noCompleted={2} />
+
+      <div className="challenge">
+        <h5 className="challenge-header">Challenges</h5>
+        <div className="challenge__container">
+          <ChallengeCard
+            size={"short"}
+            textColor={"#00000"}
+            bgColor={"#F9F9F9"}
+            title={"Challenge 3"}
+            topBand={"76"}
+            lowerBand={100}
+            dueDate={"7pm, 1st Jan, 2022"}
+            buttonText={"submitted"}
+            buttonBgColor={"#CFB9F9"}
+            buttonTextColor={"#FFF"}
+            disabled={true}
+          />
+          <ChallengeCard
+            size={"short"}
+            textColor={"#FFFF"}
+            bgColor={"#783DD3"}
+            title={"Challenge 1"}
+            topBand={1}
+            lowerBand={100}
+            submitDate={"6pm, 1st Jan, 2022"}
+            dueDate={"6pm, 1st Jan, 2022"}
+            buttonText={"view"}
+            buttonBgColor={"#FFFF"}
+            buttonTextColor={"rgba(120, 61, 211, 0.85)"}
+            disabled={false}
+          />
+          <LockedChallenge text="Challenge 3" />
+        </div>
+      </div>
 
       <ChallengeCard
         size={"short"}
@@ -79,6 +114,7 @@ function Challenge() {
         buttonTextColor={"#FFF"}
         disabled={true}
       />
+
       <ChallengeCard
         size={"long"}
         textColor={"#00000"}
@@ -97,8 +133,8 @@ function Challenge() {
         heading="Empire Travel Group"
         text={<Component1 String={value} />}
       />
-      <ProfileCard  image={img} name={"Daniel Owolabi"} cohort={"001"} />
-      <CohortCard cohort="001" status ="Admitted" />
+      <ProfileCard image={img} name={"Daniel Owolabi"} cohort={"001"} />
+      <CohortCard cohort="001" status="Admitted" />
     </div>
   );
 }

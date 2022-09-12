@@ -1,11 +1,13 @@
-$html-font-size: 10px;
+@use "sass:math";
+$html-font-size: 12px;
 
 @function stripUnit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, $value * 0 + 1);
 }
 
 @function rem($pxValue) {
-  @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+  // @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+  @return #{math.div(stripUnit($pxValue), stripUnit($html-font-size))}rem;
 }
 
 @mixin clearfix {

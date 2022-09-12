@@ -1,0 +1,26 @@
+.challenge {
+
+  &-header {
+    h5 {
+      font-weight: 700;
+      font-size: rem(20px);
+    }
+  }
+  margin-top: rem(64px);
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+.challengepage{
+    &-headtext{
+        h3{
+            font-weight: 600;
+            font-size: rem(28px);
+        }
+    }
+}

@@ -100,7 +100,6 @@ function Dashboard() {
         if (res.data.length > 1 || res.data.length === 1) {
           setGuarantorForm1(false);
         }
-
         // work on this part for the payment page
         if (res.data.length > 2 || res.data.length == 2) {
           setGuarantorForm1(false);
