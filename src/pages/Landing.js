@@ -149,11 +149,15 @@ const Landing = () => {
         <div className="landing__text-below">
           <div>
             <img src={mark} alt="mark" />
-            <h6>No tuition until hired</h6>
+            <h6>Learn at your own pace</h6>
           </div>
           <div>
             <img src={mark} alt="mark" />
             <h6>No prior experience required</h6>
+          </div>
+          <div>
+            <img src={mark} alt="mark" />
+            <h6>Pay in instalments</h6>
           </div>
         </div>
       </div>
@@ -201,12 +205,12 @@ const Landing = () => {
                 <div className="">
                   <img src={why1} alt="profile" />
                 </div>
-                <h4>Pay no tuition until you’re hired</h4>
+                <h4>There are no learning barriers </h4>
                 <p className="hire_dev-grey">
-                  We make starting a career in tech accessible to anyone. You
-                  won’t be required to pay any tuition for your learning until
-                  you get a job. We match you with employers within 9-12 months
-                  of learning to land your dream job in tech.
+                  We make starting a career in tech accessible to anyone. Whether you are a graduate or you are
+                  an undergraduate; wheater you are young or old, and no matter your experience level - our model, 
+                  courses, and community has been designed to make you feel comfortable and fully angaged in the learning process
+                
                 </p>
               </div>
             </Col>

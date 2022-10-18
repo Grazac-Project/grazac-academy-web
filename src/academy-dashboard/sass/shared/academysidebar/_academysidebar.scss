@@ -1,11 +1,14 @@
-// *{
-//     margin:0;
-//     padding:0;
-//     text-decoration: none;
-//   }
+main {
+  width: 100%;
+  padding: rem(40px);
+  margin-left: rem(300px);
+  
+}
+
 .academysidebar > a {
   text-decoration: none;
   color: white;
+  
 }
 .academysidebar > a:hover {
   text-decoration: none;
@@ -13,6 +16,8 @@
 }
 
 .academysidebar {
+  position:relative;
+
   a {
     text-decoration: none;
     color: white;
@@ -20,11 +25,14 @@
   a:hover {
     text-decoration: none;
     color: white;
+    
   }
   &__container {
     display: flex;
   }
   &__sidebar {
+    position:fixed;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,10 +83,6 @@
   }
 }
 
-main {
-  width: 100%;
-  padding: rem(40px);
-}
 
 .active {
   display: flex;

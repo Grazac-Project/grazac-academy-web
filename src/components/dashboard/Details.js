@@ -15,7 +15,6 @@ function Details() {
   const [userId, setUserId] = useState(0);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [clicked, setClicked] = useState("bio");
   const [userDetails, setUserDetails] = useState({});
   const [guarantorDetails_1, setGuarantorDetails_1] = useState([]);
   const [guarantorDetails_2, setGuarantorDetails_2] = useState([]);
@@ -23,13 +22,22 @@ function Details() {
   const [guarantorId_2, setGuarantorId_2] = useState(0);
   const [submitted, setSubmitted] = useState(true);
 
+  const [clicked, setClicked] = useState();
+  const [accepted, setAccepted] = useState(false);
+  const [tempData, setTemData] = useState(null);
+
   useEffect(() => {
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
+      if(accepted){
+      setClicked("bio")
+      }
+
     } catch (err) {}
     // setBioData(userDetails)
   }, []);
+
   useEffect(() => {
     //remove the submit button if there is data for agerange have kids and marital status
     {
@@ -222,7 +230,13 @@ function Details() {
 
   };
 
-  const [tempData, setTemData] = useState(null);
+const handleWhatToShow=(value)=>{
+  if(accepted){
+    setClicked(value)
+  }
+}
+  
+  
   useEffect(() => {
     getDetailsB()
       .then((res) => {
@@ -280,7 +294,11 @@ function Details() {
                     ? "dashboard-content-detail-p active"
                     : "dashboard-content-detail-p"
                 }
-                onClick={() => setClicked("bio")}
+
+                onClick={() => 
+                  
+                  handleWhatToShow("bio")
+                }
               >
                 Bio Data
               </button>
@@ -290,7 +308,7 @@ function Details() {
                     ? "dashboard-content-detail-p active"
                     : "dashboard-content-detail-p"
                 }
-                onClick={() => setClicked("edu")}
+                onClick={() => handleWhatToShow("edu")}
               >
                 Educational Background
               </button>
@@ -302,7 +320,7 @@ function Details() {
                       ? "dashboard-content-detail-p active"
                       : "dashboard-content-detail-p"
                   }
-                  onClick={() => setClicked("gua")}
+                  onClick={() => handleWhatToShow("gua")}
                 >
                   Guarantor Data
                 </button>

@@ -39,67 +39,103 @@ const Faq = () => {
         <div className="landing_faq">
           <div className="container">
             <div>
-              <Accordion defaultActiveKey="0">
+              <Accordion defaultActiveKey="1">
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <Accordion.Toggle as={Card.Header} eventKey="1">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>How do I register?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
+                  <Accordion.Collapse eventKey="1">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Visit www.grazacacademy.com and click the “apply now” button to create an account. Login to your dashboard to complete your application.
+                          Visit www.grazacacademy.com and click the “apply now”
+                          button to create an account. Login to your dashboard
+                          to complete your application.{" "}
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
                 <hr />
+
+
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="11">
+                  <Accordion.Toggle as={Card.Header} eventKey="2">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>After registration, what next?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="11">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Once you have successfully registered, an email will be sent to you detailing the next steps of the registration process. Ensure that you provide a valid email address and keep an eye on your inbox.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="12">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I have to be physically present to register?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="12">
+
+                  <Accordion.Collapse eventKey="2">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        No. Registration can be done online but applicants have to be physically present to write the assessment test.
+                          Once you have successfully registered, an email will
+                          be sent to you detailing the next steps of the
+                          registration process. Ensure that you provide a valid
+                          email address and keep an eye on your inbox.{" "}
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
                 <hr />
+
+
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="13">
+                  <Accordion.Toggle as={Card.Header} eventKey="3">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Where is the academy located?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="3">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Our headquarter is located at Abeokuta, Ogun State,
+                          Nigeria. Address : Suite 106, PROHUB, Salawu Olabode
+                          Avenue, Ewang Road, Idi-aba, Abeokuta.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+
+                
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="4">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Do I have to be physically present to register?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="4">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No. Assessment will be done online. However, you will
+                          be required to be physically present for an interview.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="5">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Do I need to have any previous experience or knowledge before coming to learn?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="13">
+                  <Accordion.Collapse eventKey="5">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
@@ -109,19 +145,25 @@ const Faq = () => {
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
+
                 <hr />
+             
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="14">
+                
+                  <Accordion.Toggle as={Card.Header} eventKey="6">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Are classes virtual or physical?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="14">
+                  <Accordion.Collapse eventKey="6">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        Classes are 100% physical and this is to ensure students get maximum support and mentorship from their tutors.
+                          Both. You can choose to learn physically (majorly
+                          recommended and tailored for graduates) or you can
+                          choose to learn virtually (majorly recommended and
+                          tailored for undergraduates).
                         </p>
                       </div>
                     </Card.Body>
@@ -129,71 +171,43 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="15">
+                  <Accordion.Toggle as={Card.Header} eventKey="7">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>What is the duration of the program?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="15">
+                  <Accordion.Collapse eventKey="7">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The program runs for at least 6 months (3 months of immersive training and 3 months internship)
+                          6 months, if you choose to learn physically (3 months
+                          immersive training and 3 months internship). And 2
+                          months, if you choose to learn virtually.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-                <hr/>
+                <hr />
+          
+
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="8">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How much do I pay back after getting a job?</h4>
-                      <MdKeyboardArrowUp size="2rem" color="black" />
+                      <h4>
+                        Will the certificate be recognized locally and globally?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="8">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The sum of 1500 dollars is to be paid back within the period of 18-months after securing a job.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Will I be given the certificate upon graduation or upon successful completion of tuition?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>Certificates will be given to students upon successful graduation.</p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="2">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>
-                      Will the certificate be recognized locally and globally?
-                      </h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="2">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                        Yes. Grazac is a corporate organization incorporated under the COMPANIES AND ALLIED MATTERS act 1990 and the company is limited by shares with RC 1643778.
+                          Yes. Grazac is a corporate organization incorporated
+                          under the COMPANIES AND ALLIED MATTERS act 1990 and
+                          the company is limited by shares with RC 1643778.
                         </p>
                       </div>
                     </Card.Body>
@@ -203,7 +217,9 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="3">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What is the actual cost of learning with Grazac Academy?</h4>
+                      <h4>
+                        What is the actual cost of learning with Grazac Academy?
+                      </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -211,43 +227,109 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        The actual cost of learning is 1200 dollars if you pay your tuition before classes commence. If you wait till you get a job, you pay back the sum of 1500 dollars within a period of 18 months.
+                          If you choose to learn physically, you would be
+                          required to pay a total sum of N500,000 and If you
+                          choose to learn virtually, you would be required to
+                          pay a total sum of N90,000.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
+
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="4">
+                  <Accordion.Toggle as={Card.Header} eventKey="16">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What happens if I choose to withdraw from Grazac Academy a few months into the training?</h4>
+                      <h4>Can I learn now and pay later?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="4">
+                  <Accordion.Collapse eventKey="16">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        Students have the opportunity to withdraw within three weeks into the training with no tuition obligations. If students make it to the 4th week, tuition obligations and penalties stand.
+                          No. we now operate a “pay now and learn” model, which
+                          means that you are required to complete your payment
+                          before the end of your training. You can pay upfront
+                          and if choose to learn physically, you can pay in
+                          instalments.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
+
                 <hr />
+
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="5">
+                  <Accordion.Toggle as={Card.Header} eventKey="17">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Can I pay tuition upfront?</h4>
+                      <h4>How do I pay in instalments?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="5">
+                  <Accordion.Collapse eventKey="17">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        Yes, you can pay.
+                          {" "}
+                          If you choose to pay in instalments, you will be
+                          paying a minimum of N110,000 monthly for 5 months
+                          which gives a total of N550,000. Please note that this
+                          is not applicable to those who choose to learn
+                          virtually.{" "}
+                        </p>{" "}
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+
+                <hr />
+
+               
+            
+                <hr />
+              
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="8">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        Will I be given the certificate upon graduation or upon
+                        successful completion of tuition?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="8">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Certificates will be given to students upon successful
+                          graduation.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="9">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        Will the certificate be recognized locally and globally?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="9">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes. Grazac is a corporate organization incorporated
+                          under the COMPANIES AND ALLIED MATTERS act 1990 and
+                          the company is limited by shares with RC 1643778.
                         </p>
                       </div>
                     </Card.Body>
@@ -255,37 +337,168 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="6">
+                  <Accordion.Toggle as={Card.Header} eventKey="10">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        What is the actual cost of learning with Grazac Academy?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="10">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          If you choose to learn physically, you would be
+                          required to pay a total sum of N500,000 and If you
+                          choose to learn virtually, you would be required to
+                          pay a total sum of N90,000.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="11">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Can I learn now and pay later?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="11">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No. we now operate a “pay now and learn” model, which
+                          means that you are required to complete your payment
+                          before the end of your training. You can pay upfront
+                          and if choose to learn physically, you can pay in
+                          instalments.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+
+                <hr />
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="12">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>How do I pay in instalments?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="12">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          {" "}
+                          If you choose to pay in instalments, you will be
+                          paying a minimum of N110,000 monthly for 5 months
+                          which gives a total of N550,000. Please note that this
+                          is not applicable to those who choose to learn
+                          virtually.{" "}
+                        </p>{" "}
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+
+                <hr />
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="13">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>What are the available courses ?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="6">
+                  <Accordion.Collapse eventKey="13">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>Product Design</p>
                         <p>Product Management</p>
-                        <p>Front-end Web Development (HTML, CSS, Javascript [ReactJS] )</p>
+                        <p>
+                          Front-end Web Development (HTML, CSS, Javascript
+                          [ReactJS] )
+                        </p>
                         <p>Back-end Web Development with NodeJS</p>
-                        <p>Mobile Application Development </p>
+                        <p>
+                          Mobile Application Development (Android and Flutter){" "}
+                        </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
+
+                {/* new card */}
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="7">
+                  <Accordion.Toggle as={Card.Header} eventKey="14">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Do I qualify to enroll as an Undergraduate?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="7">
+                  <Accordion.Collapse eventKey="14">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        No. This Cohort is strictly for graduates.
+                          Yes. You can enroll as an undergraduate. However, if
+                          you are an undergraduate, you are strongly advised to
+                          choose to learn virtually. In fact, our virtual
+                          classes are specifically tailored for you.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                {/* new card */}
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="15">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Will the academy help me get a job?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="15">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No. We would equip you with all the skills you need to
+                          get a job confidently on your own. However, we would
+                          always inform you of any available entry-level
+                          job/paid internship opportunities which you can apply
+                          for after your training.{" "}
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                {/* new card */}
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="16">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        Do I need to have any previous experience or knowledge
+                        before coming to learn?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="16">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Not at all. All our courses are designed to help
+                          people from any educational background and experience
+                          level achieve a successful career in IT.
                         </p>
                       </div>
                     </Card.Body>
@@ -293,17 +506,63 @@ const Faq = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="100">
+                  <Accordion.Toggle as={Card.Header} eventKey="17">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Is a job guaranteed for me after taking a course?</h4>
+                      <h4>Can I take two courses at a time?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="100">
+                  <Accordion.Collapse eventKey="17">
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        Yes, we outsource all successful students to companies and fix them with jobs within 9-12 months of learning.
+                          No, you cannot. This is because we want you to be
+                          focused and dedicated to a particular course and give
+                          it your best.{" "}
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="18">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>What course is right for me?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="18">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          You can give us a call or chat with us for guidance.{" "}
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="19">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        What are the added benefits Grazac Academy is promising
+                        me after taking a course?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="19">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Asides from informing you of available job/internship
+                          opportunities, you would also have access to be
+                          mentored by professionals in the industry, and access
+                          to a community of like minds that would foster your
+                          learning and practice.
                         </p>
                       </div>
                     </Card.Body>
@@ -331,8 +590,8 @@ const Faq = () => {
                 <h2>Still Have A Question?</h2>
                 <p>
                   Do you need further clarification? Call{" "}
-                  <span>08068365951</span> or click on the button below to
-                  chat with us.
+                  <span>08068365951</span> or click on the button below to chat
+                  with us.
                 </p>
                 <a href="tel:+2348068365951">
                   <button>Call us now</button>

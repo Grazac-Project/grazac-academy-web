@@ -23,7 +23,7 @@ const ModeOfTeaching = _ => {
                                     <img src={classroom} alt="mode of learning" />
                                 </div>
                                 <h3>Instructor-led live classes</h3>
-                                <p className="lenght1">Join other students in our 100% physical classes with experts in the industry.</p>
+                                <p className="lenght1">Join other students in our classes (physically or virtually) with experts in the industry.</p>
                             </div>
                             <div className="boxes">
                                 <div className="svg-box">

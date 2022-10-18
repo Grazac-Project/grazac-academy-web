@@ -14,7 +14,15 @@ function ChallengeCard({
   buttonBgColor,
   textColor,
   size,
+  setShowComponent,
+  setShowChallenge,
+
 }) {
+
+  const showChallengeHandler=(title)=>{
+    setShowChallenge('challenge 1')
+    setShowComponent('detail')
+  }
   return (
     <div
       className={
@@ -24,6 +32,7 @@ function ChallengeCard({
       }
       // className={"challlenge-card__container"}
       style={{ backgroundColor: `${bgColor}` }}
+      onClick={(title)=>showChallengeHandler(title)}
     >
       <div
         className={

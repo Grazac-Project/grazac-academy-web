@@ -110,14 +110,14 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <div ref={app} className="App" style={{ overflow: "hidden" }}>
             <Switch>
-              <AcademySidebar>
+              {/* <AcademySidebar>
                 <Route path="/academy" component={AcademyDashboardPage} />
 
                 <Route path="/challenge" component={AcademyChallengePage} />
                 <Route path="/payment" component={AcademyPaymentPage} />
                 <Route path="/portfolio" component={AcademyPortfolioPage} />
                 <Route path="/settings" component={AcademySettingsPage} />
-              </AcademySidebar>
+              </AcademySidebar> */}
 
               <Route path="/component" component={ComponentPage} />
               {/* authentication pages */}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Sidebar from "../../../components/dashboard/Sidebar";
 import Details from "../../../components/dashboard/Details";
 import NotSubmitted from "../../../components/dashboard/not-submitted";
@@ -15,8 +15,11 @@ import {
   addPlan,
   getGuarantor,
 } from "../../../api/dashboard/data";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-
+import {
+  useFlutterwave,
+  FlutterWaveButton,
+  closePaymentModal,
+} from "flutterwave-react-v3";
 import arrow from "../../../images/svg/dashboard/arrow.svg";
 import menu from "../../../images/svg/dashboard/menu.svg";
 import cancel from "../../../images/svg/dashboard/cancel.svg";
@@ -24,10 +27,14 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
-import { usePayercoins } from "payercoins-react";
+// import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
-  const [status, setStatus] = useState("Not Submitted");
+  const buttonRef = useRef();
+  const [accepted, setAccepted] = useState(false);
+
+  // const [status, setStatus] = useState("Not Submitted");
+  const [status, setStatus] = useState();
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   // const [status, setStatus] = useState("Admitted");
@@ -70,21 +77,25 @@ function Dashboard() {
   useEffect(() => {
     // setSelectStatus("paid");
     // setSelectStatus("paid")
-
     try {
       let details = sessionStorage.getItem("user_details");
-      setStatus(sessionStorage.getItem("status"));
+      console.log(details);
 
       setDetails(JSON.parse(details));
 
       setUserId(JSON.parse(details).id);
 
-      if (JSON.parse(details).isPaid === 1) {
-        setSelectStatus("paid");
-      }
+      if (accepted) {
+        setStatus("Not Submitted");
+        setStatus(sessionStorage.getItem("status"));
 
-      if (!details) {
-        window.location = "/login";
+        if (JSON.parse(details).isPaid === 1) {
+          setSelectStatus("paid");
+        }
+
+        if (!details) {
+          window.location = "/login";
+        }
       }
     } catch (err) {
       window.location = "/login";
@@ -539,8 +550,30 @@ function Dashboard() {
       logo: "https://grazac.com.ng/assets/images/favicon.png",
     },
   };
+  const AdmissionFeeFlutterwaveConfig = {
+    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    tx_ref: Date.now(),
+    amount: 15000,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: `${details.email}`,
+      phonenumber: `${details.phone}`,
+      name: `${details.firstName} ${details.lastName}`,
+    },
+
+    customizations: {
+      title: "Grazac Academy",
+      description: "Admission Fee Payment",
+      logo: "https://grazac.com.ng/assets/images/favicon.png",
+    },
+  };
 
   const handleFlutterPayment = useFlutterwave(config);
+  const HandleAdmissionPayFlutterPayment = useFlutterwave(
+    AdmissionFeeFlutterwaveConfig
+  );
+
 
   const changeStatus = (par1) => {
     setStatus(`${par1}`);
@@ -561,11 +594,38 @@ function Dashboard() {
     // callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
     callback_url: "https://webhook.site/c573fd7d-2e6f-478d-b16d-b97e15c533c1", //This is just a test sandbox
   };
-  const [initializePayment] = usePayercoins();
-  const handlePayercoinsPayment = async () => {
-    initializePayment(payercoinsConfig);
+  // const [initializePayment] = usePayercoins();
+  // const handlePayercoinsPayment = async () => {
+  //   initializePayment(payercoinsConfig);
+  // };
+
+  // useEffect(()=>{
+  //   console.log(typeof window ,'before load')
+  //   if(typeof window === 'object'){
+  //     HandleAdmissionPayFlutterPayment()
+  //   }
+  // },[])
+
+  const acceptCall = (e) => {
+    alert("Accepted");
+    HandleAdmissionPayFlutterPayment();
+  };
+  const fireEvent = (el, eventName) => {
+    const event = new Event(eventName, { bubbles: true });
+    el.dispatchEvent(event);
   };
 
+  useEffect(() => {
+    if (buttonRef.current instanceof Element) {
+      fireEvent(buttonRef.current, "click");
+    }
+  });
+
+  if (!accepted) {
+    if (buttonRef.current instanceof Element) {
+      fireEvent(buttonRef.current, "click");
+    }
+  }
   return (
     <>
       {loading === false ? (
@@ -619,6 +679,24 @@ function Dashboard() {
             </div>
             {sidebarClick === "dashboard" && (
               <div className="dashboard-content">
+                <div>
+                  <p>Please Make your Admission Fee Payment</p>
+                  <button
+                    ref={buttonRef}
+                    onClick={() => {
+                      HandleAdmissionPayFlutterPayment({
+                        callback: (response) => {
+                          console.log(response);
+                          closePaymentModal(); // this will close the modal programmatically
+                        },
+                        onClose: () => {},
+                      });
+                    }}
+                  >
+                    pay
+                  </button>
+                </div>
+
                 {status === "Not Submitted" && (
                   <NotSubmitted
                     userDetails={details}
