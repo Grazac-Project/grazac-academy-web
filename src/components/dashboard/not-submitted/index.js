@@ -40,7 +40,7 @@ function NotSubmitted({
     course: "",
     state: "",
     city: "",
-    id:"",
+    id: "",
   });
 
   const [education, setEducation] = useState({
@@ -73,7 +73,6 @@ function NotSubmitted({
         setNigerianStates(response.data.data);
       });
 
-
     {
       nigerianStates.length === 0 &&
         axios
@@ -101,14 +100,13 @@ function NotSubmitted({
   };
 
   const handleImage = (e) => {
- 
     if (e.target.files[0].size > 2097152) {
       toast.error("File too large! A maximum of 2MB is allowed.");
     } else {
-    //   setBioData({
-    //     ...bioData,
-    //     id: e.target.files[0],
-    //   });
+      //   setBioData({
+      //     ...bioData,
+      //     id: e.target.files[0],
+      //   });
     }
   };
 
@@ -144,7 +142,6 @@ function NotSubmitted({
     var data = new FormData();
 
     try {
-      
       //  btn.innerHTML = `Submit`;
       btn.innerHTML = `<img src=${loader} width="20px" />`;
       if (!(bioData.phone.length > 10)) {
@@ -175,7 +172,7 @@ function NotSubmitted({
         data.append("why_selected_for_cohort", education.reason);
         data.append("physically_available", education.availability);
         data.append("will_you_pay_legal_fees", education.legalFee);
-        console.log(data)
+        console.log(data);
       }
     } catch (err) {
       toast.error("please check enter a valid phone number");
@@ -224,83 +221,96 @@ function NotSubmitted({
       <ToastContainer closeButton={false} />
       {active === "welcome" && (
         <div>
-    
-    <h3>Hello {fname}</h3>
-      <p className="text1">
-        Thank you for choosing to build your career in tech with us!
-      </p>
-      <p>
-        Grazac Academy is at the forefront of upskilling and connecting youths
-        to opportunities in the technology industry and our primary goal is to
-        have connected a minimum of 1,000 youths to jobs by 2026.
-      </p>
-      <p>
-        You can choose to learn virtually or physically with us. This program
-        goes above and beyond to provide a superior educational experience,
-        allowing students to develop a successful career in the tech industry
-        through intensive training and internships.{" "}
-      </p>
-      <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
-      <ul>
-        <li>Product Designing (UI/UX)</li>
-        <li>Product Management</li>
-        <li>Front end web development (HTML, CSS, and Javascript (React.js)</li>
-        <li>Back end web development (Nodejs)</li>
-        <li>Mobile Application Development (Flutter and Dart)</li>
-      </ul>
-      <h4>Pricing Plans</h4>
-      <p>Basic Criteria to be met</p>
-      <ul>
-        <li>Candidates must pass our assessment test</li>
-        <li>
-          Candidates must have strong ability to think and a strong learning
-          mindset
-        </li>
-        <li>
-          Candidates must be a Graduate or available full-time for at least 6
-          months.
-        </li>
-      </ul>
-      <h4>Physical Learning</h4>
-      <h5>Duration</h5>
-      <ul>
-        <li>6 months ( 3 months intensive training + 3 months internship).</li>
-      </ul>
-      <p>
-        Application fee is a non-refundable fee of 15,000 naira only the tuition
-        fee is 500,000 naira only, we offer two basic forms of payment options
-        and they are;
-      </p>
-      <ul>
-        <li>
-          <strong>Pay at once: </strong> You can pay your tuition fee all at
-          once with this plan. 6 months ( 3 months intensive training + 3 months
-          internship).
-        </li>
-        <li>
-          <strong>Pay installmentally: </strong> This is a financial instrument
-          to help you pay installmentally. You are expected to make a commitment
-          of 120,000 while you spread the rest of 5 months of your training.
-          This comes with a 10% interest on the tuition fee
-        </li>
-      </ul>
+          <h3>Hello {fname}</h3>
+          <p className="text1">
+            Thank you for choosing to build your career in tech with us!
+          </p>
+          <p>
+            Grazac Academy is at the forefront of upskilling and connecting
+            youths to opportunities in the technology industry and our primary
+            goal is to have connected a minimum of 1,000 youths to jobs by 2026.
+          </p>
+          <p>
+            You can choose to learn virtually or physically with us. This
+            program goes above and beyond to provide a superior educational
+            experience, allowing students to develop a successful career in the
+            tech industry through intensive training and internships.{" "}
+          </p>
+          <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
+          <ul>
+            <li>Product Designing (UI/UX)</li>
+            <li>Product Management</li>
+            <li>
+              Front end web development (HTML, CSS, and Javascript (React.js)
+            </li>
+            <li>Back end web development (Nodejs)</li>
+            <li>Mobile Application Development (Flutter and Dart)</li>
+          </ul>
+          <h4>Pricing Plans</h4>
+          <p>Basic Criteria to be met</p>
+          <ul>
+            <li>Candidates must pass our assessment test</li>
+            <li>
+              Candidates must have strong ability to think and a strong learning
+              mindset
+            </li>
+            <li>
+              Candidates must be a Graduate or available full-time for at least
+              6 months.
+            </li>
+          </ul>
+          <h4>Physical Learning</h4>
+          <h5>Duration</h5>
+          <ul>
+            <li>
+              6 months ( 3 months intensive training + 3 months internship).
+            </li>
+          </ul>
+          <p>
+            Application fee is a non-refundable fee of 15,000 naira only the
+            tuition fee is 500,000 naira only, we offer two basic forms of
+            payment options and they are;
+          </p>
+          <ul>
+            <li>
+              <strong>Pay at once: </strong> You can pay your tuition fee all at
+              once with this plan. 6 months ( 3 months intensive training + 3
+              months internship).
+            </li>
+            <li>
+              <strong>Pay in instalments: </strong> We also have a plan that
+              allows you to pay in instalments. If you choose this, you are
+              expected to pay N300,000 immediately and spread the rest over 5
+              months of your training. This comes with a 10% interest on the
+              tuition fee.
+            </li>
+            <li>
+              <strong>Learn now. Pay later (or ‘pay as you earn): </strong>You
+              can also decide to learn now and start paying back when you get a
+              job after your training. If you choose this, you would be required
+              to pay a non-refundable legal fee of N50,000 immediately and after
+              your training, you are expected to pay back the sum of 1500
+              dollars (which would be an equivalent to the black dollar rate at
+              the time that you start paying back) in 18 months after securing a
+              job following our repayment procedure
+            </li>
+          </ul>
 
-      <h4>Virtual Learning</h4>
-      <h5>Duration</h5>
-      <ul>
-        <li>2 months </li>
-      </ul>
-      <p>
-        Application fee is a non-refundable fee of 15,000 naira only and the
-        learning fee is 90,000 naira only, we offer only one form of payment
-      </p>
-      <ul>
-        <li>
-          <strong>Pay at once: </strong> You can only pay your tuition fee all
-          at once with this plan
-        </li>{" "}
-      </ul>
-
+          <h4>Virtual Learning</h4>
+          <h5>Duration</h5>
+          <ul>
+            <li>2 months </li>
+          </ul>
+          <p>
+            Application fee is a non-refundable fee of 15,000 naira only and the
+            learning fee is 90,000 naira only, we offer only one form of payment
+          </p>
+          <ul>
+            <li>
+              <strong>Pay at once: </strong> You can only pay your tuition fee
+              all at once with this plan
+            </li>{" "}
+          </ul>
 
           <div className="checkbox">
             <input type="checkbox" id="check" onClick={confirmCheck} />
@@ -516,7 +526,7 @@ function NotSubmitted({
                       />
                     </div>
 
-                      {/* <div className="dashboard-content-form-container">
+                    {/* <div className="dashboard-content-form-container">
                       <label>
                         Means of Identification (NIN / Voter's Card / Driver’s
                         License / Green Passport)
@@ -649,7 +659,8 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                        Will you be available physically or virtually for the trainning?
+                        Will you be available physically or virtually for the
+                        trainning?
                       </label>
                       <select
                         name="availability"

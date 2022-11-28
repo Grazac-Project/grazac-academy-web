@@ -157,7 +157,7 @@ const Landing = () => {
           </div>
           <div>
             <img src={mark} alt="mark" />
-            <h6>Pay in instalments</h6>
+            <h6>Learn now. Pay Later.</h6>
           </div>
         </div>
       </div>
@@ -209,10 +209,10 @@ const Landing = () => {
                 <p className="hire_dev-grey">
                   We make starting a career in tech accessible to anyone.
                   Whether you are a graduate or you are an undergraduate;
-                  Whether you are young or old, and no matter your experience
+                  whether you are young or old, and no matter your experience
                   level - our model, courses, and community has been designed to
                   make you feel comfortable and fully engaged in the learning
-                  process
+                  process.
                 </p>
               </div>
             </Col>
