@@ -278,7 +278,7 @@ const Faq = () => {
                           paying a minimum of N110,000 monthly for 5 months
                           which gives a total of N550,000. Please note that this
                           is not applicable to those who choose to learn
-                          virtually.{" "}
+                          physically.{" "}
                         </p>{" "}
                       </div>
                     </Card.Body>

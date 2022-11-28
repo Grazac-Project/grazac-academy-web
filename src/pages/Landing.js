@@ -97,7 +97,7 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-            Application is Closed. Enrollment into Cohort 013 begins September 2022.
+              Application is Now Open
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -207,10 +207,12 @@ const Landing = () => {
                 </div>
                 <h4>There are no learning barriers </h4>
                 <p className="hire_dev-grey">
-                  We make starting a career in tech accessible to anyone. Whether you are a graduate or you are
-                  an undergraduate; wheater you are young or old, and no matter your experience level - our model, 
-                  courses, and community has been designed to make you feel comfortable and fully angaged in the learning process
-                
+                  We make starting a career in tech accessible to anyone.
+                  Whether you are a graduate or you are an undergraduate;
+                  Whether you are young or old, and no matter your experience
+                  level - our model, courses, and community has been designed to
+                  make you feel comfortable and fully engaged in the learning
+                  process
                 </p>
               </div>
             </Col>

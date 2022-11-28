@@ -27,6 +27,7 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
+import AdmissionFeePage from "../../../components/dashboard/not-submitted/AdmissionFeePage";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -79,13 +80,16 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
-      console.log(details);
 
       setDetails(JSON.parse(details));
 
       setUserId(JSON.parse(details).id);
+      setAccepted(JSON.parse(details).applicationFee);
 
-      if (accepted) {
+      console.log(JSON.parse(details).applicationFee);
+
+      if (JSON.parse(details).applicationFee) {
+        console.log("fkjdkj");
         setStatus("Not Submitted");
         setStatus(sessionStorage.getItem("status"));
 
@@ -530,7 +534,7 @@ function Dashboard() {
     }
   };
 
-  // FLWPUBK_TEST-50065c317f5144179f94b776f7604026-X
+  // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
   const config = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
@@ -550,30 +554,8 @@ function Dashboard() {
       logo: "https://grazac.com.ng/assets/images/favicon.png",
     },
   };
-  const AdmissionFeeFlutterwaveConfig = {
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
-    tx_ref: Date.now(),
-    amount: 15000,
-    currency: "NGN",
-    payment_options: "card,mobilemoney,ussd",
-    customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
-    },
-
-    customizations: {
-      title: "Grazac Academy",
-      description: "Admission Fee Payment",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
-    },
-  };
 
   const handleFlutterPayment = useFlutterwave(config);
-  const HandleAdmissionPayFlutterPayment = useFlutterwave(
-    AdmissionFeeFlutterwaveConfig
-  );
-
 
   const changeStatus = (par1) => {
     setStatus(`${par1}`);
@@ -599,33 +581,6 @@ function Dashboard() {
   //   initializePayment(payercoinsConfig);
   // };
 
-  // useEffect(()=>{
-  //   console.log(typeof window ,'before load')
-  //   if(typeof window === 'object'){
-  //     HandleAdmissionPayFlutterPayment()
-  //   }
-  // },[])
-
-  const acceptCall = (e) => {
-    alert("Accepted");
-    HandleAdmissionPayFlutterPayment();
-  };
-  const fireEvent = (el, eventName) => {
-    const event = new Event(eventName, { bubbles: true });
-    el.dispatchEvent(event);
-  };
-
-  useEffect(() => {
-    if (buttonRef.current instanceof Element) {
-      fireEvent(buttonRef.current, "click");
-    }
-  });
-
-  if (!accepted) {
-    if (buttonRef.current instanceof Element) {
-      fireEvent(buttonRef.current, "click");
-    }
-  }
   return (
     <>
       {loading === false ? (
@@ -679,23 +634,18 @@ function Dashboard() {
             </div>
             {sidebarClick === "dashboard" && (
               <div className="dashboard-content">
-                <div>
-                  <p>Please Make your Admission Fee Payment</p>
-                  <button
-                    ref={buttonRef}
-                    onClick={() => {
-                      HandleAdmissionPayFlutterPayment({
-                        callback: (response) => {
-                          console.log(response);
-                          closePaymentModal(); // this will close the modal programmatically
-                        },
-                        onClose: () => {},
-                      });
-                    }}
-                  >
-                    pay
-                  </button>
-                </div>
+                {!accepted && (
+                  <div>
+                    <AdmissionFeePage
+                      details={details}
+                      fname={details.firstName}
+                      lname={details.lastName}
+                      email={details.email}
+                      phone={details.phone}
+                    />
+                    {/* <p>Please Make your Admission Fee Payment</p> */}
+                  </div>
+                )}
 
                 {status === "Not Submitted" && (
                   <NotSubmitted

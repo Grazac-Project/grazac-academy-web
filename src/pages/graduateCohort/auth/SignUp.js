@@ -44,6 +44,7 @@ function SignUp () {
                 data.append("email", email);
                 data.append("phoneNumber", phone);
                 data.append("password", password);
+                data.append("cohort_batch", "C012");
 
                 btn.innerHTML=`<img src=${loader} width="20px" />`
 

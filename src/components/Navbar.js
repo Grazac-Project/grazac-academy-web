@@ -27,7 +27,6 @@ const Navbar = ({ top }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
     if (active) setActive(false);
     else setActive(true);
   };
@@ -97,7 +96,7 @@ const Navbar = ({ top }) => {
           </li> */}
           <a href="/login">
             <div className="nav__btn">
-              <div className="nav__btn--text">Go to Dashboard</div>
+              <div className="nav__btn--text">Apply Now</div>
             </div>
           </a>
           <a href="tel:+2348068365951" style={{ marginLeft: "20px" }}>

@@ -11,7 +11,12 @@ try {
 }
 
 export const submitDetails = (data, id) => {
-  return APIKit.put(`/user/apply/${id}`, data, {
+  // return APIKit.put(`/user/apply/${id}`, data, {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // });
+  return APIKit.put(`/user/application-form`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -35,6 +40,13 @@ export const getDetails = () => {
 
 export const getDetailsB = () => {
   return AdminApiKit.get(`/fetchDataB/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+export const getDetailsC = () => {
+  return APIKit.get(`/user/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

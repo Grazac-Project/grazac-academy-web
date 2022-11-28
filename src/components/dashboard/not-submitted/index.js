@@ -6,6 +6,7 @@ import axios from "axios";
 import arrow from "../../../images/svg/dashboard/arrow.svg";
 import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
+import about from "../../../images/about-1.jpg";
 import termsandconds from "../../../content/TermsandCondition.pdf";
 
 function NotSubmitted({
@@ -39,7 +40,7 @@ function NotSubmitted({
     course: "",
     state: "",
     city: "",
-    id: null,
+    id:"",
   });
 
   const [education, setEducation] = useState({
@@ -100,13 +101,14 @@ function NotSubmitted({
   };
 
   const handleImage = (e) => {
+ 
     if (e.target.files[0].size > 2097152) {
       toast.error("File too large! A maximum of 2MB is allowed.");
     } else {
-      setBioData({
-        ...bioData,
-        id: e.target.files[0],
-      });
+    //   setBioData({
+    //     ...bioData,
+    //     id: e.target.files[0],
+    //   });
     }
   };
 
@@ -142,6 +144,7 @@ function NotSubmitted({
     var data = new FormData();
 
     try {
+      
       //  btn.innerHTML = `Submit`;
       btn.innerHTML = `<img src=${loader} width="20px" />`;
       if (!(bioData.phone.length > 10)) {
@@ -160,7 +163,7 @@ function NotSubmitted({
         data.append("preferred_course", bioData.course);
         data.append("state_of_residence", bioData.state);
         data.append("current_city_and_location", bioData.city);
-        data.append("means_of_identification", bioData.id);
+        // data.append("means_of_identification", bioData.id);
         data.append("maritalStatus", bioData.maritalStatus);
         data.append("haveKids", bioData.haveKids);
         data.append("ageRange", bioData.ageRange);
@@ -172,6 +175,7 @@ function NotSubmitted({
         data.append("why_selected_for_cohort", education.reason);
         data.append("physically_available", education.availability);
         data.append("will_you_pay_legal_fees", education.legalFee);
+        console.log(data)
       }
     } catch (err) {
       toast.error("please check enter a valid phone number");
@@ -220,64 +224,84 @@ function NotSubmitted({
       <ToastContainer closeButton={false} />
       {active === "welcome" && (
         <div>
-          <h3>Hello {fname}</h3>
-          <p className="text1">
-            Learn with us for 6 months and pay no tuition till you’re hired!
-          </p>
-          <p>
-            Grazac Accelerator Program is a full time, 6-month training program
-            focused on building in-demand tech skills at an accelerated pace.
-            This program goes above and beyond to provide a superior educational
-            experience, allowing students to develop a successful career in the
-            tech industry through intensive training and internships.
-          </p>
-          <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
-          <ul>
-            <li>Product Designing (UI/UX)</li>
-            <li>Product Management</li>
-            <li>
-              Front end web development (HTML, CSS, and Javascript (React.js)
-            </li>
-            <li>Back end web development (Nodejs)</li>
-            <li>Mobile Application Development (Flutter and Dart)</li>
-          </ul>
-          <h4>Pricing Plans</h4>
-          <p>
-            Enrollment is free but for the tuition fee, we offer two basic forms
-            of payment options and they are;
-          </p>
-          <ul>
-            <li>
-              <strong>Pay as you Earn plan:</strong> This is a financial
-              instrument to help you participate in our training for FREE. You
-              are expected to start paying us back once you get a job at the end
-              of the program. It is governed by a legally binding contract. This
-              contract is bonded by the law firm.
-            </li>
-            <li>
-              <strong>Pay at once:</strong> You can pay your tuition fee all at
-              once with this plan.
-            </li>
-          </ul>
-          <h4>Duration</h4>
-          <ul>
-            <li>
-              6 months ( 3 months intensive training + 3 months internship).
-            </li>
-          </ul>
-          <h4>Basic Criteria to be met</h4>
-          <ul>
-            <li>
-              Candidates must be a Graduate and available full-time for at least
-              6 months.
-            </li>
-            <li>
-              Note that you will be mandated to provide guarantors and pay the
-              sum of N50,000 legal fee if selected for this cohort. This must be
-              paid within a week after selection if you have chosen our Pay as
-              you Earn option.
-            </li>
-          </ul>
+    
+    <h3>Hello {fname}</h3>
+      <p className="text1">
+        Thank you for choosing to build your career in tech with us!
+      </p>
+      <p>
+        Grazac Academy is at the forefront of upskilling and connecting youths
+        to opportunities in the technology industry and our primary goal is to
+        have connected a minimum of 1,000 youths to jobs by 2026.
+      </p>
+      <p>
+        You can choose to learn virtually or physically with us. This program
+        goes above and beyond to provide a superior educational experience,
+        allowing students to develop a successful career in the tech industry
+        through intensive training and internships.{" "}
+      </p>
+      <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
+      <ul>
+        <li>Product Designing (UI/UX)</li>
+        <li>Product Management</li>
+        <li>Front end web development (HTML, CSS, and Javascript (React.js)</li>
+        <li>Back end web development (Nodejs)</li>
+        <li>Mobile Application Development (Flutter and Dart)</li>
+      </ul>
+      <h4>Pricing Plans</h4>
+      <p>Basic Criteria to be met</p>
+      <ul>
+        <li>Candidates must pass our assessment test</li>
+        <li>
+          Candidates must have strong ability to think and a strong learning
+          mindset
+        </li>
+        <li>
+          Candidates must be a Graduate or available full-time for at least 6
+          months.
+        </li>
+      </ul>
+      <h4>Physical Learning</h4>
+      <h5>Duration</h5>
+      <ul>
+        <li>6 months ( 3 months intensive training + 3 months internship).</li>
+      </ul>
+      <p>
+        Application fee is a non-refundable fee of 15,000 naira only the tuition
+        fee is 500,000 naira only, we offer two basic forms of payment options
+        and they are;
+      </p>
+      <ul>
+        <li>
+          <strong>Pay at once: </strong> You can pay your tuition fee all at
+          once with this plan. 6 months ( 3 months intensive training + 3 months
+          internship).
+        </li>
+        <li>
+          <strong>Pay installmentally: </strong> This is a financial instrument
+          to help you pay installmentally. You are expected to make a commitment
+          of 120,000 while you spread the rest of 5 months of your training.
+          This comes with a 10% interest on the tuition fee
+        </li>
+      </ul>
+
+      <h4>Virtual Learning</h4>
+      <h5>Duration</h5>
+      <ul>
+        <li>2 months </li>
+      </ul>
+      <p>
+        Application fee is a non-refundable fee of 15,000 naira only and the
+        learning fee is 90,000 naira only, we offer only one form of payment
+      </p>
+      <ul>
+        <li>
+          <strong>Pay at once: </strong> You can only pay your tuition fee all
+          at once with this plan
+        </li>{" "}
+      </ul>
+
+
           <div className="checkbox">
             <input type="checkbox" id="check" onClick={confirmCheck} />
             <p>
@@ -492,7 +516,7 @@ function NotSubmitted({
                       />
                     </div>
 
-                    <div className="dashboard-content-form-container">
+                      {/* <div className="dashboard-content-form-container">
                       <label>
                         Means of Identification (NIN / Voter's Card / Driver’s
                         License / Green Passport)
@@ -511,7 +535,8 @@ function NotSubmitted({
                           : "Upload means of identification (max 2MB file size)"}
                       </p>
                       <img src={upload} alt="upload" className="upload-img" />
-                    </div>
+                    </div>   */}
+
                     <button style={{ float: "right" }} type="submit">
                       Continue
                     </button>
@@ -604,6 +629,7 @@ function NotSubmitted({
                           I will use my period of service to learn
                         </option>
                         <option value="nd_graduate">ND Graduate</option>
+                        <option value="ud_graduate">Under Graduate</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
@@ -623,7 +649,7 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                        Will you be physically available for the next 6 months?
+                        Will you be available physically or virtually for the trainning?
                       </label>
                       <select
                         name="availability"
@@ -638,8 +664,7 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                        If selected, will you be able to pay the legal fees of
-                        N50,000?
+                        If selected, will you be able to pay the tuition fee?
                       </label>
                       <select
                         name="legalFee"

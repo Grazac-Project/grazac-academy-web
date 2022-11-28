@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   getGuarantor,
   getDetailsB,
+  getDetailsC,
   editDetails,
 } from "../../api/dashboard/data";
 import axios from "axios";
@@ -30,10 +31,11 @@ function Details() {
     try {
       let details = sessionStorage.getItem("user_details");
       setUserId(JSON.parse(details).id);
-      if(accepted){
-      setClicked("bio")
-      }
+      setAccepted(JSON.parse(details).applicationFee);
 
+      if (JSON.parse(details).applicationFee) {
+        setClicked("bio");
+      }
     } catch (err) {}
     // setBioData(userDetails)
   }, []);
@@ -170,11 +172,9 @@ function Details() {
         new_data_1
       )
       .then(function (response) {
-     
         toast.success("saved successfully");
       })
-      .catch((res) => {
-      });
+      .catch((res) => {});
 
     // editGuarantor(final_data, guaID)
     // .then((res) =>{
@@ -225,24 +225,22 @@ function Details() {
         toast.success("saved Successfully");
         setIsLoading(false);
       })
-      .catch((res) => {
-      });
-
+      .catch((res) => {});
   };
 
-const handleWhatToShow=(value)=>{
-  if(accepted){
-    setClicked(value)
-  }
-}
-  
-  
+  const handleWhatToShow = (value) => {
+    if (accepted) {
+      setClicked(value);
+    }
+  };
+
   useEffect(() => {
-    getDetailsB()
+    getDetailsC()
       .then((res) => {
+       
         setIsLoading(true);
-        setUserDetails(res.data["data"]["results"][0]);
-        setTemData(res.data["data"]["results"][0]);
+        setUserDetails(res.data["data"]["result"][0]);
+        setTemData(res.data["data"]["result"][0]);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -294,11 +292,7 @@ const handleWhatToShow=(value)=>{
                     ? "dashboard-content-detail-p active"
                     : "dashboard-content-detail-p"
                 }
-
-                onClick={() => 
-                  
-                  handleWhatToShow("bio")
-                }
+                onClick={() => handleWhatToShow("bio")}
               >
                 Bio Data
               </button>
@@ -377,15 +371,15 @@ const handleWhatToShow=(value)=>{
                   <h5>Current city and Location</h5>
                   <p>{userDetails?.current_city_and_location}</p>
                 </div>
-                <hr />
-                <div className="dashboard-content-form-container">
+                {/* <hr /> */}
+                {/* <div className="dashboard-content-form-container">
                   <h5>Means of Identification (NIN/ Voter's Card)</h5>
                   <img
                     className="dashboard-content-form-container-image"
                     src={userImage}
                     alt={userDetails.means_of_identification}
                   />
-                </div>
+                </div> */}
 
                 {(!userDetails?.ageRange ||
                   !userDetails?.haveKids ||
