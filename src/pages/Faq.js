@@ -60,8 +60,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="2">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -84,8 +82,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="3">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -106,8 +102,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
-                
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="4">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -127,11 +121,13 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I need to have any previous experience or knowledge before coming to learn?</h4>
+                      <h4>
+                        Do I need to have any previous experience or knowledge
+                        before coming to learn?
+                      </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -139,17 +135,16 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                        Not at all. All our courses are designed to help people from any educational background and experience level, achieve a successful career in tech.
+                          Not at all. All our courses are designed to help
+                          people from any educational background and experience
+                          level, achieve a successful career in tech.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-
                 <hr />
-             
                 <Card>
-                
                   <Accordion.Toggle as={Card.Header} eventKey="6">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Are classes virtual or physical?</h4>
@@ -190,8 +185,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-          
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="8">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -218,7 +211,7 @@ const Faq = () => {
                   <Accordion.Toggle as={Card.Header} eventKey="3">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>
-                        What is the actual cost of learning with Grazac Academy?
+                        What is the actual cost of learning at Grazac Academy
                       </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
@@ -226,71 +219,45 @@ const Faq = () => {
                   <Accordion.Collapse eventKey="3">
                     <Card.Body>
                       <div className="landing_faq-answer">
+                        <p style={{ fontSize: "16px" }}>
+                          If you decide to learn onsite, we have three payment
+                          options that you can choose from.
+                        </p>
                         <p>
-                          If you choose to learn physically, you would be
-                          required to pay a total sum of N500,000 and If you
-                          choose to learn virtually, you would be required to
-                          pay a total sum of N90,000.
+                          <strong>Pay at once:</strong> You can pay your tuition
+                          fee all at once with this plan. If you choose this,
+                          you are expected to pay N500,000.
+                        </p>
+                        <p>
+                          <strong>Pay in installments:</strong> We also have a
+                          plan that allows you to pay in installments. If you
+                          choose this, you are expected to pay N100,000
+                          immediately and spread the rest over 5 months of your
+                          training. This comes with a 10% interest on the
+                          tuition fee.
+                        </p>
+                        <p>
+                          <strong>
+                            Learn now. Pay later (‘pay as you earn’):
+                          </strong>{" "}
+                          You can also decide to learn now and start paying back
+                          when you get a job after your training. If you choose
+                          this, you would be required to pay a non-refundable
+                          legal fee of N50,000 immediately. After your training,
+                          you are expected to pay back the sum of 1500 dollars
+                          (which would be equivalent to the black dollar rate at
+                          the time that you start paying back) 18 months after
+                          securing a job, following our repayment procedure.
+                        </p>
+                        <p style={{ fontSize: "16px" }}>
+                          However, If you decide to learn online, you would be
+                          required to pay a fixed price of N90,000, once.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-
                 <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="16">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Can I learn now and pay later?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="16">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          No. we now operate a “pay now and learn” model, which
-                          means that you are required to complete your payment
-                          before the end of your training. You can pay upfront
-                          and if choose to learn physically, you can pay in
-                          instalments.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-
-                <hr />
-
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="17">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How do I pay in instalments?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="17">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          {" "}
-                          If you choose to pay in instalments, you will be
-                          paying a minimum of N110,000 monthly for 5 months
-                          which gives a total of N550,000. Please note that this
-                          is not applicable to those who choose to learn
-                          physically.{" "}
-                        </p>{" "}
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-
-                <hr />
-
-               
-            
-                <hr />
-              
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="8">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -313,7 +280,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="9">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -336,79 +302,6 @@ const Faq = () => {
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="10">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>
-                        What is the actual cost of learning with Grazac Academy?
-                      </h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="10">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          If you choose to learn physically, you would be
-                          required to pay a total sum of N500,000 and If you
-                          choose to learn virtually, you would be required to
-                          pay a total sum of N90,000.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="11">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Can I learn now and pay later?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="11">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          No. we now operate a “pay now and learn” model, which
-                          means that you are required to complete your payment
-                          before the end of your training. You can pay upfront
-                          and if choose to learn physically, you can pay in
-                          instalments.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-
-                <hr />
-
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="12">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How do I pay in instalments?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="12">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          {" "}
-                          If you choose to pay in instalments, you will be
-                          paying a minimum of N110,000 monthly for 5 months
-                          which gives a total of N550,000. Please note that this
-                          is not applicable to those who choose to learn
-                          virtually.{" "}
-                        </p>{" "}
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-
-                <hr />
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="13">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -433,7 +326,6 @@ const Faq = () => {
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-
                 {/* new card */}
                 <hr />
                 <Card>
@@ -461,7 +353,7 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="15">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Will the academy help me get a job?</h4>
+                      <h4>Would the academy get me a job?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -469,11 +361,15 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No. We would equip you with all the skills you need to
-                          get a job confidently on your own. However, we would
-                          always inform you of any available entry-level
-                          job/paid internship opportunities which you can apply
-                          for after your training.{" "}
+                          We match students with job opportunities in our hiring
+                          network within 9-12 months of learning to enter the
+                          recruitment process in securing their dream job. In
+                          essence, we equip all our students with the level of
+                          competency employers are looking for so they can
+                          secure the job they really desire. However, the
+                          cohort's best student (s) would be connected to a
+                          job/paid internship
+                          (remote/fulltime/hybrid/international/local).
                         </p>
                       </div>
                     </Card.Body>
@@ -481,7 +377,6 @@ const Faq = () => {
                 </Card>
                 <hr />
                 {/* new card */}
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="16">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -536,20 +431,20 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          You can give us a call or chat with us for guidance.{" "}
+                          You can call us (or send us a Whatsapp message) on
+                          +234 806 836 5951
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="19">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>
-                        What are the added benefits Grazac Academy is promising
-                        me after taking a course?
+                        What are the added benefits of learning at Grazac
+                        Academy?
                       </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
@@ -558,11 +453,15 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Asides from informing you of available job/internship
-                          opportunities, you would also have access to be
-                          mentored by professionals in the industry, and access
-                          to a community of like minds that would foster your
-                          learning and practice.
+                          Asides from equipping you with the level of competency
+                          employers are looking for so you can secure the job
+                          you really desire, we also provide placement for
+                          support services such as interview coaching, CV/
+                          LinkedIn profile reviews, Salary negotiation sessions,
+                          provision of reference letters, etc. You would also
+                          have access to be mentored by professionals in the
+                          industry, and access to a community of like minds that
+                          would foster your learning, commitment, and practice.
                         </p>
                       </div>
                     </Card.Body>
