@@ -40,7 +40,7 @@ function Dashboard() {
   const [isError, setIsError] = useState(null);
   // const [status, setStatus] = useState("Admitted");
   const [selectStatus, setSelectStatus] = useState("congrats");
-  const [selectStatus2, setSelectStatus2] = useState("");
+  const [showModal, setShowModal] = useState("");
   const [sidebarClick, setSidebarClick] = useState("dashboard");
   const [details, setDetails] = useState({});
   const [payOpt, setPayOpt] = useState("");
@@ -196,10 +196,10 @@ function Dashboard() {
 
   const makePayment = () => {
     if (payOpt === "part") {
-      setSelectStatus2("");
+      setShowModal("");
       setSelectStatus("pay-as-you-earn");
     } else if (payOpt === "full") {
-      setSelectStatus2("");
+      setShowModal("");
 
       var planData = new FormData();
       planData.append("payment_plan", "pay at once");
@@ -677,13 +677,13 @@ function Dashboard() {
                               Your application has been selected. Click on the
                               button below to continue you admission process.
                             </p>
-                            <button onClick={() => setSelectStatus2("pay")}>
+                            <button onClick={() => setShowModal("pay")}>
                               Continue admission process
                             </button>
                           </div>
                         )}
 
-                        {selectStatus2 === "pay" && (
+                        {showModal === "pay" && (
                           <div className="dashboard-content-modal">
                             <div className="dashboard-content-modal-backdrop"></div>
                             <div className="dashboard-content-modal-container">
@@ -693,7 +693,7 @@ function Dashboard() {
                                   <img
                                     src={cancel}
                                     alt="cancel"
-                                    onClick={() => setSelectStatus2("")}
+                                    onClick={() => setShowModal("")}
                                   />
                                 </div>
                                 <div
@@ -719,13 +719,28 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(720000);
+                                    setAmount(500000);
                                     setCurrency("NGN");
                                   }}
                                 >
                                   <div></div>
-                                  <p>Pay at once (USD 1,200 = NGN 720,000)</p>
+                                  <p>Pay at once (NGN 500,000)</p>
                                 </div>
+                                <a
+                                  href="https://docs.google.com/forms/u/3/d/e/1FAIpQLSep9AvrWxiedsn8KWYTTiTAArLRwsHRSLnnd49GIrJ35Z4FUw/viewform?usp=pp_url&authuser=0"
+                                  target="_blank"
+                                  className={
+                                    payOpt === "install"
+                                      ? "active"
+                                      : "dashboard-content-modal-main-frame1"
+                                  }
+                                >
+                                  <div></div>
+                                  <p>
+                                    Pay in Installments (Starts from NGN
+                                    250,000)
+                                  </p>
+                                </a>
                                 <button onClick={makePayment}>Proceed</button>
                               </div>
                             </div>
@@ -1248,11 +1263,11 @@ function Dashboard() {
                                 Your application has been Admitted. Click on the
                                 button below to Pay Now.
                               </p>
-                              <button onClick={() => setSelectStatus2("pay")}>
+                              <button onClick={() => setShowModal("pay")}>
                                 Pay Now
                               </button>
 
-                              {selectStatus2 === "pay" && (
+                              {showModal === "pay" && (
                                 <div className="dashboard-content-modal">
                                   <div className="dashboard-content-modal-backdrop"></div>
                                   <div className="dashboard-content-modal-container">
@@ -1262,7 +1277,7 @@ function Dashboard() {
                                         <img
                                           src={cancel}
                                           alt="cancel"
-                                          onClick={() => setSelectStatus2("")}
+                                          onClick={() => setShowModal("")}
                                         />
                                       </div>
                                       <div
