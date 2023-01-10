@@ -56,7 +56,9 @@ function Login() {
           sessionStorage.setItem("status", `${res.data.status}`);
 
           btn.innerHTML = `Sign in`;
-          setTimeout( function (){window.location = '/dashboard';}, 2500)
+          setTimeout(function () {
+            window.location = "/dashboard";
+          }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");
         }
@@ -136,7 +138,12 @@ function Login() {
                   <span>Forgot your password?</span>
                 </Link>
               </p>
-              <p>Don't have an account? <Link to="/signup"><span>Sign up</span></Link></p>
+              <p>
+                Don't have an account?{" "}
+                <Link to="/">
+                  <span>Sign up</span>
+                </Link>
+              </p>
               {/* <p>
                 Don't have an account?{" "}
                 <span

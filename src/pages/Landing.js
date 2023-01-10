@@ -97,7 +97,7 @@ const Landing = () => {
           <div className="infomodal_content">
             <img src={badge} alt="" className="infomodal_badge" />
             <p>
-              Application is Now Open
+              Application is Now Closed
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
