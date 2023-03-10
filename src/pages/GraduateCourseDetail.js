@@ -108,7 +108,7 @@ const CourseDetail = (props) => {
         <Footer />
       </div>
       ) : (
-          <Loader />
+          <Loader /> 
       )}
     </div>
   );

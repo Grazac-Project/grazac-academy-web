@@ -14,6 +14,7 @@ function Login() {
   const [form, setForm] = useState({
     email: "",
     password: "",
+    cohort: "",
   });
 
   const handleChange = (e) => {
@@ -24,14 +25,16 @@ function Login() {
   };
 
   const doLogin = (e) => {
+    console.log(form);
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
-    const { email, password } = form;
+    const { email, password, cohort } = form;
     var data = new FormData();
 
     data.append("email", email);
     data.append("password", password);
+    data.append("cohort_batch", cohort);
 
     LoginAction(data)
       .then((response) => response.data)
@@ -130,6 +133,22 @@ function Login() {
                   <img src={visible} />
                 </div>
               </div>
+              <div>
+                <label>Cohort</label>
+                <select
+                  name="cohort"
+                  onChange={handleChange}
+                  defaultValue={form.cohort}
+                  required
+                >
+                  <option value="" disabled>
+                    Choose your preferred cohort
+                  </option>
+                  <option value="C012">CH-12 - January</option>
+                  <option value="CH13">CH-13 - May</option>
+                  <option value="CH14">CH-14 - August</option>
+                </select>
+              </div>
               <button type="submit" id="actionBtn">
                 Sign in
               </button>
@@ -140,7 +159,7 @@ function Login() {
               </p>
               <p>
                 Don't have an account?{" "}
-                <Link to="/">
+                <Link to="/signup">
                   <span>Sign up</span>
                 </Link>
               </p>

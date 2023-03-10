@@ -1,6 +1,6 @@
-import { useState, useRef, lazy, Suspense } from "react";
+import { useState, useRef, lazy, Suspense, useEffect } from "react";
 import "./scss/main.css";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,8 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar";
+import Newsform from "./pages/newsletterModal/newsForm/newsform";
+import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -99,18 +101,32 @@ const AcademySettingsPage = lazy(() => {
 const App = () => {
   const [show, setShow] = useState(true);
   const [redirect, setRedirect] = useState(false);
+  // const [news, setNews] = useState("");
+  // const location = useLocation();t
+
+  // useEffect(() => {
+  //   if (location.pathname === "/") {
+  //     setTimeout(() => {
+  //       setNews("showNews");
+  //     }, 2000);
+  //   }
+
+  // }, []);
 
   const app = useRef();
 
   return (
-    <Provider store={store}>
-      <LoaderContext.Provider value={{ show, setShow }}>
-        {/* {show && <Loader />} */}
+    <>
+      {/* {news === "showNews" && <Newsform setNews={setNews} />}
+      {news === "newsResponse" && <NewsResponse setNews={setNews} />} */}
+      <Provider store={store}>
+        <LoaderContext.Provider value={{ show, setShow }}>
+          {/* {show && <Loader />} */}
 
-        <Suspense fallback={<Loader />}>
-          <div ref={app} className="App" style={{ overflow: "hidden" }}>
-            <Switch>
-              {/* <AcademySidebar>
+          <Suspense fallback={<Loader />}>
+            <div ref={app} className="App" style={{ overflow: "hidden" }}>
+              <Switch>
+                {/* <AcademySidebar>
                 <Route path="/academy" component={AcademyDashboardPage} />
 
                 <Route path="/challenge" component={AcademyChallengePage} />
@@ -119,54 +135,55 @@ const App = () => {
                 <Route path="/settings" component={AcademySettingsPage} />
               </AcademySidebar> */}
 
-              <Route path="/component" component={ComponentPage} />
-              {/* authentication pages */}
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={Forgot} />
-              <Route path="/resetPassword" component={Reset} />
-              <Route path="/mail-sent" component={MailSent} />
-              <Route path="/account-created" component={AccountCreated} />
-              <Route path="/verification" component={VerifyMail} />
+                <Route path="/component" component={ComponentPage} />
+                {/* authentication pages */}
+                <Route path="/signup" component={SignUp} />
+                <Route path="/login" component={Login} />
+                <Route path="/forgot-password" component={Forgot} />
+                <Route path="/resetPassword" component={Reset} />
+                <Route path="/mail-sent" component={MailSent} />
+                <Route path="/account-created" component={AccountCreated} />
+                <Route path="/verification" component={VerifyMail} />
 
-              {/* Graduate dashboard */}
-              <Route path="/dashboard" component={DashBoardHome} />
+                {/* Graduate dashboard */}
+                <Route path="/dashboard" component={DashBoardHome} />
 
-              {/* main pages */}
-              <Route path="/" exact component={LandingPage}>
-                {/* <Redirect to="/join"/>  */}
-              </Route>
-              {/* <Route path="/join" component={Join}/> */}
-              <Route path="/about-us" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/faq" component={Faq} />
+                {/* main pages */}
+                <Route path="/" exact component={LandingPage}>
+                  {/* <Redirect to="/join"/>  */}
+                </Route>
+                {/* <Route path="/join" component={Join}/> */}
+                <Route path="/about-us" component={About} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/faq" component={Faq} />
 
-              {/* Courses (both graduate and undergraduate) and internship */}
-              <Route
-                path="/course-detail-graduate"
-                component={GraduateCourseDetail}
-              />
-              {/* <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
+                {/* Courses (both graduate and undergraduate) and internship */}
+                <Route
+                  path="/course-detail-graduate"
+                  component={GraduateCourseDetail}
+                />
+                {/* <Route path="/graduate-accelerator-plan" component={GraduateAccelerator} />
             <Route path="/course-detail-undergraduate" component={UndergraduateCourseDetail} />
             <Route path="/undergraduate-accelerator-plan" component={UndergraduateAccelerator}/>
             <Route path="/graduate-form" component={GraduateForm} />
             <Route path="/undergraduate-form" component={UndergraduateForm} />
-            <Route path="/internship" component={InternshipForm} /> */}
+          <Route path="/internship" component={InternshipForm} /> */}
 
-              {/*   hire pages */}
+                {/*   hire pages */}
 
-              <Route path="/hire" exact component={Hire} />
-              <Route path="/hire/listing" component={Listing} />
-              <Route path="/hire/:username" component={Profile} />
-              <Route path="/hire/contact" component={HireContact} />
+                <Route path="/hire" exact component={Hire} />
+                <Route path="/hire/listing" component={Listing} />
+                <Route path="/hire/:username" component={Profile} />
+                <Route path="/hire/contact" component={HireContact} />
 
-              {/* Coming soon page */}
-              {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
-            </Switch>
-          </div>
-        </Suspense>
-      </LoaderContext.Provider>
-    </Provider>
+                {/* Coming soon page */}
+                {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
+              </Switch>
+            </div>
+          </Suspense>
+        </LoaderContext.Provider>
+      </Provider>
+    </>
   );
 };
 

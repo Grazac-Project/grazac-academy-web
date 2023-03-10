@@ -131,7 +131,7 @@ textarea:focus {
   position: relative;
   padding: 1.5rem;
   transition: all 0.3s;
-  z-index: 9999;
+  z-index: 50;
 }
 .nav--fixed {
   background-color: #fff;
@@ -605,7 +605,7 @@ textarea:focus {
   top: 0;
   left: 0px;
   right: 0px;
-  z-index: 10000;
+  z-index: 100;
 }
 .infomodal_content {
   display: flex;
@@ -1999,7 +1999,8 @@ textarea:focus {
 .auth_container_form label {
   color: #333333;
 }
-.auth_container_form input {
+.auth_container_form input,
+.auth_container_form select {
   border: 1px solid #d9dce1;
   border-radius: 7px;
   padding: 10px 20px;
@@ -2007,6 +2008,23 @@ textarea:focus {
   width: 100%;
   color: #787676;
 }
+.auth_container_form select {
+  -webkit-appearance: none;
+  background-image: url(../images/newsletter/down.svg);
+  background-position: right 18px center;
+  background-repeat: no-repeat;
+}
+.auth_container_form select option {
+  color: #5726a6;
+  padding: 200px 0;
+  font-size: 16px;
+}
+.auth_container_form select option:disabled{
+  color: grey;
+}
+/* .auth_container_form select option[value="CH13"]:hover {
+  background: rgba(100, 100, 100, 0.3)!important;
+} */
 .auth_container_form input:focus {
   outline: none;
 }

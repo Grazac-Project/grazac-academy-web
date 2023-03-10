@@ -1,0 +1,31 @@
+.main {
+  text-align: center;
+  padding: 100px 0;
+}
+.main > div {
+  width: 70%;
+  margin: 0 auto;
+}
+.main h2 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 41px;
+  text-align: center;
+  color: #1f1035;
+}
+.main span {
+  color: #535353;
+}
+
+@media screen and (max-width: 768px) {
+  .main > div {
+    width: 90%;
+  }
+  .main > img {
+    width: 40%;
+  }
+  .main h2 {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
