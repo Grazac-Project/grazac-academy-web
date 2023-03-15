@@ -107,6 +107,7 @@ function SignUp() {
             </Link>
           </div>
           <div className="auth_container_form">
+            <span className="closed">Application is now Closed</span>
             <h3>Create an Account</h3>
             <p className="auth_container_form-text">
               Create a free account to start your application
@@ -177,14 +178,14 @@ function SignUp() {
                   <option value="" disabled>
                     Choose your preferred cohort
                   </option>
-                  <option value="C012" disabled>
-                    CH-12 - January
+                  <option value="CH13" disabled>
+                    CH-13 - January
                   </option>
-                  <option value="CH13">CH-13 - May</option>
-                  <option value="CH14">CH-15 - August</option>
+                  <option value="CH14">CH-14 - May</option>
+                  <option value="CH15">CH-15 - August</option>
                 </select>
               </div>
-              <button type="submit" id="actionBtn">
+              <button type="submit" id="actionBtn" disabled>
                 Create Account
               </button>
               <p>

@@ -2019,7 +2019,7 @@ textarea:focus {
   padding: 200px 0;
   font-size: 16px;
 }
-.auth_container_form select option:disabled{
+.auth_container_form select option:disabled {
   color: grey;
 }
 /* .auth_container_form select option[value="CH13"]:hover {
@@ -2039,6 +2039,11 @@ textarea:focus {
   color: white;
   font-weight: 600;
 }
+.auth_container_form button:disabled {
+  background-color: grey;
+  border: none;
+  cursor: not-allowed;
+}
 .auth_container_form span {
   color: #773dd3;
   font-weight: 700;
@@ -2052,7 +2057,13 @@ textarea:focus {
   display: block;
   margin: auto;
 }
-
+.auth_container_form .closed {
+  background-color: #fef4bf;
+  color: #000;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
 .course p {
   font-size: 1.1em;
 }

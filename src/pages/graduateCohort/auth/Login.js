@@ -144,9 +144,9 @@ function Login() {
                   <option value="" disabled>
                     Choose your preferred cohort
                   </option>
-                  <option value="C012">CH-12 - January</option>
-                  <option value="CH13">CH-13 - May</option>
-                  <option value="CH14">CH-14 - August</option>
+                  <option value="CH13">CH-13 - January</option>
+                  <option value="CH14">CH-14 - May</option>
+                  <option value="CH15">CH-15 - August</option>
                 </select>
               </div>
               <button type="submit" id="actionBtn">
@@ -159,7 +159,7 @@ function Login() {
               </p>
               <p>
                 Don't have an account?{" "}
-                <Link to="/signup">
+                <Link to="/">
                   <span>Sign up</span>
                 </Link>
               </p>
