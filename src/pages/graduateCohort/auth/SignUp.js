@@ -107,7 +107,7 @@ function SignUp() {
             </Link>
           </div>
           <div className="auth_container_form">
-            <span className="closed">Application is now Closed</span>
+            {/* <span className="closed">Application is now Closed</span> */}
             <h3>Create an Account</h3>
             <p className="auth_container_form-text">
               Create a free account to start your application
@@ -185,9 +185,20 @@ function SignUp() {
                   <option value="CH15">CH-15 - August</option>
                 </select>
               </div>
-              <button type="submit" id="actionBtn" disabled>
+              <button type="submit" id="actionBtn">
                 Create Account
               </button>
+              <p className="terms">
+                By clicking “Create account” you agree to our{" "}
+                <a href="https://grazacacademy.com/terms.pdf" download>
+                  Terms & Conditions
+                </a>{" "}
+                and that you have read our{" "}
+                <a href="https://grazacacademy.com/pricing.pdf" download>
+                  Pricing Plan
+                </a>
+                .
+              </p>
               <p>
                 Already have an account?{" "}
                 <Link to="/login">

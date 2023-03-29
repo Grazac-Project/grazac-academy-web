@@ -42,6 +42,7 @@ import android from "../images/android.png";
 import product_management from "../images/product_management.png";
 
 import { LoaderContext } from "../context";
+import WhatsApp from "../components/whatsApp/whatsApp";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
@@ -54,7 +55,7 @@ const Landing = () => {
 
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
-    landingHeight.style.marginTop = `70px`;
+    landingHeight.style.marginTop = `0px`;
 
     window.addEventListener("load", () => {
       setShow(false);
@@ -93,22 +94,22 @@ const Landing = () => {
     <>
       <div className="landing">
         <ToastContainer closeButton={false} position="bottom-right" />
-        {showModal && (
+        {/* {showModal && (
           <div className="infomodal">
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
                 Application is Now Closed
-                {/* <a
+                <a
                 className="infomodal_content-link"
                 href="/login"
               >
                 Apply Now
-              </a> */}
+              </a>
               </p>
-              {/* <Link to="/graduate-accelerator-plan">
+              <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
-            </Link> */}
+            </Link>
 
               <img
                 src={ex}
@@ -118,7 +119,7 @@ const Landing = () => {
               />
             </div>
           </div>
-        )}
+        )} */}
         <div className="landing__header">
           <Navbar top={true} />
           {/* <img src={Object} className="bg-img" alt="ccc" /> */}
@@ -797,6 +798,7 @@ const Landing = () => {
           button_2={"Chat with us"}
         />
 
+        {/* <WhatsApp /> */}
         <Footer />
       </div>
     </>

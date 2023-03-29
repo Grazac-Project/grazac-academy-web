@@ -1,0 +1,13 @@
+.whatsapp {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  z-index: 150;
+}
+.whatsapp > svg {
+  width: 50px;
+  height: 50px;
+}
+.whatsapp > svg path:nth-child(2) {
+  fill: #773dd3 !important;
+}

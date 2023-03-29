@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar";
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
+import WhatsApp from "./components/whatsApp/whatsApp";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -101,30 +102,35 @@ const AcademySettingsPage = lazy(() => {
 const App = () => {
   const [show, setShow] = useState(true);
   const [redirect, setRedirect] = useState(false);
-  // const [news, setNews] = useState("");
-  // const location = useLocation();t
+  const [news, setNews] = useState("");
+  const [newsMessage, setNewsMessage] = useState();
+  const location = useLocation();
 
-  // useEffect(() => {
-  //   if (location.pathname === "/") {
-  //     setTimeout(() => {
-  //       setNews("showNews");
-  //     }, 2000);
-  //   }
-
-  // }, []);
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setTimeout(() => {
+        setNews("showNews");
+      }, 4000);
+    }
+  }, []);
 
   const app = useRef();
 
   return (
     <>
-      {/* {news === "showNews" && <Newsform setNews={setNews} />}
-      {news === "newsResponse" && <NewsResponse setNews={setNews} />} */}
+      {news === "showNews" && (
+        <Newsform setNews={setNews} setNewsMessage={setNewsMessage} />
+      )}
+      {news === "newsResponse" && (
+        <NewsResponse setNews={setNews} newsMessage={newsMessage} />
+      )}
       <Provider store={store}>
         <LoaderContext.Provider value={{ show, setShow }}>
           {/* {show && <Loader />} */}
 
           <Suspense fallback={<Loader />}>
             <div ref={app} className="App" style={{ overflow: "hidden" }}>
+                <WhatsApp />
               <Switch>
                 {/* <AcademySidebar>
                 <Route path="/academy" component={AcademyDashboardPage} />

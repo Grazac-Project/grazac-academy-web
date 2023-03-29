@@ -1993,8 +1993,13 @@ textarea:focus {
 .auth_container_form h3 {
   font-weight: 700;
 }
-.auth_container_form p {
+.auth_container_form p,
+.auth_container_form .terms {
   color: #787676;
+}
+
+.auth_container_form .terms {
+  margin-bottom: 25px;
 }
 .auth_container_form label {
   color: #333333;
@@ -2022,9 +2027,10 @@ textarea:focus {
 .auth_container_form select option:disabled {
   color: grey;
 }
-/* .auth_container_form select option[value="CH13"]:hover {
-  background: rgba(100, 100, 100, 0.3)!important;
-} */
+.auth_container_form .terms a {
+  color: #773dd3;
+  text-decoration: none;
+}
 .auth_container_form input:focus {
   outline: none;
 }
@@ -2341,6 +2347,20 @@ textarea:focus {
 }
 .course_mode-quote span {
   color: #9da8b6;
+}
+
+.price-data {
+  width: 100%;
+  margin: 50px auto;
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: column;
+  gap: 20px;
+}
+@media screen and (max-width: 768px) {
+  .price-data {
+    grid-auto-flow: row;
+  }
 }
 .course_mode-intro2 {
   text-align: center;

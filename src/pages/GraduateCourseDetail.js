@@ -16,7 +16,7 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
-    
+
     fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
@@ -24,95 +24,93 @@ const CourseDetail = (props) => {
         setOutline(JSON.parse(resp.details.outline));
       })
       .catch((error) => {
-        
         // window.location.reload();
       });
-
   }, []);
+  // console.log(course);
 
   return (
     <div>
       {outline.length ? (
         <div id="blur">
-        <Navbar />
-        <div className="course">
-          <div className="course_hero">
-            <div className="container">
-              {course ? (
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="course_hero-text">
-                      <div className="course_hero-text-b">
-                        <h1>{course.name}</h1>
-                        <p>{course.description}</p>
-                        <div className="contact_hero-privacy">
-                          <a
-                            href={course.brochure}
-                            className="download-brochure"
-                            target="_blank"
-                          >
-                            Download Brochure
-                          </a>
-                          <Link to="/login">
-                            <button>Apply now</button>
-                          </Link>
+          <Navbar />
+          <div className="course">
+            <div className="course_hero">
+              <div className="container">
+                {course ? (
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="course_hero-text">
+                        <div className="course_hero-text-b">
+                          <h1>{course.name}</h1>
+                          <p>{course.description}</p>
+                          <div className="contact_hero-privacy">
+                            <a
+                              href={course.brochure}
+                              className="download-brochure"
+                              target="_blank"
+                            >
+                              Download Brochure
+                            </a>
+                            <Link to="/login">
+                              <button>Apply now</button>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  {/*<img src={loader} alt="loader" className="loader" />*/}
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="course_learn">
-            <div className="container">
-              <div className="course_wwd-intro">
-                <h4>GRAZAC ACADEMY</h4>
-                <h2>What you'll Learn</h2>
-              </div>
-              <div className="course_learn-main">
-                {outline.length ? (
-                  outline.map((item, index) => (
-                    <div key={index}>
-                      <div className="course_learn-main-list">
-                        <div className="box1">
-                          <h3>{index < 10 ? "0" + index : index}</h3>
-                        </div>
-                        <div className="box2">
-                          <h3>{item.topic}</h3>
-                        </div>
-                        <div className="box3">
-                          <p>{item.summary}</p>
-                        </div>
-                      </div>
-                      <hr />
+                    <div>
+                      {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
                     </div>
-                  ))
+                  </div>
                 ) : (
                   <div>
-                    {/* <img src={loader} alt="loader" className="loader" /> */}
+                    {/*<img src={loader} alt="loader" className="loader" />*/}
                   </div>
                 )}
               </div>
             </div>
+            <div className="course_learn">
+              <div className="container">
+                <div className="course_wwd-intro">
+                  <h4>GRAZAC ACADEMY</h4>
+                  <h2>What you'll Learn</h2>
+                </div>
+                <div className="course_learn-main">
+                  {outline.length ? (
+                    outline.map((item, index) => (
+                      <div key={index}>
+                        <div className="course_learn-main-list">
+                          <div className="box1">
+                            <h3>{index < 10 ? "0" + index : index}</h3>
+                          </div>
+                          <div className="box2">
+                            <h3>{item.topic}</h3>
+                          </div>
+                          <div className="box3">
+                            <p>{item.summary}</p>
+                          </div>
+                        </div>
+                        <hr />
+                      </div>
+                    ))
+                  ) : (
+                    <div>
+                      {/* <img src={loader} alt="loader" className="loader" /> */}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <MOT />
           </div>
-          <MOT />
+          <Footer />
         </div>
-        <Footer />
-      </div>
       ) : (
-          <Loader /> 
+        <Loader />
       )}
     </div>
   );
-
 };
 
 export default CourseDetail;

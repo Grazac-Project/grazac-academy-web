@@ -36,14 +36,13 @@
   transform: scale(1.1);
 }
 
+.main main .close svg {
+  width: 30px;
+  height: 30px;
+}
 @media screen and (max-width: 1000px) {
   .main > main {
     width: 85%;
   }
 }
-@media screen and (max-width: 768px) {
-  .main main .close svg {
-    width: 30px;
-    height: 30px;
-  }
-}
+

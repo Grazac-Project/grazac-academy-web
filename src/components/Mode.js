@@ -36,7 +36,7 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                 <div className="nav__btn nav__btn-flex">
                   {page == "hire" ? (
                     <>
-                      <a href="/">
+                      <a href="/" >
                         <div
                           className="nav__btn--text"
                           style={{ marginRight: "20px" }}
