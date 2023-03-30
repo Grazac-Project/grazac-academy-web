@@ -16,6 +16,7 @@ const Pricing = ({
 }) => {
   return (
     <div className={classes.main}>
+      <p className={classes.pricing}>Pricing</p>
       <h5><img src={image} alt="icon" />{type}</h5>
       <div className={classes.priceTag}>
         <p>{prevAmount}</p>

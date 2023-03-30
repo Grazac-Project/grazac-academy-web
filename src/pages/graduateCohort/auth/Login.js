@@ -41,7 +41,6 @@ function Login() {
       .then((res) => {
         if (res.status === 201) {
           toast.success(`${res.message}! Redirecting to dashboard...`);
-          console.log(res.data);
 
           sessionStorage.setItem(
             "user_details",

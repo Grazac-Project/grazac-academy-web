@@ -7,6 +7,14 @@
   padding: 50px 30px 30px;
   transition: all 0.5s ease;
 }
+.main .pricing {
+  font-size: 13px;
+  color: #757575;
+  font-weight: 700;
+}
+.main:hover .pricing {
+  color: #cfb9f9;
+}
 .main h5 {
   display: inline-flex;
   align-items: center;

@@ -35,7 +35,7 @@ function Dashboard() {
   const [accepted, setAccepted] = useState(false);
 
   // const [status, setStatus] = useState("Not Submitted");
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState("Not Applied Yet");
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   // const [status, setStatus] = useState("Admitted");
@@ -89,7 +89,7 @@ function Dashboard() {
       console.log(JSON.parse(details).applicationFee);
 
       if (JSON.parse(details).applicationFee) {
-        console.log("fkjdkj");
+        // console.log("fkjdkj");
         setStatus("Not Submitted");
         setStatus(sessionStorage.getItem("status"));
 
@@ -1280,7 +1280,7 @@ function Dashboard() {
                                           onClick={() => setPayShowModal("")}
                                         />
                                       </div>
-                                      <div
+                                      {/* <div
                                         className={
                                           payOpt === "part"
                                             ? "active"
@@ -1296,7 +1296,7 @@ function Dashboard() {
                                         <p>
                                           Pay as you earn (NGN 50,000 legal fee)
                                         </p>
-                                      </div>
+                                      </div> */}
                                       <div
                                         className={
                                           payOpt === "full"
