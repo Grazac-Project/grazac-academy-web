@@ -56,10 +56,18 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         of 15,000 naira only.
       </p>
 
-     
+      <p>
+        Within 7 days after you pay your registration fee, we will reach out to
+        you for your assessment and interview which are a compulsory part of
+        your registration process. You can't afford to miss that. So, please,
+        keep your eyes glued to your email notifications/inbox and expect a
+        message from us.
+      </p>
+
+      <p>We look forward to being a part of your growth.</p>
 
       <button
-        className={ "button"}
+        className={"button"}
         ref={buttonRef}
         onClick={() => {
           HandleAdmissionPayFlutterPayment({
