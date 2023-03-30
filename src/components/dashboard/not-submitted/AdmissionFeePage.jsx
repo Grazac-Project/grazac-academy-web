@@ -57,11 +57,11 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       </p>
 
       <p>
-        Within 7 days after you pay your registration fee, we will reach out to
-        you for your assessment and interview which are a compulsory part of
-        your registration process. You can't afford to miss that. So, please,
-        keep your eyes glued to your email notifications/inbox and expect a
-        message from us.
+        As part of your registration process, assessment and interview will be
+        conducted, the schedule will be communicated to you via your registered
+        email address within 7 days after payment of the registration fee.
+        Please note that It is important that you do not miss the assessment
+        interview. Kindly check your email regularly for updates.
       </p>
 
       <p>We look forward to being a part of your growth.</p>

@@ -110,7 +110,7 @@ const App = () => {
     if (location.pathname === "/") {
       setTimeout(() => {
         setNews("showNews");
-      }, 4000);
+      }, 7000);
     }
   }, []);
 
