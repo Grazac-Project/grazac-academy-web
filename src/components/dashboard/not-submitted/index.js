@@ -7,7 +7,8 @@ import arrow from "../../../images/svg/dashboard/arrow.svg";
 import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
 import about from "../../../images/about-1.jpg";
-import termsandconds from "../../../content/TermsandCondition.pdf";
+import termsandconds from "../../../images/newsletter/terms.pdf";
+import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 
 function NotSubmitted({
   fname,
@@ -284,7 +285,7 @@ function NotSubmitted({
               months of your training. This comes with a 10% interest on the
               tuition fee.
             </li>
-            <li>
+            {/* <li>
               <strong>Learn now. Pay later (or ‘pay as you earn): </strong>You
               can also decide to learn now and start paying back when you get a
               job after your training. If you choose this, you would be required
@@ -293,10 +294,10 @@ function NotSubmitted({
               dollars (which would be an equivalent to the black dollar rate at
               the time that you start paying back) in 18 months after securing a
               job following our repayment procedure
-            </li>
+            </li> */}
           </ul>
 
-          <h4>Virtual Learning</h4>
+          {/* <h4>Virtual Learning</h4>
           <h5>Duration</h5>
           <ul>
             <li>2 months </li>
@@ -310,7 +311,7 @@ function NotSubmitted({
               <strong>Pay at once: </strong> You can only pay your tuition fee
               all at once with this plan
             </li>{" "}
-          </ul>
+          </ul> */}
 
           <div className="checkbox">
             <input type="checkbox" id="check" onClick={confirmCheck} />
@@ -318,6 +319,10 @@ function NotSubmitted({
               I accept the{" "}
               <a href={termsandconds} download target="_blank">
                 Terms ‌and‌ ‌Conditions‌
+              </a>{" "}
+              and{" "}
+              <a href={pricingPolicy} download target="_blank">
+                Pricing Policy
               </a>
             </p>
           </div>

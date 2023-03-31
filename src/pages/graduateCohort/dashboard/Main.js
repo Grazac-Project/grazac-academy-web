@@ -1323,8 +1323,8 @@ function Dashboard() {
                                       >
                                         <div></div>
                                         <p>
-                                          Pay in Installments (NGN550,000: Starts from NGN
-                                          250,000)
+                                          Pay in Installments (NGN550,000:
+                                          Starts from NGN 250,000)
                                         </p>
                                       </a>
                                       <button
