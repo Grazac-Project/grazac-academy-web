@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { SignupAction } from "../../../api/dashboard/auth";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import Terms from "../../../images/newsletter/terms.pdf"
+import Pricing from "../../../images/newsletter/pricing.pdf"
 import authImg from "../../../images/auth.png";
 import logo from "../../../images/svg/academy-logo.svg";
 import visible from "../../../images/svg/visible.svg";
@@ -190,11 +191,11 @@ function SignUp() {
               </button>
               <p className="terms">
                 By clicking “Create account” you agree to our{" "}
-                <a href="https://grazacacademy.com/terms.pdf" download>
+                <a href={Terms} download>
                   Terms & Conditions
                 </a>{" "}
                 and that you have read our{" "}
-                <a href="https://grazacacademy.com/pricing.pdf" download>
+                <a href={Pricing} download>
                   Pricing Plan
                 </a>
                 .

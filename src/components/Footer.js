@@ -4,6 +4,7 @@ import Instagram from "../images/svg/instagram.svg";
 import Twitter from "../images/svg/twitter.svg";
 import Youtube from "../images/svg/youtube.svg";
 import Logo from "../images/svg/grazac-logo.svg";
+import Terms from "../images/newsletter/terms.pdf";
 
 const Footer = () => {
   return (
@@ -62,7 +63,7 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <Link>Privacy & Policy</Link>
-          <a href="https://grazacacademy.com/terms.pdf" download>
+          <a href={Terms} download>
             Terms of Service
           </a>
 
