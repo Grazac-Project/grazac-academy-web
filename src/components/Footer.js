@@ -36,6 +36,11 @@ const Footer = () => {
             <li className="footer__item">
               <Link to="/contact">Contact Us</Link>
             </li>
+            <li className="footer__item">
+              <a href="https://blog.grazacacademy.com/" target="__blank">
+                Blog
+              </a>
+            </li>
           </ul>
 
           <ul className="footer__list">

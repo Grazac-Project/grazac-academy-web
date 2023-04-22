@@ -12,7 +12,6 @@ const Navbar = ({ top }) => {
   const nav = useRef(null);
 
   useEffect(() => {
-
     if (nav.current && window.pageYOffset > nav.current.offsetTop) {
       setFixed(true);
     } else {
@@ -61,6 +60,15 @@ const Navbar = ({ top }) => {
                 <span>03</span>FAQs
               </NavItem>
             </li>
+            <li className="nav__item">
+              <a
+                href="https://blog.grazacacademy.com/"
+                target="__blank"
+                className="nav__link"
+              >
+                <span>04</span>Blog
+              </a>
+            </li>
             {/* <li className="nav__item">
               <NavItem link="/hire">
                 <span>04</span>Hire
@@ -87,6 +95,15 @@ const Navbar = ({ top }) => {
           </li>
           <li className="nav__item">
             <NavItem link="/about-us">About</NavItem>
+          </li>
+          <li className="nav__item">
+            <a
+              href="https://blog.grazacacademy.com/"
+              target="__blank"
+              className="nav__link"
+            >
+              Blog
+            </a>
           </li>
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>

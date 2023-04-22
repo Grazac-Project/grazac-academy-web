@@ -11,6 +11,7 @@ import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
+import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -118,6 +119,7 @@ const App = () => {
 
   return (
     <>
+      <Tawk />
       {news === "showNews" && (
         <Newsform setNews={setNews} setNewsMessage={setNewsMessage} />
       )}
@@ -130,7 +132,7 @@ const App = () => {
 
           <Suspense fallback={<Loader />}>
             <div ref={app} className="App" style={{ overflow: "hidden" }}>
-                <WhatsApp />
+              <WhatsApp />
               <Switch>
                 {/* <AcademySidebar>
                 <Route path="/academy" component={AcademyDashboardPage} />
