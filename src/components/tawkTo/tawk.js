@@ -10,10 +10,9 @@ const Tawk = () => {
 
   return (
     <div>
-      {/* <button onClick={handleMinimize}>Minimize chat</button> */}
       <TawkMessengerReact
-        propertyId="644225414247f20fefeced59"
-        widgetId="1guh632m8"
+        propertyId="643a957031ebfa0fe7f8775e"
+        widgetId="1gu2dfgb5"
         ref={tawkMessengerRef}
         onLoad={onLoad}
       />
