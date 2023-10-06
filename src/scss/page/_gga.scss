@@ -21,13 +21,13 @@
 }
 
 .boxes22 {
-  width: 33%;
+  width: 50%;
   @include respond(phone) {
     width: 100%;
   }
 }
 .boxes33 {
-  width: 50%;
+  width: 33%;
   @include respond(tab-port) {
     width: 50%;
   }
@@ -105,8 +105,8 @@
   }
 
   &_container {
-    margin: 70px auto 20px;
-    max-width: 900px;
+    // margin: 70px auto 20px;
+    // max-width: 900px;
 
     @media (min-width: 601px) {
       display: flex;

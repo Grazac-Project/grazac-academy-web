@@ -183,6 +183,7 @@
       padding: 1.5rem 2rem;
       color: $color-white;
       border-radius: 5px;
+      font-family: $font-secondary;
 
       &:hover{
         color: $color-white;
@@ -199,6 +200,8 @@
       color: $color-inspiring-purple;
       border-radius: 5px;
       border:2px solid $color-inspiring-purple;
+      font-family: $font-secondary;
+      
     }
   }
 

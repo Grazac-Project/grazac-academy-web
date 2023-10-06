@@ -53,7 +53,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
       <p>
         To start your application, you are required to pay a non-refundable fee
-        of 15,000 naira only.
+        of 7,500 naira only.
       </p>
 
       <p>

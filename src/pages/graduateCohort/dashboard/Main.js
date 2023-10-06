@@ -80,6 +80,7 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
+      console.log(details)
 
       setDetails(JSON.parse(details));
 

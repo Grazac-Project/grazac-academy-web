@@ -111,7 +111,7 @@ const Navbar = ({ top }) => {
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>
           </li> */}
-          <a href="/login">
+          <a href="/signup">
             <div className="nav__btn">
               <div className="nav__btn--text">Apply Now</div>
             </div>

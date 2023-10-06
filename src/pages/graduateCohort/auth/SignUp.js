@@ -108,7 +108,7 @@ function SignUp() {
             </Link>
           </div>
           <div className="auth_container_form">
-            <span className="closed">Application is now Closed</span>
+            {/* <span className="closed">Application is now Closed</span> */}
             <h3>Create an Account</h3>
             <p className="auth_container_form-text">
               Create a free account to start your application
@@ -168,7 +168,7 @@ function SignUp() {
                   <img src={visible} />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <label>Cohort</label>
                 <select
                   name="cohort_batch"
@@ -185,8 +185,8 @@ function SignUp() {
                   <option value="CH14">CH-14 - May</option>
                   <option value="CH15">CH-15 - August</option>
                 </select>
-              </div>
-              <button disabled type="submit" id="actionBtn">
+              </div> */}
+              <button type="submit" id="actionBtn">
                 Create Account
               </button>
               <p className="terms">

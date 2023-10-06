@@ -73,7 +73,7 @@ const ModeOfTeaching = (_) => {
             {/* <img src={sprint} alt="jdgkj" style={{width:'100%'}} /> */}
           </div>
         </div>
-        <div className="price-data">
+        {/* <div className="price-data">
           {priceData.map((item, i) => (
             <Pricing {...item} key={i} />
           ))}
@@ -88,7 +88,7 @@ const ModeOfTeaching = (_) => {
             acquisition here in Nigeria
           </p>
           <span>Samson Adedamola - Consultant at Kudi</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

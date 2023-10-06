@@ -26,22 +26,20 @@ function NotSubmitted({
 
   const [userId, setUserId] = useState(0);
   const [checkAct, setCheckAct] = useState(false);
+  const [checkAct2, setCheckAct2] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
   const [bioData, setBioData] = useState({
     firstName: `${fname}`,
     lastName: `${lname}`,
     email: `${email}`,
     phone: `${phone}`,
-    phone: "",
-    dob: "",
     gender: "",
-    maritalStatus: "",
-    haveKids: "",
     ageRange: "",
-    course: "",
-    state: "",
-    city: "",
-    id: "",
+    preferred_course: "",
+    current_city_and_location: "",
+    physically_available: '',
+    paymentOption: '',
+    why_selected_for_cohort: ''
   });
 
   const [education, setEducation] = useState({
@@ -56,10 +54,10 @@ function NotSubmitted({
   });
   //   setBioData(userDetails)
 
-  window.onload = (event) => {
-    // removeQuestions();
-    setBioData(userDetails);
-  };
+  // window.onload = (event) => {
+  //   // removeQuestions();
+  //   setBioData(userDetails);
+  // };
 
   useEffect(() => {
     try {
@@ -68,22 +66,22 @@ function NotSubmitted({
     } catch (err) {}
     // setBioData(userDetails)
 
-    axios
-      .get("https://nigerian-states-info.herokuapp.com/api/v1/states")
-      .then((response) => {
-        setNigerianStates(response.data.data);
-      });
+    // axios
+    //   .get("https://nigerian-states-info.herokuapp.com/api/v1/states")
+    //   .then((response) => {
+    //     setNigerianStates(response.data.data);
+    //   });
 
-    {
-      nigerianStates.length === 0 &&
-        axios
-          .post("https://countriesnow.space/api/v0.1/countries/states", {
-            country: "Nigeria",
-          })
-          .then((response) => {
-            setNigerianStates(response.data.data.states);
-          });
-    }
+    // {
+    //   nigerianStates.length === 0 &&
+    //     axios
+    //       .post("https://countriesnow.space/api/v0.1/countries/states", {
+    //         country: "Nigeria",
+    //       })
+    //       .then((response) => {
+    //         setNigerianStates(response.data.data.states);
+    //       });
+    // }
   }, []);
 
   //   setBioData(userDetails)
@@ -94,23 +92,23 @@ function NotSubmitted({
       [e.target.name]: e.target.value,
     });
 
-    setEducation({
-      ...education,
-      [e.target.name]: e.target.value,
-    });
+    // setEducation({
+    //   ...education,
+    //   [e.target.name]: e.target.value,
+    // });
   };
 
-  const handleImage = (e) => {
-    if (e.target.files[0].size > 2097152) {
-      toast.error("File too large! A maximum of 2MB is allowed.");
-    } else {
-      //   setBioData({
-      //     ...bioData,
-      //     id: e.target.files[0],
-      //   });
-    }
-  };
-
+  // const handleImage = (e) => {
+  //   if (e.target.files[0].size > 2097152) {
+  //     toast.error("File too large! A maximum of 2MB is allowed.");
+  //   } else {
+  //     //   setBioData({
+  //     //     ...bioData,
+  //     //     id: e.target.files[0],
+  //     //   });
+  //   }
+  // };
+  console.log(userDetails)
   const confirmCheck = () => {
     var check = document.getElementById("check");
     if (check.checked) {
@@ -119,12 +117,30 @@ function NotSubmitted({
       setCheckAct(false);
     }
   };
+  const confirmCheck2 = () => {
+    var check2 = document.getElementById("check2");
+    if (check2.checked) {
+      setCheckAct2(true);
+    } else {
+      setCheckAct2(false);
+    }
+  };
 
   const showForm = () => {
     // toast.info("Application for this cohort has ended. Please check back later!!!")
     var check = document.getElementById("check");
     if (check.checked) {
       setActive("form");
+      setFormActive("bio-data");
+    } else {
+      toast.warn("You need to accept the terms and conditions to proceed!");
+    }
+  };
+  const showFormPayLayer = () => {
+    // toast.info("Application for this cohort has ended. Please check back later!!!")
+    var check2 = document.getElementById("check2");
+    if (check2.checked) {
+      setActive("lnpl");
       setFormActive("bio-data");
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
@@ -139,55 +155,63 @@ function NotSubmitted({
   const submitForm = (e) => {
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
+    // btn.innerHTML = `<img src=${loader} width="20px" />`; work on it
     var data = new FormData();
+    console.log(data);
 
     try {
       //  btn.innerHTML = `Submit`;
-      btn.innerHTML = `<img src=${loader} width="20px" />`;
+      // btn.innerHTML = `<img src=${loader} width="20px" />`;
       if (!(bioData.phone.length > 10)) {
         btn.innerHTML = `Submit`;
-        toast.error("please check enter a valid phone number");
+        toast.error("please check and enter a valid phone number");
       } else {
         // btn.innerHTML = `Submit`;
-        btn.innerHTML = `<img src=${loader} width="20px" />`;
+        // btn.innerHTML = `<img src=${loader} width="20px" />`;
         // toast.success('Successful')
         data.append("firstName", bioData.firstName);
         data.append("lastName", bioData.lastName);
         data.append("email", bioData.email);
-        data.append("phoneNumber", bioData.phone);
-        data.append("dob", bioData.dob);
+        console.log(`${data}, =======${bioData.phone}`)
+        data.append("phone", bioData.phone);
+        console.log(`${bioData.phone},===== ${data}`)
         data.append("gender", bioData.gender);
-        data.append("preferred_course", bioData.course);
-        data.append("state_of_residence", bioData.state);
-        data.append("current_city_and_location", bioData.city);
-        // data.append("means_of_identification", bioData.id);
-        data.append("maritalStatus", bioData.maritalStatus);
-        data.append("haveKids", bioData.haveKids);
         data.append("ageRange", bioData.ageRange);
-        data.append("course_of_study", education.courseOfStudy);
-        data.append("grade_achieved", education.grade);
-        data.append("qualifications", education.qualification);
-        data.append("programming_skills", education.experience);
-        data.append("nysc_status", education.nyscStatus);
-        data.append("why_selected_for_cohort", education.reason);
-        data.append("physically_available", education.availability);
-        data.append("will_you_pay_legal_fees", education.legalFee);
+        data.append("preferred_course", education.preferred_course);
+        data.append("current_city_and_location", bioData.current_city_and_location);
+        data.append("physically_available", bioData.physically_available);
+        data.append("paymentOption", bioData.paymentOption);
+        data.append("why_selected_for_cohort", bioData.why_selected_for_cohort);
+        // data.append("dob", bioData.dob);
+        // data.append("preferred_course", bioData.course);
+        // data.append("state_of_residence", bioData.state);
+        // data.append("means_of_identification", bioData.id);
+        // data.append("maritalStatus", bioData.maritalStatus);
+        // data.append("haveKids", bioData.haveKids);
+        // data.append("reside_in_abeokuta", bioData.reside);
+        // data.append("grade_achieved", education.grade);
+        // data.append("qualifications", education.qualification);
+        // data.append("programming_skills", education.experience);
+        // data.append("nysc_status", education.nyscStatus);
+        // data.append("why_selected_for_cohort", education.reason);
+        // data.append("physically_available", education.availability);
+        // data.append("will_you_pay_legal_fees", education.legalFee);
         console.log(data);
       }
     } catch (err) {
+      console.log(err)
       toast.error("please check enter a valid phone number");
-      btn.innerHTML = `Submit`;
+      // btn.innerHTML = `Submit`; work on it
     }
 
-    submitDetails(data, userId)
-      .then((response) => response.data)
+    submitDetails(bioData, userId)
       .then((res) => {
+        console.log(res)
         if (res.status === 200) {
           toast.success(
             "Submission successful! Your Application is now under review."
           );
-          btn.innerHTML = `Submit`;
+          // btn.innerHTML = `Submit`;
           setNewStatus();
         } else {
           toast.error("Submission not successful, try again!!!");
@@ -196,6 +220,7 @@ function NotSubmitted({
       })
 
       .catch((err) => {
+        console.log(err)
         try {
           if (err.response.data === "File size limit has been reached") {
             toast.error("File size exceeded for Means of Identification Field");
@@ -215,6 +240,55 @@ function NotSubmitted({
         }
       });
   };
+  const submitFormPayLater = (e) =>{
+    e.preventDefault();
+    var btn = document.getElementById("actionBtn2");
+    try {
+      //  btn.innerHTML = `Submit`;
+      // btn.innerHTML = `<img src=${loader} width="20px" />`;
+      if (!(bioData.phone.length > 10)) {
+        btn.innerHTML = `Submit`;
+        toast.error("please check and enter a valid phone number");
+      } else {
+        console.log(bioData);
+      }
+    } catch (err) {
+      toast.error("please check enter a valid phone number");
+      // btn.innerHTML = `Submit`; work on it
+    }
+    submitDetails(bioData, userId)
+      .then((res) => {
+        console.log(res)
+        if (res.status === 200) {
+          toast.success(
+            "Submission successful! Your Application is now under review."
+          );
+          setActive('lnpl')
+          setFormActive('pay-later')
+          // btn.innerHTML = `Submit`;
+          // setNewStatus();
+        } else {
+          toast.error("Submission not successful, try again!!!");
+          btn.innerHTML = `Submit`;
+        }
+      })
+      .catch((err) => {
+        try {
+          if (err.response) {
+            toast.error(err.response);
+            // btn.innerHTML = `Submit`;
+          } else {
+            toast.error(
+              "Something went wrong!!! Please make sure you have a good internet connection."
+            );
+            btn.innerHTML = `Submit`;
+          }
+        } catch {
+          toast.error("Something went wrong!!! Please Try Again");
+          btn.innerHTML = `Submit`;
+        }
+      });
+  }
 
   return (
     <div>
@@ -228,8 +302,7 @@ function NotSubmitted({
           </p>
           <p>
             Grazac Academy is at the forefront of upskilling and connecting
-            youths to opportunities in the technology industry and our primary
-            goal is to have connected a minimum of 1,000 youths to jobs by 2026.
+            youths to opportunities in the technology industry.
           </p>
           <p>
             You can choose to learn virtually or physically with us. This
@@ -351,9 +424,10 @@ function NotSubmitted({
                 </div>
                 <h4 style={{ marginLeft: "20px" }}>Apply</h4>
                 <div className="dashboard-content-form">
-                  <form onSubmit={showEduForm}>
+                  {/* <form onSubmit={showEduForm}> */}
                     {/* <form onSubmit={submitForm}> */}
-                    <p>Step 1 of 2</p>
+                    <form>
+                    {/* <p>Step 1 of 2</p> */}
                     <p>BIO DATA</p>
                     <div className="dashboard-content-form-container">
                       <label>First Name</label>
@@ -372,7 +446,7 @@ function NotSubmitted({
                         type="text"
                         required
                         name="lastName"
-                        placeholder="LastName"
+                        // placeholder="LastName"
                         value={bioData.lastName}
                         onChange={handleChange}
                       />
@@ -384,7 +458,7 @@ function NotSubmitted({
                         required
                         name="email"
                         placeholder="Email Address"
-                        value={email}
+                        value={bioData.email}
                         onChange={handleChange}
                       />
                     </div>
@@ -399,7 +473,7 @@ function NotSubmitted({
                         onChange={handleChange}
                       />
                     </div>
-                    <div className="dashboard-content-form-container">
+                    {/* <div className="dashboard-content-form-container">
                       <label>Date of Birth</label>
                       <input
                         type="date"
@@ -409,7 +483,7 @@ function NotSubmitted({
                         value={bioData.dob}
                         onChange={handleChange}
                       />
-                    </div>
+                    </div> */}
                     <div className="dashboard-content-form-container">
                       <label>Gender</label>
                       <select
@@ -424,7 +498,7 @@ function NotSubmitted({
                       </select>
                     </div>
 
-                    <div className="dashboard-content-form-container">
+                    {/* <div className="dashboard-content-form-container">
                       <label>Marital Status</label>
                       <select
                         required
@@ -436,10 +510,10 @@ function NotSubmitted({
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                       </select>
-                    </div>
+                    </div> */}
 
                     {/* kid status */}
-                    <div className="dashboard-content-form-container">
+                    {/* <div className="dashboard-content-form-container">
                       <label>Do you have Kids</label>
                       <select
                         required
@@ -451,10 +525,10 @@ function NotSubmitted({
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                       </select>
-                    </div>
+                    </div> */}
                     {/* age range */}
                     <div className="dashboard-content-form-container">
-                      <label>What's Your Age Range?</label>
+                      <label>Age Range</label>
                       <select
                         required
                         name="ageRange"
@@ -462,10 +536,38 @@ function NotSubmitted({
                         onChange={handleChange}
                       >
                         <option value="">Select an option</option>
-                        <option value="18 - 24">18 - 24</option>
-                        <option value="25 - 30">25 - 30</option>
-                        <option value="31 - 35">31 - 35</option>
+                        <option value="18-24">18 - 24</option>
+                        <option value="25-30">25 - 30</option>
+                        <option value="31-35">31 - 35</option>
                         <option value="36 and above">36 and above</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Do you currently reside in Abeokuta?</label>
+                      <select
+                        required
+                        name="current_city_and_location"
+                        value={bioData.current_city_and_location}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>
+                          Will you be available physically for the next 8months?
+                      </label>
+                      <select
+                        name="physically_available"
+                        value={bioData.physically_available}
+                        required
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Availability</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                       </select>
                     </div>
 
@@ -474,8 +576,8 @@ function NotSubmitted({
 
                       <select
                         required
-                        name="course"
-                        value={bioData.course}
+                        name="preferred_course"
+                        value={bioData.preferred_course}
                         onChange={handleChange}
                       >
                         <option value="">Select Preferred Course</option>
@@ -492,9 +594,48 @@ function NotSubmitted({
                         <option value="Product Management">
                           Product Management
                         </option>
+                        <option value="Machine Learning">
+                          Machine Learning
+                        </option>
+                        <option value="Java">
+                          Java
+                        </option>
+                        <option value="Data Analysis">
+                          Data Analysis
+                        </option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
+                      <label>
+                        Preferred Payment Option
+                      </label>
+                      <select
+                        name="paymentOption"
+                        value={bioData.paymentOption}
+                        required
+                        onChange={handleChange}
+                      >
+                        <option value="">Payment Options</option>
+                        <option value="fullPayment">Pay at once</option>
+                        <option value="partPayment">Pay in instalment</option>
+                        <option value="learnNowPayLater">Learn  now pay later</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>
+                        Why do you think you should be selected as a part of
+                        this cohort?
+                      </label>
+                      <textarea
+                        type="text"
+                        required
+                        name="why_selected_for_cohort"
+                        value={bioData.why_selected_for_cohort}
+                        placeholder="Write your reasons here..."
+                        onChange={handleChange}
+                      />
+                    </div>
+                    {/* <div className="dashboard-content-form-container">
                       <label>State of residence</label>
                       <select
                         required
@@ -516,8 +657,8 @@ function NotSubmitted({
                           );
                         })}
                       </select>
-                    </div>
-                    <div className="dashboard-content-form-container">
+                    </div> */}
+                    {/* <div className="dashboard-content-form-container">
                       <label name="city" onChange={handleChange}>
                         Current city and Location
                       </label>
@@ -529,7 +670,7 @@ function NotSubmitted({
                         placeholder="Current City and Location"
                         onChange={handleChange}
                       />
-                    </div>
+                    </div> */}
 
                     {/* <div className="dashboard-content-form-container">
                       <label>
@@ -552,15 +693,26 @@ function NotSubmitted({
                       <img src={upload} alt="upload" className="upload-img" />
                     </div>   */}
 
-                    <button style={{ float: "right" }} type="submit">
+                    {/* <button style={{ float: "right" }} type="submit">
                       Continue
+                    </button> */}
+                    <button type="submit" 
+                      className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
+                      onClick={submitForm}>
+                      Continue
+                    </button>
+                    <button type="submit" 
+                      className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
+                      onClick={submitFormPayLater}>
+                      Learn Now Pay Later
                     </button>
                   </form>
                 </div>
               </div>
             )}
+            
 
-            {formActive === "education" && (
+            {/* {formActive === "education" && (
               <div>
                 <div
                   className="dashboard-content-back"
@@ -709,10 +861,249 @@ function NotSubmitted({
                   </form>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       )}
+      {active === 'lnpl' && (
+        <div>
+            <div>
+              {formActive === "pay-later" && (
+                <div>
+                  <div
+                    className="dashboard-content-back"
+                    onClick={() => {
+                      setActive("welcome");
+                      setCheckAct(false);
+                    }}
+                  >
+                    <img src={arrow} alt="back" />
+                    <p>Back</p>
+                  </div>
+                  <h4 style={{ marginLeft: "20px" }}>Learn Now Pay Later</h4>
+                  <div className="dashboard-content-form">
+                    {/* <form onSubmit={showEduForm}> */}
+                    <div>
+                      <p>
+                        Learn Now Pay Later is a financial instrument to help you participate in our 
+                        training for FREE. You are expected to start repaying the credit once you get 
+                        a job at the end of the program. It is governed by a legally binding contract. 
+                        The repayment procedure can be found in our terms and conditions. This contract is 
+                        bonded by the law firm.
+                      </p>
+                      <p>
+                        Note that: This policy requires you bringing two guarantors and making a one-time payment 
+                        for legal fees bonded by the law firm.
+                      </p>
+                      <p>
+                        The legal fee cost is a total of 30,000 Naira. Kindly note that this amount is not refundable 
+                        under any circumstance.
+                      </p>
+                      <p>The following are of utmost necessity when bringing your guarantors;</p>
+                      <ul>
+                        <li>You must bring 2 guarantors who are over 18 years of age.</li>
+                        <li>You can also share our terms and conditions with your guarantor to keep them informed.</li>
+                        <li>Kindly seek the consent of your guarantors before filling their details as we will contact them on your behalf.</li>
+                        <li>If  your guarantor does not meet our eligibility status, you'll be asked to get a replacement.</li>
+                        <li>They must be residents within the locality of Abeokuta, Ogun State.</li>
+                      </ul>
+                      <div className="checkbox">
+                        <input type="checkbox" id="check2" onClick={confirmCheck2} />
+                        <p>
+                          I accept the{" "}
+                          <a href={termsandconds} download target="_blank">
+                            Terms ‌and‌ ‌Conditions‌
+                          </a>{" "}
+                        </p>
+                      </div>
+
+                    </div>
+                      <button type="submit" className={!checkAct2 ? "disable-btn" : "button"} onClick={showFormPayLayer}>
+                        Upload Guarantor Details
+                      </button>
+                  </div>
+                </div>
+              )} 
+            </div>   
+        </div>)}
+      {active === 'lnpl' && (
+        <div>
+            <div>
+              {formActive === "pay-later" && (
+                <div>
+                  <div
+                    className="dashboard-content-back"
+                    onClick={() => {
+                      setActive("welcome");
+                      setCheckAct(false);
+                    }}
+                  >
+                    <img src={arrow} alt="back" />
+                    <p>Back</p>
+                  </div>
+                  <h4 style={{ marginLeft: "20px" }}>Learn Now Pay Later</h4>
+                  <div className="dashboard-content-form">
+                    {/* <form onSubmit={showEduForm}> */}
+                    <div>
+                    <form>
+                    {/* <p>Step 1 of 2</p> */}
+                    <p>BIO DATA</p>
+                    <div className="dashboard-content-form-container">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="firstName"
+                        placeholder="FirstName"
+                        value={bioData.firstName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="lastName"
+                        // placeholder="LastName"
+                        value={bioData.lastName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        name="email"
+                        placeholder="Email Address"
+                        value={bioData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Phone Number</label>
+                      <input
+                        type="number"
+                        required
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={bioData.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Gender</label>
+                      <select
+                        required
+                        name="gender"
+                        value={bioData.gender}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Office Address</label>
+                      <input
+                        type="text"
+                        required
+                        name="officeAddress"
+                        placeholder="Office Address"
+                        value={bioData.officeAddress}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Home Address</label>
+                      <input
+                        type="text"
+                        required
+                        name="homeAddress"
+                        placeholder="Home Address"
+                        value={bioData.homeAddress}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Profession</label>
+                      <input
+                        type="text"
+                        required
+                        name="profession"
+                        placeholder="Enter Profession"
+                        value={bioData.profession}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Name of organization</label>
+                      <input
+                        type="text"
+                        required
+                        name="organization"
+                        placeholder="Enter Organization"
+                        value={bioData.organization}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Phone number of employer</label>
+                      <input
+                        type="text"
+                        required
+                        name="employerPhone"
+                        placeholder="Phone number of employer"
+                        value={bioData.employerPhone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Email Address of Employer</label>
+                      <input
+                        type="text"
+                        required
+                        name="employerEmail"
+                        placeholder="Email Address of Employer"
+                        value={bioData.employerEmail}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Relationship with the Guarantor</label>
+                      <input
+                        type="text"
+                        required
+                        name="guarantorRelationship"
+                        placeholder="Relationship with the Guarantor"
+                        value={bioData.guarantorRelationship}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <button type="submit" 
+                      className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
+                      >
+                      Continue
+                    </button>
+                    {/* <button type="submit" 
+                      className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
+                      onClick={submitFormPayLater}>
+                      Learn Now Pay Later
+                    </button> */}
+                  </form>
+                      
+
+                    </div>
+                      {/* <button type="submit" className={!checkAct2 ? "disable-btn" : "button"} onClick={showFormPayLayer}>
+                        Continue
+                      </button> */}
+                  </div>
+                </div>
+              )} 
+            </div>   
+        </div>)}
     </div>
   );
 }

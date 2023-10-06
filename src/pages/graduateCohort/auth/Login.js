@@ -39,19 +39,19 @@ function Login() {
     LoginAction(data)
       .then((response) => response.data)
       .then((res) => {
-        if (res.status === 201) {
+        if (res.status === 200) {
           toast.success(`${res.message}! Redirecting to dashboard...`);
 
           sessionStorage.setItem(
             "user_details",
             JSON.stringify({
-              firstName: res.data.payload.FirstName,
-              lastName: res.data.payload.LastName,
+              firstName: res.data.payload.firstName,
+              lastName: res.data.payload.lastName,
               email: res.data.payload.email,
               id: res.data.payload.id,
               isPaid: res.data.payload.isPaid,
               applicationFee: res.data.payload.applicationFee,
-              phone: res.data.phoneNumber,
+              phone: res.data.payload.phoneNumber,
               token: res.data.token,
             })
           );
@@ -132,7 +132,7 @@ function Login() {
                   <img src={visible} />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <label>Cohort</label>
                 <select
                   name="cohort"
@@ -147,7 +147,7 @@ function Login() {
                   <option value="CH14">CH-14 - May</option>
                   <option value="CH15">CH-15 - August</option>
                 </select>
-              </div>
+              </div> */}
               <button type="submit" id="actionBtn">
                 Sign in
               </button>

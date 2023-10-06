@@ -7,10 +7,16 @@ import MOT from "../components/MOT";
 
 import paper from "../images/svg/paper-ribbon.svg";
 import Loader from "../components/Loader";
+import Fone from "../images/session-fone.png";
+import Mobile from "../images/session-mobile.png";
+import Stroke from "../images/stroke.png";
+import { PopupButton } from "react-calendly";
+
 
 const CourseDetail = (props) => {
   const [course, setCourse] = useState("");
   const [outline, setOutline] = useState([]);
+  
 
   React.useEffect(() => {
     document.title = "Course Details - Grazac Academy";
@@ -29,6 +35,8 @@ const CourseDetail = (props) => {
   }, []);
   // console.log(course);
 
+
+
   return (
     <div>
       {outline.length ? (
@@ -41,6 +49,10 @@ const CourseDetail = (props) => {
                   <div className="row">
                     <div className="col-sm-6">
                       <div className="course_hero-text">
+                          <div className="dot-class">
+                            <div className="dot"></div>
+                            <div className="class-type">Physical</div>
+                          </div>
                         <div className="course_hero-text-b">
                           <h1>{course.name}</h1>
                           <p>{course.description}</p>
@@ -52,7 +64,7 @@ const CourseDetail = (props) => {
                             >
                               Download Brochure
                             </a>
-                            <Link to="/login">
+                            <Link to="/signup">
                               <button>Apply now</button>
                             </Link>
                           </div>
@@ -103,6 +115,27 @@ const CourseDetail = (props) => {
               </div>
             </div>
             <MOT />
+            <section className="book-session">
+              <div className="book-session-container">
+                <div className="book-session-container-mobile">
+                    <img src={Mobile} alt="fone" />
+                </div>
+                <div className="book-session-container-text">
+                  <h5>Have more questions?</h5>
+                  <p>You can book a <span>30-minutes</span> session with the <span>Course manager</span></p>
+                  {/* <button onClick={() => setIsOpen(true)}>Book a Session</button> */}
+                  <PopupButton
+                    url="https://calendly.com/mansurolatunji"
+                    rootElement={document.getElementById("root")}
+                    text="Book a Session"
+                  />
+                  <img src={Stroke} alt="stroke" />
+                </div>
+                <div className="book-session-container-pic">
+                  <img src={Fone} alt="fone" />
+                </div>
+              </div>    
+            </section>
           </div>
           <Footer />
         </div>
