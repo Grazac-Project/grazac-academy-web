@@ -99,6 +99,7 @@
   &_countdown {
     display: flex;
     gap: 20px;
+    text-align: center;
     align-items: center;
     width: 95%;
     margin: 55px auto;
@@ -176,13 +177,20 @@
           font-size: 28px;
         }
       }
+      &_steps {
+        width: 411px;
+        @media screen and (max-width: 768px) {
+        width: 100%;
+          
+        }
 
+      }
       &_stepFlex {
         display: flex;
         justify-content: space-between;
         justify-items: center;
         margin: 48px 0 0 0;
-        gap: 48px;
+        gap: 24px;
         @media screen and (max-width: 900px) {
           gap: 40px;
         }
@@ -238,7 +246,6 @@
   }
   &_slider {
     display: flex;
-  
 
     // background-color: $color-pale-purple;
 
@@ -250,7 +257,6 @@
     }
     &_img {
       @media screen and (max-width: 1252px) {
-        
       }
       @media screen and (max-width: 940px) {
         width: 100%;
@@ -306,14 +312,12 @@
         &_box {
           padding-bottom: 30px;
           width: 80%;
-          
-          
+
           @media screen and (max-width: 940px) {
             width: 90%;
           }
         }
       }
     }
-    
   }
 }

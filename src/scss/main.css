@@ -2150,6 +2150,7 @@ input:focus, select:focus, textarea:focus {
 .Vitual_countdown {
   display: flex;
   gap: 20px;
+  text-align: center;
   align-items: center;
   width: 95%;
   margin: 55px auto;
@@ -2242,12 +2243,20 @@ input:focus, select:focus, textarea:focus {
     font-size: 28px;
   }
 }
+.Vitual_class_container_steps {
+  width: 411px;
+}
+@media screen and (max-width: 768px) {
+  .Vitual_class_container_steps {
+    width: 100%;
+  }
+}
 .Vitual_class_container_stepFlex {
   display: flex;
   justify-content: space-between;
   justify-items: center;
   margin: 48px 0 0 0;
-  gap: 48px;
+  gap: 24px;
 }
 @media screen and (max-width: 900px) {
   .Vitual_class_container_stepFlex {
