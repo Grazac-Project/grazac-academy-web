@@ -163,9 +163,18 @@
     border-radius: 10px;
     margin: 10px 15px 30px;
     background-color: white;
+    height: 400px;
+    box-sizing: border-box;
+    position: relative;
+    @media (max-width: 1190px) {
+      height: fit-content;
+    }
+
 
     p {
       color: #787676;
+      padding-bottom: 20px;
+      box-sizing: border-box;
     }
 
     a {
@@ -174,6 +183,8 @@
       padding-top: 40px;
       color: #773dd3;
       font-weight: bold;
+      position: absolute;
+      bottom: 16px;
     }
     &-box {
       height: 150px;
@@ -196,6 +207,7 @@
         font-family: Georgia;
         font-weight: 600;
       }
+      
     }
   }
 

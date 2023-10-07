@@ -286,6 +286,7 @@ input:focus, select:focus, textarea:focus {
   padding: 1.5rem 2rem;
   color: #fff;
   border-radius: 5px;
+  font-family: "Nunito Sans", sans-serif;
 }
 .nav__btn--text:hover {
   color: #fff;
@@ -299,6 +300,7 @@ input:focus, select:focus, textarea:focus {
   color: #773dd3;
   border-radius: 5px;
   border: 2px solid #773dd3;
+  font-family: "Nunito Sans", sans-serif;
 }
 .nav__menu {
   display: flex;
@@ -605,7 +607,9 @@ input:focus, select:focus, textarea:focus {
 }
 .infomodal_content p {
   margin: 5px 10px 0 20px;
-  font-size: 16px;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #073041;
 }
 @media (max-width: 450px) {
   .infomodal_content p {
@@ -821,6 +825,122 @@ input:focus, select:focus, textarea:focus {
 }
 .sidebar-portal .signout {
   margin-top: 45vh;
+}
+
+.virtual_container {
+  box-sizing: border-box;
+  background-color: rgb(119, 61, 211);
+  display: flex;
+  justify-content: space-between;
+  padding: 54px 113px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  color: rgb(255, 255, 255);
+}
+@media (min-width: 1800px) {
+  .virtual_container {
+    padding: 54px 300px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 1200px) {
+  .virtual_container {
+    padding: 54px 60px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 900px) {
+  .virtual_container {
+    padding: 54px 40px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .virtual_container {
+    padding: 54px 10px;
+  }
+}
+.virtual_container_info {
+  width: 632px;
+}
+.virtual_container_info h1 {
+  font-family: Georgia;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  line-height: 54.54px;
+  padding-top: 10px;
+  padding-bottom: 16px;
+}
+@media (max-width: 900px) {
+  .virtual_container_info h1 {
+    font-size: 38px;
+  }
+}
+@media (max-width: 600px) {
+  .virtual_container_info h1 {
+    text-align: center;
+    font-size: 32px;
+  }
+}
+.virtual_container_info p {
+  padding-bottom: 40px;
+}
+.virtual_container_info button {
+  border: 1.5px solid #773dd3;
+  border-radius: 8px;
+  padding: 16px 58px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  color: #773dd3;
+}
+@media (max-width: 600px) {
+  .virtual_container_info button {
+    display: block;
+    margin: 0 auto;
+  }
+}
+.virtual_container_div {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 76px;
+}
+@media (max-width: 600px) {
+  .virtual_container_div {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.virtual_container_label {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  border-radius: 18px;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 600px) {
+  .virtual_container_label {
+    width: 300px;
+    justify-content: center;
+  }
+}
+@media (max-width: 1200px) {
+  .virtual_container_girl > img {
+    max-width: 100%;
+  }
+  .virtual_container_girl {
+    width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .virtual_container_girl {
+    display: none;
+  }
 }
 
 .loader {
@@ -1209,12 +1329,13 @@ input:focus, select:focus, textarea:focus {
   font-family: Georgia;
 }
 .landing_faq h1 {
-  font-weight: normal;
+  font-weight: 700;
   font-family: Georgia;
   margin: 4rem 0;
-  color: #1f1035;
-  font-family: Georgia;
-  font-size: 24px;
+  color: #073041;
+  font-size: 40px;
+  line-height: 45.45px;
+  text-align: center;
 }
 .landing_faq h3 {
   margin: 40px 0 20px;
@@ -1223,6 +1344,8 @@ input:focus, select:focus, textarea:focus {
 .landing_faq h4 {
   color: #1f1035;
   font-size: 20px !important;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
 }
 @media (max-width: 500px) {
   .landing_faq h4 {
@@ -1233,6 +1356,15 @@ input:focus, select:focus, textarea:focus {
   font-size: 1.4rem;
   color: #787676;
   line-height: 35px;
+}
+.landing_faq hr {
+  margin: 0px 0 20px;
+}
+.landing_faq .faq-number {
+  color: #2196F3;
+}
+.landing_faq .faq-whatsapp {
+  color: #773DD3;
 }
 .landing_faq-link {
   color: #773dd3;
@@ -1245,6 +1377,19 @@ input:focus, select:focus, textarea:focus {
 }
 .landing_faq-answer {
   padding: 10px 0;
+  background: #FBFCFF;
+  border-radius: 8px;
+  padding: 10px 10px 20px 10px;
+}
+.landing_faq-answer h6 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #787676;
+  margin: 0;
+}
+.landing_faq-answer p {
+  line-height: 24px;
 }
 .landing__slider {
   max-width: 100vw;
@@ -2437,7 +2582,7 @@ input:focus, select:focus, textarea:focus {
 }
 .course_hero {
   background-color: rgba(220, 205, 244, 0.2);
-  padding: 150px 0 70px;
+  padding: 50px 0 70px;
   position: relative;
 }
 @media (max-width: 37.5em) {
@@ -2447,6 +2592,29 @@ input:focus, select:focus, textarea:focus {
 }
 .course_hero-text {
   position: relative;
+}
+.course_hero-text .dot-class {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+.course_hero-text .dot {
+  width: 13.19px;
+  height: 13.19px;
+  border-radius: 50%;
+  background-color: #773dd3;
+}
+.course_hero-text .class-type {
+  color: #773dd3;
+  font-size: 22.36px;
+  line-height: 33.54px;
+  font-weight: 600;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 5.26px 15.79px;
+  border-radius: 30px;
+  border: 3.73px solid rgba(207, 185, 249, 0.25);
+  background-color: rgba(207, 185, 249, 0.25);
 }
 .course_hero-text h1 {
   font-size: 5em;
@@ -2832,6 +3000,149 @@ input:focus, select:focus, textarea:focus {
     margin-top: 20px;
     margin-left: 0px;
     text-align: center;
+  }
+}
+.course .book-session {
+  padding: 0 90px;
+}
+@media (max-width: 1200px) {
+  .course .book-session {
+    padding: 0 60px;
+  }
+}
+@media (max-width: 600px) {
+  .course .book-session {
+    padding: 0 16px;
+  }
+}
+.course .book-session-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #F8F5FD;
+  border-radius: 28px;
+  padding: 0px 95.66px;
+  background: #F8F5FD;
+}
+.course .book-session-container-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  .course .book-session-container-mobile {
+    display: block;
+    padding-top: 32px;
+  }
+}
+@media (max-width: 1200px) {
+  .course .book-session-container {
+    padding: 0 80px;
+  }
+}
+@media (max-width: 900px) {
+  .course .book-session-container {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 600px) {
+  .course .book-session-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.course .book-session-container h5 {
+  font-family: Georgia;
+  font-size: 56px;
+  line-height: 41.85px;
+  color: #773dd3;
+  margin-top: 71px;
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+.course .book-session-container p {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 28px;
+  line-height: 41.85px;
+  color: #787676;
+  margin-bottom: 28.7px;
+  font-weight: 400;
+  width: 90%;
+}
+.course .book-session-container button {
+  background: #773dd3;
+  padding: 19.13px 44.24px;
+  border-radius: 9.57px;
+  color: #fff;
+  font-size: 21.52px;
+  font-family: "Nunito Sans", sans-serif;
+  line-height: 21.52px;
+  margin-bottom: 71.15px;
+  font-weight: 700;
+  border: none;
+}
+.course .book-session-container-text {
+  position: relative;
+}
+.course .book-session-container-text img {
+  position: absolute;
+  top: 115px;
+  right: 120px;
+}
+.course .book-session-container-pic > img {
+  max-width: 100%;
+}
+.course .book-session-container-pic {
+  max-width: 80%;
+}
+@media (max-width: 600px) {
+  .course .book-session-container-pic {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .course .book-session-container h5 {
+    font-size: 36px;
+  }
+  .course .book-session-container p {
+    font-size: 20px;
+    line-height: 36.85px;
+  }
+  .course .book-session-container-text img {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .course .book-session-container h5 {
+    font-size: 25px;
+    margin-top: 51px;
+  }
+  .course .book-session-container p {
+    font-size: 16px;
+    line-height: 30.85px;
+  }
+  .course .book-session-container button {
+    padding: 15.13px 34.24px;
+    font-size: 16.52px;
+  }
+}
+@media (max-width: 600px) {
+  .course .book-session-container h5 {
+    font-size: 17px;
+    line-height: 26.85px;
+    margin: 0px;
+    text-align: center;
+  }
+  .course .book-session-container p {
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .course .book-session-container button {
+    padding: 15.13px 34.24px;
+    font-size: 16.52px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 32px;
   }
 }
 
@@ -3340,7 +3651,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .boxes22 {
-  width: 33%;
+  width: 50%;
 }
 @media (max-width: 37.5em) {
   .boxes22 {
@@ -3349,7 +3660,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .boxes33 {
-  width: 50%;
+  width: 33%;
 }
 @media (max-width: 56.25em) {
   .boxes33 {
@@ -3433,10 +3744,6 @@ input:focus, select:focus, textarea:focus {
   .gga_flex-half2 {
     width: 50%;
   }
-}
-.gga_container {
-  margin: 70px auto 20px;
-  max-width: 900px;
 }
 @media (min-width: 601px) {
   .gga_container {
@@ -3666,9 +3973,20 @@ input:focus, select:focus, textarea:focus {
   border-radius: 10px;
   margin: 10px 15px 30px;
   background-color: white;
+  height: 400px;
+  box-sizing: border-box;
+  position: relative;
+}
+@media (max-width: 1190px) {
+  .gua_cardview {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 .gua_cardview p {
   color: #787676;
+  padding-bottom: 20px;
+  box-sizing: border-box;
 }
 .gua_cardview a {
   font-size: 1em;
@@ -3676,6 +3994,8 @@ input:focus, select:focus, textarea:focus {
   padding-top: 40px;
   color: #773dd3;
   font-weight: bold;
+  position: absolute;
+  bottom: 16px;
 }
 .gua_cardview-box {
   height: 150px;
@@ -4072,11 +4392,17 @@ input:focus, select:focus, textarea:focus {
 .faq_hero_content p {
   font-family: "Nunito", "Sans";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 18px;
   line-height: 30px;
+  width: 663px;
   color: #9da8b6;
   text-align: center;
+}
+@media (max-width: 600px) {
+  .faq_hero_content p {
+    width: 100%;
+  }
 }
 
 .hire h1, .hire h2, .hire h3, .hire h4 {
@@ -4812,15 +5138,31 @@ input:focus, select:focus, textarea:focus {
     width: 90%;
   }
 }
+.join_container {
+  margin-bottom: 80px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .join_box1 {
-  margin: 30px 10px 10px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 10px 24px 10px 24px;
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
+  width: 625.5px;
+  height: 210px;
+  margin: 10px 10px;
+}
+@media (max-width: 601px) {
+  .join_box1 {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 @media (max-width: 56.25em) {
   .join_box1 {
     margin: 20px;
-  }
-  .join_box1 img {
-    margin-top: 40px;
   }
 }
 .join_box1 h4 {
@@ -5041,7 +5383,14 @@ input:focus, select:focus, textarea:focus {
   font-size: 16px;
   font-weight: 500;
   border-radius: 6px;
-  margin: 20px 0;
+  margin: 20px 13px 20px 0px;
+}
+@media (max-width: 600px) {
+  .dashboard-content button {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 5px 0px;
+  }
 }
 .dashboard-content-back {
   display: flex;

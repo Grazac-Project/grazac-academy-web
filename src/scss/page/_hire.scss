@@ -743,13 +743,29 @@
             width: 90%;
         }
     }
+    &_container{
+        margin-bottom: 80px;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     &_box1{
-        margin: 30px 10px 10px;
+        border: 1px solid #fff;
+        border-radius: 8px;
+        padding: 10px 24px 10px 24px;
+        box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
+        width: 625.5px;
+        height: 210px;
+        margin: 10px 10px;
+        @media (max-width: 601px) {
+            height: fit-content;
+          }
         @include respond(tab-port){
             margin: 20px;
-            img{
-                margin-top: 40px;
-            }
+            // img{
+            //     margin-top: 40px;
+            // }
         }
         h4{
             font-family: $font-primary;

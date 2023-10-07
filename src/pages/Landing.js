@@ -40,9 +40,13 @@ import frontend from "../images/frontend.png";
 import backend from "../images/backend.png";
 import android from "../images/android.png";
 import product_management from "../images/product_management.png";
+import machine_learning from "../images/machine_learning.png";
+import java from "../images/java.png";
+import data_analysis from "../images/data_analysis.png";
 
 import { LoaderContext } from "../context";
 import WhatsApp from "../components/whatsApp/whatsApp";
+import VirtualSection from "../components/VirtualSection";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
@@ -99,7 +103,7 @@ const Landing = () => {
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application is Now Closed
+                Application opens on 2nd, October, 2023
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -136,7 +140,7 @@ const Landing = () => {
           </div>
 
           {/* <a onClick={showToast}> */}
-          <Link to="/login">
+          <Link to="/signup">
             <div
               className="nav__btn"
               style={{ width: "130px", margin: "auto", textAlign: "center" }}
@@ -188,21 +192,23 @@ const Landing = () => {
           </div>
         </div>
 
+        <VirtualSection />
+
         <div>
-          <Container>
+          {/* <Container> */}
             <div className="course_mode-intro course_mode-intro">
               <h2 style={{ margin: "80px 0 30px" }} className="join_heading">
-                Why Grazac Academy is the
-                <br className="hide-at-600" /> best for you
+                Why Grazac Academy <br className="hide-at-600" />is the best for you
               </h2>
             </div>
-          </Container>
+          {/* </Container> */}
         </div>
 
-        <div style={{ boxSizing: "border-box", margin: "0 0 80px" }}>
-          <Container>
-            <Row>
-              <Col md={6}>
+        {/* <div style={{ boxSizing: "border-box", margin: "0 0 0px" }}> */}
+        <div className="join_container">
+          {/* <Container> */}
+            {/* <Row> */}
+              {/* <Col md={6}> */}
                 <div className="join_box1">
                   <div className="">
                     <img src={why1} alt="profile" />
@@ -217,8 +223,8 @@ const Landing = () => {
                     learning process.
                   </p>
                 </div>
-              </Col>
-              <Col md={6}>
+              {/* </Col> */}
+              {/* <Col md={6}> */}
                 <div className="join_box1">
                   <div className="">
                     <img src={why2} alt="profile" />
@@ -230,10 +236,10 @@ const Landing = () => {
                     your visibility to potential employers.
                   </p>
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
+              {/* </Col> */}
+            {/* </Row> */}
+            {/* <Row> */}
+              {/* <Col md={6}> */}
                 <div className="join_box1">
                   <div className="">
                     <img src={why3} alt="profile" />
@@ -245,8 +251,8 @@ const Landing = () => {
                     outside Nigeria.
                   </p>
                 </div>
-              </Col>
-              <Col md={6}>
+              {/* </Col> */}
+              {/* <Col md={6}> */}
                 <div className="join_box1">
                   <div className="">
                     <img src={why4} alt="profile" />
@@ -259,9 +265,9 @@ const Landing = () => {
                     3-months.
                   </p>
                 </div>
-              </Col>
-            </Row>
-          </Container>
+              {/* </Col> */}
+            {/* </Row> */}
+          {/* </Container> */}
         </div>
 
         <div className="landing__intern">
@@ -482,7 +488,7 @@ const Landing = () => {
               </div>
               <div className="landing__discover--list-item"></div>
               <div className="landing__discover--list-item"></div>
-              <Link to="/login">
+              <Link to="/signup">
                 {/* <div className="nav__btn one-btn" onClick={showToast}> */}
                 <div className="nav__btn one-btn">
                   <div className="nav__btn--text">Apply Now</div>
@@ -661,18 +667,30 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>How do I register?</h4>
+                      <h4>What is Grazac Graduate Academy?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
                       <div className="landing_faq-answer">
-                        <p>
-                          Visit www.grazacacademy.com and click the “apply now”
-                          button to create an account. Login to your dashboard
-                          to complete your application.
-                        </p>
+                        <div>
+                          <p>Grazac Academy is closing the gap between youths and entry-level jobs 
+                            in the technology industry. We strongly believe the job market for youths 
+                            has changed and the future of work will be skill-based.
+                          </p>
+                          <p>
+                            We are approaching this in two ways:
+                          </p>
+                          <p>
+                            Grazac Academy Graduate Accelerator - This plan is for tertiary institutions graduates who have full time to build a career in tech. 
+                            This plan has been arranged in a way to prepare them for work.
+                          </p>
+                          <p>
+                            Grazac Academy Undergraduate Accelerator - This plan is to equip undergraduates in their institutions, we believe the earlier the better and we want 
+                            to prepare them for life after school by upskilling them while they are still in school.
+                          </p>    
+                        </div>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -681,7 +699,7 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="1">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>After registration, what next?</h4>
+                      <h4>Do I have to be physically present to register?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -689,10 +707,7 @@ const Landing = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Once you have successfully registered, an email will
-                          be sent to you detailing the next steps of the
-                          registration process. Ensure that you provide a valid
-                          email address and keep an eye on your inbox.
+                          No, registration is to be done online.
                         </p>
                       </div>
                     </Card.Body>
@@ -702,7 +717,7 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="2">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I have to be physically present to register?</h4>
+                      <h4>Are classes virtual or onsite?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -710,9 +725,7 @@ const Landing = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No. Registration can be done online but applicants
-                          have to be physically present to write the assessment
-                          test.
+                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
                         </p>
                       </div>
                     </Card.Body>
@@ -723,8 +736,7 @@ const Landing = () => {
                   <Accordion.Toggle as={Card.Header} eventKey="3">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>
-                        Do I need to have any previous experience or knowledge
-                        before coming to learn?
+                        What is the duration of the program?
                       </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
@@ -733,9 +745,8 @@ const Landing = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Not at all. All our courses are designed to help
-                          people from any educational background and experience
-                          level, achieve a successful career in tech.
+                          The program is for a duration of 12 months,
+                            consisting of 8 months  immersive training and 4 months internship.
                         </p>
                       </div>
                     </Card.Body>
@@ -745,7 +756,7 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="4">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Are classes virtual or physical?</h4>
+                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -753,9 +764,8 @@ const Landing = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Classes are 100% physical and this is to ensure
-                          students get maximum support and mentorship from their
-                          tutors.
+                        Yes,please. However, as an undergraduate, you are strongly 
+                        advised to choose our virtual learning mode due to its flexibility.
                         </p>
                       </div>
                     </Card.Body>
@@ -765,7 +775,7 @@ const Landing = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What is the duration of the program?</h4>
+                      <h4>Would the academy get me a job?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -773,8 +783,10 @@ const Landing = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The program runs for at least 6 months (3 months of
-                          immersive training and 3 months internship)
+                          We offer our exceptional students job opportunities in our hiring network 
+                          within 9-12 months of learning to enter the recruitment process in securing 
+                          their dream job. In essence, we equip all our students with the level of 
+                          competency employers are looking for so they can secure the job they really desire.
                         </p>
                       </div>
                     </Card.Body>

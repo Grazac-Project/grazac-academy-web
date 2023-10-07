@@ -1,6 +1,7 @@
 import classes from "./newsForm.module.css";
 import NewsletterModal from "../newsletterModal";
-import Message from "../../../images/newsletter/message-1.svg";
+// import Message from "../../../images/newsletter/message-1.svg";
+import Message from "../../../images/newsletter/popup-envelope.png";
 import Check from "../../../images/newsletter/check.svg";
 import LoaderGif from "../../../images/svg/dashboard/loader.gif";
 import { useState } from "react";

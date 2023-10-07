@@ -26,10 +26,13 @@
     p {
       font-family: "Nunito", "Sans";
       font-style: normal;
-      font-weight: normal;
+      font-weight: 400;
       font-size: 18px;
       line-height: 30px;
-
+      width: 663px;
+      @media(max-width: 600px){
+        width: 100%;
+      }
       color: #9da8b6;
       text-align: center;
     }

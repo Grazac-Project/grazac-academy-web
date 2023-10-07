@@ -88,7 +88,7 @@ const ModeOfTeaching = (_) => {
             acquisition here in Nigeria
           </p>
           <span>Samson Adedamola - Consultant at Kudi</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
