@@ -1,0 +1,121 @@
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+} */
+.main {
+  margin: aut0;
+  width: 360px;
+  padding: 24px 40px;
+  /* text-align: center; */
+  align-items: center;
+  gap: 32px;
+  transition: all 0.5s ease;
+  border-radius: 16px;
+  border: 1px solid var(--Accent, #e7a300);
+  background: #fff;
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin: auto;
+  margin-top: 48px;
+}
+
+.card :hover {
+  background-color: #773dd3;
+}
+.main h5 {
+  color: #773dd3;
+  text-align: center;
+  font-family: Nunito Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 32px;
+}
+.priceTag {
+  text-align: center;
+}
+.priceTag h3 {
+  color: var(--text-color, #333);
+  font-family: Nunito Sans;
+  font-size: 34.811px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.priceTag h3 span {
+  color: var(--text-color, #333);
+  font-family: Nunito Sans;
+  font-size: 19.892px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.priceTag p {
+  color: var(--text-color, #333);
+  font-family: Nunito Sans;
+  font-size: 19.892px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: line-through;
+  margin: 5px;
+}
+.priceTag h6 {
+  color: #d5baff;
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+}
+.benefits {
+  margin-top: 32px;
+}
+.benefits ul {
+  align-items: center;
+}
+.benefits ul li {
+  color: var(--text-color, #333);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+
+.benefits ul span li {
+  color: var(--Main-Color, #773dd3);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.recommend {
+  display: flex;
+  width: 186px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  background: var(--Accent, #e7a300);
+  color: #fff;
+  font-family: Nunito Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  margin-bottom: 300px;
+}

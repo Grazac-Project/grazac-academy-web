@@ -12,9 +12,13 @@ import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
 import Tawk from "./components/tawkTo/tawk";
+import VitualLanding from "./pages/virtualLanding";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
+});
+const Vitual = lazy(() => {
+  return import("./pages/virtualLanding");
 });
 
 const About = lazy(() => {
@@ -32,6 +36,7 @@ const Faq = lazy(() => {
 const Contact = lazy(() => {
   return import("./pages/Contact");
 });
+
 
 const Hire = lazy(() => {
   return import("./pages/hire");
@@ -72,6 +77,9 @@ const MailSent = lazy(() => {
 const VerifyMail = lazy(() => {
   return import("./pages/graduateCohort/auth/VerifyMail");
 });
+const Mode = lazy(() => {
+  return import("./pages/graduateCohort/auth/mode");
+});
 
 const AccountCreated = lazy(() => {
   return import("./pages/graduateCohort/auth/AccountCreated");
@@ -98,6 +106,9 @@ const AcademyPortfolioPage = lazy(() => {
 });
 const AcademySettingsPage = lazy(() => {
   return import("../src/academy-dashboard/pages/settings/Settings");
+});
+const Pricing = lazy(() => {
+  return import("./components/NewPrice/NewPrice");
 });
 
 const App = () => {
@@ -152,12 +163,18 @@ const App = () => {
                 <Route path="/mail-sent" component={MailSent} />
                 <Route path="/account-created" component={AccountCreated} />
                 <Route path="/verification" component={VerifyMail} />
+                <Route path="/mode" component={Mode} />
+
+                
 
                 {/* Graduate dashboard */}
                 <Route path="/dashboard" component={DashBoardHome} />
 
                 {/* main pages */}
                 <Route path="/" exact component={LandingPage}>
+                  {/* <Redirect to="/join"/>  */}
+                </Route>
+                <Route path="/vitualLanding" exact component={Vitual}>
                   {/* <Redirect to="/join"/>  */}
                 </Route>
                 {/* <Route path="/join" component={Join}/> */}
@@ -183,6 +200,9 @@ const App = () => {
                 <Route path="/hire/listing" component={Listing} />
                 <Route path="/hire/:username" component={Profile} />
                 <Route path="/hire/contact" component={HireContact} />
+
+                <Route path="/pricing" component={Pricing} />
+
 
                 {/* Coming soon page */}
                 {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
