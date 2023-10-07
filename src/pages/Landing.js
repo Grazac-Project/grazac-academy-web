@@ -411,7 +411,7 @@ const Landing = () => {
                 </div>
               </Link>
             </div>
-            <Link to="/login">
+            <Link to="/VitualLanding">
               <div
                 className="nav__btn"
                 style={{ width: "130px", margin: "auto", textAlign: "center" }}

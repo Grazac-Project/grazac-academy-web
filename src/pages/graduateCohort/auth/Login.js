@@ -39,7 +39,8 @@ function Login() {
     LoginAction(data)
       .then((response) => response.data)
       .then((res) => {
-        if (res.status === 201) {
+        console.log(res)
+        if (res.status === 200) {
           toast.success(`${res.message}! Redirecting to dashboard...`);
 
           sessionStorage.setItem(
@@ -66,6 +67,7 @@ function Login() {
         }
       })
       .catch((err) => {
+        console.log(err)
         toast.error(err.response.data.message);
 
         if (err.response.data.message) {

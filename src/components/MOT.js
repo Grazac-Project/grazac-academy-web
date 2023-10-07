@@ -4,7 +4,7 @@ import portfolio from "../images/svg/portfolio.svg";
 import handshake from "../images/svg/handshake.svg";
 import document from "../images/svg/document.svg";
 import classroom from "../images/svg/classroom.svg";
-import Pricing, { priceData } from "./pricing/pricing";
+// import Pricing, { priceData } from "./NewPrice/pricing";
 
 const ModeOfTeaching = (_) => {
   return (
@@ -73,11 +73,11 @@ const ModeOfTeaching = (_) => {
             {/* <img src={sprint} alt="jdgkj" style={{width:'100%'}} /> */}
           </div>
         </div>
-        <div className="price-data">
+        {/* <div className="price-data">
           {priceData.map((item, i) => (
             <Pricing {...item} key={i} />
           ))}
-        </div>
+        </div> */}
         <div className="course_mode-quote">
           <img src={quote} alt="quote" />
           <p>
