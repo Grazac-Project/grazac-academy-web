@@ -165,6 +165,13 @@
                 margin: 5px 0 0 10px;
             }
         }
+        .guarantor-form-label{
+            padding: 3px 16px;
+            border-radius: 8px;
+            background-color: $color-inspiring-purple;
+            color: #fff;
+            font-family: $font-secondary;
+        }
 
         &-form{
             box-shadow: 0px 5px 15px rgba(120, 118, 118, 0.12);

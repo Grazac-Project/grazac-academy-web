@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { submitDetails } from "../../../api/dashboard/data";
+import { submitDetails, submitGuarantor } from "../../../api/dashboard/data";
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -40,6 +40,20 @@ function NotSubmitted({
     physically_available: '',
     paymentOption: '',
     why_selected_for_cohort: ''
+  });
+  const [formGuarantor, setFormGuarantor] = useState({
+    firstName: `${fname}`,
+    lastName: `${lname}`,
+    email: `${email}`,
+    phone: `${phone}`,
+    gender: "",
+    officeAddress: "",
+    homeAddress: "",
+    profession: "",
+    organization: '',
+    employerPhone: '',
+    employerEmail: '',
+    guarantorRelationship: ''
   });
 
   const [education, setEducation] = useState({
@@ -96,6 +110,12 @@ function NotSubmitted({
     //   ...education,
     //   [e.target.name]: e.target.value,
     // });
+  };
+  const handleChangeGuarantor = (e) => {
+    setFormGuarantor({
+      ...formGuarantor,
+      [e.target.name]: e.target.value,
+    });
   };
 
   // const handleImage = (e) => {
@@ -260,9 +280,9 @@ function NotSubmitted({
       .then((res) => {
         console.log(res)
         if (res.status === 200) {
-          toast.success(
-            "Submission successful! Your Application is now under review."
-          );
+          // toast.success(
+          //   "Submission successful! Your Application is now under review."
+          // );
           setActive('lnpl')
           setFormActive('pay-later')
           // btn.innerHTML = `Submit`;
@@ -288,6 +308,39 @@ function NotSubmitted({
           btn.innerHTML = `Submit`;
         }
       });
+  }
+
+  const submitFormGuarantor = (e) => {
+    e.preventDefault()
+    submitGuarantor(formGuarantor)
+    .then(res => {
+      if (res.status === 200) {
+        toast.success(
+          "Submission successful! Your Application is now under review."
+        );
+        // btn.innerHTML = `Submit`;
+        setNewStatus();
+      } else {
+        toast.error("Submission not successful, try again!!!");
+        // btn.innerHTML = `Submit`;
+      }
+    })
+    .catch((err) => {
+      try {
+        if (err.response) {
+          toast.error(err.response);
+          // btn.innerHTML = `Submit`;
+        } else {
+          toast.error(
+            "Something went wrong!!! Please make sure you have a good internet connection."
+          );
+          // btn.innerHTML = `Submit`;
+        }
+      } catch {
+        toast.error("Something went wrong!!! Please Try Again");
+        // btn.innerHTML = `Submit`;
+      }
+    });
   }
 
   return (
@@ -941,13 +994,13 @@ function NotSubmitted({
                     <img src={arrow} alt="back" />
                     <p>Back</p>
                   </div>
-                  <h4 style={{ marginLeft: "20px" }}>Learn Now Pay Later</h4>
+                  <h4 className="guarantor-form-label">Guarantor’s Form</h4>
                   <div className="dashboard-content-form">
                     {/* <form onSubmit={showEduForm}> */}
                     <div>
-                    <form>
+                    <form onSubmit={submitFormGuarantor}>
                     {/* <p>Step 1 of 2</p> */}
-                    <p>BIO DATA</p>
+                    {/* <p>BIO DATA</p> */}
                     <div className="dashboard-content-form-container">
                       <label>First Name</label>
                       <input
@@ -955,8 +1008,8 @@ function NotSubmitted({
                         required
                         name="firstName"
                         placeholder="FirstName"
-                        value={bioData.firstName}
-                        onChange={handleChange}
+                        value={formGuarantor.firstName}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -966,8 +1019,8 @@ function NotSubmitted({
                         required
                         name="lastName"
                         // placeholder="LastName"
-                        value={bioData.lastName}
-                        onChange={handleChange}
+                        value={formGuarantor.lastName}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -977,8 +1030,8 @@ function NotSubmitted({
                         required
                         name="email"
                         placeholder="Email Address"
-                        value={bioData.email}
-                        onChange={handleChange}
+                        value={formGuarantor.email}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -988,8 +1041,8 @@ function NotSubmitted({
                         required
                         name="phone"
                         placeholder="Phone Number"
-                        value={bioData.phone}
-                        onChange={handleChange}
+                        value={formGuarantor.phone}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -997,8 +1050,8 @@ function NotSubmitted({
                       <select
                         required
                         name="gender"
-                        value={bioData.gender}
-                        onChange={handleChange}
+                        value={formGuarantor.gender}
+                        onChange={handleChangeGuarantor}
                       >
                         <option value="">Select an option</option>
                         <option value="male">Male</option>
@@ -1012,8 +1065,8 @@ function NotSubmitted({
                         required
                         name="officeAddress"
                         placeholder="Office Address"
-                        value={bioData.officeAddress}
-                        onChange={handleChange}
+                        value={formGuarantor.officeAddress}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1023,8 +1076,8 @@ function NotSubmitted({
                         required
                         name="homeAddress"
                         placeholder="Home Address"
-                        value={bioData.homeAddress}
-                        onChange={handleChange}
+                        value={formGuarantor.homeAddress}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1034,8 +1087,8 @@ function NotSubmitted({
                         required
                         name="profession"
                         placeholder="Enter Profession"
-                        value={bioData.profession}
-                        onChange={handleChange}
+                        value={formGuarantor.profession}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1045,8 +1098,8 @@ function NotSubmitted({
                         required
                         name="organization"
                         placeholder="Enter Organization"
-                        value={bioData.organization}
-                        onChange={handleChange}
+                        value={formGuarantor.organization}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1056,8 +1109,8 @@ function NotSubmitted({
                         required
                         name="employerPhone"
                         placeholder="Phone number of employer"
-                        value={bioData.employerPhone}
-                        onChange={handleChange}
+                        value={formGuarantor.employerPhone}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1067,8 +1120,8 @@ function NotSubmitted({
                         required
                         name="employerEmail"
                         placeholder="Email Address of Employer"
-                        value={bioData.employerEmail}
-                        onChange={handleChange}
+                        value={formGuarantor.employerEmail}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1078,27 +1131,17 @@ function NotSubmitted({
                         required
                         name="guarantorRelationship"
                         placeholder="Relationship with the Guarantor"
-                        value={bioData.guarantorRelationship}
-                        onChange={handleChange}
+                        value={formGuarantor.guarantorRelationship}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
-                    <button type="submit" 
-                      className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
-                      >
+                    <button type="submit" style={{ float: "right", width: "50px" }}>
                       Continue
                     </button>
-                    {/* <button type="submit" 
-                      className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
-                      onClick={submitFormPayLater}>
-                      Learn Now Pay Later
-                    </button> */}
                   </form>
                       
 
                     </div>
-                      {/* <button type="submit" className={!checkAct2 ? "disable-btn" : "button"} onClick={showFormPayLayer}>
-                        Continue
-                      </button> */}
                   </div>
                 </div>
               )} 

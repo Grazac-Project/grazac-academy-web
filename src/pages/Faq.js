@@ -40,7 +40,7 @@ const Faq = () => {
           <div className="container">
             <div>
               <Accordion defaultActiveKey="1">
-                <Card>
+                {/* <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>What is Grazac Graduate Academy?</h4>
@@ -71,7 +71,7 @@ const Faq = () => {
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-                <hr />
+                <hr /> */}
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="1">
                     <div className="landing_faq-question" onClick={handleFaq}>
@@ -151,7 +151,7 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Would the academy get me a job?</h4>
+                      <h4>Do you offer any certification after the course?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -159,10 +159,8 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          We offer our exceptional students job opportunities in our hiring network 
-                          within 9-12 months of learning to enter the recruitment process in securing 
-                          their dream job. In essence, we equip all our students with the level of 
-                          competency employers are looking for so they can secure the job they really desire.
+                          Yes, students who complete our courses will receive a virtual and hardcopy 
+                          certificate of completion
                         </p>
                       </div>
                     </Card.Body>
@@ -172,7 +170,7 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="6">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Can I take two courses at a time?</h4>
+                      <h4>What is the cost of learning at Grazac Academy</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -180,9 +178,10 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No, this is strongly discouraged because we require 
-                          you to be fully focused and dedicated to any course of choice.
+                          For our virtual classes, the cost for all courses is #1,000,000
                         </p>
+                        <p>While for our virtual classes, the cost is $200. To get more information 
+                          about our pricing, <a>Click here</a></p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -191,7 +190,7 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="7">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What course is right for me?</h4>
+                      <h4>Do all courses cost the same price?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -199,8 +198,8 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          You can call us (or send us a Whatsapp message) on <span className='faq-number'>+234 806 836 5951</span> to 
-                          get clarification on the best course for you
+                          Yes, all our courses are cost at the same price, the only variation in 
+                          price depends on your mode of learning (physical or virtual)
                         </p>
                       </div>
                     </Card.Body>
@@ -210,51 +209,22 @@ const Faq = () => {
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="8">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Why Grazac Academy is the best for you?</h4>
+                      <h4>What is the format of the certificate offered by Grazac Academy?</h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="8">
                     <Card.Body>
                       <div className="landing_faq-answer">
-                        <div>
-                          <div>
-                            <h6>There are no learning barriers</h6>
-                              <p>
-                                We make starting a career in tech accessible to anyone. 
-                                Whether you are a graduate or you are an undergraduate; whether you 
-                                are young or old, and no matter your experience level - our learning model, 
-                                courses, and community has been designed to make you feel comfortable and 
-                                fully engaged in the learning process.
-                            </p>
-                          </div>
-                          <div>
-                            <h6>Access to Mentorship and Support</h6>
-                            <p>
-                                You gain access to a wide range of industry experts that will walk you 
-                                through your career path and increase your visibility to potential employers.
-                            </p>
-                          </div>
-                          <div>
-                            <h6>Recognized Certification</h6>
-                            <p>
-                                You get a recognized certificate that serves as a proof that you are skilled enough 
-                                to work in any organization within or outside Nigeria.
-                            </p>
-                          </div>
-                          <div>
-                            <h6>Peer-to-Peer Sessions</h6>
-                            <p>
-                                Knowledge sharing with other fellows and gain different dimensions of problem solving.
-                            </p>
-                          </div>
-                        </div>
+                        <p>Our cerfiticates offered are in both in physical print and 
+                          digital format which can easily be shared online.
+                        </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
                 <hr />
-                <Card>
+                {/* <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="9">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>Got more questions?</h4>
@@ -272,8 +242,8 @@ const Faq = () => {
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-                <hr />
-                <Card>
+                <hr /> */}
+                {/* <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="13">
                     <div className="landing_faq-question" onClick={handleFaq}>
                       <h4>What are the available courses ?</h4>
@@ -296,13 +266,116 @@ const Faq = () => {
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
+                </Card> */}
+                {/* new card */}
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="9">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>What qualifications do your instructors have?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="9">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          All of our instructors are experienced professional with a proven track record 
+                          in the tech industry
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
                 </Card>
                 {/* new card */}
                 <hr />
                 <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="10">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Are there any additional materials i need to be successful in the course?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="10">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Most courses require you to have aceess to laptop and internet connection. 
+                          Some of the courses also require addtional materials.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                {/* new card */}
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="11">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>
+                        How long is each course?
+                      </h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="11">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          The course length is eight months duration for the physical with an additional 
+                          four months class and 3 months for the virtual class.
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="12">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>How are the courses taught?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="12">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          The virtual classes are taught via live classes and through a combination of 
+                          content, readings, quizzes and projects.
+                        </p>
+                        <p>While our physical classes are taught at the academy, by qualified instructors 
+                          with assignments, assessments and projects</p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="13">
+                    <div className="landing_faq-question" onClick={handleFaq}>
+                      <h4>Would the academy get me a job?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="13">
+                    <Card.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No,Grazac Academy would not be taking the responsibility of getting you a job. 
+                          What the academy offers is job opportunities
+                        </p>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <hr />
+                <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="14">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I qualify to enroll as an Undergraduate?</h4>
+                      <h4>
+                        Can I take two courses at a time?
+                      </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -310,21 +383,20 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes. You can enroll as an undergraduate. However, if
-                          you are an undergraduate, you are strongly advised to
-                          choose to learn virtually. In fact, our virtual
-                          classes are specifically tailored for you.
+                          No, this is strongly discouraged because we require you to be fully focused and 
+                          dedicated to any course of choice.
                         </p>
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-                {/* new card */}
                 <hr />
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="15">
                     <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Would the academy get me a job?</h4>
+                      <h4>
+                        What course is right for me?
+                      </h4>
                       <MdKeyboardArrowDown size="2rem" color="black" />
                     </div>
                   </Accordion.Toggle>
@@ -332,107 +404,8 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          We match students with job opportunities in our hiring
-                          network within 9-12 months of learning to enter the
-                          recruitment process in securing their dream job. In
-                          essence, we equip all our students with the level of
-                          competency employers are looking for so they can
-                          secure the job they really desire. However, the
-                          cohort's best student (s) would be connected to a
-                          job/paid internship
-                          (remote/fulltime/hybrid/international/local).
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                {/* new card */}
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="16">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>
-                        Do I need to have any previous experience or knowledge
-                        before coming to learn?
-                      </h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="16">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Not at all. All our courses are designed to help
-                          people from any educational background and experience
-                          level achieve a successful career in IT.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="17">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Can I take two courses at a time?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="17">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          No, you cannot. This is because we want you to be
-                          focused and dedicated to a particular course and give
-                          it your best.{" "}
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="18">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What course is right for me?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="18">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          You can call us (or send us a Whatsapp message) on
-                          +234 806 836 5951
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="19">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>
-                        What are the added benefits of learning at Grazac
-                        Academy?
-                      </h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="19">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Asides from equipping you with the level of competency
-                          employers are looking for so you can secure the job
-                          you really desire, we also provide placement for
-                          support services such as interview coaching, CV/
-                          LinkedIn profile reviews, Salary negotiation sessions,
-                          provision of reference letters, etc. You would also
-                          have access to be mentored by professionals in the
-                          industry, and access to a community of like minds that
-                          would foster your learning, commitment, and practice.
+                          You can call us (or send us a Whatsapp message) on +234 806 836 5951 to get 
+                          clarification on the best course for you.
                         </p>
                       </div>
                     </Card.Body>
