@@ -61,13 +61,16 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
-              <a
-                href="https://blog.grazacacademy.com/"
-                target="__blank"
-                className="nav__link"
-              >
-                <span>04</span>Blog
-              </a>
+              {/* <a
+              href="https://blog.grazacacademy.com/"
+              target="__blank"
+              className="nav__link"
+            >
+              Blog
+            </a> */}
+              <NavItem link="/pricing">
+                <span>04</span>Pricing
+              </NavItem>
             </li>
             {/* <li className="nav__item">
               <NavItem link="/hire">
@@ -97,13 +100,15 @@ const Navbar = ({ top }) => {
             <NavItem link="/about-us">About</NavItem>
           </li>
           <li className="nav__item">
-            <a
+            {/* <a
               href="https://blog.grazacacademy.com/"
               target="__blank"
               className="nav__link"
             >
               Blog
-            </a>
+            </a> */}
+
+            <NavItem link="/pricing">Pricing</NavItem>
           </li>
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>
