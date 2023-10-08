@@ -25,6 +25,7 @@ function NotSubmitted({
   // const [formActive, setFormActive] = useState("education");
 
   const [userId, setUserId] = useState(0);
+  const [modeSelection, setModeSelection] = useState('');
   const [checkAct, setCheckAct] = useState(false);
   const [checkAct2, setCheckAct2] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
@@ -97,6 +98,10 @@ function NotSubmitted({
     //       });
     // }
   }, []);
+  useEffect(() => {
+    let mode = sessionStorage.getItem('mode_selection');
+    setModeSelection(JSON.parse(mode))
+  }, [])
 
   //   setBioData(userDetails)
 
@@ -349,7 +354,7 @@ function NotSubmitted({
     <div>
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
-      {active === "welcome" && (
+      {(active === "welcome" && modeSelection.physical == '1') && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -412,6 +417,103 @@ function NotSubmitted({
               expected to pay N300,000 immediately and spread the rest over 5
               months of your training. This comes with a 10% interest on the
               tuition fee.
+            </li>
+            {/* <li>
+              <strong>Learn now. Pay later (or ‘pay as you earn): </strong>You
+              can also decide to learn now and start paying back when you get a
+              job after your training. If you choose this, you would be required
+              to pay a non-refundable legal fee of N50,000 immediately and after
+              your training, you are expected to pay back the sum of 1500
+              dollars (which would be an equivalent to the black dollar rate at
+              the time that you start paying back) in 18 months after securing a
+              job following our repayment procedure
+            </li> */}
+          </ul>
+
+          {/* <h4>Virtual Learning</h4>
+          <h5>Duration</h5>
+          <ul>
+            <li>2 months </li>
+          </ul>
+          <p>
+            Application fee is a non-refundable fee of 15,000 naira only and the
+            learning fee is 90,000 naira only, we offer only one form of payment
+          </p>
+          <ul>
+            <li>
+              <strong>Pay at once: </strong> You can only pay your tuition fee
+              all at once with this plan
+            </li>{" "}
+          </ul> */}
+
+          <div className="checkbox">
+            <input type="checkbox" id="check" onClick={confirmCheck} />
+            <p>
+              I accept the{" "}
+              <a href={termsandconds} download target="_blank">
+                Terms ‌and‌ ‌Conditions‌
+              </a>{" "}
+              and{" "}
+              <a href={pricingPolicy} download target="_blank">
+                Pricing Policy
+              </a>
+            </p>
+          </div>
+          <button
+            className={!checkAct ? "disable-btn" : "button"}
+            onClick={showForm}
+          >
+            Apply Now
+          </button>
+        </div>
+      )}
+      {(active === "welcome" && modeSelection.virtual == '2') && (
+        <div>
+          <h3>Hello {fname}</h3>
+          <p className="text1">
+            Learn with us for 3 months
+          </p>
+          <p>
+            Enroll for 3 months of virtual learning at Grazac Academy to build in-demand tech skills.
+          </p>
+          <p>Our curriculum covers 8 basic tech disciplines that include;</p>
+          <ul>
+            <li>Product Designing (UI/UX)</li>
+            <li>Product Management</li>
+            <li>
+              Front end web development (HTML, CSS, and Javascript (React.js))
+            </li>
+            <li>Back end web development (Nodejs)</li>
+            <li>Mobile Application Development (Flutter and Dart)</li>
+            <li>Data Analysis</li>
+            <li>Java</li>
+            <li>Machine Learning with Python</li>
+          </ul>
+          <h4>Pricing Plans</h4>
+          <p>With you in mind, Grazac Academy offers Two (2) different payment options which include;</p>
+          <ul>
+            <li>Full Payment: A Full (One time payment) of $120 and enjoy the full benefits the Academy is 
+              offering
+            </li>
+            <li>
+              Installment Payment: $72 Upfront, a (60% of the total amount) and spread the remaining 
+              payments over the course of two (2) months.
+            </li>
+          </ul>
+          <p>Join us for an accelerated tech education journey!</p>
+          <h4>Physical Learning</h4>
+          <h4>Duration</h4>
+          <ul>
+            <li>
+              3 months
+            </li>
+          </ul>
+          <p>
+            Basic Criteria to be met
+          </p>
+          <ul>
+            <li>
+              Candidates must be available (full-time) for at least 3 months.
             </li>
             {/* <li>
               <strong>Learn now. Pay later (or ‘pay as you earn): </strong>You

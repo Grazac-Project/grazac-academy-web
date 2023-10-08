@@ -1,12 +1,13 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import authImg from "../../../images/auth.png";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import logo from "../../../images/svg/academy-logo.svg";
 import Physical from "../../../images/svg/physical.svg";
 import Virtual from "../../../images/svg/virtual.svg";
 
 const Mode = () => {
+  const history = useHistory();
   const containerStyle = {
     display: "flex",
     width: "201px",
@@ -20,6 +21,22 @@ const Mode = () => {
     background: "#FFF",
     boxShadow: "0px 1.64297px 6.57189px 0px rgba(0, 0, 0, 0.15)",
   };
+  const handlePhysical = () => {
+    sessionStorage.setItem(
+      'mode_selection', JSON.stringify({
+        physical: '1',
+      })
+    )
+    history.push('/dashboard')
+  }
+  const handleVisual = () => {
+    sessionStorage.setItem(
+      'mode_selection', JSON.stringify({
+        virtual: '2',
+      })
+    )
+    history.push('/dashboard')
+  }
 
   return (
     <div className="mode">
@@ -34,15 +51,13 @@ const Mode = () => {
           <p>How would you like to learn with us?</p>
 
           <div className="content_selectFlex">
-            <Link to='/dashboard'>
-              <div className="content_selectFlex_select">
+              <div className="content_selectFlex_select" onClick={handlePhysical}>
                 <div className="selectContainer">
                   <img src={Physical} alt="img" />
                   <h4>Physical Class</h4>
                 </div>
               </div>
-            </Link>
-            <div className="content_selectFlex_select">
+            <div className="content_selectFlex_select" onClick={handleVisual}>
               <div className="selectContainer">
                 <img src={Virtual} alt="img" />
                 <h4>Virtual Class</h4>
