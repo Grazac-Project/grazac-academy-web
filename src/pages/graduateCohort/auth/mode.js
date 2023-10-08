@@ -34,12 +34,14 @@ const Mode = () => {
           <p>How would you like to learn with us?</p>
 
           <div className="content_selectFlex">
-            <div className="content_selectFlex_select">
-              <div className="selectContainer">
-                <img src={Physical} alt="img" />
-                <h4>Physical Class</h4>
+            <Link to='/dashboard'>
+              <div className="content_selectFlex_select">
+                <div className="selectContainer">
+                  <img src={Physical} alt="img" />
+                  <h4>Physical Class</h4>
+                </div>
               </div>
-            </div>
+            </Link>
             <div className="content_selectFlex_select">
               <div className="selectContainer">
                 <img src={Virtual} alt="img" />

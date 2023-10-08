@@ -1,7 +1,7 @@
 import Virtual from "../images/virtual-new.png";
 import benzene from '../images/benzene.svg';
 import girl from '../images/virtual-girl.png';
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 const VirtualSection = () => {
   return (

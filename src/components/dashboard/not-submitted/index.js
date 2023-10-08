@@ -42,18 +42,18 @@ function NotSubmitted({
     why_selected_for_cohort: ''
   });
   const [formGuarantor, setFormGuarantor] = useState({
-    firstName: `${fname}`,
-    lastName: `${lname}`,
-    email: `${email}`,
-    phone: `${phone}`,
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone_number: '',
     gender: "",
-    officeAddress: "",
-    homeAddress: "",
+    office_address: "",
+    home_address: "",
     profession: "",
-    organization: '',
-    employerPhone: '',
-    employerEmail: '',
-    guarantorRelationship: ''
+    name_of_organization: '',
+    phone_number_of_employer: '',
+    email_address_of_employer: '',
+    relationship_with_the_guarantor: ''
   });
 
   const [education, setEducation] = useState({
@@ -161,7 +161,7 @@ function NotSubmitted({
     var check2 = document.getElementById("check2");
     if (check2.checked) {
       setActive("lnpl");
-      setFormActive("bio-data");
+      setFormActive("guarantor-form");
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
@@ -311,9 +311,11 @@ function NotSubmitted({
   }
 
   const submitFormGuarantor = (e) => {
+    console.log(formGuarantor)
     e.preventDefault()
     submitGuarantor(formGuarantor)
     .then(res => {
+      console.log(res)
       if (res.status === 200) {
         toast.success(
           "Submission successful! Your Application is now under review."
@@ -368,7 +370,7 @@ function NotSubmitted({
             <li>Product Designing (UI/UX)</li>
             <li>Product Management</li>
             <li>
-              Front end web development (HTML, CSS, and Javascript (React.js)
+              Front end web development (HTML, CSS, and Javascript (React.js))
             </li>
             <li>Back end web development (Nodejs)</li>
             <li>Mobile Application Development (Flutter and Dart)</li>
@@ -982,12 +984,12 @@ function NotSubmitted({
       {active === 'lnpl' && (
         <div>
             <div>
-              {formActive === "pay-later" && (
+              {formActive === "guarantor-form" && (
                 <div>
                   <div
-                    className="dashboard-content-back"
+                    className="dashboard-content-back2"
                     onClick={() => {
-                      setActive("welcome");
+                      setActive("pay-later");
                       setCheckAct(false);
                     }}
                   >
@@ -995,7 +997,7 @@ function NotSubmitted({
                     <p>Back</p>
                   </div>
                   <h4 className="guarantor-form-label">Guarantor’s Form</h4>
-                  <div className="dashboard-content-form">
+                  <div className="dashboard-content-form2">
                     {/* <form onSubmit={showEduForm}> */}
                     <div>
                     <form onSubmit={submitFormGuarantor}>
@@ -1006,9 +1008,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="firstName"
-                        placeholder="FirstName"
-                        value={formGuarantor.firstName}
+                        name="firstname"
+                        placeholder="First Name"
+                        value={formGuarantor.firstname}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1017,9 +1019,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="lastName"
-                        // placeholder="LastName"
-                        value={formGuarantor.lastName}
+                        name="lastname"
+                        placeholder="Last Name"
+                        value={formGuarantor.lastname}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1039,9 +1041,9 @@ function NotSubmitted({
                       <input
                         type="number"
                         required
-                        name="phone"
+                        name="phone_number"
                         placeholder="Phone Number"
-                        value={formGuarantor.phone}
+                        value={formGuarantor.phone_number}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1063,9 +1065,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="officeAddress"
+                        name="office_address"
                         placeholder="Office Address"
-                        value={formGuarantor.officeAddress}
+                        value={formGuarantor.office_address}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1074,9 +1076,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="homeAddress"
+                        name="home_address"
                         placeholder="Home Address"
-                        value={formGuarantor.homeAddress}
+                        value={formGuarantor.home_address}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1096,31 +1098,31 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="organization"
+                        name="name_of_organization"
                         placeholder="Enter Organization"
-                        value={formGuarantor.organization}
+                        value={formGuarantor.name_of_organization}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>Phone number of employer</label>
                       <input
-                        type="text"
+                        type="number"
                         required
-                        name="employerPhone"
+                        name="phone_number_of_employer"
                         placeholder="Phone number of employer"
-                        value={formGuarantor.employerPhone}
+                        value={formGuarantor.phone_number_of_employer}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>Email Address of Employer</label>
                       <input
-                        type="text"
+                        type="email"
                         required
-                        name="employerEmail"
+                        name="email_address_of_employer"
                         placeholder="Email Address of Employer"
-                        value={formGuarantor.employerEmail}
+                        value={formGuarantor.email_address_of_employer}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1129,13 +1131,13 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="guarantorRelationship"
+                        name="relationship_with_the_guarantor"
                         placeholder="Relationship with the Guarantor"
-                        value={formGuarantor.guarantorRelationship}
+                        value={formGuarantor.relationship_with_the_guarantor}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
-                    <button type="submit" style={{ float: "right", width: "50px" }}>
+                    <button type="submit" style={{ float: "right", width: "213px", marginRight: '0px' }}>
                       Continue
                     </button>
                   </form>
