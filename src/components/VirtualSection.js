@@ -1,6 +1,7 @@
 import Virtual from "../images/virtual-new.png";
 import benzene from '../images/benzene.svg';
-import girl from '../images/virtual-girl.png'
+import girl from '../images/virtual-girl.png';
+import { Link } from "react-router-dom";
 
 const VirtualSection = () => {
   return (
@@ -17,7 +18,9 @@ const VirtualSection = () => {
               <div className="virtual_container_label"><img src={benzene} alt="benzene"/><span>Mentorship</span></div>
               <div className="virtual_container_label"><img src={benzene} alt="benzene"/><span>Flexibility</span></div>
             </div>
-            <button>Learn More</button>
+            <Link to='/vitualLanding'>
+              <button>Learn More</button>
+            </Link>
             
         </div>
         <div className="virtual_container_girl">

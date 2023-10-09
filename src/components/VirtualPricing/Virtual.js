@@ -70,7 +70,7 @@ const VirtualPricing = () => {
               </ul>
 
               <div>
-                <div className={classes.recommend}>{item.recommend}</div>
+                {/* <div className={classes.recommend}>{item.recommend}</div> */}
               </div>
             </div>
           </div>

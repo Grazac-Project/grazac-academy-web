@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { submitDetails } from "../../../api/dashboard/data";
+import { submitDetails, submitGuarantor } from "../../../api/dashboard/data";
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -40,6 +40,20 @@ function NotSubmitted({
     physically_available: '',
     paymentOption: '',
     why_selected_for_cohort: ''
+  });
+  const [formGuarantor, setFormGuarantor] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone_number: '',
+    gender: "",
+    office_address: "",
+    home_address: "",
+    profession: "",
+    name_of_organization: '',
+    phone_number_of_employer: '',
+    email_address_of_employer: '',
+    relationship_with_the_guarantor: ''
   });
 
   const [education, setEducation] = useState({
@@ -97,6 +111,12 @@ function NotSubmitted({
     //   [e.target.name]: e.target.value,
     // });
   };
+  const handleChangeGuarantor = (e) => {
+    setFormGuarantor({
+      ...formGuarantor,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // const handleImage = (e) => {
   //   if (e.target.files[0].size > 2097152) {
@@ -141,7 +161,7 @@ function NotSubmitted({
     var check2 = document.getElementById("check2");
     if (check2.checked) {
       setActive("lnpl");
-      setFormActive("bio-data");
+      setFormActive("guarantor-form");
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
@@ -260,9 +280,9 @@ function NotSubmitted({
       .then((res) => {
         console.log(res)
         if (res.status === 200) {
-          toast.success(
-            "Submission successful! Your Application is now under review."
-          );
+          // toast.success(
+          //   "Submission successful! Your Application is now under review."
+          // );
           setActive('lnpl')
           setFormActive('pay-later')
           // btn.innerHTML = `Submit`;
@@ -290,6 +310,41 @@ function NotSubmitted({
       });
   }
 
+  const submitFormGuarantor = (e) => {
+    console.log(formGuarantor)
+    e.preventDefault()
+    submitGuarantor(formGuarantor)
+    .then(res => {
+      console.log(res)
+      if (res.status === 200) {
+        toast.success(
+          "Submission successful! Your Application is now under review."
+        );
+        // btn.innerHTML = `Submit`;
+        setNewStatus();
+      } else {
+        toast.error("Submission not successful, try again!!!");
+        // btn.innerHTML = `Submit`;
+      }
+    })
+    .catch((err) => {
+      try {
+        if (err.response) {
+          toast.error(err.response);
+          // btn.innerHTML = `Submit`;
+        } else {
+          toast.error(
+            "Something went wrong!!! Please make sure you have a good internet connection."
+          );
+          // btn.innerHTML = `Submit`;
+        }
+      } catch {
+        toast.error("Something went wrong!!! Please Try Again");
+        // btn.innerHTML = `Submit`;
+      }
+    });
+  }
+
   return (
     <div>
       {/* {setBioData(userDetails)} */}
@@ -315,7 +370,7 @@ function NotSubmitted({
             <li>Product Designing (UI/UX)</li>
             <li>Product Management</li>
             <li>
-              Front end web development (HTML, CSS, and Javascript (React.js)
+              Front end web development (HTML, CSS, and Javascript (React.js))
             </li>
             <li>Back end web development (Nodejs)</li>
             <li>Mobile Application Development (Flutter and Dart)</li>
@@ -929,34 +984,34 @@ function NotSubmitted({
       {active === 'lnpl' && (
         <div>
             <div>
-              {formActive === "pay-later" && (
+              {formActive === "guarantor-form" && (
                 <div>
                   <div
-                    className="dashboard-content-back"
+                    className="dashboard-content-back2"
                     onClick={() => {
-                      setActive("welcome");
+                      setActive("pay-later");
                       setCheckAct(false);
                     }}
                   >
                     <img src={arrow} alt="back" />
                     <p>Back</p>
                   </div>
-                  <h4 style={{ marginLeft: "20px" }}>Learn Now Pay Later</h4>
-                  <div className="dashboard-content-form">
+                  <h4 className="guarantor-form-label">Guarantor’s Form</h4>
+                  <div className="dashboard-content-form2">
                     {/* <form onSubmit={showEduForm}> */}
                     <div>
-                    <form>
+                    <form onSubmit={submitFormGuarantor}>
                     {/* <p>Step 1 of 2</p> */}
-                    <p>BIO DATA</p>
+                    {/* <p>BIO DATA</p> */}
                     <div className="dashboard-content-form-container">
                       <label>First Name</label>
                       <input
                         type="text"
                         required
-                        name="firstName"
-                        placeholder="FirstName"
-                        value={bioData.firstName}
-                        onChange={handleChange}
+                        name="firstname"
+                        placeholder="First Name"
+                        value={formGuarantor.firstname}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -964,10 +1019,10 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="lastName"
-                        // placeholder="LastName"
-                        value={bioData.lastName}
-                        onChange={handleChange}
+                        name="lastname"
+                        placeholder="Last Name"
+                        value={formGuarantor.lastname}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -977,8 +1032,8 @@ function NotSubmitted({
                         required
                         name="email"
                         placeholder="Email Address"
-                        value={bioData.email}
-                        onChange={handleChange}
+                        value={formGuarantor.email}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -986,10 +1041,10 @@ function NotSubmitted({
                       <input
                         type="number"
                         required
-                        name="phone"
+                        name="phone_number"
                         placeholder="Phone Number"
-                        value={bioData.phone}
-                        onChange={handleChange}
+                        value={formGuarantor.phone_number}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -997,8 +1052,8 @@ function NotSubmitted({
                       <select
                         required
                         name="gender"
-                        value={bioData.gender}
-                        onChange={handleChange}
+                        value={formGuarantor.gender}
+                        onChange={handleChangeGuarantor}
                       >
                         <option value="">Select an option</option>
                         <option value="male">Male</option>
@@ -1010,10 +1065,10 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="officeAddress"
+                        name="office_address"
                         placeholder="Office Address"
-                        value={bioData.officeAddress}
-                        onChange={handleChange}
+                        value={formGuarantor.office_address}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1021,10 +1076,10 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="homeAddress"
+                        name="home_address"
                         placeholder="Home Address"
-                        value={bioData.homeAddress}
-                        onChange={handleChange}
+                        value={formGuarantor.home_address}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1034,8 +1089,8 @@ function NotSubmitted({
                         required
                         name="profession"
                         placeholder="Enter Profession"
-                        value={bioData.profession}
-                        onChange={handleChange}
+                        value={formGuarantor.profession}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1043,32 +1098,32 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="organization"
+                        name="name_of_organization"
                         placeholder="Enter Organization"
-                        value={bioData.organization}
-                        onChange={handleChange}
+                        value={formGuarantor.name_of_organization}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>Phone number of employer</label>
                       <input
-                        type="text"
+                        type="number"
                         required
-                        name="employerPhone"
+                        name="phone_number_of_employer"
                         placeholder="Phone number of employer"
-                        value={bioData.employerPhone}
-                        onChange={handleChange}
+                        value={formGuarantor.phone_number_of_employer}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>Email Address of Employer</label>
                       <input
-                        type="text"
+                        type="email"
                         required
-                        name="employerEmail"
+                        name="email_address_of_employer"
                         placeholder="Email Address of Employer"
-                        value={bioData.employerEmail}
-                        onChange={handleChange}
+                        value={formGuarantor.email_address_of_employer}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -1076,29 +1131,19 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="guarantorRelationship"
+                        name="relationship_with_the_guarantor"
                         placeholder="Relationship with the Guarantor"
-                        value={bioData.guarantorRelationship}
-                        onChange={handleChange}
+                        value={formGuarantor.relationship_with_the_guarantor}
+                        onChange={handleChangeGuarantor}
                       />
                     </div>
-                    <button type="submit" 
-                      className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
-                      >
+                    <button type="submit" style={{ float: "right", width: "213px", marginRight: '0px' }}>
                       Continue
                     </button>
-                    {/* <button type="submit" 
-                      className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
-                      onClick={submitFormPayLater}>
-                      Learn Now Pay Later
-                    </button> */}
                   </form>
                       
 
                     </div>
-                      {/* <button type="submit" className={!checkAct2 ? "disable-btn" : "button"} onClick={showFormPayLayer}>
-                        Continue
-                      </button> */}
                   </div>
                 </div>
               )} 

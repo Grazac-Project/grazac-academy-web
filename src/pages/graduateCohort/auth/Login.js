@@ -59,7 +59,8 @@ function Login() {
 
           btn.innerHTML = `Sign in`;
           setTimeout(function () {
-            window.location = "/dashboard";
+            // window.location = "/dashboard";
+            window.location = "/mode";
           }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");

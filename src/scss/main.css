@@ -5416,6 +5416,27 @@ input:focus, select:focus, textarea:focus {
 .dashboard-content-back p {
   margin: 5px 0 0 10px;
 }
+.dashboard-content-back2 {
+  display: flex;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-left: 0px;
+}
+.dashboard-content-back2 img {
+  width: 15px;
+}
+.dashboard-content-back2 p {
+  margin: 5px 0 0 10px;
+}
+.dashboard-content .guarantor-form-label {
+  padding: 8px 5px;
+  border-radius: 28px;
+  background-color: #773dd3;
+  color: #fff;
+  font-family: "Nunito Sans", sans-serif;
+  width: 176px;
+  text-align: center;
+}
 .dashboard-content-form {
   box-shadow: 0px 5px 15px rgba(120, 118, 118, 0.12);
   border-radius: 15px;
@@ -5483,6 +5504,77 @@ input:focus, select:focus, textarea:focus {
 }
 @media (max-width: 400px) {
   .dashboard-content-form-container-image {
+    width: 100%;
+  }
+}
+.dashboard-content-form2 {
+  box-shadow: 0px 5px 15px rgba(120, 118, 118, 0.12);
+  border-radius: 15px;
+  padding: 40px 40px 100px;
+  margin: 0 20px 50px;
+  margin-left: 0px;
+  max-width: 700px;
+}
+@media (max-width: 769px) {
+  .dashboard-content-form2 {
+    padding: 40px 20px 100px;
+    margin: 0 0px 50px;
+  }
+}
+.dashboard-content-form2-container {
+  position: relative;
+  box-sizing: border-box;
+}
+.dashboard-content-form2-container label {
+  font-size: 16px;
+  color: #333333;
+  margin-top: 25px;
+}
+.dashboard-content-form2-container input, .dashboard-content-form2-container select, .dashboard-content-form2-container textarea {
+  width: 100%;
+  margin: 5px 0 0;
+  padding: 7px 20px;
+  font-size: 16px;
+  color: #787676;
+  border-radius: 10px;
+  border: 1px solid #D9DCE1;
+}
+.dashboard-content-form2-container textarea {
+  height: 200px;
+}
+.dashboard-content-form2-container input[type=file]::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}
+.dashboard-content-form2-container .upload-text {
+  font-size: 16px;
+  color: #787676;
+  position: absolute;
+  background: white;
+  bottom: -2px;
+  left: 20px;
+  min-width: 200px;
+}
+.dashboard-content-form2-container .upload-img {
+  width: 20px;
+  position: absolute;
+  bottom: 9px;
+  right: 20px;
+}
+.dashboard-content-form2-container-prev {
+  color: #787676 !important;
+  background: white !important;
+  border: 1px solid #787676 !important;
+  margin: 20px 15px 20px 0 !important;
+  float: right;
+}
+.dashboard-content-form2-container-image {
+  width: 300px;
+  margin-top: 10px;
+}
+@media (max-width: 400px) {
+  .dashboard-content-form2-container-image {
     width: 100%;
   }
 }

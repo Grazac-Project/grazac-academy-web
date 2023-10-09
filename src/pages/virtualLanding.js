@@ -14,7 +14,7 @@ import Content3 from "../images/virtual/content3.svg";
 import Content4 from "../images/virtual/content4.svg";
 import Content5 from "../images/virtual/content5.svg";
 import { useState, useEffect } from "react";
-import { format, differenceInSeconds } from "date-fns";
+import { format, differenceInSeconds } from "date-fns/locale/en-US";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

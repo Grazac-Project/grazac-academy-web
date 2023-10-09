@@ -416,8 +416,92 @@ const Landing = () => {
                   </div>
                 </div>
               </Link>
+              <Link
+                to={`/course-detail-graduate?course=machine-learning`}
+                className="boxes33"
+              >
+                <div className="gua_cardview">
+                  <div className="gua_cardview-box">
+                    <img src={machine_learning} alt="course-desc" />
+                  </div>
+                  <div className="gua_cardview-text">
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                      Machine learning with Python
+                    </h4>
+                    <p>
+                      Product management is the process of strategically guiding
+                      a company's product development, market launch, ongoing
+                      support and improvement of a product. It is basically
+                      making a product the best version it can be and
+                      fine-tuning a company’s product in order to make it appeal
+                      to the organization’s target audience and customers
+                    </p>
+                    <Link
+                      to={`/course-detail-graduate?course=machine-learning`}
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </Link>
+              <Link
+                to={`/course-detail-graduate?course=java`}
+                className="boxes33"
+              >
+                <div className="gua_cardview">
+                  <div className="gua_cardview-box">
+                    <img src={java} alt="course-desc" />
+                  </div>
+                  <div className="gua_cardview-text">
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                      Java
+                    </h4>
+                    <p>
+                      Product management is the process of strategically guiding
+                      a company's product development, market launch, ongoing
+                      support and improvement of a product. It is basically
+                      making a product the best version it can be and
+                      fine-tuning a company’s product in order to make it appeal
+                      to the organization’s target audience and customers
+                    </p>
+                    <Link
+                      to={`/course-detail-graduate?course=java`}
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </Link>
+              <Link
+                to={`/course-detail-graduate?course=data-analysis`}
+                className="boxes33"
+              >
+                <div className="gua_cardview">
+                  <div className="gua_cardview-box">
+                    <img src={data_analysis} alt="course-desc" />
+                  </div>
+                  <div className="gua_cardview-text">
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                      Data Analysis
+                    </h4>
+                    <p>
+                      Product management is the process of strategically guiding
+                      a company's product development, market launch, ongoing
+                      support and improvement of a product. It is basically
+                      making a product the best version it can be and
+                      fine-tuning a company’s product in order to make it appeal
+                      to the organization’s target audience and customers
+                    </p>
+                    <Link
+                      to={`/course-detail-graduate?course=data-analysis`}
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </Link>
             </div>
-            <Link to="/VitualLanding">
+            <Link to="/signup">
               <div
                 className="nav__btn"
                 style={{ width: "130px", margin: "auto", textAlign: "center" }}
@@ -665,133 +749,119 @@ const Landing = () => {
             <div>
               <Accordion>
                 <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>What is Grazac Graduate Academy?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <div>
-                          <p>Grazac Academy is closing the gap between youths and entry-level jobs 
-                            in the technology industry. We strongly believe the job market for youths 
-                            has changed and the future of work will be skill-based.
-                          </p>
+                    <Accordion.Toggle as={Card.Header} eventKey="1">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>Do I have to be physically present to register?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="1">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
                           <p>
-                            We are approaching this in two ways:
+                            No, registration is to be done online.
                           </p>
-                          <p>
-                            Grazac Academy Graduate Accelerator - This plan is for tertiary institutions graduates who have full time to build a career in tech. 
-                            This plan has been arranged in a way to prepare them for work.
-                          </p>
-                          <p>
-                            Grazac Academy Undergraduate Accelerator - This plan is to equip undergraduates in their institutions, we believe the earlier the better and we want 
-                            to prepare them for life after school by upskilling them while they are still in school.
-                          </p>    
                         </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <hr />
+                  <Card>
+                    <Accordion.Toggle as={Card.Header} eventKey="2">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>Are classes virtual or onsite?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I have to be physically present to register?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          No, registration is to be done online.
-                        </p>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="2">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
+                          <p>
+                            Classes would be onsite or virtually, depending on the mode of learning you prefer.
+                          </p>
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <hr />
+                  <Card>
+                    <Accordion.Toggle as={Card.Header} eventKey="3">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>
+                          What is the duration of the program?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="2">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Are classes virtual or onsite?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="2">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
-                        </p>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="3">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
+                          <p>
+                            The program is for a duration of 12 months,
+                              consisting of 8 months  immersive training and 4 months internship.
+                          </p>
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <hr />
+                  <Card>
+                    <Accordion.Toggle as={Card.Header} eventKey="4">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="3">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>
-                        What is the duration of the program?
-                      </h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="3">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          The program is for a duration of 12 months,
-                            consisting of 8 months  immersive training and 4 months internship.
-                        </p>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="4">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
+                          <p>
+                          Yes,please. However, as an undergraduate, you are strongly 
+                          advised to choose our virtual learning mode due to its flexibility.
+                          </p>
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <hr />
+                  <Card>
+                    <Accordion.Toggle as={Card.Header} eventKey="5">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>Do you offer any certification after the course?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="4">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="4">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                        Yes,please. However, as an undergraduate, you are strongly 
-                        advised to choose our virtual learning mode due to its flexibility.
-                        </p>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="5">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
+                          <p>
+                            Yes, students who complete our courses will receive a virtual and hardcopy 
+                            certificate of completion
+                          </p>
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <hr />
+                  <Card>
+                    <Accordion.Toggle as={Card.Header} eventKey="6">
+                      <div className="landing_faq-question" onClick={handleFaq}>
+                        <h4>What is the cost of learning at Grazac Academy</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="5">
-                    <div className="landing_faq-question" onClick={handleFaq}>
-                      <h4>Would the academy get me a job?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="5">
-                    <Card.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          We offer our exceptional students job opportunities in our hiring network 
-                          within 9-12 months of learning to enter the recruitment process in securing 
-                          their dream job. In essence, we equip all our students with the level of 
-                          competency employers are looking for so they can secure the job they really desire.
-                        </p>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
+                    </Accordion.Toggle>
+                    <Accordion.Collapse eventKey="6">
+                      <Card.Body>
+                        <div className="landing_faq-answer">
+                          <p>
+                            For our virtual classes, the cost for all courses is #1,000,000
+                          </p>
+                          <p>While for our virtual classes, the cost is $200. To get more information 
+                            about our pricing, <a>Click here</a></p>
+                        </div>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
                 <Link to="/faq" className="link-view">
                   <h5>View All</h5>
                 </Link>
