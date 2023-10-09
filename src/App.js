@@ -12,7 +12,6 @@ import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
 import Tawk from "./components/tawkTo/tawk";
-import VitualLanding from "./pages/virtualLanding";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -108,7 +107,8 @@ const AcademySettingsPage = lazy(() => {
   return import("../src/academy-dashboard/pages/settings/Settings");
 });
 const Pricing = lazy(() => {
-  return import("./components/NewPrice/NewPrice");
+  return import("./pages/pricing");
+  
 });
 
 const App = () => {

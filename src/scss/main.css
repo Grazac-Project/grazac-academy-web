@@ -2317,6 +2317,7 @@ input:focus, select:focus, textarea:focus {
 }
 .Vitual_slider {
   display: flex;
+  background-color: #dccdf4;
 }
 @media screen and (max-width: 940px) {
   .Vitual_slider {
@@ -2522,7 +2523,7 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 680px) {
   .content {
     width: 80%;
-    padding: 30px;
+    padding: 40px;
   }
 }
 .content h3 {
@@ -2559,7 +2560,7 @@ input:focus, select:focus, textarea:focus {
 }
 @media (max-width: 680px) {
   .content_selectFlex {
-    width: 80%;
+    width: 85%;
   }
 }
 @media (max-width: 425px) {
@@ -2574,14 +2575,17 @@ input:focus, select:focus, textarea:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 13.144px;
+  gap: 10px;
   border-radius: 13.144px;
   background: #fff;
   box-shadow: 0px 1.64297px 6.57189px 0px rgba(0, 0, 0, 0.15);
 }
+.content_selectFlex_select_select:hover {
+  background: #773dd3;
+}
 @media (max-width: 680px) {
   .content_selectFlex_select {
-    width: 80%;
+    width: 200px;
     padding: 30px;
   }
 }
@@ -5616,4 +5620,162 @@ input:focus, select:focus, textarea:focus {
 }
 .dashboard-content-modal-back {
   padding-top: 0;
+}
+
+.pricing {
+  align-items: center;
+  margin: auto;
+  width: 80%;
+}
+@media screen and (max-width: 1352px) {
+  .pricing {
+    width: 90%;
+  }
+}
+.pricing h1 {
+  color: #073041;
+  text-align: center;
+  font-family: Georgia;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+@media screen and (max-width: 400px) {
+  .pricing h1 {
+    font-size: 50px;
+  }
+}
+.pricing p {
+  color: #787676;
+  text-align: center;
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.pricing .virtualButtons {
+  border-radius: 28px;
+  cursor: pointer;
+  display: flex;
+  width: 187.5px;
+  height: 60px;
+  padding: 0px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--Main-Color, #773dd3);
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+}
+@media screen and (max-width: 780px) {
+  .pricing .virtualButtons {
+    width: 160px;
+    padding: 0px 10px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pricing .virtualButtons {
+    font-size: 16px;
+  }
+}
+.pricing .onsiteButtons {
+  border-radius: 28px;
+  cursor: pointer;
+  display: flex;
+  width: 187.5px;
+  height: 60px;
+  padding: 0px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--Main-Color, #773dd3);
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: none;
+}
+@media screen and (max-width: 780px) {
+  .pricing .onsiteButtons {
+    width: 160px;
+    padding: 0px 10px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pricing .onsiteButtons {
+    font-size: 16px;
+  }
+}
+.pricing .virtualButtons:hover .active {
+  background: var(--Main-Color, #773dd3);
+  color: #fff;
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.pricing button:hover {
+  color: #fff;
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--Main-Color, #773dd3);
+}
+@media screen and (max-width: 400px) {
+  .pricing button:hover {
+    font-size: 16px;
+  }
+}
+.pricing button:active {
+  color: #fff;
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--Main-Color, #773dd3);
+}
+@media screen and (max-width: 400px) {
+  .pricing button:active {
+    font-size: 16px;
+  }
+}
+.pricing_toggle {
+  width: 391px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 36px;
+  border: 2px solid var(--Main-Color, #773dd3);
+  background: #f8fafd;
+  margin: 48px auto;
+  padding: 8px;
+}
+@media screen and (max-width: 780px) {
+  .pricing_toggle {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pricing_toggle {
+    width: 90%;
+  }
+}
+.pricing .container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
 }/*# sourceMappingURL=main.css.map */

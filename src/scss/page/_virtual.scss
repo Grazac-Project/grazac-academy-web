@@ -180,10 +180,8 @@
       &_steps {
         width: 411px;
         @media screen and (max-width: 768px) {
-        width: 100%;
-          
+          width: 100%;
         }
-
       }
       &_stepFlex {
         display: flex;
@@ -244,10 +242,10 @@
       }
     }
   }
-  &_slider {
+  &_slider  {
     display: flex;
 
-    // background-color: $color-pale-purple;
+    background-color: $color-pale-purple;
 
     @media screen and (max-width: 940px) {
       display: block;

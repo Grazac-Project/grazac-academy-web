@@ -21,7 +21,6 @@
   width: 542px;
   padding: 50px;
   margin: auto;
-
   border-radius: 4px;
   background: #fff;
   box-shadow: 0px 1px 10px 0px rgba(120, 118, 118, 0.05);
@@ -30,7 +29,7 @@
 
   @media (max-width: 680px) {
     width: 80%;
-    padding: 30px;
+    padding: 40px;
   }
   h3 {
     color: #1d1e2c;
@@ -65,7 +64,7 @@
     align-items: center;
     gap: 24px;
     @media (max-width: 680px) {
-      width: 80%;
+      width: 85%;
     }
     @media (max-width: 425px) {
     flex-direction: column;
@@ -78,15 +77,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 13.144px;
+      gap: 10px;
       border-radius: 13.144px;
       background: #fff;
       box-shadow: 0px 1.64297px 6.57189px 0px rgba(0, 0, 0, 0.15);
-      :hover {
-        // background: $color-inspiring-purple;
+      &_select:hover {
+        background: $color-inspiring-purple;
       }
       @media (max-width: 680px) {
-        width: 80%;
+        width: 200px;
         padding: 30px;
       }
       
