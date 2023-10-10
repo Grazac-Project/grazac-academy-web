@@ -1,4 +1,5 @@
 .pricing {
+  
   align-items: center;
   margin: auto;
   width: 80%;
@@ -14,10 +15,8 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 400px) {
       font-size: 50px;
-
-    
     }
   }
   p {
@@ -39,25 +38,24 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: var(--Main-Color, #773dd3);
+    color: #fff;
+    background-color: #773dd3;
     font-family: Nunito Sans;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     border: none;
-    @media screen and (max-width: 780px){
+    @media screen and (max-width: 780px) {
       width: 160px;
       padding: 0px 10px;
-    
     }
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 400px) {
       font-size: 16px;
+  
 
-    
     }
     // background: var(--Main-Color, #773dd3);
-    
   }
   .onsiteButtons {
     border-radius: 28px;
@@ -69,65 +67,41 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: var(--Main-Color, #773dd3);
+    background-color: #773dd3;
+    color: #fff;
     font-family: Nunito Sans;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     border: none;
-    @media screen and (max-width: 780px){
+    @media screen and (max-width: 780px) {
       width: 160px;
       padding: 0px 10px;
-    
     }
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 400px) {
       font-size: 16px;
+      width: 140px;
 
-    
+      // padding: 0px 5px;
+
     }
-    
+
     // background: var(--Main-Color, #773dd3);
-    
-  }
-  .virtualButtons:hover .active{
-    background: var(--Main-Color, #773dd3);
-    color: #fff;
-  font-family: Nunito Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  
   }
   
-  button:hover{
-    color: #fff;
-  font-family: Nunito Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  background: var(--Main-Color, #773dd3);
-  @media screen and (max-width: 400px){
-    font-size: 16px;
 
-  
-  }
-  }
-  button:active{
-    color: #fff;
-  font-family: Nunito Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  background: var(--Main-Color, #773dd3);
-  @media screen and (max-width: 400px){
-    font-size: 16px;
-
-  
-  }
+  .active {
+    cursor:pointer;
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--Main-Color, #773dd3);
+    @media screen and (max-width: 400px) {
+      font-size: 14px;
+    }
   }
   &_toggle {
     width: 391px;
@@ -141,14 +115,13 @@
     background: #f8fafd;
     margin: 48px auto;
     padding: 8px;
-    @media screen and (max-width: 780px){
+    @media screen and (max-width: 780px) {
       width: 350px;
-    
     }
-    @media screen and (max-width: 400px){
-      width: 90%;
+    @media screen and (max-width: 400px) {
+      width: 95%;
+    gap: 8px;
 
-    
     }
   }
   .container {

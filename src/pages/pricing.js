@@ -19,22 +19,22 @@ const Pricing = () => {
         <h1>Plans and Pricings</h1>
         <p>No surprise fees, no hidden charges</p>
         <div className="pricing_toggle">
-          <button
+          <div
             className={
-              activeTab === "onsite" ? "onsiteButtons" : "virtualButtons"
+              activeTab === "onsite" ? "onsiteButtons" : "active" 
             }
             onClick={() => handleTabClick("onsite")}
           >
             Onsite pricing
-          </button>
-          <button
+          </div>
+          <div
             className={
-              activeTab === "Virtual" ? "virtualButtons" : "onsiteButtons"
+              activeTab === "Virtual" ? "virtualButtons" : "active"
             }
             onClick={() => handleTabClick("Virtual")}
           >
             Virtual pricing
-          </button>
+          </div>
         </div>
         <div className="pricing_container">
           {activeTab === "onsite" && <NewPricing />}
@@ -54,6 +54,7 @@ const Pricing = () => {
                 width: "172px",
                 textAlign: "center",
                 alignItems: "center",
+                marginTop: "20px",
               }}
             >
               <div>Proceed</div>

@@ -3,6 +3,7 @@ import classes from "./NewPrice.module.css";
 const NewPricing = () => {
   const NewPrice = [
     {
+      id: 1,
       type: "Pay Installment",
       prevAmount: "₦1,200,000 ($1000)",
       newAmount: "₦1,050,000 ",
@@ -17,9 +18,9 @@ const NewPricing = () => {
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
         "Free wi-fi",
       ],
-     
     },
     {
+      id: 2,
       type: "Pay at Once",
       prevAmount: "₦1,200,000 ($1200)",
       newAmount: "₦1,000,000 ",
@@ -35,9 +36,9 @@ const NewPricing = () => {
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
         "Free wi-fi",
       ],
-      
     },
     {
+      id: 3,
       type: "Learn Now pay later",
       prevAmount: "₦1,000,000 ($1000)",
       newAmount: "₦1,200,000 ",
@@ -51,7 +52,6 @@ const NewPricing = () => {
         "Placement support services li Fe CV review, soft skills training, salary negotiation sessions etc.",
         "Free wi-fi",
       ],
-      
     },
   ];
 
@@ -62,26 +62,28 @@ const NewPricing = () => {
           <h5>{item.type}</h5>
           <div className={classes.priceTag}>
             <h3>
-              {item.newAmount}<span>{item.spanNewAmount}</span>
+              {item.newAmount}
+              <span>{item.spanNewAmount}</span>
             </h3>
             <p>{item.prevAmount}</p>
             <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>
             <ul>
-              <span>
-                <li>{item.span}</li>
-              </span>
+              {item.id === 1 ? (
+                <span>
+                  <li>{item.span}</li>
+                </span>
+              ) : null}
 
               {item.benefits.map((benefit, id) => (
                 <li key={id}>{benefit}</li>
               ))}
             </ul>
 
-            
+            {item.id === 2 ? (
               <div className={classes.recommend}>{item.recommend}</div>
-              
-            
+            ) : null}
           </div>
         </div>
       ))}

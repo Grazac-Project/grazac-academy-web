@@ -23,20 +23,22 @@ const Mode = () => {
   };
   const handlePhysical = () => {
     sessionStorage.setItem(
-      'mode_selection', JSON.stringify({
-        physical: '1',
+      "mode_selection",
+      JSON.stringify({
+        physical: "1",
       })
-    )
-    history.push('/dashboard')
-  }
+    );
+    history.push("/dashboard");
+  };
   const handleVisual = () => {
     sessionStorage.setItem(
-      'mode_selection', JSON.stringify({
-        virtual: '2',
+      "mode_selection",
+      JSON.stringify({
+        virtual: "2",
       })
-    )
-    history.push('/dashboard')
-  }
+    );
+    history.push("/dashboard");
+  };
 
   return (
     <div className="mode">
@@ -51,16 +53,23 @@ const Mode = () => {
           <p>How would you like to learn with us?</p>
 
           <div className="content_selectFlex">
-              <div className="content_selectFlex_select" onClick={handlePhysical}>
+            <div className="content_selectFlex_select_content">
+              <div
+                className="content_selectFlex_select"
+                onClick={handlePhysical}
+              >
                 <div className="selectContainer">
                   <img src={Physical} alt="img" />
                   <h4>Physical Class</h4>
                 </div>
               </div>
-            <div className="content_selectFlex_select" onClick={handleVisual}>
-              <div className="selectContainer">
-                <img src={Virtual} alt="img" />
-                <h4>Virtual Class</h4>
+            </div>
+            <div className="content_selectFlex">
+              <div className="content_selectFlex_select" onClick={handleVisual}>
+                <div className="selectContainer">
+                  <img src={Virtual} alt="img" />
+                  <h4>Virtual Class</h4>
+                </div>
               </div>
             </div>
           </div>

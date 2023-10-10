@@ -28,8 +28,6 @@ import machine_learning from "../images/machine_learning.png";
 import java from "../images/java.png";
 import data_analysis from "../images/data_analysis.png";
 
-
-
 const VirtualLanding = () => {
   var settings = {
     dots: true,
@@ -39,15 +37,24 @@ const VirtualLanding = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500, // Adjust the speed as needed
-    cssEase: 'linear',
+    cssEase: "linear",
     arrows: true,
     // swipeToSlide: true,
     // afterChange: function(index) {
     //   console.log(
     //     `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
     //   )
-      
+
     // }
+  };
+  const scrollToTarget = () => {
+    const targetElement = document.querySelector(".landing__intern--content");
+
+    // Check if the element is found
+    if (targetElement) {
+      // Scroll to the target element
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const targetDate = new Date("2023-12-31T23:59:59");
@@ -99,14 +106,14 @@ const VirtualLanding = () => {
             from industry leaders from 19+ Countries to forge your ideal career
             path
           </p>
-          <Link to="/login">
-            <button
-              className="Vitual_btn"
-              style={{ width: "172px", textAlign: "center" }}
-            >
-              <div>View Courses</div>
-            </button>
-          </Link>
+
+          <button
+            className="Vitual_btn"
+            style={{ width: "172px", textAlign: "center" }}
+            onClick={scrollToTarget}
+          >
+            <div>View Courses</div>
+          </button>
         </div>
         <div className="Vitual_hero_girl">
           <img src={VitualHero} alt="hero" />
@@ -192,88 +199,84 @@ const VirtualLanding = () => {
             </div>
           </div>
           <div>
-
-          <div className="Vitual_slider">
-            <div className="Vitual_slider_img">
-              <img src={Slider2} alt="slider" />
-            </div>
-            <div className="Vitual_slider_2">
-              <div className="Vitual_slider_2_content">
-                <h1>Why Virtual Class?</h1>
-                <p>
-                  Choosing virtual classes with us opens up a world of
-                  possibilities for your education. Here are some key benefits
-                  you can enjoy
-                </p>
-                <div className="Vitual_slider_2_content_box">
-                  <img src={Content2} alt="img" />
+            <div className="Vitual_slider">
+              <div className="Vitual_slider_img">
+                <img src={Slider2} alt="slider" />
+              </div>
+              <div className="Vitual_slider_2">
+                <div className="Vitual_slider_2_content">
+                  <h1>Why Virtual Class?</h1>
+                  <p>
+                    Choosing virtual classes with us opens up a world of
+                    possibilities for your education. Here are some key benefits
+                    you can enjoy
+                  </p>
+                  <div className="Vitual_slider_2_content_box">
+                    <img src={Content2} alt="img" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
           <div>
-
-          <div className="Vitual_slider">
-            <div className="Vitual_slider_img">
-              <img src={Slider3} alt="slider" />
-            </div>
-            <div className="Vitual_slider_2">
-              <div className="Vitual_slider_2_content">
-                <h1>Why Virtual Class?</h1>
-                <p>
-                  Choosing virtual classes with us opens up a world of
-                  possibilities for your education. Here are some key benefits
-                  you can enjoy
-                </p>
-                <div className="Vitual_slider_2_content_box">
-                  <img src={Content3} alt="img" />
+            <div className="Vitual_slider">
+              <div className="Vitual_slider_img">
+                <img src={Slider3} alt="slider" />
+              </div>
+              <div className="Vitual_slider_2">
+                <div className="Vitual_slider_2_content">
+                  <h1>Why Virtual Class?</h1>
+                  <p>
+                    Choosing virtual classes with us opens up a world of
+                    possibilities for your education. Here are some key benefits
+                    you can enjoy
+                  </p>
+                  <div className="Vitual_slider_2_content_box">
+                    <img src={Content3} alt="img" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
           <div>
-
-          <div className="Vitual_slider">
-            <div className="Vitual_slider_img">
-              <img src={Slider4} alt="slider" />
-            </div>
-            <div className="Vitual_slider_2">
-              <div className="Vitual_slider_2_content">
-                <h1>Why Virtual Class?</h1>
-                <p>
-                  Choosing virtual classes with us opens up a world of
-                  possibilities for your education. Here are some key benefits
-                  you can enjoy
-                </p>
-                <div className="Vitual_slider_2_content_box">
-                  <img src={Content4} alt="img" />
+            <div className="Vitual_slider">
+              <div className="Vitual_slider_img">
+                <img src={Slider4} alt="slider" />
+              </div>
+              <div className="Vitual_slider_2">
+                <div className="Vitual_slider_2_content">
+                  <h1>Why Virtual Class?</h1>
+                  <p>
+                    Choosing virtual classes with us opens up a world of
+                    possibilities for your education. Here are some key benefits
+                    you can enjoy
+                  </p>
+                  <div className="Vitual_slider_2_content_box">
+                    <img src={Content4} alt="img" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
           <div>
-
-          <div className="Vitual_slider">
-            <div className="Vitual_slider_img">
-              <img src={Slider5} alt="slider" />
-            </div>
-            <div className="Vitual_slider_2">
-              <div className="Vitual_slider_2_content">
-                <h1>Why Virtual Class?</h1>
-                <p>
-                  Choosing virtual classes with us opens up a world of
-                  possibilities for your education. Here are some key benefits
-                  you can enjoy
-                </p>
-                <div className="Vitual_slider_2_content_box">
-                  <img src={Content5} alt="img" />
+            <div className="Vitual_slider">
+              <div className="Vitual_slider_img">
+                <img src={Slider5} alt="slider" />
+              </div>
+              <div className="Vitual_slider_2">
+                <div className="Vitual_slider_2_content">
+                  <h1>Why Virtual Class?</h1>
+                  <p>
+                    Choosing virtual classes with us opens up a world of
+                    possibilities for your education. Here are some key benefits
+                    you can enjoy
+                  </p>
+                  <div className="Vitual_slider_2_content_box">
+                    <img src={Content5} alt="img" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </Slider>
       </section>
