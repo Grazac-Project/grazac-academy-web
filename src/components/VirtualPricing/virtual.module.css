@@ -4,10 +4,11 @@
   justify-content: center;
   align-items: flex-end;
   gap: 16px;
-  @media screen and (max-width: 400px){
-    
-
-  
+}
+@media screen and (max-width: 768px) {
+  .card {
+    margin: 0;
+    margin-bottom: 30px;
   }
 }
 .card {
@@ -25,12 +26,18 @@
   position: relative;
   margin: auto;
   margin: 48px 0;
-  
-  
+}
+@media screen and (max-width: 768px) {
+  .card {
+    margin: 0;
+  }
 }
 
 .main :hover {
   background-color: #773dd3;
+}
+.main :hover p h5 h3 {
+  background-color: #fff;
 }
 .main h5 {
   color: #773dd3;
@@ -105,7 +112,7 @@
   font-weight: 700;
   line-height: normal;
 }
-.recommend:nth-child(1) {
+.recommend {
   display: flex;
   width: 186px;
   padding: 10px 20px;

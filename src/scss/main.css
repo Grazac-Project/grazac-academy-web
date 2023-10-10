@@ -2150,7 +2150,6 @@ input:focus, select:focus, textarea:focus {
 .Vitual_countdown {
   display: flex;
   gap: 20px;
-  text-align: center;
   align-items: center;
   width: 95%;
   margin: 55px auto;
@@ -2495,9 +2494,9 @@ input:focus, select:focus, textarea:focus {
   font-family: "Nunito Sans", sans-serif;
 }
 .mode_main_logo {
-  margin-top: 50px;
+  margin-top: 20px;
   margin-left: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 @media (max-width: 700px) {
   .mode_main_logo {
@@ -2518,7 +2517,7 @@ input:focus, select:focus, textarea:focus {
   border-radius: 4px;
   background: #fff;
   box-shadow: 0px 1px 10px 0px rgba(120, 118, 118, 0.05);
-  margin-bottom: 45px;
+  margin-bottom: 50px;
 }
 @media (max-width: 680px) {
   .content {
@@ -2553,8 +2552,7 @@ input:focus, select:focus, textarea:focus {
 }
 .content_selectFlex {
   display: flex;
-  margin: auto;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 24px;
 }
@@ -2568,20 +2566,20 @@ input:focus, select:focus, textarea:focus {
     flex-direction: column;
   }
 }
+.content_selectFlex_select:hover {
+  background: #cfb9f9;
+}
 .content_selectFlex_select {
   display: flex;
   width: 201px;
-  padding: 50px;
+  height: 201px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border-radius: 13.144px;
   background: #fff;
   box-shadow: 0px 1.64297px 6.57189px 0px rgba(0, 0, 0, 0.15);
-}
-.content_selectFlex_select_select:hover {
-  background: #773dd3;
+  cursor: pointer;
 }
 @media (max-width: 680px) {
   .content_selectFlex_select {
@@ -5757,7 +5755,8 @@ input:focus, select:focus, textarea:focus {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: var(--Main-Color, #773dd3);
+  color: #fff;
+  background-color: #773dd3;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
@@ -5786,7 +5785,8 @@ input:focus, select:focus, textarea:focus {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: var(--Main-Color, #773dd3);
+  background-color: #773dd3;
+  color: #fff;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
@@ -5803,43 +5803,21 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 400px) {
   .pricing .onsiteButtons {
     font-size: 16px;
+    width: 140px;
   }
 }
-.pricing .virtualButtons:hover .active {
-  background: var(--Main-Color, #773dd3);
-  color: #fff;
+.pricing .active {
+  cursor: pointer;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-.pricing button:hover {
-  color: #fff;
-  font-family: Nunito Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  background: var(--Main-Color, #773dd3);
+  color: var(--Main-Color, #773dd3);
 }
 @media screen and (max-width: 400px) {
-  .pricing button:hover {
-    font-size: 16px;
-  }
-}
-.pricing button:active {
-  color: #fff;
-  font-family: Nunito Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  background: var(--Main-Color, #773dd3);
-}
-@media screen and (max-width: 400px) {
-  .pricing button:active {
-    font-size: 16px;
+  .pricing .active {
+    font-size: 14px;
   }
 }
 .pricing_toggle {
@@ -5862,7 +5840,8 @@ input:focus, select:focus, textarea:focus {
 }
 @media screen and (max-width: 400px) {
   .pricing_toggle {
-    width: 90%;
+    width: 95%;
+    gap: 8px;
   }
 }
 .pricing .container {
