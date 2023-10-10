@@ -2558,11 +2558,6 @@ input:focus, select:focus, textarea:focus {
 }
 @media (max-width: 680px) {
   .content_selectFlex {
-    width: 85%;
-  }
-}
-@media (max-width: 425px) {
-  .content_selectFlex {
     flex-direction: column;
   }
 }
@@ -5806,7 +5801,7 @@ input:focus, select:focus, textarea:focus {
     width: 140px;
   }
 }
-.pricing .active {
+.pricing .activebtn {
   cursor: pointer;
   font-family: Nunito Sans;
   font-size: 20px;
@@ -5816,7 +5811,7 @@ input:focus, select:focus, textarea:focus {
   color: var(--Main-Color, #773dd3);
 }
 @media screen and (max-width: 400px) {
-  .pricing .active {
+  .pricing .activebtn {
     font-size: 14px;
   }
 }
