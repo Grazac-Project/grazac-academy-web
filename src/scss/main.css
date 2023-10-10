@@ -607,7 +607,7 @@ input:focus, select:focus, textarea:focus {
 }
 .infomodal_content p {
   margin: 5px 10px 0 20px;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 32.74px;
   color: #073041;
 }
@@ -895,6 +895,11 @@ input:focus, select:focus, textarea:focus {
   font-size: 18px;
   line-height: 18px;
   color: #773dd3;
+}
+.virtual_container_info button:hover {
+  background: #773dd3;
+  color: #fff;
+  border: 1.5px solid #fff;
 }
 @media (max-width: 600px) {
   .virtual_container_info button {
@@ -1403,7 +1408,7 @@ input:focus, select:focus, textarea:focus {
 .landing__slider-text1 p {
   color: #787676;
   text-align: center;
-  margin: 0 20px;
+  margin: 0 20px 25px 0;
 }
 .landing__slider-contain {
   width: 100vw;

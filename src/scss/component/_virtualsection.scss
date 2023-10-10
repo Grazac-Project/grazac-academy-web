@@ -53,6 +53,11 @@
             font-size: 18px;
             line-height: 18px;
             color: $color-inspiring-purple;
+            &:hover{
+                background: $color-inspiring-purple;
+                color: #fff;
+                border: 1.5px solid #fff;
+            }
             @media(max-width:600px){
                 display: block;
                 margin: 0 auto;
