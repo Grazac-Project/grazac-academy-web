@@ -33,12 +33,7 @@
   }
 }
 
-.main :hover {
-  background-color: #773dd3;
-}
-.main :hover p h5 h3 {
-  background-color: #fff;
-}
+
 .main h5 {
   color: #773dd3;
   text-align: center;
@@ -133,4 +128,25 @@
   transform: translateX(-50%);
   margin: auto;
   margin-bottom: 300px;
+}
+.card:hover {
+  background: #773dd3;
+  cursor: pointer;
+}
+.card:hover h5 {
+  color: #ffffff;
+
+}
+.card:hover .priceTag p {
+  color: #cfb9f9;
+}
+.card:hover .priceTag > h3,
+.card:hover .priceTag ul li,
+.card:hover .benefits ul li,
+.card:hover .benefits p {
+  color: #ffffff;
+}
+.card:hover .discount span {
+  color: #ffffff;
+  background: #000000;
 }

@@ -10,6 +10,7 @@ import about from "../../../images/about-1.jpg";
 import termsandconds from "../../../images/newsletter/terms.pdf";
 import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 
+
 function NotSubmitted({
   fname,
   lname,
@@ -40,7 +41,9 @@ function NotSubmitted({
     current_city_and_location: "",
     physically_available: '',
     paymentOption: '',
-    why_selected_for_cohort: ''
+    why_selected_for_cohort: '',
+    city: '',
+    state: ''
   });
   const [formGuarantor, setFormGuarantor] = useState({
     firstname: '',
@@ -81,22 +84,22 @@ function NotSubmitted({
     } catch (err) {}
     // setBioData(userDetails)
 
-    // axios
-    //   .get("https://nigerian-states-info.herokuapp.com/api/v1/states")
-    //   .then((response) => {
-    //     setNigerianStates(response.data.data);
-    //   });
+    axios
+      .get("https://nigerian-states-info.herokuapp.com/api/v1/states")
+      .then((response) => {
+        setNigerianStates(response.data.data);
+      });
 
-    // {
-    //   nigerianStates.length === 0 &&
-    //     axios
-    //       .post("https://countriesnow.space/api/v0.1/countries/states", {
-    //         country: "Nigeria",
-    //       })
-    //       .then((response) => {
-    //         setNigerianStates(response.data.data.states);
-    //       });
-    // }
+    {
+      nigerianStates.length === 0 &&
+        axios
+          .post("https://countriesnow.space/api/v0.1/countries/states", {
+            country: "Nigeria",
+          })
+          .then((response) => {
+            setNigerianStates(response.data.data.states);
+          });
+    }
   }, []);
   useEffect(() => {
     let mode = sessionStorage.getItem('mode_selection');
@@ -157,6 +160,16 @@ function NotSubmitted({
     if (check.checked) {
       setActive("form");
       setFormActive("bio-data");
+    } else {
+      toast.warn("You need to accept the terms and conditions to proceed!");
+    }
+  };
+  const showFormVirtual = () => {
+    // toast.info("Application for this cohort has ended. Please check back later!!!")
+    var check = document.getElementById("check");
+    if (check.checked) {
+      setActive("form");
+      setFormActive("bio-data-virtual");
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
@@ -354,23 +367,24 @@ function NotSubmitted({
     <div>
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
+      {/* ========================== WELCOME PHYSICAL ==================================  */}
       {(active === "welcome" && modeSelection.physical == '1') && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
-            Thank you for choosing to build your career in tech with us!
+            Learn with us for 12 months
           </p>
           <p>
-            Grazac Academy is at the forefront of upskilling and connecting
-            youths to opportunities in the technology industry.
+            Grazac Academy offers a 12-month tech skills program with flexible payment options. 
+            The curriculum covers 8 tech disciplines which include:
           </p>
-          <p>
+          {/* <p>
             You can choose to learn virtually or physically with us. This
             program goes above and beyond to provide a superior educational
             experience, allowing students to develop a successful career in the
             tech industry through intensive training and internships.{" "}
-          </p>
-          <p>Our curriculum covers 5 basic tech disciplines that includes;</p>
+          </p> */}
+          {/* <p>Our curriculum covers 5 basic tech disciplines that includes;</p> */}
           <ul>
             <li>Product Designing (UI/UX)</li>
             <li>Product Management</li>
@@ -379,72 +393,47 @@ function NotSubmitted({
             </li>
             <li>Back end web development (Nodejs)</li>
             <li>Mobile Application Development (Flutter and Dart)</li>
+            <li>Data Analysis</li>
+            <li>Java</li>
+            <li>Machine Learning with Python</li>
           </ul>
           <h4>Pricing Plans</h4>
-          <p>Basic Criteria to be met</p>
-          <ul>
-            <li>Candidates must pass our assessment test</li>
-            <li>
-              Candidates must have strong ability to think and a strong learning
-              mindset
-            </li>
-            <li>
-              Candidates must be a Graduate or available full-time for at least
-              6 months.
-            </li>
-          </ul>
-          <h4>Physical Learning</h4>
-          <h5>Duration</h5>
+          <p>There's an application fee of N7,500. Payment options include:</p>
           <ul>
             <li>
-              6 months ( 3 months intensive training + 3 months internship).
+              <strong>Installment Payment: </strong>N210,000 initial payment, then N840,000 over 8 months.
             </li>
+            <li><strong>Full payment: </strong>N1,200,000 with a 16.6% discount which is <strong>N1,000,000</strong></li>
           </ul>
           <p>
+            Candidates must commit to 12 months. Installment payment candidates need guarantors and 
+            a N50,000 legal fee if selected.
+          </p>
+          {/* <h4>Physical Learning</h4> */}
+          <h4>Duration</h4>
+          <ul>
+            <li>
+              12months ( 8months intensive training + 4months internship).
+            </li>
+          </ul>
+          <h4>Basic Criteria to be met</h4>
+          {/* <p>
             Application fee is a non-refundable fee of 15,000 naira only the
             tuition fee is 500,000 naira only, we offer two basic forms of
             payment options and they are;
-          </p>
+          </p> */}
           <ul>
             <li>
-              <strong>Pay at once: </strong> You can pay your tuition fee all at
-              once with this plan. 6 months ( 3 months intensive training + 3
-              months internship).
-            </li>
-            <li>
-              <strong>Pay in instalments: </strong> We also have a plan that
-              allows you to pay in instalments. If you choose this, you are
-              expected to pay N300,000 immediately and spread the rest over 5
-              months of your training. This comes with a 10% interest on the
-              tuition fee.
-            </li>
-            {/* <li>
-              <strong>Learn now. Pay later (or ‘pay as you earn): </strong>You
-              can also decide to learn now and start paying back when you get a
-              job after your training. If you choose this, you would be required
-              to pay a non-refundable legal fee of N50,000 immediately and after
-              your training, you are expected to pay back the sum of 1500
-              dollars (which would be an equivalent to the black dollar rate at
-              the time that you start paying back) in 18 months after securing a
-              job following our repayment procedure
-            </li> */}
-          </ul>
+              Candidates must be available (full-time) for at least 8 months.
 
-          {/* <h4>Virtual Learning</h4>
-          <h5>Duration</h5>
-          <ul>
-            <li>2 months </li>
-          </ul>
-          <p>
-            Application fee is a non-refundable fee of 15,000 naira only and the
-            learning fee is 90,000 naira only, we offer only one form of payment
-          </p>
-          <ul>
+            </li>
             <li>
-              <strong>Pay at once: </strong> You can only pay your tuition fee
-              all at once with this plan
-            </li>{" "}
-          </ul> */}
+              Note that you will be mandated to provide guarantors and pay the sum of 50,000 Naira legal 
+              fee if selected for this cohort. This must be paid within a week after selection if you have 
+              chosen our Learn Now Pay Later
+
+            </li>
+          </ul>
 
           <div className="checkbox">
             <input type="checkbox" id="check" onClick={confirmCheck} />
@@ -467,6 +456,8 @@ function NotSubmitted({
           </button>
         </div>
       )}
+
+      {/* ========================== WELCOME VIRTUAL =======================================  */}
       {(active === "welcome" && modeSelection.virtual == '2') && (
         <div>
           <h3>Hello {fname}</h3>
@@ -558,12 +549,14 @@ function NotSubmitted({
           </div>
           <button
             className={!checkAct ? "disable-btn" : "button"}
-            onClick={showForm}
+            onClick={showFormVirtual}
           >
             Apply Now
           </button>
         </div>
       )}
+
+      {/* =======================  BIO-DATA PHYSICAL  ====================================  */}
       {active === "form" && (
         <div>
           <div>
@@ -1022,6 +1015,222 @@ function NotSubmitted({
           </div>
         </div>
       )}
+
+      {/* ==================== BIO-DATA-VIRTUAL ========================   */}
+      {active === "form" && (
+        <div>
+          <div>
+            {formActive === "bio-data-virtual" && (
+              <div>
+                <div
+                  className="dashboard-content-back"
+                  onClick={() => {
+                    setActive("welcome");
+                    setCheckAct(false);
+                  }}
+                >
+                  <img src={arrow} alt="back" />
+                  <p>Back</p>
+                </div>
+                <h4 style={{ marginLeft: "20px" }}>Apply</h4>
+                <div className="dashboard-content-form">
+                    <form onSubmit={submitForm}>
+                    {/* <p>Step 1 of 2</p> */}
+                    <p>BIO DATA</p>
+                    <div className="dashboard-content-form-container">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="firstName"
+                        placeholder="FirstName"
+                        value={bioData.firstName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="lastName"
+                        // placeholder="LastName"
+                        value={bioData.lastName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        name="email"
+                        placeholder="Email Address"
+                        value={bioData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Phone Number</label>
+                      <input
+                        type="number"
+                        required
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={bioData.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Gender</label>
+                      <select
+                        required
+                        name="gender"
+                        value={bioData.gender}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Age Range</label>
+                      <select
+                        required
+                        name="ageRange"
+                        value={bioData.ageRange}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="18-24">18 - 24</option>
+                        <option value="25-30">25 - 30</option>
+                        <option value="31-35">31 - 35</option>
+                        <option value="36 and above">36 and above</option>
+                      </select>
+                    </div>
+                    
+                    <div className="dashboard-content-form-container">
+                      <label>State of residence</label>
+                      <select
+                        required
+                        name="state"
+                        value={bioData.state}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select State</option>
+                        {nigerianStates.map(function (nigerianStates, index) {
+                          return (
+                            <option
+                              value={
+                                nigerianStates?.name || nigerianStates?.Name
+                              }
+                              key={index}
+                            >
+                              {nigerianStates?.name || nigerianStates?.Name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label name="city" onChange={handleChange}>
+                        Current city and Location
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        name="city"
+                        value={bioData.city}
+                        placeholder="Current City and Location"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Preferred course at Grazac</label>
+
+                      <select
+                        required
+                        name="preferred_course"
+                        value={bioData.preferred_course}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Preferred Course</option>
+                        <option value="Product Design">Product Design</option>
+                        <option value="Frontend Web Development">
+                          Front-end Web Development
+                        </option>
+                        <option value="Backend Web Development">
+                          Back-end Web Development
+                        </option>
+                        <option value="Android Development">
+                          Android Development
+                        </option>
+                        <option value="Product Management">
+                          Product Management
+                        </option>
+                        <option value="Machine Learning">
+                          Machine Learning
+                        </option>
+                        <option value="Java">
+                          Java
+                        </option>
+                        <option value="Data Analysis">
+                          Data Analysis
+                        </option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>
+                        Why do you think you should be selected as a part of
+                        this cohort?
+                      </label>
+                      <textarea
+                        type="text"
+                        required
+                        name="why_selected_for_cohort"
+                        value={bioData.why_selected_for_cohort}
+                        placeholder="Write your reasons here..."
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    {/* <div className="dashboard-content-form-container">
+                      <label>
+                        Means of Identification (NIN / Voter's Card / Driver’s
+                        License / Green Passport)
+                      </label>
+
+                      <input
+                        required
+                        type="file"
+                        name="id"
+                        onChange={handleImage}
+                      />
+
+                      <p className="upload-text">
+                        {bioData.id
+                          ? `${bioData.id.name}`
+                          : "Upload means of identification (max 2MB file size)"}
+                      </p>
+                      <img src={upload} alt="upload" className="upload-img" />
+                    </div>   */}
+
+                    {/* <button style={{ float: "right" }} type="submit">
+                      Continue
+                    </button> */}
+                    <button type="submit">
+                      Continue
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ======================== LEARN NOW PAY LATER ==============================  */}
       {active === 'lnpl' && (
         <div>
             <div>
@@ -1083,6 +1292,8 @@ function NotSubmitted({
               )} 
             </div>   
         </div>)}
+
+        {/* =========================== GUARANTOR FORM ==============================  */}
       {active === 'lnpl' && (
         <div>
             <div>
