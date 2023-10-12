@@ -78,7 +78,7 @@ const ModeOfTeaching = (_) => {
             <Pricing {...item} key={i} />
           ))}
         </div> */}
-        <div className="course_mode-quote">
+        {/* <div className="course_mode-quote">
           <img src={quote} alt="quote" />
           <p>
             I've known Grazac for over a year now and having worked with some of
@@ -88,7 +88,7 @@ const ModeOfTeaching = (_) => {
             acquisition here in Nigeria
           </p>
           <span>Samson Adedamola - Consultant at Kudi</span>
-        </div> */}
+        </div>  */}
       </div>
     </div>
   );
