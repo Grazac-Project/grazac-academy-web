@@ -5,7 +5,7 @@
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.0.2",
     "@reduxjs/toolkit": "^1.8.4",
-    "@tawk.to/tawk-messenger-react": "^2.0.1",
+    "@tawk.to/tawk-messenger-react": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

@@ -30,6 +30,7 @@ const Newsform = ({ setNews, setNewsMessage }) => {
       setLoading(true);
       const res = await axios.post(
         "https://users.go-mailer.com/api/contacts",
+        // "https://lfgwtf-zgph.maillist-manage.net/weboptin.zc"
         {
           email: payload.email,
           firstname: payload.firstname,

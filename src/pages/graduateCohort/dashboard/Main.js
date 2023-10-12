@@ -316,7 +316,7 @@ function Dashboard() {
               .catch((err) => {
                 if (err.response) {
                   toast.error(err.response);
-                  btn.innerHTML = `Procede`;
+                  btn.innerHTML = `Proceed`;
                 }
                 // else {
                 //   toast.error(

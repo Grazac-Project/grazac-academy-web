@@ -25,7 +25,7 @@ const Mode = () => {
     sessionStorage.setItem(
       "mode_selection",
       JSON.stringify({
-        physical: "1",
+        onSite: true,
       })
     );
     history.push("/dashboard");
@@ -34,7 +34,7 @@ const Mode = () => {
     sessionStorage.setItem(
       "mode_selection",
       JSON.stringify({
-        virtual: "2",
+        onSite: false,
       })
     );
     history.push("/dashboard");
@@ -42,7 +42,7 @@ const Mode = () => {
 
   return (
     <div className="mode">
-      <div className="mode_main" main_>
+      <div className="mode_main">
         <div className="mode_main_logo">
           <Link to="/">
             <img src={logo} alt="logo" />

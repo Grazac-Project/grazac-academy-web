@@ -22,14 +22,18 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
+    console.log(slug);
 
-    fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
+    // fetch(`https://api.grazacacademy.com/api/v1/graduate/${slug}`)
+    fetch(`https://grazac-admin-backend-d48022f1cdb6.herokuapp.com/api/v1/user/getCourse/${slug}`)
       .then((resp) => resp.json())
       .then((resp) => {
+        console.log(resp)
         setCourse(resp.details);
         setOutline(JSON.parse(resp.details.outline));
       })
       .catch((error) => {
+        console.log(error)
         // window.location.reload();
       });
   }, []);

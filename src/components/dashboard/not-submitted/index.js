@@ -9,6 +9,7 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 import about from "../../../images/about-1.jpg";
 import termsandconds from "../../../images/newsletter/terms.pdf";
 import pricingPolicy from "../../../images/newsletter/pricing.pdf";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function NotSubmitted({
@@ -19,14 +20,17 @@ function NotSubmitted({
   setNewStatus,
   userDetails,
 }) {
+
+  const history = useHistory();
   const [active, setActive] = useState("welcome");
   const [formActive, setFormActive] = useState("");
 
   // const [isError, setIsError] = useState("");
   // const [formActive, setFormActive] = useState("education");
-
+  // const [submit, setSubmit] = useState(null);
+  const [isButtonSubmitted, setIsButtonSubmitted] = useState(true);
   const [userId, setUserId] = useState(0);
-  const [modeSelection, setModeSelection] = useState('');
+  const [modeSelection, setModeSelection] = useState({});
   const [checkAct, setCheckAct] = useState(false);
   const [checkAct2, setCheckAct2] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
@@ -43,20 +47,21 @@ function NotSubmitted({
     paymentOption: '',
     why_selected_for_cohort: '',
     city: '',
-    state: ''
+    state: '',
+    onSite: `${modeSelection.onSite}`
   });
   const [formGuarantor, setFormGuarantor] = useState({
-    firstname: '',
-    lastname: '',
+    first_name: '',
+    last_name: '',
     email: '',
     phone_number: '',
     gender: "",
     office_address: "",
     home_address: "",
     profession: "",
-    name_of_organization: '',
-    phone_number_of_employer: '',
-    email_address_of_employer: '',
+    organization_name: '',
+    employer_phone_address: '',
+    employer_email_address: '',
     relationship_with_the_guarantor: ''
   });
 
@@ -76,7 +81,21 @@ function NotSubmitted({
   //   // removeQuestions();
   //   setBioData(userDetails);
   // };
-
+  // useEffect(() => {
+  //   if(bioData.paymentOption === 'partPayment' || )
+  // })
+  const goBack = () => {history.goBack()}
+  useEffect(() => {
+    if(bioData?.paymentOption === 'fullPayment' || bioData?.paymentOption === 'partPayment'){
+      setIsButtonSubmitted(false)
+      // setSubmit(submitForm)
+    } else if(bioData?.paymentOption === 'learnNowPayLater'){
+      setIsButtonSubmitted(false)
+      // setSubmit(submitFormPayLater)
+    } else if(bioData?.paymentOption === ""){
+      setIsButtonSubmitted(true)
+    }
+  }, [bioData])
   useEffect(() => {
     try {
       let details = sessionStorage.getItem("user_details");
@@ -104,7 +123,8 @@ function NotSubmitted({
   useEffect(() => {
     let mode = sessionStorage.getItem('mode_selection');
     setModeSelection(JSON.parse(mode))
-  }, [])
+    console.log(modeSelection.onSite)
+  }, [bioData])
 
   //   setBioData(userDetails)
 
@@ -192,20 +212,20 @@ function NotSubmitted({
 
   const submitForm = (e) => {
     e.preventDefault();
-    var btn = document.getElementById("actionBtn");
-    // btn.innerHTML = `<img src=${loader} width="20px" />`; work on it
+    var btnPhy1 = document.getElementById("btn-physical-1");
+    setIsButtonSubmitted(false)
+    // btnPhy1.innerHTML = `<img src=${loader} width="20px" />`;
     var data = new FormData();
-    console.log(data);
 
     try {
-      //  btn.innerHTML = `Submit`;
-      // btn.innerHTML = `<img src=${loader} width="20px" />`;
+      //  btnPhy1.innerHTML = `Submit`;
+      // btnPhy1.innerHTML = `<img src=${loader} width="20px" />`;
       if (!(bioData.phone.length > 10)) {
-        btn.innerHTML = `Submit`;
+        // btnPhy1.innerHTML = `Submit`;
         toast.error("please check and enter a valid phone number");
       } else {
-        // btn.innerHTML = `Submit`;
-        // btn.innerHTML = `<img src=${loader} width="20px" />`;
+        // btnPhy1.innerHTML = `Submit`;
+        // btnPhy1.innerHTML = `<img src=${loader} width="20px" />`;
         // toast.success('Successful')
         data.append("firstName", bioData.firstName);
         data.append("lastName", bioData.lastName);
@@ -239,7 +259,7 @@ function NotSubmitted({
     } catch (err) {
       console.log(err)
       toast.error("please check enter a valid phone number");
-      // btn.innerHTML = `Submit`; work on it
+      // btnPhy1.innerHTML = `Submit`;
     }
 
     submitDetails(bioData, userId)
@@ -249,50 +269,49 @@ function NotSubmitted({
           toast.success(
             "Submission successful! Your Application is now under review."
           );
-          // btn.innerHTML = `Submit`;
+          // btnPhy1.innerHTML = `Submit`;
           setNewStatus();
         } else {
           toast.error("Submission not successful, try again!!!");
-          btn.innerHTML = `Submit`;
+          // btnPhy1.innerHTML = `Submit`;
         }
       })
-
       .catch((err) => {
         console.log(err)
         try {
-          if (err.response.data === "File size limit has been reached") {
-            toast.error("File size exceeded for Means of Identification Field");
-          }
+          // if (err.response.data === "File size limit has been reached") {
+          //   toast.error("File size exceeded for Means of Identification Field");
+          // }
           if (err.response) {
             toast.error(err.response);
-            btn.innerHTML = `Submit`;
+            // btnPhy1.innerHTML = `Submit`;
           } else {
-            toast.error(
-              "Something went wrong!!! Please make sure you have a good internet connection."
-            );
-            btn.innerHTML = `Submit`;
+            // toast.error(
+            //   "Something went wrong!!! Please make sure you have a good internet connection."
+            // );
+            // btnPhy1.innerHTML = `Submit`;
           }
         } catch {
           toast.error("Something went wrong!!! Please Try Again");
-          btn.innerHTML = `Submit`;
+          // btnPhy1.innerHTML = `Submit`;
         }
       });
   };
   const submitFormPayLater = (e) =>{
     e.preventDefault();
-    var btn = document.getElementById("actionBtn2");
+    // var btnPhy2 = document.getElementById("btn-physical-2");
     try {
-      //  btn.innerHTML = `Submit`;
-      // btn.innerHTML = `<img src=${loader} width="20px" />`;
+      //  btnPhy2.innerHTML = `Submit`;
+      // btnPhy2.innerHTML = `<img src=${loader} width="20px" />`;
       if (!(bioData.phone.length > 10)) {
-        btn.innerHTML = `Submit`;
-        toast.error("please check and enter a valid phone number");
+        // btnPhy2.innerHTML = `Submit`;
+        // toast.error("please check and enter a valid phone number");
       } else {
         console.log(bioData);
       }
     } catch (err) {
       toast.error("please check enter a valid phone number");
-      // btn.innerHTML = `Submit`; work on it
+      // btnPhy2.innerHTML = `Submit`;
     }
     submitDetails(bioData, userId)
       .then((res) => {
@@ -303,27 +322,27 @@ function NotSubmitted({
           // );
           setActive('lnpl')
           setFormActive('pay-later')
-          // btn.innerHTML = `Submit`;
+          // btnPhy2.innerHTML = `Submit`;
           // setNewStatus();
         } else {
           toast.error("Submission not successful, try again!!!");
-          btn.innerHTML = `Submit`;
+          // btnPhy2.innerHTML = `Submit`;
         }
       })
       .catch((err) => {
         try {
           if (err.response) {
             toast.error(err.response);
-            // btn.innerHTML = `Submit`;
+            // btnPhy2.innerHTML = `Submit`;
           } else {
-            toast.error(
-              "Something went wrong!!! Please make sure you have a good internet connection."
-            );
-            btn.innerHTML = `Submit`;
+            // toast.error(
+            //   "Something went wrong!!! Please make sure you have a good internet connection."
+            // );
+            // btnPhy2.innerHTML = `Submit`;
           }
         } catch {
           toast.error("Something went wrong!!! Please Try Again");
-          btn.innerHTML = `Submit`;
+          // btnPhy2.innerHTML = `Submit`;
         }
       });
   }
@@ -351,9 +370,9 @@ function NotSubmitted({
           toast.error(err.response);
           // btn.innerHTML = `Submit`;
         } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
+          // toast.error(
+          //   "Something went wrong!!! Please make sure you have a good internet connection."
+          // );
           // btn.innerHTML = `Submit`;
         }
       } catch {
@@ -368,7 +387,7 @@ function NotSubmitted({
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
       {/* ========================== WELCOME PHYSICAL ==================================  */}
-      {(active === "welcome" && modeSelection.physical == '1') && (
+      {(active === "welcome" && modeSelection.onSite == true) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -458,7 +477,7 @@ function NotSubmitted({
       )}
 
       {/* ========================== WELCOME VIRTUAL =======================================  */}
-      {(active === "welcome" && modeSelection.virtual == '2') && (
+      {(active === "welcome" && modeSelection.onSite == false) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -568,6 +587,7 @@ function NotSubmitted({
                     setActive("welcome");
                     setCheckAct(false);
                   }}
+                  // onClick={goBack}
                 >
                   <img src={arrow} alt="back" />
                   <p>Back</p>
@@ -576,7 +596,7 @@ function NotSubmitted({
                 <div className="dashboard-content-form">
                   {/* <form onSubmit={showEduForm}> */}
                     {/* <form onSubmit={submitForm}> */}
-                    <form>
+                    <form onSubmit={bioData?.paymentOption === 'fullPayment' ||bioData?.paymentOption === 'partPayment' ? submitForm : bioData?.paymentOption === 'learnNowPayLater' ? submitFormPayLater : ''}>
                     {/* <p>Step 1 of 2</p> */}
                     <p>BIO DATA</p>
                     <div className="dashboard-content-form-container">
@@ -846,14 +866,20 @@ function NotSubmitted({
                     {/* <button style={{ float: "right" }} type="submit">
                       Continue
                     </button> */}
-                    <button type="submit" 
+                    <button type="submit"
+                      id="btn-physical-1"
+                      disabled={isButtonSubmitted}
                       className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
-                      onClick={submitForm}>
+                      // onClick={submitForm}
+                      >
                       Continue
                     </button>
-                    <button type="submit" 
+                    <button type="submit"
+                      id="btn-physical-2"
+                      disabled={isButtonSubmitted}
                       className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
-                      onClick={submitFormPayLater}>
+                      // onClick={submitFormPayLater}
+                      >
                       Learn Now Pay Later
                     </button>
                   </form>
@@ -1028,6 +1054,7 @@ function NotSubmitted({
                     setActive("welcome");
                     setCheckAct(false);
                   }}
+                  // onClick={goBack}
                 >
                   <img src={arrow} alt="back" />
                   <p>Back</p>
@@ -1114,8 +1141,8 @@ function NotSubmitted({
                       <label>State of residence</label>
                       <select
                         required
-                        name="state"
-                        value={bioData.state}
+                        name="state_of_residence"
+                        value={bioData.state_of_residence}_and_location
                         onChange={handleChange}
                       >
                         <option value="">Select State</option>
@@ -1140,8 +1167,8 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="city"
-                        value={bioData.city}
+                        name="current_city_and_location"
+                        value={bioData.current_city_and_location}
                         placeholder="Current City and Location"
                         onChange={handleChange}
                       />
@@ -1220,7 +1247,7 @@ function NotSubmitted({
                       Continue
                     </button> */}
                     <button type="submit">
-                      Continue
+                      Submit
                     </button>
                   </form>
                 </div>
@@ -1242,6 +1269,7 @@ function NotSubmitted({
                       setActive("welcome");
                       setCheckAct(false);
                     }}
+                    // onClick={goBack}
                   >
                     <img src={arrow} alt="back" />
                     <p>Back</p>
@@ -1262,7 +1290,7 @@ function NotSubmitted({
                         for legal fees bonded by the law firm.
                       </p>
                       <p>
-                        The legal fee cost is a total of 30,000 Naira. Kindly note that this amount is not refundable 
+                        The legal fee cost is a total of 50,000 Naira. Kindly note that this amount is not refundable 
                         under any circumstance.
                       </p>
                       <p>The following are of utmost necessity when bringing your guarantors;</p>
@@ -1302,9 +1330,10 @@ function NotSubmitted({
                   <div
                     className="dashboard-content-back2"
                     onClick={() => {
-                      setActive("pay-later");
+                      setActive("welcome");
                       setCheckAct(false);
                     }}
+                    // onClick={goBack}
                   >
                     <img src={arrow} alt="back" />
                     <p>Back</p>
@@ -1321,9 +1350,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="firstname"
+                        name="first_name"
                         placeholder="First Name"
-                        value={formGuarantor.firstname}
+                        value={formGuarantor.first_name}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1332,9 +1361,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="lastname"
+                        name="last_name"
                         placeholder="Last Name"
-                        value={formGuarantor.lastname}
+                        value={formGuarantor.last_name}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1343,9 +1372,9 @@ function NotSubmitted({
                       <input
                         type="email"
                         required
-                        name="email"
+                        name="email_address"
                         placeholder="Email Address"
-                        value={formGuarantor.email}
+                        value={formGuarantor.email_address}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1411,9 +1440,9 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="name_of_organization"
+                        name="organization_name"
                         placeholder="Enter Organization"
-                        value={formGuarantor.name_of_organization}
+                        value={formGuarantor.organization_name}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1422,9 +1451,9 @@ function NotSubmitted({
                       <input
                         type="number"
                         required
-                        name="phone_number_of_employer"
+                        name="employer_phone_number"
                         placeholder="Phone number of employer"
-                        value={formGuarantor.phone_number_of_employer}
+                        value={formGuarantor.employer_phone_number}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1433,9 +1462,9 @@ function NotSubmitted({
                       <input
                         type="email"
                         required
-                        name="email_address_of_employer"
+                        name="employer_email_address"
                         placeholder="Email Address of Employer"
-                        value={formGuarantor.email_address_of_employer}
+                        value={formGuarantor.employer_email_address}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
@@ -1444,14 +1473,14 @@ function NotSubmitted({
                       <input
                         type="text"
                         required
-                        name="relationship_with_the_guarantor"
+                        name="relationship"
                         placeholder="Relationship with the Guarantor"
-                        value={formGuarantor.relationship_with_the_guarantor}
+                        value={formGuarantor.relationship}
                         onChange={handleChangeGuarantor}
                       />
                     </div>
                     <button type="submit" style={{ float: "right", width: "213px", marginRight: '0px' }}>
-                      Continue
+                      Submit
                     </button>
                   </form>
                       
