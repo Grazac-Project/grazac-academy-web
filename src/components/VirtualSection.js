@@ -18,7 +18,7 @@ const VirtualSection = () => {
               <div className="virtual_container_label"><img src={benzene} alt="benzene"/><span>Mentorship</span></div>
               <div className="virtual_container_label"><img src={benzene} alt="benzene"/><span>Flexibility</span></div>
             </div>
-            <Link to='/vitualLanding'>
+            <Link to='/virtualLanding'>
               <button>Learn More</button>
             </Link>
             

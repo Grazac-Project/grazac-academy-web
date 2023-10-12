@@ -2403,6 +2403,37 @@ input:focus, select:focus, textarea:focus {
     width: 90%;
   }
 }
+.Vitual_slider .arrow {
+  display: flex;
+  justify-content: space-between;
+}
+.Vitual_arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 1;
+  margin-top: 340px;
+  z-index: 1;
+  transform: translateY(-50%);
+  width: 100%; /* Set the width of your arrow */
+  height: 30px; /* Set the height of your arrow */
+}
+.Vitual_arrow button {
+  width: 48px;
+  height: 48px;
+  border-radius: 40px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+}
+.Vitual_arrow button:hover {
+  background-color: #333;
+  color: white;
+}
+.Vitual_slider {
+  position: relative;
+}
 
 .auth_container-logo {
   width: 450px;
@@ -5813,6 +5844,7 @@ input:focus, select:focus, textarea:focus {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  border-radius: 28px;
   color: var(--Main-Color, #773dd3);
 }
 @media screen and (max-width: 400px) {

@@ -174,7 +174,7 @@ const App = () => {
                 <Route path="/" exact component={LandingPage}>
                   {/* <Redirect to="/join"/>  */}
                 </Route>
-                <Route path="/vitualLanding" exact component={Vitual}>
+                <Route path="/virtualLanding" exact component={Vitual}>
                   {/* <Redirect to="/join"/>  */}
                 </Route>
                 {/* <Route path="/join" component={Join}/> */}

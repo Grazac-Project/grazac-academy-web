@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -27,10 +27,14 @@ import product_management from "../images/product_management.png";
 import machine_learning from "../images/machine_learning.png";
 import java from "../images/java.png";
 import data_analysis from "../images/data_analysis.png";
+import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 const VirtualLanding = () => {
+  const [buttonColor, setButtonColor] = useState('initialColor');
+  const sliderRef = useRef(null);
+
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 200,
     slidesToShow: 1,
@@ -38,15 +42,22 @@ const VirtualLanding = () => {
     autoplay: true,
     autoplaySpeed: 2500, // Adjust the speed as needed
     cssEase: "linear",
-    arrows: true,
-    // swipeToSlide: true,
-    // afterChange: function(index) {
-    //   console.log(
-    //     `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-    //   )
-
-    // }
+    arrows: false,
   };
+  const goToPrev = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+      setButtonColor('colorAfterClick');
+    }
+  };
+
+  const goToNext = () => {
+    if (sliderRef.current)  {
+      sliderRef.current.slickNext();
+      setButtonColor('colorAfterClick');
+    }
+  };
+
   const scrollToTarget = () => {
     const targetElement = document.querySelector(".landing__intern--content");
 
@@ -177,8 +188,18 @@ const VirtualLanding = () => {
         </div>
       </section>
       <section>
-        <Slider {...settings}>
-          <div>
+          <div className="Vitual_arrow" style={{ textAlign: "center" }}>
+            <button  className="Vitual_bttn"onClick={goToPrev}><i>
+               &#129120;
+              </i></button>
+            <button onClick={goToNext}>
+              <i>
+                &#129122;
+              </i>
+            </button>
+          </div>
+        <Slider  ref={sliderRef} {...settings}>
+          <div className="Vitual_container">
             <div className="Vitual_slider">
               <div className="Vitual_slider_img">
                 <img src={Slider1} alt="slider" />
