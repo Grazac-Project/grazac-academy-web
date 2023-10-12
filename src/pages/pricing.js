@@ -21,7 +21,7 @@ const Pricing = () => {
         <div className="pricing_toggle">
           <div
             className={
-              activeTab === "onsite" ? "onsiteButtons" : "active" 
+              activeTab === "onsite" ? "onsiteButtons" : "activebtn" 
             }
             onClick={() => handleTabClick("onsite")}
           >
@@ -29,7 +29,7 @@ const Pricing = () => {
           </div>
           <div
             className={
-              activeTab === "Virtual" ? "virtualButtons" : "active"
+              activeTab === "Virtual" ? "virtualButtons" : "activebtn"
             }
             onClick={() => handleTabClick("Virtual")}
           >

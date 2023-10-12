@@ -242,7 +242,7 @@
       }
     }
   }
-  &_slider  {
+  &_slider {
     display: flex;
 
     background-color: $color-pale-purple;
@@ -317,5 +317,37 @@
         }
       }
     }
+    .arrow {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &_arrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 1;
+    margin-top: 340px;
+    z-index: 1;
+    transform: translateY(-50%);
+    width: 100%; /* Set the width of your arrow */
+    height: 30px; /* Set the height of your arrow */
+
+    button {
+      width: 48px;
+      height: 48px;
+      border-radius: 40px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    button:hover {
+      background-color: #333;
+      color: white;
+    }
+  }
+  &_slider {
+    position: relative;
   }
 }

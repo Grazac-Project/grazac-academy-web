@@ -91,13 +91,14 @@
   }
   
 
-  .active {
+  .activebtn {
     cursor:pointer;
     font-family: Nunito Sans;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    border-radius: 28px;
     color: var(--Main-Color, #773dd3);
     @media screen and (max-width: 400px) {
       font-size: 14px;
