@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import VitualHero from "../images/virtual/vitualHero.svg";
+import VitualHero from "../images/virtual/VitualHero.png";
 import Slider1 from "../images/virtual/slider1.svg";
 import Slider2 from "../images/virtual/slider2.svg";
 import Slider3 from "../images/virtual/slider3.svg";
@@ -30,7 +30,7 @@ import data_analysis from "../images/data_analysis.png";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 const VirtualLanding = () => {
-  const [buttonColor, setButtonColor] = useState('initialColor');
+  const [buttonColor, setButtonColor] = useState("initialColor");
   const sliderRef = useRef(null);
 
   var settings = {
@@ -47,14 +47,14 @@ const VirtualLanding = () => {
   const goToPrev = () => {
     if (sliderRef.current) {
       sliderRef.current.slickPrev();
-      setButtonColor('colorAfterClick');
+      setButtonColor("colorAfterClick");
     }
   };
 
   const goToNext = () => {
-    if (sliderRef.current)  {
+    if (sliderRef.current) {
       sliderRef.current.slickNext();
-      setButtonColor('colorAfterClick');
+      setButtonColor("colorAfterClick");
     }
   };
 
@@ -107,11 +107,9 @@ const VirtualLanding = () => {
       <div style={{ height: 10 }}></div>
       <section className="Vitual_hero">
         <div className="Vitual_text">
-          <h1>
-            <span>Learn from anywhere</span>
-            <br />
-            Elevate Your Skills with Our Live Remote Classes
-          </h1>
+          <h4 className="Vitual_span">Learn with Us Virtually - Unlock Your Potential</h4>
+
+          <h1>Elevate Your Skills with Our Live Remote Classes</h1>
           <p>
             Unlock global expertise by joining our Online Bootcamp, and learn
             from industry leaders from 19+ Countries to forge your ideal career
@@ -188,17 +186,15 @@ const VirtualLanding = () => {
         </div>
       </section>
       <section>
-          <div className="Vitual_arrow" style={{ textAlign: "center" }}>
-            <button  className="Vitual_bttn"onClick={goToPrev}><i>
-               &#129120;
-              </i></button>
-            <button onClick={goToNext}>
-              <i>
-                &#129122;
-              </i>
-            </button>
-          </div>
-        <Slider  ref={sliderRef} {...settings}>
+        <div className="Vitual_arrow" style={{ textAlign: "center" }}>
+          <button className="Vitual_bttn" onClick={goToPrev}>
+            <i>&#129120;</i>
+          </button>
+          <button onClick={goToNext}>
+            <i>&#129122;</i>
+          </button>
+        </div>
+        <Slider ref={sliderRef} {...settings}>
           <div className="Vitual_container">
             <div className="Vitual_slider">
               <div className="Vitual_slider_img">
