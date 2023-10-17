@@ -96,12 +96,13 @@ function Details() {
         if (err.response) {
           toast.error(err.response);
           btn.innerHTML = `Submit`;
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
           btn.innerHTML = `Submit`;
-        }
+        // }
       });
   };
 
@@ -246,11 +247,12 @@ function Details() {
       .catch((err) => {
         if (err.response) {
           toast.error(err.response);
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-        }
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
+        // }
       });
 
     getGuarantor()
@@ -260,15 +262,16 @@ function Details() {
         setGuarantorDetails_2([res.data[1]]);
         // setGuarantorId(res.data[0]["id"]);
       })
-      .catch((err) => {
-        if (err.response) {
-          toast.error(err.response);
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-        }
-      });
+      // .catch((err) => {
+      //   if (err.response) {
+      //     toast.error(err.response);
+      //   } 
+      //   else {
+      //     toast.error(
+      //       "Something went wrong!!! Please make sure you have a good internet connection."
+      //     );
+      //   }
+      // });
   }, [true]);
 
   return (
@@ -296,7 +299,7 @@ function Details() {
               >
                 Bio Data
               </button>
-              <button
+              {/* <button
                 className={
                   clicked === "edu"
                     ? "dashboard-content-detail-p active"
@@ -305,7 +308,7 @@ function Details() {
                 onClick={() => handleWhatToShow("edu")}
               >
                 Educational Background
-              </button>
+              </button> */}
 
               {userDetails.payment_plan === "pay as you earn" && (
                 <button
@@ -346,11 +349,11 @@ function Details() {
                   <p>{userDetails?.phoneNumber}</p>
                 </div>
                 <hr />
-                <div className="dashboard-content-form-container">
+                {/* <div className="dashboard-content-form-container">
                   <h5>Date of Birth</h5>
                   <p>{userDetails?.dob?.slice(0, 10)}</p>
                 </div>
-                <hr />
+                <hr /> */}
                 <div className="dashboard-content-form-container">
                   <h5>Gender</h5>
                   <p>{userDetails?.gender}</p>
@@ -381,16 +384,16 @@ function Details() {
                   />
                 </div> */}
 
-                {(!userDetails?.ageRange ||
+                {/* {(!userDetails?.ageRange ||
                   !userDetails?.haveKids ||
                   !userDetails?.maritalStatus) && (
                   <>
                     <hr />
                     <h3>Edit Data</h3>
                   </>
-                )}
+                )} */}
 
-                <hr />
+                {/* <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Marital Status</h5>
                   {userDetails?.maritalStatus ? (
@@ -407,9 +410,9 @@ function Details() {
                       <option value="married">Married</option>
                     </select>
                   )}
-                </div>
+                </div> */}
 
-                <hr />
+                {/* <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Have Kids?</h5>
                   {userDetails?.haveKids ? (
@@ -426,12 +429,12 @@ function Details() {
                       <option value="no">No</option>
                     </select>
                   )}
-                </div>
+                </div> */}
 
                 <hr />
 
-                <div className="dashboard-content-form-container">
-                  <h5>Age Range</h5>
+                {/* <div className="dashboard-content-form-container"> */}
+                  {/* <h5>Age Range</h5>
                   {userDetails?.ageRange ? (
                     <p>{userDetails?.ageRange}</p>
                   ) : (
@@ -447,8 +450,8 @@ function Details() {
                       <option value="31 - 35">31 - 35</option>
                       <option value="36 and above">36 and above</option>
                     </select>
-                  )}
-                  {!(
+                  )} */}
+                  {/* {!(
                     tempData?.ageRange &&
                     tempData?.maritalStatus &&
                     tempData?.haveKids
@@ -456,7 +459,9 @@ function Details() {
                     <button id="actionBtn" type="submit">
                       Save
                     </button>
-                  )}
+                  )} */}
+
+                  
 
                   {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
@@ -466,7 +471,7 @@ function Details() {
                       Save
                     </button>
                   )} */}
-                </div>
+                {/* </div> */}
               </form>
             </div>
           )}

@@ -30,7 +30,7 @@ function NotSubmitted({
   // const [submit, setSubmit] = useState(null);
   const [isButtonSubmitted, setIsButtonSubmitted] = useState(true);
   const [userId, setUserId] = useState(0);
-  const [modeSelection, setModeSelection] = useState({});
+  const [modeSelection, setModeSelection] = useState(null);
   const [checkAct, setCheckAct] = useState(false);
   const [checkAct2, setCheckAct2] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
@@ -46,9 +46,10 @@ function NotSubmitted({
     physically_available: '',
     paymentOption: '',
     why_selected_for_cohort: '',
-    city: '',
-    state: '',
-    onSite: `${modeSelection.onSite}`
+    current_city_and_location: '',
+    state_of_residence: '',
+    resident_in_abeokuta: '',
+    onSite: undefined
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: '',
@@ -89,7 +90,7 @@ function NotSubmitted({
     if(bioData?.paymentOption === 'fullPayment' || bioData?.paymentOption === 'partPayment'){
       setIsButtonSubmitted(false)
       // setSubmit(submitForm)
-    } else if(bioData?.paymentOption === 'learnNowPayLater'){
+    } else if(bioData?.paymentOption === 'learn_now_pay_later'){
       setIsButtonSubmitted(false)
       // setSubmit(submitFormPayLater)
     } else if(bioData?.paymentOption === ""){
@@ -121,10 +122,18 @@ function NotSubmitted({
     }
   }, []);
   useEffect(() => {
-    let mode = sessionStorage.getItem('mode_selection');
-    setModeSelection(JSON.parse(mode))
-    console.log(modeSelection.onSite)
-  }, [bioData])
+    const getStorage = async () => {
+      const modeChoice = await sessionStorage.getItem('mode_selection');
+      const choice = await JSON.parse(modeChoice)
+      const data = choice.onSite
+      console.log(data)
+      setBioData({...bioData, onSite: data})
+      setModeSelection(data)
+      console.log(bioData)
+      console.log(modeSelection)
+    }
+    getStorage()
+  }, [])
 
   //   setBioData(userDetails)
 
@@ -156,7 +165,6 @@ function NotSubmitted({
   //     //   });
   //   }
   // };
-  console.log(userDetails)
   const confirmCheck = () => {
     var check = document.getElementById("check");
     if (check.checked) {
@@ -180,35 +188,36 @@ function NotSubmitted({
     if (check.checked) {
       setActive("form");
       setFormActive("bio-data");
+      window.scrollTo(0, 0);
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
   };
   const showFormVirtual = () => {
-    // toast.info("Application for this cohort has ended. Please check back later!!!")
     var check = document.getElementById("check");
     if (check.checked) {
       setActive("form");
       setFormActive("bio-data-virtual");
+      window.scrollTo(0, 0);
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
   };
   const showFormPayLayer = () => {
-    // toast.info("Application for this cohort has ended. Please check back later!!!")
     var check2 = document.getElementById("check2");
     if (check2.checked) {
       setActive("lnpl");
       setFormActive("guarantor-form");
+      window.scrollTo(0, 0);
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
     }
   };
 
-  const showEduForm = (e) => {
-    e.preventDefault();
-    setFormActive("education");
-  };
+  // const showEduForm = (e) => {
+  //   e.preventDefault();
+  //   setFormActive("education");
+  // };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -227,19 +236,17 @@ function NotSubmitted({
         // btnPhy1.innerHTML = `Submit`;
         // btnPhy1.innerHTML = `<img src=${loader} width="20px" />`;
         // toast.success('Successful')
-        data.append("firstName", bioData.firstName);
-        data.append("lastName", bioData.lastName);
-        data.append("email", bioData.email);
-        console.log(`${data}, =======${bioData.phone}`)
-        data.append("phone", bioData.phone);
-        console.log(`${bioData.phone},===== ${data}`)
-        data.append("gender", bioData.gender);
-        data.append("ageRange", bioData.ageRange);
-        data.append("preferred_course", education.preferred_course);
-        data.append("current_city_and_location", bioData.current_city_and_location);
-        data.append("physically_available", bioData.physically_available);
-        data.append("paymentOption", bioData.paymentOption);
-        data.append("why_selected_for_cohort", bioData.why_selected_for_cohort);
+        // data.append("firstName", bioData?.firstName);
+        // data.append("lastName", bioData?.lastName);
+        // data.append("email", bioData?.email);
+        // data.append("phone", bioData.phone);
+        // data.append("gender", bioData.gender);
+        // data.append("ageRange", bioData.ageRange);
+        // data.append("preferred_course", education.preferred_course);
+        // data.append("current_city_and_location", bioData.current_city_and_location);
+        // data.append("physically_available", bioData.physically_available);
+        // data.append("paymentOption", bioData.paymentOption);
+        // data.append("why_selected_for_cohort", bioData.why_selected_for_cohort);
         // data.append("dob", bioData.dob);
         // data.append("preferred_course", bioData.course);
         // data.append("state_of_residence", bioData.state);
@@ -261,7 +268,7 @@ function NotSubmitted({
       toast.error("please check enter a valid phone number");
       // btnPhy1.innerHTML = `Submit`;
     }
-
+    console.log(bioData)
     submitDetails(bioData, userId)
       .then((res) => {
         console.log(res)
@@ -278,23 +285,24 @@ function NotSubmitted({
       })
       .catch((err) => {
         console.log(err)
-        try {
-          // if (err.response.data === "File size limit has been reached") {
-          //   toast.error("File size exceeded for Means of Identification Field");
-          // }
-          if (err.response) {
-            toast.error(err.response);
-            // btnPhy1.innerHTML = `Submit`;
-          } else {
-            // toast.error(
-            //   "Something went wrong!!! Please make sure you have a good internet connection."
-            // );
-            // btnPhy1.innerHTML = `Submit`;
-          }
-        } catch {
-          toast.error("Something went wrong!!! Please Try Again");
-          // btnPhy1.innerHTML = `Submit`;
-        }
+        // try {
+        //   if (err.response.data === "File size limit has been reached") {
+        //     toast.error("File size exceeded for Means of Identification Field");
+        //   }
+        //   if (err.response) {
+        //     console.log(err.response)
+        //     toast.error(err.response);
+        //     btnPhy1.innerHTML = `Submit`;
+        //   } else {
+        //     toast.error(
+        //       "Something went wrong!!! Please make sure you have a good internet connection."
+        //     );
+        //     btnPhy1.innerHTML = `Submit`;
+        //   }
+        // } catch {
+        //   toast.error("Something went wrong!!! Please Try Again");
+        //   btnPhy1.innerHTML = `Submit`;
+        // }
       });
   };
   const submitFormPayLater = (e) =>{
@@ -310,18 +318,20 @@ function NotSubmitted({
         console.log(bioData);
       }
     } catch (err) {
-      toast.error("please check enter a valid phone number");
+      toast.error("please check and enter a valid phone number");
       // btnPhy2.innerHTML = `Submit`;
     }
+    console.log(bioData)
     submitDetails(bioData, userId)
       .then((res) => {
-        console.log(res)
+        console.log(bioData)
         if (res.status === 200) {
           // toast.success(
           //   "Submission successful! Your Application is now under review."
           // );
           setActive('lnpl')
           setFormActive('pay-later')
+          window.scrollTo(0, 0);
           // btnPhy2.innerHTML = `Submit`;
           // setNewStatus();
         } else {
@@ -330,55 +340,57 @@ function NotSubmitted({
         }
       })
       .catch((err) => {
-        try {
-          if (err.response) {
-            toast.error(err.response);
-            // btnPhy2.innerHTML = `Submit`;
-          } else {
-            // toast.error(
-            //   "Something went wrong!!! Please make sure you have a good internet connection."
-            // );
-            // btnPhy2.innerHTML = `Submit`;
-          }
-        } catch {
           toast.error("Something went wrong!!! Please Try Again");
-          // btnPhy2.innerHTML = `Submit`;
-        }
+        // try {
+        //   if (err.response) {
+        //     console.log(err)
+        //     toast.error(err.response);
+        //     btnPhy2.innerHTML = `Submit`;
+        //   } else {
+        //     toast.error(
+        //       "Something went wrong!!! Please make sure you have a good internet connection."
+        //     );
+        //     btnPhy2.innerHTML = `Submit`;
+        //   }
+        // } catch {
+        //   toast.error("Something went wrong!!! Please Try Again");
+        //   btnPhy2.innerHTML = `Submit`;
+        // }
       });
   }
 
   const submitFormGuarantor = (e) => {
-    console.log(formGuarantor)
     e.preventDefault()
     submitGuarantor(formGuarantor)
     .then(res => {
-      console.log(res)
       if (res.status === 200) {
         toast.success(
           "Submission successful! Your Application is now under review."
         );
         // btn.innerHTML = `Submit`;
         setNewStatus();
+        window.scrollTo(0, 0);
       } else {
         toast.error("Submission not successful, try again!!!");
         // btn.innerHTML = `Submit`;
       }
     })
     .catch((err) => {
-      try {
-        if (err.response) {
-          toast.error(err.response);
-          // btn.innerHTML = `Submit`;
-        } else {
-          // toast.error(
-          //   "Something went wrong!!! Please make sure you have a good internet connection."
-          // );
-          // btn.innerHTML = `Submit`;
-        }
-      } catch {
         toast.error("Something went wrong!!! Please Try Again");
-        // btn.innerHTML = `Submit`;
-      }
+      // try {
+      //   if (err.response) {
+      //     toast.error(err.response);
+      //     btn.innerHTML = `Submit`;
+      //   } else {
+      //     toast.error(
+      //       "Something went wrong!!! Please make sure you have a good internet connection."
+      //     );
+      //     btn.innerHTML = `Submit`;
+      //   }
+      // } catch {
+      //   toast.error("Something went wrong!!! Please Try Again");
+      //   btn.innerHTML = `Submit`;
+      // }
     });
   }
 
@@ -387,7 +399,7 @@ function NotSubmitted({
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
       {/* ========================== WELCOME PHYSICAL ==================================  */}
-      {(active === "welcome" && modeSelection.onSite == true) && (
+      {(active === "welcome" && modeSelection === true) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -477,7 +489,7 @@ function NotSubmitted({
       )}
 
       {/* ========================== WELCOME VIRTUAL =======================================  */}
-      {(active === "welcome" && modeSelection.onSite == false) && (
+      {(active === "welcome" && modeSelection === false) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -596,7 +608,7 @@ function NotSubmitted({
                 <div className="dashboard-content-form">
                   {/* <form onSubmit={showEduForm}> */}
                     {/* <form onSubmit={submitForm}> */}
-                    <form onSubmit={bioData?.paymentOption === 'fullPayment' ||bioData?.paymentOption === 'partPayment' ? submitForm : bioData?.paymentOption === 'learnNowPayLater' ? submitFormPayLater : ''}>
+                    <form onSubmit={bioData?.paymentOption === 'fullPayment' ||bioData?.paymentOption === 'partPayment' ? submitForm : bioData?.paymentOption === 'learn_now_pay_later' ? submitFormPayLater : ''}>
                     {/* <p>Step 1 of 2</p> */}
                     <p>BIO DATA</p>
                     <div className="dashboard-content-form-container">
@@ -606,7 +618,7 @@ function NotSubmitted({
                         required
                         name="firstName"
                         placeholder="FirstName"
-                        value={bioData.firstName}
+                        value={bioData?.firstName}
                         onChange={handleChange}
                       />
                     </div>
@@ -617,7 +629,7 @@ function NotSubmitted({
                         required
                         name="lastName"
                         // placeholder="LastName"
-                        value={bioData.lastName}
+                        value={bioData?.lastName}
                         onChange={handleChange}
                       />
                     </div>
@@ -628,7 +640,7 @@ function NotSubmitted({
                         required
                         name="email"
                         placeholder="Email Address"
-                        value={bioData.email}
+                        value={bioData?.email}
                         onChange={handleChange}
                       />
                     </div>
@@ -639,7 +651,7 @@ function NotSubmitted({
                         required
                         name="phone"
                         placeholder="Phone Number"
-                        value={bioData.phone}
+                        value={bioData?.phone}
                         onChange={handleChange}
                       />
                     </div>
@@ -716,8 +728,8 @@ function NotSubmitted({
                       <label>Do you currently reside in Abeokuta?</label>
                       <select
                         required
-                        name="current_city_and_location"
-                        value={bioData.current_city_and_location}
+                        name="resident_in_abeokuta"
+                        value={bioData.resident_in_abeokuta}
                         onChange={handleChange}
                       >
                         <option value="">Select an option</option>
@@ -788,7 +800,7 @@ function NotSubmitted({
                         <option value="">Payment Options</option>
                         <option value="fullPayment">Pay at once</option>
                         <option value="partPayment">Pay in instalment</option>
-                        <option value="learnNowPayLater">Learn  now pay later</option>
+                        <option value="learn_now_pay_later">Learn  now pay later</option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
@@ -877,7 +889,7 @@ function NotSubmitted({
                     <button type="submit"
                       id="btn-physical-2"
                       disabled={isButtonSubmitted}
-                      className={bioData.paymentOption === 'learnNowPayLater'? 'button' :"disable-btn"} 
+                      className={bioData.paymentOption === 'learn_now_pay_later'? 'button' :"disable-btn"} 
                       // onClick={submitFormPayLater}
                       >
                       Learn Now Pay Later
@@ -1071,7 +1083,7 @@ function NotSubmitted({
                         required
                         name="firstName"
                         placeholder="FirstName"
-                        value={bioData.firstName}
+                        value={bioData?.firstName}
                         onChange={handleChange}
                       />
                     </div>
@@ -1093,7 +1105,7 @@ function NotSubmitted({
                         required
                         name="email"
                         placeholder="Email Address"
-                        value={bioData.email}
+                        value={bioData?.email}
                         onChange={handleChange}
                       />
                     </div>
@@ -1104,7 +1116,7 @@ function NotSubmitted({
                         required
                         name="phone"
                         placeholder="Phone Number"
-                        value={bioData.phone}
+                        value={bioData?.phone}
                         onChange={handleChange}
                       />
                     </div>
@@ -1142,7 +1154,7 @@ function NotSubmitted({
                       <select
                         required
                         name="state_of_residence"
-                        value={bioData.state_of_residence}_and_location
+                        value={bioData.state_of_residence}
                         onChange={handleChange}
                       >
                         <option value="">Select State</option>

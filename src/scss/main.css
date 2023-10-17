@@ -2731,6 +2731,7 @@ input:focus, select:focus, textarea:focus {
 }
 .course_learn-main-list h3 {
   font-size: 1.5em;
+  font-weight: 700;
 }
 .course_learn-main-list p {
   font-size: 1.2em;
@@ -4031,7 +4032,7 @@ input:focus, select:focus, textarea:focus {
   padding-bottom: 20px;
   box-sizing: border-box;
 }
-.gua_cardview a {
+.gua_cardview span {
   font-size: 1em;
   font-family: Georgia;
   padding-top: 40px;

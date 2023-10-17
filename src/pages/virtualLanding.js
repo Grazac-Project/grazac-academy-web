@@ -28,6 +28,7 @@ import machine_learning from "../images/machine_learning.png";
 import java from "../images/java.png";
 import data_analysis from "../images/data_analysis.png";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const VirtualLanding = () => {
   const [buttonColor, setButtonColor] = useState('initialColor');
@@ -44,6 +45,25 @@ const VirtualLanding = () => {
     cssEase: "linear",
     arrows: false,
   };
+  const history = useHistory();
+  // const productDesignHandler = () =>{
+  //   sessionStorage.setItem(
+  //     "learning_mode",
+  //     JSON.stringify({
+  //       class_option: 'virtual',  
+  //     })
+  //   );
+  //   history.push('/course-detail-graduate?course=product-designing-ui-ux')
+  // }
+  const courseDetailsHandler = (goTo) =>{
+    sessionStorage.setItem(
+      "learning_mode",
+      JSON.stringify({
+        class_option: 'Virtual',  
+      })
+    );
+    history.push(goTo)
+  }
   const goToPrev = () => {
     if (sliderRef.current) {
       sliderRef.current.slickPrev();
@@ -313,8 +333,8 @@ const VirtualLanding = () => {
             </p>
           </div>
           <div className="gga_container">
-            <Link
-              to={`/course-detail-graduate?course=product-designing-ui-ux`}
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -326,22 +346,24 @@ const VirtualLanding = () => {
                     Product Design (UI/UX)
                   </h4>
                   <p>
-                    User interface design or user interface engineering is the
-                    design of user interfaces for machines and software, such as
-                    computers, home appliances, mobile devices, and other
-                    electronic devices, with the focus on maximizing usability
-                    and the user experience.
+                    Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. 
+                      You'll gain knowledge in designing user interfaces that...
                   </p>
-                  <Link
+                  {/* <Link
                     to={`/course-detail-graduate?course=product-designing-ui-ux`}
                   >
                     Learn More
-                  </Link>
+                  </Link> */}
+                  <span
+                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}
+                  >
+                    Learn More
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=frontend-web-development`}
+            </div>
+            <div
+              onClick={() =>courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -353,21 +375,19 @@ const VirtualLanding = () => {
                     Front-End Development
                   </h4>
                   <p>
-                    Front-end web development, also known as client-side
-                    development is the practice of producing HTML, CSS and
-                    JavaScript for a website or Web Application so that a user
-                    can see and interact with them directly.
+                    Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and 
+                      JavaScript for a website or Web Application so that a user...
                   </p>
-                  <Link
-                    to={`/course-detail-graduate?course=frontend-web-development`}
+                  <span
+                  onClick={() => courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
                   >
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=backend-web-development`}
+            </div>
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -379,21 +399,19 @@ const VirtualLanding = () => {
                     Back-End Development
                   </h4>
                   <p>
-                    Node.js is useful for developing applications that require a
-                    persistent connection from the browser to the server and is
-                    often used for real-time applications such as chat, news
-                    feeds and web push notifications.
+                      Node.js is useful for developing applications that require a persistent connection from 
+                      the browser to the server and is often used for real-time applications such as chat, news...
                   </p>
-                  <Link
-                    to={`/course-detail-graduate?course=backend-web-development`}
+                  <span
+                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
                   >
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=mobile-application-development`}
+            </div>
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -405,22 +423,20 @@ const VirtualLanding = () => {
                     Mobile App Developement
                   </h4>
                   <p>
-                    Flutter is an incredible user interface (UI) toolkit that
-                    lets you build apps for iOS and Android — and even the web
-                    and desktop platforms like macOS, Windows and Linux — all
-                    from a single codebase.
+                      Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, 
+                      Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from...
                   </p>
-                  <Link
-                    to={`/course-detail-graduate?course=mobile-application-development`}
+                  <span
+                    onClick={() =>courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
                   >
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
+            </div>
 
-            <Link
-              to={`/course-detail-graduate?course=product-management`}
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -432,23 +448,19 @@ const VirtualLanding = () => {
                     Product Management
                   </h4>
                   <p>
-                    Product management is the process of strategically guiding a
-                    company's product development, market launch, ongoing
-                    support and improvement of a product. It is basically making
-                    a product the best version it can be and fine-tuning a
-                    company’s product in order to make it appeal to the
-                    organization’s target audience and customers
+                      Grazac product management course will help you understand the process of strategically 
+                      guiding a company's product development, market launch, ongoing support, and...
                   </p>
-                  <Link
-                    to={`/course-detail-graduate?course=product-management`}
+                  <span
+                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
                   >
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=machine-learning`}
+            </div>
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -460,21 +472,17 @@ const VirtualLanding = () => {
                     Machine learning with Python
                   </h4>
                   <p>
-                    Product management is the process of strategically guiding a
-                    company's product development, market launch, ongoing
-                    support and improvement of a product. It is basically making
-                    a product the best version it can be and fine-tuning a
-                    company’s product in order to make it appeal to the
-                    organization’s target audience and customers
+                      Machine Learning with Python is a comprehensive journey that equips you with the skills and 
+                      knowledge needed to build, evaluate, and deploy machine learning models for...
                   </p>
-                  <Link to={`/course-detail-graduate?course=machine-learning`}>
+                  <span onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}>
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=java`}
+            </div>
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -484,21 +492,17 @@ const VirtualLanding = () => {
                 <div className="gua_cardview-text">
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>Java</h4>
                   <p>
-                    Product management is the process of strategically guiding a
-                    company's product development, market launch, ongoing
-                    support and improvement of a product. It is basically making
-                    a product the best version it can be and fine-tuning a
-                    company’s product in order to make it appeal to the
-                    organization’s target audience and customers
+                      Java is a versatile programming language with a wide range of applications, 
+                      from web development to mobile app development, big data processing, and more..
                   </p>
-                  <Link to={`/course-detail-graduate?course=java`}>
+                  <span to={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}>
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
-            <Link
-              to={`/course-detail-graduate?course=data-analysis`}
+            </div>
+            <div
+              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}
               className="boxes33"
             >
               <div className="gua_cardview">
@@ -508,19 +512,16 @@ const VirtualLanding = () => {
                 <div className="gua_cardview-text">
                   <h4 style={{ color: "rgb(51, 51, 51)" }}>Data Analysis</h4>
                   <p>
-                    Product management is the process of strategically guiding a
-                    company's product development, market launch, ongoing
-                    support and improvement of a product. It is basically making
-                    a product the best version it can be and fine-tuning a
-                    company’s product in order to make it appeal to the
-                    organization’s target audience and customers
+                      Data Analysis involves using different tools and techniques to scrutinize and 
+                      probe large volumes of data with the goal of making informed solving problems, 
+                      business decisions, and...
                   </p>
-                  <Link to={`/course-detail-graduate?course=data-analysis`}>
+                  <span onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}>
                     Learn More
-                  </Link>
+                  </span>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           <Link to="/signup">
             <div

@@ -55,12 +55,21 @@ function Login() {
               token: res.data.token,
             })
           );
+          console.log(res)
+          const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
 
           btn.innerHTML = `Sign in`;
           setTimeout(function () {
-            // window.location = "/dashboard";
-            window.location = "/mode";
+            window.location = "/dashboard";
+            if(appPaymentStatus == 1) {
+              window.location = "/mode";
+            } else if(appPaymentStatus == null){
+              window.location = "/dashboard";
+            } else {
+              window.location = "/dashboard";
+            }
+            // window.location = "/mode";
           }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");
@@ -73,12 +82,13 @@ function Login() {
         if (err.response.data.message) {
           toast.error(err.response.data.message);
           btn.innerHTML = `Sign in`;
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-          btn.innerHTML = `Sign in`;
-        }
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
+        //   btn.innerHTML = `Sign in`;
+        // }
       });
   };
 

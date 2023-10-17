@@ -34,14 +34,16 @@ function SignUp() {
     console.log(form);
     var btn = document.getElementById("actionBtn");
 
-    if (form.password.length > 5) {
+    // if (form.password.length > 5) {
+    if (form.password.length >= 6) {
       // btn.innerHTML=`<img src=${loader} width="20px" />`;
       const { firstName, lastName, email, phone, password, cohort_batch } =
         form;
       var data = new FormData();
       const phone_length = phone.length;
 
-      if (phone_length == 11 || phone_length > 11) {
+      // if (phone_length == 11 || phone_length > 11) {
+      if (phone_length === 11) {
         data.append("firstName", firstName);
         data.append("lastName", lastName);
         data.append("email", email);
@@ -56,6 +58,7 @@ function SignUp() {
 
           const res = await response;
           // const res.data.status ==201
+          console.log(res)
           if (res.data.status === 201) {
             toast.success(`${res.data.message} Proceed to login.`);
             // btn.innerHTML=`Create account`;
@@ -68,20 +71,23 @@ function SignUp() {
           }
         } catch (err) {
           if (err.response.data.message) {
+            console.log(err)
             toast.error(err.response.data.message);
             btn.innerHTML = `Create account`;
-          } else {
-            toast.error(
-              "Something went wrong!!! Please make sure you have a good internet connection."
-            );
-            btn.innerHTML = `Create account`;
-          }
+          } 
+          // else {
+          //   toast.error(
+          //     "Something went wrong!!! Please make sure you have a good internet connection."
+          //   );
+          //   btn.innerHTML = `Create account`;
+          // }
         }
       } else {
-        toast.error("please enter correct phone number");
+        toast.error("please enter a correct phone number");
       }
     } else {
-      toast.error("Password must be at least 6 characters!");
+      // toast.error("Password must be at least 6 characters!");
+      toast.error("Password must must be atleast 6 characters and must contain alphabets and numbers!");
     }
   }
 

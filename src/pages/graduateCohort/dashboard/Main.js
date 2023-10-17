@@ -124,13 +124,14 @@ function Dashboard() {
       })
       .catch((err) => {
         setLoading(false);
-        if (err.response) {
-          toast.error(err.response);
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-        }
+        // if (err.response) {
+        //   toast.error(err.response);
+        // } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
+        // }
       });
   }, [guarantorForm1]);
 
@@ -483,12 +484,13 @@ function Dashboard() {
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Proceed`;
-            } else {
-              toast.error(
-                "Something went wrong!!! Please make sure you have a good internet connection."
-              );
+            } 
+            // else {
+            //   toast.error(
+            //     "Something went wrong!!! Please make sure you have a good internet connection."
+            //   );
               btn.innerHTML = `Proceed`;
-            }
+            // }
           });
       } else {
         btn.innerHTML = `Proceed`;
@@ -515,12 +517,13 @@ function Dashboard() {
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Submit & Pay`;
-            } else {
-              toast.error(
-                "Something went wrong!!! Please make sure you have a good internet connection."
-              );
+            } 
+            // else {
+            //   toast.error(
+            //     "Something went wrong!!! Please make sure you have a good internet connection."
+            //   );
               btn.innerHTML = `Submit & Pay`;
-            }
+            // }
           });
 
         var planData = new FormData();

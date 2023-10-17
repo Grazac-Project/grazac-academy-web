@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -15,29 +15,123 @@ import { PopupButton } from "react-calendly";
 
 const CourseDetail = (props) => {
   const [course, setCourse] = useState("");
-  // const [outline, setOutline] = useState([]);
+  const [outline, setOutline] = useState([]);
+  const [mode, setMode] = useState('')
+  const [url, setUrl] = useState('')
 
-  React.useEffect(() => {
-    document.title = "Course Details - Grazac Academy";
-    window.scrollTo(0, 0);
-    const slug = props.location.search.substring(8);
-    console.log(slug);
 
-    fetch(
-      `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`
-    )
-      // axios(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`)
-      .then((resp) => resp.json())
-      .then((response) => {
-        setCourse(response.details);
-        // setOutline(JSON.parse(response.details.outline));
-      })
-      .catch((error) => {
-        console.log("error:", error);
-        // window.location.reload();
-      });
+  // Use a ref for tracking unmounted state
+  // const isUnmounted = useRef(false);
+
+  const slug = props.location.search.substring(8);
+  console.log(slug)
+  useEffect(() => {
+      const getInfo = async () => {
+      document.title = "Course Details - Grazac Academy";
+      window.scrollTo(0, 0);
+      const savedData = await sessionStorage.getItem("learning_mode");
+      const trial = await JSON.parse(savedData);
+      await setMode(trial.class_option);
+
+      // Cleanup function
+
+      // return () => {
+      //   isUnmounted.current = true;
+      // };
+    }
+    getInfo()
   }, []);
+
+  useEffect(() => {
+    // Define the fetchData function
+    const fetchData = async (url) => {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        console.log(result)
+        await setCourse(result.details);
+        console.log(JSON.parse(result.details.outline))
+        await setOutline(JSON.parse(result.details.outline));
+        // if (!isUnmounted.current) {
+        //   setCourse(result.details);
+        // }
+      } catch (error) {
+        console.log("error:", error);
+        // Handle errors
+        // You can also check if it's unmounted before setting state here
+        // if (!isUnmounted.current) {
+        //   // Handle error or reload the page
+        // }
+      }
+    };
+
+    const urlSelect = async () => {
+      // Construct the URL based on the mode
+    let urlBuild = "";
+    console.log(mode)
+    if (mode === 'Virtual') {
+      urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`;
+    } else if (mode === 'Physical') {
+      urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`;
+    } 
+
+    setUrl(urlBuild);
+    console.log(urlBuild)
+    console.log(url);
+    // Fetch data
+    if (urlBuild) {
+      fetchData(urlBuild);
+    }
+    }
+    urlSelect()
+  }, [slug, mode]);
+
+
+  // React.useEffect(() => {
+  //   document.title = "Course Details - Grazac Academy";
+  //   window.scrollTo(0, 0);
+  //   const slug = props.location.search.substring(8);
+  //   console.log(slug)
+
+  //   const savedData = sessionStorage.getItem("learning_mode");
+  //   const trial = JSON.parse(savedData)
+  //   console.log(trial)
+  //   setMode(trial.class_option); 
+  //   console.log(trial.class_option)
+
+    
+
+
+  //   if(mode == 'virtual') {
+  //     let urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`
+  //     setUrl(urlBuild)
+  //     console.log(url)
+  //   } else if (mode === 'physical') {
+  //     let urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`
+  //     setUrl(urlBuild)
+  //     console.log(url)
+  //   }
+  //   // mode === 'virtual' ? setUrl(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`) : mode === 'physical' ? setUrl(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`) : setUrl('')
+
+  //   // fetch(
+  //   //   `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`
+  //   // )
+  //   // axios(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`)
+  //   fetch(url)
+  //     .then((resp) => resp.json())
+  //     .then((response) => {
+  //       console.log(response)
+  //       setCourse(response.details);
+  //       // setOutline(JSON.parse(response.details.outline));
+  //     })
+  //     .catch((error) => {
+  //       console.log("error:", error);
+  //       // window.location.reload();
+  //     });
+  // }, []);
   console.log(course);
+  console.log(mode);
+  console.log(url)
 
   return (
     <div>
@@ -53,7 +147,7 @@ const CourseDetail = (props) => {
                     <div className="course_hero-text">
                       <div className="dot-class">
                         <div className="dot"></div>
-                        <div className="class-type">Physical</div>
+                        <div className="class-type">{mode}</div>
                       </div>
                       <div className="course_hero-text-b">
                         <h1>{course.name}</h1>
@@ -84,7 +178,7 @@ const CourseDetail = (props) => {
               )}
             </div>
           </div>
-          {/* <div className="course_learn">
+          <div className="course_learn">
               <div className="container">
                 <div className="course_wwd-intro">
                   <h4>GRAZAC ACADEMY</h4>
@@ -110,12 +204,12 @@ const CourseDetail = (props) => {
                     ))
                   ) : (
                     <div>
-                      <img src={loader} alt="loader" className="loader" />
+                      {/* <img src={loader} alt="loader" className="loader" /> */}
                     </div>
                   )}
                 </div>
               </div>
-            </div> */}
+            </div>
           <MOT />
           <section className="book-session">
             <div className="book-session-container">
