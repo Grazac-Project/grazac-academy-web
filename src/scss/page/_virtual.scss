@@ -23,6 +23,17 @@
         // width: 80%;
       }
     }
+    h4 {
+      color: var(--Main-Color, #773dd3);
+      font-family: Georgia;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 36px */
+      @media screen and (max-width: 600px) {
+        font-size: 22px;
+      }
+    }
 
     h1 {
       color: #073041;
@@ -39,17 +50,7 @@
         font-size: 28px;
       }
 
-      span {
-        color: var(--Main-Color, #773dd3);
-        font-family: Georgia;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        @media screen and (max-width: 600px) {
-          font-size: 22px;
-        }
-      }
+      
     }
     p {
       color: #073041;

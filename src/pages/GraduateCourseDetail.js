@@ -135,7 +135,7 @@ const CourseDetail = (props) => {
 
   return (
     <div>
-      {/* {outline.length ? ( */}
+      {outline.length ? (
       <div id="blur">
         <Navbar />
         <div className="course">
@@ -166,16 +166,16 @@ const CourseDetail = (props) => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                    <div>
+                      {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
+                    </div>
+                  </div></div>    //not sure yet
+                ) : (
                   <div>
-                    {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
+                    {/*<img src={loader} alt="loader" className="loader" />*/}
                   </div>
-                </div>
-              ) : (
-                <div>
-                  {/*<img src={loader} alt="loader" className="loader" />*/}
-                </div>
-              )}
+                )}
+              {/* </div>    */}
             </div>
           </div>
           <div className="course_learn">
@@ -211,36 +211,36 @@ const CourseDetail = (props) => {
               </div>
             </div>
           <MOT />
-          <section className="book-session">
-            <div className="book-session-container">
-              <div className="book-session-container-mobile">
-                <img src={Mobile} alt="fone" />
+            <section className="book-session">
+              <div className="book-session-container">
+                <div className="book-session-container-mobile">
+                  <img src={Mobile} alt="fone" />
+                </div>
+                <div className="book-session-container-text">
+                  <h5>Have more questions?</h5>
+                  <p>
+                    You can book a <span>30-minutes</span> session with the{" "}
+                    <span>Course manager</span>
+                  </p>
+                  {/* <button onClick={() => setIsOpen(true)}>Book a Session</button> */}
+                  <PopupButton
+                    url="https://calendly.com/mansurolatunji"
+                    rootElement={document.getElementById("root")}
+                    text="Book a Session"
+                  />
+                  <img src={Stroke} alt="stroke" />
+                </div>
+                <div className="book-session-container-pic">
+                  <img src={Fone} alt="fone" />
+                </div>
               </div>
-              <div className="book-session-container-text">
-                <h5>Have more questions?</h5>
-                <p>
-                  You can book a <span>30-minutes</span> session with the{" "}
-                  <span>Course manager</span>
-                </p>
-                {/* <button onClick={() => setIsOpen(true)}>Book a Session</button> */}
-                <PopupButton
-                  url="https://calendly.com/mansurolatunji"
-                  rootElement={document.getElementById("root")}
-                  text="Book a Session"
-                />
-                <img src={Stroke} alt="stroke" />
-              </div>
-              <div className="book-session-container-pic">
-                <img src={Fone} alt="fone" />
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      {/* ) : (
-        <Loader /> */}
-      {/* )} */}
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

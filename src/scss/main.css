@@ -2071,6 +2071,19 @@ input:focus, select:focus, textarea:focus {
     margin-top: 32px;
   }
 }
+.Vitual_hero h4 {
+  color: var(--Main-Color, #773dd3);
+  font-family: Georgia;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+}
+@media screen and (max-width: 600px) {
+  .Vitual_hero h4 {
+    font-size: 22px;
+  }
+}
 .Vitual_hero h1 {
   color: #073041;
   font-family: Georgia;
@@ -2088,19 +2101,6 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 600px) {
   .Vitual_hero h1 {
     font-size: 28px;
-  }
-}
-.Vitual_hero h1 span {
-  color: var(--Main-Color, #773dd3);
-  font-family: Georgia;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-@media screen and (max-width: 600px) {
-  .Vitual_hero h1 span {
-    font-size: 22px;
   }
 }
 .Vitual_hero p {
