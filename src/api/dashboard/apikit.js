@@ -3,7 +3,8 @@ import axios from 'axios';
 //tis creates axios client pre-configured with base URL
 
 export const APIKit = axios.create({
-    baseURL: 'https://api.grazacacademy.com/api/v1',
+    // baseURL: 'https://api.grazacacademy.com/api/v1',
+    baseURL: 'https://api-grazacacademy-0358136c0905.herokuapp.com/',
     timeout: 50000, // timeout can be increased
     headers: {
         // 'Content-Type': 'multipart/form-data',
@@ -13,7 +14,8 @@ export const APIKit = axios.create({
 });
 
 export const AdminApiKit = axios.create({
-    baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    // baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    baseURL: 'https://grazac-admin-backend-d48022f1cdb6.herokuapp.com',
     timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'application/json',
@@ -22,7 +24,8 @@ export const AdminApiKit = axios.create({
 });
 
 export const AdminApi = axios.create({
-    baseURL: 'https://admin-api.grazacacademy.com/api/v1',
+    // baseURL: 'https://admin-api.grazacacademy.com/api/v1',
+    baseURL: 'https://grazac-admin-backend-d48022f1cdb6.herokuapp.com',
     timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'application/json',

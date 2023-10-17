@@ -21,6 +21,7 @@ const CourseDetail = (props) => {
     document.title = "Course Details - Grazac Academy";
     window.scrollTo(0, 0);
     const slug = props.location.search.substring(8);
+    console.log(slug);
 
     fetch(
       `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`
@@ -28,7 +29,6 @@ const CourseDetail = (props) => {
       // axios(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`)
       .then((resp) => resp.json())
       .then((response) => {
-        console.log("resp b4", response, "course b4", course);
         setCourse(response.details);
         console.log("resp after", response, "course after", course);
         console.log(response.details.outline);

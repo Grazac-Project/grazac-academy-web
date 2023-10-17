@@ -2841,6 +2841,7 @@ input:focus, select:focus, textarea:focus {
 }
 .course_mode {
   margin-top: 80px;
+  margin-bottom: 70px;
 }
 .course_mode-intro h4 {
   color: #773dd3;

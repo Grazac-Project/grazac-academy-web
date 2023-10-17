@@ -229,11 +229,11 @@ const Landing = () => {
                   <div className="">
                     <img src={why2} alt="profile" />
                   </div>
-                  <h4>1:1 access to mentorship and support</h4>
+                  <h4>Expert Instructors</h4>
                   <p className="hire_dev-grey">
-                    You gain 24/7 access to a wide range of industry experts
-                    that will walk you through your career path and increase
-                    your visibility to potential employers.
+                    Our tech academy is home to a team of industry-leading experts who are not just 
+                    educators but also practitioners in their respective fields. They bring real-world experience, 
+                    insights, and up-to-date knowledge to every lesson, ensuring you receive the highest quality education.
                   </p>
                 </div>
               {/* </Col> */}
@@ -244,11 +244,10 @@ const Landing = () => {
                   <div className="">
                     <img src={why3} alt="profile" />
                   </div>
-                  <h4>Recognized Certification</h4>
+                  <h4> 4-months Compulsory Internship</h4>
                   <p className="hire_dev-grey">
-                    You get a recognized certificate that serves as a proof that
-                    you are skilled enough to work in any organization in or
-                    outside Nigeria.
+                    Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve 
+                    related problems so you can build your portfolio for at least 4-months.
                   </p>
                 </div>
               {/* </Col> */}
@@ -257,12 +256,11 @@ const Landing = () => {
                   <div className="">
                     <img src={why4} alt="profile" />
                   </div>
-                  <h4>3-months Compulsory Internship</h4>
+                  <h4> Career-Ready Certification</h4>
                   <p className="hire_dev-grey">
-                    Get real workplace experience. You stand a chance to work
-                    with amazing teams on real-life projects to solve related
-                    problems so you can build your portfolio for at least
-                    3-months.
+                    Our programs are designed to prepare you for the workforce. 
+                    Upon completion, you'll receive industry-recognized certifications that validate your 
+                    skills and open doors to exciting job opportunities
                   </p>
                 </div>
               {/* </Col> */}
@@ -277,8 +275,8 @@ const Landing = () => {
             </div>
             <div className="landing__slider-text1">
               <p>
-                Learn any of these tech courses today for free and pay back when
-                you are hired.
+                Explore a wide range of tech courses designed to empower you with the skills and knowledge 
+                you need to thrive in the ever-evolving tech industry.
               </p>
             </div>
             <div className="gga_container">
