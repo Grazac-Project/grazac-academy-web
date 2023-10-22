@@ -429,17 +429,19 @@ function NotSubmitted({
             <li>Machine Learning with Python</li>
           </ul>
           <h4>Pricing Plans</h4>
-          <p>There's an application fee of N7,500. Payment options include:</p>
+          {/* <p>There's an application fee of N7,500. Payment options include:</p> */}
+          <p>With you in mind, Grazac Academy offers Three (3) different payment options which include;</p>
           <ul>
             <li>
-              <strong>Installment Payment: </strong>N210,000 initial payment, then N840,000 over 8 months.
+              <strong>Instalment Payment: </strong>Pay N285,000 upfront and spread the rest at N85,000 per month for 9 months.
             </li>
-            <li><strong>Full payment: </strong>N1,200,000 with a 16.6% discount which is <strong>N1,000,000</strong></li>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 4-month internship program</li>
           </ul>
           <p>
-            Candidates must commit to 12 months. Installment payment candidates need guarantors and 
+            Candidates must commit to 12 months. Instalment payment candidates need guarantors and 
             a N50,000 legal fee if selected.
           </p>
+          <p>Please refer to the pricing page for more information</p>
           {/* <h4>Physical Learning</h4> */}
           <h4>Duration</h4>
           <ul>
