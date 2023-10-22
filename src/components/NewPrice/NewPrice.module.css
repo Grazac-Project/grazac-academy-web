@@ -38,14 +38,15 @@
   @media screen and (max-width: 760px) {
     width: 50%;
     margin: auto;
+    margin-bottom: 30px;
     padding: 24px 40px;
   }
   @media screen and (max-width: 570px) {
     width: 70%;
   }
+
+
 }
-
-
 .main h5 {
   color: #773dd3;
   text-align: center;

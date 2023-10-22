@@ -15,6 +15,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
   const AdmissionFeeFlutterwaveConfig = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+
     tx_ref: Date.now(),
     amount: 7500,
     currency: "NGN",

@@ -5,9 +5,9 @@ const VirtualPricing = () => {
     {
       id: 1,
       type: "Pay at Once",
-      prevAmount: "₦180,000 ($180)",
-      newAmount: "₦120,000 ($120)",
-      discount: ["33.32%"],
+      prevAmount: "₦180,000",
+      newAmount: "₦120,000 ",
+      discount: ["32.43% 0FF"],
       recommend: "Highly Recommended",
 
       benefits: [
@@ -22,14 +22,14 @@ const VirtualPricing = () => {
     {
       id: 2,
       type: "Pay Installment",
-      prevAmount: "₦185,000 ($185)",
-      newAmount: "₦125,000 ($125)",
-      discount: ["33.32%"],
+      prevAmount: "₦185,000",
+      newAmount: "₦125,000 ",
+      discount: ["32.43% OFF"],
       method: ["₦72,000 ($72) Initial payment"],
-      span: ["Initial payment of 70% of the tuition fee ($84) at enrollment"],
+      span: ["Initial payment of 70% of the tuition fee (₦87,500) at enrollment"],
 
       benefits: [
-        "Spread the remaining $36 over 3 months.",
+        "Spread the remaining ₦37,500 over 2 months.",
         "1:1 mentorship with experts",
         "Learning from the comfort of your space",
         "Access to free webinars for your career growth and positioning",
