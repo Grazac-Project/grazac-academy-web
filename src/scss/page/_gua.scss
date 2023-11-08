@@ -185,6 +185,7 @@
       font-weight: bold;
       position: absolute;
       bottom: 16px;
+      
     }
     &-box {
       height: 150px;
@@ -206,6 +207,9 @@
       h4 {
         font-family: Georgia;
         font-weight: 600;
+      }
+      span{
+        cursor: pointer;
       }
       
     }

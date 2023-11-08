@@ -116,7 +116,7 @@ const Landing = () => {
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application opens on 2nd, October, 2023
+                Application is now open. Class commences 8th January, 2024
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"

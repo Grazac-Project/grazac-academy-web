@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { submitDetails, submitGuarantor } from "../../../api/dashboard/data";
+import { submitDetails, submitGuarantor, submitGuarantor2 } from "../../../api/dashboard/data";
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
 import upload from "../../../images/svg/upload.svg";
 import loader from "../../../images/svg/dashboard/loader.gif";
 import about from "../../../images/about-1.jpg";
-import termsandconds from "../../../images/newsletter/terms.pdf";
+import termsandconds from "../../../images/newsletter/terms_and_conds.pdf";
 import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -54,7 +54,21 @@ function NotSubmitted({
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: '',
     last_name: '',
-    email: '',
+    email_address: '',
+    phone_number: '',
+    gender: "",
+    office_address: "",
+    home_address: "",
+    profession: "",
+    organization_name: '',
+    employer_phone_address: '',
+    employer_email_address: '',
+    relationship_with_the_guarantor: ''
+  });
+  const [formGuarantor2, setFormGuarantor2] = useState({
+    first_name: '',
+    last_name: '',
+    email_address: '',
     phone_number: '',
     gender: "",
     office_address: "",
@@ -154,6 +168,12 @@ function NotSubmitted({
       [e.target.name]: e.target.value,
     });
   };
+  const handleChangeGuarantor2 = (e) => {
+    setFormGuarantor2({
+      ...formGuarantor2,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   // const handleImage = (e) => {
   //   if (e.target.files[0].size > 2097152) {
@@ -207,7 +227,7 @@ function NotSubmitted({
     var check2 = document.getElementById("check2");
     if (check2.checked) {
       setActive("lnpl");
-      setFormActive("guarantor-form");
+      setFormActive("guarantor-form1");
       window.scrollTo(0, 0);
     } else {
       toast.warn("You need to accept the terms and conditions to proceed!");
@@ -359,9 +379,44 @@ function NotSubmitted({
       });
   }
 
-  const submitFormGuarantor = (e) => {
+  const submitFormGuarantor1 = (e) => {
     e.preventDefault()
     submitGuarantor(formGuarantor)
+    .then(res => {
+      if (res.status === 200) {
+        // toast.success(
+        //   "Submission successful! Your Application is now under review."
+        // );
+        // btn.innerHTML = `Submit`;
+        // setNewStatus();
+        setFormActive("guarantor-form2")
+        window.scrollTo(0, 0);
+      } else {
+        toast.error("Submission not successful, try again!!!");
+        // btn.innerHTML = `Submit`;
+      }
+    })
+    .catch((err) => {
+        toast.error("Something went wrong!!! Please Try Again");
+      // try {
+      //   if (err.response) {
+      //     toast.error(err.response);
+      //     btn.innerHTML = `Submit`;
+      //   } else {
+      //     toast.error(
+      //       "Something went wrong!!! Please make sure you have a good internet connection."
+      //     );
+      //     btn.innerHTML = `Submit`;
+      //   }
+      // } catch {
+      //   toast.error("Something went wrong!!! Please Try Again");
+      //   btn.innerHTML = `Submit`;
+      // }
+    });
+  }
+  const submitFormGuarantor2 = (e) => {
+    e.preventDefault()
+    submitGuarantor2(formGuarantor2)
     .then(res => {
       if (res.status === 200) {
         toast.success(
@@ -425,21 +480,24 @@ function NotSubmitted({
             <li>Back end web development (Nodejs)</li>
             <li>Mobile Application Development (Flutter and Dart)</li>
             <li>Data Analysis</li>
-            <li>Java</li>
+            <li>Backend Web Development (Java with Spring & Springboot)</li>
             <li>Machine Learning with Python</li>
           </ul>
           <h4>Pricing Plans</h4>
-          <p>There's an application fee of N7,500. Payment options include:</p>
+          {/* <p>There's an application fee of N7,500. Payment options include:</p> */}
+          <p>With you in mind, Grazac Academy offers Three (3) different payment options which include;</p>
           <ul>
             <li>
-              <strong>Installment Payment: </strong>N210,000 initial payment, then N840,000 over 8 months.
+              <strong>Instalment Payment: </strong>Pay N285,000 upfront and spread the rest at N85,000 per month for 9 months.
             </li>
-            <li><strong>Full payment: </strong>N1,200,000 with a 16.6% discount which is <strong>N1,000,000</strong></li>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 4-month internship program</li>
+            <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
           </ul>
           <p>
-            Candidates must commit to 12 months. Installment payment candidates need guarantors and 
-            a N50,000 legal fee if selected.
+            Learn now pay later candidates need two(2) guarantors and 
+            a non-refundable N50,000 legal fee if selected.
           </p>
+          <p>Please refer to the pricing page for more information</p>
           {/* <h4>Physical Learning</h4> */}
           <h4>Duration</h4>
           <ul>
@@ -455,7 +513,7 @@ function NotSubmitted({
           </p> */}
           <ul>
             <li>
-              Candidates must be available (full-time) for at least 8 months.
+              Candidates must be available (full-time) for 12 months.
 
             </li>
             <li>
@@ -739,7 +797,7 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                          Will you be available physically for the next 8months?
+                          Will you be available physically for the next 12months?
                       </label>
                       <select
                         name="physically_available"
@@ -771,7 +829,7 @@ function NotSubmitted({
                           Back-end Web Development
                         </option>
                         <option value="Android Development">
-                          Android Development
+                          Mobile Application Development (Flutter and Dart)
                         </option>
                         <option value="Product Management">
                           Product Management
@@ -780,7 +838,7 @@ function NotSubmitted({
                           Machine Learning
                         </option>
                         <option value="Java">
-                          Java
+                          Backend Web Development(Java with Spring & Springboot)
                         </option>
                         <option value="Data Analysis">
                           Data Analysis
@@ -1203,7 +1261,7 @@ function NotSubmitted({
                           Back-end Web Development
                         </option>
                         <option value="Android Development">
-                          Android Development
+                          Mobile Application Development (Flutter and Dart)
                         </option>
                         <option value="Product Management">
                           Product Management
@@ -1333,11 +1391,11 @@ function NotSubmitted({
             </div>   
         </div>)}
 
-        {/* =========================== GUARANTOR FORM ==============================  */}
+        {/* =========================== GUARANTOR FORM 1 ==============================  */}
       {active === 'lnpl' && (
         <div>
             <div>
-              {formActive === "guarantor-form" && (
+              {formActive === "guarantor-form1" && (
                 <div>
                   <div
                     className="dashboard-content-back2"
@@ -1354,7 +1412,7 @@ function NotSubmitted({
                   <div className="dashboard-content-form2">
                     {/* <form onSubmit={showEduForm}> */}
                     <div>
-                    <form onSubmit={submitFormGuarantor}>
+                    <form onSubmit={submitFormGuarantor1}>
                     {/* <p>Step 1 of 2</p> */}
                     {/* <p>BIO DATA</p> */}
                     <div className="dashboard-content-form-container">
@@ -1489,6 +1547,179 @@ function NotSubmitted({
                         placeholder="Relationship with the Guarantor"
                         value={formGuarantor.relationship}
                         onChange={handleChangeGuarantor}
+                      />
+                    </div>
+                    <button type="submit" style={{ float: "right", width: "213px", marginRight: '0px' }}>
+                      Continue
+                    </button>
+                  </form>
+                      
+
+                    </div>
+                  </div>
+                </div>
+              )} 
+            </div>   
+        </div>)}
+
+    {/* ==================================== GUARANTOR FORM 2 ================================================ */}
+
+
+      {active === 'lnpl' && (
+        <div>
+            <div>
+              {formActive === "guarantor-form2" && (
+                <div>
+                  <div
+                    className="dashboard-content-back2"
+                    onClick={() => {
+                      setActive("welcome");
+                      setCheckAct(false);
+                    }}
+                    // onClick={goBack}
+                  >
+                    <img src={arrow} alt="back" />
+                    <p>Back</p>
+                  </div>
+                  <h4 className="guarantor-form-label">Guarantor’s Form</h4>
+                  <div className="dashboard-content-form2">
+                    {/* <form onSubmit={showEduForm}> */}
+                    <div>
+                    <form onSubmit={submitFormGuarantor2}>
+                    {/* <p>Step 1 of 2</p> */}
+                    {/* <p>BIO DATA</p> */}
+                    <div className="dashboard-content-form-container">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="first_name"
+                        placeholder="First Name"
+                        value={formGuarantor2.first_name}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        required
+                        name="last_name"
+                        placeholder="Last Name"
+                        value={formGuarantor2.last_name}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        name="email_address"
+                        placeholder="Email Address"
+                        value={formGuarantor2.email_address}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Phone Number</label>
+                      <input
+                        type="number"
+                        required
+                        name="phone_number"
+                        placeholder="Phone Number"
+                        value={formGuarantor2.phone_number}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Gender</label>
+                      <select
+                        required
+                        name="gender"
+                        value={formGuarantor2.gender}
+                        onChange={handleChangeGuarantor2}
+                      >
+                        <option value="">Select an option</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Office Address</label>
+                      <input
+                        type="text"
+                        required
+                        name="office_address"
+                        placeholder="Office Address"
+                        value={formGuarantor2.office_address}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Home Address</label>
+                      <input
+                        type="text"
+                        required
+                        name="home_address"
+                        placeholder="Home Address"
+                        value={formGuarantor2.home_address}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Profession</label>
+                      <input
+                        type="text"
+                        required
+                        name="profession"
+                        placeholder="Enter Profession"
+                        value={formGuarantor2.profession}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Name of organization</label>
+                      <input
+                        type="text"
+                        required
+                        name="organization_name"
+                        placeholder="Enter Organization"
+                        value={formGuarantor2.organization_name}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Phone number of employer</label>
+                      <input
+                        type="number"
+                        required
+                        name="employer_phone_number"
+                        placeholder="Phone number of employer"
+                        value={formGuarantor2.employer_phone_number}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Email Address of Employer</label>
+                      <input
+                        type="email"
+                        required
+                        name="employer_email_address"
+                        placeholder="Email Address of Employer"
+                        value={formGuarantor2.employer_email_address}
+                        onChange={handleChangeGuarantor2}
+                      />
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>Relationship with the Guarantor</label>
+                      <input
+                        type="text"
+                        required
+                        name="relationship"
+                        placeholder="Relationship with the Guarantor"
+                        value={formGuarantor2.relationship}
+                        onChange={handleChangeGuarantor2}
                       />
                     </div>
                     <button type="submit" style={{ float: "right", width: "213px", marginRight: '0px' }}>

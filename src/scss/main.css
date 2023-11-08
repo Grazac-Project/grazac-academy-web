@@ -611,6 +611,14 @@ input:focus, select:focus, textarea:focus {
   line-height: 32.74px;
   color: #073041;
 }
+@media (max-width: 768px) {
+  .infomodal_content p {
+    margin: 5px 10px 0 10px;
+    font-size: 12px;
+    line-height: 25.74px;
+    text-align: center;
+  }
+}
 @media (max-width: 450px) {
   .infomodal_content p {
     margin: 5px 10px 0 10px;
@@ -4153,6 +4161,9 @@ input:focus, select:focus, textarea:focus {
 .gua_cardview-text h4 {
   font-family: Georgia;
   font-weight: 600;
+}
+.gua_cardview-text span {
+  cursor: pointer;
 }
 .gua_advice {
   background: #fef4bf;

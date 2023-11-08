@@ -224,7 +224,7 @@ const CourseDetail = (props) => {
                   </p>
                   {/* <button onClick={() => setIsOpen(true)}>Book a Session</button> */}
                   <PopupButton
-                    url="https://calendly.com/mansurolatunji"
+                    url="https://calendly.com/grazacacademy/session-with-the-grazac-program-manager"
                     rootElement={document.getElementById("root")}
                     text="Book a Session"
                   />
