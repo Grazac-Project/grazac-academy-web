@@ -948,6 +948,99 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+.payment h4 {
+  color: var(--333333, #333);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.62px;
+}
+.payment-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.payment-table thead {
+  border-bottom: 1px solid rgba(120, 118, 118, 0.6);
+  background: rgba(241, 245, 252, 0.15);
+}
+.payment-table td,
+.payment-table th {
+  border-bottom: 1px solid #e5e9f2;
+  text-align: center;
+  padding: 15px 8px;
+  font-size: 16px;
+  color: #909198;
+}
+.payment-table td {
+  cursor: pointer;
+}
+.payment-table th {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.payment-table p {
+  font-size: 12px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.payment-table span {
+  font-size: 16px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.payment-table-action {
+  background-color: white;
+  border: 1px solid #773dd3;
+  position: absolute;
+  padding: 10px 10px 0;
+  z-index: 1;
+}
+.payment-table .approved {
+  padding: 2px 10px;
+  width: 100px;
+  color: #188f32;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.payment-table .pending {
+  padding: 2px 10px;
+  width: 100px;
+  color: #cc9600;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.payment-table .paid {
+  width: 93px;
+  margin: auto;
+  color: #787676;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px; /* 150% */
+  border-radius: 100px;
+  border: 2px solid #fff;
+  background: rgba(220, 205, 244, 0.5);
+}
+.payment-table .pay-now {
+  width: 93px;
+  margin: auto;
+  color: #773dd3;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 150% */
+  border-radius: 100px;
+  border: 2px solid #fff;
+  background: rgba(220, 205, 244, 0.5);
+}
+
 .loader {
   left: 50%;
   position: absolute;

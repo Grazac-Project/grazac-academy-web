@@ -80,7 +80,7 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
-      console.log(details)
+      console.log(details);
 
       setDetails(JSON.parse(details));
 
@@ -126,7 +126,7 @@ function Dashboard() {
         setLoading(false);
         // if (err.response) {
         //   toast.error(err.response);
-        // } 
+        // }
         // else {
         //   toast.error(
         //     "Something went wrong!!! Please make sure you have a good internet connection."
@@ -484,12 +484,12 @@ function Dashboard() {
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Proceed`;
-            } 
+            }
             // else {
             //   toast.error(
             //     "Something went wrong!!! Please make sure you have a good internet connection."
             //   );
-              btn.innerHTML = `Proceed`;
+            btn.innerHTML = `Proceed`;
             // }
           });
       } else {
@@ -517,12 +517,12 @@ function Dashboard() {
             if (err.response) {
               toast.error(err.response);
               btn.innerHTML = `Submit & Pay`;
-            } 
+            }
             // else {
             //   toast.error(
             //     "Something went wrong!!! Please make sure you have a good internet connection."
             //   );
-              btn.innerHTML = `Submit & Pay`;
+            btn.innerHTML = `Submit & Pay`;
             // }
           });
 

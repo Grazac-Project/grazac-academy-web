@@ -110,6 +110,11 @@ const Pricing = lazy(() => {
   return import("./pages/pricing");
   
 });
+const Payment = lazy(() => {
+  
+  return import("../src/components/dashboard/payment");
+  
+});
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -164,11 +169,11 @@ const App = () => {
                 <Route path="/account-created" component={AccountCreated} />
                 <Route path="/verification" component={VerifyMail} />
                 <Route path="/mode" component={Mode} />
-
                 
-
                 {/* Graduate dashboard */}
                 <Route path="/dashboard" component={DashBoardHome} />
+                <Route path="/payment" component={Payment} />
+                
 
                 {/* main pages */}
                 <Route path="/" exact component={LandingPage}>
