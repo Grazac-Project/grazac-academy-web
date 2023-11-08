@@ -109,6 +109,19 @@ export const submitGuarantor = (data) => {
     }
   );
 };
+export const submitGuarantor2 = (data) => {
+  console.log(token)
+  return APIKit.post(
+    // `/user/guarantorDetails?payment_plan=pay-as-you-earn`,
+    `api/v1/user/guarantorDetails2`,
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
 
 export const sendFlutterTx = (trans_id) => {
   // return APIKit.post(`/user/pay?transaction_id=${trans_id}`);
