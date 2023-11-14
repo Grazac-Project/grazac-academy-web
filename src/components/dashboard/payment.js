@@ -159,7 +159,7 @@ const Payment = () => {
 
   return (
     <div className="payment">
-      <h4>Payment Type:Installment</h4>
+      <h4>Payment Type: Installment</h4>
       <div className="payment-table">
         <table>
           <thead>
@@ -172,7 +172,7 @@ const Payment = () => {
           </thead>
           <tbody>
             {Data.map((item, id) => (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.month}</td>
                 <td>{item.amount}</td>
                 <td>

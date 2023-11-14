@@ -257,10 +257,10 @@ const Landing = () => {
                   <div className="">
                     <img src={why3} alt="profile" />
                   </div>
-                  <h4> 4-months Compulsory Internship</h4>
+                  <h4> 6-months Internship</h4>
                   <p className="hire_dev-grey">
                     Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve 
-                    related problems so you can build your portfolio for at least 4-months.
+                    related problems so you can build your portfolio for 6-months.
                   </p>
                 </div>
               {/* </Col> */}
@@ -790,7 +790,7 @@ const Landing = () => {
                         <div className="landing_faq-answer">
                           <p>
                             The program is for a duration of 12 months,
-                              consisting of 8 months  immersive training and 4 months internship.
+                              consisting of 6 months  immersive training and 6 months internship.
                           </p>
                         </div>
                       </Card.Body>

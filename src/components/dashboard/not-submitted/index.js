@@ -490,7 +490,7 @@ function NotSubmitted({
             <li>
               <strong>Instalment Payment: </strong>Pay N285,000 upfront and spread the rest at N85,000 per month for 9 months.
             </li>
-            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 4-month internship program</li>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 6-month internship program</li>
             <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
           </ul>
           <p>
@@ -502,7 +502,7 @@ function NotSubmitted({
           <h4>Duration</h4>
           <ul>
             <li>
-              12months ( 8months intensive training + 4months internship).
+              12months ( 6months intensive training + 6months internship).
             </li>
           </ul>
           <h4>Basic Criteria to be met</h4>

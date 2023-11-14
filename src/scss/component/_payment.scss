@@ -1,15 +1,17 @@
 .payment {
+  padding: 27px 91px 160px 39px;
   h4 {
     color: var(--333333, #333);
-    font-family: Nunito Sans;
+    font-family: $font-secondary;
     font-size: 18px;
-    font-style: normal;
+    // font-style: normal;
     font-weight: 600;
-    line-height: normal;
+    line-height: 24.55px;
     letter-spacing: 1.62px;
   }
 
   &-table {
+    padding-top: 20px;
     table {
       border-collapse: collapse;
       width: 100%;
@@ -19,11 +21,18 @@
       background: rgba(241, 245, 252, 0.15);
     }
 
-    td,
+    td{
+      border-bottom: 1px solid #e5e9f2;
+      text-align: center;
+      padding-top: 42px;
+      padding-bottom: 18px;
+      font-size: 16px;
+      color: #909198;
+    }
     th {
       border-bottom: 1px solid #e5e9f2;
       text-align: center;
-      padding: 15px 8px;
+      padding: 12px 8px;
       font-size: 16px;
       color: #909198;
     }
@@ -83,6 +92,7 @@
       text-align: center;
       font-size: 12px;
       font-weight: 600;
+      padding: 2px 8px;
       line-height: 18px; /* 150% */
       border-radius: 100px;
       border: 2px solid #fff;
@@ -94,6 +104,7 @@
       color: #773dd3;
       text-align: center;
       font-size: 12px;
+      padding: 2px 8px;
       font-style: normal;
       font-weight: 600;
       line-height: 18px; /* 150% */

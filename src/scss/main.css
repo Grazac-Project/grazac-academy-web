@@ -956,14 +956,19 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+.payment {
+  padding: 27px 91px 160px 39px;
+}
 .payment h4 {
   color: var(--333333, #333);
-  font-family: Nunito Sans;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: 24.55px;
   letter-spacing: 1.62px;
+}
+.payment-table {
+  padding-top: 20px;
 }
 .payment-table table {
   border-collapse: collapse;
@@ -973,11 +978,18 @@ input:focus, select:focus, textarea:focus {
   border-bottom: 1px solid rgba(120, 118, 118, 0.6);
   background: rgba(241, 245, 252, 0.15);
 }
-.payment-table td,
+.payment-table td {
+  border-bottom: 1px solid #e5e9f2;
+  text-align: center;
+  padding-top: 42px;
+  padding-bottom: 18px;
+  font-size: 16px;
+  color: #909198;
+}
 .payment-table th {
   border-bottom: 1px solid #e5e9f2;
   text-align: center;
-  padding: 15px 8px;
+  padding: 12px 8px;
   font-size: 16px;
   color: #909198;
 }
@@ -1030,6 +1042,7 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
   font-size: 12px;
   font-weight: 600;
+  padding: 2px 8px;
   line-height: 18px; /* 150% */
   border-radius: 100px;
   border: 2px solid #fff;
@@ -1041,6 +1054,7 @@ input:focus, select:focus, textarea:focus {
   color: #773dd3;
   text-align: center;
   font-size: 12px;
+  padding: 2px 8px;
   font-style: normal;
   font-weight: 600;
   line-height: 18px; /* 150% */
@@ -2321,7 +2335,7 @@ input:focus, select:focus, textarea:focus {
 }
 .Vitual_class_container {
   width: 95%;
-  padding: 92px 0;
+  padding: 48px 0px 64px 0;
   margin: 0 auto;
 }
 @media screen and (max-width: 768px) {
@@ -2333,10 +2347,10 @@ input:focus, select:focus, textarea:focus {
   color: var(--text-color, #333);
   font-family: Georgia;
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1.6px;
+  line-height: 45.45px;
+  padding-bottom: 14px;
+  text-align: center;
 }
 @media screen and (max-width: 1024px) {
   .Vitual_class_container h1 {
@@ -2349,28 +2363,61 @@ input:focus, select:focus, textarea:focus {
   }
 }
 .Vitual_class_container_steps {
-  width: 411px;
+  width: 341.33px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 32px 10px 22px 10px;
+  text-align: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
   .Vitual_class_container_steps {
-    width: 100%;
+    width: 90%;
   }
+}
+.Vitual_class_container_steps h4 {
+  font-family: Georgia;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22.72px;
+  color: #073041;
+  padding-top: 14px;
+}
+.Vitual_class_container_steps p {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 .Vitual_class_container_stepFlex {
   display: flex;
-  justify-content: space-between;
-  justify-items: center;
-  margin: 48px 0 0 0;
-  gap: 24px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
 }
-@media screen and (max-width: 900px) {
-  .Vitual_class_container_stepFlex {
-    gap: 40px;
-  }
+.Vitual_class_container_stepFlex .image-container > img.forward {
+  max-width: 100%;
+}
+.Vitual_class_container_stepFlex .image-container {
+  max-width: 80%;
+}
+.Vitual_class_container_stepFlex .down {
+  display: none;
 }
 @media screen and (max-width: 768px) {
   .Vitual_class_container_stepFlex {
     flex-direction: column;
+  }
+  .Vitual_class_container_stepFlex .forward {
+    display: none;
+  }
+  .Vitual_class_container_stepFlex .down {
+    display: block;
+  }
+  .Vitual_class_container_stepFlex .image-container > img.down {
+    max-width: 80%;
+  }
+  .Vitual_class_container_stepFlex .image-container {
+    max-width: 80%;
   }
 }
 .Vitual_class_container_stepFlex button {

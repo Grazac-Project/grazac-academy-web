@@ -238,7 +238,7 @@ function Details() {
   useEffect(() => {
     getDetailsC()
       .then((res) => {
-       
+       console.log(res)
         setIsLoading(true);
         setUserDetails(res.data["data"]["result"][0]);
         setTemData(res.data["data"]["result"][0]);

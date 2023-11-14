@@ -122,7 +122,7 @@ const Faq = () => {
                       <div className="landing_faq-answer">
                         <p>
                           The program is for a duration of 12 months,
-                            consisting of 8 months  immersive training and 4 months internship.
+                            consisting of 6 months  immersive training and 6 months internship.
                         </p>
                       </div>
                     </Card.Body>
@@ -178,7 +178,7 @@ const Faq = () => {
                     <Card.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          For our virtual classes, the cost for all courses is #1,000,000
+                          For our physical classes, the cost for all courses is #1,000,000
                         </p>
                         <p>While for our virtual classes, the cost is $200. To get more information 
                           about our pricing, <a>Click here</a></p>

@@ -13,6 +13,11 @@ import Content2 from "../images/virtual/content2.svg";
 import Content3 from "../images/virtual/content3.svg";
 import Content4 from "../images/virtual/content4.svg";
 import Content5 from "../images/virtual/content5.svg";
+import Browse from "../images/virtual/browse.png";
+import Click from "../images/virtual/click.png";
+import Plan from "../images/virtual/plan.png";
+import Forward from "../images/virtual/forward.png";
+import Down from "../images/virtual/down.png";
 import { useState, useEffect } from "react";
 import { format, differenceInSeconds } from "date-fns/locale/en-US";
 import Slider from "react-slick";
@@ -162,8 +167,33 @@ const VirtualLanding = () => {
       </section>
       <section className="Vitual_class">
         <div className="Vitual_class_container">
-          <h1>How our Virtual Classes work</h1>
+          <h1>Join our virtual class in 3 easy steps</h1>
           <div className="Vitual_class_container_stepFlex">
+            <div className="Vitual_class_container_steps">
+              <img src={Browse} alt="browse" />
+              <h4>Browse Available Courses</h4>
+              <p>Explore course offerings, read descriptions, curriculum, prerequisites.</p>
+            </div>
+            <div className='image-container'>
+              <img src={Forward} alt="forward arrow" className="forward"/>
+              <img src={Down} alt="forward arrow" className="down"/>
+            </div>
+            <div className="Vitual_class_container_steps">
+              <img src={Click} alt="click" />
+              <h4>Click on Apply Now</h4>
+              <p>Choose your ideal course, reach out for guidance where necessary, </p>
+            </div>
+            <div className='image-container'>
+              <img src={Forward} alt="forward arrow" className="forward"/>
+              <img src={Down} alt="forward arrow" className="down"/>
+            </div>
+            <div className="Vitual_class_container_steps">
+              <img src={Plan} alt="plan" />
+              <h4>Make a Payment Plan</h4>
+              <p>Complete your assessment, get course recommendations, choose your payment</p>
+            </div>
+          </div>
+          {/* <div className="Vitual_class_container_stepFlex">
             <div className="Vitual_class_container_steps">
               <button>step 1</button>
               <h5>Browse Available Courses</h5>
@@ -202,7 +232,7 @@ const VirtualLanding = () => {
                 learning
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       <section>

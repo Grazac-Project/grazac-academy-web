@@ -127,3 +127,7 @@ export const sendFlutterTx = (trans_id) => {
   // return APIKit.post(`/user/pay?transaction_id=${trans_id}`);
   return APIKit.post(`api/v1/user/pay?transaction_id=${trans_id}`);
 };
+
+export const zohoSubmit = (data) => {
+  return APIKit.post('api/v1/user/zoho', data)
+}

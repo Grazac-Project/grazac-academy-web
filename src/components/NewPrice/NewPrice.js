@@ -30,8 +30,8 @@ const NewPricing = () => {
       recommend: "Highly Recommended",
       benefits: [
         "No legal fees",
-        "8 months of immersive training",
-        "4 months internship",
+        "6 months of immersive training",
+        "6 months internship",
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
@@ -47,8 +47,8 @@ const NewPricing = () => {
       discount: ["7.69%"],
       benefits: [
         "₦50,000 legal fee",
-        "8 months of immersive training",
-        "4 months internship",
+        "6 months of immersive training",
+        "6 months internship",
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
