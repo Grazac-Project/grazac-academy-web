@@ -364,8 +364,8 @@ function Details() {
                   <h5>Preferred course at Grazac</h5>
                   <p>{userDetails?.preferred_course}</p>
                 </div>
-                <hr />
-                <div className="dashboard-content-form-container">
+                {/* <hr /> */}
+                {/* <div className="dashboard-content-form-container">
                   <h5>State of residence</h5>
                   <p>{userDetails?.state_of_residence}</p>
                 </div>
@@ -373,7 +373,7 @@ function Details() {
                 <div className="dashboard-content-form-container">
                   <h5>Current city and Location</h5>
                   <p>{userDetails?.current_city_and_location}</p>
-                </div>
+                </div> */}
                 {/* <hr /> */}
                 {/* <div className="dashboard-content-form-container">
                   <h5>Means of Identification (NIN/ Voter's Card)</h5>

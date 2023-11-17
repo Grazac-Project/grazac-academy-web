@@ -740,7 +740,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("part");
-                                    setAmount(50000);
+                                    // setAmount(50000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -755,7 +756,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(1000000);
+                                    // setAmount(1000000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -770,7 +772,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("instalment");
-                                    setAmount(285000);
+                                    // setAmount(285000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -806,7 +809,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(1000000);
+                                    // setAmount(1000000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -857,7 +861,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("full");
-                                    setAmount(1000000);
+                                    // setAmount(1000000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -872,7 +877,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("instalment");
-                                    setAmount(285000);
+                                    // setAmount(285000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -908,7 +914,8 @@ function Dashboard() {
                                   }
                                   onClick={() => {
                                     setPayOpt("instalment");
-                                    setAmount(285000);
+                                    // setAmount(285000);
+                                    setAmount(1000);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -1595,7 +1602,8 @@ function Dashboard() {
               </div>
             )}
             {sidebarClick === "details" && <Details />}
-            {/* {sidebarClick === "payment" && <Payment />} */}
+            {sidebarClick === "payment" && <Payment />}
+            {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
           </div>
         </div>
       ) : (

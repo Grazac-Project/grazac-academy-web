@@ -102,7 +102,7 @@ const Newsform = ({ setNews, setNewsMessage }) => {
                 required
                 name="fullName"
                 value={payload.fullName}
-                placeholder="Your name"
+                placeholder="Full name e.g John Doe"
                 onChange={handleChange}
               />
               {/* <input

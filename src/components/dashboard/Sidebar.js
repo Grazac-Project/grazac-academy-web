@@ -71,7 +71,7 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
             <p>Details</p>
           </div>
         )}
-        {/* {(showDetails != "Admitted" && paymentChoice === 'partPayment') && (
+        {showDetails === "Admitted" && paymentChoice === 'partPayment' && (
           <div
             className={
               clicked === "clicked" ? "active" : "sidebar-portal-links"
@@ -92,7 +92,7 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
             </svg>
             <p>Payment Details</p>
           </div>
-        )} */}
+        )}
 
         <div className="sidebar-portal-links signout" onClick={signOut}>
           <svg
