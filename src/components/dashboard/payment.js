@@ -7,8 +7,7 @@ import {
 } from "flutterwave-react-v3";
 import { toast } from "react-toastify";
 
-// const Payment = () => {
-const Payment = ( ) => {
+const Payment = () => {
   const [action, setAction] = useState("Pay Now");
   const [status, setStatus] = useState("Pending");
   const [details, setDetails] = useState({});
@@ -115,7 +114,7 @@ const Payment = ( ) => {
   const flutterWavePayment = () => {
     handleFlutterPayment({
       callback: (response) => {
-        if (response.status === "successful") {
+        if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
           // window.location = "/dashboard";
           console.log(response);
@@ -129,6 +128,7 @@ const Payment = ( ) => {
                 setAction("paid");
                 // window.location = "/dashboard";
               } else {
+                setAction("Pay Now");
               }
             })
             .catch((err) => {});
@@ -142,13 +142,12 @@ const Payment = ( ) => {
   };
 
   const makePayment = () => {
-    console.log(amount)
+    console.log(amount);
     flutterWavePayment();
     if (action === "Paid") {
       setStatus("Approved");
     } else if (action === "Pay Now") {
       setStatus("Pending");
-
     } else {
       toast.info("Something is wrong!");
     }
@@ -156,7 +155,6 @@ const Payment = ( ) => {
 
   // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
-
 
   const config = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
@@ -211,12 +209,12 @@ const Payment = ( ) => {
                   </span>
                 </td>
                 <td
-                 onClick={() => {
-                  console.log(item.amount)
-                  setAmount(item.amount)
-                  makePayment()
-                  }
-                }>
+                  onClick={() => {
+                    console.log(item.amount);
+                    setAmount(item.amount);
+                    makePayment();
+                  }}
+                >
                   <p
                     className={
                       action === "Paid"
@@ -233,6 +231,54 @@ const Payment = ( ) => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="payment-mobile">
+        <div >
+          {Data.map((item) => (
+            <div key={item.id} className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> {item.month}
+              </div>
+              <div className="details">
+                <span>Amount:</span> {item.amount}
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    status === "Pending"
+                      ? "pending"
+                      : status === "Approved"
+                      ? "approved"
+                      : "pending"
+                  }
+                >
+                  {status}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  console.log(item.amount);
+                  setAmount(item.amount);
+                  makePayment();
+                }}
+              >
+                <p
+                  className={
+                    action === "Paid"
+                      ? "paid"
+                      : action === "Pay Now"
+                      ? "pay-now"
+                      : null
+                  }
+                >
+                  {action}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
