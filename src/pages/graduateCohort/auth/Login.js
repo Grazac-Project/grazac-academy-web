@@ -49,6 +49,7 @@ function Login() {
               lastName: res.data.payload.lastName,
               email: res.data.payload.email,
               id: res.data.payload.id,
+              firstInstallment: res.data.payload.firstInstallment,
               isPaid: res.data.payload.isPaid,
               applicationFee: res.data.payload.applicationFee,
               phone: res.data.payload.phoneNumber,

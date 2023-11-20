@@ -99,6 +99,9 @@ function Dashboard() {
         if (JSON.parse(details).isPaid === 1) {
           setSelectStatus("paid");
         }
+        if (JSON.parse(details).firstInstallment === 1) {
+          setSelectStatus("initialDeposit");
+        }
 
         if (!details) {
           window.location = "/login";
@@ -135,12 +138,12 @@ function Dashboard() {
         //   );
         // }
       });
-      
+
   }, [guarantorForm1]);
-  
+
   useEffect(() => {
     getDetailsC()
-        .then(res => setPaymentChoice(res.data.data.result[0].paymentOption))
+      .then(res => setPaymentChoice(res.data.data.result[0].paymentOption))
   }, [])
 
   const handleChange = (e) => {
@@ -194,13 +197,13 @@ function Dashboard() {
               } else {
               }
             })
-            .catch((err) => {});
+            .catch((err) => { });
         } else {
           toast.error("Payment unsuccessful!");
         }
         closePaymentModal(); // this will close the modal programmatically
       },
-      onClose: (response) => {},
+      onClose: (response) => { },
     });
   };
 
@@ -211,8 +214,8 @@ function Dashboard() {
       planData.append("payment_plan", "learn now pay later");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
       // setSelectStatus("pay-as-you-earn");
@@ -223,23 +226,34 @@ function Dashboard() {
       planData.append("payment_plan", "pay at once");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
-    } else if(payOpt === 'instalment') {
+    } else if (payOpt === 'fullTrainingOnly') {
+      setPayShowModal("");
+
+      var planData = new FormData();
+      planData.append("payment_plan", "training only");
+      addPlan(planData)
+        .then((response) => response.data)
+        .then((res) => { })
+        .catch((err) => { });
+
+      flutterWavePayment();
+    } else if (payOpt === 'instalment') {
       setPayOpt('instalment-pay')
       setPaymentChoice('instalment-note')
       // toast.info("You need to select a payment option to continue!");
-    } else if(payOpt === 'instalment-pay') {
+    } else if (payOpt === 'instalment-pay') {
       setPayShowModal("");
 
       var planData = new FormData();
       planData.append("payment_plan", "pay in instalment");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
     }
@@ -438,8 +452,8 @@ function Dashboard() {
       planData.append("payment_plan", "pay as you earn");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
     } else {
       btn.innerHTML = `Proceed`;
     }
@@ -559,8 +573,8 @@ function Dashboard() {
         planData.append("payment_plan", "pay as you earn");
         addPlan(planData)
           .then((response) => response.data)
-          .then((res) => {})
-          .catch((err) => {});
+          .then((res) => { })
+          .catch((err) => { });
       } else {
         btn.innerHTML = `Proceed`;
       }
@@ -650,8 +664,8 @@ function Dashboard() {
                     status === "Not Submitted"
                       ? `dashboard-nav-status-dot not-submitted`
                       : status === "Under Review"
-                      ? `dashboard-nav-status-dot under-review`
-                      : `dashboard-nav-status-dot ${status}`
+                        ? `dashboard-nav-status-dot under-review`
+                        : `dashboard-nav-status-dot ${status}`
                   }
                 ></div>
               </div>
@@ -721,210 +735,216 @@ function Dashboard() {
                         {payShowModal === "pay" && (
                           paymentChoice === 'learn_now_pay_later' && (
                             <div className="dashboard-content-modal">
-                            <div className="dashboard-content-modal-backdrop"></div>
-                            <div className="dashboard-content-modal-container">
-                              <div className="dashboard-content-modal-main">
-                                <div className="dashboard-content-modal-main-text">
-                                  <h4>Choose Payment Option</h4>
-                                  <img
-                                    src={cancel}
-                                    alt="cancel"
-                                    onClick={() => setPayShowModal("")}
-                                  />
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "part"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("part");
+                                      // setAmount(50000);
+                                      // setAmount(1000);
+                                      setAmount(200);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Learn Now Pay Later (NGN 50,000 legal fee)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      // setAmount(1000000);
+                                      setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 1,000,000)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      // setAmount(285000);
+                                      setAmount(250);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 285,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
                                 </div>
-                                <div
-                                  className={
-                                    payOpt === "part"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("part");
-                                    // setAmount(50000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Learn Now Pay Later (NGN 50,000 legal fee)</p>
-                                </div>
-                                <div
-                                  className={
-                                    payOpt === "full"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("full");
-                                    // setAmount(1000000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay at once (NGN 1,000,000)</p>
-                                </div>
-                                <div
-                                  className={
-                                    payOpt === "instalment"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("instalment");
-                                    // setAmount(285000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay in Instalment (NGN 285,000)</p>
-                                </div>
-                                <button onClick={makePayment}>Proceed</button>
                               </div>
                             </div>
-                          </div>
                           )
                         )}
 
                         {payShowModal === "pay" && (
                           paymentChoice === 'fullPayment' && (
                             <div className="dashboard-content-modal">
-                            <div className="dashboard-content-modal-backdrop"></div>
-                            <div className="dashboard-content-modal-container">
-                              <div className="dashboard-content-modal-main">
-                                <div className="dashboard-content-modal-main-text">
-                                  <h4>Choose Payment Option</h4>
-                                  <img
-                                    src={cancel}
-                                    alt="cancel"
-                                    onClick={() => setPayShowModal("")}
-                                  />
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <p>We have made a flexible option for applicants who have no interest in our Internship 
+                                    program or can not be available for 12 months to pay for training only
+                                  </p>
+                                  <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      // setAmount(1000000);
+                                      setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      // setAmount(1000000);
+                                      setAmount(500);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (600,000 Naira for Training only) </p>
+                                  </div>
+                                  
+                                  <button onClick={makePayment}>Proceed</button>
                                 </div>
-                                <div
-                                  className={
-                                    payOpt === "full"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("full");
-                                    // setAmount(1000000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay at once (NGN 1,000,000)</p>
-                                </div>
-                                {/* <div
-                                  className={
-                                    payOpt === "instalment"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("instalment");
-                                    setAmount(285000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay in Instalment (NGN 285,000)</p>
-                                </div> */}
-                                <button onClick={makePayment}>Proceed</button>
                               </div>
                             </div>
-                          </div>
                           )
                         )}
 
                         {payShowModal === "pay" && (
                           paymentChoice === 'partPayment' && (
                             <div className="dashboard-content-modal">
-                            <div className="dashboard-content-modal-backdrop"></div>
-                            <div className="dashboard-content-modal-container">
-                              <div className="dashboard-content-modal-main">
-                                <div className="dashboard-content-modal-main-text">
-                                  <h4>Choose Payment Option</h4>
-                                  <img
-                                    src={cancel}
-                                    alt="cancel"
-                                    onClick={() => setPayShowModal("")}
-                                  />
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      // setAmount(1000000);
+                                      setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 1,000,000)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      // setAmount(285000);
+                                      setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 285,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
                                 </div>
-                                <div
-                                  className={
-                                    payOpt === "full"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("full");
-                                    // setAmount(1000000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay at once (NGN 1,000,000)</p>
-                                </div>
-                                <div
-                                  className={
-                                    payOpt === "instalment"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("instalment");
-                                    // setAmount(285000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay in Instalment (NGN 285,000)</p>
-                                </div>
-                                <button onClick={makePayment}>Proceed</button>
                               </div>
                             </div>
-                          </div>
                           )
                         )}
 
                         {payShowModal === "pay" && (
                           paymentChoice === 'instalment-note' && (
                             <div className="dashboard-content-modal">
-                            <div className="dashboard-content-modal-backdrop"></div>
-                            <div className="dashboard-content-modal-container">
-                              <div className="dashboard-content-modal-main">
-                                <div className="dashboard-content-modal-main-text">
-                                  <h4>Pay in Installments</h4>
-                                  <img
-                                    src={cancel}
-                                    alt="cancel"
-                                    onClick={() => setPayShowModal("")}
-                                  />
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Pay in Installments</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      // setAmount(285000);
+                                      setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 285,000</span> must be paid. The remaining will be divided into N85,000 naira spread across 9 months just to make payment easy for you</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
                                 </div>
-                                <div
-                                  className={
-                                    payOpt === "instalment"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("instalment");
-                                    // setAmount(285000);
-                                    setAmount(1000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 285,000</span> must be paid. The remaining will be divided into N85,000 naira spread across 9 months just to make payment easy for you</p>
-                                </div>
-                                <button onClick={makePayment}>Proceed</button>
                               </div>
                             </div>
-                          </div>
                           )
                         )}
 
@@ -1575,9 +1595,9 @@ function Dashboard() {
                                       <button
                                         // onClick={makePayment}
                                         onClick={() => flutterWavePayment()}
-                                        // onClick={() =>
-                                        //   handlePayercoinsPayment()
-                                        // }
+                                      // onClick={() =>
+                                      //   handlePayercoinsPayment()
+                                      // }
                                       >
                                         Proceed
                                       </button>
@@ -1591,6 +1611,9 @@ function Dashboard() {
                     )}
 
                     {selectStatus === "paid" && (
+                      <PaymentReceived fname={details.firstName} />
+                    )}
+                    {selectStatus === "initialDeposit" && (
                       <PaymentReceived fname={details.firstName} />
                     )}
                   </div>

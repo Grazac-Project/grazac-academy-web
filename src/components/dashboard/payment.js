@@ -14,86 +14,103 @@ const Payment = ( ) => {
   const [details, setDetails] = useState({});
   const [amount, setAmount] = useState();
   const [currency, setCurrency] = useState("NGN");
+  const [initialPayment, setInitialPayment] = useState()
+  const [subPayment, setSubPayment] = useState('Pending')
+
+
+  useEffect(() => {
+    let details = sessionStorage.getItem("user_details");
+      console.log(details);
+      setDetails(JSON.parse(details));
+      setInitialPayment(JSON.parse(details).firstInstallment);
+      if(initialPayment == 1) {setStatus('Approved')}
+      if(subPayment == 1) {setStatus('Approved')}
+      else if(subPayment == 2) {setStatus('Approved')}
+      else if(subPayment == 3) {setStatus('Approved')}
+      else if(subPayment == 4) {setStatus('Approved')}
+      else if(subPayment == 5) {setStatus('Approved')}
+      else if(subPayment == 6) {setStatus('Approved')}
+      else if(subPayment == 7) {setStatus('Approved')}
+      else if(subPayment == 8) {setStatus('Approved')}
+      else if(subPayment == 9) {setStatus('Approved')}
+  } , [])
+
 
   var Data = [
     {
       id: 1,
       month: "Initial Payment",
-      amount: 1000,
-      status: "",
+      amount: 250,
+      status: status,
       action: "",
     },
 
     {
       id: 2,
       month: "February",
-      amount: 1000,
-      status: "",
+      amount: 100,
+      status: status,
       action: "",
     },
     {
       id: 3,
       month: "March",
-      amount: 1000,
-      status: "",
+      amount: 100,
+      status: status,
       action: "",
     },
     {
       id: 4,
       month: "April",
-      amount: 1000,
-      status: "",
+      amount: 100,
+      status: status,
       action: "",
     },
     {
       id: 5,
       month: "May",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
     {
       id: 6,
       month: "June",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
     {
       id: 7,
       month: "July",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
     {
       id: 8,
       month: "August",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
     {
       id: 9,
       month: "September",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
     {
       id: 10,
       month: "October",
       amount: 1000,
-      status: "",
+      status: status,
       action: "",
     },
   ];
 
-  useEffect(() => {
-    let details = sessionStorage.getItem("user_details");
-      console.log(details);
-      setDetails(JSON.parse(details));
-  } , [])
+  
 
   const flutterWavePayment = () => {
     handleFlutterPayment({
