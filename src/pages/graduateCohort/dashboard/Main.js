@@ -178,7 +178,9 @@ function Dashboard() {
 
     handleFlutterPayment({
       callback: (response) => {
-        if (response.status === "successful") {
+        console.log(response)
+        // if (response.status === "successful") {
+        if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
           // window.location = "/dashboard";
           console.log(response);
@@ -186,16 +188,20 @@ function Dashboard() {
           console.log(response);
 
           sendFlutterTx(response.transaction_id)
-            .then((response) => response.data)
+            // .then((response) => response.data)
+            .then((response) => console.log(response))
             .then((res) => {
+              console.log(res)
               if (res.data.status === "successful") {
                 setSelectStatus("paid");
                 // window.location = "/dashboard";
               } else {
+                console.log(res)
               }
             })
-            .catch((err) => {});
+            .catch((err) => {console.log(err)});
         } else {
+          console.log(response)
           toast.error("Payment unsuccessful!");
         }
         closePaymentModal(); // this will close the modal programmatically
@@ -741,7 +747,7 @@ function Dashboard() {
                                   onClick={() => {
                                     setPayOpt("part");
                                     // setAmount(50000);
-                                    setAmount(1000);
+                                    setAmount(200);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -773,7 +779,7 @@ function Dashboard() {
                                   onClick={() => {
                                     setPayOpt("instalment");
                                     // setAmount(285000);
-                                    setAmount(1000);
+                                    setAmount(250);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -878,7 +884,7 @@ function Dashboard() {
                                   onClick={() => {
                                     setPayOpt("instalment");
                                     // setAmount(285000);
-                                    setAmount(1000);
+                                    setAmount(250);
                                     setCurrency("NGN");
                                   }}
                                 >
@@ -915,7 +921,7 @@ function Dashboard() {
                                   onClick={() => {
                                     setPayOpt("instalment");
                                     // setAmount(285000);
-                                    setAmount(1000);
+                                    setAmount(250);
                                     setCurrency("NGN");
                                   }}
                                 >
