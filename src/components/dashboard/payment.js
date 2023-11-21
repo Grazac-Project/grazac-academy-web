@@ -13,25 +13,44 @@ const Payment = () => {
   const [details, setDetails] = useState({});
   const [amount, setAmount] = useState();
   const [currency, setCurrency] = useState("NGN");
-  const [initialPayment, setInitialPayment] = useState()
-  const [subPayment, setSubPayment] = useState('Pending')
+  const [initialPayment, setInitialPayment] = useState();
+  const [subInstallment, setSubInstallment] = useState()
+  const [subInstallmentOne, setSubInstallmentOne] = useState()
+  const [subInstallmentTwo, setSubInstallmentTwo] = useState()
+  const [subInstallmentThree, setSubInstallmentThree] = useState()
+  const [subInstallmentFour, setSubInstallmentFour] = useState()
+  const [subInstallmentFive, setSubInstallmentFive] = useState()
+  const [subInstallmentSix, setSubInstallmentSix] = useState()
+  const [subInstallmentSeven, setSubInstallmentSeven] = useState()
+  const [subInstallmentEight, setSubInstallmentEight] = useState()
+  const [displayBtn, setDisplayBtn] = useState()
 
 
   useEffect(() => {
     let details = sessionStorage.getItem("user_details");
       console.log(details);
+      console.log(Data[0].id)
       setDetails(JSON.parse(details));
       setInitialPayment(JSON.parse(details).firstInstallment);
-      if(initialPayment == 1) {setStatus('Approved')}
-      if(subPayment == 1) {setStatus('Approved')}
-      else if(subPayment == 2) {setStatus('Approved')}
-      else if(subPayment == 3) {setStatus('Approved')}
-      else if(subPayment == 4) {setStatus('Approved')}
-      else if(subPayment == 5) {setStatus('Approved')}
-      else if(subPayment == 6) {setStatus('Approved')}
-      else if(subPayment == 7) {setStatus('Approved')}
-      else if(subPayment == 8) {setStatus('Approved')}
-      else if(subPayment == 9) {setStatus('Approved')}
+      setSubInstallment(JSON.parse(details).subInstallment);
+      setSubInstallmentOne(JSON.parse(details).subInstallmentOne);
+      setSubInstallmentTwo(JSON.parse(details).subInstallmentTwo);
+      setSubInstallmentThree(JSON.parse(details).subInstallmentThree);
+      setSubInstallmentFour(JSON.parse(details).subInstallmentFour);
+      setSubInstallmentFive(JSON.parse(details).subInstallmentFive);
+      setSubInstallmentSix(JSON.parse(details).subInstallmentSix);
+      setSubInstallmentSeven(JSON.parse(details).subInstallmentSeven);
+      setSubInstallmentEight(JSON.parse(details).subInstallmentEight);
+      
+      // if(subPayment == 1) {setStatus('Approved')}
+      // else if(subPayment == 1) {setStatus('Approved')}
+      // else if(subPayment == 1) {setStatus('Approved')}
+      // else if(subPayment == 1) {setStatus('Approved')}
+      // else if(subPayment == 1) {setStatus('Approved')}
+      // else if(subPayment == 6) {setStatus('Approved')}
+      // else if(subPayment == 7) {setStatus('Approved')}
+      // else if(subPayment == 8) {setStatus('Approved')}
+      // else if(subPayment == 9) {setStatus('Approved')}
   } , [])
 
 
@@ -39,73 +58,73 @@ const Payment = () => {
     {
       id: 1,
       month: "Initial Payment",
-      amount: 250,
+      amount: 285000,
       status: status,
-      action: "",
+      action: action,
     },
 
     {
       id: 2,
       month: "February",
-      amount: 100,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 3,
       month: "March",
-      amount: 100,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 4,
       month: "April",
-      amount: 100,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 5,
       month: "May",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 6,
       month: "June",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 7,
       month: "July",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 8,
       month: "August",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 9,
       month: "September",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
     {
       id: 10,
       month: "October",
-      amount: 1000,
+      amount: 85000,
       status: status,
-      action: "",
+      action: action,
     },
   ];
 
@@ -178,6 +197,114 @@ const Payment = () => {
   const handleFlutterPayment = useFlutterwave(config);
 
   return (
+    // <div className="payment">
+    //   <h4>Payment Type: Installment</h4>
+    //   <div className="payment-table">
+    //     <table>
+    //       <thead>
+    //         <tr>
+    //           <th>Month</th>
+    //           <th>Amount</th>
+    //           <th>Status</th>
+    //           <th>Action</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {Data.map((item) => (
+    //           <tr key={item.id}>
+    //             <td>{item.month}</td>
+    //             <td>{item.amount}</td>
+    //             <td>
+    //               <span
+    //                 className={
+    //                   status === "Pending"
+    //                     ? "pending"
+    //                     : status === "Approved"
+    //                     ? "approved"
+    //                     : "pending"
+    //                 }
+    //               >
+    //                 {/* {status} */}
+    //                 {item.status}
+    //               </span>
+    //             </td>
+    //             <td
+    //               onClick={() => {
+    //                 console.log(item.amount);
+    //                 setAmount(item.amount);
+    //                 makePayment();
+    //               }}
+    //             >
+    //               <p
+    //                 className={
+    //                   action === "Paid"
+    //                     ? "paid"
+    //                     : action === "Pay Now"
+    //                     ? "pay-now"
+    //                     : null
+    //                 }
+    //               >
+    //                 {/* {action} */}
+    //                 {item.action}
+    //               </p>
+    //             </td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //   </div>
+    //   <div className="payment-mobile">
+    //     <div >
+    //       {Data.map((item) => (
+    //         <div key={item.id} className="payment-mobile-container">
+    //           <div className="details">
+    //             <span>Month:</span> {item.month}
+    //           </div>
+    //           <div className="details">
+    //             <span>Amount:</span> {item.amount}
+    //           </div>
+    //           <div className="details">
+    //             <span>Status: </span>
+    //             <span
+    //               className={
+    //                 status === "Pending"
+    //                   ? "pending"
+    //                   : status === "Approved"
+    //                   ? "approved"
+    //                   : "pending"
+    //               }
+    //             >
+    //               {status}
+    //             </span>
+    //           </div>
+    //           <div
+    //           className="payment-mobile-action"
+    //             onClick={() => {
+    //               console.log(item.amount);
+    //               setAmount(item.amount);
+    //               makePayment();
+    //             }}
+    //           >
+    //             <p
+    //               className={
+    //                 action === "Paid"
+    //                   ? "paid"
+    //                   : action === "Pay Now"
+    //                   ? "pay-now"
+    //                   : null
+    //               }
+    //             >
+    //               {action}
+    //             </p>
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
+    //   </div>
+    // </div>
+
+
+
     <div className="payment">
       <h4>Payment Type: Installment</h4>
       <div className="payment-table">
@@ -191,93 +318,618 @@ const Payment = () => {
             </tr>
           </thead>
           <tbody>
-            {Data.map((item) => (
-              <tr key={item.id}>
-                <td>{item.month}</td>
-                <td>{item.amount}</td>
+              <tr>
+                <td>January</td>
+                <td>285,000</td>
                 <td>
                   <span
                     className={
-                      status === "Pending"
-                        ? "pending"
-                        : status === "Approved"
-                        ? "approved"
-                        : "pending"
+                      initialPayment ?
+                       "approved" : 'pending'
                     }
                   >
-                    {status}
+                    {/* {status} */}
+                    {initialPayment ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    console.log(item.amount);
-                    setAmount(item.amount);
+                    // console.log(item.amount);
+                    setAmount(285000);
                     makePayment();
                   }}
                 >
                   <p
                     className={
-                      action === "Paid"
-                        ? "paid"
-                        : action === "Pay Now"
-                        ? "pay-now"
-                        : null
+                       initialPayment ? 'paid' : 'pay-now'
                     }
                   >
-                    {action}
+                    {/* {action} */}
+                    {initialPayment ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
               </tr>
-            ))}
+              <tr>
+                <td>February</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallment == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallment == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallment == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallment == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>March</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentOne == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentOne == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentOne == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentOne == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>April</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentTwo == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentTwo == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentTwo == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentTwo == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>May</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentThree == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentThree == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentThree == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentThree == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>June</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentFour == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentFour == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentFour == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentFour == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentFive == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentFive == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentFive == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentFive == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>August</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentSix == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentSix == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentSix == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentSix == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>September</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentSeven == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentSeven == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentSeven == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentSeven == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>October</td>
+                <td>85,000</td>
+                <td>
+                  <span
+                    className={
+                      subInstallmentEight == 1 ?
+                       "approved" : 'pending'
+                    }
+                  >
+                    {/* {status} */}
+                    {subInstallmentEight == 1 ? 'Approved' : 'Pending'}
+                  </span>
+                </td>
+                <td
+                  onClick={() => {
+                    // console.log(item.amount);
+                    setAmount(85000);
+                    makePayment();
+                  }}
+                >
+                  <p
+                    className={
+                       subInstallmentEight == 1 ? 'paid' : 'pay-now'
+                    }
+                  >
+                    {/* {action} */}
+                    {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
+                  </p>
+                </td>
+              </tr>
+            {/* ))} */}
           </tbody>
         </table>
       </div>
       <div className="payment-mobile">
         <div >
-          {Data.map((item) => (
-            <div key={item.id} className="payment-mobile-container">
+            <div className="payment-mobile-container">
               <div className="details">
-                <span>Month:</span> {item.month}
+                <span>Month:</span> January
               </div>
               <div className="details">
-                <span>Amount:</span> {item.amount}
+                <span>Amount:</span> 285,000
               </div>
               <div className="details">
                 <span>Status: </span>
                 <span
                   className={
-                    status === "Pending"
-                      ? "pending"
-                      : status === "Approved"
-                      ? "approved"
-                      : "pending"
+                    initialPayment ? 'approved' : 'pending'
                   }
                 >
-                  {status}
+                  {initialPayment ? 'Approved': 'Pending'}
                 </span>
               </div>
               <div
               className="payment-mobile-action"
                 onClick={() => {
-                  console.log(item.amount);
-                  setAmount(item.amount);
+                  setAmount(285000);
                   makePayment();
                 }}
               >
                 <p
                   className={
-                    action === "Paid"
-                      ? "paid"
-                      : action === "Pay Now"
-                      ? "pay-now"
-                      : null
+                    initialPayment?'paid':'pay-now'
+                    
                   }
                 >
-                  {action}
+                  {initialPayment ? 'Paid' : 'Pay Now'}
                 </p>
               </div>
             </div>
-          ))}
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> February
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallment == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallment == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallment == 1 ?'paid':'pay-now'}>
+                  {subInstallment == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> March
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentOne == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentOne == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentOne == 1 ?'paid':'pay-now'}>
+                  {subInstallmentOne == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> April
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentTwo == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentTwo == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentTwo == 1 ?'paid':'pay-now'}>
+                  {subInstallmentTwo == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> May
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentThree == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentThree == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentThree == 1 ?'paid':'pay-now'}>
+                  {subInstallmentThree == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> June
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentFour == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentFour == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentFour == 1 ?'paid':'pay-now'}>
+                  {subInstallmentFour == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> July
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentFive == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentFive == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentFive == 1 ?'paid':'pay-now'}>
+                  {subInstallmentFive == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> August
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentSix == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentSix == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentSix == 1 ?'paid':'pay-now'}>
+                  {subInstallmentSix == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> September
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentSeven == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentSeven == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentSeven == 1 ?'paid':'pay-now'}>
+                  {subInstallmentSeven == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+            <div className="payment-mobile-container">
+              <div className="details">
+                <span>Month:</span> October
+              </div>
+              <div className="details">
+                <span>Amount:</span> 85,000
+              </div>
+              <div className="details">
+                <span>Status: </span>
+                <span
+                  className={
+                    subInstallmentEight == 1 ? 'approved' : 'pending'
+                  }
+                >
+                  {subInstallmentEight == 1 ? 'Approved': 'Pending'}
+                </span>
+              </div>
+              <div
+              className="payment-mobile-action"
+                onClick={() => {
+                  setAmount(85000);
+                  makePayment();
+                }}
+              >
+                <p className={subInstallmentEight == 1 ?'paid':'pay-now'}>
+                  {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
+                </p>
+              </div>
+            </div>
+          {/* ))} */}
         </div>
       </div>
     </div>

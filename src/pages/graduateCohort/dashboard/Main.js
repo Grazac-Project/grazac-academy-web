@@ -760,9 +760,9 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("part");
-                                      // setAmount(50000);
+                                      setAmount(50000);
                                       // setAmount(1000);
-                                      setAmount(200);
+                                      // setAmount(200);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -777,8 +777,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      // setAmount(1000000);
-                                      setAmount(1000);
+                                      setAmount(1000000);
+                                      // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -793,8 +793,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      // setAmount(285000);
-                                      setAmount(250);
+                                      setAmount(285000);
+                                      // setAmount(250);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -833,8 +833,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      // setAmount(1000000);
-                                      setAmount(1000);
+                                      setAmount(1000000);
+                                      // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -849,8 +849,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      // setAmount(1000000);
-                                      setAmount(500);
+                                      setAmount(600000);
+                                      // setAmount(500);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -887,8 +887,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      // setAmount(1000000);
-                                      setAmount(1000);
+                                      setAmount(1000000);
+                                      // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -903,8 +903,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      // setAmount(285000);
-                                      setAmount(1000);
+                                      setAmount(285000);
+                                      // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -940,8 +940,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      // setAmount(285000);
-                                      setAmount(1000);
+                                      setAmount(285000);
+                                      // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
