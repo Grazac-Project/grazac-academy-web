@@ -998,9 +998,6 @@ input:focus, select:focus, textarea:focus {
   font-size: 16px;
   color: #909198;
 }
-.payment-table td {
-  cursor: pointer;
-}
 .payment-table th {
   font-weight: 500;
   text-transform: uppercase;
@@ -1052,6 +1049,7 @@ input:focus, select:focus, textarea:focus {
   border-radius: 100px;
   border: 2px solid #fff;
   background: #E9E9EA;
+  pointer-events: none;
 }
 .payment-table .pay-now {
   width: 93px;
@@ -1066,6 +1064,7 @@ input:focus, select:focus, textarea:focus {
   border-radius: 100px;
   border: 2px solid #fff;
   background: rgba(220, 205, 244, 0.5);
+  cursor: pointer;
 }
 .payment-mobile {
   display: none;
@@ -1125,7 +1124,7 @@ input:focus, select:focus, textarea:focus {
   border: 2px solid #fff;
   background: #E9E9EA;
   margin-bottom: 8px;
-  cursor: pointer;
+  pointer-events: none;
 }
 .payment-mobile .pay-now {
   width: 93px;

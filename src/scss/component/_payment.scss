@@ -40,10 +40,10 @@
       font-size: 16px;
       color: #909198;
     }
-    td {
-      cursor: pointer;
-      //   text-align: center;
-    }
+    // td {
+    //   cursor: pointer;
+    //     text-align: center;
+    // }
 
     th {
       font-weight: 500;
@@ -101,6 +101,7 @@
       border-radius: 100px;
       border: 2px solid #fff;
       background: #E9E9EA;
+      pointer-events: none;
     }
     .pay-now {
       width: 93px;
@@ -115,6 +116,7 @@
       border-radius: 100px;
       border: 2px solid #fff;
       background: rgba(220, 205, 244, 0.5);
+      cursor: pointer;
     }
   }
   &-mobile {
@@ -176,7 +178,8 @@
       border: 2px solid #fff;
       background: #E9E9EA;
       margin-bottom: 8px;
-      cursor: pointer;
+      // cursor: pointer;
+      pointer-events: none;
 
     }
     .pay-now {

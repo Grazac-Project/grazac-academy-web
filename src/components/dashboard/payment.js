@@ -29,7 +29,6 @@ const Payment = () => {
   useEffect(() => {
     let details = sessionStorage.getItem("user_details");
       console.log(details);
-      console.log(Data[0].id)
       setDetails(JSON.parse(details));
       setInitialPayment(JSON.parse(details).firstInstallment);
       setSubInstallment(JSON.parse(details).subInstallment);
@@ -41,101 +40,16 @@ const Payment = () => {
       setSubInstallmentSix(JSON.parse(details).subInstallmentSix);
       setSubInstallmentSeven(JSON.parse(details).subInstallmentSeven);
       setSubInstallmentEight(JSON.parse(details).subInstallmentEight);
-      
-      // if(subPayment == 1) {setStatus('Approved')}
-      // else if(subPayment == 1) {setStatus('Approved')}
-      // else if(subPayment == 1) {setStatus('Approved')}
-      // else if(subPayment == 1) {setStatus('Approved')}
-      // else if(subPayment == 1) {setStatus('Approved')}
-      // else if(subPayment == 6) {setStatus('Approved')}
-      // else if(subPayment == 7) {setStatus('Approved')}
-      // else if(subPayment == 8) {setStatus('Approved')}
-      // else if(subPayment == 9) {setStatus('Approved')}
   } , [])
-
-
-  var Data = [
-    {
-      id: 1,
-      month: "Initial Payment",
-      amount: 285000,
-      status: status,
-      action: action,
-    },
-
-    {
-      id: 2,
-      month: "February",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 3,
-      month: "March",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 4,
-      month: "April",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 5,
-      month: "May",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 6,
-      month: "June",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 7,
-      month: "July",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 8,
-      month: "August",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 9,
-      month: "September",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-    {
-      id: 10,
-      month: "October",
-      amount: 85000,
-      status: status,
-      action: action,
-    },
-  ];
-
   
-
   const flutterWavePayment = () => {
     handleFlutterPayment({
       callback: (response) => {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          // window.location = "/dashboard";
+          setTimeout(() => {
+            window.location = "/login";
+          }, 2500)
           console.log(response);
           console.log(response);
           console.log(response);
@@ -197,114 +111,6 @@ const Payment = () => {
   const handleFlutterPayment = useFlutterwave(config);
 
   return (
-    // <div className="payment">
-    //   <h4>Payment Type: Installment</h4>
-    //   <div className="payment-table">
-    //     <table>
-    //       <thead>
-    //         <tr>
-    //           <th>Month</th>
-    //           <th>Amount</th>
-    //           <th>Status</th>
-    //           <th>Action</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         {Data.map((item) => (
-    //           <tr key={item.id}>
-    //             <td>{item.month}</td>
-    //             <td>{item.amount}</td>
-    //             <td>
-    //               <span
-    //                 className={
-    //                   status === "Pending"
-    //                     ? "pending"
-    //                     : status === "Approved"
-    //                     ? "approved"
-    //                     : "pending"
-    //                 }
-    //               >
-    //                 {/* {status} */}
-    //                 {item.status}
-    //               </span>
-    //             </td>
-    //             <td
-    //               onClick={() => {
-    //                 console.log(item.amount);
-    //                 setAmount(item.amount);
-    //                 makePayment();
-    //               }}
-    //             >
-    //               <p
-    //                 className={
-    //                   action === "Paid"
-    //                     ? "paid"
-    //                     : action === "Pay Now"
-    //                     ? "pay-now"
-    //                     : null
-    //                 }
-    //               >
-    //                 {/* {action} */}
-    //                 {item.action}
-    //               </p>
-    //             </td>
-    //           </tr>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //   </div>
-    //   <div className="payment-mobile">
-    //     <div >
-    //       {Data.map((item) => (
-    //         <div key={item.id} className="payment-mobile-container">
-    //           <div className="details">
-    //             <span>Month:</span> {item.month}
-    //           </div>
-    //           <div className="details">
-    //             <span>Amount:</span> {item.amount}
-    //           </div>
-    //           <div className="details">
-    //             <span>Status: </span>
-    //             <span
-    //               className={
-    //                 status === "Pending"
-    //                   ? "pending"
-    //                   : status === "Approved"
-    //                   ? "approved"
-    //                   : "pending"
-    //               }
-    //             >
-    //               {status}
-    //             </span>
-    //           </div>
-    //           <div
-    //           className="payment-mobile-action"
-    //             onClick={() => {
-    //               console.log(item.amount);
-    //               setAmount(item.amount);
-    //               makePayment();
-    //             }}
-    //           >
-    //             <p
-    //               className={
-    //                 action === "Paid"
-    //                   ? "paid"
-    //                   : action === "Pay Now"
-    //                   ? "pay-now"
-    //                   : null
-    //               }
-    //             >
-    //               {action}
-    //             </p>
-    //           </div>
-    //         </div>
-    //       ))}
-    //     </div>
-    //   </div>
-    // </div>
-
-
-
     <div className="payment">
       <h4>Payment Type: Installment</h4>
       <div className="payment-table">
@@ -328,14 +134,13 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {initialPayment ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
-                    setAmount(285000);
+                    // setAmount(285000);
+                    setAmount(100);
                     makePayment();
                   }}
                 >
@@ -344,7 +149,6 @@ const Payment = () => {
                        initialPayment ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {initialPayment ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -364,9 +168,11 @@ const Payment = () => {
                   </span>
                 </td>
                 <td
+                  disabled
                   onClick={() => {
                     // console.log(item.amount);
-                    setAmount(85000);
+                    // setAmount(85000);
+                    setAmount(120);
                     makePayment();
                   }}
                 >
@@ -375,7 +181,6 @@ const Payment = () => {
                        subInstallment == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallment == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -390,13 +195,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentOne == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -406,7 +209,6 @@ const Payment = () => {
                        subInstallmentOne == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentOne == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -421,13 +223,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentTwo == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -437,7 +237,6 @@ const Payment = () => {
                        subInstallmentTwo == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentTwo == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -452,13 +251,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentThree == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -468,7 +265,6 @@ const Payment = () => {
                        subInstallmentThree == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentThree == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -483,13 +279,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentFour == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -499,7 +293,6 @@ const Payment = () => {
                        subInstallmentFour == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentFour == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -514,13 +307,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentFive == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -530,7 +321,6 @@ const Payment = () => {
                        subInstallmentFive == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentFive == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -545,13 +335,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentSix == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -561,7 +349,6 @@ const Payment = () => {
                        subInstallmentSix == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentSix == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -576,13 +363,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentSeven == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -592,7 +377,6 @@ const Payment = () => {
                        subInstallmentSeven == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentSeven == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
@@ -607,13 +391,11 @@ const Payment = () => {
                        "approved" : 'pending'
                     }
                   >
-                    {/* {status} */}
                     {subInstallmentEight == 1 ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td
                   onClick={() => {
-                    // console.log(item.amount);
                     setAmount(85000);
                     makePayment();
                   }}
@@ -623,12 +405,10 @@ const Payment = () => {
                        subInstallmentEight == 1 ? 'paid' : 'pay-now'
                     }
                   >
-                    {/* {action} */}
                     {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
                   </p>
                 </td>
               </tr>
-            {/* ))} */}
           </tbody>
         </table>
       </div>

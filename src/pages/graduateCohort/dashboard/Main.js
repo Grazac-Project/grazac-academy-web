@@ -710,6 +710,7 @@ function Dashboard() {
                     email={details.email}
                     phone={details.phone}
                     setNewStatus={() => changeStatus("Under Review")}
+                    // setNewStatus={() => changeStatus()}
                   />
                 )}
                 {status === "Under Review" && (
@@ -760,9 +761,9 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("part");
-                                      setAmount(50000);
+                                      // setAmount(50000);
                                       // setAmount(1000);
-                                      // setAmount(200);
+                                      setAmount(150);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -833,8 +834,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
+                                      // setAmount(1000000);
+                                      setAmount(200);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -849,8 +850,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(600000);
-                                      // setAmount(500);
+                                      // setAmount(600000);
+                                      setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
