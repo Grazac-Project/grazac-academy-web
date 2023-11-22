@@ -94,7 +94,8 @@ function Dashboard() {
       if (JSON.parse(details).applicationFee) {
         // console.log("fkjdkj");
         setStatus("Not Submitted");
-        setStatus(sessionStorage.getItem("status"));
+        // setStatus(sessionStorage.getItem("status"));
+        console.log(status)
 
         if (JSON.parse(details).isPaid === 1) {
           setSelectStatus("paid");
@@ -710,7 +711,6 @@ function Dashboard() {
                     email={details.email}
                     phone={details.phone}
                     setNewStatus={() => changeStatus("Under Review")}
-                    // setNewStatus={() => changeStatus()}
                   />
                 )}
                 {status === "Under Review" && (
