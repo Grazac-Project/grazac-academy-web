@@ -94,7 +94,7 @@ function Dashboard() {
       if (JSON.parse(details).applicationFee) {
         // console.log("fkjdkj");
         setStatus("Not Submitted");
-        // setStatus(sessionStorage.getItem("status"));
+        setStatus(sessionStorage.getItem("status"));
         console.log(status)
 
         if (JSON.parse(details).isPaid === 1) {
@@ -761,9 +761,9 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("part");
-                                      // setAmount(50000);
+                                      setAmount(50000);
                                       // setAmount(1000);
-                                      setAmount(150);
+                                      // setAmount(150);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -779,12 +779,28 @@ function Dashboard() {
                                     onClick={() => {
                                       setPayOpt("full");
                                       setAmount(1000000);
-                                      // setAmount(1000);
+                                      // setAmount(250);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 1,000,000)</p>
+                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(600000);
+                                      // setAmount(250);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (600,000 Naira for Training Only)</p>
                                   </div>
                                   <div
                                     className={
@@ -795,7 +811,7 @@ function Dashboard() {
                                     onClick={() => {
                                       setPayOpt("instalment");
                                       setAmount(285000);
-                                      // setAmount(250);
+                                      // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -834,8 +850,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      // setAmount(1000000);
-                                      setAmount(200);
+                                      setAmount(1000000);
+                                      // setAmount(200);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -850,8 +866,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      // setAmount(600000);
-                                      setAmount(220);
+                                      setAmount(600000);
+                                      // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -894,7 +910,23 @@ function Dashboard() {
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 1,000,000)</p>
+                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(600000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 600,000 for Training only)</p>
                                   </div>
                                   <div
                                     className={

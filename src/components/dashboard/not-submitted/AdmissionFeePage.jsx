@@ -17,7 +17,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
 
     tx_ref: Date.now(),
-    amount: 7500,
+    amount: 5250,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -55,6 +55,10 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       <p>
         To start your application, you are required to pay a non-refundable fee
         of 7,500 naira only.
+      </p>
+      <p>
+        As part of Grazac's 3rd year anniversary, we are giving a 30% discount on the application fee.
+        Pay 5,250 naira instead of 7,500 naira today
       </p>
 
       <p>

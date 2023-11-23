@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { submitDetails, submitGuarantor, submitGuarantor2 } from "../../../api/dashboard/data";
+import { submitDetails,submitDetailsLnpl, submitGuarantor, submitGuarantor2 } from "../../../api/dashboard/data";
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -342,7 +342,7 @@ function NotSubmitted({
       // btnPhy2.innerHTML = `Submit`;
     }
     console.log(bioData)
-    submitDetails(bioData, userId)
+    submitDetailsLnpl(bioData, userId)
       .then((res) => {
         console.log(bioData)
         if (res.status === 200) {

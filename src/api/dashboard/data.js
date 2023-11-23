@@ -25,6 +25,15 @@ export const submitDetails = (data, id) => {
     },
   });
 };
+export const submitDetailsLnpl = (data, id) => {
+    console.log(token)
+  return APIKit.put(`api/v1/user/application-form-lnpl`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const editDetails = (data, id) => {
   // return APIKit.put(`/user/edit-dashboard/${id}`, data, {
   return APIKit.put(`api/v1/user/edit-dashboard/${id}`, data, {
