@@ -140,7 +140,6 @@ function NotSubmitted({
       const modeChoice = await sessionStorage.getItem('mode_selection');
       const choice = await JSON.parse(modeChoice)
       const data = choice.onSite
-      console.log(data)
       setBioData({...bioData, onSite: data})
       setModeSelection(data)
       console.log(bioData)
