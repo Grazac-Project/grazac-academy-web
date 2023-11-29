@@ -361,7 +361,7 @@ function Dashboard() {
                 } else {
                   toast.error("Submission not successful, try again!!!");
                   // btn.innerHTML = `<img src=${loader} width="20px" />`;
-                  btn.innerHTML = `Procede`;
+                  btn.innerHTML = `Proceed`;
                 }
               })
               .catch((err) => {
@@ -605,7 +605,7 @@ function Dashboard() {
     customizations: {
       title: "Grazac Academy",
       description: "Payment for Graduate Cohort",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 

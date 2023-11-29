@@ -107,7 +107,7 @@ const Payment = () => {
     customizations: {
       title: "Grazac Academy",
       description: "Payment for Graduate Cohort",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 

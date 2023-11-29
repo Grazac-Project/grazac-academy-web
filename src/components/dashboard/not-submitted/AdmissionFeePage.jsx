@@ -29,7 +29,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     customizations: {
       title: "Grazac Academy",
       description: "Admission Fee Payment",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 
