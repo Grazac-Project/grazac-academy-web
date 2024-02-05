@@ -71,7 +71,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
       <p>We look forward to being a part of your growth.</p>
 
-      <button
+      {/* <button
         className={"button"}
         ref={buttonRef}
         onClick={() => {
@@ -86,6 +86,12 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
             },
           });
         }}
+      >
+        Proceed To Pay
+      </button> */}
+      <button
+        className={"button"}
+        ref={buttonRef}
       >
         Proceed To Pay
       </button>

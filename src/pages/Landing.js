@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Card } from "react-bootstrap";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import Slider from "infinite-react-carousel";
+// import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
@@ -738,7 +738,7 @@ const Landing = () => {
         <div className="landing_faq">
           <div className="container">
             <h1>FAQs</h1>
-            <div>
+            {/* <div>
               <Accordion>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="1">
@@ -854,6 +854,123 @@ const Landing = () => {
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
+                <Link to="/faq" className="link-view">
+                  <h5>View All</h5>
+                </Link>
+              </Accordion>
+            </div> */}
+
+            <div>
+              <Accordion defaultActiveKey="1">
+                <Card>
+                  <Accordion.Item eventKey="1">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do I have to be physically present to register?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No, registration is to be done online.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="2">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Are classes virtual or onsite?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="3">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4> What is the duration of the program?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          The program is for a duration of 12 months, consisting of 6 months immersive training and 6 months internship.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="4">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes,please. However, as an undergraduate, you are strongly advised to choose our virtual learning mode due to its flexibility.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="5">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do you offer any certification after the course?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes, students who complete our courses will receive a virtual and hardcopy certificate of completion
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="6">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>What is the cost of learning at Grazac Academy</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                      <p>
+                        For our physical classes, the cost for all courses is #1,000,000
+                      </p>
+                      <p>While for our virtual classes, the cost is $200. To get more information 
+                        about our pricing, <a href="#">Click here</a></p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
                 <Link to="/faq" className="link-view">
                   <h5>View All</h5>
                 </Link>

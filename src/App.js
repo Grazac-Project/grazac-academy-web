@@ -11,7 +11,7 @@ import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
-import Tawk from "./components/tawkTo/tawk";
+// import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
@@ -135,7 +135,7 @@ const App = () => {
 
   return (
     <>
-      <Tawk />
+      {/* <Tawk /> */}
       {news === "showNews" && (
         <Newsform setNews={setNews} setNewsMessage={setNewsMessage} />
       )}
