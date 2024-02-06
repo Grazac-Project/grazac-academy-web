@@ -6,7 +6,7 @@ import UnderReview from "../../../components/dashboard/UnderReview";
 import PaymentReceived from "../../../components/dashboard/selected/PaymentReceived";
 import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
-import OutsideClickHandler from "react-outside-click-handler";
+// import OutsideClickHandler from "react-outside-click-handler";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import {
@@ -640,11 +640,11 @@ function Dashboard() {
       {loading === false ? (
         <div>
           <ToastContainer closeButton={false} />
-          <OutsideClickHandler
+          {/* <OutsideClickHandler
             onOutsideClick={() => {
               closeNavMobile();
             }}
-          >
+          > */}
             <div className="layout_dashboard-sidebar" id="sidebar" onClick={closeNavMobile}>
               <Sidebar
                 clicked={sidebarClick}
@@ -655,7 +655,7 @@ function Dashboard() {
                 paymentChoice={paymentChoice}
               />
             </div>
-          </OutsideClickHandler>
+          {/* </OutsideClickHandler> */}
           <div className="layout_dashboard-content">
             <div className="dashboard-nav">
               <img
