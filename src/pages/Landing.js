@@ -24,7 +24,8 @@ import scroll from "../images/testimonial-scroll.png";
 
 import badge from "../images/svg/badge.svg";
 import ex from "../images/svg/x-mark.svg";
-import Sponsor1 from "../images/svg/Apple.svg";
+// import Sponsor1 from "../images/svg/Apple.svg";
+import Sponsor1 from "../images/svg/Apple_new.png";
 import Sponsor2 from "../images/svg/AWS.svg";
 import Sponsor3 from "../images/svg/Flutterwave.svg";
 import Sponsor5 from "../images/svg/Microsoft.svg";
