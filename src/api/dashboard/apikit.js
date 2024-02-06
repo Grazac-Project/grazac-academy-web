@@ -3,7 +3,8 @@ import axios from 'axios';
 //tis creates axios client pre-configured with base URL
 export const APIKit = axios.create({
     // baseURL: 'https://api.grazacacademy.com/api/v1',
-    baseURL: 'https://api-grazacacademy-0358136c0905.herokuapp.com/',
+    // baseURL: 'https://api-grazacacademy-0358136c0905.herokuapp.com/',
+    baseURL: 'https://grazac-academy-back-end-production.up.railway.app/',
     timeout: 50000, // timeout can be increased
     headers: {
         // 'Content-Type': 'multipart/form-data',
