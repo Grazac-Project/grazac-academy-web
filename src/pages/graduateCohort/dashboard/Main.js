@@ -645,7 +645,7 @@ function Dashboard() {
               closeNavMobile();
             }}
           >
-            <div className="layout_dashboard-sidebar" id="sidebar">
+            <div className="layout_dashboard-sidebar" id="sidebar" onClick={closeNavMobile}>
               <Sidebar
                 clicked={sidebarClick}
                 showDetails={status}
