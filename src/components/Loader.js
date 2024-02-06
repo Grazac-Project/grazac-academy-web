@@ -1,5 +1,7 @@
 import Modal from "./Modal";
-import Logo from "../images/svg/grazac-icon.svg";
+// import Logo from "../images/svg/grazac-icon.svg";
+import Logo from "../images/svg/grazac_new_logo.svg";
+// import Logo from "../images/grazac_logo.png";
 
 const Loader = () => {
   return (
