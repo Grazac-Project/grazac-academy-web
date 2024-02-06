@@ -6,7 +6,8 @@ import Mode from "../../components/Mode";
 import { Link } from "react-router-dom";
 import { getAllTalents } from "../../api/dashboard/hire";
 
-import Sponsor1 from "../../images/svg/Apple.svg";
+// import Sponsor1 from "../../images/svg/Apple.svg";
+import Sponsor1 from "../../images/svg/Apple_new.png";
 import Sponsor2 from "../../images/svg/AWS.svg";
 import Sponsor3 from "../../images/svg/Flutterwave.svg";
 import Sponsor5 from "../../images/svg/Microsoft.svg";
