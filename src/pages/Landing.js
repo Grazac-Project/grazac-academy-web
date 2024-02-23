@@ -65,11 +65,46 @@ const Landing = () => {
     history.push(goTo)
   }
 
+  // useEffect(() => {
+  //   // document.title = "Welcome to Grazac Academy";
+  //   let mediaPlayer = document.querySelector("#video");
+  //   mediaPlayer.controls = false;
+  //   mediaPlayer.play();
+
+  //   //this gives the homepage spacing on top for the notification
+  //   var landingHeight = document.getElementsByClassName("landing")[0];
+  //   landingHeight.style.marginTop = `70px`;
+
+  //   window.addEventListener("load", () => {
+  //     setShow(false);
+  //   });
+  // }, []);
+
+
   useEffect(() => {
-    // document.title = "Welcome to Grazac Academy";
-    let mediaPlayer = document.querySelector("#video");
-    mediaPlayer.controls = false;
-    mediaPlayer.play();
+    try {
+
+      // Setup video element
+      let mediaPlayer = document.querySelector("#video");
+      if (!mediaPlayer) {
+          throw new Error("Video element not found.");
+      }
+      // Check if the browser supports the video format
+      const canPlayMp4 = mediaPlayer.canPlayType('video/mp4');
+      if (!canPlayMp4) {
+          throw new Error("Browser does not support the video format.");
+      }
+      // Hide default controls
+      mediaPlayer.controls = false;
+
+      // Attempt to play the video
+        mediaPlayer.play().catch(error => {
+        console.error("Error occurred while attempting to play the video:", error.message);
+      });
+    } catch (error) {
+      // Handle unsupported media or other errors gracefully
+      console.error("Error occurred during video setup:", error.message);
+    }
 
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
