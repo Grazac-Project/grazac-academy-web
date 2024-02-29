@@ -152,7 +152,7 @@ const Landing = () => {
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application is now open. Class commences 8th January, 2024
+                Application for next cohort will open in May 2024
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"
