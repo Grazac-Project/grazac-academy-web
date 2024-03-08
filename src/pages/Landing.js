@@ -152,7 +152,7 @@ const Landing = () => {
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application for next cohort will open in May 2024
+                Application for the next cohort is currently On
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"
