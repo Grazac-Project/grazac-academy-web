@@ -21,9 +21,9 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName} ${details?.lastName}`,
     },
 
     customizations: {

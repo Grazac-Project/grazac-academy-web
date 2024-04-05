@@ -82,20 +82,20 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
-      console.log(details);
+      // console.log(details);
 
       setDetails(JSON.parse(details));
 
-      setUserId(JSON.parse(details).id);
-      setAccepted(JSON.parse(details).applicationFee);
+      setUserId(JSON.parse(details)?.id);
+      setAccepted(JSON.parse(details)?.applicationFee);
 
-      console.log(JSON.parse(details).applicationFee);
+      // console.log(JSON.parse(details).applicationFee);
 
       if (JSON.parse(details).applicationFee) {
         // console.log("fkjdkj");
         setStatus("Not Submitted");
         setStatus(sessionStorage.getItem("status"));
-        console.log(status)
+        // console.log(status)
 
         if (JSON.parse(details).isPaid === 1) {
           setSelectStatus("paid");
@@ -411,19 +411,19 @@ function Dashboard() {
       setIsError(false);
 
       // btn.innerHTML = `<img src=${loader} width="20px" />`;
-      data.append("firstname", guarantor.firstName);
-      data.append("lastname", guarantor.lastName);
-      data.append("email", guarantor.email);
-      data.append("phone_number", guarantor.phone);
-      data.append("gender", guarantor.gender);
-      data.append("office_address", guarantor.officeAddress);
-      data.append("home_address", guarantor.homeAddress);
-      data.append("profession", guarantor.profession);
-      data.append("name_of_organization", guarantor.organisation);
-      data.append("name_of_employer", guarantor.employer);
-      data.append("email_address_of_employer", guarantor.employerMail);
-      data.append("phone_number_of_employer", guarantor.employerPhone);
-      data.append("relationship_with_the_guarantor", guarantor.relationship);
+      data.append("firstname", guarantor?.firstName);
+      data.append("lastname", guarantor?.lastName);
+      data.append("email", guarantor?.email);
+      data.append("phone_number", guarantor?.phone);
+      data.append("gender", guarantor?.gender);
+      data.append("office_address", guarantor?.officeAddress);
+      data.append("home_address", guarantor?.homeAddress);
+      data.append("profession", guarantor?.profession);
+      data.append("name_of_organization", guarantor?.organisation);
+      data.append("name_of_employer", guarantor?.employer);
+      data.append("email_address_of_employer", guarantor?.employerMail);
+      data.append("phone_number_of_employer", guarantor?.employerPhone);
+      data.append("relationship_with_the_guarantor", guarantor?.relationship);
       data.append("user_id", userId);
 
       submitGuarantor(data)
@@ -495,19 +495,19 @@ function Dashboard() {
 
     if (isError === false) {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
-      data.append("firstname", guarantor.firstName);
-      data.append("lastname", guarantor.lastName);
-      data.append("email", guarantor.email);
-      data.append("phone_number", guarantor.phone);
-      data.append("gender", guarantor.gender);
-      data.append("office_address", guarantor.officeAddress);
-      data.append("home_address", guarantor.homeAddress);
-      data.append("profession", guarantor.profession);
-      data.append("name_of_organization", guarantor.organisation);
-      data.append("name_of_employer", guarantor.employer);
-      data.append("email_address_of_employer", guarantor.employerMail);
-      data.append("phone_number_of_employer", guarantor.employerPhone);
-      data.append("relationship_with_the_guarantor", guarantor.relationship);
+      data.append("firstname", guarantor?.firstName);
+      data.append("lastname", guarantor?.lastName);
+      data.append("email", guarantor?.email);
+      data.append("phone_number", guarantor?.phone);
+      data.append("gender", guarantor?.gender);
+      data.append("office_address", guarantor?.officeAddress);
+      data.append("home_address", guarantor?.homeAddress);
+      data.append("profession", guarantor?.profession);
+      data.append("name_of_organization", guarantor?.organisation);
+      data.append("name_of_employer", guarantor?.employer);
+      data.append("email_address_of_employer", guarantor?.employerMail);
+      data.append("phone_number_of_employer", guarantor?.employerPhone);
+      data.append("relationship_with_the_guarantor", guarantor?.relationship);
       data.append("user_id", userId);
 
       if (whichForm === "guarantor1" && isError === false) {
@@ -597,9 +597,9 @@ function Dashboard() {
     currency: currency,
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName} ${details?.lastName}`,
     },
 
     customizations: {
@@ -679,12 +679,12 @@ function Dashboard() {
               <div className="dashboard-nav-user">
                 <div>
                   <h2>
-                    {details.firstName?.substring(0, 1)}
+                    {details?.firstName?.substring(0, 1)}
                     {details?.lastName?.substring(0, 1)}
                   </h2>
                 </div>
                 <p>
-                  {details.firstName} {details.lastName}
+                  {details?.firstName} {details?.lastName}
                 </p>
               </div>
             </div>
@@ -694,10 +694,10 @@ function Dashboard() {
                   <div>
                     <AdmissionFeePage
                       details={details}
-                      fname={details.firstName}
-                      lname={details.lastName}
-                      email={details.email}
-                      phone={details.phone}
+                      fname={details?.firstName}
+                      lname={details?.lastName}
+                      email={details?.email}
+                      phone={details?.phone}
                     />
                     {/* <p>Please Make your Admission Fee Payment</p> */}
                   </div>
@@ -706,18 +706,18 @@ function Dashboard() {
                 {status === "Not Submitted" && (
                   <NotSubmitted
                     userDetails={details}
-                    fname={details.firstName}
-                    lname={details.lastName}
-                    email={details.email}
-                    phone={details.phone}
+                    fname={details?.firstName}
+                    lname={details?.lastName}
+                    email={details?.email}
+                    phone={details?.phone}
                     setNewStatus={() => changeStatus("Under Review")}
                   />
                 )}
                 {status === "Under Review" && (
-                  <UnderReview fname={details.firstName} />
+                  <UnderReview fname={details?.firstName} />
                 )}
                 {status === "Selected" && (
-                  <Selected fname={details.firstName} />
+                  <Selected fname={details?.firstName} />
                 )}
 
                 {status === "Admitted" && (
@@ -727,7 +727,7 @@ function Dashboard() {
                       <div>
                         {selectStatus === "congrats" && (
                           <div>
-                            <h3>Hello {details.firstName}</h3>
+                            <h3>Hello {details?.firstName}</h3>
                             <p className="text1">Congratulations!</p>
                             <p>
                               Your application has been selected. Click on the
