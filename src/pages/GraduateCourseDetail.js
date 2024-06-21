@@ -71,10 +71,11 @@ const CourseDetail = (props) => {
     console.log(mode)
     if (mode === 'Virtual') {
       // urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`;
-      urlBuild = `https://grazac-academy-back-end-production.up.railway.app/api/v1/user/getCourseVirtual/${slug}`;
+      // urlBuild = `https://grazac-academy-back-end-production.up.railway.app/api/v1/user/getCourseVirtual/${slug}`;
+      urlBuild = `https://grazac-academy-back-end.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
     } else if (mode === 'Physical') {
       // urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`;
-      urlBuild = `https://grazac-academy-back-end-production.up.railway.app/api/v1/user/getCourse/${slug}`;
+      urlBuild = `https://grazac-academy-back-end.onrender.com/api/v1/user/getCourse/${slug}`;
     } 
 
     setUrl(urlBuild);
