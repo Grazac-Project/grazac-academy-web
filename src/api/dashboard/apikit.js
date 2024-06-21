@@ -4,7 +4,8 @@ import axios from 'axios';
 export const APIKit = axios.create({
     // baseURL: 'https://api.grazacacademy.com/api/v1',
     // baseURL: 'https://api-grazacacademy-0358136c0905.herokuapp.com/',
-    baseURL: 'https://grazac-academy-back-end-production.up.railway.app/',
+    // baseURL: 'https://grazac-academy-back-end-production.up.railway.app/',
+    baseURL: 'https://grazac-academy-back-end.onrender.com/',
     timeout: 50000, // timeout can be increased
     headers: {
         // 'Content-Type': 'multipart/form-data',
