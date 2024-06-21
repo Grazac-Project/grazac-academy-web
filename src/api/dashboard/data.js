@@ -79,7 +79,8 @@ export const getGuarantor = () => {
 //     },
 //   });
 // };
-  return axios.get(`https://grazac-academy-back-end-production.up.railway.app/api/v1/user/fetchGuarantorData?userId=${userId}`, {
+  // return axios.get(`https://grazac-academy-back-end-production.up.railway.app/api/v1/user/fetchGuarantorData?userId=${userId}`, {
+  return axios.get(`https://grazac-academy-back-end.onrender.com/api/v1/user/fetchGuarantorData?userId=${userId}`, {
   // return axios.get(`'https://api.grazacacademy.com/api/v1/user/fetchGuarantorData?user_id=${userId}`, {
   // return APIKit.get(`api/v1/user/fetchGuarantorData?user_id=${userId}`, {
     headers: {
