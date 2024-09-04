@@ -70,13 +70,8 @@ const CourseDetail = (props) => {
     let urlBuild = "";
     console.log(mode)
     if (mode === 'Virtual') {
-      // urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`;
-      // urlBuild = `https://grazac-academy-back-end-production.up.railway.app/api/v1/user/getCourseVirtual/${slug}`;
-      // urlBuild = `https://grazac-academy-back-end.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
     } else if (mode === 'Physical') {
-      // urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`;
-      // urlBuild = `https://grazac-academy-back-end.onrender.com/api/v1/user/getCourse/${slug}`;
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourse/${slug}`;
     } 
 
@@ -104,36 +99,7 @@ const CourseDetail = (props) => {
   //   setMode(trial.class_option); 
   //   console.log(trial.class_option)
 
-    
-
-
-  //   if(mode == 'virtual') {
-  //     let urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`
-  //     setUrl(urlBuild)
-  //     console.log(url)
-  //   } else if (mode === 'physical') {
-  //     let urlBuild = `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`
-  //     setUrl(urlBuild)
-  //     console.log(url)
-  //   }
-  //   // mode === 'virtual' ? setUrl(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourseVirtual/${slug}`) : mode === 'physical' ? setUrl(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`) : setUrl('')
-
-  //   // fetch(
-  //   //   `https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getCourse/${slug}`
-  //   // )
-  //   // axios(`https://api-grazacacademy-0358136c0905.herokuapp.com/api/v1/user/getcourse/${slug}`)
-  //   fetch(url)
-  //     .then((resp) => resp.json())
-  //     .then((response) => {
-  //       console.log(response)
-  //       setCourse(response.details);
-  //       // setOutline(JSON.parse(response.details.outline));
-  //     })
-  //     .catch((error) => {
-  //       console.log("error:", error);
-  //       // window.location.reload();
-  //     });
-  // }, []);
+  
   console.log(course);
   console.log(mode);
   console.log(url)
