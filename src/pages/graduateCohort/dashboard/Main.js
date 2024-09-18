@@ -591,7 +591,7 @@ function Dashboard() {
   // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
   const config = {
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
     tx_ref: Date.now(),
     amount: amount,
     currency: currency,
