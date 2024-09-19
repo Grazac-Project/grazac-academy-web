@@ -528,6 +528,29 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
+              <div
+                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
+                className="boxes33"
+              >
+                <div className="gua_cardview">
+                  <div className="gua_cardview-box">
+                    <img src={data_analysis} alt="course-desc" />
+                  </div>
+                  <div className="gua_cardview-text">
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                      Blockchain Development with Solidity
+                    </h4>
+                    <p>
+                      This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career... 
+                    </p>
+                    <span
+                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
+                    >
+                      Learn More
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
             <Link to="/signup">
               <div
