@@ -5,10 +5,10 @@ const NewPricing = () => {
     {
       id: 1,
       type: "Pay Installment",
-      prevAmount: "₦1,200,000",
-      newAmount: "₦1,050,000 ",
+      // prevAmount: "₦1,200,000",
+      newAmount: "₦700,000 ",
       // spanNewAmount: "($1005)",
-      discount: ["12.50%"],
+      // discount: ["12.50%"],
       method: ["₦350,000 Initial payment"],
       span: ["₦350,000 Initial payment"],
       benefits: [
@@ -25,10 +25,10 @@ const NewPricing = () => {
     {
       id: 2,
       type: "Pay at Once",
-      prevAmount: "₦1,200,000",
-      newAmount: "₦1,000,000 ",
+      // prevAmount: "₦1,200,000",
+      newAmount: "₦650,000 ",
       // spanNewAmount: "($1000)",
-      discount: ["16.67%"],
+      // discount: ["16.67%"],
       recommend: "Highly Recommended",
       benefits: [
         "No legal fees",
@@ -43,10 +43,10 @@ const NewPricing = () => {
     {
       id: 3,
       type: "Learn Now pay later",
-      prevAmount: "₦1,300,000 ",
+      // prevAmount: "₦1,300,000 ",
       newAmount: "₦1,200,000 ",
       // spanNewAmount: "($1200)",
-      discount: ["7.69%"],
+      // discount: ["7.69%"],
       benefits: [
         "₦50,000 legal fee",
         "4 months of immersive training",
