@@ -5,10 +5,10 @@ const NewPricing = () => {
     {
       id: 1,
       type: "Pay Installment",
-      // prevAmount: "₦1,200,000",
+      prevAmount: "₦1,200,000",
       newAmount: "₦700,000 ",
       // spanNewAmount: "($1005)",
-      // discount: ["12.50%"],
+      discount: ["41.67%"],
       method: ["₦350,000 Initial payment"],
       span: ["₦350,000 Initial payment"],
       benefits: [
@@ -25,10 +25,10 @@ const NewPricing = () => {
     {
       id: 2,
       type: "Pay at Once",
-      // prevAmount: "₦1,200,000",
+      prevAmount: "₦1,200,000",
       newAmount: "₦650,000 ",
       // spanNewAmount: "($1000)",
-      // discount: ["16.67%"],
+      discount: ["45.83%"],
       recommend: "Highly Recommended",
       benefits: [
         "No legal fees",
