@@ -66,7 +66,6 @@ function Login() {
               token: res.data.token,
             })
           );
-          console.log(res)
           const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
 
