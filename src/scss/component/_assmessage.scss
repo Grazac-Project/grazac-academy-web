@@ -1,0 +1,92 @@
+.message-backdrop{
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.message-backdrop{
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.message-content{
+    width: 588px;
+    height: fit-content;
+    padding: 28px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #fff;
+    z-index: 19999;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img{
+        display: block;
+        margin: auto;
+    }
+    h2{
+        width: fit-content;
+        margin: 24px auto 8px auto;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 32.74px;
+        color: #333;
+    }
+    .pass{
+       font-weight: 700;
+       font-size: 24px;
+       line-height: 32.74px;
+       color: #00C885;
+       width: fit-content; 
+       margin: 0 auto 8px auto;
+    }
+    .fail{
+        font-weight: 700;
+       font-size: 24px;
+       line-height: 32.74px;
+       color: #FF3B30;
+       width: fit-content; 
+       margin: 0 auto 8px auto;
+    }
+    p{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #787676;
+        text-align: center;
+    }
+    button{
+      height: 52px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24.55px;
+      margin: 0 !important;  
+    }
+    span{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 24px;
+        color: #000000;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 768px) {
+        width: 80%;
+        padding: 16px;
+        
+    }
+    button{
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

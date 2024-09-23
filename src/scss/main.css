@@ -1169,6 +1169,33 @@ input:focus, select:focus, textarea:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow-y: auto;
+}
+@media screen and (max-width: 600px) {
+  .assessment-container {
+    padding: 16px;
+    width: 85%;
+  }
+}
+.assessment-container .img-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.assessment-container img {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+@media screen and (max-width: 600px) {
+  .assessment-container img {
+    width: 32px;
+    height: 32px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
 }
 .assessment-container-timer {
   display: flex;
@@ -1186,6 +1213,13 @@ input:focus, select:focus, textarea:focus {
 .assessment-container #button {
   display: block;
   margin-top: auto;
+  width: 164px;
+}
+.assessment-container #button img {
+  width: 16px;
+  height: 16px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .assessment-container-form .question p {
   font-weight: 400;
@@ -1210,6 +1244,106 @@ input:focus, select:focus, textarea:focus {
   display: block;
   font-size: 16px;
   margin: 0;
+}
+
+.message-backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.message-backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.message-content {
+  width: 588px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 28px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fff;
+  z-index: 19999;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.message-content img {
+  display: block;
+  margin: auto;
+}
+.message-content h2 {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 24px auto 8px auto;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #333;
+}
+.message-content .pass {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #00C885;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 8px auto;
+}
+.message-content .fail {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #FF3B30;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 8px auto;
+}
+.message-content p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #787676;
+  text-align: center;
+}
+.message-content button {
+  height: 52px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24.55px;
+  margin: 0 !important;
+}
+.message-content span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  color: #000000;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .message-content {
+    width: 80%;
+    padding: 16px;
+  }
+}
+.message-content button {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .accordion-button {

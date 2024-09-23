@@ -21,13 +21,13 @@ const Timer = ({ initialTime, onTimeUp }) => {
 
     const timerId = setInterval(() => {
       setTimeLeft(prevTime => {
-        console.log(prevTime);
+        // console.log(prevTime);
         
         const newTime = prevTime - 1;
         if (typeof window != 'undefined') {
           sessionStorage.setItem('time_left', newTime);
         }
-        console.log('newTime', newTime);
+        // console.log('newTime', newTime);
         
         return newTime;
       });
@@ -36,7 +36,7 @@ const Timer = ({ initialTime, onTimeUp }) => {
     return () => clearInterval(timerId);
   }, [timeLeft, onTimeUp]);
 
-  console.log(timeLeft);
+  // console.log(timeLeft);
   
 
   const formatTime = (seconds) => {
@@ -49,12 +49,12 @@ const Timer = ({ initialTime, onTimeUp }) => {
     return null; // Or a loading spinner/placeholder
   }
 
-  console.log(formatTime(timeLeft));
+  // console.log(formatTime(timeLeft));
   
   return (
     <p id='timer'>
-      {/* {formatTime(timeLeft)} */}
-      03:00
+      {formatTime(timeLeft)}
+      {/* 03:00 */}
     </p>
   );
 };

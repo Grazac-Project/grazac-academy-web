@@ -68,6 +68,14 @@ export const getDetailsC = () => {
     },
   });
 };
+export const fetchAssessment = () => {
+  // return AdminApiKit.get(`/fetchDataB/${userId}`, {
+  return AdminApiKit.get(`api/v1/Assessment/get`);
+};
+export const submitAssessment = (data, testId) => {
+  // return AdminApiKit.get(`/fetchDataB/${userId}`, {
+  return AdminApiKit.put(`api/v1/Assessment/answers/${userId}/${testId}`, data);
+};
 
 // ===============Course Guarantor data fetch commented=============== 
 

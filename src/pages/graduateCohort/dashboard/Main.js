@@ -144,7 +144,7 @@ function Dashboard() {
 
   useEffect(() => {
     getDetailsC()
-      .then(res => setPaymentChoice(res.data.data.result[0].paymentOption))
+      .then(res => setPaymentChoice(res.data.data.result[0]?.paymentOption))
   }, [])
 
   const handleChange = (e) => {

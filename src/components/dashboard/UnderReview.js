@@ -1,15 +1,25 @@
 import { useState } from "react";
 import Assessment from '../Assessment'
+import success from '../../images/assessment/success-assessment.png'
+import fail from '../../images/assessment/fail-assessment.png'
 
 function UnderReview ({fname}) {
     const [showModal, setShowModal] = useState(false)
     const [showAssessment, setShowAssessment] = useState(false)
+    const [showScore, setShowScore] = useState(false)
+    const [score, setScore] = useState(false)
+    const [status, setStatus] = useState()
     const handleModal = () => {
         setShowModal(true)
     }
     const handleOpenAssessment = () => {
         setShowAssessment(true)
         setShowModal(false)
+    }
+    const handleReload = () => {
+        sessionStorage.clear();
+        // toast.info("Signing out ...");
+        window.location = "/login";
     }
     return(
         <div>
@@ -29,7 +39,26 @@ function UnderReview ({fname}) {
             </div>}
             {showAssessment && <div className="assessment">
                 <div className="assessment-backdrop" onClick={() => setShowAssessment(false)}></div>
-                <Assessment />
+                <Assessment setShowScore={setShowScore} setScore={setScore} setStatus={setStatus} setShowAssessment={setShowAssessment}/>
+            </div>}
+            {showScore && <div className="message-prompt">
+                <div className="message-backdrop" onClick={() => setShowScore(false)}></div>
+                {status === 'You passed!' && <div className="message-content">
+                    <span onClick={() => setShowScore(false)}>&times;</span>
+                    <img src={success} alt="passed icon" />
+                    <h2>Congratulations</h2>
+                    <h3 className="pass">{score}%</h3>
+                    <p>You passed your assessment</p>
+                    <button onClick={handleReload}>Go to Dashboard</button>
+                </div>}
+                {status === "You failed." && <div className="message-content">
+                    <span onClick={() => setShowScore(false)}>&times;</span>
+                    <img src={fail} alt="failed image" />
+                    <h2>Oops</h2>
+                    <h3 className="fail">{score}%</h3>
+                    <p>You failed your assessment</p>
+                    <button onClick={handleReload}>Go to Dashboard</button>
+                </div>}
             </div>}
         </div>
     )

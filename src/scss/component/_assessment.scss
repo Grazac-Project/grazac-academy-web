@@ -12,6 +12,28 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-y: auto;
+    @media screen and (max-width: 600px){
+        padding: 16px;
+        width: 85%;
+    }
+    .img-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        width: 64px;
+        height: 64px;
+        display: block;
+        @media screen and (max-width: 600px){
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+    }
     &-timer{
         display: flex;
         justify-content: space-between;
@@ -29,6 +51,12 @@
         #button{
             display: block;
             margin-top: auto;
+            width: 164px;
+            img{
+                width: 16px;
+                height: 16px;
+                object-fit: cover;
+            }
         }
     &-form .question{
         p{
