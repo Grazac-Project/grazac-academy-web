@@ -30,6 +30,7 @@ import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
 import AdmissionFeePage from "../../../components/dashboard/not-submitted/AdmissionFeePage";
 import Payment from "../../../components/dashboard/payment";
+import Pending from "../../../components/dashboard/Pending";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -188,25 +189,27 @@ function Dashboard() {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
           // window.location = "/dashboard";
-          console.log(response);
-          console.log(response);
-          console.log(response);
+          // console.log(response);
+          // console.log(response);
+          // console.log(response);
 
           sendFlutterTx(response.transaction_id)
             // .then((response) => response.data)
             .then((response) => console.log(response))
             .then((res) => {
-              console.log(res)
+              // console.log(res)
               if (res.data.status === "successful") {
                 setSelectStatus("paid");
                 // window.location = "/dashboard";
               } else {
-                console.log(res)
+                // console.log(res)
               }
             })
-            .catch((err) => {console.log(err)});
+            .catch((err) => {
+              // console.log(err)
+            });
         } else {
-          console.log(response)
+          // console.log(response)
           toast.error("Payment unsuccessful!");
         }
         closePaymentModal(); // this will close the modal programmatically
@@ -720,6 +723,9 @@ function Dashboard() {
                 {status === "Selected" && (
                   <Selected fname={details?.firstName} />
                 )}
+                {status === "Pending" && (
+                  <Pending fname={details?.firstName} />
+                )}
 
                 {status === "Admitted" && (
                   <div>
@@ -779,15 +785,15 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      setAmount(1000000);
+                                      setAmount(650000);
                                       // setAmount(250);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
+                                    <p>Pay at Once (650,000 Naira)</p>
                                   </div>
-                                  <div
+                                  {/* <div
                                     className={
                                       payOpt === "fullTrainingOnly"
                                         ? "active"
@@ -795,14 +801,14 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(600000);
+                                      setAmount(650000);
                                       // setAmount(250);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
                                     <p>Pay at Once (600,000 Naira for Training Only)</p>
-                                  </div>
+                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "instalment"
@@ -811,13 +817,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(285000);
+                                      setAmount(350000);
                                       // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 285,000)</p>
+                                    <p>Pay in Instalment (NGN 350,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -833,17 +839,18 @@ function Dashboard() {
                               <div className="dashboard-content-modal-container">
                                 <div className="dashboard-content-modal-main">
                                   <div className="dashboard-content-modal-main-text">
-                                    <h4>Choose Payment Option</h4>
+                                    {/* <h4>Choose Payment Option</h4> */}
+                                    <h4>Pay Tuition Fee</h4>
                                     <img
                                       src={cancel}
                                       alt="cancel"
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  <p>We have made a flexible option for applicants who have no interest in our Internship 
+                                  {/* <p>We have made a flexible option for applicants who have no interest in our Internship 
                                     program or can not be available for 12 months to pay for training only
-                                  </p>
-                                  <div
+                                  </p> */}
+                                  {/* <div
                                     className={
                                       payOpt === "full"
                                         ? "active"
@@ -858,7 +865,7 @@ function Dashboard() {
                                   >
                                     <div></div>
                                     <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
-                                  </div>
+                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -867,13 +874,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(600000);
+                                      setAmount(650000);
                                       // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at Once (600,000 Naira for Training only) </p>
+                                    <p>Pay at Once (650,000 Naira) </p>
                                   </div>
                                   
                                   <button onClick={makePayment}>Proceed</button>
@@ -897,7 +904,7 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  <div
+                                  {/* <div
                                     className={
                                       payOpt === "full"
                                         ? "active"
@@ -912,7 +919,7 @@ function Dashboard() {
                                   >
                                     <div></div>
                                     <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div>
+                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -921,13 +928,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(600000);
+                                      setAmount(650000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 600,000 for Training only)</p>
+                                    <p>Pay at once (NGN 650,000)</p>
                                   </div>
                                   <div
                                     className={
@@ -937,13 +944,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(285000);
+                                      setAmount(350000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 285,000)</p>
+                                    <p>Pay in Instalment (NGN 350,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -974,12 +981,12 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(285000);
+                                      setAmount(350000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
-                                    <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 285,000</span> must be paid. The remaining will be divided into N85,000 naira spread across 9 months just to make payment easy for you</p>
+                                    <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 350,000</span> must be paid. The remaining N350,000 will be divided into N175,000 naira monthly for 2 months just to make the payment easy for you</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>

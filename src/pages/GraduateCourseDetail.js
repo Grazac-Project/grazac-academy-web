@@ -24,7 +24,7 @@ const CourseDetail = (props) => {
   // const isUnmounted = useRef(false);
 
   const slug = props.location.search.substring(8);
-  console.log(slug)
+  // console.log(slug)
   useEffect(() => {
       const getInfo = async () => {
       document.title = "Course Details - Grazac Academy";
@@ -48,15 +48,15 @@ const CourseDetail = (props) => {
       try {
         const response = await fetch(url);
         const result = await response.json();
-        console.log(result)
+        // console.log(result)
         await setCourse(result.details);
-        console.log(JSON.parse(result.details.outline))
+        // console.log(JSON.parse(result.details.outline))
         await setOutline(JSON.parse(result.details.outline));
         // if (!isUnmounted.current) {
         //   setCourse(result.details);
         // }
       } catch (error) {
-        console.log("error:", error);
+        // console.log("error:", error);
         // Handle errors
         // You can also check if it's unmounted before setting state here
         // if (!isUnmounted.current) {
@@ -68,7 +68,7 @@ const CourseDetail = (props) => {
     const urlSelect = async () => {
       // Construct the URL based on the mode
     let urlBuild = "";
-    console.log(mode)
+    // console.log(mode)
     if (mode === 'Virtual') {
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
     } else if (mode === 'Physical') {
@@ -76,8 +76,8 @@ const CourseDetail = (props) => {
     } 
 
     setUrl(urlBuild);
-    console.log(urlBuild)
-    console.log(url);
+    // console.log(urlBuild)
+    // console.log(url);
     // Fetch data
     if (urlBuild) {
       fetchData(urlBuild);
@@ -100,9 +100,9 @@ const CourseDetail = (props) => {
   //   console.log(trial.class_option)
 
   
-  console.log(course);
-  console.log(mode);
-  console.log(url)
+  // console.log(course);
+  // console.log(mode);
+  // console.log(url)
 
   return (
     <div>
@@ -195,7 +195,7 @@ const CourseDetail = (props) => {
                   </p>
                   {/* <button onClick={() => setIsOpen(true)}>Book a Session</button> */}
                   <PopupButton
-                    url="https://calendly.com/grazacacademy/session-with-the-grazac-program-manager"
+                    url="https://calendly.com/grazacacademy/book-a-session-with-the-grazac-academy-program-manager"
                     rootElement={document.getElementById("root")}
                     text="Book a Session"
                   />

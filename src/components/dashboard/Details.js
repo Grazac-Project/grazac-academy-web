@@ -62,14 +62,14 @@ function Details() {
     data.append("haveKids", userDetails?.haveKids);
     data.append("ageRange", userDetails?.ageRange);
 
-    data.append("dob", userDetails.dob);
+    data.append("dob", userDetails?.dob);
 
-    data.append("gender", userDetails.gender);
-    data.append("preferred_course", userDetails.preferred_course);
-    data.append("state_of_residence", userDetails.state_of_residence);
+    data.append("gender", userDetails?.gender);
+    data.append("preferred_course", userDetails?.preferred_course);
+    data.append("state_of_residence", userDetails?.state_of_residence);
     data.append(
       "current_city_and_location",
-      userDetails.current_city_and_location
+      userDetails?.current_city_and_location
     );
     // data.append("means_of_identification", bioData.id);
 
@@ -106,7 +106,7 @@ function Details() {
       });
   };
 
-  const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
+  // const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
 
   const handleChange_1 = (e) => {
     let guarantorData = [...guarantorDetails_1][0];
@@ -238,10 +238,11 @@ function Details() {
   useEffect(() => {
     getDetailsC()
       .then((res) => {
-       console.log(res)
         setIsLoading(true);
-        setUserDetails(res.data["data"]["result"][0]);
-        setTemData(res.data["data"]["result"][0]);
+        // setUserDetails(res.data["data"]["result"][0]);
+        setUserDetails(res.data["data"]["result"]);
+        // setTemData(res.data["data"]["result"][0]);
+        setTemData(res.data["data"]["result"]);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -255,13 +256,15 @@ function Details() {
         // }
       });
 
-    getGuarantor()
-      .then((response) => response.data)
-      .then((res) => {
-        setGuarantorDetails_1([res.data[0]]);
-        setGuarantorDetails_2([res.data[1]]);
-        // setGuarantorId(res.data[0]["id"]);
-      })
+    // getGuarantor(userId)
+    //   .then((response) => {
+    //     response.data
+    //   })
+    //   .then((res) => {
+    //     setGuarantorDetails_1();
+    //     setGuarantorDetails_2();
+    //     // setGuarantorId(res.data[0]["id"]);
+    //   })
       // .catch((err) => {
       //   if (err.response) {
       //     toast.error(err.response);

@@ -43,10 +43,10 @@ const NewPricing = () => {
     {
       id: 3,
       type: "Learn Now pay later",
-      // prevAmount: "₦1,300,000 ",
+      prevAmount: "₦1,300,000 ",
       newAmount: "₦1,200,000 ",
       // spanNewAmount: "($1200)",
-      // discount: ["7.69%"],
+      discount: ["7.69%"],
       benefits: [
         "₦50,000 legal fee",
         "4 months of immersive training",

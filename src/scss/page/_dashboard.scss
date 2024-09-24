@@ -47,6 +47,10 @@
                 border: 1px solid #E7A300;
                 background: #E7A300;
             }
+            .pending{
+                border: 1px solid #E7A300;
+                background: #E7A300;
+            }
             .Selected{
                 border: 1px solid $color-inspiring-purple;
                 background: $color-inspiring-purple;
@@ -104,7 +108,7 @@
         &-guarantor_paragraph_text{
             margin-bottom: 3rem;
         }
-
+        // a.contact-support{}
         .text1{
             color: #333333 !important;
             font-size: 18px;
