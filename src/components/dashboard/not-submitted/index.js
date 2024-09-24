@@ -699,6 +699,7 @@ function NotSubmitted({
                         placeholder="Email Address"
                         value={bioData?.email}
                         onChange={handleChange}
+                        disabled
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -796,7 +797,7 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                          Will you be available physically for the next 12months?
+                          Will you be available physically for the next 6months?
                       </label>
                       <select
                         name="physically_available"
@@ -841,6 +842,9 @@ function NotSubmitted({
                         </option>
                         <option value="Data Analysis">
                           Data Analysis
+                        </option>
+                        <option value="Blockchain Development with Solidity">
+                          Blockchain Development with Solidity
                         </option>
                       </select>
                     </div>

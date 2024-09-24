@@ -28,7 +28,7 @@ const Payment = () => {
 
   useEffect(() => {
     let details = sessionStorage.getItem("user_details");
-      console.log(details);
+      // console.log(details);
       setDetails(JSON.parse(details));
       setInitialPayment(JSON.parse(details).firstInstallment);
       setSubInstallment(JSON.parse(details).subInstallment);
@@ -50,9 +50,9 @@ const Payment = () => {
           setTimeout(() => {
             window.location = "/login";
           }, 2500)
-          console.log(response);
-          console.log(response);
-          console.log(response);
+          // console.log(response);
+          // console.log(response);
+          // console.log(response);
 
           sendFlutterTx(response.transaction_id)
             .then((response) => response.data)
@@ -78,7 +78,7 @@ const Payment = () => {
   }, [amount])
 
   const makePayment = () => {
-    console.log(amount);
+    // console.log(amount);
     flutterWavePayment();
     // if (action === "Paid") {
     //   setStatus("Approved");
@@ -93,7 +93,7 @@ const Payment = () => {
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
 
   const config = {
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
     tx_ref: Date.now(),
     amount: amount,
     currency: currency,
@@ -129,7 +129,7 @@ const Payment = () => {
           <tbody>
               <tr>
                 <td>January</td>
-                <td>285,000</td>
+                <td>350,000</td>
                 <td>
                   <span
                     className={
@@ -142,9 +142,9 @@ const Payment = () => {
                 </td>
                 <td>
                   <button
-                    disabled={initialPayment == 1 ? true : false}
+                    disabled={initialPayment ? true : false}
                     onClick={() => {
-                      setAmount(285000);
+                      setAmount(350000);
                       }}
                     className={
                        initialPayment ? 'paid' : 'pay-now'
@@ -156,60 +156,60 @@ const Payment = () => {
               </tr>
               <tr>
                 <td>February</td>
-                <td>85,000</td>
+                <td>175,000</td>
                 <td>
                   <span
                     className={
-                      subInstallment == 1 ?
+                      subInstallment ?
                        "approved" : 'pending'
                     }
                   >
                     {/* {status} */}
-                    {subInstallment == 1 ? 'Approved' : 'Pending'}
+                    {subInstallment ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td>
                   <button
-                    disabled={subInstallment == 1 ? true : false}
+                    disabled={subInstallment ? true : false}
                     onClick={() => {
-                      setAmount(85000);
+                      setAmount(175000);
                     }}
                     className={
-                       subInstallment == 1 ? 'paid' : 'pay-now'
+                       subInstallment ? 'paid' : 'pay-now'
                     }
                   >
-                    {subInstallment == 1 ? 'Paid' : 'Pay Now'}
+                    {subInstallment ? 'Paid' : 'Pay Now'}
                   </button>
                 </td>
               </tr>
               <tr>
                 <td>March</td>
-                <td>85,000</td>
+                <td>175,000</td>
                 <td>
                   <span
                     className={
-                      subInstallmentOne == 1 ?
+                      subInstallmentOne ?
                        "approved" : 'pending'
                     }
                   >
-                    {subInstallmentOne == 1 ? 'Approved' : 'Pending'}
+                    {subInstallmentOne ? 'Approved' : 'Pending'}
                   </span>
                 </td>
                 <td>
                   <button
-                    disabled={subInstallmentOne == 1 ? true : false}
+                    disabled={subInstallmentOne ? true : false}
                     onClick={ () => {
-                      setAmount(85000);
+                      setAmount(175000);
                     }}
                     className={
-                       subInstallmentOne == 1 ? 'paid' : 'pay-now'
+                       subInstallmentOne ? 'paid' : 'pay-now'
                     }
                   >
-                    {subInstallmentOne == 1 ? 'Paid' : 'Pay Now'}
+                    {subInstallmentOne ? 'Paid' : 'Pay Now'}
                   </button>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td>April</td>
                 <td>85,000</td>
                 <td>
@@ -397,7 +397,7 @@ const Payment = () => {
                     {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
                   </button>
                 </td>
-              </tr>
+              </tr> */}
           </tbody>
         </table>
       </div>
@@ -408,7 +408,7 @@ const Payment = () => {
                 <span>Month:</span> January
               </div>
               <div className="details">
-                <span>Amount:</span> 285,000
+                <span>Amount:</span> 350,000
               </div>
               <div className="details">
                 <span>Status: </span>
@@ -424,7 +424,7 @@ const Payment = () => {
                 <button
                   disabled={initialPayment == 1 ? true : false}
                   onClick={() => {
-                  setAmount(285000);
+                  setAmount(350000);
                   }} 
                   className={
                     initialPayment?'paid':'pay-now'
@@ -440,7 +440,7 @@ const Payment = () => {
                 <span>Month:</span> February
               </div>
               <div className="details">
-                <span>Amount:</span> 85,000
+                <span>Amount:</span> 175,000
               </div>
               <div className="details">
                 <span>Status: </span>
@@ -456,7 +456,7 @@ const Payment = () => {
                 <button className={subInstallment == 1 ?'paid':'pay-now'}
                 disabled={subInstallment == 1 ? true : false}
                 onClick={() => {
-                  setAmount(85000);
+                  setAmount(175000);
                 }}>
                   {subInstallment == 1 ? 'Paid' : 'Pay Now'}
                 </button>
@@ -467,7 +467,7 @@ const Payment = () => {
                 <span>Month:</span> March
               </div>
               <div className="details">
-                <span>Amount:</span> 85,000
+                <span>Amount:</span> 175,000
               </div>
               <div className="details">
                 <span>Status: </span>
@@ -483,14 +483,14 @@ const Payment = () => {
                 <button className={subInstallmentOne == 1 ?'paid':'pay-now'}
                   disabled={subInstallmentOne == 1 ? true : false}
                   onClick={() => {
-                    setAmount(85000);
+                    setAmount(175000);
                   }}
                 >
                   {subInstallmentOne == 1 ? 'Paid' : 'Pay Now'}
                 </button>
               </div>
             </div>
-            <div className="payment-mobile-container">
+            {/* <div className="payment-mobile-container">
               <div className="details">
                 <span>Month:</span> April
               </div>
@@ -686,7 +686,7 @@ const Payment = () => {
                   {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
                 </button>
               </div>
-            </div>
+            </div> */}
           {/* ))} */}
         </div>
       </div>

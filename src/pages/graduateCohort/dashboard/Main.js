@@ -98,10 +98,10 @@ function Dashboard() {
         setStatus(sessionStorage.getItem("status"));
         // console.log(status)
 
-        if (JSON.parse(details).isPaid === 1) {
+        if (JSON.parse(details).isPaid === true) {
           setSelectStatus("paid");
         }
-        if (JSON.parse(details).firstInstallment === 1) {
+        if (JSON.parse(details).firstInstallment === true) {
           setSelectStatus("initialDeposit");
         }
 
@@ -188,7 +188,7 @@ function Dashboard() {
         // if (response.status === "successful") {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          // window.location = "/dashboard";
+          window.location = "/login";
           // console.log(response);
           // console.log(response);
           // console.log(response);

@@ -6,7 +6,7 @@ import loader2 from '../images/load.gif'
 
 const Assessment = ({setShowScore, setScore, setStatus, setShowAssessment}) => {
     const [assessmentData, setAssessmentData] = useState()
-    const [time, setTime] = useState(60)
+    const [time, setTime] = useState()
     const [selectedOption, setSelectedOption] = useState({});
     const [loading, setLoading] = useState(true)
     const [load, setLoad] = useState(false)

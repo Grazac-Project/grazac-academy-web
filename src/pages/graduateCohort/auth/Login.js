@@ -70,17 +70,18 @@ function Login() {
           sessionStorage.setItem("status", `${res.data.status}`);
 
           btn.innerHTML = `Sign in`;
-          setTimeout(function () {
-            window.location = "/dashboard";
-            if(appPaymentStatus == 1) {
-              window.location = "/mode";
-            } else if(appPaymentStatus == null){
-              window.location = "/dashboard";
-            } else {
-              window.location = "/dashboard";
-            }
-            // window.location = "/mode";
-          }, 2500);
+          window.location = '/dashboard'
+          // setTimeout(function () {
+          //   window.location = "/dashboard";
+          //   if(appPaymentStatus == 1) {
+          //     window.location = "/mode";
+          //   } else if(appPaymentStatus == null){
+          //     window.location = "/dashboard";
+          //   } else {
+          //     window.location = "/dashboard";
+          //   }
+          //   // window.location = "/mode";
+          // }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");
         }
