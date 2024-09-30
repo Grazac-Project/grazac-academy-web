@@ -453,14 +453,15 @@ function NotSubmitted({
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
       {/* ========================== WELCOME PHYSICAL ==================================  */}
-      {(active === "welcome" && modeSelection === true) && (
+      {/* {(active === "welcome" && modeSelection === true) && ( */}
+      {(active === "welcome") && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
-            Learn with us for 12 months
+            Learn with us for 6 months
           </p>
           <p>
-            Grazac Academy offers a 12-month tech skills program with flexible payment options. 
+            Grazac Academy offers a 6-month tech skills program with flexible payment options. 
             The curriculum covers 8 tech disciplines which include:
           </p>
           {/* <p>
@@ -487,7 +488,7 @@ function NotSubmitted({
           <p>With you in mind, Grazac Academy offers Three (3) different payment options which include;</p>
           <ul>
             <li>
-              <strong>Instalment Payment: </strong>Pay N285,000 upfront and spread the rest at N85,000 per month for 9 months.
+              <strong>Instalment Payment: </strong>Pay N350,000 upfront and spread the rest at N175,000 per month for 2 months.
             </li>
             <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 6-month internship program</li>
             <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
@@ -501,7 +502,7 @@ function NotSubmitted({
           <h4>Duration</h4>
           <ul>
             <li>
-              12months ( 6months intensive training + 6months internship).
+              6months ( 3months intensive training + 3months internship).
             </li>
           </ul>
           <h4>Basic Criteria to be met</h4>
@@ -512,7 +513,7 @@ function NotSubmitted({
           </p> */}
           <ul>
             <li>
-              Candidates must be available (full-time) for 12 months.
+              Candidates must be available (full-time) for 6 months.
 
             </li>
             <li>
@@ -546,7 +547,8 @@ function NotSubmitted({
       )}
 
       {/* ========================== WELCOME VIRTUAL =======================================  */}
-      {(active === "welcome" && modeSelection === false) && (
+      {/* {(active === "welcome" && modeSelection === false) && ( */}
+      {(false && modeSelection === false) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -943,7 +945,7 @@ function NotSubmitted({
                       id="btn-physical-1"
                       disabled={isButtonSubmitted}
                       className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
-                      // onClick={submitForm}
+                      onClick={submitForm}
                       >
                       Continue
                     </button>

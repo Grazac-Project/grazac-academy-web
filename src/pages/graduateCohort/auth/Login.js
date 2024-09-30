@@ -25,7 +25,7 @@ function Login() {
   };
 
   const doLogin = (e) => {
-    console.log(form);
+    // console.log(form);
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
