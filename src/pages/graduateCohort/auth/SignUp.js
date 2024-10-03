@@ -31,7 +31,7 @@ function SignUp() {
   async function doSignUp(e) {
     e.preventDefault();
     console.log("ffffff");
-    console.log(form);
+    // console.log(form);
     var btn = document.getElementById("actionBtn");
 
     // if (form.password.length > 5) {
@@ -58,7 +58,7 @@ function SignUp() {
 
           const res = await response;
           // const res.data.status ==201
-          console.log(res)
+          // console.log(res)
           if (res.data.status === 201) {
             toast.success(`${res.data.message} Proceed to login.`);
             // btn.innerHTML=`Create account`;
@@ -71,7 +71,7 @@ function SignUp() {
           }
         } catch (err) {
           if (err.response.data.message) {
-            console.log(err.response.data.message)
+            // console.log(err.response.data.message)
             toast.error(err.response.data.message);
             btn.innerHTML = `Create account`;
           } 

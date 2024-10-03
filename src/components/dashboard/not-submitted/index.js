@@ -462,7 +462,7 @@ function NotSubmitted({
           </p>
           <p>
             Grazac Academy offers a 6-month tech skills program with flexible payment options. 
-            The curriculum covers 8 tech disciplines which include:
+            The curriculum covers 9 tech disciplines which include:
           </p>
           {/* <p>
             You can choose to learn virtually or physically with us. This
@@ -482,6 +482,7 @@ function NotSubmitted({
             <li>Data Analysis</li>
             <li>Backend Web Development (Java with Spring & Springboot)</li>
             <li>Machine Learning with Python</li>
+            <li>Blockchain with Solidity</li>
           </ul>
           <h4>Pricing Plans</h4>
           {/* <p>There's an application fee of N7,500. Payment options include:</p> */}
@@ -490,7 +491,7 @@ function NotSubmitted({
             <li>
               <strong>Instalment Payment: </strong>Pay N350,000 upfront and spread the rest at N175,000 per month for 2 months.
             </li>
-            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 6-month internship program</li>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N650,000 </strong>and enjoy the full benefits of Grazac Academy for 6 months which covers a 4-months immersive training and 2-months internship program</li>
             <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
           </ul>
           <p>
@@ -502,7 +503,7 @@ function NotSubmitted({
           <h4>Duration</h4>
           <ul>
             <li>
-              6months ( 3months intensive training + 3months internship).
+              6months (4months intensive training + 2months internship).
             </li>
           </ul>
           <h4>Basic Criteria to be met</h4>
@@ -945,7 +946,7 @@ function NotSubmitted({
                       id="btn-physical-1"
                       disabled={isButtonSubmitted}
                       className={bioData.paymentOption === 'fullPayment' || bioData.paymentOption === 'partPayment' ? 'button':"disable-btn"} 
-                      onClick={submitForm}
+                      // onClick={submitForm}
                       >
                       Continue
                     </button>
