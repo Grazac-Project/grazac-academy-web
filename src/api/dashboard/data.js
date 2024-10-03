@@ -104,7 +104,7 @@ export const addPlan = (planData) => {
 };
 
 export const submitGuarantor = (data) => {
-  console.log(token)
+  // console.log(token)
   return APIKit.post(
     `api/v1/user/guarantorDetails`,
     data,
@@ -116,7 +116,7 @@ export const submitGuarantor = (data) => {
   );
 };
 export const submitGuarantor2 = (data) => {
-  console.log(token)
+  // console.log(token)
   return APIKit.post(
     `api/v1/user/guarantorDetails2`,
     data,
