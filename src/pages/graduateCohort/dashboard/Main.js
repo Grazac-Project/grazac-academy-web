@@ -31,6 +31,7 @@ import Loader from "../../../components/Loader";
 import AdmissionFeePage from "../../../components/dashboard/not-submitted/AdmissionFeePage";
 import Payment from "../../../components/dashboard/payment";
 import Pending from "../../../components/dashboard/Pending";
+import Failed from "../../../components/dashboard/Failed";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -725,6 +726,9 @@ function Dashboard() {
                 )}
                 {status === "Pending" && (
                   <Pending fname={details?.firstName} />
+                )}
+                {status === "Failed" && (
+                  <Failed fname={details?.firstName} />
                 )}
 
                 {status === "Admitted" && (
