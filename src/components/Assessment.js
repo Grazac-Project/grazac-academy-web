@@ -75,7 +75,7 @@ const Assessment = ({setShowScore, setScore, setStatus, setShowAssessment}) => {
         {loading?<div className='img-container'><img src={loader} alt='loader' /></div>:<>
             <div className='assessment-container-timer'>
                 <h2>Assessment</h2>
-                <Timer initialTime={time} onTimeUp={handleTimeUp}/>
+                {time && <Timer initialTime={time} onTimeUp={handleTimeUp}/>}
             </div>
             <form className='assessment-container-form' onSubmit={handleSubmit}>
                 {assessmentData?.questions.map((element, i) => {
