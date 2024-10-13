@@ -21,9 +21,9 @@ const Newsform = ({ setNews, setNewsMessage }) => {
     client_secret: '1987033df4d63deaaef0cecd0d4973260784601dd6', // The client secret obtained from Zoho
     grant_type: 'refresh_token', // Grant type for OAuth2
   })
-  useEffect(() => {
-    refreshToken()
-  }, [])
+  // useEffect(() => {
+  //   refreshToken()
+  // }, [])
   const refreshToken = async () => {
     try {
       const { data } = await axios.post('https://accounts.zoho.com/oauth/v2/token', {}, {
@@ -205,12 +205,7 @@ setInterval(tokenRefreshHandler, 3600000)
     setLoading(true);
     const {username, domain} = splitEmail(payload.email)
     const {firstName, lastName} = splitFullName(payload.firstname)
-    addContact(firstName, lastName, username, domain)
-    // const trialURL = `https://campaigns.zoho.com/api/v1.1/json/listsubscribe?resfmt=JSON&listkey=3z66b420de9a15a54b5eaac9faf0317040ce77f9682ceecbb44e8569bfd024ea9e&contactinfo={First+Name%3A${firstName}%2CLast+Name%3A${lastName}%2CContact+Email%3A${username}%40${domain}}&source=String`
-    // joinCampaign(trialURL)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
-    // ZohoAPI.POST(`/api/v1.1/json/listsubscribe?resfmt=JSON&listkey=3z66b420de9a15a54b5eaac9faf0317040ce77f9682ceecbb44e8569bfd024ea9e&contactinfo=%7BFirst+Name%3A${firstName}%2CLast+Name%3A${lastName}%2CContact+Email%3A${username}%40${domain}%7D`)
+    // addContact(firstName, lastName, username, domain)  
     
   }
 
