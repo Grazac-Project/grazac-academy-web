@@ -1296,10 +1296,10 @@ input:focus, select:focus, textarea:focus {
   color: #333;
 }
 .message-content .pass {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32.74px;
-  color: #00C885;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #787676;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto 8px auto;
@@ -1327,7 +1327,12 @@ input:focus, select:focus, textarea:focus {
   line-height: 24.55px;
   margin: 0 !important;
 }
-.message-content span {
+.message-content #score {
+  color: #333;
+  font-weight: 700;
+  line-height: 32.74px;
+}
+.message-content .ass-times {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -5767,6 +5772,10 @@ input:focus, select:focus, textarea:focus {
   background: #333333;
 }
 .dashboard-nav-status .under-review {
+  border: 1px solid #E7A300;
+  background: #E7A300;
+}
+.dashboard-nav-status .pending {
   border: 1px solid #E7A300;
   background: #E7A300;
 }

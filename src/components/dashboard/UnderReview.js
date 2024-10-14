@@ -43,22 +43,21 @@ function UnderReview ({fname}) {
             </div>}
             {showScore && <div className="message-prompt">
                 <div className="message-backdrop" onClick={() => setShowScore(false)}></div>
-                {status === 'You passed!' && <div className="message-content">
-                    <span onClick={() => setShowScore(false)}>&times;</span>
+                {<div className="message-content">
+                    <span class='ass-times' onClick={() => setShowScore(false)}>&times;</span>
                     <img src={success} alt="passed icon" />
-                    <h2>Congratulations</h2>
-                    <h3 className="pass">{score}%</h3>
-                    <p>You passed your assessment</p>
+                    <h2>Your result is out!</h2>
+                    <div className="pass">Your score is <span id="score">{score}%</span></div>
                     <button onClick={handleReload}>Go to Dashboard</button>
                 </div>}
-                {status === "You failed." && <div className="message-content">
+                {/* {status === "You failed." && <div className="message-content">
                     <span onClick={() => setShowScore(false)}>&times;</span>
                     <img src={fail} alt="failed image" />
                     <h2>Oops</h2>
                     <h3 className="fail">{score}%</h3>
                     <p>You failed your assessment</p>
                     <button onClick={handleReload}>Go to Dashboard</button>
-                </div>}
+                </div>} */}
             </div>}
         </div>
     )
