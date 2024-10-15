@@ -2,6 +2,7 @@ import { useState } from "react";
 import Assessment from '../Assessment'
 import success from '../../images/assessment/success-assessment.png'
 import fail from '../../images/assessment/fail-assessment.png'
+import sorry from '../../images/assessment/sorry.png'
 
 function UnderReview ({fname}) {
     const [showModal, setShowModal] = useState(false)
@@ -38,26 +39,27 @@ function UnderReview ({fname}) {
                 </div>
             </div>}
             {showAssessment && <div className="assessment">
-                <div className="assessment-backdrop" onClick={() => setShowAssessment(false)}></div>
+                <div className="assessment-backdrop"></div>
                 <Assessment setShowScore={setShowScore} setScore={setScore} setStatus={setStatus} setShowAssessment={setShowAssessment}/>
             </div>}
             {showScore && <div className="message-prompt">
-                <div className="message-backdrop" onClick={() => setShowScore(false)}></div>
+                <div className="message-backdrop"></div>
                 {<div className="message-content">
-                    <span class='ass-times' onClick={() => setShowScore(false)}>&times;</span>
+                    {/* <span class='ass-times' onClick={() => setShowScore(false)}>&times;</span> */}
                     <img src={success} alt="passed icon" />
-                    <h2>Your result is out!</h2>
-                    <div className="pass">Your score is <span id="score">{score}%</span></div>
+                    <h2>Congratulations</h2>
+                    <div className="pass">{score}%</div>
+                    <p>You passed your assessment</p>
+                    <button onClick={handleReload}>Proceed to Dashboard</button>
+                </div>}
+                {status === "You failed." && <div className="message-content">
+                    {/* <span onClick={() => setShowScore(false)}>&times;</span> */}
+                    <img src={sorry} alt="sorry image" />
+                    <h2>Your assessment has been received</h2>
+                    {/* <h3 className="fail">{score}%</h3> */}
+                    <p>We will be in touch soon</p>
                     <button onClick={handleReload}>Go to Dashboard</button>
                 </div>}
-                {/* {status === "You failed." && <div className="message-content">
-                    <span onClick={() => setShowScore(false)}>&times;</span>
-                    <img src={fail} alt="failed image" />
-                    <h2>Oops</h2>
-                    <h3 className="fail">{score}%</h3>
-                    <p>You failed your assessment</p>
-                    <button onClick={handleReload}>Go to Dashboard</button>
-                </div>} */}
             </div>}
         </div>
     )

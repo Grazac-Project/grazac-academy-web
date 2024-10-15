@@ -1296,10 +1296,10 @@ input:focus, select:focus, textarea:focus {
   color: #333;
 }
 .message-content .pass {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #787676;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #00C885;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto 8px auto;
