@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Card } from "react-bootstrap";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import Slider from "infinite-react-carousel";
+// import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
@@ -24,7 +24,8 @@ import scroll from "../images/testimonial-scroll.png";
 
 import badge from "../images/svg/badge.svg";
 import ex from "../images/svg/x-mark.svg";
-import Sponsor1 from "../images/svg/Apple.svg";
+// import Sponsor1 from "../images/svg/Apple.svg";
+import Sponsor1 from "../images/svg/Apple_new.png";
 import Sponsor2 from "../images/svg/AWS.svg";
 import Sponsor3 from "../images/svg/Flutterwave.svg";
 import Sponsor5 from "../images/svg/Microsoft.svg";
@@ -64,11 +65,46 @@ const Landing = () => {
     history.push(goTo)
   }
 
+  // useEffect(() => {
+  //   // document.title = "Welcome to Grazac Academy";
+  //   let mediaPlayer = document.querySelector("#video");
+  //   mediaPlayer.controls = false;
+  //   mediaPlayer.play();
+
+  //   //this gives the homepage spacing on top for the notification
+  //   var landingHeight = document.getElementsByClassName("landing")[0];
+  //   landingHeight.style.marginTop = `70px`;
+
+  //   window.addEventListener("load", () => {
+  //     setShow(false);
+  //   });
+  // }, []);
+
+
   useEffect(() => {
-    // document.title = "Welcome to Grazac Academy";
-    let mediaPlayer = document.querySelector("#video");
-    mediaPlayer.controls = false;
-    mediaPlayer.play();
+    try {
+
+      // Setup video element
+      let mediaPlayer = document.querySelector("#video");
+      if (!mediaPlayer) {
+          throw new Error("Video element not found.");
+      }
+      // Check if the browser supports the video format
+      const canPlayMp4 = mediaPlayer.canPlayType('video/mp4');
+      if (!canPlayMp4) {
+          throw new Error("Browser does not support the video format.");
+      }
+      // Hide default controls
+      mediaPlayer.controls = false;
+
+      // Attempt to play the video
+        mediaPlayer.play().catch(error => {
+        console.error("Error occurred while attempting to play the video:", error.message);
+      });
+    } catch (error) {
+      // Handle unsupported media or other errors gracefully
+      console.error("Error occurred during video setup:", error.message);
+    }
 
     //this gives the homepage spacing on top for the notification
     var landingHeight = document.getElementsByClassName("landing")[0];
@@ -116,7 +152,7 @@ const Landing = () => {
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application is now open. Class commences 8th January, 2024
+                Application for the next cohort is currently On
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -257,10 +293,10 @@ const Landing = () => {
                   <div className="">
                     <img src={why3} alt="profile" />
                   </div>
-                  <h4> 4-months Compulsory Internship</h4>
+                  <h4> 6-months Internship</h4>
                   <p className="hire_dev-grey">
                     Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve 
-                    related problems so you can build your portfolio for at least 4-months.
+                    related problems so you can build your portfolio for 6-months.
                   </p>
                 </div>
               {/* </Col> */}
@@ -486,6 +522,29 @@ const Landing = () => {
                     </p>
                     <span
                       onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}
+                    >
+                      Learn More
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
+                className="boxes33"
+              >
+                <div className="gua_cardview">
+                  <div className="gua_cardview-box">
+                    <img src={data_analysis} alt="course-desc" />
+                  </div>
+                  <div className="gua_cardview-text">
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
+                      Blockchain Development with Solidity
+                    </h4>
+                    <p>
+                      This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career... 
+                    </p>
+                    <span
+                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
                     >
                       Learn More
                     </span>
@@ -738,7 +797,7 @@ const Landing = () => {
         <div className="landing_faq">
           <div className="container">
             <h1>FAQs</h1>
-            <div>
+            {/* <div>
               <Accordion>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="1">
@@ -790,7 +849,7 @@ const Landing = () => {
                         <div className="landing_faq-answer">
                           <p>
                             The program is for a duration of 12 months,
-                              consisting of 8 months  immersive training and 4 months internship.
+                              consisting of 6 months  immersive training and 6 months internship.
                           </p>
                         </div>
                       </Card.Body>
@@ -854,6 +913,123 @@ const Landing = () => {
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
+                <Link to="/faq" className="link-view">
+                  <h5>View All</h5>
+                </Link>
+              </Accordion>
+            </div> */}
+
+            <div>
+              <Accordion defaultActiveKey="1">
+                <Card>
+                  <Accordion.Item eventKey="1">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do I have to be physically present to register?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No, registration is to be done online.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="2">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Are classes virtual or onsite?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="3">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4> What is the duration of the program?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          The program is for a duration of 12 months, consisting of 6 months immersive training and 6 months internship.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="4">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes,please. However, as an undergraduate, you are strongly advised to choose our virtual learning mode due to its flexibility.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="5">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>Do you offer any certification after the course?</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes, students who complete our courses will receive a virtual and hardcopy certificate of completion
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="6">
+                  <Accordion.Header onClick={handleFaq}>
+                    <div className="landing_faq-question" >
+                      <h4>What is the cost of learning at Grazac Academy</h4>
+                      <MdKeyboardArrowDown size="2rem" color="black" />
+                    </div>
+                  </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                      <p>
+                        For our physical classes, the cost for all courses is #1,000,000
+                      </p>
+                      <p>While for our virtual classes, the cost is $200. To get more information 
+                        about our pricing, <a href="#">Click here</a></p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
                 <Link to="/faq" className="link-view">
                   <h5>View All</h5>
                 </Link>

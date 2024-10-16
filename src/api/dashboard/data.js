@@ -25,6 +25,15 @@ export const submitDetails = (data, id) => {
     },
   });
 };
+export const submitDetailsLnpl = (data, id) => {
+    console.log(token)
+  return APIKit.put(`api/v1/user/application-form-lnpl`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const editDetails = (data, id) => {
   // return APIKit.put(`/user/edit-dashboard/${id}`, data, {
   return APIKit.put(`api/v1/user/edit-dashboard/${id}`, data, {
@@ -45,7 +54,7 @@ export const getDetails = () => {
 
 export const getDetailsB = () => {
   // return AdminApiKit.get(`/fetchDataB/${userId}`, {
-  return AdminApiKit.get(`api/v1/fetchDataB/${userId}`, {
+  return AdminApiKit.get(`/api/v1/fetchDataB/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -59,19 +68,19 @@ export const getDetailsC = () => {
     },
   });
 };
+export const fetchAssessment = () => {
+  // return AdminApiKit.get(`/fetchDataB/${userId}`, {
+  return AdminApiKit.get(`api/v1/Assessment/get`);
+};
+export const submitAssessment = (data, testId) => {
+  // return AdminApiKit.get(`/fetchDataB/${userId}`, {
+  return AdminApiKit.put(`api/v1/Assessment/answers/${userId}/${testId}`, data);
+};
 
 // ===============Course Guarantor data fetch commented=============== 
 
 export const getGuarantor = () => {
-//   return APIKit.get(`/user/fetchGuarantorData?user_id=${userId}`, {
-//   // return APIKit.get(`api/v1/user/fetchGuarantorData?user_id=${userId}`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-// };
-  return axios.get(`'https://api.grazacacademy.com/api/v1/user/fetchGuarantorData?user_id=${userId}`, {
-  // return APIKit.get(`api/v1/user/fetchGuarantorData?user_id=${userId}`, {
+  return axios.get(`https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/fetchGuarantorData?userId=${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -79,7 +88,6 @@ export const getGuarantor = () => {
 };
 
 export const editGuarantor = (data, guaID) => {
-  // return APIKit.put(`/user/edit-gurantor/${guaID}`, data, {
   return APIKit.put(`api/v1/user/edit-gurantor/${guaID}`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -88,7 +96,6 @@ export const editGuarantor = (data, guaID) => {
 };
 
 export const addPlan = (planData) => {
-  // return APIKit.put(`/user/paymentPlan?id=${userId}`, planData, {
   return APIKit.put(`api/v1/user/paymentPlan?id=${userId}`, planData, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -97,9 +104,8 @@ export const addPlan = (planData) => {
 };
 
 export const submitGuarantor = (data) => {
-  console.log(token)
+  // console.log(token)
   return APIKit.post(
-    // `/user/guarantorDetails?payment_plan=pay-as-you-earn`,
     `api/v1/user/guarantorDetails`,
     data,
     {
@@ -110,9 +116,8 @@ export const submitGuarantor = (data) => {
   );
 };
 export const submitGuarantor2 = (data) => {
-  console.log(token)
+  // console.log(token)
   return APIKit.post(
-    // `/user/guarantorDetails?payment_plan=pay-as-you-earn`,
     `api/v1/user/guarantorDetails2`,
     data,
     {
@@ -124,6 +129,11 @@ export const submitGuarantor2 = (data) => {
 };
 
 export const sendFlutterTx = (trans_id) => {
-  // return APIKit.post(`/user/pay?transaction_id=${trans_id}`);
   return APIKit.post(`api/v1/user/pay?transaction_id=${trans_id}`);
 };
+
+export const zohoSubmit = (data) => {
+  return APIKit.post('api/v1/user/zoho', data)
+}
+
+

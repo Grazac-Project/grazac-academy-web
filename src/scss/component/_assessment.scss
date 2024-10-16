@@ -1,0 +1,90 @@
+.assessment-container{
+    width: 60%;
+    height: 80vh;
+    margin-right: auto;
+    padding: 28px;
+    margin-left: auto;
+    background-color: #fff;
+    z-index: 19999;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    @media screen and (max-width: 600px){
+        padding: 16px;
+        width: 85%;
+    }
+    .img-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        width: 64px;
+        height: 64px;
+        display: block;
+        @media screen and (max-width: 600px){
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+    }
+    &-timer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        h2{
+           font-weight: 700;
+           font-size: 18px;
+           line-height: 32.74px;
+           color: #333;
+           margin: 0;
+        
+        }
+    }
+        #button{
+            display: block;
+            margin-top: auto;
+            width: 164px;
+            img{
+                width: 16px;
+                height: 16px;
+                object-fit: cover;
+            }
+        }
+    &-form .question{
+        p{
+            font-weight: 400;
+            font-size: 19px;
+            line-height: 27px;
+            color: #333; 
+        }
+        .options-container{
+            // min-height: 208px;
+            .option-container{
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 16px;
+                color: #787676;
+                line-height: 24px;
+                input{
+                    display: block;
+                    margin: 0;
+                }
+                label{
+                    display: block;
+                    font-size: 16px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

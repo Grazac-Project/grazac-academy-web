@@ -51,7 +51,7 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                     </>
                   ) : (
                     <>
-                      <a href="/hire">
+                      <a href="/signup">
                         <div
                           className="nav__btn--text"
                           style={{ marginRight: "20px" }}

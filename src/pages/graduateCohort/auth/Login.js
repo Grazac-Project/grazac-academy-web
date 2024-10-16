@@ -25,7 +25,7 @@ function Login() {
   };
 
   const doLogin = (e) => {
-    console.log(form);
+    // console.log(form);
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -49,28 +49,39 @@ function Login() {
               lastName: res.data.payload.lastName,
               email: res.data.payload.email,
               id: res.data.payload.id,
+              firstInstallment: res.data.payload.firstInstallment,
+              subInstallment: res.data.payload.subInstallment,
+              subInstallmentOne: res.data.payload.subInstallmentOne,
+              subInstallmentTwo: res.data.payload.subInstallmentTwo,
+              subInstallmentThree: res.data.payload.subInstallmentThree,
+              subInstallmentFour: res.data.payload.subInstallmentFour,
+              subInstallmentFive: res.data.payload.subInstallmentFive,
+              subInstallmentSix: res.data.payload.subInstallmentSix,
+              subInstallmentSeven: res.data.payload.subInstallmentSeven,
+              subInstallmentEight: res.data.payload.subInstallmentEight,
+              
               isPaid: res.data.payload.isPaid,
               applicationFee: res.data.payload.applicationFee,
               phone: res.data.payload.phoneNumber,
               token: res.data.token,
             })
           );
-          console.log(res)
           const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
 
           btn.innerHTML = `Sign in`;
-          setTimeout(function () {
-            window.location = "/dashboard";
-            if(appPaymentStatus == 1) {
-              window.location = "/mode";
-            } else if(appPaymentStatus == null){
-              window.location = "/dashboard";
-            } else {
-              window.location = "/dashboard";
-            }
-            // window.location = "/mode";
-          }, 2500);
+          window.location = '/dashboard'
+          // setTimeout(function () {
+          //   window.location = "/dashboard";
+          //   if(appPaymentStatus == 1) {
+          //     window.location = "/mode";
+          //   } else if(appPaymentStatus == null){
+          //     window.location = "/dashboard";
+          //   } else {
+          //     window.location = "/dashboard";
+          //   }
+          //   // window.location = "/mode";
+          // }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");
         }

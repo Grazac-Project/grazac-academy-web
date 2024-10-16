@@ -15,7 +15,7 @@
   margin: auto;
   width: 360px;
   padding: 24px 40px;
-  height: 537px;
+  height: 570px;
   align-items: center;
   gap: 32px;
   transition: all 0.5s ease;
@@ -42,7 +42,8 @@
     padding: 24px 40px;
   }
   @media screen and (max-width: 570px) {
-    width: 70%;
+    width: 80%;
+    padding: 24px 30px;
   }
 
 

@@ -15,21 +15,22 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
   const AdmissionFeeFlutterwaveConfig = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
     amount: 7500,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName} ${details?.lastName}`,
     },
 
     customizations: {
       title: "Grazac Academy",
       description: "Admission Fee Payment",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 
@@ -56,6 +57,10 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         To start your application, you are required to pay a non-refundable fee
         of 7,500 naira only.
       </p>
+      {/* <p>
+        As part of Grazac's 3rd year anniversary, we are giving a 30% discount on the application fee.
+        Pay 5,250 naira instead of 7,500 naira today
+      </p> */}
 
       <p>
         As part of your registration process, assessment and interview will be
@@ -85,6 +90,12 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       >
         Proceed To Pay
       </button>
+      {/* <button
+        className={"button"}
+        ref={buttonRef}
+      >
+        Proceed To Pay
+      </button> */}
     </div>
   );
 }

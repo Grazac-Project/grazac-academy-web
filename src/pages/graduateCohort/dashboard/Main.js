@@ -6,7 +6,7 @@ import UnderReview from "../../../components/dashboard/UnderReview";
 import PaymentReceived from "../../../components/dashboard/selected/PaymentReceived";
 import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
-import OutsideClickHandler from "react-outside-click-handler";
+// import OutsideClickHandler from "react-outside-click-handler";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import {
@@ -14,6 +14,7 @@ import {
   sendFlutterTx,
   addPlan,
   getGuarantor,
+  getDetailsC
 } from "../../../api/dashboard/data";
 import {
   useFlutterwave,
@@ -28,6 +29,9 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 import termsandconds from "../../../content/TermsandCondition.pdf";
 import Loader from "../../../components/Loader";
 import AdmissionFeePage from "../../../components/dashboard/not-submitted/AdmissionFeePage";
+import Payment from "../../../components/dashboard/payment";
+import Pending from "../../../components/dashboard/Pending";
+import Failed from "../../../components/dashboard/Failed";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -51,7 +55,7 @@ function Dashboard() {
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
-
+  const [paymentChoice, setPaymentChoice] = useState('')
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
@@ -80,22 +84,26 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
-      console.log(details);
+      // console.log(details);
 
       setDetails(JSON.parse(details));
 
-      setUserId(JSON.parse(details).id);
-      setAccepted(JSON.parse(details).applicationFee);
+      setUserId(JSON.parse(details)?.id);
+      setAccepted(JSON.parse(details)?.applicationFee);
 
-      console.log(JSON.parse(details).applicationFee);
+      // console.log(JSON.parse(details).applicationFee);
 
       if (JSON.parse(details).applicationFee) {
         // console.log("fkjdkj");
         setStatus("Not Submitted");
         setStatus(sessionStorage.getItem("status"));
+        // console.log(status)
 
-        if (JSON.parse(details).isPaid === 1) {
+        if (JSON.parse(details).isPaid === true) {
           setSelectStatus("paid");
+        }
+        if (JSON.parse(details).firstInstallment === true) {
+          setSelectStatus("initialDeposit");
         }
 
         if (!details) {
@@ -133,7 +141,14 @@ function Dashboard() {
         //   );
         // }
       });
+
   }, [guarantorForm1]);
+
+  useEffect(() => {
+    getDetailsC()
+      .then(res => {
+        setPaymentChoice(res.data.data.result?.paymentOption)})
+  }, [])
 
   const handleChange = (e) => {
     setGuarantor({
@@ -170,36 +185,52 @@ function Dashboard() {
 
     handleFlutterPayment({
       callback: (response) => {
-        if (response.status === "successful") {
+        console.log(response)
+        // if (response.status === "successful") {
+        if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          // window.location = "/dashboard";
-          console.log(response);
-          console.log(response);
-          console.log(response);
+          window.location = "/login";
+          // console.log(response);
+          // console.log(response);
+          // console.log(response);
 
           sendFlutterTx(response.transaction_id)
-            .then((response) => response.data)
+            // .then((response) => response.data)
+            .then((response) => console.log(response))
             .then((res) => {
+              // console.log(res)
               if (res.data.status === "successful") {
                 setSelectStatus("paid");
                 // window.location = "/dashboard";
               } else {
+                // console.log(res)
               }
             })
-            .catch((err) => {});
+            .catch((err) => {
+              // console.log(err)
+            });
         } else {
+          // console.log(response)
           toast.error("Payment unsuccessful!");
         }
         closePaymentModal(); // this will close the modal programmatically
       },
-      onClose: (response) => {},
+      onClose: (response) => { },
     });
   };
 
   const makePayment = () => {
     if (payOpt === "part") {
       setPayShowModal("");
-      setSelectStatus("pay-as-you-earn");
+      var planData = new FormData();
+      planData.append("payment_plan", "learn now pay later");
+      addPlan(planData)
+        .then((response) => response.data)
+        .then((res) => { })
+        .catch((err) => { });
+
+      flutterWavePayment();
+      // setSelectStatus("pay-as-you-earn");
     } else if (payOpt === "full") {
       setPayShowModal("");
 
@@ -207,12 +238,36 @@ function Dashboard() {
       planData.append("payment_plan", "pay at once");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
-    } else {
-      toast.info("You need to select a payment option to continue!");
+    } else if (payOpt === 'fullTrainingOnly') {
+      setPayShowModal("");
+
+      var planData = new FormData();
+      planData.append("payment_plan", "training only");
+      addPlan(planData)
+        .then((response) => response.data)
+        .then((res) => { })
+        .catch((err) => { });
+
+      flutterWavePayment();
+    } else if (payOpt === 'instalment') {
+      setPayOpt('instalment-pay')
+      setPaymentChoice('instalment-note')
+      // toast.info("You need to select a payment option to continue!");
+    } else if (payOpt === 'instalment-pay') {
+      setPayShowModal("");
+
+      var planData = new FormData();
+      planData.append("payment_plan", "pay in instalment");
+      addPlan(planData)
+        .then((response) => response.data)
+        .then((res) => { })
+        .catch((err) => { });
+
+      flutterWavePayment();
     }
   };
 
@@ -311,7 +366,7 @@ function Dashboard() {
                 } else {
                   toast.error("Submission not successful, try again!!!");
                   // btn.innerHTML = `<img src=${loader} width="20px" />`;
-                  btn.innerHTML = `Procede`;
+                  btn.innerHTML = `Proceed`;
                 }
               })
               .catch((err) => {
@@ -361,19 +416,19 @@ function Dashboard() {
       setIsError(false);
 
       // btn.innerHTML = `<img src=${loader} width="20px" />`;
-      data.append("firstname", guarantor.firstName);
-      data.append("lastname", guarantor.lastName);
-      data.append("email", guarantor.email);
-      data.append("phone_number", guarantor.phone);
-      data.append("gender", guarantor.gender);
-      data.append("office_address", guarantor.officeAddress);
-      data.append("home_address", guarantor.homeAddress);
-      data.append("profession", guarantor.profession);
-      data.append("name_of_organization", guarantor.organisation);
-      data.append("name_of_employer", guarantor.employer);
-      data.append("email_address_of_employer", guarantor.employerMail);
-      data.append("phone_number_of_employer", guarantor.employerPhone);
-      data.append("relationship_with_the_guarantor", guarantor.relationship);
+      data.append("firstname", guarantor?.firstName);
+      data.append("lastname", guarantor?.lastName);
+      data.append("email", guarantor?.email);
+      data.append("phone_number", guarantor?.phone);
+      data.append("gender", guarantor?.gender);
+      data.append("office_address", guarantor?.officeAddress);
+      data.append("home_address", guarantor?.homeAddress);
+      data.append("profession", guarantor?.profession);
+      data.append("name_of_organization", guarantor?.organisation);
+      data.append("name_of_employer", guarantor?.employer);
+      data.append("email_address_of_employer", guarantor?.employerMail);
+      data.append("phone_number_of_employer", guarantor?.employerPhone);
+      data.append("relationship_with_the_guarantor", guarantor?.relationship);
       data.append("user_id", userId);
 
       submitGuarantor(data)
@@ -409,8 +464,8 @@ function Dashboard() {
       planData.append("payment_plan", "pay as you earn");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
     } else {
       btn.innerHTML = `Proceed`;
     }
@@ -445,19 +500,19 @@ function Dashboard() {
 
     if (isError === false) {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
-      data.append("firstname", guarantor.firstName);
-      data.append("lastname", guarantor.lastName);
-      data.append("email", guarantor.email);
-      data.append("phone_number", guarantor.phone);
-      data.append("gender", guarantor.gender);
-      data.append("office_address", guarantor.officeAddress);
-      data.append("home_address", guarantor.homeAddress);
-      data.append("profession", guarantor.profession);
-      data.append("name_of_organization", guarantor.organisation);
-      data.append("name_of_employer", guarantor.employer);
-      data.append("email_address_of_employer", guarantor.employerMail);
-      data.append("phone_number_of_employer", guarantor.employerPhone);
-      data.append("relationship_with_the_guarantor", guarantor.relationship);
+      data.append("firstname", guarantor?.firstName);
+      data.append("lastname", guarantor?.lastName);
+      data.append("email", guarantor?.email);
+      data.append("phone_number", guarantor?.phone);
+      data.append("gender", guarantor?.gender);
+      data.append("office_address", guarantor?.officeAddress);
+      data.append("home_address", guarantor?.homeAddress);
+      data.append("profession", guarantor?.profession);
+      data.append("name_of_organization", guarantor?.organisation);
+      data.append("name_of_employer", guarantor?.employer);
+      data.append("email_address_of_employer", guarantor?.employerMail);
+      data.append("phone_number_of_employer", guarantor?.employerPhone);
+      data.append("relationship_with_the_guarantor", guarantor?.relationship);
       data.append("user_id", userId);
 
       if (whichForm === "guarantor1" && isError === false) {
@@ -530,8 +585,8 @@ function Dashboard() {
         planData.append("payment_plan", "pay as you earn");
         addPlan(planData)
           .then((response) => response.data)
-          .then((res) => {})
-          .catch((err) => {});
+          .then((res) => { })
+          .catch((err) => { });
       } else {
         btn.innerHTML = `Proceed`;
       }
@@ -541,21 +596,22 @@ function Dashboard() {
   // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
   const config = {
+    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
     amount: amount,
     currency: currency,
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName} ${details?.lastName}`,
     },
 
     customizations: {
       title: "Grazac Academy",
       description: "Payment for Graduate Cohort",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 
@@ -590,20 +646,22 @@ function Dashboard() {
       {loading === false ? (
         <div>
           <ToastContainer closeButton={false} />
-          <OutsideClickHandler
+          {/* <OutsideClickHandler
             onOutsideClick={() => {
               closeNavMobile();
             }}
-          >
-            <div className="layout_dashboard-sidebar" id="sidebar">
+          > */}
+            <div className="layout_dashboard-sidebar" id="sidebar" onClick={closeNavMobile}>
               <Sidebar
                 clicked={sidebarClick}
                 showDetails={status}
                 clickedDashboard={setSidebarClick}
                 clickedDetails={setSidebarClick}
+                clickedPayment={setSidebarClick}
+                paymentChoice={paymentChoice}
               />
             </div>
-          </OutsideClickHandler>
+          {/* </OutsideClickHandler> */}
           <div className="layout_dashboard-content">
             <div className="dashboard-nav">
               <img
@@ -619,20 +677,20 @@ function Dashboard() {
                     status === "Not Submitted"
                       ? `dashboard-nav-status-dot not-submitted`
                       : status === "Under Review"
-                      ? `dashboard-nav-status-dot under-review`
-                      : `dashboard-nav-status-dot ${status}`
+                        ? `dashboard-nav-status-dot under-review`
+                        : `dashboard-nav-status-dot ${status}`
                   }
                 ></div>
               </div>
               <div className="dashboard-nav-user">
                 <div>
                   <h2>
-                    {details.firstName?.substring(0, 1)}
+                    {details?.firstName?.substring(0, 1)}
                     {details?.lastName?.substring(0, 1)}
                   </h2>
                 </div>
                 <p>
-                  {details.firstName} {details.lastName}
+                  {details?.firstName} {details?.lastName}
                 </p>
               </div>
             </div>
@@ -642,10 +700,10 @@ function Dashboard() {
                   <div>
                     <AdmissionFeePage
                       details={details}
-                      fname={details.firstName}
-                      lname={details.lastName}
-                      email={details.email}
-                      phone={details.phone}
+                      fname={details?.firstName}
+                      lname={details?.lastName}
+                      email={details?.email}
+                      phone={details?.phone}
                     />
                     {/* <p>Please Make your Admission Fee Payment</p> */}
                   </div>
@@ -654,18 +712,24 @@ function Dashboard() {
                 {status === "Not Submitted" && (
                   <NotSubmitted
                     userDetails={details}
-                    fname={details.firstName}
-                    lname={details.lastName}
-                    email={details.email}
-                    phone={details.phone}
+                    fname={details?.firstName}
+                    lname={details?.lastName}
+                    email={details?.email}
+                    phone={details?.phone}
                     setNewStatus={() => changeStatus("Under Review")}
                   />
                 )}
                 {status === "Under Review" && (
-                  <UnderReview fname={details.firstName} />
+                  <UnderReview fname={details?.firstName} />
                 )}
                 {status === "Selected" && (
-                  <Selected fname={details.firstName} />
+                  <Selected fname={details?.firstName} />
+                )}
+                {status === "Pending" && (
+                  <Pending fname={details?.firstName} />
+                )}
+                {status === "Failed" && (
+                  <Failed fname={details?.firstName} />
                 )}
 
                 {status === "Admitted" && (
@@ -675,7 +739,7 @@ function Dashboard() {
                       <div>
                         {selectStatus === "congrats" && (
                           <div>
-                            <h3>Hello {details.firstName}</h3>
+                            <h3>Hello {details?.firstName}</h3>
                             <p className="text1">Congratulations!</p>
                             <p>
                               Your application has been selected. Click on the
@@ -688,6 +752,255 @@ function Dashboard() {
                         )}
 
                         {payShowModal === "pay" && (
+                          paymentChoice === 'learn_now_pay_later' && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "part"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("part");
+                                      setAmount(50000);
+                                      // setAmount(1000);
+                                      // setAmount(150);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Learn Now Pay Later (NGN 50,000 legal fee)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      setAmount(650000);
+                                      // setAmount(250);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (650,000 Naira)</p>
+                                  </div>
+                                  {/* <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(650000);
+                                      // setAmount(250);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (600,000 Naira for Training Only)</p>
+                                  </div> */}
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      setAmount(350000);
+                                      // setAmount(220);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 350,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'fullPayment' && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    {/* <h4>Choose Payment Option</h4> */}
+                                    <h4>Pay Tuition Fee</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  {/* <p>We have made a flexible option for applicants who have no interest in our Internship 
+                                    program or can not be available for 12 months to pay for training only
+                                  </p> */}
+                                  {/* <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      setAmount(1000000);
+                                      // setAmount(200);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
+                                  </div> */}
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(650000);
+                                      // setAmount(220);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at Once (650,000 Naira) </p>
+                                  </div>
+                                  
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'partPayment' && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  {/* <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      setAmount(1000000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
+                                  </div> */}
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(650000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 650,000)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      setAmount(350000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 350,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'instalment-note' && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Pay in Installments</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      setAmount(350000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 350,000</span> must be paid. The remaining N350,000 will be divided into N175,000 naira monthly for 2 months just to make the payment easy for you</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                        {/* {payShowModal === "pay" && (
                           <div className="dashboard-content-modal">
                             <div className="dashboard-content-modal-backdrop"></div>
                             <div className="dashboard-content-modal-container">
@@ -749,7 +1062,7 @@ function Dashboard() {
                               </div>
                             </div>
                           </div>
-                        )}
+                        )} */}
 
                         {selectStatus === "pay-as-you-earn" && (
                           <div>
@@ -1334,9 +1647,9 @@ function Dashboard() {
                                       <button
                                         // onClick={makePayment}
                                         onClick={() => flutterWavePayment()}
-                                        // onClick={() =>
-                                        //   handlePayercoinsPayment()
-                                        // }
+                                      // onClick={() =>
+                                      //   handlePayercoinsPayment()
+                                      // }
                                       >
                                         Proceed
                                       </button>
@@ -1352,6 +1665,9 @@ function Dashboard() {
                     {selectStatus === "paid" && (
                       <PaymentReceived fname={details.firstName} />
                     )}
+                    {selectStatus === "initialDeposit" && (
+                      <PaymentReceived fname={details.firstName} />
+                    )}
                   </div>
                 )}
 
@@ -1361,6 +1677,8 @@ function Dashboard() {
               </div>
             )}
             {sidebarClick === "details" && <Details />}
+            {sidebarClick === "payment" && <Payment />}
+            {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
           </div>
         </div>
       ) : (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { submitDetails, submitGuarantor, submitGuarantor2 } from "../../../api/dashboard/data";
+import { submitDetails,submitDetailsLnpl, submitGuarantor, submitGuarantor2 } from "../../../api/dashboard/data";
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -140,7 +140,6 @@ function NotSubmitted({
       const modeChoice = await sessionStorage.getItem('mode_selection');
       const choice = await JSON.parse(modeChoice)
       const data = choice.onSite
-      console.log(data)
       setBioData({...bioData, onSite: data})
       setModeSelection(data)
       console.log(bioData)
@@ -342,7 +341,7 @@ function NotSubmitted({
       // btnPhy2.innerHTML = `Submit`;
     }
     console.log(bioData)
-    submitDetails(bioData, userId)
+    submitDetailsLnpl(bioData, userId)
       .then((res) => {
         console.log(bioData)
         if (res.status === 200) {
@@ -454,15 +453,16 @@ function NotSubmitted({
       {/* {setBioData(userDetails)} */}
       <ToastContainer closeButton={false} />
       {/* ========================== WELCOME PHYSICAL ==================================  */}
-      {(active === "welcome" && modeSelection === true) && (
+      {/* {(active === "welcome" && modeSelection === true) && ( */}
+      {(active === "welcome") && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
-            Learn with us for 12 months
+            Learn with us for 6 months
           </p>
           <p>
-            Grazac Academy offers a 12-month tech skills program with flexible payment options. 
-            The curriculum covers 8 tech disciplines which include:
+            Grazac Academy offers a 6-month tech skills program with flexible payment options. 
+            The curriculum covers 9 tech disciplines which include:
           </p>
           {/* <p>
             You can choose to learn virtually or physically with us. This
@@ -482,15 +482,16 @@ function NotSubmitted({
             <li>Data Analysis</li>
             <li>Backend Web Development (Java with Spring & Springboot)</li>
             <li>Machine Learning with Python</li>
+            <li>Blockchain with Solidity</li>
           </ul>
           <h4>Pricing Plans</h4>
           {/* <p>There's an application fee of N7,500. Payment options include:</p> */}
           <p>With you in mind, Grazac Academy offers Three (3) different payment options which include;</p>
           <ul>
             <li>
-              <strong>Instalment Payment: </strong>Pay N285,000 upfront and spread the rest at N85,000 per month for 9 months.
+              <strong>Instalment Payment: </strong>Pay N350,000 upfront and spread the rest at N175,000 per month for 2 months.
             </li>
-            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N1,000,000 </strong>and enjoy the full benefits of Grazac Academy for 12 months which covers a 4-month internship program</li>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N650,000 </strong>and enjoy the full benefits of Grazac Academy for 6 months which covers a 4-months immersive training and 2-months internship program</li>
             <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
           </ul>
           <p>
@@ -502,7 +503,7 @@ function NotSubmitted({
           <h4>Duration</h4>
           <ul>
             <li>
-              12months ( 8months intensive training + 4months internship).
+              6months (4months intensive training + 2months internship).
             </li>
           </ul>
           <h4>Basic Criteria to be met</h4>
@@ -513,7 +514,7 @@ function NotSubmitted({
           </p> */}
           <ul>
             <li>
-              Candidates must be available (full-time) for 12 months.
+              Candidates must be available (full-time) for 6 months.
 
             </li>
             <li>
@@ -547,7 +548,8 @@ function NotSubmitted({
       )}
 
       {/* ========================== WELCOME VIRTUAL =======================================  */}
-      {(active === "welcome" && modeSelection === false) && (
+      {/* {(active === "welcome" && modeSelection === false) && ( */}
+      {(false && modeSelection === false) && (
         <div>
           <h3>Hello {fname}</h3>
           <p className="text1">
@@ -700,6 +702,7 @@ function NotSubmitted({
                         placeholder="Email Address"
                         value={bioData?.email}
                         onChange={handleChange}
+                        disabled
                       />
                     </div>
                     <div className="dashboard-content-form-container">
@@ -797,7 +800,7 @@ function NotSubmitted({
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                          Will you be available physically for the next 12months?
+                          Will you be available physically for the next 6months?
                       </label>
                       <select
                         name="physically_available"
@@ -842,6 +845,9 @@ function NotSubmitted({
                         </option>
                         <option value="Data Analysis">
                           Data Analysis
+                        </option>
+                        <option value="Blockchain Development with Solidity">
+                          Blockchain Development with Solidity
                         </option>
                       </select>
                     </div>
