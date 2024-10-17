@@ -18,7 +18,8 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    amount: 7500,
+    // amount: 7500,
+    amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
