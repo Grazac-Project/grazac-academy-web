@@ -63,12 +63,20 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         Pay 5,250 naira instead of 7,500 naira today
       </p> */}
 
-      <p>
+      {/* <p>
         As part of your registration process, assessment and interview will be
         conducted, the schedule will be communicated to you via your registered
         email address within 7 days after payment of the registration fee.
         Please note that It is important that you do not miss the assessment
         interview. Kindly check your email regularly for updates.
+      </p> */}
+      <p>
+        Subsequently after the payment, you will be required to take an assessment. 
+        This assessment will help us further assess your readiness to learn your preferred tech skills.
+      </p>
+      <p>
+        Don’t fret! It is simply a basic quantitative reasoning assessment.
+        Please note that it is important not to miss this assessment.
       </p>
 
       <p>We look forward to being a part of your growth.</p>
