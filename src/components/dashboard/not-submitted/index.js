@@ -488,10 +488,10 @@ function NotSubmitted({
           {/* <p>There's an application fee of N7,500. Payment options include:</p> */}
           <p>With you in mind, Grazac Academy offers Three (3) different payment options which include;</p>
           <ul>
+            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N650,000 </strong>and enjoy the full benefits of Grazac Academy for 6 months which covers a 4-months immersive training and 2-months internship program</li>
             <li>
               <strong>Instalment Payment: </strong>Pay N350,000 upfront and spread the rest at N175,000 per month for 2 months.
             </li>
-            <li><strong>Full payment: </strong>Pay a one time payment of <strong> N650,000 </strong>and enjoy the full benefits of Grazac Academy for 6 months which covers a 4-months immersive training and 2-months internship program</li>
             <li><strong>Learn Now Pay Later: </strong>Enroll and participate in our training program without immediate financial commitment. Repayment begins immediately after securing employment post-program completion, as per the terms of the legally binding contract provided in our terms and conditions.</li>
           </ul>
           <p>

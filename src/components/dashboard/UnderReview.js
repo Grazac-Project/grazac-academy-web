@@ -44,7 +44,7 @@ function UnderReview ({fname}) {
             </div>}
             {showScore && <div className="message-prompt">
                 <div className="message-backdrop"></div>
-                {<div className="message-content">
+                {status === "You passed!" &&<div className="message-content">
                     {/* <span class='ass-times' onClick={() => setShowScore(false)}>&times;</span> */}
                     <img src={success} alt="passed icon" />
                     <h2>Congratulations</h2>
