@@ -43,7 +43,7 @@ const Assessment = ({setShowScore, setScore, setStatus, setShowAssessment}) => {
         const testId = assessmentData._id
         submitAssessment(data, testId)
         .then(res => {
-            // console.log(res);
+            console.log(res);
             setLoad(false)
             setScore(res.data.data.assessmentScore)
             setShowAssessment(false)
@@ -99,7 +99,7 @@ const Assessment = ({setShowScore, setScore, setStatus, setShowAssessment}) => {
                         </div>
                     )
                 })}
-                {assessmentData && <button id='button'>{load?<img src={loader2} alt='loading' />:'Submit'}</button>}
+                {assessmentData && <button id='button'>{load?<img src={loader2} alt='loading'/>:'Submit'}</button>}
             </form>
         </>}
     </div>
