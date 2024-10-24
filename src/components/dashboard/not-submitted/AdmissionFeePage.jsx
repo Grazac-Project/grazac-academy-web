@@ -18,8 +18,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    // amount: 7500,
-    amount: 100,
+    amount: 7500,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -54,32 +53,34 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       <h4>Welcome to Grazac Academy</h4>
       <p>We can’t wait to help you kickstart your career in tech!</p>
 
-      <p>
+      {/* <p>
         To start your application, you are required to pay a non-refundable fee
         of 7,500 naira only.
-      </p>
-      {/* <p>
-        As part of Grazac's 3rd year anniversary, we are giving a 30% discount on the application fee.
-        Pay 5,250 naira instead of 7,500 naira today
-      </p> */}
-
-      {/* <p>
-        As part of your registration process, assessment and interview will be
-        conducted, the schedule will be communicated to you via your registered
-        email address within 7 days after payment of the registration fee.
-        Please note that It is important that you do not miss the assessment
-        interview. Kindly check your email regularly for updates.
       </p> */}
       <p>
+        The application fee is 15,000 naira.
+      </p>
+      <p>
+        Enjoy a <span style={{fontWeight: 800}}>50% discount</span> on your application fee if you <span style={{fontWeight: 800}}>pay on or before 11:59 PM on the 3rd of November 2024.</span> Pay just <span style={{fontWeight: 800}}>7,500 naira</span> instead of the regular <span style={{fontWeight: 800}}>15,000 naira!</span>
+      </p>
+      {/* <p>
         Subsequently after the payment, you will be required to take an assessment. 
         This assessment will help us further assess your readiness to learn your preferred tech skills.
-      </p>
+      </p> */}
       <p>
+        After completing your registration payment, you'll take a basic quantitative reasoning assessment. 
+        This helps us understand your starting point so we can better support your learning journey.
+      </p>
+      {/* <p>
         Don’t fret! It is simply a basic quantitative reasoning assessment.
         Please note that it is important not to miss this assessment.
+      </p> */}
+      <p>
+        Don't worry — the assessment is designed to be straightforward and helps ensure you'll get the most out of the program.
       </p>
 
-      <p>We look forward to being a part of your growth.</p>
+      {/* <p>We look forward to being a part of your growth.</p> */}
+      <p>We look forward to being part of your growth journey in tech!</p>
 
       <button
         className={"button"}
