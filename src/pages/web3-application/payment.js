@@ -1,0 +1,126 @@
+import React, { useEffect } from "react";
+import authImg from "../../images/auth.png";
+import { ToastContainer, toast } from "react-toastify";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import logo from "../../images/svg/academy-logo.svg";
+import { Link } from "react-router-dom";
+import FailedModal from "./failedModal";
+import SucessModal from "./successModal";
+import { useFlutterwave } from "flutterwave-react-v3";
+import { useState } from "react";
+
+const Start = () => {
+  const [details, setDetails] = useState();
+  const [failedModal, setFailedModal] = useState(false);
+  const [sucessModal, setSucessModal] = useState(false);
+
+  const handleCloseSucess = () => {
+    setSucessModal(!sucessModal);
+    
+  };
+  const handleCloseFailed = () => {
+   
+    setFailedModal(!failedModal);
+  };
+  useEffect(() => {
+    try {
+      let data = sessionStorage.getItem("details");
+      if (data) {
+        setDetails(JSON.parse(data));
+      }
+      console.log(details);
+    } catch (error) {
+      console.error("Failed to get details:", error);
+    }
+  }, []);
+
+  // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
+  // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+  const config = {
+    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
+    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    tx_ref: Date.now(),
+    amount: 100,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName}`,
+    },
+
+    customizations: {
+      title: "Grazac Academy",
+      description: "Payment for Graduate Cohort",
+      logo: "https://grazac.com.ng/logo.png",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+  const handlePayment = () => {
+    handleFlutterPayment({
+      callback: (response) => {
+        console.log(response);
+        if (response) {
+        setSucessModal(true)
+        } else {
+         setFailedModal(true)
+        }
+      },
+      onClose: () => {},
+    });
+  };
+  return (
+    <div className="layout_auth">
+      {failedModal && <FailedModal close={handleCloseFailed} />}
+      {sucessModal && <SucessModal close={handleCloseSucess} />}
+      <ToastContainer />
+      <div className="layout_auth-main">
+        <div className="auth_container">
+          <div className="auth_container-logo">
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+          </div>
+          <div className="auth_container_form !w-[542px] sm:!w-[95%] !px-[68px] !pt-[47px] !pb-[24]">
+            <div>
+              <h4 className="text-text text-[12px] leading-[18px] mb-[10px]">
+                Go back
+              </h4>
+              <div className="text-text text-[12px] leading-[18px] text-right ">
+                Step 3 of 3
+              </div>
+              <div className="h-[7px] w-auto rounded-2xl bg-[#DDDDDD] mb-8 ">
+                <div className="h-full w-3/3 bg-primary rounded-lg"></div>
+              </div>
+            </div>
+            <h4 className="!text-heading !text-[24px] !mb-2 font-bold ">
+              Pay Application Fee
+            </h4>
+            <p className="text-text text-[14px] leading-[21px] ">
+              Your details have been recorded successfully, finish your
+              enrollment process by paying your application fee
+            </p>
+            <p className="text-text text-[14px] leading-[21px] my-8">
+              Application Fee: <span className="text-primary">10000 NGN</span>
+            </p>
+            <button onClick={handlePayment} className="!mt-8">
+              Proceed to payment
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="layout_auth-image">
+        <LazyLoadImage
+          src={authImg}
+          effect="blur"
+          alt="auth"
+          height="auto"
+          width="100%"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Start;

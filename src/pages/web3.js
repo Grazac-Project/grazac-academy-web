@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero from "../images/web3/hero.png";
 import fred from "../images/web3/fred.png";
 import Avatar from "../images/web3/avatar.png";
-import Navbar from "../components/Navbar";
+import bgmap from "../images/web3/bg-map.png";
 import Footer from "../components/Footer";
-import { Accordion, Card } from "react-bootstrap";
+import { Accordion, Card, Pagination } from "react-bootstrap";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { outline } from "../content/web3";
+import { useEffect, useRef } from "react";
+import Splide from "@splidejs/splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+import "@splidejs/splide/dist/css/splide.min.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Navbar from "./web3-application/Navbar";
 
-const web3 = () => {
-  // React.useEffect(() => {
-  //   document.title = "FAQs - Grazac Academy";
-  //   window.scrollTo(0, 0);
-  // }, []);
+
+const Web3 = () => {
+  const splideRef = useRef(null);
+  const [isHovered1, setIsHovered1] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
+  const [isHovered3, setIsHovered3] = useState(false);
+  const [isHovered4, setIsHovered4] = useState(false);
+
+  useEffect(() => {
+    if (splideRef.current) {
+      new Splide(splideRef.current, {
+        type: "loop",
+        perPage: 3,
+        perMove: 1,
+        gap: "1rem",
+        pagination: false,
+        arrows: false,
+        autoWidth: true,
+        autoScroll: {
+          speed: 1, // Adjust scrolling speed
+        },
+      }).mount({ AutoScroll });
+    }
+  }, []);
 
   const handleFaq = (e) => {
     let svg = e.target.parentElement.querySelector("svg");
@@ -26,7 +51,7 @@ const web3 = () => {
     <div className="w-[1440px] laptop:w-[100%] m-auto">
       <Navbar />
       {/* hero */}
-      <section className="flex justify-center items-center md:block py-3 mx-auto ">
+      <section className="flex justify-center items-center md:block pt-3 mx-auto laptop:w-[90%] ">
         <div className="w-[569px] md:w-[90%] ">
           <h1 className=" text-[72px] sm:text-[48px]  leading-22 font-bold text-heading mb-2">
             Discover your path to <span className="text-primary"> Web3 </span>
@@ -35,24 +60,29 @@ const web3 = () => {
             Join Grazac Academy's comprehensive Web3 program to master
             blockchain, smart contracts, DeFi, and more.
           </p>
-          <button className="bg-primary w-[50%] py-[19px] text-[18px] rounded-lg font-bold ">
-            Enroll Now
-          </button>
+          <Link to="/start">
+            <button className="bg-primary w-[50%] py-[19px] text-[18px] rounded-lg font-bold ">
+              Enroll Now
+            </button>
+          </Link>
         </div>
-        <div>
+        <div className="inline-block animate-spin ">
           <img src={Hero} alt="hero" />
         </div>
       </section>
-      <section className=" py-20 mx-auto ">
+      <section
+        className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed`}
+        style={{ backgroundImage: `url(${bgmap})` }}
+      >
         <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
           Our impact shows in the numbers.
         </h2>
         <p className="w-auto text-text text-[18px] text-center leading-[24.85px] mb-8">
           Empowering the next generation through cutting-edge web3 education
         </p>
-        <div className="flex items-center justify-between w-[832px] rounded-lg bg-[#F8F5FD] lg:w-auto xm:block mx-auto px-[69px] py-6 ">
+        <div className="flex items-center justify-between w-[832px] h-[124px] xm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto xm:block mx-auto px-[69px] py-6 ">
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 text-primary">
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
               50+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -60,7 +90,7 @@ const web3 = () => {
             </p>
           </div>
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 text-primary">
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
               5k+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -68,7 +98,7 @@ const web3 = () => {
             </p>
           </div>
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 text-primary">
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
               200+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -87,87 +117,153 @@ const web3 = () => {
           that focuses on real-world, practical experience.
         </p>
 
-        <div>
-          <div className="flex gap-2 justify-between">
-            {outline.map((item) => (
-              <div
-                key={item.id}
-                className="w-[220px] h-[310px] bg-[#F8F5FD] rounded-lg flex flex-col items-center px-2"
-              >
-                <img src={item.image} alt="block" />
-                <h5 className="text-[16px] leading-[24px] text-center font-bold text-heading mb-2">
-                  {item.topic}
-                </h5>
-                <p className="mx-auto lg:w-auto text-text text-[16px] text-center leading-[22px] mb-8">
-                  {item.content}
-                </p>
-              </div>
-            ))}
+        <div className="w-[95%] ml-auto">
+          <div className="splide" ref={splideRef}>
+            <div className="splide__track">
+              <ul className="splide__list">
+                {outline.map((item) => (
+                  <li
+                    key={item.id}
+                    className="splide__slide w-[220px] h-[310px] bg-[#F8F5FD] rounded-lg flex flex-col items-center px-2"
+                  >
+                    <img src={item.image} alt={item.topic} />
+                    <h5 className="text-[16px] leading-[24px] text-center font-bold text-heading mb-2">
+                      {item.topic}
+                    </h5>
+                    <p className="mx-auto lg:w-auto text-text text-[16px] text-center leading-[22px] mb-8">
+                      {item.content}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
-            Enroll Now
-          </button>
+          <div className="flex justify-center">
+          <Link to="/start">
+            <button className="bg-primary w-[225px] xm:w-[90%] py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
+              Enroll Now
+            </button>
+          </Link>
+          </div>
         </div>
       </section>
-      <section className="py-[80px] pl-20 bg-[#F8F5FD]">
-        <div className="w-[264px] text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold text-heading mb-4">
+      <section className="py-[80px]  md:w-[100%] bg-[#F8F5FD]">
+        <div className="w-[264px] md:w-[90%] text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
           What makes us unique?
         </div>
-        <h2 className="w-[478px] sm:w-auto mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
+        <h2 className="w-[495px] sm:w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
           We are shaping the future of Web3 innovation.
         </h2>
-        <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
+        <p className=" mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
           We've spent years building the best web3 education platform to
           maximize your learning.
         </p>
 
         <div className="flex justify-center items-center md:block ">
-          <div className="pl-[25px]">
-            <div className="w-[696px] xl:w-auto  md:w-[90%] px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4">
-              <h5 className="text-[16px] leading-[24px] text-heading hover:text-[#ffff] font-bold text-heading mb-4">
+          <div className="pl-[55px] md:pl-0 md:w-[90%]  mx-auto">
+            <div
+              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+                isHovered1 ? "text-white" : "text-heading"
+              }`}
+              onMouseEnter={() => setIsHovered1(true)}
+              onMouseLeave={() => setIsHovered1(false)}
+            >
+              <h5
+                className={`text-[16px] leading-[24px] font-bold mb-4 ${
+                  isHovered1 ? "text-white" : "text-heading"
+                }`}
+              >
                 There are no learning barriers
               </h5>
-              <p className="mx-auto lg:w-auto text-text hover:text-[#fff] text-[16px]  leading-[22px] ">
+              <p
+                className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
+                  isHovered1 ? "text-white" : "text-text"
+                }`}
+              >
                 Start your tech career with us—our inclusive model, courses, and
                 community cater to all, ensuring learners of any background and
                 experience level feel comfortable and engaged.
               </p>
             </div>
-            <div className="w-[696px] xl:w-auto  md:w-[90%] px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4">
-              <h5 className="text-[16px] leading-[24px] text-heading hover:text-[#ffff] font-bold text-heading mb-4">
+            <div
+              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+                isHovered2 ? "text-white" : "text-heading"
+              }`}
+              onMouseEnter={() => setIsHovered2(true)}
+              onMouseLeave={() => setIsHovered2(false)}
+            >
+              <h5
+                className={`text-[16px] leading-[24px] font-bold mb-4 ${
+                  isHovered2 ? "text-white" : "text-heading"
+                }`}
+              >
                 There are no learning barriers
               </h5>
-              <p className="mx-auto lg:w-auto text-text hover:text-[#fff] text-[16px]  leading-[22px] ">
+              <p
+                className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
+                  isHovered2 ? "text-white" : "text-text"
+                }`}
+              >
                 Start your tech career with us—our inclusive model, courses, and
                 community cater to all, ensuring learners of any background and
                 experience level feel comfortable and engaged.
               </p>
             </div>
-            <div className="w-[696px] xl:w-auto  md:w-[90%] px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4">
-              <h5 className="text-[16px] leading-[24px] text-heading hover:text-[#ffff] font-bold text-heading mb-4">
+            <div
+              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+                isHovered3 ? "text-white" : "text-heading"
+              }`}
+              onMouseEnter={() => setIsHovered3(true)}
+              onMouseLeave={() => setIsHovered3(false)}
+            >
+              <h5
+                className={`text-[16px] leading-[24px] font-bold mb-4 ${
+                  isHovered3 ? "text-white" : "text-heading"
+                }`}
+              >
                 There are no learning barriers
               </h5>
-              <p className="mx-auto lg:w-auto text-text hover:text-[#fff] text-[16px]  leading-[22px] ">
+              <p
+                className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
+                  isHovered3 ? "text-white" : "text-text"
+                }`}
+              >
                 Start your tech career with us—our inclusive model, courses, and
                 community cater to all, ensuring learners of any background and
                 experience level feel comfortable and engaged.
               </p>
             </div>
-            <div className="w-[696px] xl:w-auto  md:w-[90%] px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4">
-              <h5 className="text-[16px] leading-[24px] text-heading hover:text-[#ffff] font-bold text-heading mb-4">
+            <div
+              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+                isHovered4 ? "text-white" : "text-heading"
+              }`}
+              onMouseEnter={() => setIsHovered4(true)}
+              onMouseLeave={() => setIsHovered4(false)}
+            >
+              <h5
+                className={`text-[16px] leading-[24px] font-bold mb-4 ${
+                  isHovered4 ? "text-white" : "text-heading"
+                }`}
+              >
                 There are no learning barriers
               </h5>
-              <p className="mx-auto lg:w-auto text-text hover:text-[#fff] text-[16px]  leading-[22px] ">
+              <p
+                className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
+                  isHovered4 ? "text-white" : "text-text"
+                }`}
+              >
                 Start your tech career with us—our inclusive model, courses, and
                 community cater to all, ensuring learners of any background and
                 experience level feel comfortable and engaged.
               </p>
             </div>
-            <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
-              Enroll Now
-            </button>
+            <Link to="/start">
+              <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
+                Enroll Now
+              </button>
+            </Link>
           </div>
-          <div>
+          <div className="xl:w-auto">
             <img src={fred} alt="innovation" />
           </div>
         </div>
@@ -187,7 +283,7 @@ const web3 = () => {
                 01
               </span>
               <div>
-                <h5 className="text-[16px] leading-[24px] text-heading  font-bold text-heading mb-4">
+                <h5 className="text-[16px] leading-[24px] text-heading  font-bold  mb-4">
                   Fill and submit the application form
                 </h5>
                 <p className="mx-auto lg:w-auto text-text  text-[16px]  leading-[22px] ">
@@ -201,7 +297,7 @@ const web3 = () => {
                 02
               </span>
               <div>
-                <h5 className="text-[16px] leading-[24px] text-heading  font-bold text-heading mb-4">
+                <h5 className="text-[16px] leading-[24px] text-heading  font-bold mb-4">
                   Pass the assessment tests
                 </h5>
                 <p className="mx-auto lg:w-auto text-text  text-[16px]  leading-[22px] ">
@@ -216,7 +312,7 @@ const web3 = () => {
                 03
               </span>
               <div>
-                <h5 className="text-[16px] leading-[24px] text-heading  font-bold text-heading mb-4">
+                <h5 className="text-[16px] leading-[24px] text-heading  font-bold mb-4">
                   Complete the process and begin your journey into Tech
                 </h5>
                 <p className="mx-auto lg:w-auto text-text  text-[16px]  leading-[22px] ">
@@ -226,14 +322,16 @@ const web3 = () => {
                 </p>
               </div>
             </div>
-            <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ml-6 ">
-              Get Started
-            </button>
+            <Link to="/start">
+              <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ml-6 ">
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </section>
       <section className="w-[90%] py-20 mx-auto">
-      <h2 className="w-auto mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-14">
+        <h2 className="w-auto mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-14">
           FAQs
         </h2>
         {/* FAQ section */}
@@ -261,7 +359,28 @@ const web3 = () => {
                   <Accordion.Item eventKey="2">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
+                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Yes,please. However, as an undergraduate, you are
+                          strongly advised to choose our virtual learning mode
+                          due to its flexibility.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="3">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question py-4">
                         <h4>Are classes virtual or onsite?</h4>
+
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
@@ -276,8 +395,9 @@ const web3 = () => {
                   </Accordion.Item>
                 </Card>
                 <hr />
+
                 <Card>
-                  <Accordion.Item eventKey="3">
+                  <Accordion.Item eventKey="4">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
                         <h4> What is the duration of the program?</h4>
@@ -297,7 +417,7 @@ const web3 = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Item eventKey="4">
+                  <Accordion.Item eventKey="5">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
                         <h4>Do I qualify to enrol as an Undergraduate?</h4>
@@ -317,7 +437,7 @@ const web3 = () => {
                 </Card>
                 <hr />
                 <Card>
-                  <Accordion.Item eventKey="5">
+                  <Accordion.Item eventKey="6">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
                         <h4>
@@ -337,7 +457,6 @@ const web3 = () => {
                   </Accordion.Item>
                 </Card>
                 <hr />
-                
               </Accordion>
               {/* <hr /> */}
             </div>
@@ -349,4 +468,4 @@ const web3 = () => {
   );
 };
 
-export default web3;
+export default Web3;

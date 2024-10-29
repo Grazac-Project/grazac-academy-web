@@ -36,9 +36,6 @@ const Contact = lazy(() => {
   return import("./pages/Contact");
 });
 
-const Web3 = lazy(() => {
-  return import("./pages/web3");
-});
 const Hire = lazy(() => {
   return import("./pages/hire");
 });
@@ -114,6 +111,18 @@ const Pricing = lazy(() => {
 const Payment = lazy(() => {
   return import("../src/components/dashboard/payment");
 });
+const Web3 = lazy(() => {
+  return import("./pages/web3");
+});
+const Start = lazy(() => {
+  return import("./pages/web3-application/start");
+});
+const Form = lazy(() => {
+  return import("./pages/web3-application/form");
+});
+const Web3Payment = lazy(() => {
+  return import("./pages/web3-application/payment");
+});
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -157,7 +166,6 @@ const App = () => {
                 <Route path="/portfolio" component={AcademyPortfolioPage} />
                 <Route path="/settings" component={AcademySettingsPage} />
               </AcademySidebar> */}
-
                 <Route path="/component" component={ComponentPage} />
                 {/* authentication pages */}
                 <Route path="/signup" component={SignUp} />
@@ -209,6 +217,13 @@ const App = () => {
 
                 {/* Coming soon page */}
                 {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
+
+                {/* web3-application Page */}
+                <Route path="/start" exact component={Start} />
+                <Route path="/web3-application-form" exact component={Form} />
+                <Route path="/web3-application-payment" exact component={Web3Payment} />
+
+
               </Switch>
             </div>
           </Suspense>

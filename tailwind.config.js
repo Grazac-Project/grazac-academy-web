@@ -6,6 +6,9 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    animation: {
+      'spin': 'spin 10s linear infinite',
+    },
     extend: {
       fontFamily: {
         mont: ["var(--font-montserrat)"],
