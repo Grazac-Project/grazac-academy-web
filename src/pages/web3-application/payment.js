@@ -16,11 +16,11 @@ const Start = () => {
 
   const handleCloseSucess = () => {
     setSucessModal(!sucessModal);
-    
+    window.location = `/web3`;
   };
   const handleCloseFailed = () => {
-   
     setFailedModal(!failedModal);
+    window.location = `/web3`;
   };
   useEffect(() => {
     try {
@@ -62,9 +62,9 @@ const Start = () => {
       callback: (response) => {
         console.log(response);
         if (response) {
-        setSucessModal(true)
+          setSucessModal(true);
         } else {
-         setFailedModal(true)
+          setFailedModal(true);
         }
       },
       onClose: () => {},
