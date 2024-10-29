@@ -114,6 +114,9 @@ const Navbar = ({ top }) => {
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>
           </li>
+          <li className="nav__item">
+            <NavItem link="/Web3">Web3</NavItem>
+          </li>
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>
           </li> */}
