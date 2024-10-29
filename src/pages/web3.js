@@ -61,7 +61,7 @@ const Web3 = () => {
             blockchain, smart contracts, DeFi, and more.
           </p>
           <Link to="/start">
-            <button className="bg-primary w-[50%] py-[19px] text-[18px] rounded-lg font-bold ">
+            <button className="bg-primary w-[50%] sm:w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
               Enroll Now
             </button>
           </Link>
@@ -140,7 +140,7 @@ const Web3 = () => {
           </div>
           <div className="flex justify-center">
           <Link to="/start">
-            <button className="bg-primary w-[225px] xm:w-[90%] py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
+            <button className="bg-primary w-[225px]  py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
               Enroll Now
             </button>
           </Link>
@@ -275,8 +275,8 @@ const Web3 = () => {
         <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
           Understand our admission process in 3 easy steps
         </p>
-        <div className="flex justify-center gap-8 items-center md:block ">
-          <img src={Avatar} alt="block" />
+        <div className="flex justify-center gap-8 items-center md:block  ">
+          <img src={Avatar} alt="block" className="md:mb-8" />
           <div className="">
             <div className="flex gap-[30px] mb-[64px]">
               <span className="text-[#9DA8B6] text-[16px]  leading-[22px]">
