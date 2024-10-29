@@ -22,7 +22,7 @@ const Start = () => {
               <img src={logo} alt="logo" />
             </Link>
           </div>
-          <div className="auth_container_form !w-[542px] !px-[68px] !pt-[47px] !pb-[24]">
+          <div className="auth_container_form !w-[542px]  sm:!w-[95%] !px-[68px] sm:!px-6 !pt-[47px] !pb-[24px]">
             <div>
               <div className="text-text text-[12px] leading-[18px] text-right ">
                 Step 1 of 3
