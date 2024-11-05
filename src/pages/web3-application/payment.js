@@ -10,7 +10,8 @@ import { useFlutterwave } from "flutterwave-react-v3";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Web3Form } from "../../api/dashboard/auth";
-import '../../tailwindComponents.css';
+// import '../../tailwindComponents.css';
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
 
 const Start = () => {
   const [details, setDetails] = useState({});

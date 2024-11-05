@@ -49,6 +49,7 @@ import { LoaderContext } from "../context";
 import WhatsApp from "../components/whatsApp/whatsApp";
 import VirtualSection from "../components/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import LandingMentors from "../components/LandingMentors";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
@@ -634,6 +635,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <LandingMentors />
 
         <div>
           <div className="landing__bottom--text">
