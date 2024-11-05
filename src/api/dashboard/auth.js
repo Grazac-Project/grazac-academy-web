@@ -20,3 +20,6 @@ export const ForgotPasswordAction = (data) => {
 export const ResetPasswordAction = (data) => {
     return APIKit.post(`api/v1/user/resetPassword`, data)
 }
+export const Web3Form = (data) => {
+    return APIKit.post(`api/v1/user/signup`, data)
+}

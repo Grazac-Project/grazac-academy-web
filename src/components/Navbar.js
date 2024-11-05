@@ -62,6 +62,11 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
+              <NavItem link="/web3">
+                <span>04</span>Web3
+              </NavItem>
+            </li>
+            <li className="nav__item">
               {/* <a
               href="https://blog.grazacacademy.com/"
               target="__blank"
@@ -113,6 +118,9 @@ const Navbar = ({ top }) => {
           </li>
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>
+          </li>
+          <li className="nav__item">
+            <NavItem link="/Web3">Web3</NavItem>
           </li>
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>

@@ -36,7 +36,6 @@ const Contact = lazy(() => {
   return import("./pages/Contact");
 });
 
-
 const Hire = lazy(() => {
   return import("./pages/hire");
 });
@@ -108,12 +107,21 @@ const AcademySettingsPage = lazy(() => {
 });
 const Pricing = lazy(() => {
   return import("./pages/pricing");
-  
 });
 const Payment = lazy(() => {
-  
   return import("../src/components/dashboard/payment");
-  
+});
+const Web3 = lazy(() => {
+  return import("./pages/web3");
+});
+const Start = lazy(() => {
+  return import("./pages/web3-application/start");
+});
+const Form = lazy(() => {
+  return import("./pages/web3-application/form");
+});
+const Web3Payment = lazy(() => {
+  return import("./pages/web3-application/payment");
 });
 
 const App = () => {
@@ -158,7 +166,6 @@ const App = () => {
                 <Route path="/portfolio" component={AcademyPortfolioPage} />
                 <Route path="/settings" component={AcademySettingsPage} />
               </AcademySidebar> */}
-
                 <Route path="/component" component={ComponentPage} />
                 {/* authentication pages */}
                 <Route path="/signup" component={SignUp} />
@@ -169,11 +176,10 @@ const App = () => {
                 <Route path="/account-created" component={AccountCreated} />
                 <Route path="/verification" component={VerifyMail} />
                 <Route path="/mode" component={Mode} />
-                
+
                 {/* Graduate dashboard */}
                 <Route path="/dashboard" component={DashBoardHome} />
                 <Route path="/payment" component={Payment} />
-                
 
                 {/* main pages */}
                 <Route path="/" exact component={LandingPage}>
@@ -186,6 +192,7 @@ const App = () => {
                 <Route path="/about-us" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
+                <Route path="/web3" component={Web3} />
 
                 {/* Courses (both graduate and undergraduate) and internship */}
                 <Route
@@ -208,9 +215,15 @@ const App = () => {
 
                 <Route path="/pricing" component={Pricing} />
 
-
                 {/* Coming soon page */}
                 {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
+
+                {/* web3-application Page */}
+                <Route path="/start" exact component={Start} />
+                <Route path="/web3-application-form" exact component={Form} />
+                <Route path="/web3-application-payment" exact component={Web3Payment} />
+
+
               </Switch>
             </div>
           </Suspense>
