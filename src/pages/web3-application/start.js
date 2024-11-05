@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../images/svg/academy-logo.svg";
 import { Link } from "react-router-dom";
+import '../../tailwindComponents.css';
+
 
 const Start = () => {
   const [isChecked, setIsChecked] = useState(false);
