@@ -8,6 +8,8 @@ import FailedModal from "./failedModal";
 import SucessModal from "./successModal";
 import { useFlutterwave } from "flutterwave-react-v3";
 import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { Web3Form } from "../../api/dashboard/auth";
 
 const Start = () => {
   const [details, setDetails] = useState();
@@ -24,7 +26,7 @@ const Start = () => {
   };
   useEffect(() => {
     try {
-      let data = sessionStorage.getItem("details");
+      let data = sessionStorage.getItem("formData");
       if (data) {
         setDetails(JSON.parse(data));
       }
@@ -33,6 +35,32 @@ const Start = () => {
       console.error("Failed to get details:", error);
     }
   }, []);
+
+  const doSignUp = async (e) => {
+    
+
+    try {
+      const response = await Web3Form(details);
+      console.log(response);
+
+      if (response.data.status === 201) {
+        // toast.success(response.data.message);
+      } else {
+        toast.error("Something went wrong, please try again!");
+      }
+    } catch (err) {
+        const errorMessage =
+          err.response?.data?.message ||
+          "Something went wrong! Please ensure you have a good internet connection.";
+        toast.error(errorMessage);
+    
+    }
+  };
+
+//   useEffect(() => {
+//   doSignUp()
+//   }, [details])
+  
 
   // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
@@ -60,16 +88,22 @@ const Start = () => {
   const handlePayment = () => {
     handleFlutterPayment({
       callback: (response) => {
-        console.log(response);
-        if (response) {
+        console.log("Payment response:", response);
+        if (response) { 
+          doSignUp(); 
           setSucessModal(true);
         } else {
+          toast.error("Payment failed. Please try again.");
           setFailedModal(true);
         }
       },
-      onClose: () => {},
+      onClose: () => {
+        toast.info("Payment was closed before completion.");
+        setFailedModal(true);
+      },
     });
   };
+  
   return (
     <div className="layout_auth">
       {failedModal && <FailedModal close={handleCloseFailed} />}
@@ -84,9 +118,12 @@ const Start = () => {
           </div>
           <div className="auth_container_form !w-[542px] sm:!w-[95%] !px-[68px] !pt-[47px] !pb-[24]">
             <div>
-              <h4 className="text-text text-[12px] leading-[18px] mb-[10px]">
-                Go back
-              </h4>
+              <Link to="/web3-application-form" className="cursor-pointer">
+                <h4 className="text-text text-[12px] leading-[18px] flex items-center gap-1 mb-[10px]   ">
+                  <FaArrowLeft />
+                  Go back
+                </h4>
+              </Link>
               <div className="text-text text-[12px] leading-[18px] text-right ">
                 Step 3 of 3
               </div>
