@@ -1,6 +1,7 @@
 import React from "react";
 import sucess from "../../images/web3/fail.svg";
-import '../../tailwindComponents.css';
+// import '../../tailwindComponents.css';
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
 
 
 

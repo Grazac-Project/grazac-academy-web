@@ -13,7 +13,8 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Navbar from "./Navbar";
-import '../../tailwindComponents.css';
+// import '../../tailwindComponents.css';
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
 
 
 
