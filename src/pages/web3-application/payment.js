@@ -10,9 +10,10 @@ import { useFlutterwave } from "flutterwave-react-v3";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Web3Form } from "../../api/dashboard/auth";
+import '../../tailwindComponents.css';
 
 const Start = () => {
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState({});
   const [failedModal, setFailedModal] = useState(false);
   const [sucessModal, setSucessModal] = useState(false);
 
@@ -37,30 +38,26 @@ const Start = () => {
   }, []);
 
   const doSignUp = async (e) => {
-    
-
     try {
       const response = await Web3Form(details);
       console.log(response);
 
       if (response.data.status === 201) {
-        // toast.success(response.data.message);
+        toast.success(response.data.message);
       } else {
         toast.error("Something went wrong, please try again!");
       }
     } catch (err) {
-        const errorMessage =
-          err.response?.data?.message ||
-          "Something went wrong! Please ensure you have a good internet connection.";
-        toast.error(errorMessage);
-    
+      const errorMessage =
+        err.response?.data?.message ||
+        "Something went wrong! Please ensure you have a good internet connection.";
+      toast.error(errorMessage);
     }
   };
 
-//   useEffect(() => {
-//   doSignUp()
-//   }, [details])
-  
+  //   useEffect(() => {
+  //   doSignUp()
+  //   }, [details])
 
   // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
   // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
@@ -89,8 +86,8 @@ const Start = () => {
     handleFlutterPayment({
       callback: (response) => {
         console.log("Payment response:", response);
-        if (response) { 
-          doSignUp(); 
+        if (response) {
+          doSignUp();
           setSucessModal(true);
         } else {
           toast.error("Payment failed. Please try again.");
@@ -98,12 +95,12 @@ const Start = () => {
         }
       },
       onClose: () => {
-        toast.info("Payment was closed before completion.");
+        // toast.info("Payment was closed before completion.");
         setFailedModal(true);
       },
     });
   };
-  
+
   return (
     <div className="layout_auth">
       {failedModal && <FailedModal close={handleCloseFailed} />}

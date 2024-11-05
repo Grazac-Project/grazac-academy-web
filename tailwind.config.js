@@ -1,9 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/web3-application/web3.{js,jsx}',
+    './src/pages/web3-application/form.{js,jsx}',
+    './src/pages/web3-application/payment.{js,jsx}',
+    './src/pages/web3-application/start.{js,jsx}',
+    './src/pages/web3-application/successModal.{js,jsx}',
+    './src/pages/web3-application/failedModal.{js,jsx}',
+
+    
+
   ],
   theme: {
     animation: {

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import Hero from "../images/web3/hero.png";
-import fred from "../images/web3/fred.png";
-import Avatar from "../images/web3/avatar.png";
-import bgmap from "../images/web3/bg-map.png";
-import Footer from "../components/Footer";
+import Hero from "../../images/web3/hero.png";
+import fred from "../../images/web3/fred.png";
+import Avatar from "../../images/web3/avatar.png";
+import bgmap from "../../images/web3/bg-map.png";
+import Footer from "../../components/Footer";
 import { Accordion, Card, Pagination } from "react-bootstrap";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { outline } from "../content/web3";
+import { outline } from "../../content/web3";
 import { useEffect, useRef } from "react";
 import Splide from "@splidejs/splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import Navbar from "./web3-application/Navbar";
+import Navbar from "./Navbar";
+import '../../tailwindComponents.css';
+
+
 
 
 const Web3 = () => {
