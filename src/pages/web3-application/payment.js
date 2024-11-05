@@ -10,8 +10,7 @@ import { useFlutterwave } from "flutterwave-react-v3";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Web3Form } from "../../api/dashboard/auth";
-// import '../../tailwindComponents.css';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
+import "../../tailwindComponents.css";
 
 const Start = () => {
   const [details, setDetails] = useState({});
@@ -87,7 +86,7 @@ const Start = () => {
     handleFlutterPayment({
       callback: (response) => {
         console.log("Payment response:", response);
-        if (response) {
+        if (response.status === "completed") {
           doSignUp();
           setSucessModal(true);
         } else {
@@ -95,10 +94,7 @@ const Start = () => {
           setFailedModal(true);
         }
       },
-      onClose: () => {
-        // toast.info("Payment was closed before completion.");
-        setFailedModal(true);
-      },
+    //   onClose: () => {},
     });
   };
 
