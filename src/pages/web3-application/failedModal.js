@@ -1,5 +1,8 @@
 import React from "react";
 import sucess from "../../images/web3/fail.svg";
+import '../../tailwindComponents.css';
+
+
 
 const Modal = ({close}) => {
   return (

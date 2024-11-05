@@ -112,7 +112,7 @@ const Payment = lazy(() => {
   return import("../src/components/dashboard/payment");
 });
 const Web3 = lazy(() => {
-  return import("./pages/web3");
+  return import("./pages/web3-application/web3");
 });
 const Start = lazy(() => {
   return import("./pages/web3-application/start");

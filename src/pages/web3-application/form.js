@@ -8,6 +8,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../images/svg/academy-logo.svg";
 import { Link } from "react-router-dom";
 import loader from "../../images/svg/dashboard/loader.gif";
+import '../../tailwindComponents.css';
+
+
 
 const Start = () => {
   const [details, setDetails] = useState({});
@@ -76,9 +79,9 @@ const Start = () => {
                 <div className="h-full w-2/3 bg-primary rounded-lg"></div>
               </div>
             </div>
-            <h4 className="!text-heading !text-[24px] !mb-2 font-bold">
+            <h1 className="!text-heading !text-[24px] !mb-2 font-bold">
               Web3 Enrollment Form
-            </h4>
+            </h1>
             <p className="text-text text-[14px] leading-[21px] mb-8">
               Kindly fill in your details correctly. On submission, you will be asked to pay an application fee of 10,000 NGN only.
             </p>
