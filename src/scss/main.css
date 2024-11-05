@@ -610,9 +610,6 @@ input:focus, select:focus, textarea:focus {
   font-size: 18px;
   line-height: 32.74px;
   color: #073041;
-  span{
-    text-decoration: underline;
-  }
 }
 @media (max-width: 768px) {
   .infomodal_content p {
