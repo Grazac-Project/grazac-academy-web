@@ -23,7 +23,7 @@ const Start = () => {
   };
   const handleCloseFailed = () => {
     setFailedModal(!failedModal);
-    window.location = `/web3`;
+    window.location = `/web3-application-form`;
   };
   useEffect(() => {
     try {
@@ -100,7 +100,7 @@ const Start = () => {
 
   return (
     <div className="layout_auth">
-      {failedModal && <FailedModal close={handleCloseFailed} />}
+      {!failedModal && <FailedModal close={handleCloseFailed} />}
       {sucessModal && <SucessModal close={handleCloseSucess} />}
       <ToastContainer />
       <div className="layout_auth-main">
