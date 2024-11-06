@@ -100,7 +100,7 @@ const Start = () => {
 
   return (
     <div className="layout_auth">
-      {!failedModal && <FailedModal close={handleCloseFailed} />}
+      {failedModal && <FailedModal close={handleCloseFailed} />}
       {sucessModal && <SucessModal close={handleCloseSucess} />}
       <ToastContainer />
       <div className="layout_auth-main">
