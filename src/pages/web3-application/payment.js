@@ -23,7 +23,7 @@ const Start = () => {
   };
   const handleCloseFailed = () => {
     setFailedModal(!failedModal);
-    window.location = `/web3`;
+    window.location = `/web3-application-form`;
   };
   useEffect(() => {
     try {
