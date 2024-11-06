@@ -49,6 +49,7 @@ import { LoaderContext } from "../context";
 import WhatsApp from "../components/whatsApp/whatsApp";
 import VirtualSection from "../components/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import LandingMentors from "../components/LandingMentors";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
@@ -148,11 +149,12 @@ const Landing = () => {
       <div className="landing">
         <ToastContainer closeButton={false} position="bottom-right" />
         {showModal && (
+          <a href="/signup">
           <div className="infomodal">
             <div className="infomodal_content">
               <img src={badge} alt="" className="infomodal_badge" />
               <p>
-                Application for cohort 015 is ongoing. Early registration closes by November 30th, Hurry Now and Register! Classes starts by January 8, 2025
+                Application for cohort 015 is ongoing. Early registration closes by November 30th, Hurry Now and <span>Register!</span> Classes starts by January 8, 2025
                 {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -172,6 +174,7 @@ const Landing = () => {
               />
             </div>
           </div>
+          </a>
         )}
         <div className="landing__header">
           <Navbar top={true} />
@@ -632,6 +635,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        <LandingMentors />
 
         <div>
           <div className="landing__bottom--text">

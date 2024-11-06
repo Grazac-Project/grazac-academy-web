@@ -462,7 +462,8 @@ function NotSubmitted({
           </p>
           <p>
             Grazac Academy offers a 6-month tech skills program with flexible payment options. 
-            The curriculum covers 9 tech disciplines which include:
+            {/* The curriculum covers 9 tech disciplines which include: */}
+            We currently offer 9 tech courses, namely:
           </p>
           {/* <p>
             You can choose to learn virtually or physically with us. This
@@ -517,10 +518,15 @@ function NotSubmitted({
               Candidates must be available (full-time) for 6 months.
 
             </li>
-            <li>
+            {/* <li>
               Note that you will be mandated to provide guarantors and pay the sum of 50,000 Naira legal 
               fee if selected for this cohort. This must be paid within a week after selection if you have 
               chosen our Learn Now Pay Later
+
+            </li> */}
+            <li>
+              Note: If you have chosen the Learn Now, Pay Later payment plan, you will be required to pay a NGN 50,000 legal fee. 
+              The deadline for payment of the Legal feel is a week after you have been selected for the cohort.
 
             </li>
           </ul>

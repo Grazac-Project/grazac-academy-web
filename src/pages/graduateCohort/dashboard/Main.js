@@ -741,9 +741,13 @@ function Dashboard() {
                           <div>
                             <h3>Hello {details?.firstName}</h3>
                             <p className="text1">Congratulations!</p>
-                            <p>
+                            {/* <p>
                               Your application has been selected. Click on the
                               button below to continue you admission process.
+                            </p> */}
+                            <p>
+                              You have been selected to be part of the Grazac Academy Cohort 15 training program. 
+                              Kindly click the button below to pay and finalize the admission process.
                             </p>
                             <button onClick={() => setPayShowModal("pay")}>
                               Continue admission process
@@ -1077,7 +1081,7 @@ function Dashboard() {
                             <div className="dashboard-content-guarantor_paragraph_text">
                               <p className="text1">
                                 Learn with us for 6 months and pay no tuition
-                                till you’re hired!
+                                until you’re hired!
                               </p>
                               <p>
                                 The Pay as You Earn is a financial instrument to
