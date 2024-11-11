@@ -41,8 +41,8 @@ const Start = () => {
     try {
       const response = await Web3Form(details);
       console.log(response);
-
-      if (response.data.status === 201) {
+  
+      if (response.data.status === 200) {
         toast.success(response.data.message);
       } else {
         toast.error("Something went wrong, please try again!");
@@ -54,33 +54,25 @@ const Start = () => {
       toast.error(errorMessage);
     }
   };
-
-  //   useEffect(() => {
-  //   doSignUp()
-  //   }, [details])
-
-  // FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X
-  // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+  
   const config = {
-    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    public_key: process.env.REACT_APP_FLW_PUBLIC_KEY || "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
     amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details?.email}`,
-      phonenumber: `${details?.phone}`,
-      name: `${details?.firstName}`,
+      email: details?.email || "",
+      phonenumber: details?.phone || "",
+      name: details?.firstName || "",
     },
-
     customizations: {
       title: "Grazac Academy",
       description: "Payment for Graduate Cohort",
       logo: "https://grazac.com.ng/logo.png",
     },
   };
-
+  
   const handleFlutterPayment = useFlutterwave(config);
   const handlePayment = () => {
     handleFlutterPayment({
@@ -94,7 +86,9 @@ const Start = () => {
           setFailedModal(true);
         }
       },
-    //   onClose: () => {},
+      onClose: () => {
+        toast.info("Payment window closed.");
+      },
     });
   };
 
