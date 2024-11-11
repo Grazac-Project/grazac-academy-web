@@ -78,7 +78,7 @@ const Start = () => {
     handleFlutterPayment({
       callback: (response) => {
         console.log("Payment response:", response);
-        if (response.status === "completed" || "successful") {
+        if (response.status === "completed" || response.status === "successful") {
           doSignUp();
           setSucessModal(true);
         } else {
