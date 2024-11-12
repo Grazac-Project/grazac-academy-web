@@ -172,7 +172,7 @@ const Web3 = () => {
           Blockchain development with Solidity
         </h2>
         <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-          In 6 months, through practical class and training, you will get
+          In <span className="text-primary">6 months</span>, through practical class and training, you will get
           everything you need to launch your career in Blockchain development
         </p>
 
@@ -211,11 +211,11 @@ const Web3 = () => {
           What makes us unique?
         </div>
         <h2 className="w-[495px] sm:w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-          We are shaping the future of Web3 innovation.
+        Transition into <span className=" text-primary">web3</span>  in 6 months
+
         </h2>
-        <p className=" mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-          We've spent years building the best web3 education platform to
-          maximize your learning.
+        <p className="w-[820px] mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
+        Join the cohort to access a vibrant community of experts, engage in soft skills training, and receive adequate support for interview preparation for your growth.
         </p>
 
         <div className="flex justify-center items-center gap-8 md:block ">
