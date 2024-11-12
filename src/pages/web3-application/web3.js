@@ -214,7 +214,7 @@ const Web3 = () => {
         <div className="w-[264px]  text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
           What makes us unique?
         </div>
-        <h2 className="w-[495px] sm:w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
+        <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
         Transition into <span className=" text-primary">web3</span>  in 6 months
 
         </h2>
