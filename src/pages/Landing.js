@@ -55,16 +55,16 @@ const Landing = () => {
   const [showModal, setShowModal] = useState(true);
   const { setShow, show } = useContext(LoaderContext);
 
-   const history = useHistory();
-   const courseDetailsHandler = (goTo) =>{
+  const history = useHistory();
+  const courseDetailsHandler = (goTo) => {
     sessionStorage.setItem(
       "learning_mode",
       JSON.stringify({
-        class_option: 'Physical',  
+        class_option: "Physical",
       })
     );
-    history.push(goTo)
-  }
+    history.push(goTo);
+  };
 
   // useEffect(() => {
   //   // document.title = "Welcome to Grazac Academy";
@@ -81,26 +81,27 @@ const Landing = () => {
   //   });
   // }, []);
 
-
   useEffect(() => {
     try {
-
       // Setup video element
       let mediaPlayer = document.querySelector("#video");
       if (!mediaPlayer) {
-          throw new Error("Video element not found.");
+        throw new Error("Video element not found.");
       }
       // Check if the browser supports the video format
-      const canPlayMp4 = mediaPlayer.canPlayType('video/mp4');
+      const canPlayMp4 = mediaPlayer.canPlayType("video/mp4");
       if (!canPlayMp4) {
-          throw new Error("Browser does not support the video format.");
+        throw new Error("Browser does not support the video format.");
       }
       // Hide default controls
       mediaPlayer.controls = false;
 
       // Attempt to play the video
-        mediaPlayer.play().catch(error => {
-        console.error("Error occurred while attempting to play the video:", error.message);
+      mediaPlayer.play().catch((error) => {
+        console.error(
+          "Error occurred while attempting to play the video:",
+          error.message
+        );
       });
     } catch (error) {
       // Handle unsupported media or other errors gracefully
@@ -150,30 +151,32 @@ const Landing = () => {
         <ToastContainer closeButton={false} position="bottom-right" />
         {showModal && (
           <a href="/signup">
-          <div className="infomodal">
-            <div className="infomodal_content">
-              <img src={badge} alt="" className="infomodal_badge" />
-              <p>
-                Application for cohort 015 is ongoing. Early registration closes by November 30th, Hurry Now and <span>Register!</span> Classes starts by January 8, 2025
-                {/* <a
+            <div className="infomodal">
+              <div className="infomodal_content">
+                <img src={badge} alt="" className="infomodal_badge" />
+                <p>
+                  Application for cohort 015 is ongoing. Early registration
+                  closes by November 30th, Hurry Now and <span>Register!</span>{" "}
+                  Classes starts by January 8, 2025
+                  {/* <a
                 className="infomodal_content-link"
                 href="/login"
               >
                 Apply Now
               </a> */}
-              </p>
-              {/* <Link to="/graduate-accelerator-plan">
+                </p>
+                {/* <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
             </Link> */}
 
-              <img
-                src={ex}
-                alt=""
-                onClick={handleModal}
-                style={{ cursor: "pointer" }}
-              />
+                <img
+                  src={ex}
+                  alt=""
+                  onClick={handleModal}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
             </div>
-          </div>
           </a>
         )}
         <div className="landing__header">
@@ -248,75 +251,78 @@ const Landing = () => {
 
         <div>
           {/* <Container> */}
-            <div className="course_mode-intro course_mode-intro">
-              <h2 style={{ margin: "80px 0 30px" }} className="join_heading">
-                Why Grazac Academy <br className="hide-at-600" />is the best for you
-              </h2>
-            </div>
+          <div className="course_mode-intro course_mode-intro">
+            <h2 style={{ margin: "80px 0 30px" }} className="join_heading">
+              Why Grazac Academy <br className="hide-at-600" />
+              is the best for you
+            </h2>
+          </div>
           {/* </Container> */}
         </div>
 
         {/* <div style={{ boxSizing: "border-box", margin: "0 0 0px" }}> */}
         <div className="join_container">
           {/* <Container> */}
-            {/* <Row> */}
-              {/* <Col md={6}> */}
-                <div className="join_box1">
-                  <div className="">
-                    <img src={why1} alt="profile" />
-                  </div>
-                  <h4>There are no learning barriers </h4>
-                  <p className="hire_dev-grey">
-                    We make starting a career in tech accessible to anyone.
-                    Whether you are a graduate or you are an undergraduate;
-                    whether you are young or old, and no matter your experience
-                    level - our model, courses, and community has been designed
-                    to make you feel comfortable and fully engaged in the
-                    learning process.
-                  </p>
-                </div>
-              {/* </Col> */}
-              {/* <Col md={6}> */}
-                <div className="join_box1">
-                  <div className="">
-                    <img src={why2} alt="profile" />
-                  </div>
-                  <h4>Expert Instructors</h4>
-                  <p className="hire_dev-grey">
-                    Our tech academy is home to a team of industry-leading experts who are not just 
-                    educators but also practitioners in their respective fields. They bring real-world experience, 
-                    insights, and up-to-date knowledge to every lesson, ensuring you receive the highest quality education.
-                  </p>
-                </div>
-              {/* </Col> */}
-            {/* </Row> */}
-            {/* <Row> */}
-              {/* <Col md={6}> */}
-                <div className="join_box1">
-                  <div className="">
-                    <img src={why3} alt="profile" />
-                  </div>
-                  <h4> 6-months Internship</h4>
-                  <p className="hire_dev-grey">
-                    Get real workplace experience. You stand a chance to work with amazing teams on real-life projects to solve 
-                    related problems so you can build your portfolio for 6-months.
-                  </p>
-                </div>
-              {/* </Col> */}
-              {/* <Col md={6}> */}
-                <div className="join_box1">
-                  <div className="">
-                    <img src={why4} alt="profile" />
-                  </div>
-                  <h4> Career-Ready Certification</h4>
-                  <p className="hire_dev-grey">
-                    Our programs are designed to prepare you for the workforce. 
-                    Upon completion, you'll receive industry-recognized certifications that validate your 
-                    skills and open doors to exciting job opportunities
-                  </p>
-                </div>
-              {/* </Col> */}
-            {/* </Row> */}
+          {/* <Row> */}
+          {/* <Col md={6}> */}
+          <div className="join_box1">
+            <div className="">
+              <img src={why1} alt="profile" />
+            </div>
+            <h4>There are no learning barriers </h4>
+            <p className="hire_dev-grey">
+              We make starting a career in tech accessible to anyone. Whether
+              you are a graduate or you are an undergraduate; whether you are
+              young or old, and no matter your experience level - our model,
+              courses, and community has been designed to make you feel
+              comfortable and fully engaged in the learning process.
+            </p>
+          </div>
+          {/* </Col> */}
+          {/* <Col md={6}> */}
+          <div className="join_box1">
+            <div className="">
+              <img src={why2} alt="profile" />
+            </div>
+            <h4>Expert Instructors</h4>
+            <p className="hire_dev-grey">
+              Our tech academy is home to a team of industry-leading experts who
+              are not just educators but also practitioners in their respective
+              fields. They bring real-world experience, insights, and up-to-date
+              knowledge to every lesson, ensuring you receive the highest
+              quality education.
+            </p>
+          </div>
+          {/* </Col> */}
+          {/* </Row> */}
+          {/* <Row> */}
+          {/* <Col md={6}> */}
+          <div className="join_box1">
+            <div className="">
+              <img src={why3} alt="profile" />
+            </div>
+            <h4> 6-months Internship</h4>
+            <p className="hire_dev-grey">
+              Get real workplace experience. You stand a chance to work with
+              amazing teams on real-life projects to solve related problems so
+              you can build your portfolio for 6-months.
+            </p>
+          </div>
+          {/* </Col> */}
+          {/* <Col md={6}> */}
+          <div className="join_box1">
+            <div className="">
+              <img src={why4} alt="profile" />
+            </div>
+            <h4> Career-Ready Certification</h4>
+            <p className="hire_dev-grey">
+              Our programs are designed to prepare you for the workforce. Upon
+              completion, you'll receive industry-recognized certifications that
+              validate your skills and open doors to exciting job opportunities
+            </p>
+          </div>
+          {/* </Col> */}
+          {/* </Row> */}
           {/* </Container> */}
         </div>
 
@@ -327,13 +333,21 @@ const Landing = () => {
             </div>
             <div className="landing__slider-text1">
               <p>
-                Explore a wide range of tech courses designed to empower you with the skills and knowledge 
-                you need to thrive in the ever-evolving tech industry.
+                Explore a wide range of tech courses designed to empower you
+                with the skills and knowledge you need to thrive in the
+                ever-evolving tech industry.
               </p>
             </div>
             <div className="gga_container">
-              <div className="boxes33" onClick={()=> courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}>
-              {/* <Link
+              <div
+                className="boxes33"
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=product-designing-ui-ux`
+                  )
+                }
+              >
+                {/* <Link
                 to={`/course-detail-graduate?course=product-designing-ui-ux`}
                 className="boxes33"
               > */}
@@ -346,22 +360,35 @@ const Landing = () => {
                       Product Design (UI/UX)
                     </h4>
                     <p>
-                      Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. 
-                      You'll gain knowledge in designing user interfaces that...
+                      Product design is a multifaceted field that involves
+                      creating and improving products to meet user needs and
+                      business goals. You'll gain knowledge in designing user
+                      interfaces that...
                     </p>
                     {/* <Link
                       to={`/course-detail-graduate?course=product-designing-ui-ux`}
                     >
                       Learn More
                     </Link> */}
-                    <span onClick={()=> courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}>Learn More</span>
-                      
+                    <span
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=product-designing-ui-ux`
+                        )
+                      }
+                    >
+                      Learn More
+                    </span>
                   </div>
                 </div>
-              {/* </Link> */}
+                {/* </Link> */}
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=frontend-web-development`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -373,11 +400,17 @@ const Landing = () => {
                       Front-End Development
                     </h4>
                     <p>
-                      Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and 
-                      JavaScript for a website or Web Application so that a user...
+                      Front-end web development, also known as client-side
+                      development is the practice of producing HTML, CSS, and
+                      JavaScript for a website or Web Application so that a
+                      user...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=frontend-web-development`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -385,7 +418,11 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=backend-web-development`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -397,11 +434,17 @@ const Landing = () => {
                       Back-End Development
                     </h4>
                     <p>
-                      Node.js is useful for developing applications that require a persistent connection from 
-                      the browser to the server and is often used for real-time applications such as chat, news...
+                      Node.js is useful for developing applications that require
+                      a persistent connection from the browser to the server and
+                      is often used for real-time applications such as chat,
+                      news...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=backend-web-development`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -409,7 +452,11 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=mobile-application-development`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -421,11 +468,17 @@ const Landing = () => {
                       Mobile App Developement
                     </h4>
                     <p>
-                      Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, 
-                      Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from...
+                      Flutter is an incredible user interface (UI) toolkit that
+                      allows you to build apps for iOS, Android, and even the
+                      web & desktop platforms like macOS, Windows, and Linux;
+                      all from...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=mobile-application-development`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -434,7 +487,11 @@ const Landing = () => {
               </div>
 
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=product-management`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -446,12 +503,16 @@ const Landing = () => {
                       Product Management
                     </h4>
                     <p>
-                      Grazac product management course will help you understand the process of strategically 
-                      guiding a company's product development, market launch, ongoing support, and...
-
+                      Grazac product management course will help you understand
+                      the process of strategically guiding a company's product
+                      development, market launch, ongoing support, and...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=product-management`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -459,7 +520,11 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=machine-learning`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -471,11 +536,16 @@ const Landing = () => {
                       Machine learning with Python
                     </h4>
                     <p>
-                      Machine Learning with Python is a comprehensive journey that equips you with the skills and 
-                      knowledge needed to build, evaluate, and deploy machine learning models for...
+                      Machine Learning with Python is a comprehensive journey
+                      that equips you with the skills and knowledge needed to
+                      build, evaluate, and deploy machine learning models for...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=machine-learning`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -483,7 +553,9 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}
+                onClick={() =>
+                  courseDetailsHandler(`/course-detail-graduate?course=java`)
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -491,15 +563,18 @@ const Landing = () => {
                     <img src={java} alt="course-desc" />
                   </div>
                   <div className="gua_cardview-text">
-                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                      Java
-                    </h4>
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>Java</h4>
                     <p>
-                      Java is a versatile programming language with a wide range of applications, 
-                      from web development to mobile app development, big data processing, and more...
+                      Java is a versatile programming language with a wide range
+                      of applications, from web development to mobile app
+                      development, big data processing, and more...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=java`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -507,7 +582,11 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=data-analysis`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -515,16 +594,19 @@ const Landing = () => {
                     <img src={data_analysis} alt="course-desc" />
                   </div>
                   <div className="gua_cardview-text">
-                    <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                      Data Analysis
-                    </h4>
+                    <h4 style={{ color: "rgb(51, 51, 51)" }}>Data Analysis</h4>
                     <p>
-                      Data Analysis involves using different tools and techniques to scrutinize and 
-                      probe large volumes of data with the goal of making informed solving problems, 
+                      Data Analysis involves using different tools and
+                      techniques to scrutinize and probe large volumes of data
+                      with the goal of making informed solving problems,
                       business decisions, and...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=data-analysis`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -532,7 +614,11 @@ const Landing = () => {
                 </div>
               </div>
               <div
-                onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
+                onClick={() =>
+                  courseDetailsHandler(
+                    `/course-detail-graduate?course=blockchain-development-solidity`
+                  )
+                }
                 className="boxes33"
               >
                 <div className="gua_cardview">
@@ -544,10 +630,16 @@ const Landing = () => {
                       Blockchain Development with Solidity
                     </h4>
                     <p>
-                      This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career... 
+                      This course covers blockchain technology fundamentals and
+                      smart contract development using Solidity, preparing you
+                      for a career...
                     </p>
                     <span
-                      onClick={() => courseDetailsHandler(`/course-detail-graduate?course=blockchain-development-solidity`)}
+                      onClick={() =>
+                        courseDetailsHandler(
+                          `/course-detail-graduate?course=blockchain-development-solidity`
+                        )
+                      }
                     >
                       Learn More
                     </span>
@@ -726,73 +818,77 @@ const Landing = () => {
             </div>
           </div>
         </div>
-
-        <div>
-          <div
-            className="course_mode-intro course_mode-intro"
-            style={{ textAlign: "center" }}
-          >
-            <h2 className="join_heading" style={{ marginTop: "80px" }}>
-              Gallery
-            </h2>
-            <p className="join_needed">
-              Images of our students that put in deliberate efforts and have
-              been intentional and consistent in implementing{" "}
-              <br className="hide-at-600" />
-              what they learnt from the course.
-            </p>
-          </div>
-          <Container>
-            <div className="join_gallery">
-              <div className="join_gallery-top">
-                <div className="join_gallery-top-left">
-                  <img src={grad1} />
-                </div>
-                <div className="join_gallery-top-right">
-                  <img src={grad4} />
-                </div>
-              </div>
-              <div className="join_gallery-bottom">
-                <div className="join_gallery-bottom-left">
-                  <img src={grad2} />
-                </div>
-                <div className="join_gallery-bottom-right">
-                  <img src={grad3} />
-                </div>
-              </div>
-            </div>
-          </Container>
-        </div>
-
-        <div
-          className="landing__bottom"
-          id="landing__bottom"
-          style={{ paddingBottom: 0 }}
-        >
-          <div className="landing__bottom--text">
-            <div className="landing__bottom--text--right">
-              <h1>
-                Discover Top Tech <br />
-                Talent Here
-              </h1>
-              <p>
-                Find experienced fresh tech talents and professionals with
-                authentic background that match your requirements.
+        <div style={{
+          width :"90%",
+          margin:"auto"
+        }}>
+          <div>
+            <div
+              className="course_mode-intro course_mode-intro"
+              style={{ textAlign: "center" }}
+            >
+              <h2 className="join_heading" style={{ marginTop: "80px" }}>
+                Gallery
+              </h2>
+              <p className="join_needed">
+                Images of our students that put in deliberate efforts and have
+                been intentional and consistent in implementing{" "}
+                <br className="hide-at-600" />
+                what they learnt from the course.
               </p>
-              <div className="landing__btn--2">
-                <Link to="/hire">
-                  <div
-                    className="nav__btn nav__btn-flex "
-                    // onClick={() => toast.info("Coming Soon")}
-                  >
-                    <a className="nav__btn--text">Hire our Talents</a>
-                  </div>
-                </Link>
-              </div>
             </div>
+            <Container>
+              <div className="join_gallery">
+                <div className="join_gallery-top">
+                  <div className="join_gallery-top-left">
+                    <img src={grad1} />
+                  </div>
+                  <div className="join_gallery-top-right">
+                    <img src={grad4} />
+                  </div>
+                </div>
+                <div className="join_gallery-bottom">
+                  <div className="join_gallery-bottom-left">
+                    <img src={grad2} />
+                  </div>
+                  <div className="join_gallery-bottom-right">
+                    <img src={grad3} />
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </div>
 
-            <div className="landing__bottom--text--left">
-              <img src={Grazac} alt="img" />
+          <div
+            className="landing__bottom"
+            id="landing__bottom"
+            style={{ paddingBottom: 0 }}
+          >
+            <div className="landing__bottom--text">
+              <div className="landing__bottom--text--right">
+                <h1>
+                  Discover Top Tech <br />
+                  Talent Here
+                </h1>
+                <p>
+                  Find experienced fresh tech talents and professionals with
+                  authentic background that match your requirements.
+                </p>
+                <div className="landing__btn--2">
+                  <Link to="/hire">
+                    <div
+                      className="nav__btn nav__btn-flex "
+                      // onClick={() => toast.info("Coming Soon")}
+                    >
+                      <a className="nav__btn--text">Hire our Talents</a>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="landing__bottom--text--left">
+                <img src={Grazac} alt="img" />
+              </div>
             </div>
           </div>
         </div>
@@ -923,21 +1019,19 @@ const Landing = () => {
               </Accordion>
             </div> */}
 
-            <div>
+            <div style={{width: "90%", margin:"auto"}}>
               <Accordion defaultActiveKey="1">
                 <Card>
                   <Accordion.Item eventKey="1">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do I have to be physically present to register?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do I have to be physically present to register?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>
-                          No, registration is to be done online.
-                        </p>
+                        <p>No, registration is to be done online.</p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -945,16 +1039,17 @@ const Landing = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="2">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Are classes virtual or onsite?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Are classes virtual or onsite?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
+                          Classes would be onsite or virtually, depending on the
+                          mode of learning you prefer.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -963,16 +1058,18 @@ const Landing = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="3">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4> What is the duration of the program?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4> What is the duration of the program?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The program is for a duration of 12 months, consisting of 6 months immersive training and 6 months internship.
+                          The program is for a duration of 12 months, consisting
+                          of 6 months immersive training and 6 months
+                          internship.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -981,16 +1078,18 @@ const Landing = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="4">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes,please. However, as an undergraduate, you are strongly advised to choose our virtual learning mode due to its flexibility.
+                          Yes,please. However, as an undergraduate, you are
+                          strongly advised to choose our virtual learning mode
+                          due to its flexibility.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -999,16 +1098,19 @@ const Landing = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="5">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do you offer any certification after the course?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          Do you offer any certification after the course?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes, students who complete our courses will receive a virtual and hardcopy certificate of completion
+                          Yes, students who complete our courses will receive a
+                          virtual and hardcopy certificate of completion
                         </p>
                       </div>
                     </Accordion.Body>
@@ -1017,19 +1119,23 @@ const Landing = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="6">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>What is the cost of learning at Grazac Academy</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>What is the cost of learning at Grazac Academy</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                      <p>
-                        For our physical classes, the cost for all courses is #1,000,000
-                      </p>
-                      <p>While for our virtual classes, the cost is $200. To get more information 
-                        about our pricing, <a href="#">Click here</a></p>
+                        <p>
+                          For our physical classes, the cost for all courses is
+                          #1,000,000
+                        </p>
+                        <p>
+                          While for our virtual classes, the cost is $200. To
+                          get more information about our pricing,{" "}
+                          <a href="#">Click here</a>
+                        </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
