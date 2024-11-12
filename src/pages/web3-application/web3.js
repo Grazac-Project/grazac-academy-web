@@ -3,6 +3,12 @@ import Hero from "../../images/web3/hero.png";
 import fred from "../../images/web3/fred.png";
 import Avatar from "../../images/web3/avatar.png";
 import bgmap from "../../images/web3/bg-map.png";
+import logo1 from "../../images/web3/logo1.png";
+import logo2 from "../../images/web3/logo2.png";
+import logo3 from "../../images/web3/logo3.png";
+import logo4 from "../../images/web3/logo4.png";
+import logo5 from "../../images/web3/logo5.png";
+
 import Footer from "../../components/Footer";
 import { Accordion, Card, Pagination } from "react-bootstrap";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
@@ -14,13 +20,12 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Navbar from "./Navbar";
 // import '../../tailwindComponents.css';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
-
-
-
+import "tailwindcss/tailwind.css"; // Import Tailwind CSS only in this component
 
 const Web3 = () => {
   const splideRef = useRef(null);
+  const splideRef2 = useRef(null);
+
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
@@ -42,6 +47,22 @@ const Web3 = () => {
       }).mount({ AutoScroll });
     }
   }, []);
+  useEffect(() => {
+    if (splideRef2.current) {
+      new Splide(splideRef2.current, {
+        type: "loop",
+        perPage: 3,
+        perMove: 1,
+        gap: "20rem",
+        pagination: false,
+        arrows: false,
+        autoWidth: true,
+        autoScroll: {
+          speed: 0.5, // Adjust scrolling speed
+        },
+      }).mount({ AutoScroll });
+    }
+  }, []);
 
   const handleFaq = (e) => {
     let svg = e.target.parentElement.querySelector("svg");
@@ -57,12 +78,13 @@ const Web3 = () => {
       {/* hero */}
       <section className="flex justify-center items-center md:block pt-3 mx-auto laptop:w-[90%] ">
         <div className="w-[569px] md:w-[90%] ">
-          <h1 className=" text-[72px] sm:text-[48px]  leading-22 font-bold text-heading mb-2">
-            Discover your path to <span className="text-primary"> Web3 </span>
+          <h1 className=" text-[60px] sm:text-[48px]  leading-[72px] font-bold text-heading mb-2">
+            Become a <span className="text-primary"> Web3 </span>developer in 6
+            months
           </h1>
           <p className="w-[502px] md:w-auto text-text text-[18px] leading-[24.85px] mb-8">
-            Join Grazac Academy's comprehensive Web3 program to master
-            blockchain, smart contracts, DeFi, and more.
+            Kickstart your career as a blockchain developer through our 6 months
+            of hands-on boot camp.
           </p>
           <Link to="/start">
             <button className="bg-primary w-[50%] sm:w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
@@ -74,51 +96,84 @@ const Web3 = () => {
           <img src={Hero} alt="hero" />
         </div>
       </section>
+
+      <div
+        className="splide h-[130px] bg-[#D1C1FF] flex justify-center items-center my-6"
+        ref={splideRef2}
+      >
+        <div className="splide__track">
+          <ul className="splide__list">
+            <li className="splide__slide ">
+              <img src={logo1} alt="logo1" className="h-[57px] " />
+            </li>{" "}
+            <li className="splide__slide ">
+              <img src={logo2} alt="logo1" className="h-[57px] " />
+            </li>{" "}
+            <li className="splide__slide ">
+              <img src={logo3} alt="logo1" className="h-[57px] " />
+            </li>{" "}
+            <li className="splide__slide ">
+              <img src={logo4} alt="logo1" className="h-[57px] " />
+            </li>
+            <li className="splide__slide ">
+              <img src={logo5} alt="logo1" className="h-[57px] " />
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <section
         className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed`}
         style={{ backgroundImage: `url(${bgmap})` }}
       >
         <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-          Our impact shows in the numbers.
+          Learn together, grow together
         </h2>
         <p className="w-auto text-text text-[18px] text-center leading-[24.85px] mb-8">
-          Empowering the next generation through cutting-edge web3 education
+          In 4 years, we have built an exceptional track record
         </p>
         <div className="flex items-center justify-between w-[832px] h-[124px] xm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto xm:block mx-auto px-[69px] py-6 ">
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
-              50+
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+              1190+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
-              Projects built
+              Introduced into web3
             </p>
           </div>
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
-              5k+
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+              300+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
-              Trained in web 2
+              Developers trained in web2
             </p>
           </div>
           <div>
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
-              200+
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+              30+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
               Hiring partners
+            </p>
+          </div>
+          <div>
+            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+              3+
+            </h1>
+            <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
+              Decentralized Apps built
             </p>
           </div>
         </div>
       </section>
       <section className="py-[90px] mx-auto">
         <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-          Our Web-3 Cohort- Blockchain with Solidity
+          Blockchain development with Solidity
         </h2>
-        <p className="w-[867px] mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-          In 6 months, acquire all the skills you need to launch your Blockchain
-          Development career with our comprehensive, hands-on training program
-          that focuses on real-world, practical experience.
+        <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
+          In <span className="text-primary">6 months</span>, through practical class and training, you will get
+          everything you need to launch your career in Blockchain development
         </p>
 
         <div className="w-[95%] ml-auto">
@@ -143,30 +198,30 @@ const Web3 = () => {
             </div>
           </div>
           <div className="flex justify-center">
-          <Link to="/start">
-            <button className="bg-primary w-[225px]  py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
-              Enroll Now
-            </button>
-          </Link>
+            <Link to="/start">
+              <button className="bg-primary w-[225px]  py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
+                Enroll Now
+              </button>
+            </Link>
           </div>
         </div>
       </section>
-      <section className="py-[80px]  md:w-[100%] bg-[#F8F5FD]">
-        <div className="w-[264px] md:w-[90%] text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
+      <section className="py-[80px]  md:w-[100%] px-[3%] bg-[#F8F5FD]">
+        <div className="w-[264px]  text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
           What makes us unique?
         </div>
         <h2 className="w-[495px] sm:w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-          We are shaping the future of Web3 innovation.
+        Transition into <span className=" text-primary">web3</span>  in 6 months
+
         </h2>
-        <p className=" mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-          We've spent years building the best web3 education platform to
-          maximize your learning.
+        <p className="w-[820px] mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
+        Join the cohort to access a vibrant community of experts, engage in soft skills training, and receive adequate support for interview preparation for your growth.
         </p>
 
-        <div className="flex justify-center items-center md:block ">
-          <div className="pl-[55px] md:pl-0 md:w-[90%]  mx-auto">
+        <div className="flex justify-center items-center gap-8 md:block ">
+          <div className="w-1/2 md:w-full">
             <div
-              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
                 isHovered1 ? "text-white" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered1(true)}
@@ -177,20 +232,19 @@ const Web3 = () => {
                   isHovered1 ? "text-white" : "text-heading"
                 }`}
               >
-                There are no learning barriers
+                Access to Grazac Network
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
                   isHovered1 ? "text-white" : "text-text"
                 }`}
               >
-                Start your tech career with us—our inclusive model, courses, and
-                community cater to all, ensuring learners of any background and
-                experience level feel comfortable and engaged.
+                Join a network of seasoned experts and peers who share your
+                passion and drive for success.
               </p>
             </div>
             <div
-              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
                 isHovered2 ? "text-white" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered2(true)}
@@ -201,20 +255,19 @@ const Web3 = () => {
                   isHovered2 ? "text-white" : "text-heading"
                 }`}
               >
-                There are no learning barriers
+                Access to mentors
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
                   isHovered2 ? "text-white" : "text-text"
                 }`}
               >
-                Start your tech career with us—our inclusive model, courses, and
-                community cater to all, ensuring learners of any background and
-                experience level feel comfortable and engaged.
+                Enhance your learning with access to industry experts to help
+                you navigate challenges and grow
               </p>
             </div>
             <div
-              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
                 isHovered3 ? "text-white" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered3(true)}
@@ -225,56 +278,32 @@ const Web3 = () => {
                   isHovered3 ? "text-white" : "text-heading"
                 }`}
               >
-                There are no learning barriers
+                Soft Skills Training
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
                   isHovered3 ? "text-white" : "text-text"
                 }`}
               >
-                Start your tech career with us—our inclusive model, courses, and
-                community cater to all, ensuring learners of any background and
-                experience level feel comfortable and engaged.
+                Leverage our essential soft skills needed to remain competitive
+                on a global scale
               </p>
             </div>
-            <div
-              className={`w-[696px] md:w-auto px-6 py-10 bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
-                isHovered4 ? "text-white" : "text-heading"
-              }`}
-              onMouseEnter={() => setIsHovered4(true)}
-              onMouseLeave={() => setIsHovered4(false)}
-            >
-              <h5
-                className={`text-[16px] leading-[24px] font-bold mb-4 ${
-                  isHovered4 ? "text-white" : "text-heading"
-                }`}
-              >
-                There are no learning barriers
-              </h5>
-              <p
-                className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
-                  isHovered4 ? "text-white" : "text-text"
-                }`}
-              >
-                Start your tech career with us—our inclusive model, courses, and
-                community cater to all, ensuring learners of any background and
-                experience level feel comfortable and engaged.
-              </p>
-            </div>
+
             <Link to="/start">
-              <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
+              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ">
                 Enroll Now
               </button>
             </Link>
           </div>
-          <div className="xl:w-auto">
+          <div className="md:flex md:justify-center md:mt-6">
             <img src={fred} alt="innovation" />
           </div>
         </div>
       </section>
       <section className="py-20 w-[90%] mx-auto">
         <h2 className="w-[478px] sm:w-auto mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-          How the Admission Process Works
+          Admission process
         </h2>
         <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
           Understand our admission process in 3 easy steps
@@ -327,7 +356,7 @@ const Web3 = () => {
               </div>
             </div>
             <Link to="/start">
-              <button className="bg-primary w-[225px] py-[19px] text-[18px] rounded-lg font-bold ml-6 ">
+              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ml-6 ">
                 Get Started
               </button>
             </Link>
@@ -347,13 +376,13 @@ const Web3 = () => {
                   <Accordion.Item eventKey="1">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
-                        <h4>Do I have to be physically present to register?</h4>
+                        <h4>Is the Blockchain Class virtual or on-site?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>No, registration is to be done online.</p>
+                        <p>The class is a full onsite class.</p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -363,16 +392,15 @@ const Web3 = () => {
                   <Accordion.Item eventKey="2">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
-                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
+                        <h4>What is the duration of the program?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes,please. However, as an undergraduate, you are
-                          strongly advised to choose our virtual learning mode
-                          due to its flexibility.
+                          The program is of a duration of 6 months (4 months
+                          training, 2 months internship).
                         </p>
                       </div>
                     </Accordion.Body>
@@ -383,79 +411,17 @@ const Web3 = () => {
                   <Accordion.Item eventKey="3">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question py-4">
-                        <h4>Are classes virtual or onsite?</h4>
-
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Classes would be onsite or virtually, depending on the
-                          mode of learning you prefer.
-                        </p>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Card>
-                <hr />
-
-                <Card>
-                  <Accordion.Item eventKey="4">
-                    <Accordion.Header onClick={handleFaq}>
-                      <div className="landing_faq-question py-4">
-                        <h4> What is the duration of the program?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          The program is for a duration of 12 months, consisting
-                          of 6 months immersive training and 6 months
-                          internship.
-                        </p>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Item eventKey="5">
-                    <Accordion.Header onClick={handleFaq}>
-                      <div className="landing_faq-question py-4">
-                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Yes,please. However, as an undergraduate, you are
-                          strongly advised to choose our virtual learning mode
-                          due to its flexibility.
-                        </p>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Item eventKey="6">
-                    <Accordion.Header onClick={handleFaq}>
-                      <div className="landing_faq-question py-4">
                         <h4>
-                          Do you offer any certification after the course?
+                          What are the prerequisites for joining the blockchain
+                          class?
                         </h4>
+
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>
-                          Yes, students who complete our courses will receive a
-                          virtual and hardcopy certificate of completion
-                        </p>
+                        <p>You must have basic programming knowledge</p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>

@@ -1,59 +1,47 @@
 import block from "../images/web3/block.svg";
+import  security from "../images/web3/block.png";
 import etherjs from "../images/web3/entherjs.svg";
 import solidity from "../images/web3/solidity.svg";
 import eth from "../images/web3/eth.png";
-
-
-
+import hardhot from "../images/web3/hardhot.svg";
 
 export const outline = [
   {
     id: "1",
     image: block,
-    topic: "Intro to Blockchain",
+    topic: "Blockchain",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
+      "Learn the basics of blockchain, decentralized networks, and cryptography.",
   },
-  {
-    id: "2",
-    image: etherjs,
-    topic: "EtherJS & Web3JS",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
-  },
-  {
-    id: "3",
-    image: eth,
-    topic: "Ethereum ",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
-  },
+
   {
     id: "4",
     image: solidity,
     topic: "Solidity",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
+      "Learn solidity, the programming language designed for developing smart contracts that run on Ethereum.",
   },
   {
     id: "5",
-    image: block,
-    topic: "Foundry",
+    image: etherjs,
+    topic: "NFT",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
+      "Understand how NFTs are used as a digital identity to certify ownership and authenticity",
   },
-  {
-    id: "6",
-    image: block,
-    topic: "Non-Fungible Tokens",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
-  },
+  
   {
     id: "7",
-    image: block,
-    topic: "Intro to Blockchain",
+    image: hardhot,
+    topic: "Hardhat",
     content:
-      "Lorem ipsum dolor sit amet consectetur. Feugiat in consequat vitae fames id eget semper sed fames.",
+      "Learn the development environment for  Ethereum that helps developers create, test, debug, and deploy smart contracts and applications",
   },
+  {
+    id: "2",
+    image: security,
+    topic: "Blockchain Security",
+    content:
+      "Understand the best practice to secure your data and transactions from unauthorized access.",
+  },
+ 
 ];

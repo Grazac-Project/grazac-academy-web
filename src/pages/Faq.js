@@ -35,7 +35,7 @@ const Faq = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div  style={{width:"90%",margin:"auto" }}>
         {/* FAQ section */}
         <div className="landing_faq">
           <div className="container">
