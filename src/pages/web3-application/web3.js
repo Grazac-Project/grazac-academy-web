@@ -8,6 +8,7 @@ import logo2 from "../../images/web3/logo2.png";
 import logo3 from "../../images/web3/logo3.png";
 import logo4 from "../../images/web3/logo4.png";
 import logo5 from "../../images/web3/logo5.png";
+import logo6 from "../../images/web3/logo6.png";
 
 import Footer from "../../components/Footer";
 import { Accordion, Card, Pagination } from "react-bootstrap";
@@ -117,6 +118,9 @@ const Web3 = () => {
             </li>
             <li className="splide__slide ">
               <img src={logo5} alt="logo1" className="h-[57px] " />
+            </li>
+            <li className="splide__slide ">
+              <img src={logo6} alt="logo1" className="h-[57px] " />
             </li>
           </ul>
         </div>
