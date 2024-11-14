@@ -79,7 +79,7 @@ const Web3 = () => {
       {/* hero */}
       <section className="flex justify-center items-center md:block pt-3 mx-auto laptop:w-[90%] ">
         <div className="w-[569px] md:w-[90%] ">
-          <h1 className=" text-[60px] sm:text-[48px]  leading-[72px] font-bold text-heading mb-2">
+          <h1 className=" text-[60px] sm:text-[48px]  leading-[75px] md:leading-[58px] font-bold text-heading mb-2">
             Become a <span className="text-primary"> Web3 </span>developer in 6
             months
           </h1>
@@ -99,7 +99,7 @@ const Web3 = () => {
       </section>
 
       <div
-        className="splide h-[130px] bg-[#D1C1FF] flex justify-center items-center my-6"
+        className="splide h-[130px] md:h-[72px] bg-[#D1C1FF] flex justify-center items-center my-6"
         ref={splideRef2}
       >
         <div className="splide__track">
@@ -138,7 +138,7 @@ const Web3 = () => {
         </p>
         <div className="flex items-center justify-between w-[832px] h-[124px] sm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto sm:mx-10 sm:block mx-auto px-[69px] py-6 ">
           <div className="sm:py-6">
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+            <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               1190+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -146,7 +146,7 @@ const Web3 = () => {
             </p>
           </div>
           <div className="sm:py-6">
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+            <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               300+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -154,7 +154,7 @@ const Web3 = () => {
             </p>
           </div>
           <div className="sm:py-6">
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+            <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               30+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -162,7 +162,7 @@ const Web3 = () => {
             </p>
           </div>
           <div className="sm:py-7">
-            <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
+            <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               3+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
@@ -176,8 +176,9 @@ const Web3 = () => {
           Blockchain development with Solidity
         </h2>
         <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-          In <span className="text-primary">6 months</span>, through practical class and training, you will get
-          everything you need to launch your career in Blockchain development
+          In <span className="text-primary">6 months</span>, through practical
+          class and training, you will get everything you need to launch your
+          career in Blockchain development
         </p>
 
         <div className="w-[95%] ml-auto">
@@ -215,32 +216,34 @@ const Web3 = () => {
           What makes us unique?
         </div>
         <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
-        Transition into <span className=" text-primary">web3</span>  in 6 months
-
+          Transition into <span className=" text-primary">web3</span> in 6
+          months
         </h2>
         <p className="w-[820px] mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
-        Join the cohort to access a vibrant community of experts, engage in soft skills training, and receive adequate support for interview preparation for your growth.
+          Join the cohort to access a vibrant community of experts, engage in
+          soft skills training, and receive adequate support for interview
+          preparation for your growth.
         </p>
 
         <div className="flex justify-center items-center gap-8 md:block ">
-          <div className="w-1/2 md:w-full">
+          <div className="w-1/2 md:w-full ">
             <div
-              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
-                isHovered1 ? "text-white" : "text-heading"
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary sm:hover:bg-[#fff] rounded-3xl mb-4 ${
+                isHovered1 ? "text-white sm:text-heading" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered1(true)}
               onMouseLeave={() => setIsHovered1(false)}
             >
               <h5
                 className={`text-[16px] leading-[24px] font-bold mb-4 ${
-                  isHovered1 ? "text-white" : "text-heading"
+                  isHovered1 ? "text-white sm:text-heading" : "text-heading"
                 }`}
               >
                 Access to Grazac Network
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
-                  isHovered1 ? "text-white" : "text-text"
+                  isHovered1 ? "text-white sm:text-text" : "text-text"
                 }`}
               >
                 Join a network of seasoned experts and peers who share your
@@ -248,22 +251,22 @@ const Web3 = () => {
               </p>
             </div>
             <div
-              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
-                isHovered2 ? "text-white" : "text-heading"
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary sm:hover:bg-[#fff] rounded-3xl mb-4 ${
+                isHovered2 ? "text-white sm:text-heading" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered2(true)}
               onMouseLeave={() => setIsHovered2(false)}
             >
               <h5
                 className={`text-[16px] leading-[24px] font-bold mb-4 ${
-                  isHovered2 ? "text-white" : "text-heading"
+                  isHovered2 ? "text-white sm:text-heading" : "text-heading"
                 }`}
               >
                 Access to mentors
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
-                  isHovered2 ? "text-white" : "text-text"
+                  isHovered2 ? "text-white sm:text-text" : "text-text"
                 }`}
               >
                 Enhance your learning with access to industry experts to help
@@ -271,22 +274,22 @@ const Web3 = () => {
               </p>
             </div>
             <div
-              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary rounded-3xl mb-4 ${
-                isHovered3 ? "text-white" : "text-heading"
+              className={` md:w-auto px-6 py-20 h-[164px] bg-[#fff] hover:bg-primary sm:hover:bg-[#fff] rounded-3xl mb-4 ${
+                isHovered3 ? "text-white sm:text-heading" : "text-heading"
               }`}
               onMouseEnter={() => setIsHovered3(true)}
               onMouseLeave={() => setIsHovered3(false)}
             >
               <h5
                 className={`text-[16px] leading-[24px] font-bold mb-4 ${
-                  isHovered3 ? "text-white" : "text-heading"
+                  isHovered3 ? "text-white sm:text-heading" : "text-heading"
                 }`}
               >
                 Soft Skills Training
               </h5>
               <p
                 className={`mx-auto lg:w-auto text-[16px] leading-[22px] ${
-                  isHovered3 ? "text-white" : "text-text"
+                  isHovered3 ? "text-white sm:text-text" : "text-text"
                 }`}
               >
                 Leverage our essential soft skills needed to remain competitive
@@ -300,6 +303,7 @@ const Web3 = () => {
               </button>
             </Link>
           </div>
+
           <div className="md:flex md:justify-center md:mt-6">
             <img src={fred} alt="innovation" />
           </div>
