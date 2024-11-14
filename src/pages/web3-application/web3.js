@@ -88,7 +88,7 @@ const Web3 = () => {
             of hands-on boot camp.
           </p>
           <Link to="/start">
-            <button className="bg-primary w-[50%] sm:w-[225px] py-[19px] text-[18px] rounded-lg font-bold ">
+            <button className="bg-primary w-[50%] sm:w-[225px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
               Enroll Now
             </button>
           </Link>
@@ -99,7 +99,7 @@ const Web3 = () => {
       </section>
 
       <div
-        className="splide h-[130px] md:h-[72px] bg-[#D1C1FF] flex justify-center items-center my-6"
+        className="splide h-[129px] md:h-[70px] bg-[#D1C1FF] flex justify-center items-center my-6"
         ref={splideRef2}
       >
         <div className="splide__track">
@@ -127,16 +127,16 @@ const Web3 = () => {
       </div>
 
       <section
-        className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed`}
+        className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed px-10`}
         style={{ backgroundImage: `url(${bgmap})` }}
       >
-        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
+        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px] text-center font-bold text-heading mb-2 ">
           Learn together, grow together
         </h2>
         <p className="w-auto text-text text-[18px] text-center leading-[24.85px] mb-8">
           In 4 years, we have built an exceptional track record
         </p>
-        <div className="flex items-center justify-between w-[832px] h-[124px] sm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto sm:mx-10 sm:block mx-auto px-[69px] py-6 ">
+        <div className="flex items-center justify-between w-[832px] h-[124px] sm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto sm:block mx-auto px-[69px] py-6 ">
           <div className="sm:py-6">
             <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               1190+
@@ -172,10 +172,10 @@ const Web3 = () => {
         </div>
       </section>
       <section className="py-[90px] mx-auto">
-        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
+        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px] text-center font-bold text-heading mb-2 px-10">
           Blockchain development with Solidity
         </h2>
-        <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
+        <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px] px-10">
           In <span className="text-primary">6 months</span>, through practical
           class and training, you will get everything you need to launch your
           career in Blockchain development
@@ -215,7 +215,7 @@ const Web3 = () => {
         <div className="w-[264px]  text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
           What makes us unique?
         </div>
-        <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
+        <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px]text-center font-bold text-heading mb-2">
           Transition into <span className=" text-primary">web3</span> in 6
           months
         </h2>
@@ -297,11 +297,14 @@ const Web3 = () => {
               </p>
             </div>
 
-            <Link to="/start">
-              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ">
-                Enroll Now
-              </button>
-            </Link>
+            <div className="flex justify-center">
+
+<Link to="/start">
+  <button className="bg-primary w-[225px] sm:w-[117px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 sm:my-8">
+    Get Started
+  </button>
+</Link>
+</div>
           </div>
 
           <div className="md:flex md:justify-center md:mt-6">
@@ -363,11 +366,14 @@ const Web3 = () => {
                 </p>
               </div>
             </div>
+            <div className="flex justify-center">
+
             <Link to="/start">
-              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ml-6 md:ml-0">
+              <button className="bg-primary w-[225px] sm:w-[117px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
                 Get Started
               </button>
             </Link>
+            </div>
           </div>
         </div>
       </section>
