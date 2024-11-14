@@ -88,7 +88,7 @@ const Web3 = () => {
             of hands-on boot camp.
           </p>
           <Link to="/start">
-            <button className="bg-primary w-[50%] sm:w-[225px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
+            <button className="bg-primary w-[50%] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
               Enroll Now
             </button>
           </Link>
@@ -181,7 +181,7 @@ const Web3 = () => {
           career in Blockchain development
         </p>
 
-        <div className="w-[95%] ml-auto">
+        <div className="w-[95%] ml-auto md:m-auto md:w-full">
           <div className="splide" ref={splideRef}>
             <div className="splide__track">
               <ul className="splide__list">
@@ -204,7 +204,7 @@ const Web3 = () => {
           </div>
           <div className="flex justify-center">
             <Link to="/start">
-              <button className="bg-primary w-[225px]  py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
+              <button className="bg-primary w-[225px] sm:w-[177px]  py-[19px] text-[18px] rounded-lg font-bold mt-[56px]">
                 Enroll Now
               </button>
             </Link>
@@ -215,7 +215,7 @@ const Web3 = () => {
         <div className="w-[264px]  text-[16px] leading-[24px] text-center text-primary bg-[#E8D4FF]  mx-auto rounded-3xl font-bold mb-4">
           What makes us unique?
         </div>
-        <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px]text-center font-bold text-heading mb-2">
+        <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px] text-center font-bold text-heading mb-2">
           Transition into <span className=" text-primary">web3</span> in 6
           months
         </h2>
@@ -300,7 +300,7 @@ const Web3 = () => {
             <div className="flex justify-center">
 
 <Link to="/start">
-  <button className="bg-primary w-[225px] sm:w-[117px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 sm:my-8">
+  <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 md:my-8">
     Get Started
   </button>
 </Link>
@@ -369,7 +369,7 @@ const Web3 = () => {
             <div className="flex justify-center">
 
             <Link to="/start">
-              <button className="bg-primary w-[225px] sm:w-[117px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
+              <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
                 Get Started
               </button>
             </Link>
