@@ -105,22 +105,22 @@ const Web3 = () => {
         <div className="splide__track">
           <ul className="splide__list">
             <li className="splide__slide ">
-              <img src={logo1} alt="logo1" className="h-[57px] " />
+              <img src={logo1} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>{" "}
             <li className="splide__slide ">
-              <img src={logo2} alt="logo1" className="h-[57px] " />
+              <img src={logo2} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>{" "}
             <li className="splide__slide ">
-              <img src={logo3} alt="logo1" className="h-[57px] " />
+              <img src={logo3} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>{" "}
             <li className="splide__slide ">
-              <img src={logo4} alt="logo1" className="h-[57px] " />
+              <img src={logo4} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>
             <li className="splide__slide ">
-              <img src={logo5} alt="logo1" className="h-[57px] " />
+              <img src={logo5} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>
             <li className="splide__slide ">
-              <img src={logo6} alt="logo1" className="h-[57px] " />
+              <img src={logo6} alt="logo1" className="h-[54px] sm:h-[33px] " />
             </li>
           </ul>
         </div>
@@ -130,14 +130,14 @@ const Web3 = () => {
         className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed`}
         style={{ backgroundImage: `url(${bgmap})` }}
       >
-        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2">
+        <h2 className=" text-[40px] sm:text-[32px]  leading-[48px] text-center font-bold text-heading mb-2 ">
           Learn together, grow together
         </h2>
         <p className="w-auto text-text text-[18px] text-center leading-[24.85px] mb-8">
           In 4 years, we have built an exceptional track record
         </p>
-        <div className="flex items-center justify-between w-[832px] h-[124px] xm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto xm:block mx-auto px-[69px] py-6 ">
-          <div>
+        <div className="flex items-center justify-between w-[832px] h-[124px] sm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto sm:mx-10 sm:block mx-auto px-[69px] py-6 ">
+          <div className="sm:py-6">
             <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               1190+
             </h1>
@@ -145,7 +145,7 @@ const Web3 = () => {
               Introduced into web3
             </p>
           </div>
-          <div>
+          <div className="sm:py-6">
             <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               300+
             </h1>
@@ -153,7 +153,7 @@ const Web3 = () => {
               Developers trained in web2
             </p>
           </div>
-          <div>
+          <div className="sm:py-6">
             <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               30+
             </h1>
@@ -161,7 +161,7 @@ const Web3 = () => {
               Hiring partners
             </p>
           </div>
-          <div>
+          <div className="sm:py-7">
             <h1 className="text-[47px] sm:text-[32px]  leading-[48px] text-center font-bold text-primary mb-2 ">
               3+
             </h1>
@@ -360,7 +360,7 @@ const Web3 = () => {
               </div>
             </div>
             <Link to="/start">
-              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ml-6 ">
+              <button className="bg-primary w-[225px] md:w-full py-[19px] text-[18px] rounded-lg font-bold ml-6 md:ml-0">
                 Get Started
               </button>
             </Link>
