@@ -132,12 +132,21 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Logic for showing news after 7 seconds on the "/" route
     if (location.pathname === "/") {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setNews("showNews");
       }, 7000);
+
+      // Cleanup the timer if the component unmounts or path changes
+      return () => clearTimeout(timer);
     }
-  }, []);
+
+    // Zoho PageSense tracking logic
+    if (window.PageSense) {
+      window.PageSense.track();
+    }
+  }, [location. Pathname]);
 
   const app = useRef();
 
