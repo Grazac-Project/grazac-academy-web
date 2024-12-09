@@ -3024,6 +3024,17 @@ input:focus, select:focus, textarea:focus {
 .auth_container_form input:focus {
   outline: none;
 }
+.auth_container_form select {
+  border: 1px solid #D9DCE1;
+  border-radius: 7px;
+  padding: 10px 20px;
+  margin: 5px 0 20px;
+  width: 100%;
+  color: #787676;
+}
+.auth_container_form select:focus {
+  outline: none;
+}
 .auth_container_form button {
   background: #773dd3;
   border: 1px solid #773dd3;

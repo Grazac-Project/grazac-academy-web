@@ -40,6 +40,7 @@ function Login() {
       .then((response) => response.data)
       .then((res) => {
         if (res.status === 200) {
+          
           toast.success(`${res.message}! Redirecting to dashboard...`);
 
           sessionStorage.setItem(
