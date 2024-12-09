@@ -147,6 +147,8 @@ function Dashboard() {
   useEffect(() => {
     getDetailsC()
       .then(res => {
+        console.log(res);
+        
         setPaymentChoice(res.data.data.result?.paymentOption)})
   }, [])
 

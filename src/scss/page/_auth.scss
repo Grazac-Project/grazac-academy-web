@@ -65,6 +65,17 @@
           outline: none;
         }
       }
+      select{
+        border: 1px solid #D9DCE1;
+        border-radius: 7px;
+        padding: 10px 20px;
+        margin: 5px 0 20px;
+        width: 100%;
+        color: $color-formgrey;
+        &:focus{
+          outline: none;
+        }
+      }
       button{
         background: $color-inspiring-purple;
         border: 1px solid $color-inspiring-purple;
