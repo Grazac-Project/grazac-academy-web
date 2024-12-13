@@ -298,13 +298,12 @@ const Web3 = () => {
             </div>
 
             <div className="flex justify-center">
-
-<Link to="/start">
-  <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 md:my-8">
-    Get Started
-  </button>
-</Link>
-</div>
+              <Link to="/start">
+                <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 md:my-8">
+                  Get Started
+                </button>
+              </Link>
+            </div>
           </div>
 
           <div className="md:flex md:justify-center md:mt-6">
@@ -367,12 +366,11 @@ const Web3 = () => {
               </div>
             </div>
             <div className="flex justify-center">
-
-            <Link to="/start">
-              <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
-                Get Started
-              </button>
-            </Link>
+              <Link to="/start">
+                <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
         </div>
