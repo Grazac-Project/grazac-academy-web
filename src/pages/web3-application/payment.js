@@ -129,7 +129,7 @@ const Start = () => {
             <p className="text-text text-[14px] leading-[21px] my-8">
               Application Fee: <span className="text-primary">10000 NGN</span>
             </p>
-            <button onClick={handlePayment} className="!mt-8">
+            <button onClick={handlePayment} className="!mt-8 cursor-pointer">
               Proceed to payment
             </button>
           </div>
