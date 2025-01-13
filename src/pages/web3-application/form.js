@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import authImg from "../../images/auth.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,16 +6,17 @@ import logo from "../../images/svg/academy-logo.svg";
 import { Link } from "react-router-dom";
 import loader from "../../images/svg/dashboard/loader.gif";
 // import '../../tailwindComponents.css';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS only in this component
-
-
+import "tailwindcss/tailwind.css"; // Import Tailwind CSS only in this component
 
 const Start = () => {
   const [details, setDetails] = useState({});
+  const [error, setError] = useState(false);
   const [form, setForm] = useState({
     fullName: details?.fullName || "",
     email: details?.email || "",
     phoneNumber: details?.phoneNumber || "",
+    experience: details?.experience || "",
+    availability: details?.availability || "",
     githubProfileLink: details?.githubProfileLink || "",
     linkedInLink: details?.linkedInLink || "",
     twitterLink: details?.twitterLink || "",
@@ -27,6 +25,14 @@ const Start = () => {
     inspiration: details?.inspiration || "",
     achievement: details?.achievement || "",
   });
+  useEffect(() => {
+    if (form.experience === "No") {
+      setError(true);
+    } else {
+      setError(false);
+
+    }
+  }, [form.experience]);
 
   const handleChange = (e) => {
     setForm({
@@ -84,7 +90,8 @@ const Start = () => {
               Web3 Enrollment Form
             </h1>
             <p className="text-text text-[14px] leading-[21px] mb-8">
-              Kindly fill in your details correctly. On submission, you will be asked to pay an application fee of 10,000 NGN only.
+              Kindly fill in your details correctly. On submission, you will be
+              asked to pay an application fee of 10,000 NGN only.
             </p>
             <form onSubmit={saveDetails}>
               <div>
@@ -120,6 +127,25 @@ const Start = () => {
                   onChange={handleChange}
                 />
               </div>
+              <div>
+                <label>Do you have experience with web2?</label>
+                <p className=" !text-red-600 text-[14px] leading-[21px]">
+                  {error ? "You are not eligible" : ""}
+                </p>
+                <select
+                  className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
+                  name="experience"
+                  required
+                  value={form.experience}
+                  onChange={handleChange}
+                >
+                  <option value="">Select option</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+                
+              </div>
+
               <div>
                 <label>Github Profile Link</label>
                 <input
@@ -200,7 +226,28 @@ const Start = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button type="submit" id="actionBtn" className="!mt-8">
+              <div>
+                <label>
+                  Will you be physically available at Abeokuta for the training?
+                </label>
+                <select
+                  className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
+                  name="availability"
+                  required
+                  value={form.availability}
+                  onChange={handleChange}
+                >
+                  <option value="">Select option</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                id="actionBtn"
+                className="!mt-8"
+                disabled={form.experience === "No"}
+              >
                 Continue
               </button>
             </form>
