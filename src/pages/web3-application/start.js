@@ -40,13 +40,14 @@ const Start = () => {
             <p className="text-text text-[14px] leading-[21px] mb-2">
               We’re excited to help you kickstart your career in Web3! <br /> To
               begin your application, please fill out the form below and pay a
-              non-refundable fee of <span className="text-primary">10,000</span>{" "}
+              non-refundable commitment fee of <span className="text-primary">10,000</span>{" "}
               naira.
             </p>
             <p className="text-text text-[14px] leading-[21px] mb-2">
               After payment, you will be contacted to take an assessment. This
               will help us evaluate your readiness to learn. Please ensure you
               don’t miss the assessment.
+              
             </p>
             <p className="text-text text-[14px] leading-[21px]">
               We look forward to being part of your growth!

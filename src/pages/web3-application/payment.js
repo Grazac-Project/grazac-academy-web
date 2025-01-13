@@ -58,7 +58,7 @@ const Start = () => {
   const config = {
     public_key: process.env.REACT_APP_FLW_PUBLIC_KEY || "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
-    amount: 10000,
+    amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -124,7 +124,7 @@ const Start = () => {
             </h4>
             <p className="text-text text-[14px] leading-[21px] ">
               Your details have been recorded successfully, finish your
-              enrollment process by paying your application fee
+              enrollment process by paying your application fee. <br/>Please note, prior experience with web2 is required to enroll for this class.
             </p>
             <p className="text-text text-[14px] leading-[21px] my-8">
               Application Fee: <span className="text-primary">10000 NGN</span>

@@ -76,3 +76,7 @@ button:focus{
     margin-left: 60px;
   }
 }
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

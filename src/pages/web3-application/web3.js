@@ -98,7 +98,7 @@ const Web3 = () => {
         </div>
       </section>
 
-      <div
+      {/* <div
         className="splide h-[129px] md:h-[70px] bg-[#D1C1FF] flex justify-center items-center my-6"
         ref={splideRef2}
       >
@@ -124,7 +124,7 @@ const Web3 = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
       <section
         className={`py-20  mx-auto  bg-no-repeat bg-center bg-fixed px-10`}
@@ -139,7 +139,7 @@ const Web3 = () => {
         <div className="flex items-center justify-between w-[832px] h-[124px] sm:h-full rounded-lg bg-[#F8F5FD] lg:w-auto sm:block mx-auto px-[69px] py-6 ">
           <div className="sm:py-6">
             <h1 className="text-[48px]  leading-[48px] text-center font-bold text-primary mb-2 ">
-              1190+
+              90+
             </h1>
             <p className="w-auto text-text text-[18px] text-center leading-[24.85px] ">
               Introduced into web3
@@ -181,7 +181,7 @@ const Web3 = () => {
           career in Blockchain development
         </p>
 
-        <div className="w-[95%] ml-auto md:m-auto md:w-full">
+        <div className="w-[100%] ml-auto md:m-auto md:w-full">
           <div className="splide" ref={splideRef}>
             <div className="splide__track">
               <ul className="splide__list">
