@@ -64,7 +64,7 @@ const Start = () => {
     customer: {
       email: details?.email || "",
       phonenumber: details?.phone || "",
-      name: details?.firstName || "",
+      name: details?.fullName || "",
     },
     customizations: {
       title: "Grazac Academy",
@@ -123,8 +123,7 @@ const Start = () => {
               Pay Application Fee
             </h4>
             <p className="text-text text-[14px] leading-[21px] ">
-              Your details have been recorded successfully, finish your
-              enrollment process by paying your application fee. <br/>Please note, prior experience with web2 is required to enroll for this class.
+              Complete your application by paying your application fee
             </p>
             <p className="text-text text-[14px] leading-[21px] my-8">
               Application Fee: <span className="text-primary">10000 NGN</span>

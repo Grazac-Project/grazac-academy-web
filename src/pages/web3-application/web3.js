@@ -3,12 +3,15 @@ import Hero from "../../images/web3/hero.png";
 import fred from "../../images/web3/fred.png";
 import Avatar from "../../images/web3/avatar.png";
 import bgmap from "../../images/web3/bg-map.png";
+import badge from "../../images/svg/badge.svg";
+import ex from "../../images/svg/x-mark.svg";
 import logo1 from "../../images/web3/logo1.png";
 import logo2 from "../../images/web3/logo2.png";
 import logo3 from "../../images/web3/logo3.png";
 import logo4 from "../../images/web3/logo4.png";
 import logo5 from "../../images/web3/logo5.png";
 import logo6 from "../../images/web3/logo6.png";
+// import badge from "../images/svg/badge.svg";
 
 import Footer from "../../components/Footer";
 import { Accordion, Card, Pagination } from "react-bootstrap";
@@ -31,6 +34,7 @@ const Web3 = () => {
   const [isHovered2, setIsHovered2] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
   const [isHovered4, setIsHovered4] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     if (splideRef.current) {
@@ -73,19 +77,52 @@ const Web3 = () => {
     svg.classList.toggle("faq-icon_transition");
   };
 
+  const handleModal = () => {
+    setShowModal(false);
+    var landingHeight = document.getElementsByClassName("web3")[0];
+    landingHeight.style.marginTop = `0px`;
+  };
+
   return (
-    <div className="w-[1440px] laptop:w-[100%] m-auto">
+    <div className="w-[1440px] laptop:w-[100%] m-auto web3">
+      {showModal && (
+          // <a href="/signup">
+            <div className="web3modal">
+              <div className="web3modal_content">
+                <img src={badge} alt="" className="web3modal_badge" />
+                <p>
+                  Application for our free web 3 training closes by January 31st. Orientation is Monday February 10th and class will start February 11th.
+                  {/* <a
+                className="infomodal_content-link"
+                href="/login"
+              >
+                Apply Now
+              </a> */}
+                </p>
+                {/* <Link to="/graduate-accelerator-plan">
+              <button>Learn more</button>
+            </Link> */}
+
+                <img
+                  src={ex}
+                  alt=""
+                  onClick={handleModal}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            </div>
+          // </a>
+        )}
       <Navbar />
       {/* hero */}
       <section className="flex justify-center items-center md:block pt-3 mx-auto laptop:w-[90%] ">
         <div className="w-[569px] md:w-[90%] ">
-          <h1 className=" text-[60px] sm:text-[48px]  leading-[75px] md:leading-[58px] font-bold text-heading mb-2">
-            Become a <span className="text-primary"> Web3 </span>developer in 6
-            months
+          <h1 className=" text-[60px] sm:text-[48px]  leading-[75px] md:leading-[58px] font-bold  text-heading sm:text-[32px] mb-2">
+            Become a <span className="text-primary"> Web3 </span>developer in 4
+            months for free
           </h1>
           <p className="w-[502px] md:w-auto text-text text-[18px] leading-[24.85px] mb-8">
-            Kickstart your career as a blockchain developer through our 6 months
-            of hands-on boot camp.
+            Kickstart your career as a blockchain developer through our on-site or virtual bootcamp
           </p>
           <Link to="/start">
             <button className="bg-primary w-[50%] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
@@ -176,7 +213,7 @@ const Web3 = () => {
           Blockchain development with Solidity
         </h2>
         <p className=" mx-auto lg:w-auto text-text text-[18px] text-center leading-[24.85px] mb-[56px] px-10">
-          In <span className="text-primary">6 months</span>, through practical
+          In <span className="text-primary">4 months</span>, through practical
           class and training, you will get everything you need to launch your
           career in Blockchain development
         </p>
@@ -216,7 +253,7 @@ const Web3 = () => {
           What makes us unique?
         </div>
         <h2 className="w-[90%] mx-auto text-[40px] sm:text-[32px]  leading-[48px] sm:leading-[32px] text-center font-bold text-heading mb-2">
-          Transition into <span className=" text-primary">web3</span> in 6
+          Transition into <span className=" text-primary">web3</span> in 4
           months
         </h2>
         <p className="w-[820px] mx-auto lg:w-[90%] text-text text-[18px] text-center leading-[24.85px] mb-[56px]">
@@ -394,7 +431,8 @@ const Web3 = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>The class is a full onsite class.</p>
+                        <p>Our training is both onsite and virtual but we strongly recommend on-site to help building your network and give you a strong sense of community 
+                        </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -411,8 +449,7 @@ const Web3 = () => {
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The program is of a duration of 6 months (4 months
-                          training, 2 months internship).
+                          The program will run for 4 months.
                         </p>
                       </div>
                     </Accordion.Body>

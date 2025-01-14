@@ -11,12 +11,18 @@ import "tailwindcss/tailwind.css"; // Import Tailwind CSS only in this component
 const Start = () => {
   const [details, setDetails] = useState({});
   const [error, setError] = useState(false);
+  const [web3Experience, setWeb3Experience] = useState(false);
+  const [showVirtual, setShowVirtual] = useState(false);
+  const [showSpecify, setShowSpecify] = useState(false);
   const [form, setForm] = useState({
     fullName: details?.fullName || "",
     email: details?.email || "",
     phoneNumber: details?.phoneNumber || "",
     experience: details?.experience || "",
     availability: details?.availability || "",
+    orientation: details?.orientation || "",
+    backgroundKnowledge: details?.backgroundKnowledge || "",
+    specify: details?.specify || "",
     githubProfileLink: details?.githubProfileLink || "",
     linkedInLink: details?.linkedInLink || "",
     twitterLink: details?.twitterLink || "",
@@ -25,20 +31,73 @@ const Start = () => {
     inspiration: details?.inspiration || "",
     achievement: details?.achievement || "",
   });
+  const [errors, setErrors] = useState({
+    githubProfileLink: "",
+    linkedInLink: "",
+    twitterLink: "",
+  });
+
   useEffect(() => {
     if (form.experience === "No") {
       setError(true);
-    } else {
+      setWeb3Experience(false)
+    } else if(form.experience === "Yes"){
+      setWeb3Experience(true)
       setError(false);
+    } else{
+      setError(false);
+      setWeb3Experience(false)
 
     }
   }, [form.experience]);
+  useEffect(() => {
+    if (form.availability === "No") {
+      setShowVirtual(true)
+    } else {
+      setShowVirtual(false)
+    }
+  }, [form.availability]);
+  useEffect(() => {
+    if (form.backgroundKnowledge === "No") {
+      setShowSpecify(true)
+    } else {
+      setShowSpecify(false)
+    }
+  }, [form.backgroundKnowledge]);
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+  let error = "";
+
+  // Validation for specific fields
+  if (name === "githubProfileLink" && value) {
+    const githubRegex = /^http(s)?:\/\/(www\.)?github\.com\/[a-zA-Z0-9-]+\/?$/;
+    if (!githubRegex.test(value)) {
+      error = "Please enter a valid GitHub profile link.";
+    }
+  } else if (name === "linkedInLink" && value) {
+    const linkedInRegex = /^http(s)?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/;
+    if (!linkedInRegex.test(value)) {
+      error = "Please enter a valid LinkedIn profile link.";
+    }
+  } else if (name === "twitterLink" && value) {
+    const twitterRegex = /^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/;
+    if (!twitterRegex.test(value)) {
+      error = "Please enter a valid Twitter profile link.";
+    }
+  }
+    // setForm({
+    //   ...form,
+    //   [e.target.name]: e.target.value,
+    // });
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
   };
 
   const saveDetails = (e) => {
@@ -66,7 +125,10 @@ const Start = () => {
       ...details,
     }));
   }, [details]);
-
+  
+  console.log(details);
+  console.log('form', form);
+  
   return (
     <div className="layout_auth">
       <ToastContainer />
@@ -148,6 +210,9 @@ const Start = () => {
 
               <div>
                 <label>Github Profile Link</label>
+                {errors.githubProfileLink && (
+                  <p className="!text-red-600 text-[14px] leading-[21px]">{errors.githubProfileLink}</p>
+                )}
                 <input
                   type="text"
                   required
@@ -159,6 +224,9 @@ const Start = () => {
               </div>
               <div>
                 <label>LinkedIn Profile Link</label>
+                {errors.linkedInLink && (
+                  <p className="!text-red-600 text-[14px] leading-[21px]">{errors.linkedInLink}</p>
+                )}
                 <input
                   type="text"
                   required
@@ -170,6 +238,9 @@ const Start = () => {
               </div>
               <div>
                 <label>Twitter Profile Link</label>
+                {errors.twitterLink && (
+                  <p className="!text-red-600 text-[14px] leading-[21px]">{errors.twitterLink}</p>
+                )}
                 <input
                   type="text"
                   required
@@ -226,9 +297,9 @@ const Start = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div>
+              {web3Experience && <div>
                 <label>
-                  Will you be physically available at Abeokuta for the training?
+                  Would you prefer virtual classes or would you be physically available to come to our office (Pro Hub, Salawu Olabode Avenue, Idi Aba, Abeokuta) for 4 months to attend all your classes?. We strongly recommend on-site learning.
                 </label>
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
@@ -238,10 +309,54 @@ const Start = () => {
                   onChange={handleChange}
                 >
                   <option value="">Select option</option>
+                  <option value="Yes">I will be available on-site</option>
+                  <option value="No">I prefer virtual classes</option>
+                </select>
+              </div>}
+              {showVirtual && <div>
+                <label>
+                  Our orientation and graduation is onsite. Would you make yourself available for just these two days within the 4 months of your training?
+                </label>
+                <select
+                  className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
+                  name="orientation"
+                  required
+                  value={form.orientation}
+                  onChange={handleChange}
+                >
+                  <option value="">Select option</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select>
+              </div>}
+              <div>
+                <label>
+                  Do you have any background knowledge with JavaScript? 
+                </label>
+                <select
+                  className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
+                  name="backgroundKnowledge"
+                  required
+                  value={form.backgroundKnowledge}
+                  onChange={handleChange}
+                >
+                  <option value="">Select option</option>
+                  <option value="Yes, as a front end engineer with React or other frameworks.">Yes, as a front end engineer with React or other frameworks.</option>
+                  <option value="Yes, as a back end engineer with Node.js">Yes, as a back end engineer with Node.js</option>
+                  <option value="No">No, I know other programming languages.</option>
+                </select>
               </div>
+              {showSpecify && <div>
+                <label>Please specify the programming language you have worked with?</label>
+                <textarea
+                  className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3"
+                  required
+                  placeholder="Enter text here"
+                  name="specify"
+                  value={form.specify}
+                  onChange={handleChange}
+                />
+              </div>}
               <button
                 type="submit"
                 id="actionBtn"
