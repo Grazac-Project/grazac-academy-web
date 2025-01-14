@@ -35,6 +35,7 @@ const Start = () => {
     githubProfileLink: "",
     linkedInLink: "",
     twitterLink: "",
+    phoneNumber: "",
   });
 
   useEffect(() => {
@@ -84,6 +85,11 @@ const Start = () => {
     const twitterRegex = /^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/;
     if (!twitterRegex.test(value)) {
       error = "Please enter a valid Twitter profile link.";
+    }
+  } else if (name === "phoneNumber" && value) {
+    const phoneRegex = /^(\+[\d]{1,5}|0)?[7-9]\d{9}$/;
+    if (!phoneRegex.test(value)) {
+      error = "Please enter a valid Nigerian phone number.";
     }
   }
     // setForm({
@@ -180,6 +186,9 @@ const Start = () => {
               </div>
               <div>
                 <label>Phone Number</label>
+                {errors.phoneNumber && (
+                  <p className="!text-red-600 text-[14px] leading-[21px]">{errors.phoneNumber}</p>
+                )}
                 <input
                   type="number"
                   required
