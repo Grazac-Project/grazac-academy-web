@@ -35,22 +35,19 @@ const Start = () => {
               </div>
             </div>
             <h4 className="!text-heading !text-[24px] !mb-2 font-bold ">
-              Welcome to Grazac Web3 Academy
+              Welcome to Grazac Academy for web 3 engineers
             </h4>
             <p className="text-text text-[14px] leading-[21px] mb-2">
-              We’re excited to help you kickstart your career in Web3! <br /> To
-              begin your application, please fill out the form below and pay a
-              non-refundable commitment fee of <span className="text-primary">10,000</span>{" "}
-              naira.
+              We can’t wait to help you kickstart your Web 3 career.
+              Our training is onsite and virtual, we provide access to our workspace and internet for free for all on-site learners.
             </p>
             <p className="text-text text-[14px] leading-[21px] mb-2">
-              After payment, you will be contacted to take an assessment. This
-              will help us evaluate your readiness to learn. Please ensure you
-              don’t miss the assessment.
-              
+              All applicants are required to pay a non-refundable application fee of <span className="text-primary">NGN 10,000</span>. 
+              This helps us evaluate your readiness to learn and vet out talents who are ready to commit their time for this training.
             </p>
-            <p className="text-text text-[14px] leading-[21px]">
-              We look forward to being part of your growth!
+            <p className="text-text text-[14px] leading-[21px] mb-2">
+              Assessment will be sent to your email address within 48 hours of payment. We look forward to being part of your growth!
+              
             </p>
             <div className="flex my-8 items-center gap-1  ">
               <input
