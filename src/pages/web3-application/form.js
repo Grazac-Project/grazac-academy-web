@@ -32,10 +32,20 @@ const Start = () => {
     achievement: details?.achievement || "",
   });
   const [errors, setErrors] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    experience: '',
+    orientation: '',
+    backgroundKnowledge: '',
+    specify: '',
     githubProfileLink: "",
     linkedInLink: "",
     twitterLink: "",
-    phoneNumber: "",
+    gender: '',
+    inspiration: '',
+    achievement: ''
+    
   });
 
   useEffect(() => {
@@ -66,6 +76,54 @@ const Start = () => {
     }
   }, [form.backgroundKnowledge]);
 
+
+  const validateForm = () => {
+    const newErrors = {};
+  
+    if (!form.fullName.trim()) {
+      newErrors.fullName = "Full Name is required.";
+    }
+    if (!form.email.trim()) {
+      newErrors.email = "Email Address is required.";
+    }
+    if (!form.phoneNumber.trim() || !/^(\+[\d]{1,5}|0)?[7-9]\d{9}$/.test(form.phoneNumber)) {
+      newErrors.phoneNumber = "Please enter a valid Nigerian phone number.";
+    }
+    if (!form.githubProfileLink.trim() || !/^http(s)?:\/\/(www\.)?github\.com\/[a-zA-Z0-9-]+\/?$/.test(form.githubProfileLink)) {
+      newErrors.githubProfileLink = "Please enter a valid GitHub profile link.";
+    }
+    if (!form.linkedInLink.trim() || !/^http(s)?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/.test(form.linkedInLink)) {
+      newErrors.linkedInLink = "Please enter a valid LinkedIn profile link.";
+    }
+    if (!form.twitterLink.trim() || !/^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/.test(form.twitterLink)) {
+      newErrors.twitterLink = "Please enter a valid Twitter profile link.";
+    }
+    if (!form.gender) {
+      newErrors.gender = "Gender is required.";
+    }
+    if (!form.inspiration.trim()) {
+      newErrors.inspiration = "This field is required.";
+    }
+    if (!form.achievement.trim()) {
+      newErrors.achievement = "This field is required.";
+    }
+    if (form.experience === "Yes" && !form.availability) {
+      newErrors.availability = "This field is required.";
+    }
+    if (form.availability === "No" && !form.orientation) {
+      newErrors.orientation = "This field is required.";
+    }
+    if (!form.backgroundKnowledge) {
+      newErrors.backgroundKnowledge = "This field is required.";
+    }
+    if (form.backgroundKnowledge === "No" && !form.specify.trim()) {
+      newErrors.specify = "Please specify the programming language.";
+    }
+  
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if no errors.
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
   let error = "";
@@ -92,10 +150,11 @@ const Start = () => {
       error = "Please enter a valid Nigerian phone number.";
     }
   }
-    // setForm({
-    //   ...form,
-    //   [e.target.name]: e.target.value,
-    // });
+
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
     setForm((prevForm) => ({
       ...prevForm,
       [name]: value,
@@ -108,9 +167,17 @@ const Start = () => {
 
   const saveDetails = (e) => {
     e.preventDefault();
-    sessionStorage.setItem("formData", JSON.stringify(form));
-    console.log("Session storage data set:", form);
-    window.location = `/web3-application-payment`;
+    // sessionStorage.setItem("formData", JSON.stringify(form));
+    // console.log("Session storage data set:", form);
+    // window.location = `/web3-application-payment`;
+
+    if (validateForm()) {
+      sessionStorage.setItem("formData", JSON.stringify(form));
+      // console.log("Session storage data set:", form);
+      window.location = `/web3-application-payment`;
+    } else {
+      toast.error("Please fix the highlighted errors before proceeding.");
+    }
   };
 
   useEffect(() => {
@@ -121,7 +188,7 @@ const Start = () => {
         setDetails(parsedData);
       }
     } catch (error) {
-      console.error("Failed to get details:", error);
+      // console.error("Failed to get details:", error);
     }
   }, []);
 
@@ -132,8 +199,8 @@ const Start = () => {
     }));
   }, [details]);
   
-  console.log(details);
-  console.log('form', form);
+  // console.log(details);
+  // console.log('form', form);
   
   return (
     <div className="layout_auth">
@@ -164,9 +231,9 @@ const Start = () => {
             <form onSubmit={saveDetails}>
               <div>
                 <label>Full Name</label>
+                {errors.fullName && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.fullName}</p>}
                 <input
                   type="text"
-                  required
                   placeholder="Enter your full name"
                   name="fullName"
                   value={form.fullName}
@@ -175,9 +242,9 @@ const Start = () => {
               </div>
               <div>
                 <label>Email Address</label>
+                {errors.email && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.email}</p>}
                 <input
                   type="email"
-                  required
                   placeholder="Email Address"
                   name="email"
                   value={form.email}
@@ -191,7 +258,6 @@ const Start = () => {
                 )}
                 <input
                   type="number"
-                  required
                   placeholder="Phone Number"
                   name="phoneNumber"
                   value={form.phoneNumber}
@@ -200,13 +266,13 @@ const Start = () => {
               </div>
               <div>
                 <label>Do you have experience with web2?</label>
+                {errors.experience && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.experience}</p>}
                 <p className=" !text-red-600 text-[14px] leading-[21px]">
                   {error ? "You are not eligible" : ""}
                 </p>
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
                   name="experience"
-                  required
                   value={form.experience}
                   onChange={handleChange}
                 >
@@ -224,7 +290,6 @@ const Start = () => {
                 )}
                 <input
                   type="text"
-                  required
                   placeholder="Enter your Github profile link"
                   name="githubProfileLink"
                   value={form.githubProfileLink}
@@ -238,7 +303,6 @@ const Start = () => {
                 )}
                 <input
                   type="text"
-                  required
                   placeholder="Enter your LinkedIn profile link"
                   name="linkedInLink"
                   value={form.linkedInLink}
@@ -252,7 +316,6 @@ const Start = () => {
                 )}
                 <input
                   type="text"
-                  required
                   placeholder="Enter your Twitter profile link"
                   name="twitterLink"
                   value={form.twitterLink}
@@ -271,10 +334,10 @@ const Start = () => {
               </div>
               <div>
                 <label>Gender</label>
+                {errors.gender && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.gender}</p>}
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
                   name="gender"
-                  required
                   value={form.gender}
                   onChange={handleChange}
                 >
@@ -286,9 +349,9 @@ const Start = () => {
               </div>
               <div>
                 <label>What inspired or motivated you to start coding?</label>
+                {errors.inspiration && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.inspiration}</p>}
                 <textarea
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
-                  required
                   placeholder="Enter text here"
                   name="inspiration"
                   value={form.inspiration}
@@ -297,9 +360,9 @@ const Start = () => {
               </div>
               <div>
                 <label>What do you hope to achieve from this program?</label>
+                {errors.achievement && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.achievement}</p>}
                 <textarea
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3"
-                  required
                   placeholder="Enter text here"
                   name="achievement"
                   value={form.achievement}
@@ -310,10 +373,10 @@ const Start = () => {
                 <label>
                   Would you prefer virtual classes or would you be physically available to come to our office (Pro Hub, Salawu Olabode Avenue, Idi Aba, Abeokuta) for 4 months to attend all your classes?. We strongly recommend on-site learning.
                 </label>
+                {errors.availability && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.availability}</p>}
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
                   name="availability"
-                  required
                   value={form.availability}
                   onChange={handleChange}
                 >
@@ -326,10 +389,10 @@ const Start = () => {
                 <label>
                   Our orientation and graduation is onsite. Would you make yourself available for just these two days within the 4 months of your training?
                 </label>
+                {errors.orientation && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.orientation}</p>}
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
                   name="orientation"
-                  required
                   value={form.orientation}
                   onChange={handleChange}
                 >
@@ -342,10 +405,10 @@ const Start = () => {
                 <label>
                   Do you have any background knowledge with JavaScript? 
                 </label>
+                {errors.backgroundKnowledge && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.backgroundKnowledge}</p>}
                 <select
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3 mb-4"
                   name="backgroundKnowledge"
-                  required
                   value={form.backgroundKnowledge}
                   onChange={handleChange}
                 >
@@ -357,9 +420,9 @@ const Start = () => {
               </div>
               {showSpecify && <div>
                 <label>Please specify the programming language you have worked with?</label>
+                {errors.specify && <p className="!text-red-600 text-[14px] leading-[21px]">{errors.specify}</p>}
                 <textarea
                   className="w-full border border-[#D9DCE1] text-text text-[14px] leading-[21px] rounded-lg pl-6 sm:pl-1 py-3"
-                  required
                   placeholder="Enter text here"
                   name="specify"
                   value={form.specify}
