@@ -102,19 +102,19 @@ const Start = () => {
       newErrors.gender = "Gender is required.";
     }
     if (!form.inspiration.trim()) {
-      newErrors.inspiration = "Inspiration is required.";
+      newErrors.inspiration = "This field is required.";
     }
     if (!form.achievement.trim()) {
-      newErrors.achievement = "Achievement is required.";
+      newErrors.achievement = "This field is required.";
     }
     if (form.experience === "Yes" && !form.availability) {
-      newErrors.availability = "Availability is required.";
+      newErrors.availability = "This field is required.";
     }
     if (form.availability === "No" && !form.orientation) {
-      newErrors.orientation = "Orientation availability is required.";
+      newErrors.orientation = "This field is required.";
     }
     if (!form.backgroundKnowledge) {
-      newErrors.backgroundKnowledge = "Background knowledge is required.";
+      newErrors.backgroundKnowledge = "This field is required.";
     }
     if (form.backgroundKnowledge === "No" && !form.specify.trim()) {
       newErrors.specify = "Please specify the programming language.";
@@ -173,7 +173,7 @@ const Start = () => {
 
     if (validateForm()) {
       sessionStorage.setItem("formData", JSON.stringify(form));
-      console.log("Session storage data set:", form);
+      // console.log("Session storage data set:", form);
       window.location = `/web3-application-payment`;
     } else {
       toast.error("Please fix the highlighted errors before proceeding.");
@@ -188,7 +188,7 @@ const Start = () => {
         setDetails(parsedData);
       }
     } catch (error) {
-      console.error("Failed to get details:", error);
+      // console.error("Failed to get details:", error);
     }
   }, []);
 
@@ -199,8 +199,8 @@ const Start = () => {
     }));
   }, [details]);
   
-  console.log(details);
-  console.log('form', form);
+  // console.log(details);
+  // console.log('form', form);
   
   return (
     <div className="layout_auth">
