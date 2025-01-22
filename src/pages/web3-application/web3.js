@@ -86,33 +86,35 @@ const Web3 = () => {
   return (
     <div className="w-[1440px] laptop:w-[100%] m-auto web3">
       {showModal && (
-          // <a href="/signup">
-            <div className="web3modal">
-              <div className="web3modal_content">
-                <img src={badge} alt="" className="web3modal_badge" />
-                <p>
-                  Application for our free web 3 training closes by January 31st. Orientation is Monday February 10th and class will start February 11th.
-                  {/* <a
+        // <a href="/signup">
+        <div className="web3modal">
+          <div className="web3modal_content">
+            <img src={badge} alt="" className="web3modal_badge" />
+            <p>
+              Application for our free web 3 training closes by January 31st.
+              Orientation is Monday February 10th and class will start February
+              11th.
+              {/* <a
                 className="infomodal_content-link"
                 href="/login"
               >
                 Apply Now
               </a> */}
-                </p>
-                {/* <Link to="/graduate-accelerator-plan">
+            </p>
+            {/* <Link to="/graduate-accelerator-plan">
               <button>Learn more</button>
             </Link> */}
 
-                <img
-                  src={ex}
-                  alt=""
-                  onClick={handleModal}
-                  style={{ cursor: "pointer" }}
-                />
-              </div>
-            </div>
-          // </a>
-        )}
+            <img
+              src={ex}
+              alt=""
+              onClick={handleModal}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </div>
+        // </a>
+      )}
       <Navbar />
       {/* hero */}
       <section className="flex justify-center items-center md:block pt-3 mx-auto laptop:w-[90%] ">
@@ -122,7 +124,8 @@ const Web3 = () => {
             months for free
           </h1>
           <p className="w-[502px] md:w-auto text-text text-[18px] leading-[24.85px] mb-8">
-            Kickstart your career as a blockchain developer through our on-site or virtual bootcamp
+            Kickstart your career as a blockchain developer through our on-site
+            or virtual bootcamp
           </p>
           <Link to="/start">
             <button className="bg-primary w-[50%] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
@@ -367,8 +370,8 @@ const Web3 = () => {
                   Fill and submit the application form
                 </h5>
                 <p className="mx-auto lg:w-auto text-text  text-[16px]  leading-[22px] ">
-                  Create an account to start your application. Login to your
-                  dashboard and fill in your correct details.
+                  Fill in the application form correctly and pay the application
+                  fee required for the free training
                 </p>
               </div>
             </div>
@@ -381,9 +384,9 @@ const Web3 = () => {
                   Pass the assessment tests
                 </h5>
                 <p className="mx-auto lg:w-auto text-text  text-[16px]  leading-[22px] ">
-                  If your application is successful, you will be contacted via
-                  mail to take a physical assessment test to ensure your
-                  commitment meets our standard.
+                  After your application has been submitted, you will be
+                  contacted via email to take a one time online assessment test
+                  to assess your technical proficiency for this training.
                 </p>
               </div>
             </div>
@@ -431,7 +434,10 @@ const Web3 = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>Our training is both onsite and virtual but we strongly recommend on-site to help building your network and give you a strong sense of community 
+                        <p>
+                          Our training is both onsite and virtual but we
+                          strongly recommend on-site to help building your
+                          network and give you a strong sense of community
                         </p>
                       </div>
                     </Accordion.Body>
@@ -448,9 +454,7 @@ const Web3 = () => {
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>
-                          The program will run for 4 months.
-                        </p>
+                        <p>The program will run for 4 months.</p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>

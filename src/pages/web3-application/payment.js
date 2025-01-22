@@ -53,6 +53,7 @@ const Start = () => {
   const checkCoupon = async (e) => {
     e.preventDefault();
     setLoading("loading");
+    setError("");
     try {
       const response = await coupon(form);
       console.log(response);
@@ -69,40 +70,68 @@ const Start = () => {
       setError(errorMessage);
     }
   };
+  // const doSignUp = async (e) => {
+  //   setLoading("loader");
+  //   try {
+  //     const response = await Web3Form(details);
+  //     console.log(response);
+
+  //     if (response.data.status === 200) {
+        
+  //       // toast.success(response.data.message);
+  //       setSucessModal(true);
+
+  //       setLoading("");
+  //     } else {
+  //       toast.error("Something went wrong, please try again!");
+  //       setLoading("");
+  //     }
+  //   } catch (err) {
+  //     setLoading("");
+
+  //     const errorMessage =
+  //       err.response?.data?.message ||
+  //       "Something went wrong! Please ensure you have a good internet connection.";
+  //     toast.error(errorMessage);
+  //   }
+  // };
+  // const doSignUpWithCoupon = () => {
+   
+  //     doSignUp();
+
+  //     setLoading("");
+
+  //     setSucessModal(true);
+    
+  // };
   const doSignUp = async (e) => {
     setLoading("loader");
     try {
       const response = await Web3Form(details);
       console.log(response);
-
+  
       if (response.data.status === 200) {
-        
         // toast.success(response.data.message);
         setSucessModal(true);
-
-        setLoading("");
       } else {
-        toast.error("Something went wrong, please try again!");
-        setLoading("");
+        // toast.error("Something went wrong, please try again!");
+        setFailedModal(true)
       }
     } catch (err) {
-      setLoading("");
-
       const errorMessage =
         err.response?.data?.message ||
         "Something went wrong! Please ensure you have a good internet connection.";
-      toast.error(errorMessage);
+      // toast.error(errorMessage);
+      setFailedModal("true")
+    } finally {
+      setLoading(""); 
     }
   };
-  const doSignUpWithCoupon = () => {
-   
-      doSignUp();
-
-      setLoading("");
-
-      setSucessModal(true);
-    
+  
+  const doSignUpWithCoupon = async () => {
+    await doSignUp();
   };
+  
   const config = {
     public_key:
       process.env.REACT_APP_FLW_PUBLIC_KEY ||
