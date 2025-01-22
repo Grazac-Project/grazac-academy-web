@@ -15,6 +15,7 @@ import "../../tailwindComponents.css";
 import sucess from "../../images/mark.svg";
 import copy from "../../images/copy.svg";
 import file from "../../images/file.svg";
+import filee from "../../images/file-icon.svg";
 
 import { Button } from "react-bootstrap";
 import { set } from "date-fns";
@@ -144,15 +145,15 @@ const Start = () => {
         // toast.success(response.data.message);
         setSucessModal(true);
       } else {
-        // toast.error("Something went wrong, please try again!");
-        setFailedModal(true);
+        toast.error("Something went wrong, please try again!");
+        // setFailedModal(true);
       }
     } catch (err) {
       const errorMessage =
         err.response?.data?.message ||
         "Something went wrong! Please ensure you have a good internet connection.";
-      // toast.error(errorMessage);
-      setFailedModal("true");
+      toast.error(errorMessage);
+      // setFailedModal("true");
     } finally {
       setLoading("");
     }
@@ -339,6 +340,7 @@ const Start = () => {
                     </div>
                   </div>
                   <div className="w-[100%] min-h-[126px] border border-[#EAECF0] mt-6 mb-8 ">
+                    
                     <div className="py-4 px-6 flex flex-col justify-end items-center">
                       <input
                         type="file"
@@ -359,20 +361,36 @@ const Start = () => {
                         }
                         className="cursor-pointer"
                       />
-                      <p className="mb-1 !font-[500]">
-                        <span
-                          className="!text-[12px] !leading-4 !font-[500]"
-                          onClick={() =>
-                            document.getElementById("fileInput").click()
-                          }
-                        >
-                          Attach receipt
-                        </span>{" "}
-                        or drag and drop
-                      </p>
-                      <p className="!font-[500]">
-                        JPEG, PDF and PNG (max. 10mb)
-                      </p>
+                      {selectedFile === "null" ? (
+                      <div>
+                        <p className="mb-1 !font-[500] ">
+                          <span
+                            className="!text-[12px] !leading-4 !font-[500]"
+                            onClick={() =>
+                              document.getElementById("fileInput").click()
+                            }
+                          >
+                            Attach receipt
+                          </span>{" "}
+                          or drag and drop
+                        </p>
+                        <p className="!font-[500]">
+                          JPEG, PDF and PNG (max. 10mb)
+                        </p>
+                      </div>
+                      ) : (<div className="flex justify-center m-auto w-full mt-[16px] ">
+                        <div className="flex items-center gap-2 ">
+                          <img src={filee} height={32} width={32} alt="icon" />
+                          <div>
+                            <h5 className="text-[14px] leading-[19.6px] font-[500] text-[#344054]  ">
+                              {fileName || "No file"}
+                            </h5>
+                            <p className="text-[14px] font-inter leading-[20px] text-[#667085]">
+                              {fileSize}
+                            </p>
+                          </div>
+                        </div>
+                      </div>)}
                     </div>
                   </div>
                   <div className="">
