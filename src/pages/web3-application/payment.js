@@ -255,14 +255,14 @@ const Start = () => {
       {failedModal && <FailedModal close={handleCloseFailed} />}
       {sucessModal && <SucessModal close={handleCloseSucess} />}
       <ToastContainer />
-      <div className="layout_auth-main">
-        <div className="auth_container">
+      <div className="layout_auth-main ">
+        <div className="auth_container ">
           <div className="auth_container-logo">
             <Link to="/">
               <img src={logo} alt="logo" />
             </Link>
           </div>
-          <div className="auth_container_form !w-[542px] sm:!w-[95%] !px-[68px] !pt-[47px] !pb-[24]">
+          <div className="auth_container_form !w-[542px] sm:!w-[95%] md:!px-[0px] !px-[68px] !pt-[47px] !pb-[24]">
             <div>
               <Link to="/web3-application-form" className="cursor-pointer">
                 <h4 className="text-text text-[12px] leading-[18px] flex items-center gap-1 mb-[10px]   ">
@@ -291,7 +291,7 @@ const Start = () => {
                 ""
               ) : (
                 <div>
-                  <div className="h-[60px] w-[100%] bg-[#F9BA0D1A] rounded-[8px]  p-[12px]  flex justify-center items-center my-4 ">
+                  <div className="min-h-[60px] w-[100%] bg-[#F9BA0D1A] rounded-[8px]  p-[12px]  flex justify-center items-center my-4 ">
                     <p className="font-500 text-[12px] !leading-[18px] !text-[#787676] ">
                       We are currently experiencing issues with our Flutterwave
                       account. Please make a bank transfer to the account below
