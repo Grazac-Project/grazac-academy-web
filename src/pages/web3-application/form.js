@@ -99,9 +99,9 @@ const Start = () => {
     if (!form.linkedInLink.trim() || !/^http(s)?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/.test(form.linkedInLink)) {
       newErrors.linkedInLink = "Please enter a valid LinkedIn profile link.";
     }
-    if (!form.twitterLink.trim() || !/^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/.test(form.twitterLink)) {
-      newErrors.twitterLink = "Please enter a valid Twitter profile link.";
-    }
+    // if (!form.twitterLink.trim() || !/^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/.test(form.twitterLink)) {
+    //   newErrors.twitterLink = "Please enter a valid Twitter profile link.";
+    // }
     if (!form.gender) {
       newErrors.gender = "Gender is required.";
     }
@@ -143,12 +143,14 @@ const Start = () => {
     if (!linkedInRegex.test(value)) {
       error = "Please enter a valid LinkedIn profile link.";
     }
-  } else if (name === "twitterLink" && value) {
-    const twitterRegex = /^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/;
-    if (!twitterRegex.test(value)) {
-      error = "Please enter a valid Twitter profile link.";
-    }
-  } else if (name === "phoneNumber" && value) {
+  }
+  //  else if (name === "twitterLink" && value) {
+  //   const twitterRegex = /^http(s)?:\/\/(www\.)?x\.com\/[a-zA-Z0-9_]+\/?$/;
+  //   if (!twitterRegex.test(value)) {
+  //     error = "Please enter a valid Twitter profile link.";
+  //   }
+  // } 
+  else if (name === "phoneNumber" && value) {
     const phoneRegex = /^(\+[\d]{1,5}|0)?[7-9]\d{9}$/;
     if (!phoneRegex.test(value)) {
       error = "Please enter a valid Nigerian phone number.";
@@ -320,9 +322,9 @@ const Start = () => {
               </div>
               <div>
                 <label>Twitter Profile Link</label>
-                {errors.twitterLink && (
+                {/* {errors.twitterLink && (
                   <p className="!text-red-600 text-[14px] leading-[21px]">{errors.twitterLink}</p>
-                )}
+                )} */}
                 <input
                   type="text"
                   placeholder="Enter your Twitter profile link"
