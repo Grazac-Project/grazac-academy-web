@@ -4,9 +4,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import logo from "../../images/svg/academy-logo.svg";
 import { Link } from "react-router-dom";
-import loader from "../../images/svg/dashboard/loader.gif";
+// import loader from "../../images/svg/dashboard/loader.gif";
 // import '../../tailwindComponents.css';
-import "tailwindcss/tailwind.css"; // Import Tailwind CSS only in this component
+import "tailwindcss/tailwind.css"; 
+import loader from "../../images/load.gif";
+
+import { set } from "date-fns";
 
 const Start = () => {
   const [details, setDetails] = useState({});
@@ -14,6 +17,7 @@ const Start = () => {
   const [web3Experience, setWeb3Experience] = useState(false);
   const [showVirtual, setShowVirtual] = useState(false);
   const [showSpecify, setShowSpecify] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     fullName: details?.fullName || "",
     email: details?.email || "",
@@ -168,17 +172,22 @@ const Start = () => {
   };
 
   const saveDetails = (e) => {
+    setLoading(true);
     e.preventDefault();
     // sessionStorage.setItem("formData", JSON.stringify(form));
-    // console.log("Session storage data set:", form);
+    // console.log("Session storage data set:");
     // window.location = `/web3-application-payment`;
 
     if (validateForm()) {
       sessionStorage.setItem("formData", JSON.stringify(form));
+      setLoading(true);
       // console.log("Session storage data set:", form);
       window.location = `/web3-application-payment`;
+      setLoading(false);
+
     } else {
       toast.error("Please fix the highlighted errors before proceeding.");
+      setLoading(false);
     }
   };
 
@@ -437,7 +446,9 @@ const Start = () => {
                 className="!mt-8"
                 disabled={form.experience === "No"}
               >
-                Continue
+                Continue {loading  && (
+                <img src={loader} width={20} height={20} alt="logo" />
+              )}
               </button>
             </form>
           </div>

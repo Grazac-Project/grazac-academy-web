@@ -23,3 +23,6 @@ export const ResetPasswordAction = (data) => {
 export const Web3Form = (data) => {
     return APIKit.post(`api/v1/user/signup`, data)
 }
+export const coupon = (code) => {
+    return APIKit.post(`/api/v1/user/get-and-increment-coupon/${code}`)
+}
