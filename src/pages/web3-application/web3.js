@@ -86,15 +86,13 @@ const Web3 = () => {
   return (
     <div className="w-[1440px] laptop:w-[100%] m-auto web3">
       {showModal && (
-        // <a href="/signup">
-        <div className="web3modal">
-          <div className="web3modal_content">
-            <img src={badge} alt="" className="web3modal_badge" />
-            <p>
-              Application for our free web 3 training closes by January 31st.
-              Orientation is Monday February 10th and class will start February
-              11th.
-              {/* <a
+          // <a href="/signup">
+            <div className="web3modal">
+              <div className="web3modal_content">
+                <img src={badge} alt="" className="web3modal_badge" />
+                <p>
+                  Application for our free web 3 training closes by February 14th. Orientation is Monday February 17th and class will start February 18th.
+                  {/* <a
                 className="infomodal_content-link"
                 href="/login"
               >
