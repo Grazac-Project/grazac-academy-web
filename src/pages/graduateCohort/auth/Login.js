@@ -30,11 +30,12 @@ function Login() {
     var btn = document.getElementById("actionBtn");
     btn.innerHTML = `<img src=${loader} width="20px" />`;
     const { email, password, cohort } = form;
-    var data = new FormData();
+    // var data = new FormData();
+    var data = {};
 
-    data.append("email", email);
-    data.append("password", password);
-    data.append("cohort_batch", cohort);
+    data.email =  email;
+    data.password = password;
+    data.cohort_batch = cohort;
 
     LoginAction(data)
       .then((response) => response.data)
