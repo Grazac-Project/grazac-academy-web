@@ -1,5 +1,9 @@
 import { APIKit } from './apikit';
-
+function logFormData(formData) {
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+  }
 
 export const SignupAction = (data) => {
     return APIKit.post(`api/v1/user/create`, data)

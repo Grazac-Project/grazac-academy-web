@@ -40,18 +40,26 @@ function SignUp() {
       // btn.innerHTML=`<img src=${loader} width="20px" />`;
       const { firstName, lastName, email, phone, hear_about_us, password, cohort_batch } =
         form;
-      var data = new FormData();
+      let data = {}
+      // var data = new FormData();
       const phone_length = phone.length;
 
       // if (phone_length == 11 || phone_length > 11) {
       if (phone_length === 11) {
-        data.append("firstName", firstName);
-        data.append("lastName", lastName);
-        data.append("email", email);
-        data.append("phoneNumber", phone);
-        data.append("password", password);
-        data.append("hear_about_us", hear_about_us);
-        data.append("cohort_batch", cohort_batch);
+        data.firstName = firstName
+        data.lastName = lastName
+        data.email = email
+        data.phoneNumber = phone
+        data.hear_about_us = hear_about_us
+        data.password = password
+        data.cohort_batch = cohort_batch
+        // data.append("firstName", firstName);
+        // data.append("lastName", lastName);
+        // data.append("email", email);
+        // data.append("phoneNumber", phone);
+        // data.append("password", password);
+        // data.append("hear_about_us", hear_about_us);
+        // data.append("cohort_batch", cohort_batch);
 
         btn.innerHTML = `<img src=${loader} width="20px" />`;
         
