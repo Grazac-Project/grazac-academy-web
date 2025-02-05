@@ -168,7 +168,7 @@ const Start = () => {
       process.env.REACT_APP_FLW_PUBLIC_KEY ||
       "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
-    amount: 10000,
+    amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -283,11 +283,11 @@ const Start = () => {
             <p className="text-text text-[14px] leading-[21px] ">
               Complete your application by paying your application fee
             </p>
-            {/* <p className="text-text text-[14px] leading-[21px] my-8">
+            <p className="text-text text-[14px] leading-[21px] mt-4 mb-8">
               Application Fee: <span className="text-primary">10000 NGN</span>
-            </p> */}
+            </p>
             <form>
-              {active ? (
+              {/* {active ? (
                 ""
               ) : (
                 <div>
@@ -402,7 +402,7 @@ const Start = () => {
                     <p className="m-8 text-center !font-[500]">OR</p>
                   </div>
                 </div>
-              )}
+              )} */}
 
               <label>Enter coupon code?</label>
               <div className="flex   gap-1">
@@ -437,7 +437,7 @@ const Start = () => {
                 </p>
               )}
             </form>
-            {/* <button
+            <button
               onClick={active ? doSignUpWithCoupon : handlePayment}
               className="!mt-8 cursor-pointer flex justify-center items-center"
             >
@@ -445,8 +445,8 @@ const Start = () => {
               {loading === "loader" && (
                 <img src={loader} width={20} height={20} alt="logo" />
               )}
-            </button> */}
-            <button
+            </button>
+            {/* <button
               onClick={doSignUp}
               className="!mt-8 cursor-pointer flex justify-center items-center"
             >
@@ -454,7 +454,7 @@ const Start = () => {
               {loading === "loader" && (
                 <img src={loader} width={20} height={20} alt="logo" />
               )}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
