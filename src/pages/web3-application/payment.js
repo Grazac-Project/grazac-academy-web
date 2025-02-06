@@ -168,7 +168,7 @@ const Start = () => {
       process.env.REACT_APP_FLW_PUBLIC_KEY ||
       "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
     tx_ref: Date.now(),
-    amount: 100,
+    amount: 10000,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
