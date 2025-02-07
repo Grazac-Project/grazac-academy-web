@@ -343,7 +343,7 @@ function NotSubmitted({
     console.log(bioData)
     submitDetailsLnpl(bioData, userId)
       .then((res) => {
-        console.log(bioData)
+        // console.log(bioData)
         if (res.status === 200) {
           // toast.success(
           //   "Submission successful! Your Application is now under review."
