@@ -116,30 +116,48 @@ const Start = () => {
 
   // };
   const doSignUp = async (e) => {
-    const Data = new FormData();
+    // const Data = new FormData();
+    const newDetails = {}
 
-    Data.append("fullName", details?.fullName);
-    Data.append("email", details?.email);
-    Data.append("phoneNumber", details?.phoneNumber);
-    Data.append("experience", details?.experience);
-    Data.append("availability", details?.availability);
-    Data.append("orientation", details?.orientation);
-    Data.append("backgroundKnowledge", details?.backgroundKnowledge);
-    Data.append("specify", details?.specify);
-    Data.append("githubProfileLink", details?.githubProfileLink);
-    Data.append("linkedInLink", details?.linkedInLink);
-    Data.append("twitterLink", details?.twitterLink);
-    Data.append("portfolioLink", details?.portfolioLink);
-    Data.append("gender", details?.gender);
-    Data.append("inspiration", details?.inspiration);
-    Data.append("achievement", details?.achievement);
-    Data.append("coupon", form);
-    Data.append("attachment", selectedFile);
+    newDetails.fullName = details?.fullName;
+    newDetails.email = details?.email;
+    newDetails.phoneNumber = details?.phoneNumber;
+    newDetails.experience = details?.experience;
+    newDetails.availability = details?.availability;
+    newDetails.orientation = details?.orientation;
+    newDetails.backgroundKnowledge = details?.backgroundKnowledge;
+    newDetails.specify = details?.specify;
+    newDetails.githubProfileLink = details?.githubProfileLink;
+    newDetails.linkedInLink = details?.linkedInLink;
+    newDetails.twitterLink = details?.twitterLink;
+    newDetails.portfolioLink = details?.portfolioLink;
+    newDetails.gender = details?.gender;
+    newDetails.inspiration = details?.inspiration;
+    newDetails.achievement = details?.achievement;
+    newDetails.coupon = form;
+    
+    // Data.append("fullName", details?.fullName);
+    // Data.append("email", details?.email);
+    // Data.append("phoneNumber", details?.phoneNumber);
+    // Data.append("experience", details?.experience);
+    // Data.append("availability", details?.availability);
+    // Data.append("orientation", details?.orientation);
+    // Data.append("backgroundKnowledge", details?.backgroundKnowledge);
+    // Data.append("specify", details?.specify);
+    // Data.append("githubProfileLink", details?.githubProfileLink);
+    // Data.append("linkedInLink", details?.linkedInLink);
+    // Data.append("twitterLink", details?.twitterLink);
+    // Data.append("portfolioLink", details?.portfolioLink);
+    // Data.append("gender", details?.gender);
+    // Data.append("inspiration", details?.inspiration);
+    // Data.append("achievement", details?.achievement);
+    // Data.append("coupon", form);
+    // Data.append("attachment", selectedFile);
 
     setLoading("loader");
     try {
       // const response = await Web3Form(Data);
-      const response = await Web3Form(details);
+      const response = await Web3Form(newDetails);
       console.log(response);
 
       if (response.data.status === 200) {
