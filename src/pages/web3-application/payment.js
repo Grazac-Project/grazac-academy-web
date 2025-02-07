@@ -138,7 +138,8 @@ const Start = () => {
 
     setLoading("loader");
     try {
-      const response = await Web3Form(Data);
+      // const response = await Web3Form(Data);
+      const response = await Web3Form(details);
       console.log(response);
 
       if (response.data.status === 200) {
@@ -399,10 +400,10 @@ const Start = () => {
                       attachments.{" "}
                     </p>
 
-                    <p className="m-8 text-center !font-[500]">OR</p>
-                  </div>
-                </div>
-              )} */}
+                    </div>
+                    </div>
+                    )} */}
+              <p className="m-8 text-center !font-[500]">OR</p>
 
               <label>Enter coupon code?</label>
               <div className="flex   gap-1">
