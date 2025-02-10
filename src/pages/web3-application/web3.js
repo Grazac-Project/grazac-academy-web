@@ -337,7 +337,7 @@ const Web3 = () => {
               </p>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-start sm:justify-center">
               <Link to="/start">
                 <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0 md:my-8">
                   Get Started
@@ -405,7 +405,7 @@ const Web3 = () => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-start sm:justify-center">
               <Link to="/start">
                 <button className="bg-primary w-[225px] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ml-6 md:ml-0   sm:my-4">
                   Get Started

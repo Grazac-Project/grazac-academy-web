@@ -6,7 +6,8 @@ const WhatsApp = () => {
   return (
     <>
       <a
-        href="https://wa.me/2348068365951"
+        // href="https://wa.me/2348068365951"
+        href="https://wa.link/lspb4k"
         target="_blank"
         className={classes.whatsapp}
       >
