@@ -91,9 +91,9 @@ const Web3 = () => {
           <div className="web3modal_content">
             <img src={badge} alt="" className="web3modal_badge" />
             <p>
-              Application for our free web 3 training closes by January 31st.
-              Orientation is Monday February 10th and class will start February
-              11th.
+              Application for our free web 3 training closes by Febuary 20th.
+              Orientation is Friday, February 21st and class will start February
+              26th.
               {/* <a
                 className="infomodal_content-link"
                 href="/login"
