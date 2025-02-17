@@ -156,9 +156,9 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for cohort 015 is ongoing. Early registration
-                  closes by December 20th, Hurry Now and <span>Register!</span>{" "}
-                  Classes starts by January 8, 2025
+                  Application for cohort 016 is ongoing. Early registration
+                  closes by May 31st, Hurry Now and <span>Register!</span>{" "}
+                  Classes starts by July 7, 2025
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
