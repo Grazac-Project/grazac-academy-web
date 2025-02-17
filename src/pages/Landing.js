@@ -50,6 +50,7 @@ import WhatsApp from "../components/whatsApp/whatsApp";
 import VirtualSection from "../components/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LandingMentors from "../components/LandingMentors";
+import LandingJudges from "../components/LandingJudges";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
@@ -657,6 +658,7 @@ const Landing = () => {
               </div>
             </Link>
           </div>
+          <LandingJudges />
         </div>
 
         <div className="landing__discover">

@@ -15,7 +15,11 @@
           line-height: 51.04px;
           text-align: center;
           color: #073041;
-          margin-bottom: 8px; 
+          margin-bottom: 8px;
+        @media screen and (max-width: 425px){
+            font-size: 32px;
+            line-height: 40.83px;   
+        } 
         }
         &-text{
           font-weight: 500;
