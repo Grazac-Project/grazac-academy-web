@@ -8,8 +8,8 @@
  import tobiloba from '../images/tobiloba.png'
  import ayotunde from '../images/ayotunde.png'
  import moyinoluwa from '../images/moyinoluwa.png'
- import dada from '../images/dada.png'
- import eniola from '../images/eniola.png'
+ import fayemi from '../images/fayemi.png'
+ import adeniyi from '../images/adeniyi.png'
  
  export const mentorsData = [
      {
@@ -63,10 +63,10 @@
 ]
  export const judgesData = [
      {
-         image: eniola,
-         name: 'Eniola Ogunsola',
-         role: 'UX DESIGNER',
-         company: 'Oracle'
+         image: adeniyi,
+         name: 'Ahmod Adeniyi',
+         role: 'Data ANALYST',
+         company: 'The Access Group'
      },
     {
         image: moyinoluwa,
@@ -81,10 +81,10 @@
         company: 'Location.live'
     },
     {
-        image: dada,
-        name: 'Deborah Dada',
-        role: 'Product Designer',
-        company: 'Clearscore'
+        image: fayemi,
+        name: 'Daniel Fayemi',
+        role: 'SNR Software Engineer',
+        company: 'Notsana'
     },
     
 ]
