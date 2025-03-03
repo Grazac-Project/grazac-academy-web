@@ -10,6 +10,8 @@
  import moyinoluwa from '../images/moyinoluwa.png'
  import fayemi from '../images/fayemi.png'
  import adeniyi from '../images/adeniyi.png'
+import justice from '../images/justice.jpg'
+
  
  export const mentorsData = [
      {
