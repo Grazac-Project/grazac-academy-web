@@ -6,8 +6,10 @@
 //  import jeremiah from '../images/jeremiah.png'
  import dansteve from '../images/dansteve.png'
  import tobiloba from '../images/tobiloba.png'
- import justice from '../images/justice.jpg'
-
+ import ayotunde from '../images/ayotunde.png'
+ import moyinoluwa from '../images/moyinoluwa.png'
+ import fayemi from '../images/fayemi.png'
+ import adeniyi from '../images/adeniyi.png'
  
  export const mentorsData = [
      {
@@ -64,4 +66,31 @@
         role: 'Senior Front End Engineer',
         company: 'Creditcheck'
     },
+]
+ export const judgesData = [
+     {
+         image: adeniyi,
+         name: 'Ahmod Adeniyi',
+         role: 'Data ANALYST',
+         company: 'The Access Group'
+     },
+    {
+        image: moyinoluwa,
+        name: 'Moyinoluwa Olufisayo',
+        role: 'UX Designer',
+        company: 'Booking.com'
+    },
+    {
+        image: ayotunde,
+        name: 'Ayotunde Lanwo',
+        role: 'Product Manager',
+        company: 'Location.live'
+    },
+    {
+        image: fayemi,
+        name: 'Daniel Fayemi',
+        role: 'SNR Software Engineer',
+        company: 'Notsana'
+    },
+    
 ]

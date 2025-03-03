@@ -1082,6 +1082,12 @@ input:focus, select:focus, textarea:focus {
   color: #073041;
   margin-bottom: 8px;
 }
+@media screen and (max-width: 425px) {
+  .landingmentors-container-head {
+    font-size: 32px;
+    line-height: 40.83px;
+  }
+}
 .landingmentors-container-text {
   font-weight: 500;
   font-size: 16px;
