@@ -3,9 +3,11 @@
  import benjamin from '../images/benjamin.png'
  import ifeoluwa from '../images/ifeoluwa.png'
  import franklin from '../images/franklin.png'
- import jeremiah from '../images/jeremiah.png'
+//  import jeremiah from '../images/jeremiah.png'
  import dansteve from '../images/dansteve.png'
  import tobiloba from '../images/tobiloba.png'
+ import justice from '../images/justice.jpg'
+
  
  export const mentorsData = [
      {
@@ -38,11 +40,17 @@
         role: 'Senior Flutter Engineer',
         company: 'BT Group UK'
     },
+    // {
+    //     image: jeremiah,
+    //     name: 'Jeremiah Ogunyemi',
+    //     role: 'Senior Software Engineer',
+    //     company: 'Apollo.io'
+    // },
     {
-        image: jeremiah,
-        name: 'Jeremiah Ogunyemi',
+        image: justice,
+        name: ' Justice Eziefule',
         role: 'Senior Software Engineer',
-        company: 'Apollo.io'
+        company: 'Paystack'
     },
     {
         image: dansteve,
