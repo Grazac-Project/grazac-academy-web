@@ -127,7 +127,7 @@ const Web3 = () => {
             Kickstart your career as a blockchain developer through our on-site
             or virtual bootcamp
           </p>
-          <Link to="/start">
+          <Link to="/waitlist">
             <button className="bg-primary w-[50%] sm:w-[177px] py-[19px] sm:py-[17px] text-[18px] rounded-lg font-bold ">
               Enroll Now
             </button>

@@ -11,6 +11,7 @@ import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
+import Waitlist from "./pages/web3-application/waitlist";
 // import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
@@ -230,6 +231,7 @@ const App = () => {
                 {/* web3-application Page */}
                 <Route path="/start" exact component={Start} />
                 <Route path="/web3-application-form" exact component={Form} />
+                <Route path="/waitlist" exact component={Waitlist} />
                 <Route path="/web3-application-payment" exact component={Web3Payment} />
 
 
