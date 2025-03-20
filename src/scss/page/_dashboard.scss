@@ -20,6 +20,9 @@
             display: flex;
 
             h3{
+                font-size: 17px;
+                    font-weight: 400;
+                    margin-top: 25px;
                 @media(max-width:769px){
                     font-size: 17px;
                     font-weight: 400;
@@ -84,9 +87,11 @@
                 }
 
                 h2{
-                    margin-top: 7px;
+                    margin-top: 10px;
+                    font-size: 23px;
                     @media(max-width:769px){
                         font-size: 23px;
+                        margin-top: 7px;
                     }
                 }
             }
@@ -183,7 +188,9 @@
         }
         h3, h4{
             color: #333333;
-            margin: 40px 0 20px;
+            margin: 30px 0 20px;
+            font-weight: 600;
+            font-size: 18px;
         }
         p, li{
             font-size: 17px;
