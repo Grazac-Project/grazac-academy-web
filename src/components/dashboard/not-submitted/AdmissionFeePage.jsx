@@ -49,37 +49,19 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
   return (
     <div>
-      <h3>Hello {fname}</h3>
-      <h4>Welcome to Grazac Academy</h4>
-      <p>We can’t wait to help you kickstart your career in tech!</p>
-
-      {/* <p>
-        To start your application, you are required to pay a non-refundable fee
-        of 7,500 naira only.
-      </p> */}
+      {/* <h3>Hello {fname}</h3> */}
+      <h3>Welcome to Grazac Academy, {fname}</h3>
+      <p>We're excited to support you as you kickstart your career in tech!</p>
       <p>
-        The application fee is 15,000 naira.
+        The application fee for our program is <strong>₦15,000</strong>.
       </p>
       <p>
-        Enjoy a <span style={{fontWeight: 800}}>50% discount</span> on your application fee if you <span style={{fontWeight: 800}}>pay on or before 11:59 PM on the 3rd of November 2024.</span> Pay just <span style={{fontWeight: 800}}>7,500 naira</span> instead of the regular <span style={{fontWeight: 800}}>15,000 naira!</span>
+        After completing your registration payment, you’ll be required to take a basic quantitative reasoning assessment. 
+        This helps us understand your starting point so we can tailor our support to your learning journey.
       </p>
-      {/* <p>
-        Subsequently after the payment, you will be required to take an assessment. 
-        This assessment will help us further assess your readiness to learn your preferred tech skills.
-      </p> */}
       <p>
-        After completing your registration payment, you'll take a basic quantitative reasoning assessment. 
-        This helps us understand your starting point so we can better support your learning journey.
+        Don't worry — the assessment is straightforward and designed to ensure you get the most out of the program.
       </p>
-      {/* <p>
-        Don’t fret! It is simply a basic quantitative reasoning assessment.
-        Please note that it is important not to miss this assessment.
-      </p> */}
-      <p>
-        Don't worry — the assessment is designed to be straightforward and helps ensure you'll get the most out of the program.
-      </p>
-
-      {/* <p>We look forward to being a part of your growth.</p> */}
       <p>We look forward to being part of your growth journey in tech!</p>
 
       <button

@@ -28,7 +28,7 @@ function Login() {
     // console.log(form);
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
+    btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;" />`;
     const { email, password, cohort } = form;
     // var data = new FormData();
     var data = {};
