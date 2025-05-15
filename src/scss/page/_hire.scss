@@ -706,6 +706,8 @@
         &-grey{
             color: #787676;
             font-size: 14px;
+            font-weight:400;
+
         }
     }
 }
@@ -720,6 +722,7 @@
     &_heading{
         text-align: center;
         font-weight: bold;
+        font-size: 40px;
     }
 
     &_bg1{
@@ -769,8 +772,11 @@
         }
         h4{
             font-family: $font-primary;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 20px;
             color: #073041;
+            margin-top:20px;
+            margin-bottom:8px;
         }
         p{
             color: #787676;

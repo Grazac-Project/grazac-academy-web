@@ -98,6 +98,7 @@
     &-below{
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-top: 30px;
       @media(max-width:600px){
         display: block;
@@ -106,6 +107,7 @@
       }
       div{
         display: flex;
+        align-items:center;
         img{
           margin: 0 10px 0 40px;
           @media(max-width:600px){
@@ -204,6 +206,9 @@
       }
       h2{
         font-family: $font-primary;
+        font-size: 40px;
+        font-weight: 700;
+        margin-top:69.5px;
         width: 100vw;
         text-align: center !important;
       }

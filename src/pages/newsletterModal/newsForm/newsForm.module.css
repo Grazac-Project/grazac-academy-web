@@ -21,6 +21,7 @@ width: 100%;
   font-size: 35px;
   line-height: 41px;
   color: #1f1035;
+  margin-bottom:24px;
 }
 .formInput p {
   font-size: 16px;
@@ -28,6 +29,7 @@ width: 100%;
   color: #535353;
   display: flex;
   align-items: flex-start;
+  margin-bottom: 16px;
 }
 .formInput p img{
   margin-right: 13px;

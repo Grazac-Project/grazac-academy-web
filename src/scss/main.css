@@ -1636,6 +1636,7 @@ input:focus, select:focus, textarea:focus {
 .landing__text-below {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 30px;
 }
 @media (max-width: 600px) {
@@ -1647,6 +1648,7 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__text-below div {
   display: flex;
+  align-items: center;
 }
 .landing__text-below div img {
   margin: 0 10px 0 40px;
@@ -1749,6 +1751,9 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__bottom--text h2 {
   font-family: Georgia;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 69.5px;
   width: 100vw;
   text-align: center !important;
 }
@@ -5795,6 +5800,7 @@ input:focus, select:focus, textarea:focus {
 .hire_dev-grey {
   color: #787676;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .join_header {
@@ -5804,6 +5810,7 @@ input:focus, select:focus, textarea:focus {
 .join_heading {
   text-align: center;
   font-weight: bold;
+  font-size: 40px;
 }
 .join_bg1 {
   background: #F1F5FC;
@@ -5859,8 +5866,11 @@ input:focus, select:focus, textarea:focus {
 }
 .join_box1 h4 {
   font-family: Georgia;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 20px;
   color: #073041;
+  margin-top: 20px;
+  margin-bottom: 8px;
 }
 .join_box1 p {
   color: #787676;

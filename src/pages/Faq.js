@@ -142,7 +142,7 @@ const Faq = () => {
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                       <p>
-                        For our physical classes, the cost for all courses is #1,000,000
+                        For our physical classes, the cost for all courses is #650,000
                       </p>
                       <p>While for our virtual classes, the cost is $200. To get more information 
                         about our pricing, <a href="#">Click here</a></p>
