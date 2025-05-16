@@ -664,7 +664,7 @@ const Landing = () => {
         <div className="landing__discover">
           <div className="landing__bottom--text1">
             <h1>
-              How the Admission <br className="hide-at-600" />
+              How the Admission 
               Process Works
             </h1>
             <p>

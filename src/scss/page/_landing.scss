@@ -179,22 +179,52 @@
     @include respond(phone) {
       padding: 2rem;
     }
-    &--text1 {
+        &--text1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       font-family: $font-secondary;
-      margin:0 25px;
-      @media(min-width:900px){
+      margin: 0 auto;
+      @media (min-width: 900px) {
         width: 500px;
-        margin-left: 15rem;
+        margin-left: auto;
+        margin-right: auto;
       }
-      h1{
+      h1 {
         font-family: $font-primary;
+        font-weight: 700;
+        font-size: 40px;
+        @media screen and (max-width: 600px) {
+          font-size: 24px;
+        }
       }
-      p{
+      p {
         font-size: 16px;
         color: #787676;
       }
     }
+    // &--text1 {
+    //   align-items: center;
+    //   font-family: $font-secondary;
+    //   margin:0 25px;
+    //   @media(min-width:900px){
+    //     width: 500px;
+    //     margin-left: 15rem;
+    //   }
+    //   h1{
+    //     font-family: $font-primary;
+    //     font-weight: 700;
+    //     font-size:40px;
+    //     @media screen and (max-width:600px){
+    //       font-size:24px;
+    //     }
+    //   }
+    //   p{
+    //     font-size: 16px;
+    //     color: #787676;
+    //   }
+    // }
 
     &--text {
       display: flex;
@@ -209,8 +239,12 @@
         font-size: 40px;
         font-weight: 700;
         margin-top:69.5px;
+        margin-bottom:20px;
         width: 100vw;
         text-align: center !important;
+        @media screen and (max-with:600px){
+          font-size:24px;
+        }
       }
 
       &-2 {
@@ -1111,6 +1145,9 @@
         h3 {
           color: #1f1035;
           font-family: Georgia;
+          font-size: 24px;
+          font-weight: bold;
+          padding-bottom: 8px
         }
         p {
           font-size: 1.6rem;
@@ -1119,6 +1156,12 @@
           @include respond(phone) {
             line-height: 30px;
           }
+        }
+        div{
+        padding-bottom:83px;
+        @media screen and (max-width:600px){
+          padding-bottom:75px;
+        }
         }
       }
     }

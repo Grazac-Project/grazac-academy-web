@@ -1721,18 +1721,29 @@ input:focus, select:focus, textarea:focus {
   }
 }
 .landing__bottom--text1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-family: "Nunito Sans", sans-serif;
-  margin: 0 25px;
+  margin: 0 auto;
 }
 @media (min-width: 900px) {
   .landing__bottom--text1 {
     width: 500px;
-    margin-left: 15rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 .landing__bottom--text1 h1 {
   font-family: Georgia;
+  font-weight: 700;
+  font-size: 40px;
+}
+@media screen and (max-width: 600px) {
+  .landing__bottom--text1 h1 {
+    font-size: 24px;
+  }
 }
 .landing__bottom--text1 p {
   font-size: 16px;
@@ -1754,8 +1765,14 @@ input:focus, select:focus, textarea:focus {
   font-size: 40px;
   font-weight: 700;
   margin-top: 69.5px;
+  margin-bottom: 20px;
   width: 100vw;
   text-align: center !important;
+}
+@media screen and (max-with: 600px) {
+  .landing__bottom--text h2 {
+    font-size: 24px;
+  }
 }
 .landing__bottom--text-2 {
   max-width: 1200px;
@@ -2630,6 +2647,9 @@ input:focus, select:focus, textarea:focus {
 .landing__discover--list-item h3 {
   color: #1f1035;
   font-family: Georgia;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 8px;
 }
 .landing__discover--list-item p {
   font-size: 1.6rem;
@@ -2639,6 +2659,14 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 37.5em) {
   .landing__discover--list-item p {
     line-height: 30px;
+  }
+}
+.landing__discover--list-item div {
+  padding-bottom: 83px;
+}
+@media screen and (max-width: 600px) {
+  .landing__discover--list-item div {
+    padding-bottom: 75px;
   }
 }
 
@@ -4709,7 +4737,15 @@ input:focus, select:focus, textarea:focus {
 }
 .gua_cardview-text h4 {
   font-family: Georgia;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+@media screen and (max-width: 600px) {
+  .gua_cardview-text h4 {
+    font-size: 14.71px;
+    padding-bottom: 13.08px;
+  }
 }
 .gua_cardview-text span {
   cursor: pointer;
@@ -5801,6 +5837,12 @@ input:focus, select:focus, textarea:focus {
   color: #787676;
   font-size: 14px;
   font-weight: 400;
+  padding-bottom: 18px;
+}
+@media screen and (max-width: 600px) {
+  .hire_dev-grey {
+    padding-bottom: 13px;
+  }
 }
 
 .join_header {
@@ -5811,6 +5853,11 @@ input:focus, select:focus, textarea:focus {
   text-align: center;
   font-weight: bold;
   font-size: 40px;
+}
+@media (max-width: 600px) {
+  .join_heading {
+    font-size: 24px;
+  }
 }
 .join_bg1 {
   background: #F1F5FC;
