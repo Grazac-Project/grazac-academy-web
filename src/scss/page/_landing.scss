@@ -179,7 +179,7 @@
     @include respond(phone) {
       padding: 2rem;
     }
-        &--text1 {
+     &--text1 {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -212,7 +212,7 @@
         margin-left: auto;
         margin-right: auto;
       }
-    }
+      }
     }
     
     &--text {
@@ -1163,7 +1163,6 @@
       }
     }
   }
-}
 
 
 @keyframes fade-in {

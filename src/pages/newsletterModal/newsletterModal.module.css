@@ -47,6 +47,11 @@
   }
 }
 
+@media screen and (max-width:1024px){
+  .main main .close{
+    right:20px;
+  }
+}
 @media screen and (max-width:768px) {
   .main main .close{
     right: 70px;
