@@ -187,7 +187,7 @@
       font-family: $font-secondary;
       margin: 0 auto;
       @media (min-width: 900px) {
-        width: 500px;
+        // width: 500px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -195,37 +195,26 @@
         font-family: $font-primary;
         font-weight: 700;
         font-size: 40px;
-        @media screen and (max-width: 600px) {
+         @include respond(phone) {
           font-size: 24px;
+          padding-bottom:10px;
         }
       }
       p {
         font-size: 16px;
         color: #787676;
       }
+       @media screen and (max-width: 600px) {
+      text-align: center;
+      h1, p {
+        width: 90%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
-    // &--text1 {
-    //   align-items: center;
-    //   font-family: $font-secondary;
-    //   margin:0 25px;
-    //   @media(min-width:900px){
-    //     width: 500px;
-    //     margin-left: 15rem;
-    //   }
-    //   h1{
-    //     font-family: $font-primary;
-    //     font-weight: 700;
-    //     font-size:40px;
-    //     @media screen and (max-width:600px){
-    //       font-size:24px;
-    //     }
-    //   }
-    //   p{
-    //     font-size: 16px;
-    //     color: #787676;
-    //   }
-    // }
-
+    }
+    
     &--text {
       display: flex;
       justify-content: space-between;
@@ -242,9 +231,11 @@
         margin-bottom:20px;
         width: 100vw;
         text-align: center !important;
-        @media screen and (max-with:600px){
-          font-size:24px;
-        }
+         @include respond(phone) {
+           font-size: 24px;
+           margin-bottom:8px;
+          }
+          
       }
 
       &-2 {
@@ -1079,6 +1070,7 @@
     }
     &--images {
       display: flex;
+      align-self: center;
       @include respond(phone) {
         display: none;
       }
@@ -1131,11 +1123,18 @@
     }
     &--list {
       flex-basis: 50%;
+      align-self:center;
 
       &-item {
         display: flex;
+        align-self: center;
         div {
           margin-left: 5rem;
+          padding-bottom:83px;
+        @media screen and (max-width:600px){
+          padding-bottom:75px;
+          }
+        }
         }
         h2 {
           color: $color-light-grey;
@@ -1147,7 +1146,10 @@
           font-family: Georgia;
           font-size: 24px;
           font-weight: bold;
-          padding-bottom: 8px
+          padding-bottom: 8px;
+          @include respond(phone){
+            font-size:18px;
+          }
         }
         p {
           font-size: 1.6rem;
@@ -1157,16 +1159,12 @@
             line-height: 30px;
           }
         }
-        div{
-        padding-bottom:83px;
-        @media screen and (max-width:600px){
-          padding-bottom:75px;
-        }
-        }
+        
       }
     }
   }
 }
+
 
 @keyframes fade-in {
   0% {

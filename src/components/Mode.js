@@ -39,7 +39,7 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                       <a href="/" >
                         <div
                           className="nav__btn--text"
-                          style={{ marginRight: "20px" }}
+                          style={{ marginRight: "20px",  }}
                         >
                           {button_1}
                         </div>
@@ -53,11 +53,16 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                     <>
                       <a href="/signup">
                         <div
-                          className="nav__btn--text"
-                          style={{ marginRight: "20px" }}
+                      className="nav__btn nav__btn-flex " style={{marginRight:"16px"}}>
+                      <a className="nav__btn--text">{button_1}</a>
+                    </div>
+
+                        {/* <div
+                          className="nav__btn--text "
+                          style={{ marginRight: "20px", }}
                         >
                           {button_1}
-                        </div>
+                        </div> */}
                       </a> 
                       
                        {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}

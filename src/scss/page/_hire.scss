@@ -711,7 +711,6 @@
             @media screen and (max-width: 600px){
                 padding-bottom:13px;
             }
-
         }
     }
 }
@@ -727,9 +726,9 @@
         text-align: center;
         font-weight: bold;
         font-size: 40px;
-        @media (max-width: 600px){
-            font-size:24px;
-        }
+         @include respond(phone) {
+             font-size: 24px;
+  }
     }
 
     &_bg1{
@@ -784,6 +783,9 @@
             color: #073041;
             margin-top:20px;
             margin-bottom:8px;
+             @include respond(phone) {
+                font-size: 18px;
+            }
         }
         p{
             color: #787676;
