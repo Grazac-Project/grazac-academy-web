@@ -706,6 +706,11 @@
         &-grey{
             color: #787676;
             font-size: 14px;
+            font-weight:400;
+            padding-bottom:18px;
+            @media screen and (max-width: 600px){
+                padding-bottom:13px;
+            }
         }
     }
 }
@@ -720,6 +725,10 @@
     &_heading{
         text-align: center;
         font-weight: bold;
+        font-size: 40px;
+         @include respond(phone) {
+             font-size: 24px;
+  }
     }
 
     &_bg1{
@@ -769,8 +778,14 @@
         }
         h4{
             font-family: $font-primary;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 20px;
             color: #073041;
+            margin-top:20px;
+            margin-bottom:8px;
+             @include respond(phone) {
+                font-size: 18px;
+            }
         }
         p{
             color: #787676;

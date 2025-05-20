@@ -185,7 +185,6 @@
       font-weight: bold;
       position: absolute;
       bottom: 16px;
-      
     }
     &-box {
       height: 150px;
@@ -206,7 +205,13 @@
       padding: 20px 15px;
       h4 {
         font-family: Georgia;
-        font-weight: 600;
+        font-weight: 700;
+        font-size:18px;
+        margin-bottom: 16px;
+        @media screen and (max-width: 600px){
+          font-size:14.71px;
+          padding-bottom:13.08px;
+        }
       }
       span{
         cursor: pointer;

@@ -98,6 +98,7 @@
     &-below{
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-top: 30px;
       @media(max-width:600px){
         display: block;
@@ -106,6 +107,7 @@
       }
       div{
         display: flex;
+        align-items:center;
         img{
           margin: 0 10px 0 40px;
           @media(max-width:600px){
@@ -177,23 +179,42 @@
     @include respond(phone) {
       padding: 2rem;
     }
-    &--text1 {
+     &--text1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       font-family: $font-secondary;
-      margin:0 25px;
-      @media(min-width:900px){
-        width: 500px;
-        margin-left: 15rem;
+      margin: 0 auto;
+      @media (min-width: 900px) {
+        // width: 500px;
+        margin-left: auto;
+        margin-right: auto;
       }
-      h1{
+      h1 {
         font-family: $font-primary;
+        font-weight: 700;
+        font-size: 40px;
+         @include respond(phone) {
+          font-size: 24px;
+          padding-bottom:10px;
+        }
       }
-      p{
+      p {
         font-size: 16px;
         color: #787676;
       }
+       @media screen and (max-width: 600px) {
+      text-align: center;
+      h1, p {
+        width: 90%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      }
     }
-
+    
     &--text {
       display: flex;
       justify-content: space-between;
@@ -204,8 +225,17 @@
       }
       h2{
         font-family: $font-primary;
+        font-size: 40px;
+        font-weight: 700;
+        margin-top:69.5px;
+        margin-bottom:20px;
         width: 100vw;
         text-align: center !important;
+         @include respond(phone) {
+           font-size: 24px;
+           margin-bottom:8px;
+          }
+          
       }
 
       &-2 {
@@ -1040,6 +1070,7 @@
     }
     &--images {
       display: flex;
+      align-self: center;
       @include respond(phone) {
         display: none;
       }
@@ -1092,11 +1123,18 @@
     }
     &--list {
       flex-basis: 50%;
+      align-self:center;
 
       &-item {
         display: flex;
+        align-self: center;
         div {
           margin-left: 5rem;
+          padding-bottom:83px;
+        @media screen and (max-width:600px){
+          padding-bottom:75px;
+          }
+        }
         }
         h2 {
           color: $color-light-grey;
@@ -1106,6 +1144,12 @@
         h3 {
           color: #1f1035;
           font-family: Georgia;
+          font-size: 24px;
+          font-weight: bold;
+          padding-bottom: 8px;
+          @include respond(phone){
+            font-size:18px;
+          }
         }
         p {
           font-size: 1.6rem;
@@ -1115,10 +1159,11 @@
             line-height: 30px;
           }
         }
+        
       }
     }
   }
-}
+
 
 @keyframes fade-in {
   0% {

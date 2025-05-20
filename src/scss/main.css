@@ -1636,6 +1636,7 @@ input:focus, select:focus, textarea:focus {
 .landing__text-below {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 30px;
 }
 @media (max-width: 600px) {
@@ -1647,6 +1648,7 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__text-below div {
   display: flex;
+  align-items: center;
 }
 .landing__text-below div img {
   margin: 0 10px 0 40px;
@@ -1719,22 +1721,44 @@ input:focus, select:focus, textarea:focus {
   }
 }
 .landing__bottom--text1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-family: "Nunito Sans", sans-serif;
-  margin: 0 25px;
+  margin: 0 auto;
 }
 @media (min-width: 900px) {
   .landing__bottom--text1 {
-    width: 500px;
-    margin-left: 15rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 .landing__bottom--text1 h1 {
   font-family: Georgia;
+  font-weight: 700;
+  font-size: 40px;
+}
+@media (max-width: 37.5em) {
+  .landing__bottom--text1 h1 {
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
 }
 .landing__bottom--text1 p {
   font-size: 16px;
   color: #787676;
+}
+@media screen and (max-width: 600px) {
+  .landing__bottom--text1 {
+    text-align: center;
+  }
+  .landing__bottom--text1 h1, .landing__bottom--text1 p {
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .landing__bottom--text {
   display: flex;
@@ -1749,8 +1773,18 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__bottom--text h2 {
   font-family: Georgia;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 69.5px;
+  margin-bottom: 20px;
   width: 100vw;
   text-align: center !important;
+}
+@media (max-width: 37.5em) {
+  .landing__bottom--text h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
 }
 .landing__bottom--text-2 {
   max-width: 1200px;
@@ -2556,6 +2590,7 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__discover--images {
   display: flex;
+  align-self: center;
 }
 @media (max-width: 37.5em) {
   .landing__discover--images {
@@ -2610,29 +2645,45 @@ input:focus, select:focus, textarea:focus {
 }
 .landing__discover--list {
   flex-basis: 50%;
+  align-self: center;
 }
 .landing__discover--list-item {
   display: flex;
+  align-self: center;
 }
 .landing__discover--list-item div {
   margin-left: 5rem;
+  padding-bottom: 83px;
 }
-.landing__discover--list-item h2 {
+@media screen and (max-width: 600px) {
+  .landing__discover--list-item div {
+    padding-bottom: 75px;
+  }
+}
+.landing__discover--list h2 {
   color: #9da8b6;
   font-size: 2.4rem;
   font-weight: normal;
 }
-.landing__discover--list-item h3 {
+.landing__discover--list h3 {
   color: #1f1035;
   font-family: Georgia;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 8px;
 }
-.landing__discover--list-item p {
+@media (max-width: 37.5em) {
+  .landing__discover--list h3 {
+    font-size: 18px;
+  }
+}
+.landing__discover--list p {
   font-size: 1.6rem;
   color: #787676;
   line-height: 35px;
 }
 @media (max-width: 37.5em) {
-  .landing__discover--list-item p {
+  .landing__discover--list p {
     line-height: 30px;
   }
 }
@@ -4704,7 +4755,15 @@ input:focus, select:focus, textarea:focus {
 }
 .gua_cardview-text h4 {
   font-family: Georgia;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+@media screen and (max-width: 600px) {
+  .gua_cardview-text h4 {
+    font-size: 14.71px;
+    padding-bottom: 13.08px;
+  }
 }
 .gua_cardview-text span {
   cursor: pointer;
@@ -5795,6 +5854,13 @@ input:focus, select:focus, textarea:focus {
 .hire_dev-grey {
   color: #787676;
   font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 18px;
+}
+@media screen and (max-width: 600px) {
+  .hire_dev-grey {
+    padding-bottom: 13px;
+  }
 }
 
 .join_header {
@@ -5804,6 +5870,12 @@ input:focus, select:focus, textarea:focus {
 .join_heading {
   text-align: center;
   font-weight: bold;
+  font-size: 40px;
+}
+@media (max-width: 37.5em) {
+  .join_heading {
+    font-size: 24px;
+  }
 }
 .join_bg1 {
   background: #F1F5FC;
@@ -5859,8 +5931,16 @@ input:focus, select:focus, textarea:focus {
 }
 .join_box1 h4 {
   font-family: Georgia;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 20px;
   color: #073041;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+@media (max-width: 37.5em) {
+  .join_box1 h4 {
+    font-size: 18px;
+  }
 }
 .join_box1 p {
   color: #787676;
