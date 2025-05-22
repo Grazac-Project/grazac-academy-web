@@ -114,6 +114,13 @@
       width: 100%;
     }
     &-privacy {
+      @media screen and (max-width:900px){
+      display:flex !important;
+      flex-direction:row;
+      align-items:center;
+      flex-wrap: nowrap;
+      }
+
       .download-brochure {
         color: white;
         margin: 15px 0 30px;
@@ -122,6 +129,14 @@
         padding: 10px 20px;
         font-size: 1.1em;
         border-radius: 10px;
+        white-space: nowrap;
+        @include respond(phone) {
+          margin: 5px 0 5px;
+          padding: 10px 10px;
+        }
+        @media screen and (max-width:900px){
+          margin: 5px 0 5px;
+        }
       }
       p {
         color: #9da8b6;
@@ -138,11 +153,20 @@
         padding: 10px 20px;
         font-size: 1.1em;
         border-radius: 10px;
+        @include respond (phone) {
+          padding:10px 15px;
+          margin:5px 0 5px;
+        }
+        @media screen and (max-width:900px){
+          margin: 5px 0 5px;
+          white-space: nowrap;
+          // flex-shrink: 1;
+        }
         &:last-child {
           //for now this affects only course-detail route
           color: #773dd3;
           background: transparent;
-          margin: 15px 0 30px 15px;
+          margin: 15px 0 20px 15px;
         }
       }
     }

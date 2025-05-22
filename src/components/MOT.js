@@ -11,7 +11,7 @@ const ModeOfTeaching = (_) => {
     <div className="course_mode">
       <div className="container">
         <div className="course_wwd-intro">
-          <h4>What we do</h4>
+          {/* <h4>What we do</h4> */}
           <h2>Mode Of Learning</h2>
           <p>
             We have designed strategic pathways that will fast track your

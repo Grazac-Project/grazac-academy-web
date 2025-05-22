@@ -1,4 +1,6 @@
 .course {
+    max-width: 1400px;
+    margin: 0 auto;
   p {
     font-size: 1.1em;
   }
@@ -6,10 +8,10 @@
   &_hero {
     background-color: rgba(220, 205, 244, 0.2);
     // height:calc(100vh - 80px);
-    padding: 50px 0 70px;
+    padding: 50px 80px;
     position: relative;
     @include respond(phone) {
-      padding-top: 100px;
+      padding: 25.5px 16px 50px;
     }
     &-text {
       position: relative;
@@ -37,22 +39,41 @@
         background-color: rgba(207, 185, 249, 0.25);
       }
       h1 {
-        font-size: 5em;
+        font-size: 3.75em;
+        font-weight:700;
         padding-bottom: 20px;
+        padding-top:20px;
         font-family: Georgia;
         color: #073041;
         @include respond(phone) {
-          font-size: 4rem;
-          width: 50%;
+          font-size: 24px;
+          padding-top: 24px;
+        }
+        @media screen and (max-width:900px){
+          font-size:24px;
         }
       }
 
       p {
-        font-size: 1.2em;
+        font-size: 18px;
         padding-bottom: 20px;
         color: #9da8b6;
+        @include respond (phone) {
+          font-size: 16px;
+        }
       }
+      
     }
+    &-b{
+        width:100%;
+        @include respond (phone) {
+          width:95%;
+        }
+        @media screen and (max-width:900px){
+          width:90%;
+        }
+      }
+
     &_search {
       width: 100%;
       padding: 15px 140px 15px 10px;
@@ -95,28 +116,59 @@
   }
 
   &_learn {
-    padding: 50px 0 0;
+    padding: 50px 80px;
+    @include respond(phone) {
+      padding: 25px 16px;
+    }
 
     &-main {
+        margin-top: 24px;
+      
       &-list {
         display: grid;
         grid-template-columns: 50px auto;
+        padding: 25px 0px;
+        @include respond (phone) {
+          padding:16px 0px;
+        }
 
         @media (min-width: 768px) {
           display: grid;
           grid-template-columns: 50px 400px auto;
         }
-        h3 {
-          font-size: 1.5em;
+        h1{
+          font-size: 32px;
           font-weight: 700;
+          color: #787676;
+        }
+        h3 {
+          font-size: 21px;
+          font-weight: 700;
+          line-height: 100%;
+          padding-top: 7px;
+          @include respond (phone) {
+            padding-top: 0px;
+          }
         }
         p {
-          font-size: 1.2em;
-        }
-        .box3 {
-          @media (max-width: 768px) {
-            grid-column: 1 /-1;
+          font-size: 16px;
+          @include respond (phone) {
+            padding-top:16px;
           }
+        }
+        
+        .box3 {
+          font-size: 16px;
+          font-weight: 500;
+          margin-left:100px;
+          @include respond (phone) {
+          margin-left: 0px;
+        }
+          @media (max-width: 900px) {
+            grid-column: 1 /-1;
+            margin-left:0px;
+          }
+        
         }
       }
     }
@@ -124,6 +176,9 @@
 
   &_wwd {
     margin-top: 80px;
+    @include respond(phone) {
+      margin-top: 40px;
+    }
 
     &-intro {
       h4 {
@@ -134,7 +189,8 @@
       h2 {
         color: #073041;
         font-family: Georgia;
-        font-weight: 600;
+        font-size:32px;
+        font-weight: 700;
         @include respond(phone) {
           font-size: 3rem;
         }
@@ -144,12 +200,14 @@
       }
       p {
         color: #9da8b6;
+        padding-top:8px;
       }
     }
     &-flex {
       display: flex;
       max-width: 90%;
       justify-content: center;
+      align-items: center;
 
       .first-div {
         margin-right: 50px;
@@ -220,8 +278,10 @@
   }
 
   &_mode {
-    margin-top: 80px;
-    margin-bottom: 70px;
+    padding: 70px 80px;
+    @include respond (phone){
+      padding:30px 16px;
+    }
 
     &-intro {
       h4 {
@@ -231,7 +291,16 @@
       h2 {
         color: #073041;
         font-family: Georgia;
+        padding-bottom:8px;
+        font-size:32px;
+        font-weight:700px
       }
+      p{
+        font-size:18px;
+        font-weight:400;
+
+      }
+      
     }
 
     &-container {
@@ -246,6 +315,10 @@
       h3 {
         color: #073041;
         font-family: $font-primary;
+        font-size: 24px;
+        font-weight:600;
+        padding-top:16px;
+        padding-bottom:8px;
         @include respond(phone) {
           font-size: 18px;
         }
