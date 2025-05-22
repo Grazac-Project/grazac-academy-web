@@ -1132,7 +1132,7 @@ const Landing = () => {
                       <div className="landing_faq-answer">
                         <p>
                           For our physical classes, the cost for all courses is
-                          #1,000,000
+                          #650,000
                         </p>
                         <p>
                           While for our virtual classes, the cost is $200. To

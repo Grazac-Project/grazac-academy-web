@@ -161,7 +161,7 @@ const CourseDetail = (props) => {
                       <div key={index}>
                         <div className="course_learn-main-list">
                           <div className="box1">
-                            <h3>{index < 10 ? "0" + index : index}</h3>
+                            <h1>{index < 10 ? "0" + index : index}</h1>
                           </div>
                           <div className="box2">
                             <h3>{item.topic}</h3>

@@ -148,6 +148,11 @@ input:focus, select:focus, textarea:focus {
     padding-right: 0rem;
   }
 }
+@media screen and (max-width: 900px) {
+  .nav__container {
+    padding-left: 16px;
+  }
+}
 @media (max-width: 37.5em) {
   .nav__container__logo img {
     height: 10px !important;
@@ -3315,17 +3320,21 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+.course {
+  max-width: 1400px;
+  margin: 0 auto;
+}
 .course p {
   font-size: 1.1em;
 }
 .course_hero {
   background-color: rgba(220, 205, 244, 0.2);
-  padding: 50px 0 70px;
+  padding: 50px 80px;
   position: relative;
 }
 @media (max-width: 37.5em) {
   .course_hero {
-    padding-top: 100px;
+    padding: 25.5px 16px 50px;
   }
 }
 .course_hero-text {
@@ -3355,21 +3364,46 @@ input:focus, select:focus, textarea:focus {
   background-color: rgba(207, 185, 249, 0.25);
 }
 .course_hero-text h1 {
-  font-size: 5em;
+  font-size: 3.75em;
+  font-weight: 700;
   padding-bottom: 20px;
+  padding-top: 20px;
   font-family: Georgia;
   color: #073041;
 }
 @media (max-width: 37.5em) {
   .course_hero-text h1 {
-    font-size: 4rem;
-    width: 50%;
+    font-size: 24px;
+    padding-top: 24px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .course_hero-text h1 {
+    font-size: 24px;
   }
 }
 .course_hero-text p {
-  font-size: 1.2em;
+  font-size: 18px;
   padding-bottom: 20px;
   color: #9da8b6;
+}
+@media (max-width: 37.5em) {
+  .course_hero-text p {
+    font-size: 16px;
+  }
+}
+.course_hero-b {
+  width: 100%;
+}
+@media (max-width: 37.5em) {
+  .course_hero-b {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .course_hero-b {
+    width: 90%;
+  }
 }
 .course_hero_search {
   width: 100%;
@@ -3413,11 +3447,25 @@ input:focus, select:focus, textarea:focus {
   display: flex;
 }
 .course_learn {
-  padding: 50px 0 0;
+  padding: 50px 80px;
+}
+@media (max-width: 37.5em) {
+  .course_learn {
+    padding: 25px 16px;
+  }
+}
+.course_learn-main {
+  margin-top: 24px;
 }
 .course_learn-main-list {
   display: grid;
   grid-template-columns: 50px auto;
+  padding: 25px 0px;
+}
+@media (max-width: 37.5em) {
+  .course_learn-main-list {
+    padding: 16px 0px;
+  }
 }
 @media (min-width: 768px) {
   .course_learn-main-list {
@@ -3425,20 +3473,53 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 50px 400px auto;
   }
 }
-.course_learn-main-list h3 {
-  font-size: 1.5em;
+.course_learn-main-list h1 {
+  font-size: 32px;
   font-weight: 700;
+  color: #787676;
+}
+.course_learn-main-list h3 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 100%;
+  padding-top: 7px;
+}
+@media (max-width: 37.5em) {
+  .course_learn-main-list h3 {
+    padding-top: 0px;
+  }
 }
 .course_learn-main-list p {
-  font-size: 1.2em;
+  font-size: 16px;
 }
-@media (max-width: 768px) {
+@media (max-width: 37.5em) {
+  .course_learn-main-list p {
+    padding-top: 16px;
+  }
+}
+.course_learn-main-list .box3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 100px;
+}
+@media (max-width: 37.5em) {
+  .course_learn-main-list .box3 {
+    margin-left: 0px;
+  }
+}
+@media (max-width: 900px) {
   .course_learn-main-list .box3 {
     grid-column: 1/-1;
+    margin-left: 0px;
   }
 }
 .course_wwd {
   margin-top: 80px;
+}
+@media (max-width: 37.5em) {
+  .course_wwd {
+    margin-top: 40px;
+  }
 }
 .course_wwd-intro h4 {
   color: #773dd3;
@@ -3448,7 +3529,8 @@ input:focus, select:focus, textarea:focus {
 .course_wwd-intro h2 {
   color: #073041;
   font-family: Georgia;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
 }
 @media (max-width: 37.5em) {
   .course_wwd-intro h2 {
@@ -3460,11 +3542,13 @@ input:focus, select:focus, textarea:focus {
 }
 .course_wwd-intro p {
   color: #9da8b6;
+  padding-top: 8px;
 }
 .course_wwd-flex {
   display: flex;
   max-width: 90%;
   justify-content: center;
+  align-items: center;
 }
 .course_wwd-flex .first-div {
   margin-right: 50px;
@@ -3537,8 +3621,12 @@ input:focus, select:focus, textarea:focus {
   display: flex;
 }
 .course_mode {
-  margin-top: 80px;
-  margin-bottom: 70px;
+  padding: 70px 80px;
+}
+@media (max-width: 37.5em) {
+  .course_mode {
+    padding: 30px 16px;
+  }
 }
 .course_mode-intro h4 {
   color: #773dd3;
@@ -3547,6 +3635,13 @@ input:focus, select:focus, textarea:focus {
 .course_mode-intro h2 {
   color: #073041;
   font-family: Georgia;
+  padding-bottom: 8px;
+  font-size: 32px;
+  font-weight: 700px;
+}
+.course_mode-intro p {
+  font-size: 18px;
+  font-weight: 400;
 }
 .course_mode-container {
   margin-top: 40px;
@@ -3562,6 +3657,10 @@ input:focus, select:focus, textarea:focus {
 .course_mode-container h3 {
   color: #073041;
   font-family: Georgia;
+  font-size: 24px;
+  font-weight: 600;
+  padding-top: 16px;
+  padding-bottom: 8px;
 }
 @media (max-width: 37.5em) {
   .course_mode-container h3 {
@@ -4222,6 +4321,14 @@ input:focus, select:focus, textarea:focus {
   box-sizing: border-box;
   width: 100%;
 }
+@media screen and (max-width: 900px) {
+  .contact_hero-privacy {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
 .contact_hero-privacy .download-brochure {
   color: white;
   margin: 15px 0 30px;
@@ -4230,6 +4337,18 @@ input:focus, select:focus, textarea:focus {
   padding: 10px 20px;
   font-size: 1.1em;
   border-radius: 10px;
+  white-space: nowrap;
+}
+@media (max-width: 37.5em) {
+  .contact_hero-privacy .download-brochure {
+    margin: 5px 0 5px;
+    padding: 10px 10px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .contact_hero-privacy .download-brochure {
+    margin: 5px 0 5px;
+  }
 }
 .contact_hero-privacy p {
   color: #9da8b6;
@@ -4247,10 +4366,22 @@ input:focus, select:focus, textarea:focus {
   font-size: 1.1em;
   border-radius: 10px;
 }
+@media (max-width: 37.5em) {
+  .contact_hero-privacy button {
+    padding: 10px 15px;
+    margin: 5px 0 5px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .contact_hero-privacy button {
+    margin: 5px 0 5px;
+    white-space: nowrap;
+  }
+}
 .contact_hero-privacy button:last-child {
   color: #773dd3;
   background: transparent;
-  margin: 15px 0 30px 15px;
+  margin: 15px 0 20px 15px;
 }
 @media (min-width: 600px) {
   .contact_hero_first {
