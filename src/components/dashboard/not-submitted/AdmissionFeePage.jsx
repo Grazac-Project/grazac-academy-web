@@ -53,7 +53,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       <h3>Welcome to Grazac Academy, {fname}</h3>
       <p>We're excited to support you as you kickstart your career in tech!</p>
       <p>
-        The application fee for our program is <strong>₦15,000</strong>.
+        The application fee for our program is <strong>₦7,500</strong>.
       </p>
       <p>
         After completing your registration payment, you’ll be required to take a basic quantitative reasoning assessment. 
