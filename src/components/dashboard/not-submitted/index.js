@@ -12,6 +12,10 @@ import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
+ function countWords(str) {
+      return str.trim().split(/\s+/).filter(Boolean).length;
+    }
+    
 function NotSubmitted({
   fname,
   lname,
@@ -446,6 +450,8 @@ function NotSubmitted({
       //   btn.innerHTML = `Submit`;
       // }
     });
+
+   
   }
 
   return (
@@ -884,8 +890,17 @@ function NotSubmitted({
                         name="why_selected_for_cohort"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
-                        onChange={handleChange}
+                        onChange={e => {
+                          const words = countWords(e.target.value);
+                          if (words <= 350) {
+                            handleChange(e);
+                          }
+                        }}
                       />
+                      <p style={{fontSize:"12px", color: countWords(bioData.why_selected_for_cohort) > 350 ? "red" : "#666"}} >
+                        {countWords(bioData.why_selected_for_cohort)} / 350 words
+                        {countWords(bioData.why_selected_for_cohort) > 350 && "(Word limit reached)"}
+                      </p>
                     </div>
                     {/* <div className="dashboard-content-form-container">
                       <label>State of residence</label>
@@ -1300,8 +1315,17 @@ function NotSubmitted({
                         name="why_selected_for_cohort"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
-                        onChange={handleChange}
+                        onChange={e => {
+                          const words = countWords(e.target.value);
+                          if (words <= 350) {
+                            handleChange(e);
+                          }
+                        }}
                       />
+                      <p style={{fontSize:"12px", color: countWords(bioData.why_selected_for_cohort) > 350 ? "red" : "#666"}} >
+                        {countWords(bioData.why_selected_for_cohort)} / 350 words
+                        {countWords(bioData.why_selected_for_cohort) > 350 && "(Word limit reached)"}
+                      </p>
                     </div>
 
                     {/* <div className="dashboard-content-form-container">
