@@ -2571,6 +2571,9 @@ input:focus, select:focus, textarea:focus {
     margin: 2rem 0;
   }
 }
+.landing__discover {
+  margin-top: 50px;
+}
 .landing__discover--container {
   max-width: 1200px;
   margin: 5rem auto;
