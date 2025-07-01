@@ -3,7 +3,6 @@ import Facebook from "../images/svg/facebook.svg";
 import Instagram from "../images/svg/instagram.svg";
 import Twitter from "../images/svg/twitter.svg";
 import Youtube from "../images/svg/youtube.svg";
-// import Logo from "../images/svg/grazac-logo.svg";
 import Logo from "../images/grazac_logo.png";
 import Bird from '../images/footer-bird.png'
 import Terms from "../images/newsletter/terms.pdf";
