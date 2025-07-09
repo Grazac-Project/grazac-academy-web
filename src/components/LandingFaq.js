@@ -4,6 +4,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const LandingFaq = () => {
+  
       const handleFaq = (e) => {
         let svg = e.target.parentElement.querySelector("svg");
         if (e.target.nodeName === "path") {

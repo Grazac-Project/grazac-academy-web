@@ -37,8 +37,6 @@ const Landing = () => {
   const [showModal, setShowModal] = useState(true);
   const { setShow, show } = useContext(LoaderContext);
 
-  
-
   // useEffect(() => {
   //   // document.title = "Welcome to Grazac Academy";
   //   let mediaPlayer = document.querySelector("#video");
@@ -96,10 +94,6 @@ const Landing = () => {
     landingHeight.style.marginTop = `0px`;
   };
 
-
-
-
-
   const showToast = () => {
     toast.info(
       "Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022."
@@ -144,7 +138,7 @@ const Landing = () => {
           <Navbar top={true} />
           {/* <img src={Object} className="bg-img" alt="ccc" /> */}
           <div style={{ height: 10 }}></div>
-          <LandingHeroSection/>
+          <LandingHeroSection />
         </div>
 
         <div className="landing__video">
@@ -173,29 +167,30 @@ const Landing = () => {
 
         <VirtualSection />
 
-       <WhyGrazacAcademy/>
+        <WhyGrazacAcademy />
 
-        <AvailableCourses/>
+        <AvailableCourses />
 
-          <LandingJudges />
+        <LandingJudges />
 
-        
-        <AdmissionProcess/>
+        <AdmissionProcess />
         <LandingMentors />
 
         <div>
-          <Testimonials/>
+          <Testimonials />
         </div>
-        <div style={{
-          width :"90%",
-          margin:"auto"
-        }}>
-          <Gallery/>
-          <DiscoverTopTalent/>
+        <div
+          style={{
+            width: "90%",
+            margin: "auto",
+          }}
+        >
+          <Gallery />
+          <DiscoverTopTalent />
         </div>
 
         {/* FAQ section commented out till content is ready */}
-        <LandingFaq/>
+        <LandingFaq />
         <Mode
           id="landing_page_mode"
           page={"home"}

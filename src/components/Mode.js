@@ -1,6 +1,5 @@
 import lady from "../images/Grazac-website/IMG_8440.JPG";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { ToastContainer, toast } from "react-toastify";
 
 const Linkedn = () => (
   <a>
@@ -36,10 +35,10 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                 <div className="nav__btn nav__btn-flex">
                   {page == "hire" ? (
                     <>
-                      <a href="/" >
+                      <a href="/">
                         <div
                           className="nav__btn--text"
-                          style={{ marginRight: "20px",  }}
+                          style={{ marginRight: "20px" }}
                         >
                           {button_1}
                         </div>
@@ -53,9 +52,11 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                     <>
                       <a href="/signup">
                         <div
-                      className="nav__btn nav__btn-flex " style={{marginRight:"16px"}}>
-                      <a className="nav__btn--text">{button_1}</a>
-                    </div>
+                          className="nav__btn nav__btn-flex "
+                          style={{ marginRight: "16px" }}
+                        >
+                          <a className="nav__btn--text">{button_1}</a>
+                        </div>
 
                         {/* <div
                           className="nav__btn--text "
@@ -63,9 +64,9 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                         >
                           {button_1}
                         </div> */}
-                      </a> 
-                      
-                       {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
+                      </a>
+
+                      {/* <p>Don't have an account? <span onClick={()=>toast.info('Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022')}>Sign up</span></p> */}
 
                       {/* <a
                         href="#landing_page_mode"

@@ -57,11 +57,12 @@ import justice from '../images/justice.jpg'
         company: 'Paystack'
     },
     {
-        image: fayemi,
-        name: 'Daniel Fayemi',
-        role: 'SNR Software Engineer',
-        company: 'Notsana'
+        image: dansteve,
+        name: 'Dansteve Adekanbi',
+        role: 'Senior Front End Engineer',
+        company: 'Phoebus Software, US'
     },
+    
     {
         image: tobiloba,
         name: 'Tobiloba Olugbemi',
@@ -88,11 +89,12 @@ import justice from '../images/justice.jpg'
         role: 'Product Manager',
         company: 'Location.live'
     },
+    
     {
-        image: dansteve,
-        name: 'Dansteve Adekanbi',
-        role: 'Senior Front End Engineer',
-        company: 'Phoebus Software, US'
+        image: fayemi,
+        name: 'Daniel Fayemi',
+        role: 'Blockchain Engineer',
+        company: 'Bitvavo'
     },
     
 ]
