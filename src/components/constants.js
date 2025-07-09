@@ -91,8 +91,8 @@ import justice from '../images/justice.jpg'
     {
         image: fayemi,
         name: 'Daniel Fayemi',
-        role: 'Blockchain Engineer',
-        company: 'BitVavo'
+        role: ' Blockchain Engineer',
+        company: 'Bitvavo'
     },
     
 ]
