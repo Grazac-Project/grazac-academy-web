@@ -156,9 +156,9 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for cohort 016 is ongoing. Early registration
-                  closes by June 20th, Hurry Now and <span>Register!</span>{" "}
-                  Classes starts by July 7, 2025
+                  Application for Cohort 17 is ongoing. Early registration
+                  closes by November 30th. Hurry Now and Register. Classes
+                  starts by January 12th, 2026.
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -664,12 +664,12 @@ const Landing = () => {
         <div className="landing__discover">
           <div className="landing__bottom--text1">
             <h1>
-              How the Admission <br className="hide-at-600"/>
+              How the Admission <br className="hide-at-600" />
               Process Works
             </h1>
             <p>
-              Understand our admission process 
-              in 3 easy <br className="hide-at-600"/> steps
+              Understand our admission process in 3 easy{" "}
+              <br className="hide-at-600" /> steps
             </p>
           </div>
           <div className="landing__discover--container">
@@ -722,8 +722,14 @@ const Landing = () => {
               <div className="landing__discover--list-item"></div>
               <Link to="/signup">
                 {/* <div className="nav__btn one-btn" onClick={showToast}> */}
-                <div className="nav__btn"
-                 style={{ width: "150px", margin: "auto", textAlign: "center" }}>
+                <div
+                  className="nav__btn"
+                  style={{
+                    width: "150px",
+                    margin: "auto",
+                    textAlign: "center",
+                  }}
+                >
                   <div className="nav__btn--text">Apply Now</div>
                 </div>
               </Link>
@@ -821,10 +827,12 @@ const Landing = () => {
             </div>
           </div>
         </div>
-        <div style={{
-          width :"90%",
-          margin:"auto"
-        }}>
+        <div
+          style={{
+            width: "90%",
+            margin: "auto",
+          }}
+        >
           <div>
             <div
               className="course_mode-intro course_mode-intro"
@@ -1022,7 +1030,7 @@ const Landing = () => {
               </Accordion>
             </div> */}
 
-            <div style={{width: "90%", margin:"auto"}}>
+            <div style={{ width: "90%", margin: "auto" }}>
               <Accordion defaultActiveKey="1">
                 <Card>
                   <Accordion.Item eventKey="1">
