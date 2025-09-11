@@ -132,7 +132,7 @@ const VirtualLanding = () => {
       <div style={{ height: 10 }}></div>
       <section className="Vitual_hero">
         <div className="Vitual_text">
-          <h4 className="Vitual_span">Learn with Us Virtually - Unlock Your Potential</h4>
+          <h4 className="Vitual_span">Learn Virtually</h4>
 
           <h1>Elevate Your Skills with Our Live Remote Classes</h1>
           <p>

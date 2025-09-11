@@ -199,8 +199,7 @@ input:focus, select:focus, textarea:focus {
   transition: all 500ms ease-in-out;
   padding: 5rem 2rem;
   padding-top: 12rem;
-  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
-          clip-path: circle(30px at calc(100% - 65px) 65px);
+  clip-path: circle(30px at calc(100% - 65px) 65px);
   visibility: hidden;
 }
 @media (max-width: 37.5em) {
@@ -367,8 +366,7 @@ input:focus, select:focus, textarea:focus {
 }
 .nav__menu--active .nav__list--mb {
   visibility: visible;
-  -webkit-clip-path: circle(100%);
-          clip-path: circle(100%);
+  clip-path: circle(100%);
 }
 .nav__menu--active .nav-tgl > span {
   height: 0;
@@ -989,6 +987,9 @@ input:focus, select:focus, textarea:focus {
   padding-top: 10px;
   padding-bottom: 16px;
 }
+.virtual_container_info h1 span {
+  color: #CFB9F9;
+}
 @media (max-width: 900px) {
   .virtual_container_info h1 {
     font-size: 38px;
@@ -1004,17 +1005,18 @@ input:focus, select:focus, textarea:focus {
   padding-bottom: 40px;
 }
 .virtual_container_info button {
-  border: 1.5px solid #773dd3;
+  border: 1.5px solid white;
   border-radius: 8px;
-  padding: 16px 58px;
+  padding: 15px 64px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
   line-height: 18px;
-  color: #773dd3;
+  background-color: #773dd3;
+  color: white;
 }
 .virtual_container_info button:hover {
-  background: #773dd3;
-  color: #fff;
+  color: #773dd3;
+  background: #fff;
   border: 1.5px solid #fff;
 }
 @media (max-width: 600px) {
@@ -1615,6 +1617,35 @@ input:focus, select:focus, textarea:focus {
   max-width: 1200px;
   margin: 0 auto;
 }
+.landing__tabs {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+.landing__tabs .available_tracks_tab {
+  padding: 12px 18px;
+  border: none;
+  background: #fff;
+  color: #073041;
+  border-radius: 8px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s, font-weight 0.2s;
+}
+.landing__tabs .available_tracks_tab img {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+.landing__tabs .available_tracks_tab.active_tab {
+  background: #073041;
+  color: #fff;
+  font-weight: 700;
+}
 .landing__header {
   background-color: #fff;
   padding: 1rem;
@@ -2040,14 +2071,14 @@ input:focus, select:focus, textarea:focus {
   background-color: #f1f5fc;
 }
 .landing__slider-text1 {
-  display: block;
   margin: auto;
-  max-width: 900px;
+  max-width: 600px;
 }
 .landing__slider-text1 p {
   color: #787676;
   text-align: center;
-  margin: 0 20px 25px 0;
+  margin: 0 20px 33px 0;
+  font-size: 16px;
 }
 .landing__slider-contain {
   width: 100vw;
