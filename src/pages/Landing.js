@@ -43,7 +43,7 @@ import VirtualSection from "../components/VirtualSection/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LandingMentors from "../components/LandingMentors";
 import LandingJudges from "../components/LandingJudges";
-import AvailableTrack from "../components/AvailableTrack";
+import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
 import NewCourses from "../components/NewCourses/NewCourses";
 
 const Landing = () => {
@@ -309,7 +309,7 @@ const Landing = () => {
           {/* </Row> */}
           {/* </Container> */}
         </div>
-        <AvailableTrack />
+        <AvailableTrack/>
         <LandingJudges />
         {/* </div> */}
 

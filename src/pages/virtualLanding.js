@@ -36,7 +36,7 @@ import data_analysis from "../images/data_analysis.png";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { FaCircleArrowLeft } from "react-icons/fa6";
-import AvailableTrack from "../components/AvailableTrack";
+import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
 
 const VirtualLanding = () => {
   const [buttonColor, setButtonColor] = useState("initialColor");
