@@ -20,7 +20,6 @@
   gap: 32px;
   transition: all 0.5s ease;
   border-radius: 16px;
-  border: 1px solid var(--Accent, #e7a300);
   background: #fff;
   box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -34,7 +33,9 @@
   }
 }
 
-
+.yellowBorder{
+  border: 1px solid var(--Accent, #e7a300);
+}
 .main h5 {
   color: #773dd3;
   text-align: center;
@@ -44,12 +45,15 @@
   font-weight: 700;
   line-height: normal;
   margin-bottom: 32px;
+  margin-top: 43.53px;
+
 }
 .priceTag {
   text-align: center;
 }
 .priceTag h3 {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773dd3;
   font-family: Nunito Sans;
   font-size: 34.811px;
   font-style: normal;
@@ -57,7 +61,8 @@
   line-height: normal;
 }
 .priceTag h3 span {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773dd3;
   font-family: Nunito Sans;
   font-size: 19.892px;
   font-style: normal;
@@ -66,7 +71,8 @@
 }
 
 .priceTag p {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773dd3;
   font-family: Nunito Sans;
   font-size: 19.892px;
   font-style: normal;
@@ -76,7 +82,7 @@
   margin: 5px;
 }
 .priceTag h6 {
-  color: #d5baff;
+  color: #773dd3;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
@@ -91,7 +97,9 @@
   align-items: center;
 }
 .benefits ul li {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773dd3;
+  list-style-type: disc;
   font-family: Nunito Sans;
   font-size: 16px;
   font-style: normal;

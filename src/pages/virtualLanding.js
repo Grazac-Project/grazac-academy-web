@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import VitualHero from "../images/virtual/VitualHero.png";
+// import VitualHero from "../images/virtual/VitualHero.png";
+import VitualHero from "../images/virtual/virtual-lady.png";
 import Slider1 from "../images/virtual/slider1.svg";
 import Slider2 from "../images/virtual/slider2.svg";
 import Slider3 from "../images/virtual/slider3.svg";
@@ -34,6 +35,8 @@ import java from "../images/java.png";
 import data_analysis from "../images/data_analysis.png";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import AvailableTrack from "../components/AvailableTrack";
 
 const VirtualLanding = () => {
   const [buttonColor, setButtonColor] = useState("initialColor");
@@ -55,20 +58,20 @@ const VirtualLanding = () => {
   //   sessionStorage.setItem(
   //     "learning_mode",
   //     JSON.stringify({
-  //       class_option: 'virtual',  
+  //       class_option: 'virtual',
   //     })
   //   );
   //   history.push('/course-detail-graduate?course=product-designing-ui-ux')
   // }
-  const courseDetailsHandler = (goTo) =>{
+  const courseDetailsHandler = (goTo) => {
     sessionStorage.setItem(
       "learning_mode",
       JSON.stringify({
-        class_option: 'Virtual',  
+        class_option: "Virtual",
       })
     );
-    history.push(goTo)
-  }
+    history.push(goTo);
+  };
   const goToPrev = () => {
     if (sliderRef.current) {
       sliderRef.current.slickPrev();
@@ -134,11 +137,12 @@ const VirtualLanding = () => {
         <div className="Vitual_text">
           <h4 className="Vitual_span">Learn Virtually</h4>
 
-          <h1>Elevate Your Skills with Our Live Remote Classes</h1>
+          <h1>From the comfort of your homes, Upskill in tech</h1>
           <p>
-            Unlock global expertise by joining our Online Bootcamp, and learn
-            from industry leaders from 19+ Countries to forge your ideal career
-            path
+            We are your Virtual Learning Companion! Learn with us from anywhere
+            around the globe. Our expert Instructors are highly qualified and
+            experienced educators ensuring you acquire valuable skills and
+            knowledge that transcend borders
           </p>
 
           <button
@@ -153,7 +157,7 @@ const VirtualLanding = () => {
           <img src={VitualHero} alt="hero" />
         </div>
       </section>
-      <section className="Vitual_countdown">
+      {/* <section className="Vitual_countdown">
         <p>
           <span className="Visual_date">January 2024 Cohort</span>
           <br /> Classes commence on January 15th
@@ -164,7 +168,7 @@ const VirtualLanding = () => {
           <div className="Vitual_countdown_container_duration">{`${minutes} minutes`}</div>
           <div className="Vitual_countdown_container_duration">{`${seconds} seconds`}</div>
         </div>
-      </section>
+      </section> */}
       <section className="Vitual_class">
         <div className="Vitual_class_container">
           <h1>Join our virtual class in 3 easy steps</h1>
@@ -172,25 +176,34 @@ const VirtualLanding = () => {
             <div className="Vitual_class_container_steps">
               <img src={Browse} alt="browse" />
               <h4>Browse Available Courses</h4>
-              <p>Explore course offerings, read descriptions, curriculum, prerequisites.</p>
+              <p>
+                Explore course offerings, read descriptions, curriculum,
+                prerequisites.
+              </p>
             </div>
-            <div className='image-container'>
-              <img src={Forward} alt="forward arrow" className="forward"/>
-              <img src={Down} alt="forward arrow" className="down"/>
+            <div className="image-container">
+              <img src={Forward} alt="forward arrow" className="forward" />
+              <img src={Down} alt="forward arrow" className="down" />
             </div>
             <div className="Vitual_class_container_steps">
               <img src={Click} alt="click" />
               <h4>Click on Apply Now</h4>
-              <p>Choose your ideal course, reach out for guidance where necessary, </p>
+              <p>
+                Choose your ideal course, reach out for guidance where
+                necessary,{" "}
+              </p>
             </div>
-            <div className='image-container'>
-              <img src={Forward} alt="forward arrow" className="forward"/>
-              <img src={Down} alt="forward arrow" className="down"/>
+            <div className="image-container">
+              <img src={Forward} alt="forward arrow" className="forward" />
+              <img src={Down} alt="forward arrow" className="down" />
             </div>
             <div className="Vitual_class_container_steps">
               <img src={Plan} alt="plan" />
               <h4>Make a Payment Plan</h4>
-              <p>Complete your assessment, get course recommendations, choose your payment</p>
+              <p>
+                Complete your assessment, get course recommendations, choose
+                your payment
+              </p>
             </div>
           </div>
           {/* <div className="Vitual_class_container_stepFlex">
@@ -237,11 +250,44 @@ const VirtualLanding = () => {
       </section>
       <section>
         <div className="Vitual_arrow" style={{ textAlign: "center" }}>
-          <button className="Vitual_bttn" onClick={goToPrev}>
-            <i>&#129120;</i>
+          <button
+            className="Vitual_bttn"
+            onClick={goToPrev}
+            style={{
+              background: "#fff",
+              color: "gray",
+              border: "none",
+              borderRadius: "50%",
+              margin: "10px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              // marginLeft: "10px",
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.background = "#fff";
+              e.currentTarget.style.color = "white";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.background = "#773DD3";
+              e.currentTarget.style.color = "white";
+            }}
+          >
+            <i style={{ fontSize: "20px", pointerEvents: "none" }}>&#129120;</i>
           </button>
-          <button onClick={goToNext}>
-            <i>&#129122;</i>
+          <button
+            onClick={goToNext}
+            style={{
+              background: "#773DD3",
+              color: "white",
+              border: "none",
+              borderRadius: "50%",
+              margin: "10px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              // marginLeft: "10px",
+            }}
+          >
+            <i style={{ fontSize: "20px", pointerEvents: "none" }}>&#129122;</i>
           </button>
         </div>
         <Slider ref={sliderRef} {...settings}>
@@ -347,219 +393,7 @@ const VirtualLanding = () => {
           </div>
         </Slider>
       </section>
-      <div className="landing__intern">
-        <div className="landing__intern--content">
-          <div className="landing__bottom--text">
-            <h2>Available Courses</h2>
-          </div>
-          <div className="landing__slider-text1">
-            <p>
-              Learn any of these tech courses today for free and pay back when
-              you are hired.
-            </p>
-          </div>
-          <div className="gga_container">
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={product} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Product Design (UI/UX)
-                  </h4>
-                  <p>
-                    Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. 
-                      You'll gain knowledge in designing user interfaces that...
-                  </p>
-                  {/* <Link
-                    to={`/course-detail-graduate?course=product-designing-ui-ux`}
-                  >
-                    Learn More
-                  </Link> */}
-                  <span
-                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-designing-ui-ux`)}
-                  >
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() =>courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={frontend} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Front-End Development
-                  </h4>
-                  <p>
-                    Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and 
-                      JavaScript for a website or Web Application so that a user...
-                  </p>
-                  <span
-                  onClick={() => courseDetailsHandler(`/course-detail-graduate?course=frontend-web-development`)}
-                  >
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={backend} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Back-End Development
-                  </h4>
-                  <p>
-                      Node.js is useful for developing applications that require a persistent connection from 
-                      the browser to the server and is often used for real-time applications such as chat, news...
-                  </p>
-                  <span
-                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=backend-web-development`)}
-                  >
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={android} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Mobile App Developement
-                  </h4>
-                  <p>
-                      Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, 
-                      Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from...
-                  </p>
-                  <span
-                    onClick={() =>courseDetailsHandler(`/course-detail-graduate?course=mobile-application-development`)}
-                  >
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={product_management} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Product Management
-                  </h4>
-                  <p>
-                      Grazac product management course will help you understand the process of strategically 
-                      guiding a company's product development, market launch, ongoing support, and...
-                  </p>
-                  <span
-                    onClick={() => courseDetailsHandler(`/course-detail-graduate?course=product-management`)}
-                  >
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={machine_learning} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>
-                    Machine learning with Python
-                  </h4>
-                  <p>
-                      Machine Learning with Python is a comprehensive journey that equips you with the skills and 
-                      knowledge needed to build, evaluate, and deploy machine learning models for...
-                  </p>
-                  <span onClick={() => courseDetailsHandler(`/course-detail-graduate?course=machine-learning`)}>
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={java} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>Java</h4>
-                  <p>
-                      Java is a versatile programming language with a wide range of applications, 
-                      from web development to mobile app development, big data processing, and more..
-                  </p>
-                  <span to={() => courseDetailsHandler(`/course-detail-graduate?course=java`)}>
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}
-              className="boxes33"
-            >
-              <div className="gua_cardview">
-                <div className="gua_cardview-box">
-                  <img src={data_analysis} alt="course-desc" />
-                </div>
-                <div className="gua_cardview-text">
-                  <h4 style={{ color: "rgb(51, 51, 51)" }}>Data Analysis</h4>
-                  <p>
-                      Data Analysis involves using different tools and techniques to scrutinize and 
-                      probe large volumes of data with the goal of making informed solving problems, 
-                      business decisions, and...
-                  </p>
-                  <span onClick={() => courseDetailsHandler(`/course-detail-graduate?course=data-analysis`)}>
-                    Learn More
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Link to="/signup">
-            <div
-              className="nav__btn"
-              style={{ width: "130px", margin: "auto", textAlign: "center" }}
-              // onClick={showToast}
-            >
-              <div className="nav__btn--text">Apply Now</div>
-            </div>
-          </Link>
-        </div>
-      </div>
+      <AvailableTrack />
 
       <Footer />
     </div>

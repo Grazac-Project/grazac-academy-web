@@ -18,7 +18,7 @@ const Pricing = () => {
       <div className="pricing_main">
         <h1>Plans and Pricings</h1>
         <p>No surprise fees, no hidden charges</p>
-        {/* <div className="pricing_toggle">
+        <div className="pricing_toggle">
           <div
             className={
               activeTab === "onsite" ? "onsiteButtons" : "activebtn" 
@@ -35,7 +35,7 @@ const Pricing = () => {
           >
             Virtual pricing
           </div>
-        </div> */}
+        </div>
         <div className="pricing_container">
           {activeTab === "onsite" && <NewPricing />}
           {activeTab === "Virtual" && <VirtualPricing />}

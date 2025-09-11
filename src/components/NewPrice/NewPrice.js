@@ -5,71 +5,75 @@ const NewPricing = () => {
     {
       id: 1,
       type: "Pay Installment",
+      newAmount: "₦1,050,000",
       prevAmount: "₦1,200,000",
-      newAmount: "₦700,000 ",
-      // spanNewAmount: "($1005)",
-      discount: ["41.67%"],
+      spanOldAmount: "($1000)",
+      spanNewAmount: "($1005)",
+      discount: ["16.67%"],
       method: ["₦350,000 Initial payment"],
-      span: ["₦350,000 Initial payment"],
+      span: ["₦210,000 ($210) Initial payment"],
       benefits: [
-        "NGN 175,000 to be paid the first month and second month ",
-        "No legal fee",
-        "4 months of immersive training",
-        "2 months of building a real project",
-        'Access to free workspace for 6 months',
-        "1:1 mentorship with experts",
-        "Job opportunities",
-        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        "Pay N840,000 ($840) remaining at a flexible pace of N140,000 ($140) per month for 6 months.  ",
+        "1:1 mentorship with experts ",
+        "Job opportunities ",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc. ",
+        'Free wi-fi',
       ],
     },
     {
       id: 2,
       type: "Pay at Once",
+      newAmount: "₦1,000,000",
       prevAmount: "₦1,200,000",
-      newAmount: "₦650,000 ",
-      // spanNewAmount: "($1000)",
-      discount: ["45.83%"],
+      spanOldAmount: "($1200)",
+      spanNewAmount: "($1000)",
+      discount: ["16.67%"],
       recommend: "Highly Recommended",
       benefits: [
         "No legal fees",
-        "4 months of immersive training",
-        "2 months of building a real project",
+        "8 months of immersive training",
+        "4 months of internship",
         'Access to free workspace for 6 months',
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        'Free wi-fi',
       ],
     },
-    {
-      id: 3,
-      type: "Learn Now pay later",
-      prevAmount: "₦1,300,000 ",
-      newAmount: "₦1,200,000 ",
-      // spanNewAmount: "($1200)",
-      discount: ["7.69%"],
-      benefits: [
-        "₦50,000 legal fee",
-        "4 months of immersive training",
-        "2 months of building a real project",
-        'Access to free workspace for 6 months',
-        "1:1 mentorship with experts",
-        "Job opportunities",
-        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
-      ],
-    },
+    // {
+    //   id: 3,
+    //   type: "Learn Now pay later",
+    //   newAmount: "₦1,200,000 ",
+    //   prevAmount: "₦1,300,000 ",
+    //   spanOldAmount: "($1000)",
+    //   spanNewAmount: "($1200)",
+    //   discount: ["7.69%"],
+    //   benefits: [
+    //     "₦50,000 legal fee",
+    //     "4 months of immersive training",
+    //     "2 months of building a real project",
+    //     'Access to free workspace for 6 months',
+    //     "1:1 mentorship with experts",
+    //     "Job opportunities",
+    //     "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+    //   ],
+    // },
   ];
 
   return (
     <div className={classes.main}>
       {NewPrice.map((item, index) => (
-        <div className={classes.card} key={index}>
+        <div
+  className={`${classes.card} ${item.recommend ? classes.yellowBorder : ""}`}
+  key={index}
+>
           <h5>{item.type}</h5>
           <div className={classes.priceTag}>
             <h3>
-              {item.newAmount}
+              {item.newAmount} {" "}
               <span>{item.spanNewAmount}</span>
             </h3>
-            <p>{item.prevAmount}</p>
+            <p>{item.prevAmount}{" "} <span>{item.spanOldAmount}</span> </p>
             <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>

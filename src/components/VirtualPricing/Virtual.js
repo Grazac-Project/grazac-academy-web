@@ -5,9 +5,11 @@ const VirtualPricing = () => {
     {
       id: 1,
       type: "Pay at Once",
-      prevAmount: "₦180,000",
       newAmount: "₦120,000 ",
-      discount: ["32.43% 0FF"],
+      prevAmount: "₦180,000",
+      spanNewAmount: "($120)",
+      spanOldAmount: "($180)",
+      discount: ["16.67%% 0FF"],
       recommend: "Highly Recommended",
 
       benefits: [
@@ -22,18 +24,21 @@ const VirtualPricing = () => {
     {
       id: 2,
       type: "Pay Installment",
-      prevAmount: "₦185,000",
       newAmount: "₦125,000 ",
-      discount: ["32.43% OFF"],
-      method: ["₦72,000 ($72) Initial payment"],
-      span: ["Initial payment of 70% of the tuition fee (₦87,500) at enrollment"],
+      prevAmount: "₦185,000",
+      spanNewAmount: "($125)",
+      spanOldAmount: "($185)",
+      discount: ["16.67%% OFF"],
+      // method: ["₦72,000 ($72) Initial payment"],
+      span: ["₦72,000 ($72) Initial payment"],
 
       benefits: [
-        "Spread the remaining ₦37,500 over 2 months.",
+        "Pay N53,000 ($53) remaining at a flexible pace of N26,500 ($26.5) per month for 2 months. ",
         "1:1 mentorship with experts",
-        "Learning from the comfort of your space",
-        "Access to free webinars for your career growth and positioning",
-        "Certification",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc. ",
+        "Free wi-fi",
+        // "Access to free webinars for your career growth and positioning",
+        // "Certification",
       ],
       
     },
@@ -42,13 +47,16 @@ const VirtualPricing = () => {
   return (
     <div className={classes.main}>
       {virtualData.map((item, index) => (
-        <div className={classes.card} key={index}>
+        <div
+  className={`${classes.card} ${item.recommend ? classes.yellowBorder : ""}`}
+  key={index}
+>
           <h5>{item.type}</h5>
           <div className={classes.priceTag}>
             <h3>
               {item.newAmount} <span>{item.spanNewAmount}</span>
             </h3>
-            <p>{item.prevAmount}</p>
+            <p>{item.prevAmount} <span>{item.spanOldAmount}</span></p>
             <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>

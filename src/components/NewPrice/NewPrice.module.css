@@ -7,6 +7,11 @@
     flex-wrap: wrap;
     /* margin-bottom: 50px; */
   }
+  @media screen and (max-width: 570px) {
+    width: 100%;
+    /* padding: 24px 30px; */
+  }
+  
 }
 .card:hover .h3 {
   color: #cfb9f9;
@@ -20,7 +25,7 @@
   gap: 32px;
   transition: all 0.5s ease;
   border-radius: 16px;
-  border: 1px solid var(--Accent, #e7a300);
+  /* border: 1px solid var(--Accent, #e7a300); */
   background: #fff;
   box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -35,18 +40,24 @@
     margin: auto;
     padding: 24px 40px;
   }
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 768px) {
     width: 50%;
     margin: auto;
     margin-bottom: 30px;
     padding: 24px 40px;
   }
   @media screen and (max-width: 570px) {
-    width: 80%;
+    width: 100%;
     padding: 24px 30px;
   }
+  @media screen and (max-width: 320px) {
+    width: 100%;
+    /* padding: 24px 30px; */
+  }
+}
 
-
+.yellowBorder {
+  border: 2px solid #FFD700; /* Yellow */
 }
 .main h5 {
   color: #773dd3;
@@ -56,15 +67,21 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-top: 43.53px;
   margin-bottom: 32px;
+@media screen and (max-width:900px) {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
 }
 .priceTag {
   align-items: center;
   text-align: center;
 }
 .priceTag h3 {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
   font-family: Nunito Sans;
+  color: #773DD3;
   font-size: 34.811px;
   font-style: normal;
   font-weight: 700;
@@ -72,7 +89,8 @@
   width: 100%;
 }
 .priceTag h3 span {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773DD3;
   font-family: Nunito Sans;
   font-size: 19.892px;
   font-style: normal;
@@ -81,7 +99,8 @@
 }
 
 .priceTag p {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+  color: #773DD3;
   font-family: Nunito Sans;
   font-size: 19.892px;
   font-style: normal;
@@ -91,7 +110,7 @@
   margin: 5px;
 }
 .priceTag h6 {
-  color: #d5baff;
+  color: #773DD3;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
@@ -106,13 +125,15 @@
   align-items: center;
 }
 .benefits ul li {
-  color: var(--text-color, #333);
+  /* color: var(--text-color, #333); */
+    color: #773DD3;
   font-family: Nunito Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 8px;
+  list-style-type: disc;
 }
 
 .benefits ul span li {
