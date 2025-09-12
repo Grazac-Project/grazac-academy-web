@@ -96,18 +96,11 @@
     justify-content: center;
   }
 }
-.image {
-  @media (max-width: 1200px) {
-    .image > img {
-      max-width: 100%;
-    }
-    &img {
-      width: 80%;
-    }
+
+.image img {
+  /* width: 100%; */
+  @media screen and (max-width:768px) {
+    width: 100%;
+    margin-left: 5px;
   }
-  /* @media (max-width: 600px) {
-    &_girl {
-      display: none;
-    }
-  } */
 }

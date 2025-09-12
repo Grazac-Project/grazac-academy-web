@@ -26,12 +26,12 @@
   margin: auto;
   margin: 48px 0;
 }
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .card {
     margin: auto;
     margin-bottom: 20px;
   }
-}
+} */
 
 .yellowBorder{
   border: 1px solid var(--Accent, #e7a300);

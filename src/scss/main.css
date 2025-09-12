@@ -42,7 +42,9 @@ html {
   }
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: 1px solid #ccc;
   border-radius: 10px;
 }
@@ -92,7 +94,7 @@ input:focus, select:focus, textarea:focus {
   top: 0;
   left: 0;
   bottom: 0;
-  background: #F8F8F8;
+  background: #f8f8f8;
   height: 100vh;
 }
 @media (max-width: 769px) {
@@ -336,7 +338,8 @@ input:focus, select:focus, textarea:focus {
   background: #293335;
   vertical-align: middle;
 }
-.nav__menu .nav-tgl > span:before, .nav__menu .nav-tgl > span:after {
+.nav__menu .nav-tgl > span:before,
+.nav__menu .nav-tgl > span:after {
   display: inline-block;
   position: absolute;
   content: "";
@@ -360,7 +363,8 @@ input:focus, select:focus, textarea:focus {
   background-color: white;
   border-radius: 99999px;
 }
-.nav__menu .nav-tgl:hover > span:after, .nav__menu .nav-tgl:hover > span:before {
+.nav__menu .nav-tgl:hover > span:after,
+.nav__menu .nav-tgl:hover > span:before {
   width: 20px;
   left: 0;
 }
@@ -371,7 +375,8 @@ input:focus, select:focus, textarea:focus {
 .nav__menu--active .nav-tgl > span {
   height: 0;
 }
-.nav__menu--active .nav-tgl > span:after, .nav__menu--active .nav-tgl > span:before {
+.nav__menu--active .nav-tgl > span:after,
+.nav__menu--active .nav-tgl > span:before {
   top: 0px;
   left: 0;
   width: 34px;
@@ -557,7 +562,7 @@ input:focus, select:focus, textarea:focus {
   background: rgba(48, 50, 75, 0.1);
   mix-blend-mode: normal;
   -webkit-backdrop-filter: blur(14px);
-          backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   position: fixed;
   top: 0;
   left: 0;
@@ -826,7 +831,7 @@ input:focus, select:focus, textarea:focus {
   background: #773dd3;
   mix-blend-mode: normal;
   -webkit-backdrop-filter: blur(14px);
-          backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   position: fixed;
   top: 0;
   left: 0;
@@ -988,7 +993,7 @@ input:focus, select:focus, textarea:focus {
   padding-bottom: 16px;
 }
 .virtual_container_info h1 span {
-  color: #CFB9F9;
+  color: #cfb9f9;
 }
 @media (max-width: 900px) {
   .virtual_container_info h1 {
@@ -1067,11 +1072,11 @@ input:focus, select:focus, textarea:focus {
 }
 
 .landingmentors {
-  background: #F8FAFD;
+  background: #f8fafd;
 }
 .landingmentors-container {
   max-width: 1120px;
-  background: #F8FAFD;
+  background: #f8fafd;
   padding: 80px 0;
   margin-left: auto;
   margin-right: auto;
@@ -1121,7 +1126,7 @@ input:focus, select:focus, textarea:focus {
   height: 149px;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -1245,7 +1250,7 @@ input:focus, select:focus, textarea:focus {
   line-height: 18px; /* 150% */
   border-radius: 100px;
   border: 2px solid #fff;
-  background: #E9E9EA;
+  background: #e9e9ea;
   pointer-events: none;
 }
 .payment-table .pay-now {
@@ -1319,7 +1324,7 @@ input:focus, select:focus, textarea:focus {
   line-height: 18px; /* 150% */
   border-radius: 100px;
   border: 2px solid #fff;
-  background: #E9E9EA;
+  background: #e9e9ea;
   margin-bottom: 8px;
   pointer-events: none;
 }
@@ -1344,8 +1349,8 @@ input:focus, select:focus, textarea:focus {
   width: -moz-fit-content;
   width: fit-content;
   font-weight: 400;
-  color: #FF3B30;
-  border: 1px solid #FF3B30 !important;
+  color: #ff3b30;
+  border: 1px solid #ff3b30 !important;
   font-size: 14px;
   border-radius: 8px;
   padding: 8px 20px;
@@ -1391,7 +1396,7 @@ input:focus, select:focus, textarea:focus {
     width: 32px;
     height: 32px;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
 }
 .assessment-container-timer {
@@ -1416,7 +1421,7 @@ input:focus, select:focus, textarea:focus {
   width: 16px;
   height: 16px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .assessment-container-form .question p {
   font-weight: 400;
@@ -1433,11 +1438,19 @@ input:focus, select:focus, textarea:focus {
   color: #787676;
   line-height: 24px;
 }
-.assessment-container-form .question .options-container .option-container input {
+.assessment-container-form
+  .question
+  .options-container
+  .option-container
+  input {
   display: block;
   margin: 0;
 }
-.assessment-container-form .question .options-container .option-container label {
+.assessment-container-form
+  .question
+  .options-container
+  .option-container
+  label {
   display: block;
   font-size: 16px;
   margin: 0;
@@ -1496,7 +1509,7 @@ input:focus, select:focus, textarea:focus {
   font-weight: 700;
   font-size: 24px;
   line-height: 32.74px;
-  color: #00C885;
+  color: #00c885;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto 8px auto;
@@ -1505,7 +1518,7 @@ input:focus, select:focus, textarea:focus {
   font-weight: 700;
   font-size: 24px;
   line-height: 32.74px;
-  color: #FF3B30;
+  color: #ff3b30;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto 8px auto;
@@ -1578,8 +1591,8 @@ input:focus, select:focus, textarea:focus {
   filter: blur(20px);
   pointer-events: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .faq-icon_transition {
@@ -1789,7 +1802,8 @@ input:focus, select:focus, textarea:focus {
   .landing__bottom--text1 {
     text-align: center;
   }
-  .landing__bottom--text1 h1, .landing__bottom--text1 p {
+  .landing__bottom--text1 h1,
+  .landing__bottom--text1 p {
     width: 90%;
     text-align: center;
     margin-left: auto;
@@ -2036,10 +2050,10 @@ input:focus, select:focus, textarea:focus {
   margin: 0px 0 20px;
 }
 .landing_faq .faq-number {
-  color: #2196F3;
+  color: #2196f3;
 }
 .landing_faq .faq-whatsapp {
-  color: #773DD3;
+  color: #773dd3;
 }
 .landing_faq-link {
   color: #773dd3;
@@ -2052,7 +2066,7 @@ input:focus, select:focus, textarea:focus {
 }
 .landing_faq-answer {
   padding: 10px 0;
-  background: #FBFCFF;
+  background: #fbfcff;
   border-radius: 8px;
   padding: 10px 10px 20px 10px;
 }
@@ -2743,7 +2757,8 @@ input:focus, select:focus, textarea:focus {
 }
 @media screen and (max-width: 940px) {
   .Vitual_hero {
-    display: block;
+    display: column;
+    flex-direction: column-reverse;
     width: 90%;
   }
 }
@@ -2756,6 +2771,7 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 768px) {
   .Vitual_hero_girl {
     margin-top: 32px;
+    margin-bottom: 24px;
   }
 }
 .Vitual_hero h4 {
@@ -2769,6 +2785,7 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 600px) {
   .Vitual_hero h4 {
     font-size: 22px;
+    padding-bottom: 8px;
   }
 }
 .Vitual_hero h1 {
@@ -2801,12 +2818,13 @@ input:focus, select:focus, textarea:focus {
 }
 @media screen and (max-width: 1024px) {
   .Vitual_hero p {
-    padding: 28px 0;
+    padding: 16px 0;
   }
 }
 @media screen and (max-width: 600px) {
   .Vitual_hero p {
-    font-size: 16px;
+    font-size: 18px;
+    padding-bottom: 40px;
   }
 }
 .Vitual_text {
@@ -2814,29 +2832,56 @@ input:focus, select:focus, textarea:focus {
 }
 @media screen and (max-width: 940px) {
   .Vitual_text {
-    text-align: center;
+    text-align: start;
     align-items: center;
-    margin: auto;
+    padding-bottom: 45px;
   }
 }
-.Vitual_btn {
+.Vitual_btn1 {
   background-color: #773dd3;
   border: 1px solid #fff;
   border-radius: 3px;
   padding: 15px 25px;
   color: #fff;
   font-size: 18px;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: Radjadhani, sans-serif;
   outline: none;
   cursor: pointer;
+  font-weight: 700;
 }
 @media (max-width: 37.5em) {
-  .Vitual_btn {
+  .Vitual_btn1 {
     height: initial;
     padding: 1.8rem;
+    width: 100%;
   }
 }
-.Vitual_btn:hover {
+.Vitual_btn1:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.Vitual_btn_1 {
+  background-color: #773dd3;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  padding: 15px 25px;
+  color: #fff;
+  font-size: 18px;
+  font-family: Radjadhani, sans-serif;
+  outline: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  width: 172px;
+  margin: auto;
+}
+@media (max-width: 37.5em) {
+  .Vitual_btn_1 {
+    height: initial;
+    padding: 1.8rem;
+    width: 100%;
+  }
+}
+.Vitual_btn_1:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .Vitual_countdown {
@@ -3210,7 +3255,7 @@ input:focus, select:focus, textarea:focus {
   color: #333333;
 }
 .auth_container_form input {
-  border: 1px solid #D9DCE1;
+  border: 1px solid #d9dce1;
   border-radius: 7px;
   padding: 10px 20px;
   margin: 5px 0 20px;
@@ -3221,7 +3266,7 @@ input:focus, select:focus, textarea:focus {
   outline: none;
 }
 .auth_container_form select {
-  border: 1px solid #D9DCE1;
+  border: 1px solid #d9dce1;
   border-radius: 7px;
   padding: 10px 20px;
   margin: 5px 0 20px;
@@ -3888,10 +3933,10 @@ input:focus, select:focus, textarea:focus {
 .course .book-session-container {
   display: flex;
   justify-content: space-between;
-  border: 1px solid #F8F5FD;
+  border: 1px solid #f8f5fd;
   border-radius: 28px;
   padding: 0px 95.66px;
-  background: #F8F5FD;
+  background: #f8f5fd;
 }
 .course .book-session-container-mobile {
   display: none;
@@ -5318,18 +5363,21 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-.hire h1, .hire h2, .hire h3, .hire h4 {
+.hire h1,
+.hire h2,
+.hire h3,
+.hire h4 {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #313131;
 }
 .hire-bg {
-  background: url("../images/hire-png.png"), #FDFDFD;
+  background: url("../images/hire-png.png"), #fdfdfd;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .hire_hero {
-  background: url("../images/hire-png.png"), #FDFDFD;
+  background: url("../images/hire-png.png"), #fdfdfd;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5342,7 +5390,7 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_hero p {
   font-size: 1.3em;
-  color: #9DA8B6;
+  color: #9da8b6;
   padding: 15px 15px 15px 0;
 }
 .hire_hero button {
@@ -5369,7 +5417,7 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_hero-carousel-mainImage {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   height: 90%;
   width: 100%;
 }
@@ -5435,7 +5483,7 @@ input:focus, select:focus, textarea:focus {
   width: 100%;
   height: 60rem;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-top: 5rem;
 }
 @media (min-width: 1024px) {
@@ -5484,7 +5532,7 @@ input:focus, select:focus, textarea:focus {
   padding: 0 20px;
 }
 .hire_talents-define p {
-  color: #9DA8B6;
+  color: #9da8b6;
   font-size: 1.1em;
   text-align: center;
 }
@@ -5522,13 +5570,13 @@ input:focus, select:focus, textarea:focus {
   font-size: 1.1em;
 }
 .hire_talents-cards-box-text-1 {
-  color: #9DA8B6;
+  color: #9da8b6;
   margin: 5px 0 30px;
 }
 .hire_talents-cards-box-text-available {
   text-transform: uppercase;
-  color: #CC9600;
-  background: #FFFADE;
+  color: #cc9600;
+  background: #fffade;
   width: 150px;
   padding: 10px 25px 1px;
   font-weight: 600;
@@ -5537,9 +5585,9 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_talents-cards-box-text-hired {
   text-transform: uppercase;
-  color: #188F32;
+  color: #188f32;
   width: 150px;
-  background: #DEFFE5;
+  background: #deffe5;
   padding: 10px 25px 1px;
   font-weight: 600;
   margin: 0 auto 20px;
@@ -5562,7 +5610,8 @@ input:focus, select:focus, textarea:focus {
   border-radius: 10px;
   display: flex;
   padding: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   margin: 40px;
   background-color: #fff;
 }
@@ -5574,7 +5623,7 @@ input:focus, select:focus, textarea:focus {
   }
 }
 .hire_listing:hover {
-  background-color: #773DD3;
+  background-color: #773dd3;
   transition: background-color 800ms linear;
 }
 .hire_listing:hover p {
@@ -5648,8 +5697,8 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_listing-text-2-available {
   text-transform: uppercase;
-  color: #CC9600;
-  background: #FFFADE;
+  color: #cc9600;
+  background: #fffade;
   padding: 7px 25px 5px;
   font-weight: 600;
   height: 23px;
@@ -5661,8 +5710,8 @@ input:focus, select:focus, textarea:focus {
   text-transform: uppercase;
   font-size: 1em !important;
   height: 23px;
-  background: #DEFFE5;
-  color: #188F32;
+  background: #deffe5;
+  color: #188f32;
   padding: 7px 25px 5px;
   font-weight: 600;
   margin-left: auto;
@@ -5689,7 +5738,7 @@ input:focus, select:focus, textarea:focus {
   padding-top: 10px;
   margin: 0 3px;
   height: 30px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
@@ -5697,19 +5746,20 @@ input:focus, select:focus, textarea:focus {
   padding: 10px 15px 0;
   margin: 0 3px;
   height: 30px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 .hire_listing-pagination .activePage {
-  background-color: #773DD3;
+  background-color: #773dd3;
   color: white;
 }
 .hire_profile-main {
   padding: 20px;
   margin-top: 40px;
   position: relative;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border: 10px;
   border-radius: 20px;
   background: white;
@@ -5750,8 +5800,8 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_profile-main-bio-text .available {
   text-transform: uppercase;
-  color: #CC9600;
-  background: #FFFADE;
+  color: #cc9600;
+  background: #fffade;
   font-weight: 600;
   margin: 10px 0 20px;
   font-size: 15px !important;
@@ -5761,8 +5811,8 @@ input:focus, select:focus, textarea:focus {
 }
 .hire_profile-main-bio-text .hired {
   text-transform: uppercase;
-  background: #DEFFE5;
-  color: #188F32;
+  background: #deffe5;
+  color: #188f32;
   font-weight: 600;
   margin: 10px 0 20px;
   font-size: 15px !important;
@@ -5816,7 +5866,8 @@ input:focus, select:focus, textarea:focus {
     margin-right: 100px;
   }
 }
-.hire_profile-main-info h4, .hire_profile-main-info p {
+.hire_profile-main-info h4,
+.hire_profile-main-info p {
   color: #777777;
 }
 .hire_profile-main-info h4 {
@@ -5995,7 +6046,8 @@ input:focus, select:focus, textarea:focus {
     margin: 0 10px;
   }
 }
-.hire_contact-form input, .hire_contact-form textarea {
+.hire_contact-form input,
+.hire_contact-form textarea {
   border-radius: 5px;
   width: 100%;
   border: 1px solid rgba(157, 168, 182, 0.4);
@@ -6040,7 +6092,7 @@ input:focus, select:focus, textarea:focus {
   }
 }
 .join_bg1 {
-  background: #F1F5FC;
+  background: #f1f5fc;
   margin: 50px 0;
   padding: 50px 0;
 }
@@ -6170,7 +6222,7 @@ input:focus, select:focus, textarea:focus {
 
 .dashboard-nav {
   height: 70px;
-  border-bottom: 3px solid #F8F8F8;
+  border-bottom: 3px solid #f8f8f8;
   display: flex;
   padding: 0 40px;
 }
@@ -6221,24 +6273,24 @@ input:focus, select:focus, textarea:focus {
   background: #333333;
 }
 .dashboard-nav-status .under-review {
-  border: 1px solid #E7A300;
-  background: #E7A300;
+  border: 1px solid #e7a300;
+  background: #e7a300;
 }
 .dashboard-nav-status .pending {
-  border: 1px solid #E7A300;
-  background: #E7A300;
+  border: 1px solid #e7a300;
+  background: #e7a300;
 }
 .dashboard-nav-status .Selected {
   border: 1px solid #773dd3;
   background: #773dd3;
 }
 .dashboard-nav-status .Admitted {
-  border: 1px solid #29EB7F;
-  background: #29EB7F;
+  border: 1px solid #29eb7f;
+  background: #29eb7f;
 }
 .dashboard-nav-status .Rejected {
-  border: 1px solid #CC2E2E;
-  background: #CC2E2E;
+  border: 1px solid #cc2e2e;
+  background: #cc2e2e;
 }
 .dashboard-nav-user {
   margin-left: auto;
@@ -6360,13 +6412,15 @@ input:focus, select:focus, textarea:focus {
   width: 100%;
   box-sizing: border-box;
 }
-.dashboard-content h3, .dashboard-content h4 {
+.dashboard-content h3,
+.dashboard-content h4 {
   color: #333333;
   margin: 30px 0 20px;
   font-weight: 600;
   font-size: 18px;
 }
-.dashboard-content p, .dashboard-content li {
+.dashboard-content p,
+.dashboard-content li {
   font-size: 17px;
   margin-top: 1rem;
   color: #787676;
@@ -6382,9 +6436,9 @@ input:focus, select:focus, textarea:focus {
   text-decoration: underline;
 }
 .dashboard-content .disable-btn {
-  color: #E0E0E0;
-  background: #FAFAFA !important;
-  border: 1px solid #FAFAFA;
+  color: #e0e0e0;
+  background: #fafafa !important;
+  border: 1px solid #fafafa;
 }
 .dashboard-content button {
   color: white;
@@ -6457,19 +6511,22 @@ input:focus, select:focus, textarea:focus {
   color: #333333;
   margin-top: 25px;
 }
-.dashboard-content-form-container input, .dashboard-content-form-container select, .dashboard-content-form-container textarea {
+.dashboard-content-form-container input,
+.dashboard-content-form-container select,
+.dashboard-content-form-container textarea {
   width: 100%;
   margin: 5px 0 0;
   padding: 7px 20px;
   font-size: 16px;
   color: #787676;
   border-radius: 10px;
-  border: 1px solid #D9DCE1;
+  border: 1px solid #d9dce1;
 }
 .dashboard-content-form-container textarea {
   height: 200px;
 }
-.dashboard-content-form-container input[type=file]::-webkit-file-upload-button {
+.dashboard-content-form-container
+  input[type="file"]::-webkit-file-upload-button {
   visibility: hidden;
   position: absolute;
   right: 0;
@@ -6528,19 +6585,22 @@ input:focus, select:focus, textarea:focus {
   color: #333333;
   margin-top: 25px;
 }
-.dashboard-content-form2-container input, .dashboard-content-form2-container select, .dashboard-content-form2-container textarea {
+.dashboard-content-form2-container input,
+.dashboard-content-form2-container select,
+.dashboard-content-form2-container textarea {
   width: 100%;
   margin: 5px 0 0;
   padding: 7px 20px;
   font-size: 16px;
   color: #787676;
   border-radius: 10px;
-  border: 1px solid #D9DCE1;
+  border: 1px solid #d9dce1;
 }
 .dashboard-content-form2-container textarea {
   height: 200px;
 }
-.dashboard-content-form2-container input[type=file]::-webkit-file-upload-button {
+.dashboard-content-form2-container
+  input[type="file"]::-webkit-file-upload-button {
   visibility: hidden;
   position: absolute;
   right: 0;
@@ -6665,7 +6725,7 @@ input:focus, select:focus, textarea:focus {
   font-size: 21px;
 }
 .dashboard-content-modal-main-frame1 {
-  border: 1px solid #E5E9F2;
+  border: 1px solid #e5e9f2;
   border-radius: 10px;
   padding: 10px 20px;
   margin-top: 20px;
@@ -6673,7 +6733,7 @@ input:focus, select:focus, textarea:focus {
   cursor: pointer;
 }
 .dashboard-content-modal-main-frame1 div {
-  border: 1px solid #E5E9F2;
+  border: 1px solid #e5e9f2;
   border-radius: 50px;
   width: 30px;
   height: 30px;
@@ -6681,7 +6741,7 @@ input:focus, select:focus, textarea:focus {
 }
 .dashboard-content-modal-main-frame1 p {
   margin-top: 10px;
-  color: #52575C !important;
+  color: #52575c !important;
 }
 .dashboard-content-modal-main .active {
   border: 1px solid #773dd3;
@@ -6701,7 +6761,7 @@ input:focus, select:focus, textarea:focus {
 }
 .dashboard-content-modal-main .active p {
   margin-top: 10px;
-  color: #52575C !important;
+  color: #52575c !important;
 }
 .dashboard-content-modal-main button {
   width: 100%;
@@ -6731,9 +6791,14 @@ input:focus, select:focus, textarea:focus {
   font-weight: 700;
   line-height: normal;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .pricing h1 {
-    font-size: 50px;
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing h1 {
+    font-size: 25px;
   }
 }
 .pricing p {
@@ -6744,6 +6809,11 @@ input:focus, select:focus, textarea:focus {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
+}
+@media screen and (max-width: 320px) {
+  .pricing p {
+    font-size: 16px;
+  }
 }
 .pricing .virtualButtons {
   border-radius: 28px;
@@ -6773,6 +6843,12 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 400px) {
   .pricing .virtualButtons {
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing .virtualButtons {
+    font-size: 12px;
+    width: 130px;
   }
 }
 .pricing .onsiteButtons {
@@ -6806,6 +6882,12 @@ input:focus, select:focus, textarea:focus {
     width: 140px;
   }
 }
+@media screen and (max-width: 320px) {
+  .pricing .onsiteButtons {
+    font-size: 12px;
+    width: 130px;
+  }
+}
 .pricing .activebtn {
   cursor: pointer;
   font-family: Nunito Sans;
@@ -6819,6 +6901,11 @@ input:focus, select:focus, textarea:focus {
 @media screen and (max-width: 400px) {
   .pricing .activebtn {
     font-size: 14px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing .activebtn {
+    font-size: 12px;
   }
 }
 .pricing_toggle {
@@ -6845,9 +6932,16 @@ input:focus, select:focus, textarea:focus {
     gap: 8px;
   }
 }
+@media screen and (max-width: 320px) {
+  .pricing_toggle {
+    width: 100%;
+    padding:4px 1px;
+    gap: 4px;
+  }
+}
 .pricing .container {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 16px;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

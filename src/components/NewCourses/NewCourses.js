@@ -1,13 +1,13 @@
 import classes from "./NewCourses.module.css";
 import Virtual from "../../images/virtual-new.png";
 import benzene from "../../images/benzene.svg";
-import group from "../../images/group-gift.png";
+import group1 from "../../images/group-gift.png";
 import { Link } from "react-router-dom";
 const NewCourses = () => {
   return (
     <section className={classes.new}>
       <div className={classes.group}>
-        <img src={group} alt="group" />
+        <img src={group1} alt="group" />
       </div>
       <div className={classes.info}>
         <h1>New Courses Now Available!</h1>

@@ -4,16 +4,6 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import VitualHero from "../images/virtual/VitualHero.png";
 import VitualHero from "../images/virtual/virtual-lady.png";
-import Slider1 from "../images/virtual/slider1.svg";
-import Slider2 from "../images/virtual/slider2.svg";
-import Slider3 from "../images/virtual/slider3.svg";
-import Slider4 from "../images/virtual/slider4.svg";
-import Slider5 from "../images/virtual/slider5.svg";
-import Content1 from "../images/virtual/content1.svg";
-import Content2 from "../images/virtual/content2.svg";
-import Content3 from "../images/virtual/content3.svg";
-import Content4 from "../images/virtual/content4.svg";
-import Content5 from "../images/virtual/content5.svg";
 import Browse from "../images/virtual/browse.png";
 import Click from "../images/virtual/click.png";
 import Plan from "../images/virtual/plan.png";
@@ -21,22 +11,11 @@ import Forward from "../images/virtual/forward.png";
 import Down from "../images/virtual/down.png";
 import { useState, useEffect } from "react";
 import { format, differenceInSeconds } from "date-fns/locale/en-US";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useMemo } from "react";
-import product from "../images/product.png";
-import frontend from "../images/frontend.png";
-import backend from "../images/backend.png";
-import android from "../images/android.png";
-import product_management from "../images/product_management.png";
-import machine_learning from "../images/machine_learning.png";
-import java from "../images/java.png";
-import data_analysis from "../images/data_analysis.png";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { FaCircleArrowLeft } from "react-icons/fa6";
 import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
+import VirtualClass from "../components/VirtualClass/VirtualClass";
 
 const VirtualLanding = () => {
   const [buttonColor, setButtonColor] = useState("initialColor");
@@ -146,8 +125,8 @@ const VirtualLanding = () => {
           </p>
 
           <button
-            className="Vitual_btn"
-            style={{ width: "172px", textAlign: "center" }}
+            className="Vitual_btn1"
+            // style={{ width: "172px", textAlign: "center" }}
             onClick={scrollToTarget}
           >
             <div>View Courses</div>
@@ -249,149 +228,7 @@ const VirtualLanding = () => {
         </div>
       </section>
       <section>
-        <div className="Vitual_arrow" style={{ textAlign: "center" }}>
-          <button
-            className="Vitual_bttn"
-            onClick={goToPrev}
-            style={{
-              background: "#fff",
-              color: "gray",
-              border: "none",
-              borderRadius: "50%",
-              margin: "10px",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              // marginLeft: "10px",
-            }}
-            onMouseDown={(e) => {
-              e.currentTarget.style.background = "#fff";
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseUp={(e) => {
-              e.currentTarget.style.background = "#773DD3";
-              e.currentTarget.style.color = "white";
-            }}
-          >
-            <i style={{ fontSize: "20px", pointerEvents: "none" }}>&#129120;</i>
-          </button>
-          <button
-            onClick={goToNext}
-            style={{
-              background: "#773DD3",
-              color: "white",
-              border: "none",
-              borderRadius: "50%",
-              margin: "10px",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              // marginLeft: "10px",
-            }}
-          >
-            <i style={{ fontSize: "20px", pointerEvents: "none" }}>&#129122;</i>
-          </button>
-        </div>
-        <Slider ref={sliderRef} {...settings}>
-          <div className="Vitual_container">
-            <div className="Vitual_slider">
-              <div className="Vitual_slider_img">
-                <img src={Slider1} alt="slider" />
-              </div>
-              <div className="Vitual_slider_2">
-                <div className="Vitual_slider_2_content">
-                  <h1>Why Virtual Class?</h1>
-                  <p>
-                    Choosing virtual classes with us opens up a world of
-                    possibilities for your education. Here are some key benefits
-                    you can enjoy
-                  </p>
-                  <div className="Vitual_slider_2_content_box">
-                    <img src={Content1} alt="img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="Vitual_slider">
-              <div className="Vitual_slider_img">
-                <img src={Slider2} alt="slider" />
-              </div>
-              <div className="Vitual_slider_2">
-                <div className="Vitual_slider_2_content">
-                  <h1>Why Virtual Class?</h1>
-                  <p>
-                    Choosing virtual classes with us opens up a world of
-                    possibilities for your education. Here are some key benefits
-                    you can enjoy
-                  </p>
-                  <div className="Vitual_slider_2_content_box">
-                    <img src={Content2} alt="img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="Vitual_slider">
-              <div className="Vitual_slider_img">
-                <img src={Slider3} alt="slider" />
-              </div>
-              <div className="Vitual_slider_2">
-                <div className="Vitual_slider_2_content">
-                  <h1>Why Virtual Class?</h1>
-                  <p>
-                    Choosing virtual classes with us opens up a world of
-                    possibilities for your education. Here are some key benefits
-                    you can enjoy
-                  </p>
-                  <div className="Vitual_slider_2_content_box">
-                    <img src={Content3} alt="img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="Vitual_slider">
-              <div className="Vitual_slider_img">
-                <img src={Slider4} alt="slider" />
-              </div>
-              <div className="Vitual_slider_2">
-                <div className="Vitual_slider_2_content">
-                  <h1>Why Virtual Class?</h1>
-                  <p>
-                    Choosing virtual classes with us opens up a world of
-                    possibilities for your education. Here are some key benefits
-                    you can enjoy
-                  </p>
-                  <div className="Vitual_slider_2_content_box">
-                    <img src={Content4} alt="img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="Vitual_slider">
-              <div className="Vitual_slider_img">
-                <img src={Slider5} alt="slider" />
-              </div>
-              <div className="Vitual_slider_2">
-                <div className="Vitual_slider_2_content">
-                  <h1>Why Virtual Class?</h1>
-                  <p>
-                    Choosing virtual classes with us opens up a world of
-                    possibilities for your education. Here are some key benefits
-                    you can enjoy
-                  </p>
-                  <div className="Vitual_slider_2_content_box">
-                    <img src={Content5} alt="img" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Slider>
+        <VirtualClass />
       </section>
       <AvailableTrack />
 

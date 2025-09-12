@@ -5,9 +5,10 @@
   gap: 16px;
   @media screen and (max-width: 1045px) {
     flex-wrap: wrap;
-    /* margin-bottom: 50px; */
+    margin-bottom: 50px;
   }
   @media screen and (max-width: 570px) {
+    margin-bottom: 10px;
     width: 100%;
     /* padding: 24px 30px; */
   }
