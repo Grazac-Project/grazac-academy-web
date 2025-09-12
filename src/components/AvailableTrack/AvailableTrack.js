@@ -8,6 +8,11 @@ import product_management from "../../images/product_management.png";
 import machine_learning from "../../images/machine_learning.png";
 import java from "../../images/java.png";
 import data_analysis from "../../images/data_analysis.png";
+import product_marketing from "../../images/product-marketing.png";
+import cybersecurity from "../../images/cybersecurity.png";
+import cloud from "../../images/cloud.png";
+import python from "../../images/python.png";
+import qualityTesting from "../../images/quality-testing.png";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import Ai from "../../images/available-tracks/ai.png";
@@ -65,6 +70,14 @@ const tracks = [
     link: "/course-detail-graduate?course=backend-web-development",
   },
   {
+    key: "python",
+    tab: "AI and Software Engineering",
+    img: python,
+    title: "Python for Machine Learning and AI",
+    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
+    link: "/course-detail-graduate?course=backend-web-development",
+  },
+  {
     key: "android",
     tab: "AI and Software Engineering",
     img: android,
@@ -89,6 +102,14 @@ const tracks = [
     link: "/course-detail-graduate?course=machine-learning",
   },
   {
+    key: "product_marketing",
+    tab: "Products",
+    img: product_marketing,
+    title: "Product Marketing",
+    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
+    link: "/course-detail-graduate?course=product-designing-ui-ux",
+  },
+  {
     key: "java",
     tab: "AI and Software Engineering",
     img: java,
@@ -103,6 +124,14 @@ const tracks = [
     title: "Data Analysis",
     desc: "Data Analysis involves using different tools and techniques to scrutinize and probe large volumes of data with the goal of making informed solving problems, business decisions, and...",
     link: "/course-detail-graduate?course=data-analysis",
+  },
+  {
+    key: "qualityTesting",
+    tab: "Products",
+    img: qualityTesting,
+    title: "Quality Assurance (QA) Testing",
+    desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
+    link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
   {
     key: "blockchain",
