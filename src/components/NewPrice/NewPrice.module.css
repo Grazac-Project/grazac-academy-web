@@ -51,10 +51,7 @@
     width: 100%;
     padding: 24px 30px;
   }
-  @media screen and (max-width: 320px) {
-    width: 100%;
-    /* padding: 24px 30px; */
-  }
+  
 }
 
 .yellowBorder {
@@ -74,6 +71,10 @@
   margin-top: 25px;
   margin-bottom: 15px;
 }
+@media screen and (max-width:320px) {
+  margin-top: 10px;
+  /* font-size: 20px; */
+}
 }
 .priceTag {
   align-items: center;
@@ -88,6 +89,9 @@
   font-weight: 700;
   line-height: normal;
   width: 100%;
+  @media screen and (max-width:320px) {
+    font-size: 20px;
+  }
 }
 .priceTag h3 span {
   /* color: var(--text-color, #333); */
@@ -97,6 +101,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
 }
 
 .priceTag p {
@@ -109,6 +116,9 @@
   line-height: normal;
   text-decoration: line-through;
   margin: 5px;
+  @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
 }
 .priceTag h6 {
   color: #773DD3;
@@ -118,6 +128,9 @@
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
+  @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
 }
 .benefits {
   margin-top: 32px;

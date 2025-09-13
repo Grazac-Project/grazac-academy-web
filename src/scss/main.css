@@ -2759,6 +2759,7 @@ textarea:focus {
   .Vitual_hero {
     display: column;
     flex-direction: column-reverse;
+    align-items: center;
     width: 90%;
   }
 }
@@ -2767,6 +2768,7 @@ textarea:focus {
 }
 .Vitual_hero_girl {
   max-width: 100%;
+  margin-bottom: 62.11px;
 }
 @media screen and (max-width: 768px) {
   .Vitual_hero_girl {
@@ -2776,25 +2778,24 @@ textarea:focus {
 }
 .Vitual_hero h4 {
   color: var(--Main-Color, #773dd3);
-  font-family: Georgia;
+  font-family: Rajadhani, sans-serif;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%; /* 36px */
 }
 @media screen and (max-width: 600px) {
   .Vitual_hero h4 {
-    font-size: 22px;
+    font-size: 24px;
     padding-bottom: 8px;
   }
 }
 .Vitual_hero h1 {
   color: #073041;
-  font-family: Georgia;
+  font-family: Rajadhani, sans-serif;
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 100%;
   margin: 0;
 }
 @media screen and (max-width: 1024px) {
@@ -2808,11 +2809,11 @@ textarea:focus {
   }
 }
 .Vitual_hero p {
-  color: #073041;
-  font-family: Nunito Sans;
+  color: #787676;
+  font-family: Rajadhani, sans-serif;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%; /* 36px */
   padding: 32px 0;
 }
@@ -6798,7 +6799,7 @@ textarea:focus {
 }
 @media screen and (max-width: 320px) {
   .pricing h1 {
-    font-size: 25px;
+    font-size: 30px;
   }
 }
 .pricing p {
