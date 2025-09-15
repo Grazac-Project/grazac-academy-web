@@ -1,4 +1,4 @@
-import classes from "./AvailableTrack.module.css";
+import classes from "./AvailableTrackVirtual.module.css";
 import React, { useState } from "react";
 import product from "../../images/product.png";
 import frontend from "../../images/frontend.png";
@@ -46,14 +46,6 @@ const tabs = [
 
 const tracks = [
   {
-    key: "product",
-    tab: "Products",
-    img: product,
-    title: "Product Design (UI/UX)",
-    desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
-  },
-  {
     key: "frontend",
     tab: "AI and Software Engineering",
     img: frontend,
@@ -69,14 +61,7 @@ const tracks = [
     desc: "Node.js is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news...",
     link: "/course-detail-graduate?course=backend-web-development",
   },
-  {
-    key: "python",
-    tab: "AI and Software Engineering",
-    img: python,
-    title: "Python for Machine Learning and AI",
-    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=backend-web-development",
-  },
+
   {
     key: "android",
     tab: "AI and Software Engineering",
@@ -85,21 +70,22 @@ const tracks = [
     desc: "Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from...",
     link: "/course-detail-graduate?course=mobile-application-development",
   },
+
   {
-    key: "product_management",
-    tab: "Products",
-    img: product_management,
-    title: "Product Management",
-    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and...",
-    link: "/course-detail-graduate?course=product-management",
+    key: "data_analysis",
+    tab: "Data Science",
+    img: data_analysis,
+    title: "Data Analysis",
+    desc: "Data Analysis involves using different tools and techniques to scrutinize and probe large volumes of data with the goal of making informed solving problems, business decisions, and...",
+    link: "/course-detail-graduate?course=data-analysis",
   },
   {
-    key: "machine_learning",
-    tab: "Data Science",
-    img: machine_learning,
-    title: "Machine learning with Python",
-    desc: "Machine Learning with Python is a comprehensive journey that equips you with the skills and knowledge needed to build, evaluate, and deploy machine learning models for...",
-    link: "/course-detail-graduate?course=machine-learning",
+    key: "product",
+    tab: "Products",
+    img: product,
+    title: "Product Design (UI/UX)",
+    desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
+    link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
   {
     key: "product_marketing",
@@ -110,22 +96,6 @@ const tracks = [
     link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
   {
-    key: "java",
-    tab: "AI and Software Engineering",
-    img: java,
-    title: "Java",
-    desc: "Java is a versatile programming language with a wide range of applications, from web development to mobile app development, big data processing, and more...",
-    link: "/course-detail-graduate?course=java",
-  },
-  {
-    key: "data_analysis",
-    tab: "Data Science",
-    img: data_analysis,
-    title: "Data Analysis",
-    desc: "Data Analysis involves using different tools and techniques to scrutinize and probe large volumes of data with the goal of making informed solving problems, business decisions, and...",
-    link: "/course-detail-graduate?course=data-analysis",
-  },
-  {
     key: "qualityTesting",
     tab: "Products",
     img: qualityTesting,
@@ -133,15 +103,58 @@ const tracks = [
     desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
     link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
+    {
+    key: "product_management",
+    tab: "Products",
+    img: product_management,
+    title: "Product Management",
+    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and...",
+    link: "/course-detail-graduate?course=product-management",
+  },
+
   {
-    key: "blockchain",
+    key: "python",
+    tab: "AI and Software Engineering",
+    img: python,
+    title: "Python for Machine Learning and AI",
+    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
+    link: "/course-detail-graduate?course=backend-web-development",
+  },
+  
+  // {
+  //   key: "machine_learning",
+  //   tab: "Data Science",
+  //   img: machine_learning,
+  //   title: "Machine learning with Python",
+  //   desc: "Machine Learning with Python is a comprehensive journey that equips you with the skills and knowledge needed to build, evaluate, and deploy machine learning models for...",
+  //   link: "/course-detail-graduate?course=machine-learning",
+  // },
+  
+  {
+    key: "cloud",
     tab: "Cloud and Cybersecurity",
-    img: data_analysis,
-    title: "Blockchain Development with Solidity",
+    img: cybersecurity,
+    title: "Cybersecurity",
     desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
     link: "/course-detail-graduate?course=blockchain-development-solidity",
   },
-];
+  {
+    key: "cloud_engineer",
+    tab: "Cloud and Cybersecurity",
+    img: cloud,
+    title: "Cloud Engineering (AWS)",
+    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
+    link: "/course-detail-graduate?course=blockchain-development-solidity",
+  },
+  {
+    key: "java",
+    tab: "AI and Software Engineering",
+    img: java,
+    title: "Java",
+    desc: "Java is a versatile programming language with a wide range of applications, from web development to mobile app development, big data processing, and more...",
+    link: "/course-detail-graduate?course=java",
+  },
+]
 
 const AvailableTrack = () => {
   const history = useHistory();

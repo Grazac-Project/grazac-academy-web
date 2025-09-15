@@ -10,10 +10,11 @@ const NewPricing = () => {
       spanNewAmount: "($466)",
       spanOldAmount: "($499)",
       discount: ["16.67%"],
-      method: ["₦350,000 Initial payment"],
-      span: ["₦210,000 ($210) Initial payment"],
+      // method: ["₦350,000 Initial payment"],
+      // span: ["₦210,000 ($210) Initial payment"],
       benefits: [
-        "Pay N840,000 ($840) remaining at a flexible pace of N140,000 ($140) per month for 6 months.  ",
+        "6 months of immersive training",
+        "Flexible payment plan. ",
         "1:1 mentorship with experts ",
         "Job opportunities ",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc. ",
@@ -31,9 +32,28 @@ const NewPricing = () => {
       recommend: "Highly Recommended",
       benefits: [
         "No legal fees",
-        "8 months of immersive training",
-        "4 months of internship",
+        "6 months of immersive training",
+        // "4 months of internship",
         'Access to free workspace for 6 months',
+        "1:1 mentorship with experts",
+        "Job opportunities",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        'Free wi-fi',
+      ],
+    },
+    {
+      id: 3,
+      type: "Cloud and Cybersecurity Course",
+      newAmount: "₦850,000",
+      prevAmount: "₦1,000,000",
+      spanNewAmount: "($565.98)",
+      spanOldAmount: "($665.85)",
+      discount: ["15%"],
+      benefits: [
+        " Installment payment of NGN 900,000.",
+        "6 months of immersive training",
+        // "4 months of internship",
+        // 'Access to free workspace for 6 months',
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
@@ -80,7 +100,7 @@ const NewPricing = () => {
             <ul>
               {item.id === 1 ? (
                 <span>
-                  <li>{item.span}</li>
+                  {/* <li>{item.span}</li> */}
                 </span>
               ) : null}
 

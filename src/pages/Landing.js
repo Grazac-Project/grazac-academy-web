@@ -43,7 +43,7 @@ import VirtualSection from "../components/VirtualSection/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LandingMentors from "../components/LandingMentors";
 import LandingJudges from "../components/LandingJudges";
-import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
+import AvailableTrack from "../components/AvailableTrackPhysical/AvailableTrack";
 import NewCourses from "../components/NewCourses/NewCourses";
 
 const Landing = () => {
@@ -139,9 +139,9 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for cohort 016 is ongoing. Early registration
-                  closes by June 20th, Hurry Now and <span>Register!</span>{" "}
-                  Classes starts by July 7, 2025
+                  Application for Cohort 17 is ongoing. Early registration
+                  closes by November 30th. Hurry Now and Register. Classes
+                  starts by January 12th, 2026.
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -230,8 +230,8 @@ const Landing = () => {
             <img src={Sponsor6} alt="sponsor" />
           </div>
         </div>
-        <NewCourses/>
-        <VirtualSection/>
+        <NewCourses />
+        <VirtualSection />
 
         <div>
           {/* <Container> */}
@@ -309,7 +309,7 @@ const Landing = () => {
           {/* </Row> */}
           {/* </Container> */}
         </div>
-        <AvailableTrack/>
+        <AvailableTrack />
         <LandingJudges />
         {/* </div> */}
 

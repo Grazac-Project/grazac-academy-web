@@ -1,6 +1,7 @@
 .main {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   /* align-items: flex-end; */
   gap: 16px;
   @media screen and (max-width: 1045px) {
@@ -77,7 +78,7 @@
 }
 }
 .priceTag {
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
 }
 .priceTag h3 {
@@ -88,7 +89,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 100%;
+  /* width: 100%; */
+    @media screen and (max-width:1024px) {
+    font-size: 24px;
+  }
   @media screen and (max-width:320px) {
     font-size: 20px;
   }
@@ -101,6 +105,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+   @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
   @media screen and (max-width:320px) {
     font-size: 16px;
   }
@@ -115,32 +122,41 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: line-through;
-  margin: 5px;
+  /* margin: 5px; */
+    @media screen and (max-width:1024px) {
+    font-size: 17px;
+  }
   @media screen and (max-width:320px) {
     font-size: 16px;
   }
 }
 .priceTag h6 {
-  color: #773DD3;
+  color: #D5BAFF;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
+  @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
   @media screen and (max-width:320px) {
     font-size: 16px;
   }
 }
 .benefits {
   margin-top: 32px;
+  @media screen and (max-width:1024px) {
+    margin-top: 20px;
+  }
 }
 .benefits ul {
   align-items: center;
 }
 .benefits ul li {
   /* color: var(--text-color, #333); */
-    color: #773DD3;
+    color: #787676;
   font-family: Nunito Sans;
   font-size: 16px;
   font-style: normal;

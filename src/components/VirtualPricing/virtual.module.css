@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   gap: 16px;
   @media screen and (max-width: 1045px) {
     flex-wrap: wrap;
@@ -73,10 +73,15 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 32px;
-  margin-top: 43.53px;
-  @media screen and (max-width:900px) {
+  margin-bottom: 20px;
+  margin-top: 30px;
+  @media screen and (max-width:1024px) {
   margin-top: 25px;
+  margin-bottom: 18px;
+  font-size: 20px;
+  }
+  @media screen and (max-width:900px) {
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 @media screen and (max-width:320px) {
@@ -96,6 +101,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  
+  @media screen and (max-width:1024px) {
+    font-size: 24px;
+  }
   @media screen and (max-width:320px) {
     font-size: 20px;
   }
@@ -108,6 +117,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
    @media screen and (max-width:320px) {
     font-size: 16px;
   }
@@ -122,33 +134,42 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: line-through;
-  margin: 5px;
-   margin: 5px;
+  /* margin: 5px; */
+   /* margin: 5px; */
+   @media screen and (max-width:1024px) {
+    font-size: 17px;
+  }
   @media screen and (max-width:320px) {
     font-size: 16px;
   }
 }
 .priceTag h6 {
-  color: #773dd3;
+  color: #D5BAFF;
   font-family: Nunito Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
+  @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
   @media screen and (max-width:320px) {
     font-size: 16px;
   }
 }
 .benefits {
   margin-top: 32px;
+  @media screen and (max-width:1024px) {
+    margin-top: 20px;
+  }
 }
 .benefits ul {
   align-items: center;
 }
 .benefits ul li {
   /* color: var(--text-color, #333); */
-  color: #773dd3;
+  color: #787676;
   list-style-type: disc;
   font-family: Nunito Sans;
   font-size: 16px;
@@ -159,7 +180,7 @@
 }
 
 .benefits ul span li {
-  color: var(--Main-Color, #773dd3);
+  /* color: var(--Main-Color, #773dd3); */
   font-family: Nunito Sans;
   font-size: 16px;
   font-style: normal;
