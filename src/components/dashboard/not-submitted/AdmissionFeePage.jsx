@@ -60,7 +60,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         This helps us understand your starting point so we can tailor our support to your learning journey.
       </p>
       <p>
-        Don't worry — the assessment is straightforward and designed to ensure you get the most out of the program.
+        Don't worry, the assessment is straightforward and designed to ensure you get the most out of the program.
       </p>
       <p>We look forward to being part of your growth journey in tech!</p>
 
