@@ -82,12 +82,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       >
         Proceed To Pay
       </button>
-      {/* <button
-        className={"button"}
-        ref={buttonRef}
-      >
-        Proceed To Pay
-      </button> */}
+      
     </div>
   );
 }
