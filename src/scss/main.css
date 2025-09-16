@@ -199,8 +199,7 @@ input:focus, select:focus, textarea:focus {
   transition: all 500ms ease-in-out;
   padding: 5rem 2rem;
   padding-top: 12rem;
-  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
-          clip-path: circle(30px at calc(100% - 65px) 65px);
+  clip-path: circle(30px at calc(100% - 65px) 65px);
   visibility: hidden;
 }
 @media (max-width: 37.5em) {
@@ -367,8 +366,7 @@ input:focus, select:focus, textarea:focus {
 }
 .nav__menu--active .nav__list--mb {
   visibility: visible;
-  -webkit-clip-path: circle(100%);
-          clip-path: circle(100%);
+  clip-path: circle(100%);
 }
 .nav__menu--active .nav-tgl > span {
   height: 0;
