@@ -6,10 +6,10 @@ const VirtualPricing = () => {
       id: 2,
       type: "Pay Installment",
       newAmount: "₦300,000 ",
-      prevAmount: "₦700,000",
-      spanNewAmount: "($200)",
-      spanOldAmount: "($466)",
-      discount: ["57%"],
+      // prevAmount: "₦700,000",
+      // spanNewAmount: "($200)",
+      // spanOldAmount: "($466)",
+      // discount: ["57%"],
       // method: ["₦72,000 ($72) Initial payment"],
       span: ["Initial payment of 50% of the tuition fee at enrollment"],
 
@@ -27,10 +27,10 @@ const VirtualPricing = () => {
       id: 1,
       type: "Pay at Once",
       newAmount: "₦300,000 ",
-      prevAmount: "₦700,000",
-      spanNewAmount: "($200)",
-      spanOldAmount: "($466)",
-      discount: ["57%"],
+      // prevAmount: "₦700,000",
+      // spanNewAmount: "($200)",
+      // spanOldAmount: "($466)",
+      // discount: ["57%"],
       recommend: "Highly Recommended",
 
       benefits: [
@@ -45,16 +45,16 @@ const VirtualPricing = () => {
     
     {
       id: 3,
-      type: "Cloud and Cybersecurity Course",
+      type: "Cloud and Cybersecurity",
       newAmount: "₦450,000",
-      prevAmount: "₦850,000",
-      spanNewAmount: "($299.67)",
-      spanOldAmount: "($565.98)",
-      discount: ["50%"],
+      // prevAmount: "₦850,000",
+      // spanNewAmount: "($299.67)",
+      // spanOldAmount: "($565.98)",
+      // discount: ["50%"],
       span: ["Initial payment of 50% of the tuition fee at enrollment"],
       benefits: [
         "Spread the remaining payment over 2 months.",
-        "3 months of exclusive learning online at your pace.",
+        // "3 months of exclusive learning online at your pace.",
         "1:1 mentorship with virtual experts",
         "Learning from the comfort of your space",
         "Access to free webinars for your career growth and positioning",
@@ -75,12 +75,11 @@ const VirtualPricing = () => {
           <h5>{item.type}</h5>
           <div className={classes.priceTag}>
             <h3>
-              {item.newAmount} <span>{item.spanNewAmount}</span>
-            </h3>
-            <p>
+              {item.newAmount}</h3>
+            {/* <p>
               {item.prevAmount} <span>{item.spanOldAmount}</span>
             </p>
-            <h6>{item.discount}</h6>
+            <h6>{item.discount}</h6> */}
           </div>
           <div className={classes.benefits}>
             <ul>

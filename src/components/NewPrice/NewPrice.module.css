@@ -59,7 +59,7 @@
   border: 2px solid #FFD700; /* Yellow */
 }
 .main h5 {
-  color: #773dd3;
+  color: #1D1E2C;
   text-align: center;
   font-family: Nunito Sans;
   font-size: 24px;
@@ -84,7 +84,7 @@
 .priceTag h3 {
   /* color: var(--text-color, #333); */
   font-family: Nunito Sans;
-  color: #773DD3;
+  color: #333333;
   font-size: 34.811px;
   font-style: normal;
   font-weight: 700;

@@ -47,7 +47,7 @@
   font-family: Rajdhani, sans-serif;
   font-size: 48px;
   font-weight: 700;
-  color: #773dd3;
+  color: #073041;
   line-height: 100%;
   padding-bottom: 16px;
   @media screen and (max-width: 1024px) {
@@ -64,7 +64,7 @@
   font-family: Rajdhani, sans-serif;
   font-size: 20px;
   font-weight: 500;
-  color: #773dd3;
+  color: #787676;
   line-height: 150%;
   padding-bottom: 32px;
   @media screen and (max-width: 1024px) {
@@ -98,29 +98,30 @@
   
 }
 .label {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid #FFFFFF66;
   background-color: #ffffff4d;
   font-family: Radjdani, sans-serif;
   box-shadow: rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  font-family: 500;
-  color: #773dd3;
+  font-weight: 500;
+  color: #1D1E2C;
   padding: 5px 14px;
   border-radius: 18px;
   gap: 12px;
   width: 128px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   @media (max-width: 900px) {
     font-size: 16px;
   }
 }
 .label_marketing {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid #FFFFFF66;
   background-color: #ffffff4d;
   font-family: Radjdani, sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.1);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  font-family: 500;
-  color: #773dd3;
+  font-weight: 500;
+  color: #1D1E2C;
   padding: 5px 14px;
   border-radius: 18px;
   gap: 12px;
@@ -131,13 +132,13 @@
   }
 }
 .label_python {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: #ffffff4d;
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
   font-family: Radjdani, sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.1);
+  box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  font-family: 500;
-  color: #773dd3;
+  font-weight: 500;
+  color: #1D1E2C;
   padding: 5px 14px;
   border-radius: 18px;
   gap: 12px;
@@ -147,13 +148,13 @@
   }
 }
 .label_cloud {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: #ffffff4d;
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
   font-family: Radjdani, sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  font-family: 500;
-  color: #773dd3;
+  font-weight: 500;
+  color: #1D1E2C;
   padding: 5px 14px;
   border-radius: 18px;
   gap: 12px;
@@ -163,13 +164,13 @@
   }
 }
 .label_quality {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: #ffffff4d;
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
   font-family: Radjdani, sans-serif;
-  box-shadow: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 18px;
-  font-family: 500;
-  color: #773dd3;
+  font-weight: 500;
+  color: #1D1E2C;
   padding: 5px 14px;
   border-radius: 18px;
   gap: 12px;

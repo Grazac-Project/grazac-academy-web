@@ -33,9 +33,9 @@ const NewCourses = () => {
             <span>Quality Assurance (QA) Testers</span>
           </div>
         </div>
-        <Link to="/virtualLanding">
+        <a href="#availableTrack">
           <button className={classes.view}>View All Courses</button>
-        </Link>
+        </a>
       </div>
     </section>
   );

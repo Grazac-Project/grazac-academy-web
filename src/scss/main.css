@@ -2866,13 +2866,13 @@ textarea:focus {
   border-radius: 3px;
   padding: 15px 25px;
   color: #fff;
-  font-size: 18px;
+  font-size: 22.38px;
   font-family: Radjadhani, sans-serif;
   outline: none;
   cursor: pointer;
   font-weight: 700;
   text-align: center;
-  width: 172px;
+  width: 300px;
   margin: auto;
 }
 @media (max-width: 37.5em) {

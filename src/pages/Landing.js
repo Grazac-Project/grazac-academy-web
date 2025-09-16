@@ -309,7 +309,9 @@ const Landing = () => {
           {/* </Row> */}
           {/* </Container> */}
         </div>
-        <AvailableTrack />
+        <section id="availableTrack">
+          <AvailableTrack/>
+        </section>
         <LandingJudges />
         {/* </div> */}
 
