@@ -51,15 +51,10 @@ import VirtualSection from "../components/VirtualSection";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LandingMentors from "../components/LandingMentors";
 import LandingJudges from "../components/LandingJudges";
-import MaintenanceMode from "../components/MaintenanceModal";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
   const { setShow, show } = useContext(LoaderContext);
-  const [showMaintenance, setShowMaintenance] = useState(false);
-
-  const openMaintenance = () => setShowMaintenance(true);
-  const closeMaintenance = () => setShowMaintenance(false);
 
   const history = useHistory();
   const courseDetailsHandler = (goTo) => {
@@ -201,23 +196,16 @@ const Landing = () => {
           </div>
 
           {/* <a onClick={showToast}> */}
-          {/* <Link to="/signup">
+          <Link to="/signup">
             <div
               className="nav__btn"
               style={{ width: "150px", margin: "auto", textAlign: "center" }}
             >
-              
+              {/* <a href="/login" > */}
+              {/* <div className="nav__btn--text">Apply Now</div> */}
               <div className="nav__btn--text">Apply Now</div>
             </div>
-          </Link> */}
-          <div
-            onClick={openMaintenance}
-            className="nav__btn cursor-pointer"
-            style={{ width: "150px", margin: "auto", textAlign: "center",cursor: "pointer" }}
-          >
-            <div className="nav__btn--text">Apply Now</div>
-          </div>
-          {showMaintenance && <MaintenanceMode close={closeMaintenance} />}
+          </Link>
           {/* </a> */}
 
           <div className="landing__text-below">
@@ -660,16 +648,15 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-            {/* <Link to="/signup"> */}
+            <Link to="/signup">
               <div
-               onClick={openMaintenance}
                 className="nav__btn"
-                style={{ width: "150px", margin: "auto", textAlign: "center", cursor: "pointer" }}
+                style={{ width: "150px", margin: "auto", textAlign: "center" }}
                 // onClick={showToast}
               >
                 <div className="nav__btn--text">Apply Now</div>
               </div>
-            {/* </Link> */}
+            </Link>
           </div>
           <LandingJudges />
         </div>
@@ -733,21 +720,19 @@ const Landing = () => {
               </div>
               <div className="landing__discover--list-item"></div>
               <div className="landing__discover--list-item"></div>
-              {/* <Link to="/signup"> */}
+              <Link to="/signup">
                 {/* <div className="nav__btn one-btn" onClick={showToast}> */}
                 <div
-                 onClick={openMaintenance}
                   className="nav__btn"
                   style={{
                     width: "150px",
                     margin: "auto",
                     textAlign: "center",
-                    cursor: "pointer"
                   }}
                 >
                   <div className="nav__btn--text">Apply Now</div>
                 </div>
-              {/* </Link> */}
+              </Link>
             </div>
           </div>
         </div>
