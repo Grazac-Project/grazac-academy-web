@@ -96,12 +96,12 @@ function Details() {
         if (err.response) {
           toast.error(err.response);
           btn.innerHTML = `Submit`;
-        } 
+        }
         // else {
         //   toast.error(
         //     "Something went wrong!!! Please make sure you have a good internet connection."
         //   );
-          btn.innerHTML = `Submit`;
+        btn.innerHTML = `Submit`;
         // }
       });
   };
@@ -248,7 +248,7 @@ function Details() {
       .catch((err) => {
         if (err.response) {
           toast.error(err.response);
-        } 
+        }
         // else {
         //   toast.error(
         //     "Something went wrong!!! Please make sure you have a good internet connection."
@@ -265,16 +265,16 @@ function Details() {
     //     setGuarantorDetails_2();
     //     // setGuarantorId(res.data[0]["id"]);
     //   })
-      // .catch((err) => {
-      //   if (err.response) {
-      //     toast.error(err.response);
-      //   } 
-      //   else {
-      //     toast.error(
-      //       "Something went wrong!!! Please make sure you have a good internet connection."
-      //     );
-      //   }
-      // });
+    // .catch((err) => {
+    //   if (err.response) {
+    //     toast.error(err.response);
+    //   }
+    //   else {
+    //     toast.error(
+    //       "Something went wrong!!! Please make sure you have a good internet connection."
+    //     );
+    //   }
+    // });
   }, [true]);
 
   return (
@@ -293,15 +293,14 @@ function Details() {
           <div className="det-btn-container">
             <div className="dashboard-content-detail">
               <button
-                className={
-                  clicked === "bio"
-                    ? "dashboard-content-detail-p active"
-                    : "dashboard-content-detail-p"
-                }
+                className={`dashboard-content-detail-p sm:!w-[20%] ${
+                  clicked === "bio" ? "active" : ""
+                }`}
                 onClick={() => handleWhatToShow("bio")}
               >
                 Bio Data
               </button>
+
               {/* <button
                 className={
                   clicked === "edu"
@@ -329,42 +328,42 @@ function Details() {
           </div>
 
           {clicked === "bio" && (
-            <div className="dashboard-content-form">
+            <div className="dashboard-content-form overflow-x-hidden">
               <form onSubmit={(e) => submitData(e)}>
-                <div className="dashboard-content-form-container">
-                  <h5>First Name</h5>
+                <div className="dashboard-content-form-container mb-8">
+                  <h5 className="font-semibold">First Name</h5>
                   <p>{userDetails?.firstName}</p>
+                  <hr />
                 </div>
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Last Name</h5>
+                <div className="dashboard-content-form-container mb-8">
+                  <h5 className="font-semibold">Last Name</h5>
                   <p>{userDetails?.lastName}</p>
+                  <hr />
                 </div>
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Email Address</h5>
+                <div className="dashboard-content-form-container mb-8">
+                  <h5 className="font-semibold">Email Address</h5>
                   <p>{userDetails?.email}</p>
+                  <hr />
                 </div>
 
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Phone Number</h5>
+                <div className="dashboard-content-form-container mb-8">
+                  <h5 className="font-semibold">Phone Number</h5>
                   <p>{userDetails?.phoneNumber}</p>
+                  <hr />
                 </div>
-                <hr />
                 {/* <div className="dashboard-content-form-container">
                   <h5>Date of Birth</h5>
                   <p>{userDetails?.dob?.slice(0, 10)}</p>
                 </div>
                 <hr /> */}
-                <div className="dashboard-content-form-container">
-                  <h5>Gender</h5>
+                <div className="dashboard-content-form-container mb-8">
+                  <h5 className="font-semibold">Gender</h5>
                   <p>{userDetails?.gender}</p>
+                  <hr />
                 </div>
 
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Preferred course at Grazac</h5>
+                <div className="dashboard-content-form-container mt-8">
+                  <h5 className="font-semibold">Preferred course at Grazac</h5>
                   <p>{userDetails?.preferred_course}</p>
                 </div>
                 {/* <hr /> */}
@@ -437,7 +436,7 @@ function Details() {
                 <hr />
 
                 {/* <div className="dashboard-content-form-container"> */}
-                  {/* <h5>Age Range</h5>
+                {/* <h5>Age Range</h5>
                   {userDetails?.ageRange ? (
                     <p>{userDetails?.ageRange}</p>
                   ) : (
@@ -454,7 +453,7 @@ function Details() {
                       <option value="36 and above">36 and above</option>
                     </select>
                   )} */}
-                  {/* {!(
+                {/* {!(
                     tempData?.ageRange &&
                     tempData?.maritalStatus &&
                     tempData?.haveKids
@@ -464,9 +463,7 @@ function Details() {
                     </button>
                   )} */}
 
-                  
-
-                  {/* {(!userDetails?.ageRange ||
+                {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
                     !userDetails?.maritalStatus ||
                     submitted) && (
