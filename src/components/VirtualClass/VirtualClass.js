@@ -3,16 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Slider1 from "../../images/virtual/slider1.svg";
+import Slider1 from "../../images/virtual/joy.png";
 import Slider2 from "../../images/virtual/slider2.svg";
-import Slider3 from "../../images/virtual/slider3.svg";
-import Slider4 from "../../images/virtual/slider4.svg";
-import Slider5 from "../../images/virtual/slider5.svg";
-import Content1 from "../../images/virtual/content1.svg";
-import Content2 from "../../images/virtual/content2.svg";
-import Content3 from "../../images/virtual/content3.svg";
-import Content4 from "../../images/virtual/content4.svg";
-import Content5 from "../../images/virtual/content5.svg";
+import Slider3 from "../../images/virtual/wale.png";
+import Slider4 from "../../images/virtual/victor.png";
+import Slider5 from "../../images/virtual/victory.png";
+import Content1 from "../../images/virtual/flexibility.svg";
+import Content2 from "../../images/virtual/cost_effective.svg";
+import Content3 from "../../images/virtual/accessibility.svg";
+import Content4 from "../../images/virtual/mentorship.svg";
+import Content5 from "../../images/virtual/interaction.svg";
 import { useRef, useState } from "react";
 
 const slides = [
@@ -20,31 +20,31 @@ const slides = [
     img: Slider1,
     contentImg: Content1,
     title: "Why Virtual Class?",
-    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy.",
+    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy",
   },
   {
     img: Slider2,
     contentImg: Content2,
-    title: "Learn Anywhere",
-    text: "Access classes from anywhere in the world, all you need is an internet connection.",
+    title: "Why Virtual Class?",
+    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy",
   },
   {
     img: Slider3,
     contentImg: Content3,
-    title: "Expert Tutors",
-    text: "Our qualified tutors bring years of experience and are dedicated to helping you succeed.",
+    title: "Why Virtual Class?",
+    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy",
   },
   {
     img: Slider4,
     contentImg: Content4,
-    title: "Flexible Schedules",
-    text: "Learn at your own pace with flexible class schedules designed for busy learners.",
+    title: "Why Virtual Class?",
+    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy",
   },
   {
     img: Slider5,
     contentImg: Content5,
-    title: "Affordable Learning",
-    text: "Get premium quality education at an affordable cost, without compromising on value.",
+    title: "Why Virtual Class?",
+    text: "Choosing virtual classes with us opens up a world of possibilities for your education. Here are some key benefits you can enjoy",
   },
 ];
 
@@ -95,7 +95,7 @@ const VirtualClass = () => {
             <div className={classes.Virtual_slider}>
               <div className={classes.Virtual_slider_2_content1}>
                 <h1>{slide.title}</h1>
-                <p>{slide.text}</p>
+                {/* <p>{slide.text}</p> */}
               </div>
               <div className={classes.Virtual_slider_img}>
                 <img src={slide.img} alt={`slider-${index}`} />

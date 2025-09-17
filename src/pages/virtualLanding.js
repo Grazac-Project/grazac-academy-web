@@ -14,7 +14,7 @@ import { format, differenceInSeconds } from "date-fns/locale/en-US";
 import { useMemo } from "react";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import AvailableTrackVirtual from "../components/AvailableTrackVirtual/AvailableTrackVirtual";
+import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
 import VirtualClass from "../components/VirtualClass/VirtualClass";
 
 const VirtualLanding = () => {
@@ -230,7 +230,7 @@ const VirtualLanding = () => {
       <section>
         <VirtualClass />
       </section>
-      <AvailableTrackVirtual/>
+      <AvailableTrack/>
 
       <Footer />
     </div>

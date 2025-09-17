@@ -1,13 +1,13 @@
-import classes from "./AvailableTrackVirtual.module.css";
+import classes from "./AvailableTrack.module.css";
 import React, { useState } from "react";
 import product from "../../images/product.png";
 import frontend from "../../images/frontend.png";
 import backend from "../../images/backend.png";
 import android from "../../images/android.png";
 import product_management from "../../images/product_management.png";
-import machine_learning from "../../images/machine_learning.png";
-import java from "../../images/java.png";
-import data_analysis from "../../images/data_analysis.png";
+// import machine_learning from "../../images/machine_learning.png";
+// import java from "../../images/java.png";
+import data_analysis from "../../images/analysis.png";
 import product_marketing from "../../images/product-marketing.png";
 import cybersecurity from "../../images/cybersecurity.png";
 import cloud from "../../images/cloud.png";
@@ -20,6 +20,7 @@ import dashboard from "../../images/available-tracks/dashboard.png";
 import security from "../../images/available-tracks/security.png";
 import database from "../../images/available-tracks/database.png";
 import product1 from "../../images/available-tracks/product.png";
+import { cy } from "date-fns/locale";
 
 const tabs = [
   {
@@ -49,7 +50,7 @@ const tracks = [
     key: "frontend",
     tab: "AI and Software Engineering",
     img: frontend,
-    title: "Front-End Development",
+    title: "Front End Web development (Reactjs)",
     desc: "Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and JavaScript for a website or Web Application so that a user...",
     link: "/course-detail-graduate?course=frontend-web-development",
   },
@@ -57,7 +58,7 @@ const tracks = [
     key: "backend",
     tab: "AI and Software Engineering",
     img: backend,
-    title: "Back-End Development",
+    title: "Back End with Nodejs",
     desc: "Node.js is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news...",
     link: "/course-detail-graduate?course=backend-web-development",
   },
@@ -66,7 +67,7 @@ const tracks = [
     key: "android",
     tab: "AI and Software Engineering",
     img: android,
-    title: "Mobile App Developement",
+    title: "Mobile Development with Flutter and Dart",
     desc: "Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from...",
     link: "/course-detail-graduate?course=mobile-application-development",
   },
@@ -83,7 +84,7 @@ const tracks = [
     key: "product",
     tab: "Products",
     img: product,
-    title: "Product Design (UI/UX)",
+    title: "Product Design",
     desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
     link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
@@ -96,20 +97,20 @@ const tracks = [
     link: "/course-detail-graduate?course=product-designing-ui-ux",
   },
   {
+    key: "product_management",
+    tab: "Products",
+    img: product_management,
+    title: "Product Management",
+    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
+    link: "/course-detail-graduate?course=product-designing-ui-ux",
+  },
+  {
     key: "qualityTesting",
     tab: "Products",
     img: qualityTesting,
     title: "Quality Assurance (QA) Testing",
     desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
     link: "/course-detail-graduate?course=product-designing-ui-ux",
-  },
-    {
-    key: "product_management",
-    tab: "Products",
-    img: product_management,
-    title: "Product Management",
-    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and...",
-    link: "/course-detail-graduate?course=product-management",
   },
 
   {
@@ -119,25 +120,7 @@ const tracks = [
     title: "Python for Machine Learning and AI",
     desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
     link: "/course-detail-graduate?course=backend-web-development",
-  },
-  
-  // {
-  //   key: "machine_learning",
-  //   tab: "Data Science",
-  //   img: machine_learning,
-  //   title: "Machine learning with Python",
-  //   desc: "Machine Learning with Python is a comprehensive journey that equips you with the skills and knowledge needed to build, evaluate, and deploy machine learning models for...",
-  //   link: "/course-detail-graduate?course=machine-learning",
-  // },
-  
-  {
-    key: "cloud",
-    tab: "Cloud and Cybersecurity",
-    img: cybersecurity,
-    title: "Cybersecurity",
-    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=blockchain-development-solidity",
-  },
+  },  
   {
     key: "cloud_engineer",
     tab: "Cloud and Cybersecurity",
@@ -147,14 +130,14 @@ const tracks = [
     link: "/course-detail-graduate?course=blockchain-development-solidity",
   },
   {
-    key: "java",
-    tab: "AI and Software Engineering",
-    img: java,
-    title: "Java",
-    desc: "Java is a versatile programming language with a wide range of applications, from web development to mobile app development, big data processing, and more...",
-    link: "/course-detail-graduate?course=java",
+    key: "cloud",
+    tab: "Cloud and Cybersecurity",
+    img: cybersecurity,
+    title: "Cybersecurity",
+    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
+    link: "/course-detail-graduate?course=blockchain-development-solidity",
   },
-]
+];
 
 const AvailableTrack = () => {
   const history = useHistory();
@@ -237,7 +220,7 @@ const AvailableTrack = () => {
         <Link to="/signup">
           <div
             className="nav__btn"
-            style={{ width: "150px", margin: "auto", textAlign: "center" }}
+            style={{ width: "252px", margin: "auto", textAlign: "center" }}
           >
             <div className="nav__btn--text">Apply Now</div>
           </div>
