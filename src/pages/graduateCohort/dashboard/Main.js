@@ -841,7 +841,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                      setAmount(650000);
+                                          setAmount(650000);
                                       // setAmount(250);
                                       setCurrency("NGN");
                                     }}
@@ -857,7 +857,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                          setAmount(650000);
                                       // setAmount(250);
                                       setCurrency("NGN");
                                     }}
@@ -929,7 +929,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                          setAmount(650000);
                                       // setAmount(220);
                                       setCurrency("NGN");
                                     }}
@@ -982,7 +982,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                          setAmount(650000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}

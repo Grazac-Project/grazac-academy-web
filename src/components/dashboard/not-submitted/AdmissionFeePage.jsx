@@ -18,7 +18,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    amount: 7500,
+    amount: 10000,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -53,14 +53,14 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       <h3>Welcome to Grazac Academy, {fname}</h3>
       <p>We're excited to support you as you kickstart your career in tech!</p>
       <p>
-        The application fee for our program is <strong>₦7,500</strong>.
+        The application fee for our program is <strong>₦10,000</strong>.
       </p>
       <p>
         After completing your registration payment, you’ll be required to take a basic quantitative reasoning assessment. 
         This helps us understand your starting point so we can tailor our support to your learning journey.
       </p>
       <p>
-        Don't worry — the assessment is straightforward and designed to ensure you get the most out of the program.
+        Don't worry, the assessment is straightforward and designed to ensure you get the most out of the program.
       </p>
       <p>We look forward to being part of your growth journey in tech!</p>
 
@@ -82,12 +82,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       >
         Proceed To Pay
       </button>
-      {/* <button
-        className={"button"}
-        ref={buttonRef}
-      >
-        Proceed To Pay
-      </button> */}
+      
     </div>
   );
 }
