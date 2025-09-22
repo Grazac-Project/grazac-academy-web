@@ -14,10 +14,16 @@ import { format, differenceInSeconds } from "date-fns/locale/en-US";
 import { useMemo } from "react";
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
 import VirtualClass from "../components/VirtualClass/VirtualClass";
+import VirtualTrack from "../components/VirtualTrack/VirtualTrack";
+import { ToastContainer, toast } from "react-toastify";
+
+
+import ex from "../images/svg/x-mark.svg";
+import badge from "../images/svg/badge.svg";
 
 const VirtualLanding = () => {
+  const [showModal, setShowModal] = useState(true);
   const [buttonColor, setButtonColor] = useState("initialColor");
   const sliderRef = useRef(null);
 
@@ -42,6 +48,12 @@ const VirtualLanding = () => {
   //   );
   //   history.push('/course-detail-graduate?course=product-designing-ui-ux')
   // }
+
+  const handleModal = () => {
+    setShowModal(false);
+    var landingHeight = document.getElementsByClassName("landing")[0];
+    landingHeight.style.marginTop = `0px`;
+  };
   const courseDetailsHandler = (goTo) => {
     sessionStorage.setItem(
       "learning_mode",
@@ -65,15 +77,15 @@ const VirtualLanding = () => {
     }
   };
 
-  const scrollToTarget = () => {
-    const targetElement = document.querySelector(".landing__intern--content");
+  // const scrollToTarget = () => {
+  //   const targetElement = document.querySelector(".landing__intern--content");
 
-    // Check if the element is found
-    if (targetElement) {
-      // Scroll to the target element
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  //   // Check if the element is found
+  //   if (targetElement) {
+  //     // Scroll to the target element
+  //     targetElement.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   const targetDate = new Date("2023-12-31T23:59:59");
 
@@ -109,34 +121,54 @@ const VirtualLanding = () => {
   const seconds = timeRemaining % 60;
 
   return (
-    <div className="Vitual">
-      <Navbar top={true} />
-      <div style={{ height: 10 }}></div>
-      <section className="Vitual_hero">
-        <div className="Vitual_text">
-          <h4 className="Vitual_span">Learn Virtually</h4>
+    <>
+      <div className="Vitual" style={{ marginTop: showModal ? "80px" : "0px" }}>
+        {showModal && (
+          <a href="/signup">
+            <div className="infomodal">
+              <div className="infomodal_content">
+                <img src={badge} alt="" className="infomodal_badge" />
+                <p>Virtual classes will start on January 12th, 2026
+                </p>
 
-          <h1>From the comfort of your homes, Upskill in tech</h1>
-          <p>
-            We are your Virtual Learning Companion! Learn with us from anywhere
-            around the globe. Our expert Instructors are highly qualified and
-            experienced educators ensuring you acquire valuable skills and
-            knowledge that transcend borders
-          </p>
+                <img
+                  src={ex}
+                  alt=""
+                  onClick={handleModal}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            </div>
+          </a>
+        )}
+        <Navbar/>
+        <div style={{ height: 10 }}></div>
+        <section className="Vitual_hero">
+          <div className="Vitual_text">
+            <h4 className="Vitual_span">Learn Virtually</h4>
 
-          <button
-            className="Vitual_btn1"
-            // style={{ width: "172px", textAlign: "center" }}
-            onClick={scrollToTarget}
-          >
-            <div>View Courses</div>
-          </button>
-        </div>
-        <div className="Vitual_hero_girl">
-          <img src={VitualHero} alt="hero" />
-        </div>
-      </section>
-      {/* <section className="Vitual_countdown">
+            <h1>From the comfort of your homes, Upskill in tech</h1>
+            <p>
+              We are your Virtual Learning Companion! Learn with us from
+              anywhere around the globe. Our expert Instructors are highly
+              qualified and experienced educators ensuring you acquire valuable
+              skills and knowledge that transcend borders
+            </p>
+            <a href="#virtualTrack">
+              <button
+                className="Vitual_btn1"
+                // style={{ width: "172px", textAlign: "center" }}
+                // onClick={scrollToTarget}
+              >
+                <div>View Courses</div>
+              </button>
+            </a>
+          </div>
+          <div className="Vitual_hero_girl">
+            <img src={VitualHero} alt="hero" />
+          </div>
+        </section>
+        {/* <section className="Vitual_countdown">
         <p>
           <span className="Visual_date">January 2024 Cohort</span>
           <br /> Classes commence on January 15th
@@ -148,44 +180,44 @@ const VirtualLanding = () => {
           <div className="Vitual_countdown_container_duration">{`${seconds} seconds`}</div>
         </div>
       </section> */}
-      <section className="Vitual_class">
-        <div className="Vitual_class_container">
-          <h1>Join our virtual class in 3 easy steps</h1>
-          <div className="Vitual_class_container_stepFlex">
-            <div className="Vitual_class_container_steps">
-              <img src={Browse} alt="browse" />
-              <h4>Browse Available Courses</h4>
-              <p>
-                Explore course offerings, read descriptions, curriculum,
-                prerequisites.
-              </p>
+        <section className="Vitual_class">
+          <div className="Vitual_class_container">
+            <h1>Join our virtual class in 3 easy steps</h1>
+            <div className="Vitual_class_container_stepFlex">
+              <div className="Vitual_class_container_steps">
+                <img src={Browse} alt="browse" />
+                <h4>Browse Available Courses</h4>
+                <p>
+                  Explore course offerings, read descriptions, curriculum,
+                  prerequisites.
+                </p>
+              </div>
+              <div className="image-container">
+                <img src={Forward} alt="forward arrow" className="forward" />
+                <img src={Down} alt="forward arrow" className="down" />
+              </div>
+              <div className="Vitual_class_container_steps">
+                <img src={Click} alt="click" />
+                <h4>Click on Apply Now</h4>
+                <p>
+                  Choose your ideal course, reach out for guidance where
+                  necessary,{" "}
+                </p>
+              </div>
+              <div className="image-container">
+                <img src={Forward} alt="forward arrow" className="forward" />
+                <img src={Down} alt="forward arrow" className="down" />
+              </div>
+              <div className="Vitual_class_container_steps">
+                <img src={Plan} alt="plan" />
+                <h4>Make a Payment Plan</h4>
+                <p>
+                  Complete your assessment, get course recommendations, choose
+                  your payment
+                </p>
+              </div>
             </div>
-            <div className="image-container">
-              <img src={Forward} alt="forward arrow" className="forward" />
-              <img src={Down} alt="forward arrow" className="down" />
-            </div>
-            <div className="Vitual_class_container_steps">
-              <img src={Click} alt="click" />
-              <h4>Click on Apply Now</h4>
-              <p>
-                Choose your ideal course, reach out for guidance where
-                necessary,{" "}
-              </p>
-            </div>
-            <div className="image-container">
-              <img src={Forward} alt="forward arrow" className="forward" />
-              <img src={Down} alt="forward arrow" className="down" />
-            </div>
-            <div className="Vitual_class_container_steps">
-              <img src={Plan} alt="plan" />
-              <h4>Make a Payment Plan</h4>
-              <p>
-                Complete your assessment, get course recommendations, choose
-                your payment
-              </p>
-            </div>
-          </div>
-          {/* <div className="Vitual_class_container_stepFlex">
+            {/* <div className="Vitual_class_container_stepFlex">
             <div className="Vitual_class_container_steps">
               <button>step 1</button>
               <h5>Browse Available Courses</h5>
@@ -225,15 +257,18 @@ const VirtualLanding = () => {
               </p>
             </div>
           </div> */}
-        </div>
-      </section>
-      <section>
-        <VirtualClass />
-      </section>
-      <AvailableTrack/>
+          </div>
+        </section>
+        <section>
+          <VirtualClass />
+        </section>
+        <section id="virtualTrack">
+          <VirtualTrack />
+        </section>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

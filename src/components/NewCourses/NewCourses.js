@@ -23,14 +23,14 @@ const NewCourses = () => {
           <div className={classes.label_marketing}>
             <span>Product Marketing</span>
           </div>
+          <div className={classes.label_quality}>
+            <span>Quality Assurance (QA Testing)</span>
+          </div>
           <div className={classes.label_python}>
             <span>Python for Machine Learning and AI</span>
           </div>
           <div className={classes.label_cloud}>
             <span>Cloud Engineering (AWS)</span>
-          </div>
-          <div className={classes.label_quality}>
-            <span>Quality Assurance (QA) Testers</span>
           </div>
         </div>
         <a href="#availableTrack">

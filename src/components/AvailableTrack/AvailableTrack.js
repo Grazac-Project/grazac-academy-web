@@ -1,5 +1,5 @@
 import classes from "./AvailableTrack.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import product from "../../images/product.png";
 import frontend from "../../images/frontend.png";
 import backend from "../../images/backend.png";
@@ -142,6 +142,9 @@ const tracks = [
 const AvailableTrack = () => {
   const history = useHistory();
   const [activeTab, setActiveTab] = useState(tabs[0].name);
+  //   useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   const courseDetailsHandler = (goTo) => {
     sessionStorage.setItem(
       "learning_mode",

@@ -6,33 +6,36 @@ const NewPricing = () => {
       id: 1,
       type: "Pay Installment",
       newAmount: "₦700,000",
-      // prevAmount: "₦750,000",
+      prevAmount: "₦1,200,000",
       // spanNewAmount: "($466)",
       // spanOldAmount: "($499)",
-      // discount: ["16.67%"],
+      discount: ["41.67%"],
       // method: ["₦350,000 Initial payment"],
       // span: ["₦210,000 ($210) Initial payment"],
       benefits: [
-        // "6 months of immersive training",
-        "Flexible payment plan. ",
+        "₦350,000 Initial payment",
+        "NGN 175,000 to be paid the first month and second month ",
+        "No legal fee",
+        "4 months of immersive training",
+        "2 months of building a real project",
+        "Access to free workspace for 6 months",
         "1:1 mentorship with experts ",
         "Job opportunities ",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc. ",
-        'Free wi-fi',
       ],
     },
     {
       id: 2,
       type: "Pay at Once",
       newAmount: "₦650,000",
-      // prevAmount: "₦700,000",
+      prevAmount: "₦1,200,000",
       // spanNewAmount: "($433)",
       // spanOldAmount: "($466)",
-      // discount: ["16.67%"],
+      discount: ["45.83%"],
       recommend: "Highly Recommended",
       benefits: [
-        "No legal fees",
-        "6 months of immersive training",
+        "4 months of immersive training",
+        "2 months of building a real project",
         // "4 months of internship",
         // 'Access to free workspace for 6 months',
         "1:1 mentorship with experts",
@@ -45,19 +48,21 @@ const NewPricing = () => {
       id: 3,
       type: "Cloud and Cybersecurity",
       newAmount: "₦850,000",
-      // prevAmount: "₦1,000,000",
+      prevAmount: "₦1,500,000",
       // spanNewAmount: "($565.98)",
       // spanOldAmount: "($665.85)",
-      // discount: ["15%"],
+      discount: ["43.33%"],
       benefits: [
-        " Installment payment of NGN 900,000.",
-        "6 months of immersive training",
+        " Installment payment of NGN 900,000",
+        "4 months of immersive training",
+        "2 months of building a real project",
+        "Access to free workspace for 6 months",
         // "4 months of internship",
         // 'Access to free workspace for 6 months',
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
-        'Free wi-fi',
+        'ATCD Accredited Certification',
       ],
     },
     // {
@@ -93,8 +98,10 @@ const NewPricing = () => {
               {item.newAmount} {" "}
               {/* <span>{item.spanNewAmount}</span> */}
             </h3>
-            {/* <p>{item.prevAmount}{" "} <span>{item.spanOldAmount}</span> </p>
-            <h6>{item.discount}</h6> */}
+            <p>{item.prevAmount}{" "} 
+              {/* <span>{item.spanOldAmount}</span> */}
+               </p>
+            <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>
             <ul>

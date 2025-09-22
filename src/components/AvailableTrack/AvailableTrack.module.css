@@ -120,6 +120,7 @@
 .gga_container {
   display: flex;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 .boxes33 {
   width: 33%;

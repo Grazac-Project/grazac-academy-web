@@ -6,20 +6,21 @@ const VirtualPricing = () => {
       id: 2,
       type: "Pay Installment",
       newAmount: "₦300,000 ",
-      // prevAmount: "₦700,000",
+      prevAmount: "₦350,000",
       // spanNewAmount: "($200)",
       // spanOldAmount: "($466)",
-      // discount: ["57%"],
+      discount: ["14.29%"],
       // method: ["₦72,000 ($72) Initial payment"],
-      span: ["Initial payment of 50% of the tuition fee at enrollment"],
+      span: ["₦150,000 Initial payment"],
 
       benefits: [
-        "Spread the remaining payment over 2 months. ",
-        // "3 months of exclusive learning online at your pace.",
-        "1:1 mentorship with experts",
-        "Learning from the comfort of your space",
-        "Access to free webinars for your career growth and positioning",
-        "Certification",
+        "NGN 100,000 to be paid the first month and second month",
+        "No legal fee",
+        "3 months of immersive training",
+        "1:1 mentorship with virtual experts",
+        "Job opportunities",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        // "Certification",
         // "Free wi-fi",
       ],
     },
@@ -27,19 +28,19 @@ const VirtualPricing = () => {
       id: 1,
       type: "Pay at Once",
       newAmount: "₦300,000 ",
-      // prevAmount: "₦700,000",
+      prevAmount: "₦350,000",
       // spanNewAmount: "($200)",
       // spanOldAmount: "($466)",
-      // discount: ["57%"],
+      discount: ["14.29%"],
       recommend: "Highly Recommended",
 
       benefits: [
-        "Pay once and learn online at your own pace for 3 months",
-        "3 months of exclusive learning online at your pace.",
+        "3 months of immersive training",
         "1:1 mentorship with virtual experts",
-        "Learning from the comfort of your space",
-        "Access to free webinars for your career growth and positioning",
-        "Certification",
+        "Job opportunities",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        "ATCD Accredited Certification",
+        // "Certification",
       ],
     },
     
@@ -47,10 +48,10 @@ const VirtualPricing = () => {
       id: 3,
       type: "Cloud and Cybersecurity",
       newAmount: "₦450,000",
-      // prevAmount: "₦850,000",
+      prevAmount: "₦500,000",
       // spanNewAmount: "($299.67)",
       // spanOldAmount: "($565.98)",
-      // discount: ["50%"],
+      discount: ["10%"],
       span: ["Initial payment of 50% of the tuition fee at enrollment"],
       benefits: [
         "Spread the remaining payment over 2 months.",
@@ -76,10 +77,11 @@ const VirtualPricing = () => {
           <div className={classes.priceTag}>
             <h3>
               {item.newAmount}</h3>
-            {/* <p>
-              {item.prevAmount} <span>{item.spanOldAmount}</span>
+            <p>
+              {item.prevAmount}
+               {/* <span>{item.spanOldAmount}</span> */}
             </p>
-            <h6>{item.discount}</h6> */}
+            <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>
             <ul>
