@@ -838,7 +838,12 @@ function NotSubmitted({
                         classes? We highly recommend physical classes. Virtaul
                         Live or Physical Classes
                       </label>
-                      <select required name="method_of_learning">
+                      <select
+                        required
+                        name="method_of_learning"
+                        value={bioData.method_of_learning}
+                        onChange={handleChange}
+                      >
                         <option value="Physical Class">Physical Class</option>
                         <option value="Virtual Class">Virtual Class</option>
                       </select>
@@ -857,6 +862,20 @@ function NotSubmitted({
                         <option value="">Select Availability</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
+                      </select>
+                    </div>
+
+                    <div className="dashboard-content-form-container">
+                      <label>What is your preffered Learning Location?</label>
+                      <select
+                        required
+                        name="preffered_location"
+                        value={bioData.preffered_location}
+                        onChange={handleChange}
+                        className="cursor-pointer"
+                      >
+                        <option value="Lagos">Lagos</option>
+                        <option value="Abeokuta">Abeokuta</option>
                       </select>
                     </div>
 
