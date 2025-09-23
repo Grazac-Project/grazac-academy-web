@@ -3,61 +3,97 @@ import classes from "./virtual.module.css";
 const VirtualPricing = () => {
   const virtualData = [
     {
+      id: 2,
+      type: "Pay Installment",
+      newAmount: "₦300,000 ",
+      prevAmount: "₦350,000",
+      // spanNewAmount: "($200)",
+      // spanOldAmount: "($466)",
+      discount: ["14.29%"],
+      // method: ["₦72,000 ($72) Initial payment"],
+      span: ["₦150,000 Initial payment"],
+
+      benefits: [
+        "NGN 100,000 to be paid the first month and second month",
+        "No legal fee",
+        "3 months of immersive training",
+        "1:1 mentorship with virtual experts",
+        "Job opportunities",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        // "Certification",
+        // "Free wi-fi",
+      ],
+    },
+    {
       id: 1,
       type: "Pay at Once",
-      prevAmount: "₦180,000",
-      newAmount: "₦120,000 ",
-      discount: ["32.43% 0FF"],
+      newAmount: "₦300,000 ",
+      prevAmount: "₦350,000",
+      // spanNewAmount: "($200)",
+      // spanOldAmount: "($466)",
+      discount: ["14.29%"],
       recommend: "Highly Recommended",
 
       benefits: [
-        "Pay once and learn online at your own pace for 3 months",
-        "3 months of exclusive learning online at your pace.",
+        "3 months of immersive training",
+        "1:1 mentorship with virtual experts",
+        "Job opportunities",
+        "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
+        "ATCD Accredited Certification",
+        // "Certification",
+      ],
+    },
+    
+    {
+      id: 3,
+      type: "Cloud and Cybersecurity",
+      newAmount: "₦450,000",
+      prevAmount: "₦500,000",
+      // spanNewAmount: "($299.67)",
+      // spanOldAmount: "($565.98)",
+      discount: ["10%"],
+      span: ["Initial payment of 50% of the tuition fee at enrollment"],
+      benefits: [
+        "Spread the remaining payment over 2 months.",
+        // "3 months of exclusive learning online at your pace.",
         "1:1 mentorship with virtual experts",
         "Learning from the comfort of your space",
         "Access to free webinars for your career growth and positioning",
         "Certification",
       ],
     },
-    {
-      id: 2,
-      type: "Pay Installment",
-      prevAmount: "₦185,000",
-      newAmount: "₦125,000 ",
-      discount: ["32.43% OFF"],
-      method: ["₦72,000 ($72) Initial payment"],
-      span: ["Initial payment of 70% of the tuition fee (₦87,500) at enrollment"],
-
-      benefits: [
-        "Spread the remaining ₦37,500 over 2 months.",
-        "1:1 mentorship with experts",
-        "Learning from the comfort of your space",
-        "Access to free webinars for your career growth and positioning",
-        "Certification",
-      ],
-      
-    },
   ];
 
   return (
     <div className={classes.main}>
       {virtualData.map((item, index) => (
-        <div className={classes.card} key={index}>
+        <div
+          className={`${classes.card} ${
+            item.recommend ? classes.yellowBorder : ""
+          }`}
+          key={index}
+        >
           <h5>{item.type}</h5>
           <div className={classes.priceTag}>
             <h3>
-              {item.newAmount} <span>{item.spanNewAmount}</span>
-            </h3>
-            <p>{item.prevAmount}</p>
+              {item.newAmount}</h3>
+            <p>
+              {item.prevAmount}
+               {/* <span>{item.spanOldAmount}</span> */}
+            </p>
             <h6>{item.discount}</h6>
           </div>
           <div className={classes.benefits}>
             <ul>
-              {item.id=== 2 ?(
-
-              <span>
-                <li>{item.span}</li>
-              </span>
+              {item.id === 2 ? (
+                <span>
+                  <li>{item.span}</li>
+                </span>
+              ) : null}
+              {item.id === 3 ? (
+                <span>
+                  <li>{item.span}</li>
+                </span>
               ) : null}
 
               {item.benefits.map((benefit, id) => (
