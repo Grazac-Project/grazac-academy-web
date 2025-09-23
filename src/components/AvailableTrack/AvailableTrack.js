@@ -93,8 +93,8 @@ const tracks = [
     tab: "Products",
     img: product_marketing,
     title: "Product Marketing",
-    desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    desc: "Learn strategies to position, promote, and grow products in competitive markets. This course blends marketing, communication, and product management skills.",
+    link: "/course-detail-graduate?course=product-marketing",
   },
   {
     key: "product_management",
@@ -102,15 +102,15 @@ const tracks = [
     img: product_management,
     title: "Product Management",
     desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    link: "/course-detail-graduate?course=product-management",
   },
   {
     key: "qualityTesting",
     tab: "Products",
     img: qualityTesting,
     title: "Quality Assurance (QA) Testing",
-    desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    desc: "This course equips learners with skills to ensure software quality using manual and automated testing tools.",
+    link: "/course-detail-graduate?course=quality-assurance",
   },
 
   {
@@ -118,24 +118,24 @@ const tracks = [
     tab: "AI and Software Engineering",
     img: python,
     title: "Python for Machine Learning and AI",
-    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=backend-web-development",
+    desc: "Learn Python programming for Machine Learning and AI. Explore libraries like NumPy, Pandas, Scikit-Learn, TensorFlow, and PyTorch.",
+    link: "/course-detail-graduate?course=python-machine-learning-ai",
   },  
   {
     key: "cloud_engineer",
     tab: "Cloud and Cybersecurity",
     img: cloud,
     title: "Cloud Engineering (AWS)",
-    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=blockchain-development-solidity",
+    desc: "Master cloud infrastructure with AWS. Learn how to deploy, secure, and scale cloud applications.",
+    link: "/course-detail-graduate?course=cloud-engineering-aws",
   },
   {
     key: "cloud",
     tab: "Cloud and Cybersecurity",
     img: cybersecurity,
     title: "Cybersecurity",
-    desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=blockchain-development-solidity",
+    desc: "Learn how to protect systems, networks, and data from cyber threats. This course covers security fundamentals, ethical hacking, penetration testing, and defensive strategies.",
+    link: "/course-detail-graduate?course=cybersecurity",
   },
 ];
 
@@ -149,7 +149,7 @@ const AvailableTrack = () => {
     sessionStorage.setItem(
       "learning_mode",
       JSON.stringify({
-        class_option: "Physical",
+        class_option: "Onsite",
       })
     );
     history.push(goTo);
