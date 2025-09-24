@@ -94,7 +94,7 @@ const tracks = [
     img: product_marketing,
     title: "Product Marketing",
     desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    link: "/course-detail-graduate?course=product-marketing",
   },
   {
     key: "product_management",
@@ -102,7 +102,7 @@ const tracks = [
     img: product_management,
     title: "Product Management",
     desc: "Grazac product management course will help you understand the process of strategically guiding a company's product development, market launch, ongoing support, and improvement of a product.",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    link: "/course-detail-graduate?course=product-management",
   },
   {
     key: "qualityTesting",
@@ -110,7 +110,7 @@ const tracks = [
     img: qualityTesting,
     title: "Quality Assurance (QA) Testing",
     desc: "Product design is a multifaceted field that involves creating and improving products to meet user needs and business goals. You'll gain knowledge in designing user interfaces that...",
-    link: "/course-detail-graduate?course=product-designing-ui-ux",
+    link: "/course-detail-graduate?course=quality-assurance",
   },
 
   {
@@ -119,7 +119,7 @@ const tracks = [
     img: python,
     title: "Python for Machine Learning and AI",
     desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=backend-web-development",
+    link: "/course-detail-graduate?course=python-machine-learning-ai",
   },  
   {
     key: "cloud_engineer",
@@ -127,7 +127,7 @@ const tracks = [
     img: cloud,
     title: "Cloud Engineering (AWS)",
     desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=blockchain-development-solidity",
+    link: "/course-detail-graduate?course=cloud-engineering-aws",
   },
   {
     key: "cloud",
@@ -135,7 +135,7 @@ const tracks = [
     img: cybersecurity,
     title: "Cybersecurity",
     desc: "This course covers blockchain technology fundamentals and smart contract development using Solidity, preparing you for a career...",
-    link: "/course-detail-graduate?course=blockchain-development-solidity",
+    link: "/course-detail-graduate?course=cybersecurity",
   },
 ];
 

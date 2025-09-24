@@ -71,7 +71,7 @@ const CourseDetail = (props) => {
     // console.log(mode)
     if (mode === 'Virtual') {
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
-    } else if (mode === 'Physical') {
+    } else if (mode === 'Onsite') {
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourse/${slug}`;
     } 
 
