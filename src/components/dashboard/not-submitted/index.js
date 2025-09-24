@@ -47,13 +47,18 @@ function NotSubmitted({
     ageRange: "",
     preferred_course: "",
     current_city_and_location: "",
-    physically_available: '',
-    paymentOption: '',
-    why_selected_for_cohort: '',
-    current_city_and_location: '',
-    state_of_residence: '',
-    resident_in_abeokuta: '',
-    onSite: undefined
+
+    physically_available: "",
+    paymentOption: "",
+    why_selected_for_cohort: "",
+
+    state_of_residence: "",
+    resident_in_abeokuta: "",
+    // onSite: undefined,
+    method_of_learning: "",
+    learningTrack: "",
+    preffered_location: "",
+
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: '',
@@ -160,11 +165,31 @@ function NotSubmitted({
       [e.target.name]: e.target.value,
     });
 
+    if (e.target.name === "learningTrack") {
+      localStorage.setItem("learningTrack", e.target.value);
+    }
+
+    if (e.target.name === "preferred_course") {
+      localStorage.setItem("preferred_course", e.target.value);
+    }
+
+    // localStorage.setItem("preferred_course", prefer);
+    // localStorage.setItem("learningTrack", selectedTrack);
+
     // setEducation({
     //   ...education,
     //   [e.target.name]: e.target.value,
     // });
   };
+  useEffect(() => {
+    const storedCourse = localStorage.getItem("preferred_course");
+    const storedTrack = localStorage.getItem("learningTrack");
+    setBioData((prev) => ({
+      ...prev,
+      preferred_course: storedCourse || prev.preferred_course,
+      learningTrack: storedTrack || prev.learningTrack,
+    }));
+  }, []);
   const handleChangeGuarantor = (e) => {
     setFormGuarantor({
       ...formGuarantor,
@@ -814,6 +839,23 @@ function NotSubmitted({
                       <label>
                           Will you be available physically for the next 6months?
                       </label>
+
+                      <select
+                        required
+                        name="learningTrack"
+                        value={bioData.learningTrack}
+                        onChange={handleChange}
+                      >
+                        <option value="physical">Physical Class</option>
+                        <option value="virtual">Virtual Class</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>
+                        Will you be available physically for the next 6months?
+                      </label>
+
+
                       <select
                         name="physically_available"
                         value={bioData.physically_available}
@@ -823,6 +865,20 @@ function NotSubmitted({
                         <option value="">Select Availability</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
+                      </select>
+                    </div>
+
+                    <div className="dashboard-content-form-container">
+                      <label>What is your preffered Learning Location?</label>
+                      <select
+                        required
+                        name="preffered_location"
+                        value={bioData.preffered_location}
+                        onChange={handleChange}
+                        className="cursor-pointer"
+                      >
+                        <option value="Lagos">Lagos</option>
+                        <option value="Abeokuta">Abeokuta</option>
                       </select>
                     </div>
 
@@ -852,15 +908,13 @@ function NotSubmitted({
                         <option value="Machine Learning">
                           Machine Learning
                         </option>
-                        <option value="Java">
-                          Backend Web Development(Java with Spring & Springboot)
-                        </option>
-                        <option value="Data Analysis">
-                          Data Analysis
-                        </option>
-                        <option value="Blockchain Development with Solidity">
-                          Blockchain Development with Solidity
-                        </option>
+
+                        <option value="cloud">Cloud Engineering (AWS)</option>
+                        <option value="Data Analysis">Data Analysis</option>
+
+                        <option value="cyber security">Cyber Security</option>
+
+                       
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
