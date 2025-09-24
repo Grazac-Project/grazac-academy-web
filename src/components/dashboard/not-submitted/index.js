@@ -59,6 +59,8 @@ function NotSubmitted({
     resident_in_abeokuta: "",
     // onSite: undefined,
     method_of_learning: "",
+    learningTrack: "",
+    preffered_location: "",
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: "",
@@ -165,6 +167,14 @@ function NotSubmitted({
       ...bioData,
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.name === "learningTrack") {
+      sessionStorage.setItem("learningTrack", e.target.value);
+    }
+
+    if (e.target.name === "preferred_course") {
+      sessionStorage.setItem("preferred_course", e.target.value);
+    }
 
     // setEducation({
     //   ...education,
@@ -840,12 +850,12 @@ function NotSubmitted({
                       </label>
                       <select
                         required
-                        name="method_of_learning"
-                        value={bioData.method_of_learning}
+                        name="learningTrack"
+                        value={bioData.learningTrack}
                         onChange={handleChange}
                       >
-                        <option value="Physical Class">Physical Class</option>
-                        <option value="Virtual Class">Virtual Class</option>
+                        <option value="physical">Physical Class</option>
+                        <option value="virtual">Virtual Class</option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
@@ -911,12 +921,10 @@ function NotSubmitted({
                         <option value="Machine Learning">
                           Python For Machine Learning and AI
                         </option>
-                        <option value="Cloud Engineering">
-                          Cloud Engineering (AWS)
-                        </option>
+                        <option value="cloud">Cloud Engineering (AWS)</option>
                         <option value="Data Analysis">Data Analysis</option>
 
-                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="cyber security">Cyber Security</option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
