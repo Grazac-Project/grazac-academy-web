@@ -169,18 +169,30 @@ function NotSubmitted({
     });
 
     if (e.target.name === "learningTrack") {
-      sessionStorage.setItem("learningTrack", e.target.value);
+      localStorage.setItem("learningTrack", e.target.value);
     }
 
     if (e.target.name === "preferred_course") {
-      sessionStorage.setItem("preferred_course", e.target.value);
+      localStorage.setItem("preferred_course", e.target.value);
     }
+
+    // localStorage.setItem("preferred_course", prefer);
+    // localStorage.setItem("learningTrack", selectedTrack);
 
     // setEducation({
     //   ...education,
     //   [e.target.name]: e.target.value,
     // });
   };
+  useEffect(() => {
+    const storedCourse = localStorage.getItem("preferred_course");
+    const storedTrack = localStorage.getItem("learningTrack");
+    setBioData((prev) => ({
+      ...prev,
+      preferred_course: storedCourse || prev.preferred_course,
+      learningTrack: storedTrack || prev.learningTrack,
+    }));
+  }, []);
   const handleChangeGuarantor = (e) => {
     setFormGuarantor({
       ...formGuarantor,

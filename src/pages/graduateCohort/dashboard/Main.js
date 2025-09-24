@@ -81,14 +81,19 @@ function Dashboard() {
     useState(false);
   const [paymentChoice, setPaymentChoice] = useState("");
   const [guarantorStatus, setGuarantorStatus] = useState(false);
-  const learningTrack = sessionStorage.getItem("learningTrack");
-  const chosenCourse = sessionStorage.getItem("preferred_course");
+  const learningTrack = localStorage.getItem("learningTrack");
+  const chosenCourse = localStorage.getItem("preferred_course");
   console.log(chosenCourse);
   console.log(learningTrack);
 
   const isSpecialCourse =
-    selectedCourse?.toLowerCase() === "cloud" ||
-    selectedCourse?.toLowerCase() === "cyber security";
+    chosenCourse === "cyber security" || chosenCourse === "cloud";
+
+  // console.log(isSpecialCourse);
+
+  // const isSpecialCourse =
+  //   selectedCourse?.toLowerCase() === "cloud" ||
+  //   selectedCourse?.toLowerCase() === "cyber security";
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
     firstName: "",
@@ -828,6 +833,144 @@ function Dashboard() {
                           </div>
                         )}
 
+                        {payShowModal === "pay" &&
+                          isSpecialCourse &&
+                          selectedTrack === "physical" && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  {/* <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      setAmount(1000000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
+                                  </div> */}
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(850000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 850,000)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      setAmount(450000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 900,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                        {payShowModal === "pay" &&
+                          isSpecialCourse &&
+                          selectedTrack === "virtual" && (
+                            <div className="dashboard-content-modal">
+                              <div className="dashboard-content-modal-backdrop"></div>
+                              <div className="dashboard-content-modal-container">
+                                <div className="dashboard-content-modal-main">
+                                  <div className="dashboard-content-modal-main-text">
+                                    <h4>Choose Payment Option</h4>
+                                    <img
+                                      src={cancel}
+                                      alt="cancel"
+                                      onClick={() => setPayShowModal("")}
+                                    />
+                                  </div>
+                                  {/* <div
+                                    className={
+                                      payOpt === "full"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("full");
+                                      setAmount(1000000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
+                                  </div> */}
+                                  <div
+                                    className={
+                                      payOpt === "fullTrainingOnly"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("fullTrainingOnly");
+                                      setAmount(450000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay at once (NGN 450,000)</p>
+                                  </div>
+                                  <div
+                                    className={
+                                      payOpt === "instalment"
+                                        ? "active"
+                                        : "dashboard-content-modal-main-frame1"
+                                    }
+                                    onClick={() => {
+                                      setPayOpt("instalment");
+                                      setAmount(250000);
+                                      // setAmount(1000);
+                                      setCurrency("NGN");
+                                    }}
+                                  >
+                                    <div></div>
+                                    <p>Pay in Instalment (NGN 500,000)</p>
+                                  </div>
+                                  <button onClick={makePayment}>Proceed</button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
                         {/* {payShowModal === "pay" && isSpecialCourse && (
                           <div className="dashboard-content-modal">
                             <div className="dashboard-content-modal-backdrop"></div>
@@ -1048,6 +1191,7 @@ function Dashboard() {
                           )}
 
                         {payShowModal === "pay" &&
+                          !isSpecialCourse &&
                           selectedTrack === "physical" && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
@@ -1116,6 +1260,7 @@ function Dashboard() {
                           )}
 
                         {payShowModal === "pay" &&
+                          !isSpecialCourse &&
                           selectedTrack === "virtual" && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
@@ -1216,17 +1361,24 @@ function Dashboard() {
                                         kindly note that an initial payment of
                                         <span className="text-primary">
                                           {"    "}
-                                          ₦350,000.00
+                                          {isSpecialCourse
+                                            ? "₦450,000.00"
+                                            : "350,000.00"}
                                         </span>
                                         {"   "}is required at the start. A
                                         second payment of{"   "}
                                         <span className="text-primary font-bold">
-                                          ₦175,000.00
+                                          {isSpecialCourse
+                                            ? "₦225,000.00"
+                                            : "175,000.00"}
                                         </span>{" "}
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
-                                          {"  "} ₦175,000.00
+                                          {"  "}{" "}
+                                          {isSpecialCourse
+                                            ? "₦225,000.00"
+                                            : "175,000.00"}
                                         </span>
                                         {"     "}
                                         will be payable at the end of the second
@@ -1239,19 +1391,25 @@ function Dashboard() {
                                         kindly note that an initial payment of{" "}
                                         {"   "}
                                         <span className="text-primary">
-                                          ₦150,000.00
+                                          {isSpecialCourse
+                                            ? "₦250,000.00"
+                                            : "₦150,000.00"}
                                         </span>
                                         {"   "}
                                         is required at the start. A second
                                         payment of{"  "}
                                         <span className="text-primary font-bold">
-                                          ₦100,000.00
+                                          {isSpecialCourse
+                                            ? "₦125,000.00"
+                                            : " ₦100,000.00"}
                                         </span>
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
                                           {" "}
-                                          ₦100,000.00
+                                          {isSpecialCourse
+                                            ? "₦125,000.00"
+                                            : " ₦100,000.00"}
                                         </span>{" "}
                                         will be payable at the end of the second
                                         month., just to make payment easy for
