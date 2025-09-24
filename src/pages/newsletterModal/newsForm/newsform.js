@@ -7,18 +7,19 @@ import LoaderGif from "../../../images/svg/dashboard/loader.gif";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { zohoSubmit } from "../../../api/dashboard/data";
-import NewsResponse from '../newsResponse/newsResponse'
+import NewsResponse from "../newsResponse/newsResponse";
 
 const Newsform = ({ setNews, setNewsMessage }) => {
   const [loading, setLoading] = useState(false);
-  const [thanks, setThanks] = useState(true)
+  const [thanks, setThanks] = useState(true);
   const [payload, setPayload] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
   });
-  
+
   function splitEmail(email) {
-    const atIndex = email.indexOf('@');
+    const atIndex = email.indexOf("@");
     if (atIndex !== -1) {
       const username = email.substring(0, atIndex);
       const domain = email.substring(atIndex + 1);
@@ -31,12 +32,12 @@ const Newsform = ({ setNews, setNewsMessage }) => {
 
   function splitFullName(fullName) {
     // Split the full name by space
-    const nameParts = fullName.split(' ');
-  
+    const nameParts = fullName.split(" ");
+
     if (nameParts.length >= 2) {
       const firstName = nameParts[0];
-      const lastName = nameParts.slice(1).join(' '); // Join any remaining parts as the last name
-  
+      const lastName = nameParts.slice(1).join(" "); // Join any remaining parts as the last name
+
       return { firstName, lastName };
     } else {
       // Handle cases where there is no space to separate the first and last name.
@@ -44,7 +45,6 @@ const Newsform = ({ setNews, setNewsMessage }) => {
       return null;
     }
   }
-  
 
   const handleChange = (e) => {
     setPayload((prevState) => ({
@@ -54,94 +54,112 @@ const Newsform = ({ setNews, setNewsMessage }) => {
   };
 
   const key = process.env.REACT_APP_API_KEY;
-  console.log(key);
+  // console.log(key);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(payload);
 
-      setLoading(true);
-      zohoSubmit(payload)
-        .then(res => {
-          console.log(res.data.data)
-          console.log(res.data.data.data)
-          if (res.data.data.data.status === 'success') {
-            console.log('hahahahahaha')
-            setNews("newsResponse");
-            setThanks(false);
-          }
-        })
-        .catch(error => {
-          setLoading(false);
-          console.log(error.response);
-        })
-        
-    }
+    setLoading(true);
+    zohoSubmit(payload)
+      .then((res) => {
+        console.log(res.data.data);
+        console.log(res.data.data.data);
+        if (res.data.data.data.status === "success") {
+          console.log("hahahahahaha");
+          setNews("newsResponse");
+          setThanks(false);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error.response);
+      });
+  };
 
   return (
     <>
       <NewsletterModal setNews={setNews}>
-        {thanks ?
-        <form className={classes.main} onSubmit={handleSubmit}>
-          <div className={classes.formImage}>
-            <img src={Message} alt="message" />
-          </div>
-          <div className={classes.formInput}>
-            <div>
-              <h2>Become an Insider to</h2>
-              {benefits.map((item, i) => (
-                <p key={i}>
-                  <img src={Check} alt="icon" />
-                  {item}
-                </p>
-              ))}
+        {thanks ? (
+          <form className={classes.main} onSubmit={handleSubmit}>
+            <div className={classes.formImage}>
+              <img src={Message} alt="message" />
             </div>
-            <label>
-              <input
-                type="text"
-                required
-                name="fullName"
-                value={payload.fullName}
-                placeholder="Full name e.g John Doe"
-                onChange={handleChange}
-              />
-              {/* <input
+            <div className={classes.formInput}>
+              <div>
+                <h2>Become an Insider to</h2>
+                {benefits.map((item, i) => (
+                  <p key={i}>
+                    <img src={Check} alt="icon" />
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <label>
+                <input
+                  type="text"
+                  required
+                  name="firstName"
+                  value={payload.firstName}
+                  placeholder="First Name "
+                  onChange={handleChange}
+                />
+                {/* <input
                 type="text"
                 required
                 name='FIRSTNAME'
                 placeholder="Your name"
               /> */}
-            </label>
-            <label>
-              <input
-                type="email"
+              </label>
+              <label>
+                <input
+                  type="text"
+                  required
+                  name="lastName"
+                  value={payload.lastName}
+                  placeholder="Last Name"
+                  onChange={handleChange}
+                />
+                {/* <input
+                type="text"
                 required
-                name="email"
-                value={payload.email}
-                placeholder="Your email"
-                onChange={handleChange}
-              />
-              {/* <input
+                name='FIRSTNAME'
+                placeholder="Your name"
+              /> */}
+              </label>
+              <label>
+                <input
+                  type="email"
+                  required
+                  name="email"
+                  value={payload.email}
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
+                {/* <input
                 type="email"
                 required
                 name="CONTACT_EMAIL"
                 placeholder="Your email"
               /> */}
-            </label>
-            <button
-              disabled={
-                payload.fullName.length < 2 ||
-                payload.email.length < 3 ||
-                loading
-              }
-            >
-            {/* <button
+              </label>
+              <button
+                disabled={
+                  // payload.fullName.length < 2 ||
+                  payload.email.length < 3 ||
+                  loading
+                }
+              >
+                {/* <button
               type="submit"
             > */}
-              {loading ? <img src={LoaderGif} alt="Loading" /> : "Submit"}
-            </button>
-          </div>
-        </form> : <newsResponse />}
+                {loading ? <img src={LoaderGif} alt="Loading" /> : "Submit"}
+              </button>
+            </div>
+          </form>
+        ) : (
+          <newsResponse />
+        )}
       </NewsletterModal>
     </>
   );

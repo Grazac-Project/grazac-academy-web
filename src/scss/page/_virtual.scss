@@ -6,7 +6,8 @@
     margin: auto;
     width: 95%;
     @media screen and (max-width: 940px) {
-      display: block;
+      display: column;
+      flex-direction: column-reverse;
       width: 90%;
     }
 
@@ -25,10 +26,9 @@
     }
     h4 {
       color: var(--Main-Color, #773dd3);
-      font-family: Georgia;
+      font-family: Rajdhani sans-serif;
       font-size: 24px;
-      font-style: normal;
-      font-weight: 400;
+      font-weight: 500;
       line-height: 150%; /* 36px */
       @media screen and (max-width: 600px) {
         font-size: 22px;
@@ -37,29 +37,27 @@
 
     h1 {
       color: #073041;
-      font-family: Georgia;
-      font-size: 40px;
-      font-style: normal;
+      font-family: Rajdhani sans-serif;
+      font-size: 48px;
       font-weight: 700;
-      line-height: normal;
-      margin: 0;
+      line-height: 60px;
+      color: #073041;
+      margin-top: 8px;
+      margin-bottom: 16px;
       @media screen and (max-width: 1024px) {
         font-size: 36px;
       }
       @media screen and (max-width: 600px) {
         font-size: 28px;
       }
-
-      
     }
     p {
       color: #073041;
-      font-family: Nunito Sans;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 400;
+      font-family: Rajdhani sans-serif;
+      font-size: 18px;
+      font-weight: 500;
       line-height: 150%; /* 36px */
-      padding: 32px 0;
+      padding-bottom: 40px;
       @media screen and (max-width: 1024px) {
         padding: 28px 0;
       }
@@ -81,9 +79,10 @@
     background-color: $color-inspiring-purple;
     border: 1px solid #fff;
     border-radius: 3px;
-    padding: 15px 25px;
+    padding: 14px 25px;
     color: $color-white;
     font-size: 18px;
+    line-height: 18px;
     font-family: $font-secondary;
     outline: none;
     cursor: pointer;
@@ -192,7 +191,7 @@
         @media screen and (max-width: 768px) {
           // width: 100%;
         }
-        h4{
+        h4 {
           font-family: $font-primary;
           font-weight: 700;
           font-size: 20px;
@@ -201,7 +200,7 @@
           padding-top: 14px;
           // padding-bottom: 8px;
         }
-        p{
+        p {
           font-family: $font-secondary;
           font-weight: 400;
           font-size: 16px;
@@ -218,7 +217,7 @@
         .image-container > img.forward {
           max-width: 100%;
         }
-        .image-container{
+        .image-container {
           max-width: 80%;
         }
         .down {
@@ -226,7 +225,6 @@
         }
         @media screen and (max-width: 900px) {
           // gap: 40px;
-          
         }
         @media screen and (max-width: 768px) {
           flex-direction: column;
@@ -239,7 +237,7 @@
           .image-container > img.down {
             max-width: 80%;
           }
-          .image-container{
+          .image-container {
             max-width: 80%;
           }
         }
@@ -381,6 +379,9 @@
     transform: translateY(-50%);
     width: 100%; /* Set the width of your arrow */
     height: 30px; /* Set the height of your arrow */
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
 
     button {
       width: 48px;
@@ -389,6 +390,7 @@
       border: none;
       font-size: 16px;
       font-weight: 700;
+      cursor: pointer;
     }
     button:hover {
       background-color: #333;
