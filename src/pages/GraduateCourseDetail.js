@@ -48,7 +48,7 @@ const CourseDetail = (props) => {
       try {
         const response = await fetch(url);
         const result = await response.json();
-        console.log(result)
+        // console.log(result)
         await setCourse(result.details);
         // console.log(JSON.parse(result.details.outline))
         await setOutline(JSON.parse(result.details.outline));
@@ -68,7 +68,7 @@ const CourseDetail = (props) => {
     const urlSelect = async () => {
       // Construct the URL based on the mode
     let urlBuild = "";
-    console.log(mode)
+    // console.log(mode)
     if (mode === 'Virtual') {
       urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
     } else if (mode === 'Onsite') {
