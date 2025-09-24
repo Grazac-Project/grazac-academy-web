@@ -1106,7 +1106,7 @@ function Dashboard() {
                               </div>
                             </div>
                           )
-                        )}
+                        }
 
                         {payShowModal === "pay" && (
                           paymentChoice === 'fullPayment' && (
@@ -1305,7 +1305,7 @@ function Dashboard() {
                               </div>
                             </div>
                           )
-                        )}
+                        }
 
                         {payShowModal === "pay" && (
                           paymentChoice === 'instalment-note' && (
