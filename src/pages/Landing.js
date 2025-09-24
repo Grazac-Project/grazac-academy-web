@@ -310,7 +310,7 @@ const Landing = () => {
           {/* </Container> */}
         </div>
         <section id="availableTrack">
-          <AvailableTrack/>
+          <AvailableTrack />
         </section>
         <LandingJudges />
         {/* </div> */}
@@ -690,13 +690,21 @@ const Landing = () => {
                   <Accordion.Item eventKey="1">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4>Do I have to be physically present to register?</h4>
+                        <h4>What is the duration of the program?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                        <p>No, registration is to be done online.</p>
+                        <p>
+                          Our courses vary in duration, ranging from 6 months
+                          for the on-site class and 3 months for the virtual
+                          class.
+                        </p>
+                        <p>
+                          Please check the specific course page for detailed
+                          information.
+                        </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -706,15 +714,18 @@ const Landing = () => {
                   <Accordion.Item eventKey="2">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4>Are classes virtual or onsite?</h4>
+                        <h4>
+                          What is the level of experience required for
+                          enrollment?
+                        </h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Classes would be onsite or virtually, depending on the
-                          mode of learning you prefer.
+                          Our courses cater to individuals with varying levels
+                          of experience, from beginners to advanced learners.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -725,16 +736,20 @@ const Landing = () => {
                   <Accordion.Item eventKey="3">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4> What is the duration of the program?</h4>
+                        <h4> What is your application process like?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The program is for a duration of 12 months, consisting
-                          of 6 months immersive training and 6 months
-                          internship.
+                          The Grazac application process is a two-step online
+                          process <br /> First, Applicants would be required to
+                          create an account. Once this has been created,
+                          applicants will be directed to our online application
+                          platform to complete the application process, which
+                          takes a few minutes to complete, including an
+                          assessment test.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -745,28 +760,9 @@ const Landing = () => {
                   <Accordion.Item eventKey="4">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          Yes,please. However, as an undergraduate, you are
-                          strongly advised to choose our virtual learning mode
-                          due to its flexibility.
-                        </p>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Card>
-                <hr />
-                <Card>
-                  <Accordion.Item eventKey="5">
-                    <Accordion.Header onClick={handleFaq}>
-                      <div className="landing_faq-question">
                         <h4>
-                          Do you offer any certification after the course?
+                          What payment options do you offer, and can I pay in
+                          installments?
                         </h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
@@ -774,38 +770,17 @@ const Landing = () => {
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes, students who complete our courses will receive a
-                          virtual and hardcopy certificate of completion
+                          You can pay upfront or choose our installment payment
+                          plan, which allows you to split the course fee into
+                          manageable monthly payments. <br /> Please contact our
+                          admission team to learn more about our payment options
+                          and to discuss a plan that works best for you.
                         </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
                 </Card>
-                <hr />
-                <Card>
-                  <Accordion.Item eventKey="6">
-                    <Accordion.Header onClick={handleFaq}>
-                      <div className="landing_faq-question">
-                        <h4>What is the cost of learning at Grazac Academy</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <div className="landing_faq-answer">
-                        <p>
-                          For our physical classes, the cost for all courses is
-                          #650,000
-                        </p>
-                        <p>
-                          While for our virtual classes, the cost is $200. To
-                          get more information about our pricing,{" "}
-                          <a href="#">Click here</a>
-                        </p>
-                      </div>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Card>
-                <Link to="/faq" className="link-view">
+                <Link to="/faq" className="link-view" style={{textAlign: "center"}}>
                   <h5>View All</h5>
                 </Link>
               </Accordion>
