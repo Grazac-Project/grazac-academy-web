@@ -6,8 +6,10 @@ import Check from "../../../images/newsletter/check.svg";
 import LoaderGif from "../../../images/svg/dashboard/loader.gif";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { zohoSubmit } from "../../../api/dashboard/data";
+// import { zohoSubmit } from "../../../api/dashboard/data";
+import { newsForm } from "../../../api/dashboard/data";
 import NewsResponse from "../newsResponse/newsResponse";
+import { ToastContainer, toast } from "react-toastify";
 
 const Newsform = ({ setNews, setNewsMessage }) => {
   const [loading, setLoading] = useState(false);
@@ -58,28 +60,33 @@ const Newsform = ({ setNews, setNewsMessage }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(payload);
+    // console.log(payload);
 
     setLoading(true);
-    zohoSubmit(payload)
+    newsForm(payload)
       .then((res) => {
-        console.log(res.data.data);
-        console.log(res.data.data.data);
-        if (res.data.data.data.status === "success") {
-          console.log("hahahahahaha");
+        // console.log(res);
+        const message = res.data.message;
+        if (res.status === 201) {
           setNews("newsResponse");
           setThanks(false);
         }
       })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error.response);
-      });
+       .catch((error) => {
+      setLoading(false);
+      // console.log(error);
+      const errMsg = error.response?.data?.message || "Something went wrong!";
+      toast.error(errMsg);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   };
 
   return (
     <>
       <NewsletterModal setNews={setNews}>
+        <ToastContainer />
         {thanks ? (
           <form className={classes.main} onSubmit={handleSubmit}>
             <div className={classes.formImage}>
@@ -146,8 +153,7 @@ const Newsform = ({ setNews, setNewsMessage }) => {
               <button
                 disabled={
                   // payload.fullName.length < 2 ||
-                  payload.email.length < 3 ||
-                  loading
+                  payload.email.length < 3 || loading
                 }
               >
                 {/* <button
