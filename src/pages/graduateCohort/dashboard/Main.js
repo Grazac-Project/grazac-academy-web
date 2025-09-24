@@ -14,7 +14,7 @@ import {
   sendFlutterTx,
   addPlan,
   getGuarantor,
-  getDetailsC,
+  getDetailsC
 } from "../../../api/dashboard/data";
 import {
   useFlutterwave,
@@ -32,19 +32,9 @@ import AdmissionFeePage from "../../../components/dashboard/not-submitted/Admiss
 import Payment from "../../../components/dashboard/payment";
 import Pending from "../../../components/dashboard/Pending";
 import Failed from "../../../components/dashboard/Failed";
-import OutsideClickHandler from "react-outside-click-handler";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
-  const statusClasses = {
-    "Not Submitted": "minmd:bg-gray-300 px-8 py-4 rounded-full",
-    "Under Review": "minmd:bg-yellow-200 px-8 py-4 rounded-full",
-    Admitted: "minmd:bg-green-400 px-8 py-4 rounded-full",
-    Selected: "minmd:bg-purple-300 px-8 py-4 rounded-full",
-    Rejected: "minmd:bg-red-300 px-8 py-4 rounded-full",
-    Pending: "minmd:bg-yellow-200 px-8 py-4 rounded-full",
-  };
-
   const buttonRef = useRef();
   const [accepted, setAccepted] = useState(false);
 
@@ -61,12 +51,11 @@ function Dashboard() {
   const [amount, setAmount] = useState(0);
   const [currency, setCurrency] = useState("");
   const [userId, setUserId] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
   const [guarantorForm1, setGuarantorForm1] = useState(true);
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
-  const [paymentChoice, setPaymentChoice] = useState("");
+  const [paymentChoice, setPaymentChoice] = useState('')
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
@@ -89,20 +78,6 @@ function Dashboard() {
 
   const usdValue = "10";
   const ngnValue = "720000";
-
-  // useEffect(() => {
-  //   function handleClickOutside(e) {
-  //     if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-  //       setIsOpen(false);
-  //     }
-  //   }
-  //   if (isOpen) {
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //   }
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [isOpen]);
 
   useEffect(() => {
     // setSelectStatus("paid");
@@ -166,15 +141,16 @@ function Dashboard() {
         //   );
         // }
       });
+
   }, [guarantorForm1]);
 
   useEffect(() => {
-    getDetailsC().then((res) => {
-      console.log(res);
-
-      setPaymentChoice(res.data.data.result?.paymentOption);
-    });
-  }, []);
+    getDetailsC()
+      .then(res => {
+        console.log(res);
+        
+        setPaymentChoice(res.data.data.result?.paymentOption)})
+  }, [])
 
   const handleChange = (e) => {
     setGuarantor({
@@ -211,7 +187,7 @@ function Dashboard() {
 
     handleFlutterPayment({
       callback: (response) => {
-        console.log(response);
+        console.log(response)
         // if (response.status === "successful") {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
@@ -241,7 +217,7 @@ function Dashboard() {
         }
         closePaymentModal(); // this will close the modal programmatically
       },
-      onClose: (response) => {},
+      onClose: (response) => { },
     });
   };
 
@@ -252,8 +228,8 @@ function Dashboard() {
       planData.append("payment_plan", "learn now pay later");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
       // setSelectStatus("pay-as-you-earn");
@@ -264,34 +240,34 @@ function Dashboard() {
       planData.append("payment_plan", "pay at once");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
-    } else if (payOpt === "fullTrainingOnly") {
+    } else if (payOpt === 'fullTrainingOnly') {
       setPayShowModal("");
 
       var planData = new FormData();
       planData.append("payment_plan", "training only");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
-    } else if (payOpt === "instalment") {
-      setPayOpt("instalment-pay");
-      setPaymentChoice("instalment-note");
+    } else if (payOpt === 'instalment') {
+      setPayOpt('instalment-pay')
+      setPaymentChoice('instalment-note')
       // toast.info("You need to select a payment option to continue!");
-    } else if (payOpt === "instalment-pay") {
+    } else if (payOpt === 'instalment-pay') {
       setPayShowModal("");
 
       var planData = new FormData();
       planData.append("payment_plan", "pay in instalment");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
 
       flutterWavePayment();
     }
@@ -490,8 +466,8 @@ function Dashboard() {
       planData.append("payment_plan", "pay as you earn");
       addPlan(planData)
         .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
+        .then((res) => { })
+        .catch((err) => { });
     } else {
       btn.innerHTML = `Proceed`;
     }
@@ -611,8 +587,8 @@ function Dashboard() {
         planData.append("payment_plan", "pay as you earn");
         addPlan(planData)
           .then((response) => response.data)
-          .then((res) => {})
-          .catch((err) => {});
+          .then((res) => { })
+          .catch((err) => { });
       } else {
         btn.innerHTML = `Proceed`;
       }
@@ -677,23 +653,7 @@ function Dashboard() {
               closeNavMobile();
             }}
           > */}
-          {/* <div
-            className="layout_dashboard-sidebar"
-            id="sidebar"
-            onClick={closeNavMobile}
-            ref={sidebarRef}
-          >
-            <Sidebar
-              clicked={sidebarClick}
-              showDetails={status}
-              clickedDashboard={setSidebarClick}
-              clickedDetails={setSidebarClick}
-              clickedPayment={setSidebarClick}
-              paymentChoice={paymentChoice}
-            />
-          </div> */}
-          <OutsideClickHandler onOutsideClick={closeNavMobile}>
-            <div className="layout_dashboard-sidebar" id="sidebar">
+            <div className="layout_dashboard-sidebar" id="sidebar" onClick={closeNavMobile}>
               <Sidebar
                 clicked={sidebarClick}
                 showDetails={status}
@@ -703,8 +663,6 @@ function Dashboard() {
                 paymentChoice={paymentChoice}
               />
             </div>
-          </OutsideClickHandler>
-
           {/* </OutsideClickHandler> */}
           <div className="layout_dashboard-content">
             <div className="dashboard-nav">
@@ -715,17 +673,14 @@ function Dashboard() {
                 onClick={showNavMobile}
               />
               <div className="dashboard-nav-status">
-                <h3>
-                  Status:{"    "}
-                  <span className={statusClasses[status]}>{status}</span>
-                </h3>
+                <h3>Status: {status}</h3>
                 <div
                   className={
                     status === "Not Submitted"
-                      ? `dashboard-nav-status-dot not-submitted ${status}}`
+                      ? `dashboard-nav-status-dot not-submitted`
                       : status === "Under Review"
-                      ? `dashboard-nav-status-dot under-review ${status}`
-                      : `dashboard-nav-status-dot ${status}`
+                        ? `dashboard-nav-status-dot under-review`
+                        : `dashboard-nav-status-dot ${status}`
                   }
                 ></div>
               </div>
@@ -772,8 +727,12 @@ function Dashboard() {
                 {status === "Selected" && (
                   <Selected fname={details?.firstName} />
                 )}
-                {status === "Pending" && <Pending fname={details?.firstName} />}
-                {status === "Failed" && <Failed fname={details?.firstName} />}
+                {status === "Pending" && (
+                  <Pending fname={details?.firstName} />
+                )}
+                {status === "Failed" && (
+                  <Failed fname={details?.firstName} />
+                )}
 
                 {status === "Admitted" && (
                   <div>
@@ -789,10 +748,8 @@ function Dashboard() {
                               button below to continue you admission process.
                             </p> */}
                             <p>
-                              You have been selected to be part of the Grazac
-                              Academy Cohort 15 training program. Kindly click
-                              the button below to pay and finalize the admission
-                              process.
+                              You have been selected to be part of the Grazac Academy Cohort 15 training program. 
+                              Kindly click the button below to pay and finalize the admission process.
                             </p>
                             <button onClick={() => setPayShowModal("pay")}>
                               Continue admission process
@@ -800,8 +757,8 @@ function Dashboard() {
                           </div>
                         )}
 
-                        {payShowModal === "pay" &&
-                          paymentChoice === "learn_now_pay_later" && (
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'learn_now_pay_later' && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
                               <div className="dashboard-content-modal-container">
@@ -829,9 +786,7 @@ function Dashboard() {
                                     }}
                                   >
                                     <div></div>
-                                    <p>
-                                      Learn Now Pay Later (NGN 50,000 legal fee)
-                                    </p>
+                                    <p>Learn Now Pay Later (NGN 50,000 legal fee)</p>
                                   </div>
                                   <div
                                     className={
@@ -885,10 +840,11 @@ function Dashboard() {
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )
+                        )}
 
-                        {payShowModal === "pay" &&
-                          paymentChoice === "fullPayment" && (
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'fullPayment' && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
                               <div className="dashboard-content-modal-container">
@@ -937,15 +893,16 @@ function Dashboard() {
                                     <div></div>
                                     <p>Pay at Once (650,000 Naira) </p>
                                   </div>
-
+                                  
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )
+                        )}
 
-                        {payShowModal === "pay" &&
-                          paymentChoice === "partPayment" && (
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'partPayment' && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
                               <div className="dashboard-content-modal-container">
@@ -1010,10 +967,11 @@ function Dashboard() {
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )
+                        )}
 
-                        {payShowModal === "pay" &&
-                          paymentChoice === "instalment-note" && (
+                        {payShowModal === "pay" && (
+                          paymentChoice === 'instalment-note' && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
                               <div className="dashboard-content-modal-container">
@@ -1039,20 +997,14 @@ function Dashboard() {
                                       setCurrency("NGN");
                                     }}
                                   >
-                                    <p>
-                                      In order to proceed with this option,
-                                      kindly note that a first payment of{" "}
-                                      <span>NGN 350,000</span> must be paid. The
-                                      remaining N350,000 will be divided into
-                                      N175,000 naira monthly for 2 months just
-                                      to make the payment easy for you
-                                    </p>
+                                    <p>In order to proceed with this option, kindly note that a first payment of <span>NGN 350,000</span> must be paid. The remaining N350,000 will be divided into N175,000 naira monthly for 2 months just to make the payment easy for you</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )
+                        )}
 
                         {/* {payShowModal === "pay" && (
                           <div className="dashboard-content-modal">
@@ -1701,9 +1653,9 @@ function Dashboard() {
                                       <button
                                         // onClick={makePayment}
                                         onClick={() => flutterWavePayment()}
-                                        // onClick={() =>
-                                        //   handlePayercoinsPayment()
-                                        // }
+                                      // onClick={() =>
+                                      //   handlePayercoinsPayment()
+                                      // }
                                       >
                                         Proceed
                                       </button>
