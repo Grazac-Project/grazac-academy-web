@@ -58,7 +58,7 @@ function NotSubmitted({
     state_of_residence: "",
     resident_in_abeokuta: "",
     // onSite: undefined,
-    method_of_learning: "",
+    learningTrack: "",
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: "",
@@ -835,17 +835,28 @@ function NotSubmitted({
                     <div className="dashboard-content-form-container">
                       <label>
                         Would you prefer our virtual live sessions or physical
-                        classes? We highly recommend physical classes. Virtaul
+                        classes? We highly recommend physical classes. Virtual
                         Live or Physical Classes
                       </label>
-                      <select required name="method_of_learning">
+                      <select required
+                        value={bioData.resident_in_abeokuta}
+                      onChange={handleChange} >
                         <option value="Physical Class">Physical Class</option>
                         <option value="Virtual Class">Virtual Class</option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
                       <label>
-                        Will you be available physically for the next 6months?
+                        Whats your preferred learning location?
+                      </label>
+                      <select required name="preffered_location">
+                        <option value="lagos">Lagos Office</option>
+                        <option value="Abeokuta ">Abeokuta Office</option>
+                      </select>
+                    </div>
+                    <div className="dashboard-content-form-container">
+                      <label>
+                        Will you be available physically for the next 6months? (Physical Class)
                       </label>
 
                       <select
