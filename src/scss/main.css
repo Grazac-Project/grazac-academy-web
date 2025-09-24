@@ -201,6 +201,7 @@ textarea:focus {
   transition: all 500ms ease-in-out;
   padding: 5rem 2rem;
   padding-top: 12rem;
+  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
   clip-path: circle(30px at calc(100% - 65px) 65px);
   visibility: hidden;
 }
@@ -370,6 +371,7 @@ textarea:focus {
 }
 .nav__menu--active .nav__list--mb {
   visibility: visible;
+  -webkit-clip-path: circle(100%);
   clip-path: circle(100%);
 }
 .nav__menu--active .nav-tgl > span {
@@ -6273,6 +6275,7 @@ textarea:focus {
   border: 1px solid #333333;
   background: #333333;
 }
+
 .dashboard-nav-status .under-review {
   border: 1px solid #e7a300;
   background: #e7a300;
@@ -6944,5 +6947,5 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 16px;
-}
+  gap: 16px;}
+

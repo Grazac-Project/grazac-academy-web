@@ -147,7 +147,7 @@ const App = () => {
     if (window.PageSense) {
       window.PageSense.track();
     }
-  }, [location. Pathname]);
+  }, [location.Pathname]);
 
   const app = useRef();
 
@@ -232,9 +232,11 @@ const App = () => {
                 <Route path="/start" exact component={Start} />
                 <Route path="/web3-application-form" exact component={Form} />
                 <Route path="/waitlist" exact component={Waitlist} />
-                <Route path="/web3-application-payment" exact component={Web3Payment} />
-
-
+                <Route
+                  path="/web3-application-payment"
+                  exact
+                  component={Web3Payment}
+                />
               </Switch>
             </div>
           </Suspense>
