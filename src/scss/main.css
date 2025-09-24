@@ -201,7 +201,6 @@ textarea:focus {
   transition: all 500ms ease-in-out;
   padding: 5rem 2rem;
   padding-top: 12rem;
-  -webkit-clip-path: circle(30px at calc(100% - 65px) 65px);
   clip-path: circle(30px at calc(100% - 65px) 65px);
   visibility: hidden;
 }
@@ -371,7 +370,6 @@ textarea:focus {
 }
 .nav__menu--active .nav__list--mb {
   visibility: visible;
-  -webkit-clip-path: circle(100%);
   clip-path: circle(100%);
 }
 .nav__menu--active .nav-tgl > span {
@@ -994,6 +992,9 @@ textarea:focus {
   padding-top: 10px;
   padding-bottom: 16px;
 }
+.virtual_container_info h1 span {
+  color: #cfb9f9;
+}
 @media (max-width: 900px) {
   .virtual_container_info h1 {
     font-size: 38px;
@@ -1009,17 +1010,18 @@ textarea:focus {
   padding-bottom: 40px;
 }
 .virtual_container_info button {
-  border: 1.5px solid #773dd3;
+  border: 1.5px solid white;
   border-radius: 8px;
-  padding: 16px 58px;
+  padding: 15px 64px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
   line-height: 18px;
-  color: #773dd3;
+  background-color: #773dd3;
+  color: white;
 }
 .virtual_container_info button:hover {
-  background: #773dd3;
-  color: #fff;
+  color: #773dd3;
+  background: #fff;
   border: 1.5px solid #fff;
 }
 @media (max-width: 600px) {
@@ -1628,6 +1630,35 @@ textarea:focus {
   max-width: 1200px;
   margin: 0 auto;
 }
+.landing__tabs {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+.landing__tabs .available_tracks_tab {
+  padding: 12px 18px;
+  border: none;
+  background: #fff;
+  color: #073041;
+  border-radius: 8px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s, font-weight 0.2s;
+}
+.landing__tabs .available_tracks_tab img {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+.landing__tabs .available_tracks_tab.active_tab {
+  background: #073041;
+  color: #fff;
+  font-weight: 700;
+}
 .landing__header {
   background-color: #fff;
   padding: 1rem;
@@ -2054,14 +2085,14 @@ textarea:focus {
   background-color: #f1f5fc;
 }
 .landing__slider-text1 {
-  display: block;
   margin: auto;
-  max-width: 900px;
+  max-width: 600px;
 }
 .landing__slider-text1 p {
   color: #787676;
   text-align: center;
-  margin: 0 20px 25px 0;
+  margin: 0 20px 33px 0;
+  font-size: 16px;
 }
 .landing__slider-contain {
   width: 100vw;
@@ -2726,7 +2757,9 @@ textarea:focus {
 }
 @media screen and (max-width: 940px) {
   .Vitual_hero {
-    display: block;
+    display: column;
+    flex-direction: column-reverse;
+    align-items: center;
     width: 90%;
   }
 }
@@ -2735,32 +2768,34 @@ textarea:focus {
 }
 .Vitual_hero_girl {
   max-width: 100%;
+  margin-bottom: 62.11px;
 }
 @media screen and (max-width: 768px) {
   .Vitual_hero_girl {
     margin-top: 32px;
+    margin-bottom: 24px;
   }
 }
 .Vitual_hero h4 {
   color: var(--Main-Color, #773dd3);
-  font-family: Georgia;
+  font-family: Rajadhani, sans-serif;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%; /* 36px */
 }
 @media screen and (max-width: 600px) {
   .Vitual_hero h4 {
-    font-size: 22px;
+    font-size: 24px;
+    padding-bottom: 8px;
   }
 }
 .Vitual_hero h1 {
   color: #073041;
-  font-family: Georgia;
+  font-family: Rajadhani, sans-serif;
   font-size: 40px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 100%;
   margin: 0;
 }
 @media screen and (max-width: 1024px) {
@@ -2774,22 +2809,23 @@ textarea:focus {
   }
 }
 .Vitual_hero p {
-  color: #073041;
-  font-family: Nunito Sans;
+  color: #787676;
+  font-family: Rajadhani, sans-serif;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%; /* 36px */
   padding: 32px 0;
 }
 @media screen and (max-width: 1024px) {
   .Vitual_hero p {
-    padding: 28px 0;
+    padding: 16px 0;
   }
 }
 @media screen and (max-width: 600px) {
   .Vitual_hero p {
-    font-size: 16px;
+    font-size: 18px;
+    padding-bottom: 40px;
   }
 }
 .Vitual_text {
@@ -2797,29 +2833,56 @@ textarea:focus {
 }
 @media screen and (max-width: 940px) {
   .Vitual_text {
-    text-align: center;
+    text-align: start;
     align-items: center;
-    margin: auto;
+    padding-bottom: 45px;
   }
 }
-.Vitual_btn {
+.Vitual_btn1 {
   background-color: #773dd3;
   border: 1px solid #fff;
   border-radius: 3px;
   padding: 15px 25px;
   color: #fff;
   font-size: 18px;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: Radjadhani, sans-serif;
   outline: none;
   cursor: pointer;
+  font-weight: 700;
 }
 @media (max-width: 37.5em) {
-  .Vitual_btn {
+  .Vitual_btn1 {
     height: initial;
     padding: 1.8rem;
+    width: 100%;
   }
 }
-.Vitual_btn:hover {
+.Vitual_btn1:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.Vitual_btn_1 {
+  background-color: #773dd3;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  padding: 15px 25px;
+  color: #fff;
+  font-size: 22.38px;
+  font-family: Radjadhani, sans-serif;
+  outline: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+}
+@media (max-width: 37.5em) {
+  .Vitual_btn_1 {
+    height: initial;
+    padding: 1.8rem;
+    width: 100%;
+  }
+}
+.Vitual_btn_1:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .Vitual_countdown {
@@ -6210,7 +6273,6 @@ textarea:focus {
   border: 1px solid #333333;
   background: #333333;
 }
-
 .dashboard-nav-status .under-review {
   border: 1px solid #e7a300;
   background: #e7a300;
@@ -6730,9 +6792,14 @@ textarea:focus {
   font-weight: 700;
   line-height: normal;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .pricing h1 {
-    font-size: 50px;
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing h1 {
+    font-size: 30px;
   }
 }
 .pricing p {
@@ -6743,6 +6810,11 @@ textarea:focus {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
+}
+@media screen and (max-width: 320px) {
+  .pricing p {
+    font-size: 16px;
+  }
 }
 .pricing .virtualButtons {
   border-radius: 28px;
@@ -6772,6 +6844,12 @@ textarea:focus {
 @media screen and (max-width: 400px) {
   .pricing .virtualButtons {
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing .virtualButtons {
+    font-size: 12px;
+    width: 130px;
   }
 }
 .pricing .onsiteButtons {
@@ -6805,6 +6883,12 @@ textarea:focus {
     width: 140px;
   }
 }
+@media screen and (max-width: 320px) {
+  .pricing .onsiteButtons {
+    font-size: 12px;
+    width: 130px;
+  }
+}
 .pricing .activebtn {
   cursor: pointer;
   font-family: Nunito Sans;
@@ -6818,6 +6902,11 @@ textarea:focus {
 @media screen and (max-width: 400px) {
   .pricing .activebtn {
     font-size: 14px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .pricing .activebtn {
+    font-size: 12px;
   }
 }
 .pricing_toggle {
@@ -6844,9 +6933,16 @@ textarea:focus {
     gap: 8px;
   }
 }
+@media screen and (max-width: 320px) {
+  .pricing_toggle {
+    width: 100%;
+    padding:4px 1px;
+    gap: 4px;
+  }
+}
 .pricing .container {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 16px;
-} /*# sourceMappingURL=main.css.map */
+}

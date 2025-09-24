@@ -15,10 +15,10 @@ const Pricing = () => {
     <div className="pricing">
       <Navbar top={true} />
       <div style={{ height: 10 }}></div>
-      <div className="pricing_main">
+      <div className="pricing">
         <h1>Plans and Pricings</h1>
         <p>No surprise fees, no hidden charges</p>
-        {/* <div className="pricing_toggle">
+        <div className="pricing_toggle">
           <div
             className={
               activeTab === "onsite" ? "onsiteButtons" : "activebtn" 
@@ -35,28 +35,14 @@ const Pricing = () => {
           >
             Virtual pricing
           </div>
-        </div> */}
+        </div>
         <div className="pricing_container">
           {activeTab === "onsite" && <NewPricing />}
           {activeTab === "Virtual" && <VirtualPricing />}
         </div>
-        <div
-          style={{
-          margin: "auto",
-          display: "flex",
-          justifyContent: "center"
-          }}
-        >
+        <div className="Vitual_btn_1">
           <Link to="/login">
-            <button
-              className="Vitual_btn"
-              style={{
-                width: "172px",
-                textAlign: "center",
-                alignItems: "center",
-                marginTop: "20px",
-              }}
-            >
+            <button>
               <div>Proceed</div>
             </button>
           </Link>

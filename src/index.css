@@ -80,3 +80,12 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+html {
+  scroll-behavior: smooth;
+}
+#availableTrack {
+  scroll-margin-top: 120px;
+}
+#virtualTrack {
+  scroll-margin-top: 125px;
+}
