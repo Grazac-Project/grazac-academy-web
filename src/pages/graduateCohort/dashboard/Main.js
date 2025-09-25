@@ -33,6 +33,7 @@ import Payment from "../../../components/dashboard/payment";
 import Pending from "../../../components/dashboard/Pending";
 import Failed from "../../../components/dashboard/Failed";
 import OutsideClickHandler from "react-outside-click-handler";
+import { set } from "date-fns";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -64,6 +65,9 @@ function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [guarantorForm1, setGuarantorForm1] = useState(true);
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
+  const [chosenCourse, setChosenCourse] = useState("");
+  const [chosenTrack, setChosenTrack] = useState("");
+  const [isSpecialCourse, setIsSpecialCourse] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
   const [paymentChoice, setPaymentChoice] = useState("");
@@ -172,7 +176,16 @@ function Dashboard() {
     getDetailsC().then((res) => {
       console.log(res);
 
-      setPaymentChoice(res.data.data.result?.paymentOption);
+      // setPaymentChoice(res.data.data.result?.paymentOption);
+      setChosenCourse(res.data.data.result?.preferred_course);
+      setChosenTrack(res.data.data.result?.learningTrack);
+
+      if (
+        res.data.data.result?.preferred_course === "cyber security" ||
+        res.data.data.result?.preferred_course === "cloud"
+      ) {
+        setIsSpecialCourse(true);
+      }
     });
   }, []);
 
@@ -841,7 +854,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("full");
-                                          setAmount(650000);
+                                      setAmount(650000);
                                       // setAmount(250);
                                       setCurrency("NGN");
                                     }}
@@ -929,7 +942,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                          setAmount(650000);
+                                      setAmount(650000);
                                       // setAmount(220);
                                       setCurrency("NGN");
                                     }}
@@ -982,7 +995,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                          setAmount(650000);
+                                      setAmount(650000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
