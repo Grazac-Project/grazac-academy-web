@@ -42,6 +42,18 @@ function NotSubmitted({
   const [checkAct, setCheckAct] = useState(false);
   const [checkAct2, setCheckAct2] = useState(false);
   const [nigerianStates, setNigerianStates] = useState([]);
+  const [isPhysicallyAvailable, setIsPhysicallyAvailable] =
+    useState("physical");
+
+  // !ageRange ||
+  //   !learningTrack ||
+  //   !gender ||
+  //   !preferred_course ||
+  //   !why_selected_for_cohort ||
+  //   !physically_available ||
+  //   !paymentOption ||
+  //   !resident_in_abeokuta;
+
   const [bioData, setBioData] = useState({
     firstName: `${fname}`,
     lastName: `${lname}`,
@@ -165,6 +177,10 @@ function NotSubmitted({
       ...bioData,
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.name === "learningTrack") {
+      setIsPhysicallyAvailable(e.target.value);
+    }
 
     // setEducation({
     //   ...education,
@@ -766,7 +782,7 @@ function NotSubmitted({
                       <select
                         required
                         name="gender"
-                        value={bioData.gender}
+                        value={bioData?.gender}
                         onChange={handleChange}
                       >
                         <option value="">Select an option</option>
@@ -819,7 +835,7 @@ function NotSubmitted({
                         <option value="36 and above">36 and above</option>
                       </select>
                     </div>
-                    <div className="dashboard-content-form-container">
+                    {/* <div className="dashboard-content-form-container">
                       <label>Do you currently reside in Abeokuta?</label>
                       <select
                         required
@@ -831,45 +847,51 @@ function NotSubmitted({
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                       </select>
-                    </div>
+                    </div> */}
                     <div className="dashboard-content-form-container">
                       <label>
                         Would you prefer our virtual live sessions or physical
                         classes? We highly recommend physical classes. Virtual
                         Live or Physical Classes
                       </label>
-                      <select required
-                        value={bioData.resident_in_abeokuta}
-                      onChange={handleChange} >
-                        <option value="Physical Class">Physical Class</option>
-                        <option value="Virtual Class">Virtual Class</option>
-                      </select>
-                    </div>
-                    <div className="dashboard-content-form-container">
-                      <label>
-                        Whats your preferred learning location?
-                      </label>
-                      <select required name="preffered_location">
-                        <option value="lagos">Lagos Office</option>
-                        <option value="Abeokuta ">Abeokuta Office</option>
-                      </select>
-                    </div>
-                    <div className="dashboard-content-form-container">
-                      <label>
-                        Will you be available physically for the next 6months? (Physical Class)
-                      </label>
 
                       <select
-                        name="physically_available"
-                        value={bioData.physically_available}
                         required
+                        name="learningTrack"
+                        value={bioData.learningTrack}
                         onChange={handleChange}
                       >
-                        <option value="">Select Availability</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value="physical">Physical</option>
+                        <option value="virtual">Virtual</option>
                       </select>
                     </div>
+                    {isPhysicallyAvailable === "physical" && (
+                      <div className="dashboard-content-form-container">
+                        <label>Whats your preferred learning location?</label>
+                        <select required name="preffered_location">
+                          <option value="lagos">Lagos Office</option>
+                          <option value="Abeokuta ">Abeokuta Office</option>
+                        </select>
+                      </div>
+                    )}
+                    {isPhysicallyAvailable === "physical" && (
+                      <div className="dashboard-content-form-container">
+                        <label>
+                          Will you be available physically for the next 6months?
+                          (Physical Class)
+                        </label>
+
+                        <select
+                          name="physically_available"
+                          value={bioData.physically_available}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select Availability</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
+                    )}
 
                     <div className="dashboard-content-form-container">
                       <label>Preferred course at Grazac</label>
@@ -903,12 +925,10 @@ function NotSubmitted({
                         <option value="Machine Learning">
                           Python For Machine Learning and AI
                         </option>
-                        <option value="Cloud Engineering">
-                          Cloud Engineering (AWS)
-                        </option>
+                        <option value="cloud">Cloud Engineering (AWS)</option>
                         <option value="Data Analysis">Data Analysis</option>
 
-                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="cyber security">Cyber Security</option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
