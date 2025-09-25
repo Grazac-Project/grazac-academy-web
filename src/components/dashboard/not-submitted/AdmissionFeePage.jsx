@@ -56,13 +56,11 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         The application fee for our program is <strong>₦10,000</strong>.
       </p>
       <p>
-        After completing your registration payment, you’ll be required to take a
-        basic quantitative reasoning assessment. This helps us understand your
-        starting point so we can tailor our support to your learning journey.
+        After completing your registration payment, you’ll be required to take a basic quantitative reasoning assessment. 
+        This helps us understand your starting point so we can tailor our support to your learning journey.
       </p>
       <p>
-        Don't worry, the assessment is straightforward and designed to ensure
-        you get the most out of the program.
+        Don't worry, the assessment is straightforward and designed to ensure you get the most out of the program.
       </p>
       <p>We look forward to being part of your growth journey in tech!</p>
 
@@ -74,16 +72,17 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
             callback: (response) => {
               console.log(response.status);
               closePaymentModal(); // this will close the modal programmatically
-              window.location = "/dashboard";
+              window.location = "/login";
             },
             onClose: () => {
-              window.location = "/dashboard";
+              window.location = "/login";
             },
           });
         }}
       >
         Proceed To Pay
       </button>
+      
     </div>
   );
 }

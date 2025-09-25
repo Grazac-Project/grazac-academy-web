@@ -31,7 +31,7 @@ const VirtualSection = () => {
             <span>Flexibility</span>
           </div>
         </div>
-        <Link to="/virtualLanding">
+        <Link to="/virtual">
           <button className={classes.more}>Learn more</button>
         </Link>
       </div>
