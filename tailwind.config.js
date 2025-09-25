@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true,
+
   content: [
     // './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     // './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -15,6 +17,7 @@ module.exports = {
     ".src/components/dashboard/not-submitted/index.js",
     "./src/pages/graduateCohort/dashboard/Main.js",
     "./src/components/dashboard/Details.js",
+    "./src/components/Assessment.js",
   ],
   theme: {
     animation: {
