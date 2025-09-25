@@ -114,7 +114,7 @@ const Assessment = ({
                   {time && <Timer initialTime={time} onTimeUp={handleTimeUp} />}
                 </div>
 
-                <form className="assessment-container-form pt-20">
+                <form className="assessment-container-form">
                   {assessmentData?.questions.map((element, i) => (
                     <div key={`${element._id}-${i}`} className="question mb-6">
                       <p className="assessment-form mb-2">
