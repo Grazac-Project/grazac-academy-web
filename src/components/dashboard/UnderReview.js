@@ -61,7 +61,6 @@ function UnderReview({ fname }) {
               </button>
               <button onClick={handleOpenAssessment}>Proceed</button>
             </div>
-
           </div>
         </div>
       )}
