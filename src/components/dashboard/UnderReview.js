@@ -51,6 +51,7 @@ function UnderReview({ fname }) {
               will be admitted into the academy.{" "}
             </p>
             <p>Note that you can’t cancel halfway once you click on proceed</p>
+
             <div className="flex ">
               <button
                 className=" !text-black !font-semibold !bg-white"
@@ -60,6 +61,7 @@ function UnderReview({ fname }) {
               </button>
               <button onClick={handleOpenAssessment}>Proceed</button>
             </div>
+
           </div>
         </div>
       )}

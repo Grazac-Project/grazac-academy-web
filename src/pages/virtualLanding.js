@@ -22,7 +22,7 @@ import { ToastContainer, toast } from "react-toastify";
 import ex from "../images/svg/x-mark.svg";
 import badge from "../images/svg/badge.svg";
 
-const VirtualLanding = () => {
+const VirtualLanidng = () => {
   const [showModal, setShowModal] = useState(true);
   const [buttonColor, setButtonColor] = useState("initialColor");
   const sliderRef = useRef(null);
@@ -272,4 +272,4 @@ const VirtualLanding = () => {
   );
 };
 
-export default VirtualLanding;
+export default VirtualLanidng;
