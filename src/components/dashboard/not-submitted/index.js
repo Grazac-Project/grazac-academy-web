@@ -45,14 +45,6 @@ function NotSubmitted({
   const [isPhysicallyAvailable, setIsPhysicallyAvailable] =
     useState("physical");
 
-  // !ageRange ||
-  //   !learningTrack ||
-  //   !gender ||
-  //   !preferred_course ||
-  //   !why_selected_for_cohort ||
-  //   !physically_available ||
-  //   !paymentOption ||
-  //   !resident_in_abeokuta;
 
   const [bioData, setBioData] = useState({
     firstName: `${fname}`,
