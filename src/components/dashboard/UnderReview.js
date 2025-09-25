@@ -20,7 +20,11 @@ function UnderReview({ fname }) {
   const handleReload = () => {
     sessionStorage.clear();
     // toast.info("Signing out ...");
-    window.location = "/dashboard";
+    window.location = "/login";
+  };
+  const handleCloseAssessment = () => {
+    setShowAssessment(false);
+    setShowModal(false);
   };
   return (
     <div>
@@ -47,7 +51,17 @@ function UnderReview({ fname }) {
               will be admitted into the academy.{" "}
             </p>
             <p>Note that you can’t cancel halfway once you click on proceed</p>
-            <button onClick={handleOpenAssessment}>Proceed</button>
+
+            <div className="flex ">
+              <button
+                className=" !text-black !font-semibold !bg-white"
+                onClick={handleCloseAssessment}
+              >
+                Cancel
+              </button>
+              <button onClick={handleOpenAssessment}>Proceed</button>
+            </div>
+
           </div>
         </div>
       )}
