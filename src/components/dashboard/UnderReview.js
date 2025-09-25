@@ -53,7 +53,7 @@ function UnderReview({ fname }) {
             <p>Note that you can’t cancel halfway once you click on proceed</p>
             <div className="flex ">
               <button
-                className=" !text-black !font-semibold !bg-white"
+                style={{ backgroundColor: "white", color: "black" }}
                 onClick={handleCloseAssessment}
               >
                 Cancel
