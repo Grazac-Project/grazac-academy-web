@@ -70,7 +70,7 @@ function NotSubmitted({
     state_of_residence: "",
     resident_in_abeokuta: "",
     // onSite: undefined,
-    learningTrack: "",
+    learningTrack: "physical",
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: "",
