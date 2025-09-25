@@ -855,6 +855,16 @@ function NotSubmitted({
                         Live or Physical Classes
                       </label>
 
+                      {/* <select
+                        required
+                        name="learningTrack"
+                        value={bioData.learningTrack}
+                        onChange={handleChange}
+                      >
+                        <option value="physical">Physical</option>
+                        <option value="virtual">Virtual</option>
+                      </select> */}
+
                       <select
                         required
                         name="learningTrack"
