@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider1 from "../../images/virtual/joy.png";
 import Slider2 from "../../images/virtual/slider2.svg";
 import Slider3 from "../../images/virtual/wale.png";
-import Slider4 from "../../images/virtual/victor.png";
+import Slider4 from "../../images/virtual/Class.png";
 import Slider5 from "../../images/virtual/victory.png";
 import Content1 from "../../images/virtual/flexibility.svg";
 import Content2 from "../../images/virtual/cost_effective.svg";

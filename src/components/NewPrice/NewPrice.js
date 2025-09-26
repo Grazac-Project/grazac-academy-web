@@ -15,13 +15,13 @@ const NewPricing = () => {
       benefits: [
         "₦350,000 Initial payment",
         "NGN 175,000 to be paid the first month and second month ",
-        "No legal fee",
         "4 months of immersive training",
         "2 months of building a real project",
         "Access to free workspace for 6 months",
         "1:1 mentorship with experts ",
         "Job opportunities ",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc. ",
+        "ACTD Accredited Certification",
       ],
     },
     {
@@ -37,11 +37,11 @@ const NewPricing = () => {
         "4 months of immersive training",
         "2 months of building a real project",
         // "4 months of internship",
-        // 'Access to free workspace for 6 months',
+        'Access to free workspace for 6 months',
         "1:1 mentorship with experts",
         "Job opportunities",
         "Placement support services like CV review, soft skills training, salary negotiation sessions etc.",
-        'Free wi-fi',
+        'ACTD Accredited Certification',
       ],
     },
     {
