@@ -790,7 +790,6 @@ function Dashboard() {
 
                 {status === "Admitted" && (
                   <div>
-                    {/* {guarantorStatus === false  && selectStatus !== "paid" ? ( */}
                     {guarantorStatus === false ? (
                       <div>
                         {selectStatus === "congrats" && (
@@ -828,22 +827,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -852,13 +835,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(850000);
-                                      // setAmount(1000);
+                                      // setAmount(850000);
+                                      setAmount(300);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 850,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -868,13 +851,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(450000);
-                                      // setAmount(1000);
+                                      // setAmount(450000);
+                                      setAmount(350);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 900,000)</p>
+                                    <p>Pay in Instalment (NGN 350)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -897,22 +880,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -921,13 +888,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(450000);
-                                      // setAmount(1000);
+                                      // setAmount(450000);
+                                      setAmount(300);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 450,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -937,13 +904,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(250000);
-                                      // setAmount(1000);
+                                      // setAmount(250000);
+                                      setAmount(350);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 500,000)</p>
+                                    <p>Pay in Instalment (NGN 350)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -966,22 +933,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -990,13 +941,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                      setAmount(300);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 650,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -1006,13 +957,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350000);
+                                      setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 700,000)</p>
+                                    <p>Pay in Instalment (NGN 350)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1034,22 +985,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -1058,13 +993,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(300000);
-                                      // setAmount(1000);
+                                      // setAmount(300000);
+                                      setAmount(300);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 300,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -1074,13 +1009,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(150000);
-                                      // setAmount(1000);
+                                      // setAmount(150000);
+                                      setAmount(150);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 350,000)</p>
+                                    <p>Pay in Instalment (NGN 350)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1088,7 +1023,7 @@ function Dashboard() {
                             </div>
                           )}
 
-                        {payShowModal === "pay" &&
+                        {/* {payShowModal === "pay" &&
                           paymentChoice === "learn_now_pay_later" && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
@@ -1137,22 +1072,6 @@ function Dashboard() {
                                     <div></div>
                                     <p>Pay at Once (650,000 Naira)</p>
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "fullTrainingOnly"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("fullTrainingOnly");
-                                          setAmount(650000);
-                                      // setAmount(250);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at Once (600,000 Naira for Training Only)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "instalment"
@@ -1173,7 +1092,7 @@ function Dashboard() {
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )} */}
 
                         {payShowModal === "pay" &&
                           paymentChoice === "fullPayment" && (
@@ -1190,25 +1109,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <p>We have made a flexible option for applicants who have no interest in our Internship 
-                                    program or can not be available for 12 months to pay for training only
-                                  </p> */}
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(200);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -1217,13 +1117,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                      setAmount(300);
                                       // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at Once (650,000 Naira) </p>
+                                    <p>Pay at Once (300 Naira) </p>
                                   </div>
 
                                   <button onClick={makePayment}>Proceed</button>
@@ -1246,22 +1146,6 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -1270,13 +1154,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
-                                      // setAmount(1000);
+                                      // setAmount(650000);
+                                      setAmount(300);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 650,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -1286,61 +1170,19 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350000);
-                                      // setAmount(1000);
+                                      // setAmount(350000);
+                                      setAmount(350);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 350,000)</p>
+                                    <p>Pay in Instalment (NGN 350)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
                               </div>
                             </div>
                           )}
-
-                        {/* {payShowModal === "pay" &&
-                          paymentChoice === "instalment-note" && (
-                            <div className="dashboard-content-modal">
-                              <div className="dashboard-content-modal-backdrop"></div>
-                              <div className="dashboard-content-modal-container">
-                                <div className="dashboard-content-modal-main">
-                                  <div className="dashboard-content-modal-main-text">
-                                    <h4>Pay in Installments</h4>
-                                    <img
-                                      src={cancel}
-                                      alt="cancel"
-                                      onClick={() => setPayShowModal("")}
-                                    />
-                                  </div>
-                                  <div
-                                    className={
-                                      payOpt === "instalment"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("instalment");
-                                      setAmount(350000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <p>
-                                      In order to proceed with this option,
-                                      kindly note that a first payment of{" "}
-                                      <span>NGN 350,000</span> must be paid. The
-                                      remaining N350,000 will be divided into
-                                      N175,000 naira monthly for 2 months just
-                                      to make the payment easy for you
-                                    </p>
-                                  </div>
-                                  <button onClick={makePayment}>Proceed</button>
-                                </div>
-                              </div>
-                            </div>
-                          )} */}
 
                         {payShowModal === "pay" &&
                           paymentChoice === "instalment-note" && (
@@ -1364,8 +1206,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(700000);
-                                      // setAmount(1000);
+                                      // setAmount(700000);
+                                      setAmount(350);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -1430,263 +1272,12 @@ function Dashboard() {
                                         you.
                                       </p>
                                     )}
-
-                                    {/* {isSpecialCourse ? (
-                                      selectedTrack === "physical" ? (
-                                        <p>
-                                          In order to proceed with this option,
-                                          kindly note that an initial payment of
-                                          <span className="text-primary">
-                                            {" "}
-                                            ₦350,000.00{" "}
-                                          </span>
-                                          is required at the start. A second
-                                          payment of
-                                          <span className="text-primary font-bold">
-                                            {" "}
-                                            ₦275,000.00{" "}
-                                          </span>
-                                          will be due at the end of the first
-                                          month, and the remaining balance of
-                                          <span className="text-primary font-bold">
-                                            {" "}
-                                            ₦275,000.00{" "}
-                                          </span>
-                                          will be payable at the end of the
-                                          second month, just to make payment
-                                          easy for you.
-                                        </p>
-                                      ) : (
-                                        <p>
-                                          In order to proceed with this option,
-                                          kindly note that an initial payment of
-                                          <span className="text-primary">
-                                            {" "}
-                                            ₦225,000.00{" "}
-                                          </span>
-                                          is required at the start. A second
-                                          payment of
-                                          <span className="text-primary font-bold">
-                                            {" "}
-                                            ₦125,000.00{" "}
-                                          </span>
-                                          will be due at the end of the first
-                                          month, and the remaining balance of
-                                          <span className="text-primary font-bold">
-                                            {" "}
-                                            ₦100,000.00{" "}
-                                          </span>
-                                          will be payable at the end of the
-                                          second month, just to make payment
-                                          easy for you.
-                                        </p>
-                                      )
-                                    ) : selectedTrack === "physical" ? (
-                                      <p>
-                                        In order to proceed with this option,
-                                        kindly note that an initial payment of
-                                        <span className="text-primary">
-                                          {" "}
-                                          ₦350,000.00{" "}
-                                        </span>
-                                        is required at the start. A second
-                                        payment of
-                                        <span className="text-primary font-bold">
-                                          {" "}
-                                          ₦175,000.00{" "}
-                                        </span>
-                                        will be due at the end of the first
-                                        month, and the remaining balance of
-                                        <span className="text-primary font-bold">
-                                          {" "}
-                                          ₦175,000.00{" "}
-                                        </span>
-                                        will be payable at the end of the second
-                                        month, just to make payment easy for
-                                        you.
-                                      </p>
-                                    ) : (
-                                      <p>
-                                        In order to proceed with this option,
-                                        kindly note that an initial payment of
-                                        <span className="text-primary">
-                                          {" "}
-                                          ₦150,000.00{" "}
-                                        </span>
-                                        is required at the start. A second
-                                        payment of
-                                        <span className="text-primary font-bold">
-                                          {" "}
-                                          ₦100,000.00{" "}
-                                        </span>
-                                        will be due at the end of the first
-                                        month, and the remaining balance of
-                                        <span className="text-primary font-bold">
-                                          {" "}
-                                          ₦100,000.00{" "}
-                                        </span>
-                                        will be payable at the end of the second
-                                        month, just to make payment easy for
-                                        you.
-                                      </p>
-                                    )} */}
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
                               </div>
                             </div>
                           )}
-
-                        {/* {payShowModal === "pay" && (
-                          <div className="dashboard-content-modal">
-                            <div className="dashboard-content-modal-backdrop"></div>
-                            <div className="dashboard-content-modal-container">
-                              <div className="dashboard-content-modal-main">
-                                <div className="dashboard-content-modal-main-text">
-                                  <h4>Choose Payment Option</h4>
-                                  <img
-                                    src={cancel}
-                                    alt="cancel"
-                                    onClick={() => setPayShowModal("")}
-                                  />
-                                </div>
-                                <div
-                                  className={
-                                    payOpt === "part"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("part");
-                                    setAmount(50000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay as you earn (NGN 50,000 legal fee)</p>
-                                </div>
-                                <div
-                                  className={
-                                    payOpt === "full"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                  onClick={() => {
-                                    setPayOpt("full");
-                                    setAmount(500000);
-                                    setCurrency("NGN");
-                                  }}
-                                >
-                                  <div></div>
-                                  <p>Pay at once (NGN 500,000)</p>
-                                </div>
-                                <a
-                                  href="https://docs.google.com/forms/u/3/d/e/1FAIpQLSep9AvrWxiedsn8KWYTTiTAArLRwsHRSLnnd49GIrJ35Z4FUw/viewform?usp=pp_url&authuser=0"
-                                  target="_blank"
-                                  className={
-                                    payOpt === "install"
-                                      ? "active"
-                                      : "dashboard-content-modal-main-frame1"
-                                  }
-                                >
-                                  <div></div>
-                                  <p>
-                                    Pay in Installments (Starts from NGN
-                                    250,000)
-                                  </p>
-                                </a>
-                                <button onClick={makePayment}>Proceed</button>
-                              </div>
-                            </div>
-                          </div>
-                        )} */}
-
-                        {selectStatus === "pay-as-you-earn" && (
-                          <div>
-                            <div
-                              className="dashboard-content-back"
-                              onClick={() => setSelectStatus("congrats")}
-                            >
-                              <img src={arrow} alt="back" />
-                              <p>Back</p>
-                            </div>
-                            <h3>Pay as you earn</h3>
-                            <div className="dashboard-content-guarantor_paragraph_text">
-                              <p className="text1">
-                                Learn with us for 6 months and pay no tuition
-                                until you’re hired!
-                              </p>
-                              <p>
-                                The Pay as You Earn is a financial instrument to
-                                help you participate in our training for FREE.
-                                You are expected to start repaying the credit
-                                once you get a job at the end of the program. It
-                                is governed by a legally binding contract. The
-                                repayment procedure can be found in our terms
-                                and conditions. This contract is bonded by the
-                                law firm.
-                              </p>
-                              <p>
-                                Note that: This policy requires you bringing two
-                                guarantors and making a one-time payment for
-                                legal fees bonded by the law firm.
-                              </p>
-                              <p>
-                                The legal fee cost is a total of 50,000 Naira.
-                                Kindly note that this amount is not refundable
-                                under any circumstance.
-                              </p>
-                            </div>
-
-                            <ul>
-                              <p>
-                                The following are of utmost necessity when
-                                bringing your guarantors;
-                              </p>
-                              <li>
-                                You must bring 2 guarantors who are over 18
-                                years of age and must have completed a higher
-                                institution of learning.
-                              </li>
-                              <li>
-                                Guarantors must have a stable source of income.
-                              </li>
-
-                              <li>They must be residents within Nigeria.</li>
-                              <li>
-                                If your guarantor does not meet our eligibility
-                                status, you'll be asked to get a replacement.
-                              </li>
-                              <li>
-                                Kindly seek the consent of your guarantors
-                                before filling their details as we will contact
-                                them on your behalf.
-                              </li>
-                              <li>
-                                You can also share our terms and conditions with
-                                your guarantor to keep them informed.
-                              </li>
-                            </ul>
-                            <div className="checkbox">
-                              <input type="checkbox" id="mark" />
-                              {/* <p>I accept the <a href="#">Terms ‌and‌ ‌Conditions‌</a></p> */}
-                              <p>
-                                I accept the{" "}
-                                <a
-                                  href={termsandconds}
-                                  download
-                                  target="_blank"
-                                >
-                                  Terms ‌and‌ ‌Conditions‌
-                                </a>
-                              </p>
-                            </div>
-
-                            <button onClick={showForm}>
-                              Upload Guarantor Details
-                            </button>
-                          </div>
-                        )}
 
                         {selectStatus === "form" && (
                           <div>
@@ -1704,7 +1295,6 @@ function Dashboard() {
                             {guarantorForm1 ? (
                               <div className="dashboard-content-form">
                                 <form
-                                  // onSubmit={(e) => submitForm(e, "guarantor1")}
                                   onSubmit={(e) => SubmitGuarantorForm_1(e)}
                                 >
                                   <div className="dashboard-content-form-container">
@@ -1782,32 +1372,6 @@ function Dashboard() {
                                   </div>
                                   <div className="dashboard-content-form-container">
                                     <label>Profession</label>
-                                    {/* <select
-                                          name="profession"
-                                          required
-                                          onChange={handleChange}
-                                        >
-                                          <option value="">
-                                            Choose Profession
-                                          </option>
-                                          <option value="Civil Servant">
-                                            Civil Servant
-                                          </option>
-                                          <option value="Self Employed">
-                                            Self Employed
-                                          </option>
-                                          <option value="Private worker">
-                                            Private worker
-                                          </option>
-
-                                          <option
-                                            className="other"
-                                            key="Other"
-                                            value="Other"
-                                          >
-                                            Other
-                                          </option>
-                                        </select> */}
                                     <input
                                       onChange={handleChange}
                                       required
@@ -1815,18 +1379,6 @@ function Dashboard() {
                                       type="text"
                                       placeholder="Enter Profession"
                                     ></input>
-
-                                    {/* {showProfessionalInput1 ? (
-                                          <input
-                                            onChange={handleChange}
-                                            name="profession"
-                                            type="text"
-                                            placeholder="Enter Profession"
-                                          ></input>
-                                        ) : (
-                                          <>
-                                          </>
-                                        )} */}
                                   </div>
                                   <div className="dashboard-content-form-container">
                                     <label>Name of Organisation</label>
@@ -1881,33 +1433,6 @@ function Dashboard() {
                                       type="text"
                                       placeholder="Enter Relationship"
                                     ></input>
-
-                                    {/* <select
-                                          name="relationship"
-                                          required
-                                          onChange={handleChange}
-                                        >
-                                          <option value="">
-                                            Select Relationship
-                                          </option>
-                                          <option value="Parents">Parents</option>
-                                          <option value="Legal Guardian">
-                                            Legal Guardian
-                                          </option>
-                                          <option value="Employer">Employer</option>
-                                          <option value="Other">Other</option>
-                                        </select> */}
-
-                                    {/* {showGuarantorRelationshipInput1 ? (
-                                          <input
-                                            onChange={handleChange}
-                                            name="relationship"
-                                            type="text"
-                                            placeholder="Enter Relationship"
-                                          ></input>
-                                        ) : (
-                                          <></>
-                                        )} */}
                                   </div>
                                   <button
                                     style={{ float: "right", width: "100px" }}
@@ -1921,7 +1446,6 @@ function Dashboard() {
                             ) : (
                               <div className="dashboard-content-form">
                                 <form
-                                  // onSubmit={(e) => submitForm(e, "guarantor2")}
                                   onSubmit={(e) => SubmitGuarantorForm_2(e)}
                                   id="guarantorForm2"
                                 >
@@ -2006,26 +1530,6 @@ function Dashboard() {
                                       type="text"
                                       placeholder="Enter Profession"
                                     ></input>
-
-                                    {/* <select
-                                          name="profession"
-                                          required
-                                          onChange={handleChange}
-                                        >
-                                          <option value="">
-                                            Choose Profession
-                                          </option>
-                                          <option value="Civil Servant">
-                                            Civil Servant
-                                          </option>
-                                          <option value="Self Employed">
-                                            Self Employed
-                                          </option>
-                                          <option value="Private worker">
-                                            Private worker
-                                          </option>
-                                          <option value="Other">Other</option>
-                                        </select> */}
                                   </div>
                                   <div className="dashboard-content-form-container">
                                     <label>Name of Organisation</label>
@@ -2076,22 +1580,6 @@ function Dashboard() {
                                       type="text"
                                       placeholder="Enter Relationship"
                                     ></input>
-                                    {/* 
-                                        <select
-                                          name="relationship"
-                                          required
-                                          onChange={handleChange}
-                                        >
-                                          <option value="">
-                                            Select Relationship
-                                          </option>
-                                          <option value="Parents">Parents</option>
-                                          <option value="Legal Guardian">
-                                            Legal Guardian
-                                          </option>
-                                          <option value="Employer">Employer</option>
-                                          <option value="Other">Other</option>
-                                        </select> */}
                                   </div>
                                   <button
                                     style={{ float: "right", width: "100px" }}
