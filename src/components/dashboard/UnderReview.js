@@ -54,7 +54,7 @@ function UnderReview({ fname }) {
 
             <div className="flex ">
               <button
-                className=" !text-black !font-semibold !bg-white"
+                style={{ backgroundColor: "white", color: "black" }}
                 onClick={handleCloseAssessment}
               >
                 Cancel

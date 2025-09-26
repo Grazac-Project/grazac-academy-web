@@ -62,7 +62,7 @@ function NotSubmitted({
     state_of_residence: "",
     resident_in_abeokuta: "",
     // onSite: undefined,
-    learningTrack: "",
+    learningTrack: "physical",
   });
   const [formGuarantor, setFormGuarantor] = useState({
     first_name: "",
@@ -846,6 +846,16 @@ function NotSubmitted({
                         classes? We highly recommend physical classes. Virtual
                         Live or Physical Classes
                       </label>
+
+                      {/* <select
+                        required
+                        name="learningTrack"
+                        value={bioData.learningTrack}
+                        onChange={handleChange}
+                      >
+                        <option value="physical">Physical</option>
+                        <option value="virtual">Virtual</option>
+                      </select> */}
 
                       <select
                         required
