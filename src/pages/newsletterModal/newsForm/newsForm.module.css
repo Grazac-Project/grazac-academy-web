@@ -67,6 +67,7 @@ width: 100%;
 .formInput button img {
   width: 30px;
   height: 30px;
+  margin-left: 120px;
 }
 .formInput button:disabled{
   background-color: #9a9a9a;
