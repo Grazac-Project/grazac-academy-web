@@ -51,6 +51,7 @@ function UnderReview({ fname }) {
               will be admitted into the academy.{" "}
             </p>
             <p>Note that you can’t cancel halfway once you click on proceed</p>
+
             <div className="flex ">
               <button
                 style={{ backgroundColor: "white", color: "black" }}
