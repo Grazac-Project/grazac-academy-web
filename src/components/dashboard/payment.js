@@ -144,7 +144,7 @@ const Payment = () => {
                   <button
                     disabled={initialPayment ? true : false}
                     onClick={() => {
-                      setAmount(350000);
+                      setAmount(150);
                       }}
                     className={
                        initialPayment ? 'paid' : 'pay-now'
@@ -424,7 +424,7 @@ const Payment = () => {
                 <button
                   disabled={initialPayment == 1 ? true : false}
                   onClick={() => {
-                  setAmount(350000);
+                  setAmount(150);
                   }} 
                   className={
                     initialPayment?'paid':'pay-now'

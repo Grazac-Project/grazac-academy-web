@@ -176,7 +176,7 @@ function Dashboard() {
     getDetailsC().then((res) => {
       console.log(res);
 
-      // setPaymentChoice(res.data.data.result?.paymentOption);
+      setPaymentChoice(res.data.data.result?.paymentOption);
       setChosenCourse(res.data.data.result?.preferred_course);
       setSelectedTrack(res.data.data.result?.learningTrack);
 
@@ -1006,7 +1006,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350000);
+                                      setAmount(150);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -1364,7 +1364,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(700000);
+                                      setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
