@@ -65,7 +65,7 @@ function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [guarantorForm1, setGuarantorForm1] = useState(true);
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
-  const [chosenCourse, setChosenCourse] = useState("");
+  // const [chosenCourse, setChosenCourse] = useState("");
   const [selectedTrack, setSelectedTrack] = useState("");
   const [isSpecialCourse, setIsSpecialCourse] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
@@ -163,7 +163,7 @@ function Dashboard() {
       console.log(res);
 
       // setPaymentChoice(res.data.data.result?.paymentOption);
-      setChosenCourse(res.data.data.result?.preferred_course);
+      // setChosenCourse(res.data.data.result?.preferred_course);
       setSelectedTrack(res.data.data.result?.learningTrack);
 
       if (
