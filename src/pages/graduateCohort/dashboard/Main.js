@@ -187,6 +187,8 @@ function Dashboard() {
     getDetailsC().then((res) => {
       console.log(res);
 
+      setPaymentChoice(res.data.data.result?.paymentOption);
+
       // setPaymentChoice(res.data.data.result?.paymentOption);
       console.log(res.data.data.result?.gender);
 
@@ -958,6 +960,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
+                                      setAmount(150);
                                       setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
@@ -1279,7 +1282,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(700000);
+                                      setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}

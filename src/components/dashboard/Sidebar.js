@@ -5,8 +5,8 @@ import Logo from "../../images/svg/grazac-logo.svg";
 
 
 function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, showDetails, paymentChoice}) {
-  // console.log(showDetails)
-  // console.log(paymentChoice)
+  console.log(showDetails)
+  console.log("paymentChoice")
   const [clickLink, setClickLink] = useState(false);
 
   const signOut = () => {
@@ -16,8 +16,9 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
       window.location = "/dashboard";
     }, 2500);
   };
-  
 
+  
+console.log(paymentChoice)
   return (
     <div className="sidebar">
       <ToastContainer closeButton={false} />
