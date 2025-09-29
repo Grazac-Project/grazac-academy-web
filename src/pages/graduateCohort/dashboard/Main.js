@@ -94,20 +94,6 @@ function Dashboard() {
   const usdValue = "10";
   const ngnValue = "720000";
 
-  // useEffect(() => {
-  //   function handleClickOutside(e) {
-  //     if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-  //       setIsOpen(false);
-  //     }
-  //   }
-  //   if (isOpen) {
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //   }
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [isOpen]);
-
   useEffect(() => {
     // setSelectStatus("paid");
     // setSelectStatus("paid")
