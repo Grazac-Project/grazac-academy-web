@@ -128,7 +128,7 @@ const Payment = () => {
           </thead>
           <tbody>
               <tr>
-                <td>January</td>
+                <td>Initial Payment</td>
                 <td>350,000</td>
                 <td>
                   <span
@@ -156,7 +156,7 @@ const Payment = () => {
               </tr>
               <tr>
                 <td>February</td>
-                <td>175,000</td>
+                <td>100</td>
                 <td>
                   <span
                     className={
@@ -172,7 +172,7 @@ const Payment = () => {
                   <button
                     disabled={subInstallment ? true : false}
                     onClick={() => {
-                      setAmount(175000);
+                      setAmount(100);
                     }}
                     className={
                        subInstallment ? 'paid' : 'pay-now'
@@ -184,7 +184,7 @@ const Payment = () => {
               </tr>
               <tr>
                 <td>March</td>
-                <td>175,000</td>
+                <td>100</td>
                 <td>
                   <span
                     className={
@@ -199,7 +199,7 @@ const Payment = () => {
                   <button
                     disabled={subInstallmentOne ? true : false}
                     onClick={ () => {
-                      setAmount(175000);
+                      setAmount(100);
                     }}
                     className={
                        subInstallmentOne ? 'paid' : 'pay-now'
@@ -405,7 +405,7 @@ const Payment = () => {
         <div >
             <div className="payment-mobile-container">
               <div className="details">
-                <span>Month:</span> January
+                <span>Month:</span> Initial Payment
               </div>
               <div className="details">
                 <span>Amount:</span> 350,000
