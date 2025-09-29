@@ -78,7 +78,6 @@ function Dashboard() {
   const [guarantorForm1, setGuarantorForm1] = useState(true);
   const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
   const [chosenCourse, setChosenCourse] = useState("");
-  const [selectedTrack, setSelectedTrack] = useState("");
   const [isSpecialCourse, setIsSpecialCourse] = useState(false);
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
