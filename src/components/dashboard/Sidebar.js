@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Logo from "../../images/svg/grazac-logo.svg";
 
 
-function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, showDetails, paymentChoice, showDets = true}) {
-  // console.log(showDetails)
-  // console.log(paymentChoice)
+function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, showDetails, paymentChoice}) {
+  console.log(showDetails)
+  console.log("paymentChoice")
   const [clickLink, setClickLink] = useState(false);
 
   const signOut = () => {
@@ -16,8 +16,9 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
       window.location = "/dashboard";
     }, 2500);
   };
-  
 
+  
+console.log(paymentChoice)
   return (
     <div className="sidebar">
       <ToastContainer closeButton={false} />
@@ -44,12 +45,12 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
               fill="#787676"
             />
           </svg>
-         <p onClick={() => setClickLink(!clickLink)}>Dashboard</p>
+          <p onClick={() => setClickLink(!clickLink)}>Dashboard</p>
 
        
 
         </div>
-        {(showDets && showDetails !== "Not Submitted") && (
+        {(showDetails != "Not Submitted") && (
           <div
             className={
               clicked === "details" ? "active" : "sidebar-portal-links"

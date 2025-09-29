@@ -19,7 +19,6 @@ const Faq = () => {
     svg.classList.toggle("faq-icon_transition");
   };
 
- 
   return (
     <div>
       <div className="faq_hero">
@@ -35,7 +34,7 @@ const Faq = () => {
           </p>
         </div>
       </div>
-      <div  style={{width:"90%",margin:"auto" }}>
+      <div style={{ width: "90%", margin: "auto" }}>
         {/* FAQ section */}
         <div className="landing_faq">
           <div className="container">
@@ -43,16 +42,22 @@ const Faq = () => {
               <Accordion defaultActiveKey="1">
                 <Card>
                   <Accordion.Item eventKey="1">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do I have to be physically present to register?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>What is the duration of the program?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No, registration is to be done online.
+                          Our courses vary in duration, ranging from 6 months
+                          for the on-site class and 3 months for the virtual
+                          class.
+                        </p>
+                        <p>
+                          Please check the specific course page for detailed
+                          information.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -61,16 +66,20 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="2">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Are classes virtual or onsite?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          What is the level of experience required for
+                          enrollment?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Classes would be onsite or virtually, depending on the mode of learning you prefer.
+                          Our courses cater to individuals with varying levels
+                          of experience, from beginners to advanced learners.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -79,16 +88,21 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="3">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4> What is the duration of the program?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4> What is your application process like?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The program is for a duration of 12 months, consisting of 6 months immersive training and 6 months internship.
+                          The Grazac application process is a two-step online
+                          process <br/> First, Applicants would be required to create
+                          an account. Once this has been created, applicants
+                          will be directed to our online application platform to
+                          complete the application process, which takes a few
+                          minutes to complete, including an assessment test.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -97,16 +111,23 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="4">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          What payment options do you offer, and can I pay in
+                          installments?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes,please. However, as an undergraduate, you are strongly advised to choose our virtual learning mode due to its flexibility.
+                          You can pay upfront or choose our installment payment
+                          plan, which allows you to split the course fee into
+                          manageable monthly payments. <br/> Please contact our
+                          admission team to learn more about our payment options
+                          and to discuss a plan that works best for you.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -115,16 +136,25 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="5">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do you offer any certification after the course?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          Are the courses offered online? If so, what is the
+                          format like? Does Grazac Academy offer online
+                          learning?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes, students who complete our courses will receive a virtual and hardcopy certificate of completion
+                          Yes, we offer online courses via online meetings and a
+                          learning management platform, where you’ll interact
+                          with our expert instructors and fellow students in
+                          real time. <br/>This format allows for personalized
+                          guidance, interactive learning, and flexible
+                          scheduling.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -133,19 +163,19 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="6">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>What is the cost of learning at Grazac Academy</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>What is the cost of learning at Grazac Academy?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
-                      <p>
-                        For our physical classes, the cost for all courses is #650,000
-                      </p>
-                      <p>While for our virtual classes, the cost is $200. To get more information 
-                        about our pricing, <a href="#">Click here</a></p>
+                        <p>
+                          Please, click on the following <a href="/pricing" style={{ color: "#773dd3" }}>link</a> to
+                          see our payment terms and options.
+                          {/* <a href="#">Click here</a> */}
+                        </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -153,17 +183,17 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="7">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Do all courses cost the same price?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do all courses cost the same price?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Yes, all our courses are cost at the same price, the only variation in 
-                          price depends on your mode of learning (physical or virtual)`
+                          No, it varies depending on the course you choose and
+                          the mode of learning (Virtual or Onsite).
                         </p>
                       </div>
                     </Accordion.Body>
@@ -172,17 +202,17 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="8">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>What is the format of the certificate offered by Grazac Academy?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>How long is each course?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Our cerfiticates offered are in both in physical print and 
-                          digital format which can easily be shared online.
+                          6 months for the on-site class and 3 months for the
+                          Virtual class.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -191,17 +221,18 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="9">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>What qualifications do your instructors have?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do I have to be physically present to register?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          All of our instructors are experienced professional with a proven track record 
-                          in the tech industry
+                          No, registration is to be done online. But if you need
+                          more clarity, you can speak with our admissions team
+                          onsite.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -210,17 +241,21 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="10">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Are there any additional materials i need to be successful in the course?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          Aside from the tuition fee, am I paying an additional
+                          fee
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Most courses require you to have aceess to laptop and internet connection. 
-                          Some of the courses also require addtional materials.
+                          You are only making two payments. The first is a
+                          10,000 application fee, and the second is your tuition
+                          fee (Price varies depending on the course you choose)
                         </p>
                       </div>
                     </Accordion.Body>
@@ -229,17 +264,18 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="11">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>How long is each course?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do I qualify to enroll as an Undergraduate?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The course length is eight months duration for the physical with an additional 
-                          four months class and 3 months for the virtual class.
+                          Yes, please. However, as an undergraduate, you are
+                          strongly advised to choose our virtual or onsite
+                          learning mode based on your schedule.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -248,22 +284,25 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="12">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>How are the courses taught?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          Do you offer any certification after the course?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The virtual classes are taught via live classes and through a combination of 
-                          content, readings, quizzes and projects.
+                          Yes, students who complete our courses will receive a
+                          virtual and hard copy certificate of completion
                         </p>
-                        <p>
-                          While our physical classes are taught at the academy, by qualified instructors 
-                          with assignments, assessments and projects
-                        </p>
+                        {/* <p>
+                          While our physical classes are taught at the academy,
+                          by qualified instructors with assignments, assessments
+                          and projects
+                        </p> */}
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -271,17 +310,20 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="13">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>Would the academy get me a job?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          What is the format of the certificate offered by
+                          Grazac Academy?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No,Grazac Academy would not be taking the responsibility of getting you a job. 
-                          What the academy offers is job opportunities
+                          Our certificates are offered in both physical print
+                          and digital format, which can easily be shared online.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -290,17 +332,17 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="14">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4> Can I take two courses at a time?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4> What qualifications do your instructors have?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          No, this is strongly discouraged because we require you to be fully focused and 
-                          dedicated to any course of choice.
+                          All of our instructors are experienced professionals
+                          with a proven track record in the tech industry
                         </p>
                       </div>
                     </Accordion.Body>
@@ -309,17 +351,122 @@ const Faq = () => {
                 <hr />
                 <Card>
                   <Accordion.Item eventKey="15">
-                  <Accordion.Header onClick={handleFaq}>
-                    <div className="landing_faq-question" >
-                      <h4>What course is right for me?</h4>
-                      <MdKeyboardArrowDown size="2rem" color="black" />
-                    </div>
-                  </Accordion.Header>
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>
+                          Are there any additional materials i need to be
+                          successful in the course?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          You can call us (or send us a Whatsapp message) on +234 806 836 5951 to get 
-                          clarification on the best course for you.
+                          Most courses require you to have access to a laptop
+                          and an internet connection. Some of the courses also
+                          require additional materials.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="16">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>How are the courses taught?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          The virtual classes are taught via live classes and
+                          through a combination of content, readings, quizzes,
+                          and projects. <br/>While our physical classes are taught at
+                          the academy by qualified instructors with assignments,
+                          assessments, and projects
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="17">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Would the academy get me a job?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No, Grazac Academy would not be taking the
+                          responsibility of getting you a job. What the academy
+                          offers is job opportunities.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="18">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Can I take two courses at a time?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No, this is strongly discouraged because we require
+                          you to be fully focused and dedicated to any course of
+                          choice.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="19">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>What course is right for me?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          You can call us (or send us a WhatsApp message) on
+                          +234 806 836 5951 to get clarification on the best
+                          course for you.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="20">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Are classes virtual or on-site?</h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          Classes would be on-site or virtual, depending on the
+                          mode of learning you prefer.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -366,7 +513,6 @@ const Faq = () => {
     </div>
   );
 
-  
   // return (
   //   <div>
   //     <div className="faq_hero">
@@ -456,7 +602,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                       Yes,please. However, as an undergraduate, you are strongly 
+  //                       Yes,please. However, as an undergraduate, you are strongly
   //                       advised to choose our virtual learning mode due to its flexibility.
   //                       </p>
   //                     </div>
@@ -475,7 +621,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         Yes, students who complete our courses will receive a virtual and hardcopy 
+  //                         Yes, students who complete our courses will receive a virtual and hardcopy
   //                         certificate of completion
   //                       </p>
   //                     </div>
@@ -496,7 +642,7 @@ const Faq = () => {
   //                       <p>
   //                         For our physical classes, the cost for all courses is #1,000,000
   //                       </p>
-  //                       <p>While for our virtual classes, the cost is $200. To get more information 
+  //                       <p>While for our virtual classes, the cost is $200. To get more information
   //                         about our pricing, <a>Click here</a></p>
   //                     </div>
   //                   </Card.Body>
@@ -514,7 +660,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         Yes, all our courses are cost at the same price, the only variation in 
+  //                         Yes, all our courses are cost at the same price, the only variation in
   //                         price depends on your mode of learning (physical or virtual)
   //                       </p>
   //                     </div>
@@ -532,7 +678,7 @@ const Faq = () => {
   //                 <Accordion.Collapse eventKey="8">
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
-  //                       <p>Our cerfiticates offered are in both in physical print and 
+  //                       <p>Our cerfiticates offered are in both in physical print and
   //                         digital format which can easily be shared online.
   //                       </p>
   //                     </div>
@@ -551,7 +697,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         All of our instructors are experienced professional with a proven track record 
+  //                         All of our instructors are experienced professional with a proven track record
   //                         in the tech industry
   //                       </p>
   //                     </div>
@@ -571,7 +717,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         Most courses require you to have aceess to laptop and internet connection. 
+  //                         Most courses require you to have aceess to laptop and internet connection.
   //                         Some of the courses also require addtional materials.
   //                       </p>
   //                     </div>
@@ -593,7 +739,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         The course length is eight months duration for the physical with an additional 
+  //                         The course length is eight months duration for the physical with an additional
   //                         four months class and 3 months for the virtual class.
   //                       </p>
   //                     </div>
@@ -612,10 +758,10 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         The virtual classes are taught via live classes and through a combination of 
+  //                         The virtual classes are taught via live classes and through a combination of
   //                         content, readings, quizzes and projects.
   //                       </p>
-  //                       <p>While our physical classes are taught at the academy, by qualified instructors 
+  //                       <p>While our physical classes are taught at the academy, by qualified instructors
   //                         with assignments, assessments and projects</p>
   //                     </div>
   //                   </Card.Body>
@@ -633,7 +779,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         No,Grazac Academy would not be taking the responsibility of getting you a job. 
+  //                         No,Grazac Academy would not be taking the responsibility of getting you a job.
   //                         What the academy offers is job opportunities
   //                       </p>
   //                     </div>
@@ -654,7 +800,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         No, this is strongly discouraged because we require you to be fully focused and 
+  //                         No, this is strongly discouraged because we require you to be fully focused and
   //                         dedicated to any course of choice.
   //                       </p>
   //                     </div>
@@ -675,7 +821,7 @@ const Faq = () => {
   //                   <Card.Body>
   //                     <div className="landing_faq-answer">
   //                       <p>
-  //                         You can call us (or send us a Whatsapp message) on +234 806 836 5951 to get 
+  //                         You can call us (or send us a Whatsapp message) on +234 806 836 5951 to get
   //                         clarification on the best course for you.
   //                       </p>
   //                     </div>
@@ -721,7 +867,6 @@ const Faq = () => {
   //     <Footer />
   //   </div>
   // );
-
 };
 
 export default Faq;

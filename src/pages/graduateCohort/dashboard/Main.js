@@ -34,6 +34,7 @@ import Pending from "../../../components/dashboard/Pending";
 import Failed from "../../../components/dashboard/Failed";
 import OutsideClickHandler from "react-outside-click-handler";
 import { set } from "date-fns";
+import useApplicationFee from "../../../components/useApplicationfee";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -47,7 +48,9 @@ function Dashboard() {
   };
 
   const buttonRef = useRef();
-  const [accepted, setAccepted] = useState(false);
+  // const [accepted, setAccepted] = useState(false);
+
+  const accepted = useApplicationFee();
 
   // const [status, setStatus] = useState("Not Submitted");
   const [status, setStatus] = useState("Not Applied Yet");
@@ -104,7 +107,7 @@ function Dashboard() {
       setDetails(JSON.parse(details));
 
       setUserId(JSON.parse(details)?.id);
-      setAccepted(JSON.parse(details)?.applicationFee);
+      // setAccepted(JSON.parse(details)?.applicationFee);
 
       // console.log(JSON.parse(details).applicationFee);
 
@@ -162,7 +165,7 @@ function Dashboard() {
     getDetailsC().then((res) => {
       console.log(res);
 
-      // setPaymentChoice(res.data.data.result?.paymentOption);
+      setPaymentChoice(res.data.data.result?.paymentOption);
       // setChosenCourse(res.data.data.result?.preferred_course);
       setSelectedTrack(res.data.data.result?.learningTrack);
 
@@ -992,7 +995,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350000);
+                                      setAmount(150);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -1161,14 +1164,13 @@ function Dashboard() {
                             </div>
                           )}
 
-                        {payShowModal === "pay" &&
+                        {/* {payShowModal === "pay" &&
                           paymentChoice === "fullPayment" && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
                               <div className="dashboard-content-modal-container">
                                 <div className="dashboard-content-modal-main">
                                   <div className="dashboard-content-modal-main-text">
-                                    {/* <h4>Choose Payment Option</h4> */}
                                     <h4>Pay Tuition Fee</h4>
                                     <img
                                       src={cancel}
@@ -1176,25 +1178,7 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <p>We have made a flexible option for applicants who have no interest in our Internship 
-                                    program or can not be available for 12 months to pay for training only
-                                  </p> */}
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(200);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at Once (1,000,000 Naira for Training + Internship)</p>
-                                  </div> */}
+
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -1216,9 +1200,9 @@ function Dashboard() {
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )} */}
 
-                        {payShowModal === "pay" &&
+                        {/* {payShowModal === "pay" &&
                           paymentChoice === "partPayment" && (
                             <div className="dashboard-content-modal">
                               <div className="dashboard-content-modal-backdrop"></div>
@@ -1232,22 +1216,7 @@ function Dashboard() {
                                       onClick={() => setPayShowModal("")}
                                     />
                                   </div>
-                                  {/* <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(1000000);
-                                      // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at once (NGN 1,000,000 for Training + Internship)</p>
-                                  </div> */}
+
                                   <div
                                     className={
                                       payOpt === "fullTrainingOnly"
@@ -1273,7 +1242,7 @@ function Dashboard() {
                                     onClick={() => {
                                       setPayOpt("instalment");
                                       setAmount(350000);
-                                      // setAmount(1000);
+                                     
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -1284,7 +1253,7 @@ function Dashboard() {
                                 </div>
                               </div>
                             </div>
-                          )}
+                          )} */}
 
                         {/* {payShowModal === "pay" &&
                           paymentChoice === "instalment-note" && (
@@ -1350,7 +1319,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(700000);
+                                      setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}

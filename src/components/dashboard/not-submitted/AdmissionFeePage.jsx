@@ -18,7 +18,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    amount: 10000,
+    amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -72,9 +72,21 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         onClick={() => {
           HandleAdmissionPayFlutterPayment({
             callback: (response) => {
-              console.log(response.status);
-              closePaymentModal(); // this will close the modal programmatically
-              window.location = "/dashboard";
+              if (
+                response.status === "successful" ||
+                response.status === "completed"
+              ) {
+                const userDetails = JSON.parse(
+                  sessionStorage.getItem("user_details")
+                );
+                userDetails.applicationFee = true;
+                sessionStorage.setItem(
+                  "user_details",
+                  JSON.stringify(userDetails)
+                );
+                closePaymentModal();
+                window.location.reload();
+              }
             },
             onClose: () => {
               window.location = "/dashboard";
