@@ -6,7 +6,7 @@ import UnderReview from "../../../components/dashboard/UnderReview";
 import PaymentReceived from "../../../components/dashboard/selected/PaymentReceived";
 import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
-// import OutsideClickHandler from "react-outside-click-handler";
+
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import {
