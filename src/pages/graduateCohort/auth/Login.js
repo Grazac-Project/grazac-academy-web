@@ -70,6 +70,10 @@ function Login() {
           );
           const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
+           sessionStorage.setItem(
+             "applicationFee",
+             `${res.data.payload.applicationFee}`
+           );
 
           btn.innerHTML = `Sign in`;
           window.location = '/dashboard'

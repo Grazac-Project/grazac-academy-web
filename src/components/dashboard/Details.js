@@ -23,15 +23,16 @@ function Details() {
   const [guarantorId_2, setGuarantorId_2] = useState(0);
   const [submitted, setSubmitted] = useState(true);
 
-  const [clicked, setClicked] = useState();
+  const [clicked, setClicked] = useState("bio");
   const [accepted, setAccepted] = useState(false);
   const [tempData, setTemData] = useState(null);
 
   useEffect(() => {
     try {
       let details = sessionStorage.getItem("user_details");
+      let fee = sessionStorage.getItem("applicationFee");
       setUserId(JSON.parse(details).id);
-      setAccepted(JSON.parse(details).applicationFee);
+      setAccepted(fee);
 
       if (JSON.parse(details).applicationFee) {
         setClicked("bio");

@@ -3,21 +3,27 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Logo from "../../images/svg/grazac-logo.svg";
 
-
-function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, showDetails, paymentChoice}) {
-  // console.log(showDetails)
-  // console.log(paymentChoice)
+function Sidebar({
+  clicked,
+  clickedDashboard,
+  clickedDetails,
+  clickedPayment,
+  showDetails,
+  paymentChoice,
+}) {
+  console.log(showDetails);
+  console.log("paymentChoice");
   const [clickLink, setClickLink] = useState(false);
 
   const signOut = () => {
     sessionStorage.clear();
     toast.info("Signing out ...");
     setTimeout(function () {
-      window.location = "/dashboard";
+      window.location = "/login";
     }, 2500);
   };
-  
 
+  console.log(paymentChoice);
   return (
     <div className="sidebar">
       <ToastContainer closeButton={false} />
@@ -45,11 +51,8 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
             />
           </svg>
           <p onClick={() => setClickLink(!clickLink)}>Dashboard</p>
-
-       
-
         </div>
-        {(showDetails != "Not Submitted") && (
+        {showDetails !== "Not Submitted" && (
           <div
             className={
               clicked === "details" ? "active" : "sidebar-portal-links"
@@ -71,7 +74,7 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, clickedPayment, sh
             <p>Details</p>
           </div>
         )}
-        {showDetails === "Admitted" && paymentChoice === 'partPayment' && (
+        {showDetails === "Admitted" && paymentChoice === "partPayment" && (
           <div
             className={
               clicked === "clicked" ? "active" : "sidebar-portal-links"

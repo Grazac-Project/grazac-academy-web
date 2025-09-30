@@ -18,7 +18,7 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    amount: 10000,
+    amount: 100,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -56,11 +56,13 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         The application fee for our program is <strong>₦10,000</strong>.
       </p>
       <p>
-        After completing your registration payment, you’ll be required to take a basic quantitative reasoning assessment. 
-        This helps us understand your starting point so we can tailor our support to your learning journey.
+        After completing your registration payment, you’ll be required to take a
+        basic quantitative reasoning assessment. This helps us understand your
+        starting point so we can tailor our support to your learning journey.
       </p>
       <p>
-        Don't worry, the assessment is straightforward and designed to ensure you get the most out of the program.
+        Don't worry, the assessment is straightforward and designed to ensure
+        you get the most out of the program.
       </p>
       <p>We look forward to being part of your growth journey in tech!</p>
 
@@ -72,17 +74,31 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
             callback: (response) => {
               console.log(response.status);
               closePaymentModal(); // this will close the modal programmatically
-              window.location = "/login";
+              window.location = "/dashboard";
+              // if (
+              //   response.status === "successful" ||
+              //   response.status === "completed"
+              // ) {
+              //   const userDetails = JSON.parse(
+              //     sessionStorage.getItem("user_details")
+              //   );
+              //   userDetails.applicationFee = true;
+              //   sessionStorage.setItem(
+              //     "user_details",
+              //     JSON.stringify(userDetails)
+              //   );
+              //   closePaymentModal();
+              //   window.location.reload();
+              // }
             },
             onClose: () => {
-              window.location = "/login";
+              window.location = "/dashboard";
             },
           });
         }}
       >
         Proceed To Pay
       </button>
-      
     </div>
   );
 }
