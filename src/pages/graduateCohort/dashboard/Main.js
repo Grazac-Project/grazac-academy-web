@@ -78,6 +78,7 @@ function Dashboard() {
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   const [isFeePaid, setIsFeePaid] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
+  const [dataBaseStatus, setDataBaseStatus] = useState("");
   const [guarantor, setGuarantor] = useState({
     firstName: "",
     lastName: "",
@@ -113,11 +114,11 @@ function Dashboard() {
       // console.log(JSON.parse(details).applicationFee);
 
       console.log("paiiiiid ", fee);
-      if (fee ==="true") {
+      if (fee === "true" || fee === true) {
         console.log("feeeee", fee);
         // console.log("fkjdkj");
         // setStatus("Not Submitted");
-        setStatus(sessionStorage.getItem("status"));
+        setStatus(dataBaseStatus);
         // console.log(status)
 
         if (JSON.parse(details).isPaid === true) {
@@ -171,6 +172,7 @@ function Dashboard() {
       setPaymentChoice(res.data.data.result?.paymentOption);
 
       // setChosenCourse(res.data.data.result?.preferred_course);
+           setDataBaseStatus(res.data.data.result?.status);
       setSelectedTrack(res.data.data.result?.learningTrack);
       sessionStorage.setItem(
         "applicationFee",
