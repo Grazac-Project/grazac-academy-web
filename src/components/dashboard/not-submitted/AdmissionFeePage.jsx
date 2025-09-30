@@ -72,21 +72,24 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
         onClick={() => {
           HandleAdmissionPayFlutterPayment({
             callback: (response) => {
-              if (
-                response.status === "successful" ||
-                response.status === "completed"
-              ) {
-                const userDetails = JSON.parse(
-                  sessionStorage.getItem("user_details")
-                );
-                userDetails.applicationFee = true;
-                sessionStorage.setItem(
-                  "user_details",
-                  JSON.stringify(userDetails)
-                );
-                closePaymentModal();
-                window.location.reload();
-              }
+              console.log(response.status);
+              closePaymentModal(); // this will close the modal programmatically
+              window.location = "/dashboard";
+              // if (
+              //   response.status === "successful" ||
+              //   response.status === "completed"
+              // ) {
+              //   const userDetails = JSON.parse(
+              //     sessionStorage.getItem("user_details")
+              //   );
+              //   userDetails.applicationFee = true;
+              //   sessionStorage.setItem(
+              //     "user_details",
+              //     JSON.stringify(userDetails)
+              //   );
+              //   closePaymentModal();
+              //   window.location.reload();
+              // }
             },
             onClose: () => {
               window.location = "/dashboard";

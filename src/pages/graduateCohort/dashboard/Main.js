@@ -50,7 +50,7 @@ function Dashboard() {
   const buttonRef = useRef();
   // const [accepted, setAccepted] = useState(false);
 
-  const accepted = useApplicationFee();
+  // const accepted = useApplicationFee();
 
   // const [status, setStatus] = useState("Not Submitted");
   const [status, setStatus] = useState("Not Applied Yet");
@@ -74,7 +74,9 @@ function Dashboard() {
   const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
     useState(false);
   const [paymentChoice, setPaymentChoice] = useState("");
+  const [trigger, setTrigger] = useState(false);
   const [guarantorStatus, setGuarantorStatus] = useState(false);
+  const [isFeePaid, setIsFeePaid] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
     firstName: "",
@@ -102,18 +104,19 @@ function Dashboard() {
     // setSelectStatus("paid")
     try {
       let details = sessionStorage.getItem("user_details");
-      // console.log(details);
+      let fee = sessionStorage.getItem("applicationFee");
 
       setDetails(JSON.parse(details));
-
       setUserId(JSON.parse(details)?.id);
       // setAccepted(JSON.parse(details)?.applicationFee);
-
+      setIsFeePaid(fee);
       // console.log(JSON.parse(details).applicationFee);
 
-      if (JSON.parse(details).applicationFee) {
+      console.log("paiiiiid ", fee);
+      if (fee ==="true") {
+        console.log("feeeee", fee);
         // console.log("fkjdkj");
-        setStatus("Not Submitted");
+        // setStatus("Not Submitted");
         setStatus(sessionStorage.getItem("status"));
         // console.log(status)
 
@@ -159,15 +162,21 @@ function Dashboard() {
         //   );
         // }
       });
-  }, [guarantorForm1]);
+  }, [guarantorForm1, trigger]);
 
   useEffect(() => {
     getDetailsC().then((res) => {
-      console.log(res);
+      console.log("profile", res);
 
       setPaymentChoice(res.data.data.result?.paymentOption);
+
       // setChosenCourse(res.data.data.result?.preferred_course);
       setSelectedTrack(res.data.data.result?.learningTrack);
+      sessionStorage.setItem(
+        "applicationFee",
+        `${res.data.data.result?.applicationFee}`
+      );
+      setTrigger(true);
 
       if (
         res.data.data.result?.preferred_course === "cyber security" ||
@@ -745,7 +754,7 @@ function Dashboard() {
             </div>
             {sidebarClick === "dashboard" && (
               <div className="dashboard-content">
-                {!accepted && (
+                {isFeePaid === "false" || isFeePaid === false ? (
                   <div>
                     <AdmissionFeePage
                       details={details}
@@ -756,7 +765,7 @@ function Dashboard() {
                     />
                     {/* <p>Please Make your Admission Fee Payment</p> */}
                   </div>
-                )}
+                ) : null}
 
                 {status === "Not Submitted" && (
                   <NotSubmitted
