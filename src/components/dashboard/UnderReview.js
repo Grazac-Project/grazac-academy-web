@@ -18,14 +18,15 @@ function UnderReview({ fname }) {
     setShowModal(false);
   };
   const handleReload = () => {
-    sessionStorage.clear();
+    // sessionStorage.clear();
     // toast.info("Signing out ...");
-    window.location = "/login";
+    window.location = "/dashboard";
   };
   const handleCloseAssessment = () => {
     setShowAssessment(false);
     setShowModal(false);
   };
+  
   return (
     <div>
       <h3>Hello {fname}</h3>

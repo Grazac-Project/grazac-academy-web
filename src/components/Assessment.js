@@ -48,6 +48,7 @@ const Assessment = ({
 
     submitAssessment(data, testId)
       .then((res) => {
+        console.log("assessment response", res);
         setLoad(false);
         setScore(res.data.data.assessmentScore);
         setShowAssessment(false);
