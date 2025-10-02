@@ -172,7 +172,7 @@ function Dashboard() {
       setPaymentChoice(res.data.data.result?.paymentOption);
 
       // setChosenCourse(res.data.data.result?.preferred_course);
-           setDataBaseStatus(res.data.data.result?.status);
+      setDataBaseStatus(res.data.data.result?.status);
       setSelectedTrack(res.data.data.result?.learningTrack);
       sessionStorage.setItem(
         "applicationFee",
@@ -228,7 +228,7 @@ function Dashboard() {
         // if (response.status === "successful") {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          window.location = "/login";
+          window.location = "/dashboard";
           // console.log(response);
           // console.log(response);
           // console.log(response);
@@ -803,7 +803,7 @@ function Dashboard() {
                             </p> */}
                             <p>
                               You have been selected to be part of the Grazac
-                              Academy Cohort 15 training program. Kindly click
+                              Academy Cohort 17 training program. Kindly click
                               the button below to pay and finalize the admission
                               process.
                             </p>
@@ -852,13 +852,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(850000);
+                                      setAmount(400);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 850,000)</p>
+                                    <p>Pay at once (NGN 400)</p>
                                   </div>
                                   <div
                                     className={
@@ -868,13 +868,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(450000);
+                                      setAmount(350);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 900,000)</p>
+                                    <p>Pay in Instalment (NGN 900)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -921,13 +921,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(450000);
+                                      setAmount(500);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 450,000)</p>
+                                    <p>Pay at once (NGN 500)</p>
                                   </div>
                                   <div
                                     className={
@@ -937,13 +937,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(250000);
+                                      setAmount(250);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 500,000)</p>
+                                    <p>Pay in Instalment (NGN 600)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -990,13 +990,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
+                                      setAmount(300);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 650,000)</p>
+                                    <p>Pay at once (NGN 300)</p>
                                   </div>
                                   <div
                                     className={
@@ -1006,13 +1006,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(150);
+                                      setAmount(260);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 700,000)</p>
+                                    <p>Pay in Instalment (NGN 700)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1058,13 +1058,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(300000);
+                                      setAmount(150);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 300,000)</p>
+                                    <p>Pay at once (150)</p>
                                   </div>
                                   <div
                                     className={
@@ -1074,13 +1074,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(150000);
+                                      setAmount(120);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 350,000)</p>
+                                    <p>Pay in Instalment (NGN 335)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1342,23 +1342,23 @@ function Dashboard() {
                                         <span className="text-primary">
                                           {"    "}
                                           {isSpecialCourse
-                                            ? "₦450,000.00"
-                                            : "350,000.00"}
+                                            ? "₦350.00"
+                                            : "₦260.00"}
                                         </span>
                                         {"   "}is required at the start. A
                                         second payment of{"   "}
                                         <span className="text-primary font-bold">
                                           {isSpecialCourse
-                                            ? "₦225,000.00"
-                                            : "175,000.00"}
+                                            ? "₦320.00"
+                                            : "₦240.00"}
                                         </span>{" "}
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
                                           {"  "}{" "}
                                           {isSpecialCourse
-                                            ? "₦225,000.00"
-                                            : "175,000.00"}
+                                            ? "₦230.00"
+                                            : "200.00"}
                                         </span>
                                         {"     "}
                                         will be payable at the end of the second
@@ -1372,24 +1372,24 @@ function Dashboard() {
                                         {"   "}
                                         <span className="text-primary">
                                           {isSpecialCourse
-                                            ? "₦250,000.00"
-                                            : "₦150,000.00"}
+                                            ? "₦250.00"
+                                            : "₦120.00"}
                                         </span>
                                         {"   "}
                                         is required at the start. A second
                                         payment of{"  "}
                                         <span className="text-primary font-bold">
                                           {isSpecialCourse
-                                            ? "₦125,000.00"
-                                            : " ₦100,000.00"}
+                                            ? "₦100.00"
+                                            : " ₦110.00"}
                                         </span>
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
                                           {" "}
                                           {isSpecialCourse
-                                            ? "₦125,000.00"
-                                            : " ₦100,000.00"}
+                                            ? "₦150.00"
+                                            : " ₦105.00"}
                                         </span>{" "}
                                         will be payable at the end of the second
                                         month., just to make payment easy for
