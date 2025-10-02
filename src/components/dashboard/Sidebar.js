@@ -12,7 +12,7 @@ function Sidebar({
   paymentChoice,
 }) {
   console.log(showDetails);
-  console.log("paymentChoice");
+  // console.log("paymentChoice");
   const [clickLink, setClickLink] = useState(false);
 
   const signOut = () => {

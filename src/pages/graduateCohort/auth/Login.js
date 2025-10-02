@@ -43,7 +43,7 @@ function Login() {
         if (res.status === 200) {
           
           toast.success(`${res.message}! Redirecting to dashboard...`);
-
+ sessionStorage.setItem("token", `${res.data.token}`);
           sessionStorage.setItem(
             "user_details",
             JSON.stringify({
