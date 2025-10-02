@@ -5,7 +5,8 @@ let token = "";
 let userId = 0;
 try {
   let details = sessionStorage.getItem("user_details");
-  token = JSON.parse(details).token;
+  
+  token = sessionStorage.getItem("token");
   userId = JSON.parse(details).id;
 } catch (err) {
   //err

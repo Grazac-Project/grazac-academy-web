@@ -175,6 +175,29 @@ function Dashboard() {
       setDataBaseStatus(res.data.data.result?.status);
       setSelectedTrack(res.data.data.result?.learningTrack);
       sessionStorage.setItem(
+        "user_details",
+        JSON.stringify({
+          firstName: res.data.data?.result?.firstName,
+          lastName: res.data.data?.result?.lastName,
+          email: res.data.data?.result?.email,
+          id: res.data.data?.result?._id,
+          firstInstallment: res.data.data?.result?.firstInstallment,
+          subInstallment: res.data.data?.result?.subInstallment,
+          subInstallmentOne: res.data.data?.result?.subInstallmentOne,
+          subInstallmentTwo: res.data.data?.result?.subInstallmentTwo,
+          subInstallmentThree: res.data.data?.result?.subInstallmentThree,
+          subInstallmentFour: res.data.data?.result?.subInstallmentFour,
+          subInstallmentFive: res.data.data?.result?.subInstallmentFive,
+          subInstallmentSix: res.data.data?.result?.subInstallmentSix,
+          subInstallmentSeven: res.data.data?.result?.subInstallmentSeven,
+          subInstallmentEight: res.data.data?.result?.subInstallmentEight,
+          isPaid: res.data.data?.result?.isPaid,
+          applicationFee: res.data.data?.result?.applicationFee,
+          phone: res.data.data?.result?.phoneNumber,
+          // token: res.data.token,
+        })
+      );
+      sessionStorage.setItem(
         "applicationFee",
         `${res.data.data.result?.applicationFee}`
       );
@@ -2180,7 +2203,9 @@ function Dashboard() {
               </div>
             )}
             {sidebarClick === "details" && <Details />}
-            {sidebarClick === "payment" && <Payment />}
+            {sidebarClick === "payment" && (
+              <Payment selectedTrack={selectedTrack} />
+            )}
             {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
           </div>
         </div>
