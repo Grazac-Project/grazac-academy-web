@@ -1,0 +1,132 @@
+.pricing {
+  
+  align-items: center;
+  margin: auto;
+  width: 80%;
+  @media screen and (max-width: 1352px) {
+    width: 90%;
+  }
+
+  h1 {
+    color: #073041;
+    text-align: center;
+    font-family: Georgia;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    @media screen and (max-width: 600px) {
+      font-size: 40px;
+      // text-align: start;
+    }
+  }
+  p {
+    color: #787676;
+    text-align: center;
+    font-family: Nunito Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+  }
+  .virtualButtons {
+    border-radius: 28px;
+    cursor: pointer;
+    display: flex;
+    width: 187.5px;
+    height: 60px;
+    padding: 0px 14px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    background-color: #773dd3;
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    @media screen and (max-width: 780px) {
+      width: 160px;
+      padding: 0px 10px;
+    }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      font-size: 16px;
+
+    }
+    // background: var(--Main-Color, #773dd3);
+  }
+  .onsiteButtons {
+    border-radius: 28px;
+    cursor: pointer;
+    display: flex;
+    width: 187.5px;
+    height: 60px;
+    padding: 0px 14px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #773dd3;
+    color: #fff;
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    @media screen and (max-width: 780px) {
+      width: 160px;
+      padding: 0px 10px;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 16px;
+      width: 140px;
+    }
+
+    // background: var(--Main-Color, #773dd3);
+  }
+  
+
+  .activebtn {
+    cursor:pointer;
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 28px;
+    color: var(--Main-Color, #773dd3);
+    @media screen and (max-width: 400px) {
+      font-size: 14px;
+    }
+  }
+  &_toggle {
+    width: 391px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 36px;
+    border: 2px solid var(--Main-Color, #773dd3);
+    background: #f8fafd;
+    margin: 48px auto;
+    padding: 8px;
+    @media screen and (max-width: 780px) {
+      width: 350px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 95%;
+      gap: 8px;
+      
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+  }
+}

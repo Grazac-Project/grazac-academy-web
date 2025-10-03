@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { cn } from "../utils";
 import NavItem from "./NavItem";
-import logo from "../images/svg/grazac-logo.svg";
+// import logo from "../images/svg/grazac-logo.svg";
+import logo from "../images/grazac_logo.png";
 import { Link } from "react-router-dom";
 import InfoModal from "../components/InfoModal";
 
@@ -61,13 +62,21 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
-              <a
-                href="https://blog.grazacacademy.com/"
-                target="__blank"
-                className="nav__link"
-              >
-                <span>04</span>Blog
-              </a>
+              <NavItem link="/web3">
+                <span>04</span>Web3
+              </NavItem>
+            </li>
+            <li className="nav__item">
+              {/* <a
+              href="https://blog.grazacacademy.com/"
+              target="__blank"
+              className="nav__link"
+            >
+              Blog
+            </a> */}
+              <NavItem link="/pricing">
+                <span>04</span>Pricing
+              </NavItem>
             </li>
             {/* <li className="nav__item">
               <NavItem link="/hire">
@@ -97,21 +106,26 @@ const Navbar = ({ top }) => {
             <NavItem link="/about-us">About</NavItem>
           </li>
           <li className="nav__item">
-            <a
+            {/* <a
               href="https://blog.grazacacademy.com/"
               target="__blank"
               className="nav__link"
             >
               Blog
-            </a>
+            </a> */}
+
+            <NavItem link="/pricing">Pricing</NavItem>
           </li>
           <li className="nav__item">
             <NavItem link="/faq">FAQs</NavItem>
           </li>
+          <li className="nav__item">
+            <NavItem link="/Web3">Web3</NavItem>
+          </li>
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>
           </li> */}
-          <a href="/login">
+          <a href="/signup">
             <div className="nav__btn">
               <div className="nav__btn--text">Apply Now</div>
             </div>

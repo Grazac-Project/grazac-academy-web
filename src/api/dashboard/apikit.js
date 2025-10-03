@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 //tis creates axios client pre-configured with base URL
-
 export const APIKit = axios.create({
-    baseURL: 'https://api.grazacacademy.com/api/v1',
+    baseURL: 'https://grazac-academy-back-end-ej7s.onrender.com/',
     timeout: 50000, // timeout can be increased
     headers: {
-        'Content-Type': 'multipart/form-data',
+        // 'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*"
     }
 });
 
 export const AdminApiKit = axios.create({
-    baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    baseURL: 'https://grazac-academy-admin.onrender.com',
     timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export const AdminApiKit = axios.create({
 });
 
 export const AdminApi = axios.create({
-    baseURL: 'https://admin-api.grazacacademy.com/api/v1',
+    baseURL: 'https://grazac-academy-admin.onrender.com',
     timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const AdminApi = axios.create({
 
 
 export const forHire = axios.create({
-    baseURL: 'https://admin-api.grazacacademy.com/api/v1/admin',
+    baseURL: 'https://grazac-academy-admin.onrender.com',
     timeout: 50000, // timeout can be increased
     headers: {
         'Content-Type': 'application/json',

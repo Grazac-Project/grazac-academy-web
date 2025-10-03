@@ -13,7 +13,7 @@ function Verify () {
         <div className="layout_auth">
             <div className="layout_auth-main">
                 <div className="auth_container">
-                    <div className="auth_container-logo" >
+                    <div className="auth_container-logo" > 
                         <Link to="/">
                             <img src={logo} alt="logo" />
                         </Link>

@@ -15,6 +15,13 @@
 @import "../scss/component/modal";
 @import "../scss/component/loader";
 @import "../scss/component/sidebar";
+// @import "../scss/component/virtualsection";
+@import "../scss/component/landingmentors";
+@import "../scss/component/payment";
+@import "../scss/component/timer";
+@import "../scss/component/assessment";
+@import "../scss/component/assmessage";
+
 // academy component
 // @import "../academy-dashboard/sass/challenges/challengecard";
 // @import "../academy-dashboard/sass/challenges/lockedchallenge";
@@ -30,7 +37,9 @@
 // @import "../academy-dashboard/sass/page/challengedetail";
 // pages
 @import "../scss/page/landing";
+@import "../scss/page/virtual";
 @import "../scss/page/auth";
+@import "../scss/page/mode";
 @import "../scss/page/coursedetail";
 @import "../scss/page/about";
 @import "../scss/page/contact";
@@ -41,5 +50,8 @@
 @import "../scss/page/faq";
 @import "../scss/page/hire";
 @import "../scss/page/dashboard";
+@import "../scss/page/pricing";
+
+
 
 //dashboard

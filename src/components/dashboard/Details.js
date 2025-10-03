@@ -23,15 +23,16 @@ function Details() {
   const [guarantorId_2, setGuarantorId_2] = useState(0);
   const [submitted, setSubmitted] = useState(true);
 
-  const [clicked, setClicked] = useState();
+  const [clicked, setClicked] = useState("bio");
   const [accepted, setAccepted] = useState(false);
   const [tempData, setTemData] = useState(null);
 
   useEffect(() => {
     try {
       let details = sessionStorage.getItem("user_details");
+      let fee = sessionStorage.getItem("applicationFee");
       setUserId(JSON.parse(details).id);
-      setAccepted(JSON.parse(details).applicationFee);
+      setAccepted(fee);
 
       if (JSON.parse(details).applicationFee) {
         setClicked("bio");
@@ -62,14 +63,14 @@ function Details() {
     data.append("haveKids", userDetails?.haveKids);
     data.append("ageRange", userDetails?.ageRange);
 
-    data.append("dob", userDetails.dob);
+    data.append("dob", userDetails?.dob);
 
-    data.append("gender", userDetails.gender);
-    data.append("preferred_course", userDetails.preferred_course);
-    data.append("state_of_residence", userDetails.state_of_residence);
+    data.append("gender", userDetails?.gender);
+    data.append("preferred_course", userDetails?.preferred_course);
+    data.append("state_of_residence", userDetails?.state_of_residence);
     data.append(
       "current_city_and_location",
-      userDetails.current_city_and_location
+      userDetails?.current_city_and_location
     );
     // data.append("means_of_identification", bioData.id);
 
@@ -96,16 +97,17 @@ function Details() {
         if (err.response) {
           toast.error(err.response);
           btn.innerHTML = `Submit`;
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
           btn.innerHTML = `Submit`;
-        }
+        // }
       });
   };
 
-  const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
+  // const userImage = `https://api.grazacacademy.com/uploads/${userDetails.means_of_identification}`;
 
   const handleChange_1 = (e) => {
     let guarantorData = [...guarantorDetails_1][0];
@@ -237,38 +239,43 @@ function Details() {
   useEffect(() => {
     getDetailsC()
       .then((res) => {
-       
         setIsLoading(true);
-        setUserDetails(res.data["data"]["result"][0]);
-        setTemData(res.data["data"]["result"][0]);
+        // setUserDetails(res.data["data"]["result"][0]);
+        setUserDetails(res.data["data"]["result"]);
+        // setTemData(res.data["data"]["result"][0]);
+        setTemData(res.data["data"]["result"]);
         setIsLoading(false);
       })
       .catch((err) => {
         if (err.response) {
           toast.error(err.response);
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-        }
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
+        // }
       });
 
-    getGuarantor()
-      .then((response) => response.data)
-      .then((res) => {
-        setGuarantorDetails_1([res.data[0]]);
-        setGuarantorDetails_2([res.data[1]]);
-        // setGuarantorId(res.data[0]["id"]);
-      })
-      .catch((err) => {
-        if (err.response) {
-          toast.error(err.response);
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-        }
-      });
+    // getGuarantor(userId)
+    //   .then((response) => {
+    //     response.data
+    //   })
+    //   .then((res) => {
+    //     setGuarantorDetails_1();
+    //     setGuarantorDetails_2();
+    //     // setGuarantorId(res.data[0]["id"]);
+    //   })
+      // .catch((err) => {
+      //   if (err.response) {
+      //     toast.error(err.response);
+      //   } 
+      //   else {
+      //     toast.error(
+      //       "Something went wrong!!! Please make sure you have a good internet connection."
+      //     );
+      //   }
+      // });
   }, [true]);
 
   return (
@@ -296,7 +303,7 @@ function Details() {
               >
                 Bio Data
               </button>
-              <button
+              {/* <button
                 className={
                   clicked === "edu"
                     ? "dashboard-content-detail-p active"
@@ -305,7 +312,7 @@ function Details() {
                 onClick={() => handleWhatToShow("edu")}
               >
                 Educational Background
-              </button>
+              </button> */}
 
               {userDetails.payment_plan === "pay as you earn" && (
                 <button
@@ -346,11 +353,11 @@ function Details() {
                   <p>{userDetails?.phoneNumber}</p>
                 </div>
                 <hr />
-                <div className="dashboard-content-form-container">
+                {/* <div className="dashboard-content-form-container">
                   <h5>Date of Birth</h5>
                   <p>{userDetails?.dob?.slice(0, 10)}</p>
                 </div>
-                <hr />
+                <hr /> */}
                 <div className="dashboard-content-form-container">
                   <h5>Gender</h5>
                   <p>{userDetails?.gender}</p>
@@ -361,8 +368,8 @@ function Details() {
                   <h5>Preferred course at Grazac</h5>
                   <p>{userDetails?.preferred_course}</p>
                 </div>
-                <hr />
-                <div className="dashboard-content-form-container">
+                {/* <hr /> */}
+                {/* <div className="dashboard-content-form-container">
                   <h5>State of residence</h5>
                   <p>{userDetails?.state_of_residence}</p>
                 </div>
@@ -370,7 +377,7 @@ function Details() {
                 <div className="dashboard-content-form-container">
                   <h5>Current city and Location</h5>
                   <p>{userDetails?.current_city_and_location}</p>
-                </div>
+                </div> */}
                 {/* <hr /> */}
                 {/* <div className="dashboard-content-form-container">
                   <h5>Means of Identification (NIN/ Voter's Card)</h5>
@@ -381,16 +388,16 @@ function Details() {
                   />
                 </div> */}
 
-                {(!userDetails?.ageRange ||
+                {/* {(!userDetails?.ageRange ||
                   !userDetails?.haveKids ||
                   !userDetails?.maritalStatus) && (
                   <>
                     <hr />
                     <h3>Edit Data</h3>
                   </>
-                )}
+                )} */}
 
-                <hr />
+                {/* <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Marital Status</h5>
                   {userDetails?.maritalStatus ? (
@@ -407,9 +414,9 @@ function Details() {
                       <option value="married">Married</option>
                     </select>
                   )}
-                </div>
+                </div> */}
 
-                <hr />
+                {/* <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Have Kids?</h5>
                   {userDetails?.haveKids ? (
@@ -426,12 +433,12 @@ function Details() {
                       <option value="no">No</option>
                     </select>
                   )}
-                </div>
+                </div> */}
 
                 <hr />
 
-                <div className="dashboard-content-form-container">
-                  <h5>Age Range</h5>
+                {/* <div className="dashboard-content-form-container"> */}
+                  {/* <h5>Age Range</h5>
                   {userDetails?.ageRange ? (
                     <p>{userDetails?.ageRange}</p>
                   ) : (
@@ -447,8 +454,8 @@ function Details() {
                       <option value="31 - 35">31 - 35</option>
                       <option value="36 and above">36 and above</option>
                     </select>
-                  )}
-                  {!(
+                  )} */}
+                  {/* {!(
                     tempData?.ageRange &&
                     tempData?.maritalStatus &&
                     tempData?.haveKids
@@ -456,7 +463,9 @@ function Details() {
                     <button id="actionBtn" type="submit">
                       Save
                     </button>
-                  )}
+                  )} */}
+
+                  
 
                   {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
@@ -466,7 +475,7 @@ function Details() {
                       Save
                     </button>
                   )} */}
-                </div>
+                {/* </div> */}
               </form>
             </div>
           )}

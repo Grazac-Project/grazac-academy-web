@@ -25,58 +25,87 @@ function Login() {
   };
 
   const doLogin = (e) => {
-    console.log(form);
+    // console.log(form);
     e.preventDefault();
     var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
+    btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;" />`;
     const { email, password, cohort } = form;
-    var data = new FormData();
+    // var data = new FormData();
+    var data = {};
 
-    data.append("email", email);
-    data.append("password", password);
-    data.append("cohort_batch", cohort);
+    data.email =  email;
+    data.password = password;
+    data.cohort_batch = cohort;
 
     LoginAction(data)
       .then((response) => response.data)
       .then((res) => {
-        if (res.status === 201) {
+        if (res.status === 200) {
+          
           toast.success(`${res.message}! Redirecting to dashboard...`);
-
+ sessionStorage.setItem("token", `${res.data.token}`);
           sessionStorage.setItem(
             "user_details",
             JSON.stringify({
-              firstName: res.data.payload.FirstName,
-              lastName: res.data.payload.LastName,
+              firstName: res.data.payload.firstName,
+              lastName: res.data.payload.lastName,
               email: res.data.payload.email,
               id: res.data.payload.id,
+              firstInstallment: res.data.payload.firstInstallment,
+              subInstallment: res.data.payload.subInstallment,
+              subInstallmentOne: res.data.payload.subInstallmentOne,
+              subInstallmentTwo: res.data.payload.subInstallmentTwo,
+              subInstallmentThree: res.data.payload.subInstallmentThree,
+              subInstallmentFour: res.data.payload.subInstallmentFour,
+              subInstallmentFive: res.data.payload.subInstallmentFive,
+              subInstallmentSix: res.data.payload.subInstallmentSix,
+              subInstallmentSeven: res.data.payload.subInstallmentSeven,
+              subInstallmentEight: res.data.payload.subInstallmentEight,
+              
               isPaid: res.data.payload.isPaid,
               applicationFee: res.data.payload.applicationFee,
-              phone: res.data.phoneNumber,
+              phone: res.data.payload.phoneNumber,
               token: res.data.token,
             })
           );
+          const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
+           sessionStorage.setItem(
+             "applicationFee",
+             `${res.data.payload.applicationFee}`
+           );
 
           btn.innerHTML = `Sign in`;
-          setTimeout(function () {
-            window.location = "/dashboard";
-          }, 2500);
+          window.location = '/dashboard'
+          // setTimeout(function () {
+          //   window.location = "/dashboard";
+          //   if(appPaymentStatus == 1) {
+          //     window.location = "/mode";
+          //   } else if(appPaymentStatus == null){
+          //     window.location = "/dashboard";
+          //   } else {
+          //     window.location = "/dashboard";
+          //   }
+          //   // window.location = "/mode";
+          // }, 2500);
         } else {
           toast.error("Something went wrong, please try again!!!");
         }
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        console.log(err)
+        // toast.error(err.response.data.message);
 
         if (err.response.data.message) {
           toast.error(err.response.data.message);
           btn.innerHTML = `Sign in`;
-        } else {
-          toast.error(
-            "Something went wrong!!! Please make sure you have a good internet connection."
-          );
-          btn.innerHTML = `Sign in`;
-        }
+        } 
+        // else {
+        //   toast.error(
+        //     "Something went wrong!!! Please make sure you have a good internet connection."
+        //   );
+        //   btn.innerHTML = `Sign in`;
+        // }
       });
   };
 
@@ -132,7 +161,7 @@ function Login() {
                   <img src={visible} />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <label>Cohort</label>
                 <select
                   name="cohort"
@@ -147,7 +176,7 @@ function Login() {
                   <option value="CH14">CH-14 - May</option>
                   <option value="CH15">CH-15 - August</option>
                 </select>
-              </div>
+              </div> */}
               <button type="submit" id="actionBtn">
                 Sign in
               </button>

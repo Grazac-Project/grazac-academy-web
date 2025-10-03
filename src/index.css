@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 
+*{
+  font-family: "Rajdhani", sans-serif !important;
+
+}
 body {
   margin: 0;
-  font-family: "Nunito Sans", sans-serif;
+  /* font-family: "Nunito Sans", sans-serif; */
+  font-family: "Rajdhani", sans-serif ;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +20,9 @@ code {
 }
 
 p{
-  font-family: "Nunito Sans", sans-serif;
+  /* font-family: "Nunito Sans", sans-serif; */
+  font-family: "Rajdhani", sans-serif ;
+
 }
 a{
   /* cursor: pointer; */
@@ -56,7 +65,7 @@ button:focus{
   border: 2px solid #773dd3;
 }
 
-@media(max-width:600px){
+@media(min-width:600px){
   .hide-at-600{
     display: none;
   }
@@ -67,5 +76,16 @@ button:focus{
     margin-left: 60px;
   }
 }
-
-
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+html {
+  scroll-behavior: smooth;
+}
+#availableTrack {
+  scroll-margin-top: 120px;
+}
+#virtualTrack {
+  scroll-margin-top: 125px;
+}

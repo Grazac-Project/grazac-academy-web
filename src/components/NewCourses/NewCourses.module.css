@@ -1,0 +1,203 @@
+.new {
+  box-sizing: border-box;
+  background-color: #f1ebfb;
+  display: flex;
+  justify-content: space-between;
+  padding: 79.89px 113px;
+   @media (min-width: 1800px) {
+    padding: 54px 300px;
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    padding: 54px 40px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 54px 10px;
+  }
+}
+.group img {
+  width: 100%;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+.info {
+  width: 632px;
+  margin: 105px 0;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    margin-top: 0px;
+    padding-left: 40px;
+  }
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    margin: 0px 0;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin: 50px 0;
+    padding-left: 0px;
+  }
+}
+.info h1 {
+  font-family: Rajdhani, sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  color: #073041;
+  line-height: 100%;
+  padding-bottom: 16px;
+  @media screen and (max-width: 1024px) {
+    font-size: 38px;
+  }
+  @media (max-width: 900px) {
+    font-size: 30px;
+  }
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
+}
+.info p {
+  font-family: Rajdhani, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #787676;
+  line-height: 150%;
+  padding-bottom: 40px;
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+  }
+  @media (max-width: 900px) {
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
+  @media (max-width: 600px) {
+    /* text-align: center; */
+    font-size: 16px;
+  }
+}
+.course {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+  @media (max-width: 1024px) {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    margin-bottom: 30px;
+    /* flex-direction: column; */
+    /* align-items: center; */
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  
+}
+.label {
+  border: 1px solid #FFFFFF66;
+  background-color: #ffffff4d;
+  font-family: Radjdani, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: #1D1E2C;
+  padding: 5px 14px;
+  border-radius: 18px;
+  gap: 12px;
+  width: 128px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+}
+.label_marketing {
+  border: 1px solid #FFFFFF66;
+  background-color: #ffffff4d;
+  font-family: Radjdani, sans-serif;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: #1D1E2C;
+  padding: 5px 14px;
+  border-radius: 18px;
+  gap: 12px;
+  @media screen and (max-width: 900px) {
+    width: 169px;
+    font-size: 16px;
+
+  }
+}
+.label_python {
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
+  font-family: Radjdani, sans-serif;
+  box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: #1D1E2C;
+  padding: 5px 14px;
+  border-radius: 18px;
+  gap: 12px;
+  @media (max-width: 900px) {
+    width: 298px;
+    font-size: 16px;
+  }
+}
+.label_cloud {
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
+  font-family: Radjdani, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: #1D1E2C;
+  padding: 5px 14px;
+  border-radius: 18px;
+  gap: 12px;
+  @media (max-width: 900px) {
+    width: 213px;
+    font-size: 16px;
+  }
+}
+.label_quality {
+  border: 1px solid #FFFFFF66;
+  background-color: #FFFFFF4D;
+  font-family: Radjdani, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: #1D1E2C;
+  padding: 5px 14px;
+  border-radius: 18px;
+  gap: 12px;
+  @media (max-width: 900px) {
+    width: 258px;
+    font-size: 16px;
+  }
+}
+.view {
+  width: 218px;
+  height: 48px;
+  background: #773dd3;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: Rajdhani, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background: #5e2ab8;
+  }
+  @media (max-width: 900px) {
+    width: 218px;
+    height: 45px;
+    font-size: 16px;
+  }
+}

@@ -3,20 +3,27 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Logo from "../../images/svg/grazac-logo.svg";
 
-
-function Sidebar({ clicked, clickedDashboard, clickedDetails, showDetails }) {
-
+function Sidebar({
+  clicked,
+  clickedDashboard,
+  clickedDetails,
+  clickedPayment,
+  showDetails,
+  paymentChoice,
+}) {
+  console.log(showDetails);
+  // console.log("paymentChoice");
   const [clickLink, setClickLink] = useState(false);
 
   const signOut = () => {
     sessionStorage.clear();
     toast.info("Signing out ...");
     setTimeout(function () {
-      window.location = "/dashboard";
+      window.location = "/login";
     }, 2500);
   };
-  
 
+  console.log(paymentChoice);
   return (
     <div className="sidebar">
       <ToastContainer closeButton={false} />
@@ -44,11 +51,8 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, showDetails }) {
             />
           </svg>
           <p onClick={() => setClickLink(!clickLink)}>Dashboard</p>
-
-       
-
         </div>
-        {showDetails != "Not Submitted" && (
+        {showDetails !== "Not Submitted" && (
           <div
             className={
               clicked === "details" ? "active" : "sidebar-portal-links"
@@ -70,6 +74,29 @@ function Sidebar({ clicked, clickedDashboard, clickedDetails, showDetails }) {
             <p>Details</p>
           </div>
         )}
+        {showDetails === "Admitted" && paymentChoice === "partPayment" && (
+          <div
+            className={
+              clicked === "clicked" ? "active" : "sidebar-portal-links"
+            }
+            onClick={() => clickedPayment("payment")}
+          >
+            <svg
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 20C4.977 20 0.5 15.523 0.5 10C0.5 4.477 4.977 0 10.5 0C16.023 0 20.5 4.477 20.5 10C20.5 15.523 16.023 20 10.5 20ZM9.5 9V15H11.5V9H9.5ZM9.5 5V7H11.5V5H9.5Z"
+                fill="#787676"
+              />
+            </svg>
+            <p>Payment Details</p>
+          </div>
+        )}
+
         <div className="sidebar-portal-links signout" onClick={signOut}>
           <svg
             width="20"

@@ -1,0 +1,232 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: flex-end; */
+  gap: 16px;
+  @media screen and (max-width: 1045px) {
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  @media screen and (max-width: 570px) {
+    margin-bottom: 10px;
+    width: 100%;
+    /* padding: 24px 30px; */
+  }
+}
+/* @media screen and (max-width: 768px) {
+  .card {
+    margin: 0;
+    margin-bottom: 30px;
+  }
+} */
+.card {
+  margin: auto;
+  width: 360px;
+  height: 537px;
+  padding: 24px 40px;
+  align-items: center;
+  gap: 32px;
+  transition: all 0.5s ease;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin: auto;
+  margin: 48px 0;
+
+    @media screen and (max-width: 1202px) {
+    width: 90%;
+    padding: 14px 20px;
+  }
+  @media screen and (max-width: 1045px) {
+    width: 40%;
+    margin: auto;
+    padding: 24px 40px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 24px 40px;
+  }
+  @media screen and (max-width: 570px) {
+    width: 100%;
+    padding: 24px 30px;
+  }
+}
+/* @media screen and (max-width: 768px) {
+  .card {
+    margin: auto;
+    margin-bottom: 20px;
+  }
+} */
+
+.yellowBorder{
+  border: 1px solid var(--Accent, #e7a300);
+}
+.main h5 {
+  color: #773DD3;
+  text-align: center;
+  font-family: Nunito Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  @media screen and (max-width:1024px) {
+  margin-top: 25px;
+  margin-bottom: 18px;
+  font-size: 20px;
+  }
+  @media screen and (max-width:900px) {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+@media screen and (max-width:320px) {
+  margin-top: 10px;
+  /* font-size: 20px; */
+}
+
+}
+.priceTag {
+  text-align: center;
+}
+.priceTag h3 {
+  /* color: var(--text-color, #333); */
+  color: #333333;
+  font-family: Nunito Sans;
+  font-size: 34.811px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  @media screen and (max-width:1024px) {
+    font-size: 24px;
+  }
+  @media screen and (max-width:320px) {
+    font-size: 20px;
+  }
+}
+.priceTag h3 span {
+  /* color: var(--text-color, #333); */
+  color: #773dd3;
+  font-family: Nunito Sans;
+  font-size: 19.892px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
+   @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
+}
+
+.priceTag p {
+  /* color: var(--text-color, #333); */
+  color: #333333;
+  font-family: Nunito Sans;
+  font-size: 19.892px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: line-through;
+  /* margin: 5px; */
+   /* margin: 5px; */
+   @media screen and (max-width:1024px) {
+    font-size: 17px;
+  }
+  @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
+}
+.priceTag h6 {
+  color: #D5BAFF;
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  @media screen and (max-width:1024px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width:320px) {
+    font-size: 16px;
+  }
+}
+.benefits {
+  margin-top: 32px;
+  @media screen and (max-width:1024px) {
+    margin-top: 20px;
+  }
+}
+.benefits ul {
+  align-items: center;
+}
+.benefits ul li {
+  /* color: var(--text-color, #333); */
+  color: #787676;
+  list-style-type: disc;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+
+.benefits ul span li {
+  /* color: var(--Main-Color, #773dd3); */
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.recommend {
+  display: flex;
+  width: 186px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  background: var(--Accent, #e7a300);
+  color: #fff;
+  font-family: Nunito Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  margin-bottom: 300px;
+}
+.card:hover {
+  background: #773dd3;
+  cursor: pointer;
+}
+.card:hover h5 {
+  color: #ffffff;
+
+}
+.card:hover .priceTag p {
+  color: #cfb9f9;
+}
+.card:hover .priceTag > h3,
+.card:hover .priceTag ul li,
+.card:hover .benefits ul li,
+.card:hover .benefits p {
+  color: #ffffff;
+}
+.card:hover .discount span {
+  color: #ffffff;
+  background: #000000;
+}

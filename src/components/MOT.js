@@ -4,14 +4,14 @@ import portfolio from "../images/svg/portfolio.svg";
 import handshake from "../images/svg/handshake.svg";
 import document from "../images/svg/document.svg";
 import classroom from "../images/svg/classroom.svg";
-import Pricing, { priceData } from "./pricing/pricing";
+// import Pricing, { priceData } from "./NewPrice/pricing";
 
 const ModeOfTeaching = (_) => {
   return (
     <div className="course_mode">
       <div className="container">
         <div className="course_wwd-intro">
-          <h4>What we do</h4>
+          {/* <h4>What we do</h4> */}
           <h2>Mode Of Learning</h2>
           <p>
             We have designed strategic pathways that will fast track your
@@ -73,12 +73,12 @@ const ModeOfTeaching = (_) => {
             {/* <img src={sprint} alt="jdgkj" style={{width:'100%'}} /> */}
           </div>
         </div>
-        <div className="price-data">
+        {/* <div className="price-data">
           {priceData.map((item, i) => (
             <Pricing {...item} key={i} />
           ))}
-        </div>
-        <div className="course_mode-quote">
+        </div> */}
+        {/* <div className="course_mode-quote">
           <img src={quote} alt="quote" />
           <p>
             I've known Grazac for over a year now and having worked with some of
@@ -88,7 +88,7 @@ const ModeOfTeaching = (_) => {
             acquisition here in Nigeria
           </p>
           <span>Samson Adedamola - Consultant at Kudi</span>
-        </div>
+        </div>  */}
       </div>
     </div>
   );

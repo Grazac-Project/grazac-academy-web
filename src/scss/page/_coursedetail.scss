@@ -1,4 +1,6 @@
 .course {
+    max-width: 1400px;
+    margin: 0 auto;
   p {
     font-size: 1.1em;
   }
@@ -6,32 +8,72 @@
   &_hero {
     background-color: rgba(220, 205, 244, 0.2);
     // height:calc(100vh - 80px);
-    padding: 150px 0 70px;
+    padding: 50px 80px;
     position: relative;
     @include respond(phone) {
-      padding-top: 100px;
+      padding: 25.5px 16px 50px;
     }
     &-text {
       position: relative;
-
-
+      .dot-class{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot{
+        width: 13.19px;
+        height: 13.19px;
+        border-radius: 50%;
+        background-color: $color-inspiring-purple;
+      }
+      .class-type{
+        color: $color-inspiring-purple;
+        font-size: 22.36px;
+        line-height: 33.54px;
+        font-weight: 600;
+        font-family: $font-secondary;
+        padding: 5.26px 15.79px;
+        border-radius: 30px;
+        border: 3.73px solid rgba(207, 185, 249, 0.25);
+        background-color: rgba(207, 185, 249, 0.25);
+      }
       h1 {
-        font-size: 5em;
+        font-size: 3.75em;
+        font-weight:700;
         padding-bottom: 20px;
+        padding-top:20px;
         font-family: Georgia;
         color: #073041;
         @include respond(phone) {
-          font-size: 4rem;
-          width: 50%;
+          font-size: 24px;
+          padding-top: 24px;
+        }
+        @media screen and (max-width:900px){
+          font-size:24px;
         }
       }
 
       p {
-        font-size: 1.2em;
+        font-size: 18px;
         padding-bottom: 20px;
         color: #9da8b6;
+        @include respond (phone) {
+          font-size: 16px;
+        }
       }
+      
     }
+    &-b{
+        width:100%;
+        @include respond (phone) {
+          width:95%;
+        }
+        @media screen and (max-width:900px){
+          width:90%;
+        }
+      }
+
     &_search {
       width: 100%;
       padding: 15px 140px 15px 10px;
@@ -74,27 +116,59 @@
   }
 
   &_learn {
-    padding: 50px 0 0;
+    padding: 50px 80px;
+    @include respond(phone) {
+      padding: 25px 16px;
+    }
 
     &-main {
+        margin-top: 24px;
+      
       &-list {
         display: grid;
         grid-template-columns: 50px auto;
+        padding: 25px 0px;
+        @include respond (phone) {
+          padding:16px 0px;
+        }
 
         @media (min-width: 768px) {
           display: grid;
           grid-template-columns: 50px 400px auto;
         }
+        h1{
+          font-size: 32px;
+          font-weight: 700;
+          color: #787676;
+        }
         h3 {
-          font-size: 1.5em;
+          font-size: 21px;
+          font-weight: 700;
+          line-height: 100%;
+          padding-top: 7px;
+          @include respond (phone) {
+            padding-top: 0px;
+          }
         }
         p {
-          font-size: 1.2em;
-        }
-        .box3 {
-          @media (max-width: 768px) {
-            grid-column: 1 /-1;
+          font-size: 16px;
+          @include respond (phone) {
+            padding-top:16px;
           }
+        }
+        
+        .box3 {
+          font-size: 16px;
+          font-weight: 500;
+          margin-left:100px;
+          @include respond (phone) {
+          margin-left: 0px;
+        }
+          @media (max-width: 900px) {
+            grid-column: 1 /-1;
+            margin-left:0px;
+          }
+        
         }
       }
     }
@@ -102,6 +176,9 @@
 
   &_wwd {
     margin-top: 80px;
+    @include respond(phone) {
+      margin-top: 40px;
+    }
 
     &-intro {
       h4 {
@@ -112,7 +189,8 @@
       h2 {
         color: #073041;
         font-family: Georgia;
-        font-weight: 600;
+        font-size:32px;
+        font-weight: 700;
         @include respond(phone) {
           font-size: 3rem;
         }
@@ -122,12 +200,14 @@
       }
       p {
         color: #9da8b6;
+        padding-top:8px;
       }
     }
     &-flex {
       display: flex;
       max-width: 90%;
       justify-content: center;
+      align-items: center;
 
       .first-div {
         margin-right: 50px;
@@ -198,7 +278,10 @@
   }
 
   &_mode {
-    margin-top: 80px;
+    padding: 70px 80px;
+    @include respond (phone){
+      padding:30px 16px;
+    }
 
     &-intro {
       h4 {
@@ -208,7 +291,16 @@
       h2 {
         color: #073041;
         font-family: Georgia;
+        padding-bottom:8px;
+        font-size:32px;
+        font-weight:700px
       }
+      p{
+        font-size:18px;
+        font-weight:400;
+
+      }
+      
     }
 
     &-container {
@@ -223,6 +315,10 @@
       h3 {
         color: #073041;
         font-family: $font-primary;
+        font-size: 24px;
+        font-weight:600;
+        padding-top:16px;
+        padding-bottom:8px;
         @include respond(phone) {
           font-size: 18px;
         }
@@ -397,5 +493,143 @@
         }
       }
     }
+  }
+  .book-session{
+    padding: 0 90px;
+    @media (max-width: 1200px) {
+      padding: 0 60px;
+    }
+    @media (max-width: 600px) {
+      padding: 0 16px;
+    }
+    &-container{
+      &-mobile{
+        display: none;
+        @media (max-width: 600px) {
+          display: block;
+          padding-top: 32px;
+        }
+      }
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #F8F5FD;
+      border-radius: 28px;
+      padding: 0px 95.66px;
+      background: #F8F5FD;
+      @media (max-width: 1200px) {
+        padding: 0 80px;
+      }
+      @media (max-width: 900px) {
+        padding: 0 40px;
+      }
+      @media (max-width: 600px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h5{
+        font-family: $font-primary;
+        font-size: 56px;
+        line-height: 41.85px;
+        color: $color-inspiring-purple;
+        margin-top: 71px;
+        margin-bottom: 28px;
+        font-weight: 700;
+      }
+      p{
+        font-family: $font-secondary;
+        font-size: 28px;
+        line-height: 41.85px;
+        color: $color-formgrey;
+        margin-bottom: 28.7px;
+        font-weight: 400;
+        // width: 722.25px;
+        width: 90%;
+
+      }
+      button{
+        background: $color-inspiring-purple;
+        padding: 19.13px 44.24px;
+        border-radius: 9.57px;
+        color: #fff;
+        font-size: 21.52px;
+        font-family: $font-secondary;
+        line-height: 21.52px;
+        margin-bottom: 71.15px;
+        font-weight: 700;
+        border: none;
+        // width: 251.49px;
+      }
+      &-text{
+          position: relative;
+        img{
+          position: absolute;
+          top: 115px;
+          right: 120px;
+        }
+      }
+      &-pic > img{
+        max-width: 100%;
+      }
+      &-pic {
+        max-width: 80%;
+        @media (max-width: 600px) {
+          display: none;
+        }
+      }
+      @media (max-width: 1200px) {
+        h5{
+          font-size: 36px;
+        }
+        p{
+          font-size: 20px;
+          line-height: 36.85px;
+        }
+        &-text{
+        img{
+          display: none;
+        }
+      }
+      }
+      @media (max-width: 900px) {
+        h5{
+          font-size: 25px;
+          margin-top: 51px;
+        }
+        p{
+          font-size: 16px;
+          line-height: 30.85px;
+        }
+        button{
+          padding: 15.13px 34.24px;
+          font-size: 16.52px;
+        }
+        
+      }
+      @media (max-width: 600px) {
+        h5{
+          font-size: 17px;
+          line-height: 26.85px;
+          margin: 0px;
+          text-align: center;
+        }
+        p{
+          font-size: 12px;
+          line-height: 18px;
+          text-align: center;
+          margin-bottom: 16px;
+        }
+        button{
+          padding: 15.13px 34.24px;
+          font-size: 16.52px;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 32px;
+        }
+        
+      }
+      
+    }
+    
   }
 }

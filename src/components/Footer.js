@@ -3,7 +3,8 @@ import Facebook from "../images/svg/facebook.svg";
 import Instagram from "../images/svg/instagram.svg";
 import Twitter from "../images/svg/twitter.svg";
 import Youtube from "../images/svg/youtube.svg";
-import Logo from "../images/svg/grazac-logo.svg";
+import Logo from "../images/grazac_logo.png";
+import Bird from '../images/footer-bird.png'
 import Terms from "../images/newsletter/terms.pdf";
 
 const Footer = () => {
@@ -61,6 +62,13 @@ const Footer = () => {
             {/* <li className="footer__item"><Link>Book a Call</Link></li> */}
             {/* <li className="footer__item"><Link to="/training/coming-soon">Corporate Training</Link></li>
             <li className="footer__item"><Link to="/hire/coming-soon">Grazac Hire</Link></li> */}
+          </ul>
+
+          <ul className="footer__accredit">
+            <li className="footer__item footer__item--image"><img src={Bird} alt="accreditation logo" /></li>
+            <li className="footer__text">
+              Accredited by the American Council of Training and Development
+            </li>
           </ul>
         </div>
 

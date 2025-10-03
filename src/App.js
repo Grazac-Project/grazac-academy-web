@@ -11,10 +11,14 @@ import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
-import Tawk from "./components/tawkTo/tawk";
+import Waitlist from "./pages/web3-application/waitlist";
+// import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
   return import("./pages/Landing");
+});
+const Vitual = lazy(() => {
+  return import("./pages/virtualLanding");
 });
 
 const About = lazy(() => {
@@ -72,6 +76,9 @@ const MailSent = lazy(() => {
 const VerifyMail = lazy(() => {
   return import("./pages/graduateCohort/auth/VerifyMail");
 });
+const Mode = lazy(() => {
+  return import("./pages/graduateCohort/auth/mode");
+});
 
 const AccountCreated = lazy(() => {
   return import("./pages/graduateCohort/auth/AccountCreated");
@@ -99,6 +106,24 @@ const AcademyPortfolioPage = lazy(() => {
 const AcademySettingsPage = lazy(() => {
   return import("../src/academy-dashboard/pages/settings/Settings");
 });
+const Pricing = lazy(() => {
+  return import("./pages/pricing");
+});
+const Payment = lazy(() => {
+  return import("../src/components/dashboard/payment");
+});
+const Web3 = lazy(() => {
+  return import("./pages/web3-application/web3");
+});
+const Start = lazy(() => {
+  return import("./pages/web3-application/start");
+});
+const Form = lazy(() => {
+  return import("./pages/web3-application/form");
+});
+const Web3Payment = lazy(() => {
+  return import("./pages/web3-application/payment");
+});
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -108,18 +133,27 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Logic for showing news after 7 seconds on the "/" route
     if (location.pathname === "/") {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setNews("showNews");
       }, 7000);
+
+      // Cleanup the timer if the component unmounts or path changes
+      return () => clearTimeout(timer);
     }
-  }, []);
+
+    // Zoho PageSense tracking logic
+    if (window.PageSense) {
+      window.PageSense.track();
+    }
+  }, [location. Pathname]);
 
   const app = useRef();
 
   return (
     <>
-      <Tawk />
+      {/* <Tawk /> */}
       {news === "showNews" && (
         <Newsform setNews={setNews} setNewsMessage={setNewsMessage} />
       )}
@@ -142,7 +176,6 @@ const App = () => {
                 <Route path="/portfolio" component={AcademyPortfolioPage} />
                 <Route path="/settings" component={AcademySettingsPage} />
               </AcademySidebar> */}
-
                 <Route path="/component" component={ComponentPage} />
                 {/* authentication pages */}
                 <Route path="/signup" component={SignUp} />
@@ -152,18 +185,24 @@ const App = () => {
                 <Route path="/mail-sent" component={MailSent} />
                 <Route path="/account-created" component={AccountCreated} />
                 <Route path="/verification" component={VerifyMail} />
+                <Route path="/mode" component={Mode} />
 
                 {/* Graduate dashboard */}
                 <Route path="/dashboard" component={DashBoardHome} />
+                <Route path="/payment" component={Payment} />
 
                 {/* main pages */}
                 <Route path="/" exact component={LandingPage}>
+                  {/* <Redirect to="/join"/>  */}
+                </Route>
+                <Route path="/virtual" exact component={Vitual}>
                   {/* <Redirect to="/join"/>  */}
                 </Route>
                 {/* <Route path="/join" component={Join}/> */}
                 <Route path="/about-us" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
+                <Route path="/web3" component={Web3} />
 
                 {/* Courses (both graduate and undergraduate) and internship */}
                 <Route
@@ -184,8 +223,18 @@ const App = () => {
                 <Route path="/hire/:username" component={Profile} />
                 <Route path="/hire/contact" component={HireContact} />
 
+                <Route path="/pricing" component={Pricing} />
+
                 {/* Coming soon page */}
                 {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}
+
+                {/* web3-application Page */}
+                <Route path="/start" exact component={Start} />
+                <Route path="/web3-application-form" exact component={Form} />
+                <Route path="/waitlist" exact component={Waitlist} />
+                <Route path="/web3-application-payment" exact component={Web3Payment} />
+
+
               </Switch>
             </div>
           </Suspense>

@@ -96,7 +96,89 @@
     }
     p {
       margin: 5px 10px 0 20px;
+      font-size: 18px;
+      line-height: 32.74px;
+      color: #073041;
+      @media (max-width: 768px) {
+        margin: 5px 10px 0 10px;
+        font-size: 12px;
+        line-height: 25.74px;
+        text-align: center;
+      }
+      @media (max-width: 450px) {
+        margin: 5px 10px 0 10px;
+      }
+    }
+    &-link{
       font-size: 16px;
+      margin-left: 5px;
+      color:$color-inspiring-purple;
+      @media (min-width:600px) {
+        display: none;
+      }
+    }
+    button {
+      background: #773dd3;
+      color: white;
+      margin: 0 40px 0 0;
+      padding: 4px 10px;
+      border: 1px solid #773dd3;
+      border-radius: 7px;
+      cursor: pointer;
+      @media (max-width: 450px) {
+        margin: 0 10px 0 0;
+      }
+      @media (max-width: 426px) {
+        margin: 10px 10px 0 0;
+      }
+      @include respond(phone) {
+        display: none;
+      }
+    
+    }
+  }
+
+  &_badge{
+    @include respond(phone) {
+      display: none;
+    }
+  }
+}
+.web3modal {
+  background-color: #fef4bf;
+  // position:absolute;
+  top: 0;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+
+  @include respond(phone) {
+    //display: none;
+  }
+
+  &_content {
+    display: flex;
+    justify-content: center;
+    // margin: 20px 20px;
+    padding: 20px 20px;
+    @include respond(phone) {
+      // margin: 10px 15px;
+    }
+
+    img {
+      margin: 5px 10px;
+    }
+    p {
+      margin: 5px 10px 0 20px;
+      font-size: 18px;
+      line-height: 32.74px;
+      color: #073041;
+      @media (max-width: 768px) {
+        margin: 5px 10px 0 10px;
+        font-size: 12px;
+        line-height: 25.74px;
+        text-align: center;
+      }
       @media (max-width: 450px) {
         margin: 5px 10px 0 10px;
       }

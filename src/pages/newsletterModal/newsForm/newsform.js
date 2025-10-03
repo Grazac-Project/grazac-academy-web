@@ -1,17 +1,53 @@
 import classes from "./newsForm.module.css";
 import NewsletterModal from "../newsletterModal";
-import Message from "../../../images/newsletter/message-1.svg";
+// import Message from "../../../images/newsletter/message-1.svg";
+import Message from "../../../images/newsletter/popup-envelope.png";
 import Check from "../../../images/newsletter/check.svg";
 import LoaderGif from "../../../images/svg/dashboard/loader.gif";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+// import { zohoSubmit } from "../../../api/dashboard/data";
+import { newsForm } from "../../../api/dashboard/data";
+import NewsResponse from "../newsResponse/newsResponse";
+import { ToastContainer, toast } from "react-toastify";
 
 const Newsform = ({ setNews, setNewsMessage }) => {
   const [loading, setLoading] = useState(false);
+  const [thanks, setThanks] = useState(true);
   const [payload, setPayload] = useState({
-    firstname: "",
+    firstName: "",
+    lastName: "",
     email: "",
   });
+
+  function splitEmail(email) {
+    const atIndex = email.indexOf("@");
+    if (atIndex !== -1) {
+      const username = email.substring(0, atIndex);
+      const domain = email.substring(atIndex + 1);
+      return { username, domain };
+    } else {
+      // Handle the case where there is no "@" symbol in the email.
+      return null;
+    }
+  }
+
+  function splitFullName(fullName) {
+    // Split the full name by space
+    const nameParts = fullName.split(" ");
+
+    if (nameParts.length >= 2) {
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(" "); // Join any remaining parts as the last name
+
+      return { firstName, lastName };
+    } else {
+      // Handle cases where there is no space to separate the first and last name.
+      // You might want to return an error or handle it differently.
+      return null;
+    }
+  }
+
   const handleChange = (e) => {
     setPayload((prevState) => ({
       ...prevState,
@@ -20,86 +56,116 @@ const Newsform = ({ setNews, setNewsMessage }) => {
   };
 
   const key = process.env.REACT_APP_API_KEY;
-  console.log(key);
+  // console.log(key);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(payload);
-    try {
-      setLoading(true);
-      const res = await axios.post(
-        "https://users.go-mailer.com/api/contacts",
-        {
-          email: payload.email,
-          firstname: payload.firstname,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${key}`,
-            "content-type": "application/json",
-          },
+    // console.log(payload);
+
+    setLoading(true);
+    newsForm(payload)
+      .then((res) => {
+        // console.log(res);
+        const message = res.data.message;
+        if (res.status === 201) {
+          setNews("newsResponse");
+          setThanks(false);
         }
-      );
-      console.log(res.data);
-      setNewsMessage(res.data.payload.exist);
+      })
+       .catch((error) => {
       setLoading(false);
-      if (res.status === 200) {
-        setNews("newsResponse");
-      }
-    } catch (error) {
+      // console.log(error);
+      const errMsg = error.response?.data?.message || "Something went wrong!";
+      toast.error(errMsg);
+    })
+    .finally(() => {
       setLoading(false);
-      console.log(error.response);
-    }
+    });
   };
 
   return (
     <>
       <NewsletterModal setNews={setNews}>
-        <form className={classes.main} onSubmit={handleSubmit}>
-          <div className={classes.formImage}>
-            <img src={Message} alt="message" />
-          </div>
-          <div className={classes.formInput}>
-            <div>
-              <h2>Become an Insider to</h2>
-              {benefits.map((item, i) => (
-                <p key={i}>
-                  <img src={Check} alt="icon" />
-                  {item}
-                </p>
-              ))}
+        <ToastContainer />
+        {thanks ? (
+          <form className={classes.main} onSubmit={handleSubmit}>
+            <div className={classes.formImage}>
+              <img src={Message} alt="message" />
             </div>
-            <label>
-              <input
+            <div className={classes.formInput}>
+              <div>
+                <h2>Become an Insider to</h2>
+                {benefits.map((item, i) => (
+                  <p key={i}>
+                    <img src={Check} alt="icon" />
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <label>
+                <input
+                  type="text"
+                  required
+                  name="firstName"
+                  value={payload.firstName}
+                  placeholder="First Name "
+                  onChange={handleChange}
+                />
+                {/* <input
                 type="text"
                 required
-                name="firstname"
-                value={payload.firstname}
+                name='FIRSTNAME'
                 placeholder="Your name"
-                onChange={handleChange}
-              />
-            </label>
-            <label>
-              <input
+              /> */}
+              </label>
+              <label>
+                <input
+                  type="text"
+                  required
+                  name="lastName"
+                  value={payload.lastName}
+                  placeholder="Last Name"
+                  onChange={handleChange}
+                />
+                {/* <input
+                type="text"
+                required
+                name='FIRSTNAME'
+                placeholder="Your name"
+              /> */}
+              </label>
+              <label>
+                <input
+                  type="email"
+                  required
+                  name="email"
+                  value={payload.email}
+                  placeholder="Email"
+                  onChange={handleChange}
+                />
+                {/* <input
                 type="email"
                 required
-                name="email"
-                value={payload.email}
+                name="CONTACT_EMAIL"
                 placeholder="Your email"
-                onChange={handleChange}
-              />
-            </label>
-            <button
-              disabled={
-                payload.firstname.length < 2 ||
-                payload.email.length < 3 ||
-                loading
-              }
-            >
-              {loading ? <img src={LoaderGif} alt="Loading" /> : "Submit"}
-            </button>
-          </div>
-        </form>
+              /> */}
+              </label>
+              <button
+                disabled={
+                  // payload.fullName.length < 2 ||
+                  payload.email.length < 3 || loading
+                }
+              >
+                {/* <button
+              type="submit"
+            > */}
+                {loading ? <img src={LoaderGif} alt="Loading" /> : "Submit"}
+              </button>
+            </div>
+          </form>
+        ) : (
+          <newsResponse />
+        )}
       </NewsletterModal>
     </>
   );

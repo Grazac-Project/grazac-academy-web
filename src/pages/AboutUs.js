@@ -99,7 +99,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <Mode />
+      <Mode title={'Ready to Launch your career in Tech?'} text={"Harness the power of our academy's all-encompassing tech program to propel yourself into the forefront of innovation."} button_1={'Apply Now'} button_2={'Chat with Us'}/>
       <Footer />
     </div>
   );

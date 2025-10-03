@@ -36,14 +36,18 @@ function ResetPassword () {
             toast.error("Passwords should be at least 6 characters!")
         } else{
             var btn = document.getElementById("actionBtn");
-            btn.innerHTML = `<img src=${loader} width="20px" />`;
+            btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;"/>`;
             var data  = new FormData();
+            const newData = {}
+            newData.token = reset_token;
+            newData.password = form.password;
+            newData.confirmPassword = form.confirmpassword; 
+            
+            // data.append("token", reset_token);
+            // data.append("password", form.password);
+            // data.append("confirmPassword", form.confirmpassword);
     
-            data.append("token", reset_token);
-            data.append("password", form.password);
-            data.append("confirmPassword", form.confirmpassword);
-    
-            ResetPasswordAction(data)
+            ResetPasswordAction(newData)
                 .then((response) => response.data)
                 .then((res) => {
                     if (res.status === 200) {

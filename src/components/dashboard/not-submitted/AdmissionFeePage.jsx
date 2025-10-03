@@ -15,20 +15,22 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
   const AdmissionFeeFlutterwaveConfig = {
     public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
+
     tx_ref: Date.now(),
-    amount: 15000,
+    amount: 10000,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
+      email: `${details?.email}`,
+      phonenumber: `${details?.phone}`,
+      name: `${details?.firstName} ${details?.lastName}`,
     },
 
     customizations: {
       title: "Grazac Academy",
       description: "Admission Fee Payment",
-      logo: "https://grazac.com.ng/assets/images/favicon.png",
+      logo: "https://grazac.com.ng/logo.png",
     },
   };
 
@@ -47,24 +49,22 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
 
   return (
     <div>
-      <h3>Hello {fname}</h3>
-      <h4>Welcome to Grazac Academy</h4>
-      <p>We can’t wait to help you kickstart your career in tech!</p>
-
+      {/* <h3>Hello {fname}</h3> */}
+      <h3>Welcome to Grazac Academy, {fname}</h3>
+      <p>We're excited to support you as you kickstart your career in tech!</p>
       <p>
-        To start your application, you are required to pay a non-refundable fee
-        of 15,000 naira only.
+        The application fee for our program is <strong>₦10,000</strong>.
       </p>
-
       <p>
-        As part of your registration process, assessment and interview will be
-        conducted, the schedule will be communicated to you via your registered
-        email address within 7 days after payment of the registration fee.
-        Please note that It is important that you do not miss the assessment
-        interview. Kindly check your email regularly for updates.
+        After completing your registration payment, you’ll be required to take a
+        basic quantitative reasoning assessment. This helps us understand your
+        starting point so we can tailor our support to your learning journey.
       </p>
-
-      <p>We look forward to being a part of your growth.</p>
+      <p>
+        Don't worry, the assessment is straightforward and designed to ensure
+        you get the most out of the program.
+      </p>
+      <p>We look forward to being part of your growth journey in tech!</p>
 
       <button
         className={"button"}
@@ -74,10 +74,25 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
             callback: (response) => {
               console.log(response.status);
               closePaymentModal(); // this will close the modal programmatically
-              window.location = "/login";
+              window.location = "/dashboard";
+              // if (
+              //   response.status === "successful" ||
+              //   response.status === "completed"
+              // ) {
+              //   const userDetails = JSON.parse(
+              //     sessionStorage.getItem("user_details")
+              //   );
+              //   userDetails.applicationFee = true;
+              //   sessionStorage.setItem(
+              //     "user_details",
+              //     JSON.stringify(userDetails)
+              //   );
+              //   closePaymentModal();
+              //   window.location.reload();
+              // }
             },
             onClose: () => {
-              window.location = "/login";
+              window.location = "/dashboard";
             },
           });
         }}

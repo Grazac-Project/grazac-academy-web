@@ -17,6 +17,7 @@ function SignUp() {
     lastName: "",
     email: "",
     phone: "",
+    hear_about_us: '',
     password: "",
     cohort_batch: "",
   });
@@ -27,35 +28,47 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
-
+  
   async function doSignUp(e) {
     e.preventDefault();
     console.log("ffffff");
-    console.log(form);
+    // console.log(form);
     var btn = document.getElementById("actionBtn");
 
-    if (form.password.length > 5) {
+    // if (form.password.length > 5) {
+    if (form.password.length >= 6) {
       // btn.innerHTML=`<img src=${loader} width="20px" />`;
-      const { firstName, lastName, email, phone, password, cohort_batch } =
+      const { firstName, lastName, email, phone, hear_about_us, password, cohort_batch } =
         form;
-      var data = new FormData();
+      let data = {}
+      // var data = new FormData();
       const phone_length = phone.length;
 
-      if (phone_length == 11 || phone_length > 11) {
-        data.append("firstName", firstName);
-        data.append("lastName", lastName);
-        data.append("email", email);
-        data.append("phoneNumber", phone);
-        data.append("password", password);
-        data.append("cohort_batch", cohort_batch);
+      // if (phone_length == 11 || phone_length > 11) {
+      if (phone_length === 11) {
+        data.firstName = firstName
+        data.lastName = lastName
+        data.email = email
+        data.phoneNumber = phone
+        data.hear_about_us = hear_about_us
+        data.password = password
+        data.cohort_batch = cohort_batch
+        // data.append("firstName", firstName);
+        // data.append("lastName", lastName);
+        // data.append("email", email);
+        // data.append("phoneNumber", phone);
+        // data.append("password", password);
+        // data.append("hear_about_us", hear_about_us);
+        // data.append("cohort_batch", cohort_batch);
 
         btn.innerHTML = `<img src=${loader} width="20px" />`;
-
+        
         try {
           const response = await SignupAction(data);
 
           const res = await response;
           // const res.data.status ==201
+          // console.log(res)
           if (res.data.status === 201) {
             toast.success(`${res.data.message} Proceed to login.`);
             // btn.innerHTML=`Create account`;
@@ -68,20 +81,23 @@ function SignUp() {
           }
         } catch (err) {
           if (err.response.data.message) {
+            // console.log(err.response.data.message)
             toast.error(err.response.data.message);
             btn.innerHTML = `Create account`;
-          } else {
-            toast.error(
-              "Something went wrong!!! Please make sure you have a good internet connection."
-            );
-            btn.innerHTML = `Create account`;
-          }
+          } 
+          // else {
+          //   toast.error(
+          //     "Something went wrong!!! Please make sure you have a good internet connection."
+          //   );
+          //   btn.innerHTML = `Create account`;
+          // }
         }
       } else {
-        toast.error("please enter correct phone number");
+        toast.error("please enter a correct phone number");
       }
     } else {
-      toast.error("Password must be at least 6 characters!");
+      // toast.error("Password must be at least 6 characters!");
+      toast.error("Password must must be atleast 6 characters and must contain alphabets and numbers!");
     }
   }
 
@@ -108,7 +124,7 @@ function SignUp() {
             </Link>
           </div>
           <div className="auth_container_form">
-            <span className="closed">Application is now Closed</span>
+            {/* <span className="closed">Application is now Closed</span> */}
             <h3>Create an Account</h3>
             <p className="auth_container_form-text">
               Create a free account to start your application
@@ -154,6 +170,49 @@ function SignUp() {
                   onChange={handleChange}
                 />
               </div>
+              <div>
+                <label>How did you hear about us?</label>
+                <select 
+                  name="hear_about_us"
+                  value={form.hear_about_us}
+                  onChange={handleChange}>
+
+                  <option value='' disabled>Select option</option>
+                  <option value='Search Engine (Google, Bing etc.)'>Search Engine (Google, Bing etc.)</option>
+                  <option value='Social Media (Facebook, Instagram, X/Twitter, LinkedIn, etc.)'>Social Media (Facebook, Instagram, X/Twitter, LinkedIn, etc.)</option>
+                  <option value='Online Advertisement'>Online Advertisement</option>
+                  <option value='Word of Mouth/Referral'>Word of Mouth/Referral</option>
+                  <option value='Email Campaign'>Email Campaign</option>
+                  <option value='Blog or Article'>Blog or Article</option>
+                  <option value='Webinar or Event'>Webinar or Event</option>
+                  <option value='YouTube'>YouTube</option>
+                  <option value='Newsletter'>Newsletter</option>
+                  <option value='Podcast'>Podcast</option>
+                  <option value='Billboard'>Billboard</option>
+                  <option value='Online Forum/Community'>Online Forum/Community</option>
+                  <option value='Referral from a Partner'>Referral from a Partner</option>
+                  <option value='Affiliate Program'>Affiliate Program</option>
+                  <option value='Influencer Recommendation'>Influencer Recommendation</option>
+                  <option value='My School/University'>My School/University</option>
+                  <option value='Career Counsellor'>Career Counsellor</option>
+                  <option value='Training Boootcamp'>Training Boootcamp</option>
+                  <option value='Print Advertisement'>Print Advertisement</option>
+                  <option value='Alumni Network'>Alumni Network</option>
+                  <option value='Training Bootcamp'>Training Bootcamp</option>
+                  <option value='Industry Conference'>Industry Conference</option>
+                  <option value='Grazac Academy Website'>Grazac Academy Website</option>
+                  <option value='Hackthejobs Website'>Hackthejobs Website</option>
+                  <option value='Grazac'>Grazac</option>
+                  <option value='Ogun Digital Summit'>Ogun Digital Summit</option>
+                </select>
+                {/* <input
+                  type="number"
+                  required
+                  placeholder="Phone Number"
+                  name="phone"
+                  onChange={handleChange}
+                /> */}
+              </div>
               <div className="auth_container_form-password">
                 <label>Password</label>
                 <input
@@ -168,7 +227,7 @@ function SignUp() {
                   <img src={visible} />
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <label>Cohort</label>
                 <select
                   name="cohort_batch"
@@ -185,8 +244,8 @@ function SignUp() {
                   <option value="CH14">CH-14 - May</option>
                   <option value="CH15">CH-15 - August</option>
                 </select>
-              </div>
-              <button disabled type="submit" id="actionBtn">
+              </div> */}
+              <button type="submit" id="actionBtn">
                 Create Account
               </button>
               <p className="terms">
