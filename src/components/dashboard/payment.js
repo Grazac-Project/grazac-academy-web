@@ -131,7 +131,7 @@ const Payment = ({ selectedTrack }) => {
           <tbody>
             <tr>
               <td>January</td>
-              <td>{selectedTrack === "physical" ? "260" : "120"}</td>
+              <td>{selectedTrack === "physical" ? "350,000" : "140,000"}</td>
               <td>
                 <span className={initialPayment ? "approved" : "pending"}>
                   {initialPayment ? "Approved" : "Pending"}
@@ -141,7 +141,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={initialPayment ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 260 : 120);
+                    setAmount(selectedTrack === "physical" ? 350000 : 140000);
                   }}
                   className={initialPayment ? "paid" : "pay-now"}
                 >
@@ -151,7 +151,7 @@ const Payment = ({ selectedTrack }) => {
             </tr>
             <tr>
               <td>February</td>
-              <td>{selectedTrack === "physical" ? "240" : "110"}</td>
+              <td>{selectedTrack === "physical" ? "180,000" : "110,000"}</td>
               <td>
                 <span className={subInstallment ? "approved" : "pending"}>
                   {/* {status} */}
@@ -162,7 +162,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={subInstallment ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 240 : 110);
+                    setAmount(selectedTrack === "physical" ? 180000 : 110000);
                   }}
                   className={subInstallment ? "paid" : "pay-now"}
                 >
@@ -172,7 +172,7 @@ const Payment = ({ selectedTrack }) => {
             </tr>
             <tr>
               <td>March</td>
-              <td>{selectedTrack === "physical" ? 200 : 105}</td>
+              <td>{selectedTrack === "physical" ? "170,000" : "100,000"}</td>
               <td>
                 <span className={subInstallmentOne ? "approved" : "pending"}>
                   {subInstallmentOne ? "Approved" : "Pending"}
@@ -182,7 +182,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={subInstallmentOne ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 200 : 105);
+                    setAmount(selectedTrack === "physical" ? 170000 : 100000);
                   }}
                   className={subInstallmentOne ? "paid" : "pay-now"}
                 >
