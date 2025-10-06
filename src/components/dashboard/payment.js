@@ -401,7 +401,7 @@ const Payment = ({ selectedTrack }) => {
               <button
                 disabled={initialPayment == 1 ? true : false}
                 onClick={() => {
-                  setAmount(150);
+                  setAmount(350000);
                 }}
                 className={initialPayment ? "paid" : "pay-now"}
               >
@@ -414,7 +414,7 @@ const Payment = ({ selectedTrack }) => {
               <span>Month:</span> February
             </div>
             <div className="details">
-              <span>Amount:</span> 175,000
+              <span>Amount:</span> 180,000
             </div>
             <div className="details">
               <span>Status: </span>
@@ -427,7 +427,7 @@ const Payment = ({ selectedTrack }) => {
                 className={subInstallment == 1 ? "paid" : "pay-now"}
                 disabled={subInstallment == 1 ? true : false}
                 onClick={() => {
-                  setAmount(175000);
+                  setAmount(180000);
                 }}
               >
                 {subInstallment == 1 ? "Paid" : "Pay Now"}
@@ -439,7 +439,7 @@ const Payment = ({ selectedTrack }) => {
               <span>Month:</span> March
             </div>
             <div className="details">
-              <span>Amount:</span> 175,000
+              <span>Amount:</span> 170,000
             </div>
             <div className="details">
               <span>Status: </span>
@@ -452,7 +452,7 @@ const Payment = ({ selectedTrack }) => {
                 className={subInstallmentOne == 1 ? "paid" : "pay-now"}
                 disabled={subInstallmentOne == 1 ? true : false}
                 onClick={() => {
-                  setAmount(175000);
+                  setAmount(170000);
                 }}
               >
                 {subInstallmentOne == 1 ? "Paid" : "Pay Now"}
