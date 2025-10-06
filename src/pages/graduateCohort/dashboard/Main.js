@@ -1029,7 +1029,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(700000);
+                                      setAmount(350000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -1097,7 +1097,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350000);
+                                      setAmount(140000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
