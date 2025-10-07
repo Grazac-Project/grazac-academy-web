@@ -212,6 +212,17 @@ function Dashboard() {
     });
   }, []);
 
+  const firstPayment =
+    selectedTrack === "physical" && isSpecialCourse
+      ? 470000
+      : selectedTrack === "physical" && !isSpecialCourse
+      ? 350000
+      : selectedTrack === "virtual" && isSpecialCourse
+      ? 275000
+      : selectedTrack === "virtual" && !isSpecialCourse
+      ? 140000
+      : null;
+
   const handleChange = (e) => {
     setGuarantor({
       ...guarantor,
@@ -891,7 +902,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(900000);
+                                      setAmount(470000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -960,7 +971,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(500000);
+                                      setAmount(275000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -1353,7 +1364,7 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350);
+                                      setAmount(firstPayment);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
@@ -2204,7 +2215,10 @@ function Dashboard() {
             )}
             {sidebarClick === "details" && <Details />}
             {sidebarClick === "payment" && (
-              <Payment selectedTrack={selectedTrack} />
+              <Payment
+                selectedTrack={selectedTrack}
+                isSpecialCourse={isSpecialCourse}
+              />
             )}
             {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
           </div>
