@@ -875,13 +875,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(400);
+                                      setAmount(850000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 400)</p>
+                                    <p>Pay at once (NGN 850,000)</p>
                                   </div>
                                   <div
                                     className={
@@ -891,13 +891,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(350);
+                                      setAmount(900000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 900)</p>
+                                    <p>Pay in Instalment (NGN 900,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -944,13 +944,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(500);
+                                      setAmount(450000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 500)</p>
+                                    <p>Pay at once (NGN 450,000)</p>
                                   </div>
                                   <div
                                     className={
@@ -960,13 +960,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(250);
+                                      setAmount(500000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 600)</p>
+                                    <p>Pay in Instalment (NGN 500,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1013,13 +1013,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(300);
+                                      setAmount(650000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 300)</p>
+                                    <p>Pay at once (NGN 650,000)</p>
                                   </div>
                                   <div
                                     className={
@@ -1029,13 +1029,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(260);
+                                      setAmount(350000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 700)</p>
+                                    <p>Pay in Instalment (NGN 700,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1081,13 +1081,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(150);
+                                      setAmount(300000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (150)</p>
+                                    <p>Pay at once (300,000)</p>
                                   </div>
                                   <div
                                     className={
@@ -1097,13 +1097,13 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("instalment");
-                                      setAmount(120);
+                                      setAmount(140000);
                                       // setAmount(1000);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay in Instalment (NGN 335)</p>
+                                    <p>Pay in Instalment (NGN 350,000)</p>
                                   </div>
                                   <button onClick={makePayment}>Proceed</button>
                                 </div>
@@ -1365,23 +1365,23 @@ function Dashboard() {
                                         <span className="text-primary">
                                           {"    "}
                                           {isSpecialCourse
-                                            ? "₦350.00"
-                                            : "₦260.00"}
+                                            ? "₦470,000"
+                                            : "₦350,000"}
                                         </span>
                                         {"   "}is required at the start. A
                                         second payment of{"   "}
                                         <span className="text-primary font-bold">
                                           {isSpecialCourse
-                                            ? "₦320.00"
-                                            : "₦240.00"}
+                                            ? "₦255,000"
+                                            : "₦180,000"}
                                         </span>{" "}
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
                                           {"  "}{" "}
                                           {isSpecialCourse
-                                            ? "₦230.00"
-                                            : "200.00"}
+                                            ? "₦175,000"
+                                            : "170,000"}
                                         </span>
                                         {"     "}
                                         will be payable at the end of the second
@@ -1395,24 +1395,24 @@ function Dashboard() {
                                         {"   "}
                                         <span className="text-primary">
                                           {isSpecialCourse
-                                            ? "₦250.00"
-                                            : "₦120.00"}
+                                            ? "₦275,000"
+                                            : "₦140,000"}
                                         </span>
                                         {"   "}
                                         is required at the start. A second
                                         payment of{"  "}
                                         <span className="text-primary font-bold">
                                           {isSpecialCourse
-                                            ? "₦100.00"
-                                            : " ₦110.00"}
+                                            ? "₦130,000"
+                                            : " ₦110,000"}
                                         </span>
                                         will be due at the end of the first
                                         month, and the remaining balance of
                                         <span className="text-primary font-bold">
                                           {" "}
                                           {isSpecialCourse
-                                            ? "₦150.00"
-                                            : " ₦105.00"}
+                                            ? "₦95,000"
+                                            : " ₦100,000"}
                                         </span>{" "}
                                         will be payable at the end of the second
                                         month., just to make payment easy for
