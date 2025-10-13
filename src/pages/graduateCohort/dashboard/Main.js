@@ -2204,7 +2204,10 @@ function Dashboard() {
             )}
             {sidebarClick === "details" && <Details />}
             {sidebarClick === "payment" && (
-              <Payment selectedTrack={selectedTrack} />
+              <Payment
+                selectedTrack={selectedTrack}
+                isSpecialCourse={isSpecialCourse}
+              />
             )}
             {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
           </div>

@@ -16,9 +16,8 @@ import { PopupButton } from "react-calendly";
 const CourseDetail = (props) => {
   const [course, setCourse] = useState("");
   const [outline, setOutline] = useState([]);
-  const [mode, setMode] = useState('')
-  const [url, setUrl] = useState('')
-
+  const [mode, setMode] = useState("");
+  const [url, setUrl] = useState("");
 
   // Use a ref for tracking unmounted state
   // const isUnmounted = useRef(false);
@@ -26,7 +25,7 @@ const CourseDetail = (props) => {
   const slug = props.location.search.substring(8);
   // console.log(slug)
   useEffect(() => {
-      const getInfo = async () => {
+    const getInfo = async () => {
       document.title = "Course Details - Grazac Academy";
       window.scrollTo(0, 0);
       const savedData = await sessionStorage.getItem("learning_mode");
@@ -38,9 +37,12 @@ const CourseDetail = (props) => {
       // return () => {
       //   isUnmounted.current = true;
       // };
-    }
-    getInfo()
+    };
+    getInfo();
   }, []);
+
+  console.log(mode);
+  console.log(outline);
 
   useEffect(() => {
     // Define the fetchData function
@@ -67,25 +69,24 @@ const CourseDetail = (props) => {
 
     const urlSelect = async () => {
       // Construct the URL based on the mode
-    let urlBuild = "";
-    // console.log(mode)
-    if (mode === 'Virtual') {
-      urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
-    } else if (mode === 'Onsite') {
-      urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourse/${slug}`;
-    } 
+      let urlBuild = "";
+      // console.log(mode)
+      if (mode === "Virtual") {
+        urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
+      } else if (mode === "Onsite") {
+        urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourse/${slug}`;
+      }
 
-    setUrl(urlBuild);
-    // console.log(urlBuild)
-    // console.log(url);
-    // Fetch data
-    if (urlBuild) {
-      fetchData(urlBuild);
-    }
-    }
-    urlSelect()
+      setUrl(urlBuild);
+      // console.log(urlBuild)
+      // console.log(url);
+      // Fetch data
+      if (urlBuild) {
+        fetchData(urlBuild);
+      }
+    };
+    urlSelect();
   }, [slug, mode]);
-
 
   // React.useEffect(() => {
   //   document.title = "Course Details - Grazac Academy";
@@ -96,10 +97,9 @@ const CourseDetail = (props) => {
   //   const savedData = sessionStorage.getItem("learning_mode");
   //   const trial = JSON.parse(savedData)
   //   console.log(trial)
-  //   setMode(trial.class_option); 
+  //   setMode(trial.class_option);
   //   console.log(trial.class_option)
 
-  
   // console.log(course);
   // console.log(mode);
   // console.log(url)
@@ -107,49 +107,50 @@ const CourseDetail = (props) => {
   return (
     <div>
       {outline.length ? (
-      <div id="blur">
-        <Navbar />
-        <div className="course">
-          <div className="course_hero">
-            <div className="container">
-              {course ? (
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="course_hero-text">
-                      <div className="dot-class">
-                        <div className="dot"></div>
-                        <div className="class-type">{mode}</div>
-                      </div>
-                      <div className="course_hero-text-b">
-                        <h1>{course.name}</h1>
-                        <p>{course.description}</p>
-                        <div className="contact_hero-privacy">
-                          <a
-                            href={course.brochure}
-                            className="download-brochure"
-                            target="_blank"
-                          >
-                            Download Brochure
-                          </a>
-                          <Link to="/signup">
-                            <button>Apply now</button>
-                          </Link>
+        <div id="blur">
+          <Navbar />
+          <div className="course">
+            <div className="course_hero">
+              <div className="container">
+                {course ? (
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="course_hero-text">
+                        <div className="dot-class">
+                          <div className="dot"></div>
+                          <div className="class-type">{mode}</div>
+                        </div>
+                        <div className="course_hero-text-b">
+                          <h1>{course.name}</h1>
+                          <p>{course.description}</p>
+                          <div className="contact_hero-privacy">
+                            <a
+                              href={course.brochure}
+                              className="download-brochure"
+                              target="_blank"
+                            >
+                              Download Brochure
+                            </a>
+                            <Link to="/signup">
+                              <button>Apply now</button>
+                            </Link>
+                          </div>
                         </div>
                       </div>
+                      <div>
+                        {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
+                      </div>
                     </div>
-                    <div>
-                      {/* <img src={paper} alt="academy" className="gga_hero-image" /> */}
-                    </div>
-                  </div></div>    //not sure yet
+                  </div> //not sure yet
                 ) : (
                   <div>
                     {/*<img src={loader} alt="loader" className="loader" />*/}
                   </div>
                 )}
-              {/* </div>    */}
+                {/* </div>    */}
+              </div>
             </div>
-          </div>
-          <div className="course_learn">
+            <div className="course_learn">
               <div className="container">
                 <div className="course_wwd-intro">
                   <h4>GRAZAC ACADEMY</h4>
@@ -181,7 +182,7 @@ const CourseDetail = (props) => {
                 </div>
               </div>
             </div>
-          <MOT />
+            <MOT />
             <section className="book-session">
               <div className="book-session-container">
                 <div className="book-session-container-mobile">
