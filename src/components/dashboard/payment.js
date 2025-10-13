@@ -46,7 +46,7 @@ const Payment = ({ selectedTrack }) => {
       callback: (response) => {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard"
+          window.location = "/dashboard";
           // setTimeout(() => {
           //   window.location = "/dashboard";
           // }, 2500);
