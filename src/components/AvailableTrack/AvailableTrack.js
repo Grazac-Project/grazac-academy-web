@@ -120,7 +120,7 @@ const tracks = [
     title: "Python for Machine Learning and AI",
     desc: "Learn Python programming for Machine Learning and AI. Explore libraries like NumPy, Pandas, Scikit-Learn, TensorFlow, and PyTorch.",
     link: "/course-detail-graduate?course=python-machine-learning-ai",
-  },  
+  },
   {
     key: "cloud_engineer",
     tab: "Cloud and Cybersecurity",
@@ -136,6 +136,14 @@ const tracks = [
     title: "Cybersecurity",
     desc: "Learn how to protect systems, networks, and data from cyber threats. This course covers security fundamentals, ethical hacking, penetration testing, and defensive strategies.",
     link: "/course-detail-graduate?course=cybersecurity",
+  },
+  {
+    key: "backend_with_java",
+    tab: "AI and Software Engineering",
+    title: "Backend With Java",
+    img: backend,
+    desc: "At Grazac Academy, we offer an in-depth Java course designed to provide students with a strong foundation in one of the most versatile and widely used programming languages in the tech industry ",
+    link: "/course-detail-graduate?course=java",
   },
 ];
 
