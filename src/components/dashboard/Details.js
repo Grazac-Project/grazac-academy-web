@@ -97,12 +97,12 @@ function Details() {
         if (err.response) {
           toast.error(err.response);
           btn.innerHTML = `Submit`;
-        } 
+        }
         // else {
         //   toast.error(
         //     "Something went wrong!!! Please make sure you have a good internet connection."
         //   );
-          btn.innerHTML = `Submit`;
+        btn.innerHTML = `Submit`;
         // }
       });
   };
@@ -249,7 +249,7 @@ function Details() {
       .catch((err) => {
         if (err.response) {
           toast.error(err.response);
-        } 
+        }
         // else {
         //   toast.error(
         //     "Something went wrong!!! Please make sure you have a good internet connection."
@@ -266,16 +266,16 @@ function Details() {
     //     setGuarantorDetails_2();
     //     // setGuarantorId(res.data[0]["id"]);
     //   })
-      // .catch((err) => {
-      //   if (err.response) {
-      //     toast.error(err.response);
-      //   } 
-      //   else {
-      //     toast.error(
-      //       "Something went wrong!!! Please make sure you have a good internet connection."
-      //     );
-      //   }
-      // });
+    // .catch((err) => {
+    //   if (err.response) {
+    //     toast.error(err.response);
+    //   }
+    //   else {
+    //     toast.error(
+    //       "Something went wrong!!! Please make sure you have a good internet connection."
+    //     );
+    //   }
+    // });
   }, [true]);
 
   return (
@@ -296,7 +296,7 @@ function Details() {
               <button
                 className={
                   clicked === "bio"
-                    ? "dashboard-content-detail-p active"
+                    ? "dashboard-content-detail-p active w-1/5"
                     : "dashboard-content-detail-p"
                 }
                 onClick={() => handleWhatToShow("bio")}
@@ -332,38 +332,41 @@ function Details() {
           {clicked === "bio" && (
             <div className="dashboard-content-form">
               <form onSubmit={(e) => submitData(e)}>
-                <div className="dashboard-content-form-container">
+                <div className="dashboard-content-form-container mb-4">
                   <h5>First Name</h5>
                   <p>{userDetails?.firstName}</p>
-                </div>
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Last Name</h5>
-                  <p>{userDetails?.lastName}</p>
-                </div>
-                <hr />
-                <div className="dashboard-content-form-container">
-                  <h5>Email Address</h5>
-                  <p>{userDetails?.email}</p>
+                  <hr />
                 </div>
 
-                <hr />
-                <div className="dashboard-content-form-container">
+                <div className="dashboard-content-form-container mb-4">
+                  <h5 className="">Last Name</h5>
+                  <p>{userDetails?.lastName}</p>
+                  <hr />
+                </div>
+
+                <div className="dashboard-content-form-container mb-4">
+                  <h5>Email Address</h5>
+                  <p>{userDetails?.email}</p>
+                  <hr />
+                </div>
+
+                <div className="dashboard-content-form-container mb-4">
                   <h5>Phone Number</h5>
                   <p>{userDetails?.phoneNumber}</p>
+                  <hr />
                 </div>
-                <hr />
+
                 {/* <div className="dashboard-content-form-container">
                   <h5>Date of Birth</h5>
                   <p>{userDetails?.dob?.slice(0, 10)}</p>
                 </div>
                 <hr /> */}
-                <div className="dashboard-content-form-container">
+                <div className="dashboard-content-form-container mb-4">
                   <h5>Gender</h5>
                   <p>{userDetails?.gender}</p>
+                  <hr />
                 </div>
 
-                <hr />
                 <div className="dashboard-content-form-container">
                   <h5>Preferred course at Grazac</h5>
                   <p>{userDetails?.preferred_course}</p>
@@ -438,7 +441,7 @@ function Details() {
                 <hr />
 
                 {/* <div className="dashboard-content-form-container"> */}
-                  {/* <h5>Age Range</h5>
+                {/* <h5>Age Range</h5>
                   {userDetails?.ageRange ? (
                     <p>{userDetails?.ageRange}</p>
                   ) : (
@@ -455,7 +458,7 @@ function Details() {
                       <option value="36 and above">36 and above</option>
                     </select>
                   )} */}
-                  {/* {!(
+                {/* {!(
                     tempData?.ageRange &&
                     tempData?.maritalStatus &&
                     tempData?.haveKids
@@ -465,9 +468,7 @@ function Details() {
                     </button>
                   )} */}
 
-                  
-
-                  {/* {(!userDetails?.ageRange ||
+                {/* {(!userDetails?.ageRange ||
                     !userDetails?.haveKids ||
                     !userDetails?.maritalStatus ||
                     submitted) && (
