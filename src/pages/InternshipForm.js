@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -24,26 +24,26 @@ const InternshipForm = () => {
         setFetched(resp.data);
       })
       .catch((error) => {
-   
         window.location.reload();
       });
   }, []);
 
   const config = {
-    public_key: 'FLWPUBK-b765ab41a14a9a8258992eafe205259f-X',
+    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
+
     tx_ref: Date.now(),
     amount: amount,
-    currency: 'NGN',
-    payment_options: 'card,mobilemoney,ussd',
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
     customer: {
       email: email,
       phonenumber: phone,
       name: firstname + " " + lastname,
     },
     customizations: {
-      title: 'Grazac Internship',
+      title: "Grazac Internship",
       description: `Payment for ${course} at Grazac Internship`,
-      logo: 'https://grazac.com.ng/assets/images/favicon.png',
+      logo: "https://grazac.com.ng/assets/images/favicon.png",
     },
   };
 
@@ -51,38 +51,41 @@ const InternshipForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if ( availability === "1" ) {
+    if (availability === "1") {
       var elmnt = document.getElementById("form_top");
       elmnt.scrollIntoView();
       //window.scroll(0, formInfo.current.offsetTop);
       handleFlutterPayment({
         callback: (response) => {
-            if (response.status === 'successful') {
-
-              document.querySelector(".form-info").textContent = "Submitting, please wait...";
-              document
-                .querySelector("#submit-btn")
-                .setAttribute("disabled", "disabled");
-              fetch("https://grazacacademy.com/undergraduate/intern", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  firstname: firstname,
-                  lastname: lastname,
-                  email: email,
-                  phone: phone,
-                  course: course,
-                  expectation: message,
-                  transaction_id: response.transaction_id
-                })
-              })
+          if (response.status === "successful") {
+            document.querySelector(".form-info").textContent =
+              "Submitting, please wait...";
+            document
+              .querySelector("#submit-btn")
+              .setAttribute("disabled", "disabled");
+            fetch("https://grazacacademy.com/undergraduate/intern", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                course: course,
+                expectation: message,
+                transaction_id: response.transaction_id,
+              }),
+            })
               .then((resp) => resp.json())
               .then((data) => {
                 if (data.success === true) {
-                  document.querySelector(".form-info").textContent = "Your registration was successful, kindly check your mailbox for further details";
-                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                  document.querySelector(".form-info").textContent =
+                    "Your registration was successful, kindly check your mailbox for further details";
+                  document
+                    .querySelector("#submit-btn")
+                    .removeAttribute("disabled");
                   setFirstName("");
                   setLastName("");
                   setMessage("");
@@ -91,21 +94,24 @@ const InternshipForm = () => {
                   setCourse("");
                 } else {
                   document.querySelector(".form-info").textContent = data.msg;
-                  document.querySelector("#submit-btn").removeAttribute("disabled");
+                  document
+                    .querySelector("#submit-btn")
+                    .removeAttribute("disabled");
                 }
               })
               .catch((err) => {
-                document.querySelector(".form-info").textContent = `Your payment was successful but something wrong while saving your details. 
+                document.querySelector(
+                  ".form-info"
+                ).textContent = `Your payment was successful but something wrong while saving your details. 
                 Kindly mail us at hello@grazacacademy.com`;
-                document.querySelector("#submit-btn").removeAttribute("disabled");
-              })
-
-            };
-            closePaymentModal() // this will close the modal programmatically
+                document
+                  .querySelector("#submit-btn")
+                  .removeAttribute("disabled");
+              });
+          }
+          closePaymentModal(); // this will close the modal programmatically
         },
-        onClose: () => {
-
-        },
+        onClose: () => {},
       });
     } else {
       alert("You have to be available to register");
@@ -227,9 +233,7 @@ const InternshipForm = () => {
                 <div>
                   <label>Course</label>
                   <br />
-                  <p className="show-amount">
-                    Website Development
-                  </p>
+                  <p className="show-amount">Website Development</p>
                 </div>
                 <div>
                   <label>Amount</label>
