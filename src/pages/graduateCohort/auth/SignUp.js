@@ -100,7 +100,11 @@ function SignUp() {
           // }
         }
       } else {
-        toast.error("please enter a correct phone number");
+        const message = `Please enter your number in this of format: 0${form.phone.slice(
+          3
+        )}`;
+
+        toast.error(message);
       }
     } else {
       // toast.error("Password must be at least 6 characters!");
