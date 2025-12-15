@@ -46,7 +46,7 @@ const VirtualPricing = () => {
     
     {
       id: 3,
-      type: "Cloud and Cybersecurity",
+      type: "Cloud and Cybersecurity Backend with Java",
       newAmount: "₦450,000",
       prevAmount: "₦500,000",
       // spanNewAmount: "($299.67)",
