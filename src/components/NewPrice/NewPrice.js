@@ -46,7 +46,7 @@ const NewPricing = () => {
     },
     {
       id: 3,
-      type: "Cloud and Cybersecurity Backend with Java",
+      type: "Cloud and Cybersecurity",
       newAmount: "₦850,000",
       prevAmount: "₦1,500,000",
       // spanNewAmount: "($565.98)",

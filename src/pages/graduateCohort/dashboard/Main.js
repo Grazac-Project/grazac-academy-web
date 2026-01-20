@@ -205,8 +205,7 @@ function Dashboard() {
 
       if (
         res.data.data.result?.preferred_course === "cyber security" ||
-        res.data.data.result?.preferred_course === "cloud" ||
-        res.data.data.result?.preferred_course === "Backend with Java"
+        res.data.data.result?.preferred_course === "cloud"
       ) {
         setIsSpecialCourse(true);
       }
