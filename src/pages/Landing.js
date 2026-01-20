@@ -139,20 +139,9 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for Cohort 17 is ongoing. Early registration
-                  closes by November 30th. Hurry Now and Register. Classes
-                  starts by January 12th, 2026.
-                  {/* <a
-                className="infomodal_content-link"
-                href="/login"
-              >
-                Apply Now
-              </a> */}
+                  Application for Cohort 18 has started. Early Registration closes May 30th. Classes starts by July 6th
+                  Hurry now and register.
                 </p>
-                {/* <Link to="/graduate-accelerator-plan">
-              <button>Learn more</button>
-            </Link> */}
-
                 <img
                   src={ex}
                   alt=""
@@ -543,7 +532,7 @@ const Landing = () => {
                   <Link to="/hire">
                     <div
                       className="nav__btn nav__btn-flex "
-                      // onClick={() => toast.info("Coming Soon")}
+                    // onClick={() => toast.info("Coming Soon")}
                     >
                       <a className="nav__btn--text">Hire our Talents</a>
                     </div>
@@ -780,7 +769,7 @@ const Landing = () => {
                     </Accordion.Body>
                   </Accordion.Item>
                 </Card>
-                <Link to="/faq" className="link-view" style={{textAlign: "center"}}>
+                <Link to="/faq" className="link-view" style={{ textAlign: "center" }}>
                   <h5>View All</h5>
                 </Link>
               </Accordion>
