@@ -10,9 +10,6 @@ import {
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
-import upload from "../../../images/svg/upload.svg";
-import loader from "../../../images/svg/dashboard/loader.gif";
-import about from "../../../images/about-1.jpg";
 import termsandconds from "../../../images/newsletter/terms_and_conds.pdf";
 import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
