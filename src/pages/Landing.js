@@ -139,9 +139,7 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for Cohort 17 is ongoing. Early registration
-                  closes by November 30th. Hurry Now and Register. Classes
-                  starts by January 12th, 2026.
+                  Application for Cohort 18 has started. Early Registration closes May 30th. Classes starts by July 6th. Hurry now and register.
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
