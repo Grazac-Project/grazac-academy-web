@@ -920,6 +920,9 @@ function NotSubmitted({
                         >
                           Product Marketing
                         </option>
+                        <option value="Product Design">
+                          Product Design
+                        </option>
                         <option value="Frontend Web Development">
                           Front End Web Development (Reactjs)
                         </option>
@@ -1387,6 +1390,9 @@ function NotSubmitted({
                         </option>
                         <option value="Backend Web Development">
                           Back-end Web Development
+                        </option>
+                        <option value="Product Design">
+                          Product Design
                         </option>
                         <option value="Android Development">
                           Mobile Application Development (Flutter and Dart)
