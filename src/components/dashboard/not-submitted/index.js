@@ -969,11 +969,12 @@ function NotSubmitted({
                         type="text"
                         required
                         name="why_selected_for_cohort"
+                        maxLength="150"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
                         onChange={(e) => {
-                          const words = countWords(e.target.value);
-                          if (words <= 350) {
+                          const charLength = e.target.value.length;
+                          if (charLength <= 150) {
                             handleChange(e);
                           }
                         }}
@@ -982,15 +983,14 @@ function NotSubmitted({
                         style={{
                           fontSize: "12px",
                           color:
-                            countWords(bioData.why_selected_for_cohort) > 350
+                            bioData.why_selected_for_cohort.length > 150
                               ? "red"
                               : "#666",
                         }}
                       >
-                        {countWords(bioData.why_selected_for_cohort)} / 350
-                        words
-                        {countWords(bioData.why_selected_for_cohort) > 350 &&
-                          "(Word limit reached)"}
+                        {bioData.why_selected_for_cohort.length} / 150 characters
+                        {bioData.why_selected_for_cohort.length > 150 &&
+                          " (Limit reached)"}
                       </p>
                     </div>
                     {/* <div className="dashboard-content-form-container">
@@ -1413,11 +1413,12 @@ function NotSubmitted({
                         type="text"
                         required
                         name="why_selected_for_cohort"
+                        maxLength="150"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
                         onChange={(e) => {
-                          const words = countWords(e.target.value);
-                          if (words <= 350) {
+                          const charLength = e.target.value.length;
+                          if (charLength <= 150) {
                             handleChange(e);
                           }
                         }}
@@ -1426,15 +1427,14 @@ function NotSubmitted({
                         style={{
                           fontSize: "12px",
                           color:
-                            countWords(bioData.why_selected_for_cohort) > 350
+                            bioData.why_selected_for_cohort.length > 150
                               ? "red"
                               : "#666",
                         }}
                       >
-                        {countWords(bioData.why_selected_for_cohort)} / 350
-                        words
-                        {countWords(bioData.why_selected_for_cohort) > 350 &&
-                          "(Word limit reached)"}
+                        {bioData.why_selected_for_cohort.length} / 150 characters
+                        {bioData.why_selected_for_cohort.length > 150 &&
+                          " (Limit reached)"}
                       </p>
                     </div>
 
