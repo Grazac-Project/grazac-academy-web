@@ -6,6 +6,9 @@ import Youtube from "../images/svg/youtube.svg";
 import Logo from "../images/grazac_logo.png";
 import Bird from '../images/footer-bird.png'
 import Terms from "../images/newsletter/terms.pdf";
+import { FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -85,20 +88,26 @@ const Footer = () => {
           </p>
 
           <div className="footer__icons">
-            <a
+            {/* <a
               href="https://www.youtube.com/channel/UCAQ_Q8wYZloETgrdlBbwMtg"
               target="_blank"
             >
               <img src={Youtube} alt="icon" />
+            </a> */}
+            <a href="https://x.com/grazacng?s=21" target="_blank">
+              <FaXTwitter size={20}/>
             </a>
-            <a href="https://twitter.com/grazacacademy" target="_blank">
-              <img src={Twitter} alt="icon" />
-            </a>
-            <a href="https://www.instagram.com/grazacacademy/" target="_blank">
+            <a href="https://www.instagram.com/grazacng?" target="_blank">
               <img src={Instagram} alt="icon" />
             </a>
             <a href="https://www.facebook.com/grazacng" target="_blank">
               <img src={Facebook} alt="icon" />
+            </a>
+            <a href="https://www.linkedin.com/company/gra-zac/" target="_blank">
+              <FaLinkedin  size={20}/>
+            </a>
+            <a href="https://www.tiktok.com/@grazac.ng?" target="_blank">
+              <FaTiktok size={20}/>
             </a>
           </div>
         </div>
