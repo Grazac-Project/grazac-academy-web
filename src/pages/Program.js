@@ -129,16 +129,16 @@ const Program = () => {
 
       {/* Available Tracks */}
       <section className="py-[80px] max-w-[1200px] mx-auto">
-        <div className="mx-auto px-[80px] md:px-[40px] sm:px-[16px]">
-          <div className="text-center mb-[32px] w-[655px] sm:w-[100%] mx-auto">
-            <h2 className="!text-[40px] font-bold text-[#073041] mb-2 sm:text-[24px]">Available Tracks</h2>
-            <p className="text-[#787676] !text-[16px] font-medium sm:text-[14px]">
+        <div className="mx-auto px-[80px] md:px-[40px] xm:px-[16px]">
+          <div className="text-center mb-[32px] w-[655px] xm:w-[100%] mx-auto">
+            <h2 className="!text-[40px] font-bold text-[#073041] mb-2 xm:text-[24px]">Available Tracks</h2>
+            <p className="text-[#787676] !text-[16px] font-medium xm:text-[14px]">
               Explore a wide range of tech courses designed to empower you with the skills
               and knowledge you need to thrive in the ever-evolving tech industry.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 mb-16 sm:grid-cols-1 md:grid-cols-2">
+          <div className="grid grid-cols-3 gap-8 mb-16 xm:grid-cols-1 md:grid-cols-2">
             {[
               { title: "Frontend Development", img: frontend, desc: "Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and JavaScript for a website or Web Application so that a user can see and interact with them directly. " },
               { title: "Mobile Development", img: backend, desc: "Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from a single codebase. you'll have the flexibility to build apps for various platforms, from mobile devices to the web and desktop." },
@@ -171,15 +171,15 @@ const Program = () => {
 
       {/* Pricing Offer */}
       <section className="bg-[#773DD3]">
-        <div className="flex items-stretch sm:flex-col overflow-hidden">
-          <div className="text-white w-1/2 sm:w-full flex flex-col items-center md:items-start py-[71.62px] c:py-[40px] pl-[80px] lgx:pl-[40px] md:pl-[20px] sm:px-4 pr-10">
-            <h3 className="!text-[40px] text-center font-bold mb-10 opacity-90 lgx:text-[30px] c:text-[20px]">Pricing Plan and Duration</h3>
-            <p className="text-center text-[16px] font-medium mb-[50px]">One Program. Full Internship Experience </p>
-            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[40px] h-[416.76px] w-[500px] lgx:w-[400px] c:px-[30px] c:w-full c:max-w-[350px] c:h-auto c:pb-8 mx-auto md:mx-0">
-              <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2">
+        <div className="flex items-stretch xm:flex-col overflow-hidden">
+          <div className="text-white w-1/2 xm:w-full flex flex-col items-center md:items-start py-[71.62px] c:py-[40px] pl-[80px] lgx:pl-[40px] md:pl-[20px] xm:px-4 pr-10 xm:mb-[32px] xm:pb-0">
+            <h3 className="!text-[40px] text-center font-bold mb-10 lgx:text-[30px] c:text-[20px] xm:text-[22.51px] xm:mx-auto">Pricing Plan and Duration</h3>
+            <p className="text-center text-[16px] font-medium mb-[50px] xm:text-[9.01px] xm:mx-auto">One Program. Full Internship Experience </p>
+            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[24px] h-[416.76px] w-[500px] lgx:w-[400px] c:px-[30px] c:w-full c:max-w-[350px] c:h-auto c:pb-8 mx-auto md:mx-0 xm:rounded-[13.51px] xm:w-[100%] xm:px-[45.03px]">
+              <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2 xm:text-[14.74px] xm:w-[122.82px] xm:mb-[18.01px]">
                 6 Months
               </p>
-              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4">₦300,000</h2>
+              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 xm:text-[45.03px]">₦300,000</h2>
               <ul className="list-disc pl-5">
                 {[
                   "Access to mentorship",
@@ -208,18 +208,17 @@ const Program = () => {
           id="landing__bottom"
           style={{ paddingBottom: 0 }}
         >
-          <div className="flex items-center justify-between">
-            <div className=" w-[522px]">
+          <div className="flex items-center justify-between xm:flex-col">
+            <div className=" w-[522px] xm:w-full xm:text-center">
               <h1 className="!text-[36px] text-[#073041] font-bold mb-4">
                 Our Alumni work in several startups and unicorns globally
               </h1>
               <p className="text-[16px] text-[#787676] mb-[30px]">
                 We guarantee you impact driven candidates who will impact your bottom lines positively.
               </p>
-              <div className="landing__btn--2">
+              <div className="xm:hidden md:block">
                 <Link to="/hire">
                   <div
-                    className="nav__btn nav__btn-flex "
                   >
                     <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
                   </div>
@@ -230,6 +229,15 @@ const Program = () => {
             <div className="landing__bottom--text--left">
               <img src={Grazac} alt="img" />
             </div>
+
+            <div className="md:hidden xm:block mt-[28px]">
+                <Link to="/hire">
+                  <div
+                  >
+                    <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
+                  </div>
+                </Link>
+              </div>
           </div>
         </div>
       </section>
@@ -344,11 +352,11 @@ const Program = () => {
       </section>
 
       <section
-        className="mt-24 ml-[80px] lgx:ml-[40px] md:ml-[20px] "
+        className="mt-24 ml-[80px] lgx:ml-[40px] md:ml-[20px] xm:ml-0 "
         style={{ background: "linear-gradient(to bottom, transparent 90px, #FEF4BF66 90px)" }}
       >
-        <div className="flex items-stretch overflow-hidden">
-          <div className="w-1/2 sm:w-full md:mt-[-120px] overflow-hidden ">
+        <div className="flex items-stretch overflow-hidden xm:px-[20px] xm:py-[40px]">
+          <div className="w-1/2 sm:w-full md:mt-[-120px] overflow-hidden xm:hidden md:block ">
             <img
               src={woman}
               alt="Student"
@@ -356,10 +364,10 @@ const Program = () => {
             />
           </div>
           <div className="py-[78px] w-1/2 sm:w-full flex flex-col items-center md:items-start pr-[80px] lgx:pr-[40px] md:pr-[20px] sm:px-4 pl-10">
-            <h3 className="!text-[32px] md:text-[20px] font-bold text-[#000000] mb-2 leading-tight pt-[78px] text-center md:text-left">
-              Want to build a career in <br className="hidden lg:block" /> tech?
+            <h3 className="!text-[32px] md:text-[20px] font-bold text-[#000000] mb-2 leading-tight pt-[78px] text-center md:text-left xm:text-center sm:mx-auto xm:text-[24px]">
+              Want to build a career in <br className="hidden lg:block xm:hidden" /> tech?
             </h3>
-            <p className="text-[#787676] !text-[16px] md:text-[14px] leading-[1.8] mb-[40px] max-w-[408px] text-center md:text-left">
+            <p className="text-[#787676] !text-[16px] md:text-[14px] leading-[1.8] mb-[40px] max-w-[408px] text-center md:text-left xm:text-center xm:text-[16px]">
               Interested in building a career in tech? Grazac Academy is the right
               solution for you. Learn valuable skills with us and pay no
               tuition until you are hired.
