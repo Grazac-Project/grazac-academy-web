@@ -339,7 +339,7 @@ const Program = () => {
         </div>
       </section>
 
-      <section
+      {/* <section
         className="mt-24 ml-[80px] lgx:ml-[40px] md:ml-[20px] xm:ml-0 "
         style={{ background: "linear-gradient(to bottom, transparent 90px, #FEF4BF66 90px)" }}
       >
@@ -376,7 +376,58 @@ const Program = () => {
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section
+        className="mt-24 relative"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 90px, #FEF4BF66 90px)",
+        }}
+      >
+        <div className="flex flex-row sm:flex-col items-stretch overflow-hidden max-w-[1400px] mx-auto px-[80px] md:px-[20px] xm:py-[40px] md:gap-8">
+
+          {/* IMAGE */}
+          <div className="w-1/2 sm:hidden -mt-[120px] overflow-hidden">
+            <img
+              src={woman}
+              alt="Student"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* TEXT */}
+          <div className="py-[78px] md:pt-[110px] md:pb-[60px] w-1/2 sm:w-full flex flex-col items-start md:items-center pr-0 lgx:pr-[40px] px-4 pl-10 md:pl-0">
+
+            <h3 className="text-[32px] md:text-[24px] font-bold text-black mb-2 leading-tight pt-[78px] md:pt-0 text-left md:text-center xm:text-[18px]">
+              Want to build a career in <br className="hidden lg:block" /> tech?
+            </h3>
+
+            <p className="text-[#787676] text-[16px] md:text-[14px] leading-[1.8] mb-[40px] max-w-[408px] md:max-w-full text-left md:text-center xm:text-[14px]">
+              Interested in building a career in tech? Grazac Academy is the right
+              solution for you. Learn valuable skills with us and pay no tuition
+              until you are hired.
+            </p>
+
+            <div className="flex flex-row items-center justify-start md:justify-center gap-4">
+              <Link
+                className="bg-[#773DD3] text-white px-[40px] py-[15px] rounded-[5px] font-bold text-[18px] hover:shadow-xl transition-all min-w-[138px] text-center md:w-[130px] md:text-[16px] md:px-[20px]"
+              >
+                Apply Now
+              </Link>
+
+              <a
+                href="https://wa.me/2348068365951"
+                className="bg-white border-2 border-[#773DD3] text-[#773DD3] px-[40px] py-[13px] rounded-[5px] font-bold text-[18px] hover:bg-[#773DD3] hover:text-white transition-all min-w-[138px] text-center md:w-[130px] md:text-[16px] md:px-[20px]"
+              >
+                Call Us
+              </a>
+            </div>
+
+          </div>
+        </div>
       </section>
+
 
       <Footer />
     </div>
