@@ -159,15 +159,15 @@ const Program = () => {
 
       {/* Pricing Offer */}
       <section className="bg-[#773DD3]">
-        <div className="flex items-stretch xm:flex-col overflow-hidden">
-          <div className="text-white w-1/2 xm:w-full flex flex-col items-center md:items-start py-[71.62px] c:py-[40px] pl-[80px] lgx:pl-[40px] md:pl-[20px] xm:px-4 pr-10 xm:mb-[32px] xm:pb-0">
-            <h3 className="!text-[40px] text-center font-bold mb-10 lgx:text-[30px] c:text-[20px] xm:text-[22.51px] xm:mx-auto">Pricing Plan and Duration</h3>
-            <p className="text-center text-[16px] font-medium mb-[50px] xm:text-[9.01px] xm:mx-auto">One Program. Full Internship Experience </p>
-            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[24px] h-[416.76px] w-[500px] lgx:w-[400px] c:px-[30px] c:w-full c:max-w-[350px] c:h-auto c:pb-8 mx-auto md:mx-0 xm:rounded-[13.51px] xm:w-[100%] xm:px-[45.03px]">
-              <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2 xm:text-[14.74px] xm:w-[122.82px] xm:mb-[18.01px]">
+        <div className="flex items-stretch sm:flex-col overflow-hidden">
+          <div className="text-white w-1/2 sm:w-full flex flex-col items-center md:items-start sm:items-center py-[71.62px] c:py-[40px] px-[80px] lgx:px-[40px] md:px-[20px] sm:px-4 sm:mb-[32px] sm:pb-0">
+            <h3 className="!text-[40px] text-center font-bold mb-10 lgx:text-[30px] c:text-[20px] sm:text-[22.51px] sm:mx-auto">Pricing Plan and Duration</h3>
+            <p className="text-center text-[16px] font-medium mb-[50px] sm:text-[9.01px] sm:mx-auto">One Program. Full Internship Experience </p>
+            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[24px] h-auto min-h-[416.76px] w-[500px] lgx:w-[400px] c:w-full c:max-w-[350px] mx-auto md:mx-0 sm:mx-auto sm:w-full sm:max-w-full sm:px-6 sm:pb-10 sm:rounded-[13.51px]">
+              <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2 sm:text-[14.74px] sm:w-[122.82px] sm:mb-[18.01px]">
                 6 Months
               </p>
-              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 xm:text-[45.03px]">₦301,000</h2>
+              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 sm:text-[45.03px] text-center">₦301,000</h2>
               <ul className="list-disc pl-5">
                 {[
                   "Access to mentorship",
