@@ -33,3 +33,6 @@ export const Web3Waitlist = (data) => {
 export const coupon = (code) => {
     return APIKit.post(`/api/v1/user/get-and-increment-coupon/${code}`)
 }
+export const InternshipForm = (data) => {
+    return APIKit.post(`api/v1/user/internship/apply`, data)
+} 

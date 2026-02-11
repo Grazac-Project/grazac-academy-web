@@ -12,7 +12,7 @@ import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
 import Waitlist from "./pages/web3-application/waitlist";
-import Program from "./pages/Program";
+import Program from "./pages/program-page/Program";
 // import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
@@ -125,6 +125,13 @@ const Form = lazy(() => {
 const Web3Payment = lazy(() => {
   return import("./pages/web3-application/payment");
 });
+const IntershipForm = lazy(() => {
+  return import("./pages/program-page/IntershipForm");
+});
+
+const IntershipPayment = lazy(() => {
+  return import("./pages/program-page/IntershipPayment");
+});
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -235,6 +242,8 @@ const App = () => {
                 <Route path="/web3-application-form" exact component={Form} />
                 <Route path="/waitlist" exact component={Waitlist} />
                 <Route path="/web3-application-payment" exact component={Web3Payment} />
+                <Route path="/IntershipForm" exact component={IntershipForm} />
+                <Route path="/IntershipPayment" exact component={IntershipPayment} />
 
 
               </Switch>

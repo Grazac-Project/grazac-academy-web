@@ -1,40 +1,28 @@
 import React, { useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "./navbar";
+import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Accordion, Card } from "react-bootstrap";
 
 // Images
-import grad1 from "../images/grad1.png";
-import grad2 from "../images/grad2.png";
-import grad3 from "../images/grad3.png";
-import about1 from "../images/about-1.jpg";
-import about2 from "../images/about-2.jpg";
-import about3 from "../images/about-3.jpg";
-import about4 from "../images/about-4.jpg";
-import benefit from "../images/program/benefit.png";
-import Grazac from "../images/svg/logo-round.svg";
-import woman from "../images/program/woman.png";
-import people from "../images/program/people.png"
+import benefit from "../../images/program/benefit.png";
+import Grazac from "../../images/svg/logo-round.svg";
+import woman from "../../images/program/woman.png";
+import people from "../../images/program/people.png"
 
 // Tracks Images
-import frontend from "../images/frontend.png";
-import backend from "../images/backend.png";
-import cybersecurity from "../images/cybersecurity.png";
-import data_analysis from "../images/analysis.png";
-import product from "../images/product.png";
+import frontend from "../../images/frontend.png";
+import backend from "../../images/backend.png";
+import cybersecurity from "../../images/cybersecurity.png";
+import data_analysis from "../../images/analysis.png";
 
 // Icons
-import why1 from "../images/program/hand-on.png";
-import why2 from "../images/program/expert.png";
-import why3 from "../images/program/mentor-1.png";
-import why4 from "../images/program/global.png";
+import why1 from "../../images/program/hand-on.png";
+import why2 from "../../images/program/expert.png";
+import why3 from "../../images/program/mentor-1.png";
+import why4 from "../../images/program/global.png";
 
-// Community Logos
-import google from "../images/svg/Google.svg";
-import microsoft from "../images/svg/Microsoft.svg";
-import aws from "../images/svg/AWS.svg";
 
 const Program = () => {
   useEffect(() => {
@@ -51,7 +39,7 @@ const Program = () => {
 
   return (
     <div className="min-h-screen font-rajdhani">
-      <Navbar top={true} />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 bg-[#F8FAFD] sm:pt-[32px]">
@@ -65,7 +53,7 @@ const Program = () => {
             internship discount while building skills that prepares you for real world
             opportunities after school.
           </p>
-          <Link to="/signup">
+          <Link to="/IntershipForm">
             <button className="bg-[#773DD3] text-white px-10 py-4 rounded-lg font-bold !text-[18px] hover:shadow-2xl hover:scale-105 transition-all w-[172px] sm:w-[132px]">
               Apply Now
             </button>
@@ -160,7 +148,7 @@ const Program = () => {
           </div>
 
           <div className="text-center mt-[32px]">
-            <Link to="/signup">
+            <Link to="/IntershipForm">
               <button className="bg-[#773DD3] text-white px-12 w-[252px] py-4 rounded-xl font-bold !text-[18px] hover:shadow-2xl">
                 Apply Now
               </button>
@@ -231,13 +219,13 @@ const Program = () => {
             </div>
 
             <div className="md:hidden xm:block mt-[28px]">
-                <Link to="/hire">
-                  <div
-                  >
-                    <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
-                  </div>
-                </Link>
-              </div>
+              <Link to="/hire">
+                <div
+                >
+                  <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -374,7 +362,7 @@ const Program = () => {
             </p>
             <div className="flex flex-row items-center justify-center md:justify-start gap-4">
               <Link
-                to="/signup"
+                to="/IntershipForm"
                 className="bg-[#773DD3] text-white px-[40px] py-[15px] rounded-[5px] font-bold !text-[18px] hover:shadow-xl transition-all min-w-[138px] text-center md:w-[100px] md:text-[16px] md:px-[20px]"
               >
                 Apply Now
