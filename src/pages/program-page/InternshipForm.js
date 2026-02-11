@@ -6,10 +6,10 @@ import logo from "../../images/svg/academy-logo.svg";
 import loader from "../../images/load.gif";
 import authImg from "../../images/auth.png";
 import upload from "../../images/program/upload-cloud.png"
-import { InternshipForm } from "../../api/dashboard/auth";
+import { Internship_Form } from "../../api/dashboard/auth";
 
 
-const IntershipForm = () => {
+const InternshipForm = () => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     firstName: "",
@@ -128,7 +128,7 @@ const IntershipForm = () => {
       formData.append("attachment", form.idCard);
 
       try {
-        const response = await InternshipForm(formData);
+        const response = await Internship_Form(formData);
         console.log(response);
 
         if (response.status === 200 || response.status === 201) {
@@ -141,7 +141,7 @@ const IntershipForm = () => {
 
           // Small delay to show toast before redirect
           setTimeout(() => {
-            window.location = "/IntershipPayment";
+            window.location = "/InternshipPayment";
           }, 1500);
         } else {
           toast.error("Something went wrong, please try again!");
@@ -183,7 +183,7 @@ const IntershipForm = () => {
             </h1>
             <p className="text-[#787676] text-[14px] leading-[21px] mb-8">
               Kindly fill in your details correctly. Please note that payment of your{" "}
-              <span className="text-[#773DD3] font-bold">tuition fee (₦300,000)</span> completes this application.
+              <span className="text-[#773DD3] font-bold">tuition fee (₦301,000)</span> completes this application.
             </p>
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-4">
@@ -341,4 +341,4 @@ const IntershipForm = () => {
   );
 };
 
-export default IntershipForm;
+export default InternshipForm;

@@ -53,7 +53,7 @@ const Program = () => {
             internship discount while building skills that prepares you for real world
             opportunities after school.
           </p>
-          <Link to="/IntershipForm">
+          <Link to="/InternshipForm">
             <button className="bg-[#773DD3] text-white px-10 py-4 rounded-lg font-bold !text-[18px] hover:shadow-2xl hover:scale-105 transition-all w-[172px] sm:w-[132px]">
               Apply Now
             </button>
@@ -148,7 +148,7 @@ const Program = () => {
           </div>
 
           <div className="text-center mt-[32px]">
-            <Link to="/IntershipForm">
+            <Link to="/InternshipForm">
               <button className="bg-[#773DD3] text-white px-12 w-[252px] py-4 rounded-xl font-bold !text-[18px] hover:shadow-2xl">
                 Apply Now
               </button>
@@ -167,7 +167,7 @@ const Program = () => {
               <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2 xm:text-[14.74px] xm:w-[122.82px] xm:mb-[18.01px]">
                 6 Months
               </p>
-              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 xm:text-[45.03px]">₦300,000</h2>
+              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 xm:text-[45.03px]">₦301,000</h2>
               <ul className="list-disc pl-5">
                 {[
                   "Access to mentorship",
@@ -362,7 +362,7 @@ const Program = () => {
             </p>
             <div className="flex flex-row items-center justify-center md:justify-start gap-4">
               <Link
-                to="/IntershipForm"
+                to="/InternshipForm"
                 className="bg-[#773DD3] text-white px-[40px] py-[15px] rounded-[5px] font-bold !text-[18px] hover:shadow-xl transition-all min-w-[138px] text-center md:w-[100px] md:text-[16px] md:px-[20px]"
               >
                 Apply Now

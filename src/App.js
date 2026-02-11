@@ -125,12 +125,12 @@ const Form = lazy(() => {
 const Web3Payment = lazy(() => {
   return import("./pages/web3-application/payment");
 });
-const IntershipForm = lazy(() => {
-  return import("./pages/program-page/IntershipForm");
+const InternshipForm = lazy(() => {
+  return import("./pages/program-page/InternshipForm");
 });
 
-const IntershipPayment = lazy(() => {
-  return import("./pages/program-page/IntershipPayment");
+const InternshipPayment = lazy(() => {
+  return import("./pages/program-page/InternshipPayment");
 });
 
 const App = () => {
@@ -242,8 +242,8 @@ const App = () => {
                 <Route path="/web3-application-form" exact component={Form} />
                 <Route path="/waitlist" exact component={Waitlist} />
                 <Route path="/web3-application-payment" exact component={Web3Payment} />
-                <Route path="/IntershipForm" exact component={IntershipForm} />
-                <Route path="/IntershipPayment" exact component={IntershipPayment} />
+                <Route path="/InternshipForm" exact component={InternshipForm} />
+                <Route path="/InternshipPayment" exact component={InternshipPayment} />
 
 
               </Switch>

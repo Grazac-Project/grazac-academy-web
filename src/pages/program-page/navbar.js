@@ -66,6 +66,11 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
+              <NavItem link="/program">
+                <span>05</span>IT Program
+              </NavItem>
+            </li>
+            <li className="nav__item">
               {/* <a
               href="https://blog.grazacacademy.com/"
               target="__blank"
@@ -74,7 +79,7 @@ const Navbar = ({ top }) => {
               Blog
             </a> */}
               <NavItem link="/pricing">
-                <span>04</span>Pricing
+                <span>06</span>Pricing
               </NavItem>
             </li>
             {/* <li className="nav__item">
@@ -121,10 +126,10 @@ const Navbar = ({ top }) => {
           <li className="nav__item">
             <NavItem link="/Web3">Web3</NavItem>
           </li>
-          {/* <li className="nav__item">
-            <NavItem link="/hire">Hire</NavItem>
-          </li> */}
-          <a href="/waitlist">
+          <li className="nav__item">
+            <NavItem link="/program">IT Program</NavItem>
+          </li>
+          <a href="/InternshipForm">
             <div className="nav__btn">
               <div className="nav__btn--text">Apply Now</div>
             </div>

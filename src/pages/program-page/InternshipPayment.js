@@ -11,7 +11,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import FailedModal from "../web3-application/failedModal";
 import SucessModal from "../web3-application/successModal";
 
-const IntershipPayment = () => {
+const InternshipPayment = () => {
   const [details, setDetails] = useState({});
   const [failedModal, setFailedModal] = useState(false);
   const [sucessModal, setSucessModal] = useState(false);
@@ -97,7 +97,7 @@ const IntershipPayment = () => {
           </div>
           <div className="auth_container_form !w-[542px] sm:!w-[95%] !px-[68px] sm:!px-2 !pt-[47px] !pb-[24px]">
             <div>
-              <Link to="/IntershipForm" className="cursor-pointer">
+              <Link to="/InternshipForm" className="cursor-pointer">
                 <h4 className="text-text text-[12px] leading-[18px] flex items-center gap-1 mb-[10px]">
                   <FaArrowLeft />
                   Go back
@@ -167,4 +167,4 @@ const IntershipPayment = () => {
   );
 };
 
-export default IntershipPayment;
+export default InternshipPayment;
