@@ -4,6 +4,8 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Accordion, Card } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 // Images
 import benefit from "../../images/program/benefit.png";
@@ -16,6 +18,9 @@ import frontend from "../../images/frontend.png";
 import backend from "../../images/backend.png";
 import cybersecurity from "../../images/cybersecurity.png";
 import data_analysis from "../../images/analysis.png";
+import android from "../../images/android.png";
+import python from "../../images/python.png";
+
 
 // Icons
 import why1 from "../../images/program/hand-on.png";
@@ -25,9 +30,10 @@ import why4 from "../../images/program/global.png";
 
 
 const Program = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const history = useHistory();
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const handleFaq = (e) => {
     let svg = e.target.parentElement.querySelector("svg");
@@ -35,6 +41,15 @@ const Program = () => {
       svg = e.target.parentElement.parentElement.querySelector("svg");
     }
     svg.classList.toggle("faq-icon_transition");
+  };
+    const courseDetailsHandler = (goTo) => {
+    sessionStorage.setItem(
+      "learning_mode",
+      JSON.stringify({
+        class_option: "Onsite",
+      })
+    );
+    history.push(goTo);
   };
 
   return (
@@ -118,7 +133,7 @@ const Program = () => {
       {/* Available Tracks */}
       <section className="py-[80px] max-w-[1200px] mx-auto">
         <div className="mx-auto px-[80px] md:px-[40px] xm:px-[16px]">
-          <div className="text-center mb-[32px] w-[655px] xm:w-[100%] mx-auto">
+          <div className="text-center mb-[32px] w-[655px] xm:w-[100%] mx-auto sm:w-full">
             <h2 className="!text-[40px] font-bold text-[#073041] mb-2 xm:text-[24px]">Available Tracks</h2>
             <p className="text-[#787676] !text-[16px] font-medium xm:text-[14px]">
               Explore a wide range of tech courses designed to empower you with the skills
@@ -128,11 +143,11 @@ const Program = () => {
 
           <div className="grid grid-cols-3 gap-8 mb-16 xm:grid-cols-1 md:grid-cols-2">
             {[
-              { title: "Frontend Development", img: frontend, desc: "Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and JavaScript for a website or Web Application so that a user can see and interact with them directly. " },
-              { title: "Mobile Development", img: backend, desc: "Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from a single codebase. you'll have the flexibility to build apps for various platforms, from mobile devices to the web and desktop." },
-              { title: "Backend Development", img: backend, desc: "Node.js is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news feeds, and web push notifications." },
-              { title: "Cybersecurity", img: cybersecurity, desc: "Protect systems and networks from digital attacks." },
-              { title: "Machine learning with Python", img: data_analysis, desc: "Machine Learning with Python is a comprehensive journey that equips you with the skills and knowledge needed to build, evaluate, and deploy machine learning models for various applications" },
+              { title: "Frontend Development", img: frontend, desc: "Front-end web development, also known as client-side development is the practice of producing HTML, CSS, and JavaScript for a website or Web Application so that a user can see and interact with them directly. ", link:"/course-detail-graduate?course=frontend-web-development" },
+              { title: "Mobile Development", img: android, desc: "Flutter is an incredible user interface (UI) toolkit that allows you to build apps for iOS, Android, and even the web & desktop platforms like macOS, Windows, and Linux; all from a single codebase. you'll have the flexibility to build apps for various platforms, from mobile devices to the web and desktop.", link: "/course-detail-graduate?course=mobile-application-development" },
+              { title: "Backend Development", img: backend, desc: "Node.js is useful for developing applications that require a persistent connection from the browser to the server and is often used for real-time applications such as chat, news feeds, and web push notifications.", link: "/course-detail-graduate?course=backend-web-development" },
+              { title: "Cybersecurity", img: cybersecurity, desc: "Protect systems and networks from digital attacks.", link: "/course-detail-graduate?course=cybersecurity" },
+              { title: "Machine learning with Python", img: python, desc: "Machine Learning with Python is a comprehensive journey that equips you with the skills and knowledge needed to build, evaluate, and deploy machine learning models for various applications", link:"/course-detail-graduate?course=python-machine-learning-ai" },
             ].map((track, idx) => (
               <div key={idx} className="bg-white border border-gray-100 p-4 rounded-[10px] hover:shadow-md">
                 <div className="h-[182px] rounded-2xl overflow-hidden mb-4">
@@ -140,9 +155,10 @@ const Program = () => {
                 </div>
                 <h4 className="!text-[18px] font-bold text-[#073041] mb-4">{track.title}</h4>
                 <p className="text-[#787676] !text-[14px] leading-relaxed mb-6">{track.desc}</p>
-                <Link to="/signup" className="text-[#773DD3] font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                <p onClick={() => courseDetailsHandler(track.link)}
+                 className="text-[#773DD3] font-bold flex items-center gap-2 group-hover:gap-4 transition-all cursor-pointer">
                   Learn More <span>→</span>
-                </Link>
+                </p>
               </div>
             ))}
           </div>
@@ -163,11 +179,11 @@ const Program = () => {
           <div className="text-white w-1/2 sm:w-full flex flex-col items-center md:items-start sm:items-center py-[71.62px] c:py-[40px] px-[80px] lgx:px-[40px] md:px-[20px] sm:px-4 sm:mb-[32px] sm:pb-0">
             <h3 className="!text-[40px] text-center font-bold mb-10 lgx:text-[30px] c:text-[20px] sm:text-[22.51px] sm:mx-auto">Pricing Plan and Duration</h3>
             <p className="text-center text-[16px] font-medium mb-[50px] sm:text-[9.01px] sm:mx-auto">One Program. Full Internship Experience </p>
-            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[24px] h-auto min-h-[416.76px] w-[500px] lgx:w-[400px] c:w-full c:max-w-[350px] mx-auto md:mx-0 sm:mx-auto sm:w-full sm:max-w-full sm:px-6 sm:pb-10 sm:rounded-[13.51px]">
+            <div className="bg-[#00000033] backdrop-blur-md border border-white/20 pt-[40px] px-[80px] rounded-[24px] h-auto min-h-[416.76px] w-[500px] lgx:w-[400px] c:w-full c:max-w-[350px] mx-auto md:mx-0 sm:mx-auto sm:w-full sm:max-w-full sm:px-6 sm:pb-10 sm:rounded-[13.51px] md:px-[40px]">
               <p className="bg-[#E7A300] px-[4.25px] text-center py-[6.88px] rounded-[19.38px] w-[161.5px] text-[19.3px] font-bold mb-2 sm:text-[14.74px] sm:w-[122.82px] sm:mb-[18.01px]">
                 6 Months
               </p>
-              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 sm:text-[45.03px] text-center">₦301,000</h2>
+              <h2 className="!text-[80px] font-bold mb-2 c:text-[40px] lgx:text-[50px] lgx-mb-4 sm:text-[45.03px] text-center sm:text-left md:text-left">₦301,000</h2>
               <ul className="list-disc pl-5">
                 {[
                   "Access to mentorship",
@@ -240,20 +256,14 @@ const Program = () => {
                   <Accordion.Item eventKey="1">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4>What is the duration of the program?</h4>
+                        <h4>Can I apply if I’m no longer a student?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Our courses vary in duration, ranging from 6 months
-                          for the on-site class and 3 months for the virtual
-                          class.
-                        </p>
-                        <p>
-                          Please check the specific course page for detailed
-                          information.
+                          No. This program is strictly for undergraduates and SIWES students.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -265,8 +275,7 @@ const Program = () => {
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
                         <h4>
-                          What is the level of experience required for
-                          enrollment?
+                          Are classes onsite or virtual?
                         </h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
@@ -274,8 +283,7 @@ const Program = () => {
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          Our courses cater to individuals with varying levels
-                          of experience, from beginners to advanced learners.
+                          All classes are fully physical and held at our training center.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -286,20 +294,14 @@ const Program = () => {
                   <Accordion.Item eventKey="3">
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
-                        <h4> What is your application process like?</h4>
+                        <h4> What is the duration of the program?</h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          The Grazac application process is a two-step online
-                          process <br /> First, Applicants would be required to
-                          create an account. Once this has been created,
-                          applicants will be directed to our online application
-                          platform to complete the application process, which
-                          takes a few minutes to complete, including an
-                          assessment test.
+                          The program runs for a period of 6 months.
                         </p>
                       </div>
                     </Accordion.Body>
@@ -311,8 +313,7 @@ const Program = () => {
                     <Accordion.Header onClick={handleFaq}>
                       <div className="landing_faq-question">
                         <h4>
-                          What payment options do you offer, and can I pay in
-                          installments?
+                          Do you offer any certification after completion?
                         </h4>
                         <MdKeyboardArrowDown size="2rem" color="black" />
                       </div>
@@ -320,19 +321,34 @@ const Program = () => {
                     <Accordion.Body>
                       <div className="landing_faq-answer">
                         <p>
-                          You can pay upfront or choose our installment payment
-                          plan, which allows you to split the course fee into
-                          manageable monthly payments. <br /> Please contact our
-                          admission team to learn more about our payment options
-                          and to discuss a plan that works best for you.
+                          Yes. Students receive a globally recognized certificate upon successful completion of the training.
                         </p>
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
                 </Card>
-                <Link to="/faq" className="link-view" style={{ textAlign: "center" }}>
+                <hr />
+                <Card>
+                  <Accordion.Item eventKey="5">
+                    <Accordion.Header onClick={handleFaq}>
+                      <div className="landing_faq-question">
+                        <h4>Do I need prior tech experience before joining?
+                        </h4>
+                        <MdKeyboardArrowDown size="2rem" color="black" />
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <div className="landing_faq-answer">
+                        <p>
+                          No prior experience is required. Our training is designed for beginners as well as students looking to improve their existing skills.
+                        </p>
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Card>
+                {/* <Link to="/faq" className="link-view" style={{ textAlign: "center" }}>
                   <h5>View All</h5>
-                </Link>
+                </Link> */}
               </Accordion>
             </div>
           </div>

@@ -39,12 +39,12 @@ import useApplicationFee from "../../../components/useApplicationfee";
 
 function Dashboard() {
   const statusClasses = {
-    "Not Submitted": "minmd:bg-gray-300 px-8 py-4 rounded-full",
-    "Under Review": "minmd:bg-yellow-200 px-8 py-4 rounded-full",
-    Admitted: "minmd:bg-green-400 px-8 py-4 rounded-full",
-    Selected: "minmd:bg-purple-300 px-8 py-4 rounded-full",
-    Rejected: "minmd:bg-red-300 px-8 py-4 rounded-full",
-    Pending: "minmd:bg-yellow-200 px-8 py-4 rounded-full",
+    "Not Submitted": "c:bg-gray-300 px-8 py-4 rounded-full",
+    "Under Review": "c:bg-yellow-200 px-8 py-4 rounded-full",
+    Admitted: "c:bg-green-400 px-8 py-4 rounded-full",
+    Selected: "c:bg-purple-300 px-8 py-4 rounded-full",
+    Rejected: "c:bg-red-300 px-8 py-4 rounded-full",
+    Pending: "c:bg-yellow-200 px-8 py-4 rounded-full",
   };
 
   const buttonRef = useRef();
