@@ -12,7 +12,7 @@ import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
 import Waitlist from "./pages/web3-application/waitlist";
-import Program from "./pages/program-page/Program";
+import It from "./pages/program-page/It";
 // import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
@@ -211,7 +211,7 @@ const App = () => {
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
                 <Route path="/web3" component={Web3} />
-                <Route path="/program" component={Program} />
+                <Route path="/it" component={It} />
 
                 {/* Courses (both graduate and undergraduate) and internship */}
                 <Route

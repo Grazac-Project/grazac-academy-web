@@ -79,7 +79,7 @@ const Navbar = ({ top }) => {
               </NavItem>
             </li>
             <li className="nav__item">
-              <NavItem link="/program">
+              <NavItem link="/it">
                 <span>04</span>IT Program
               </NavItem>
             </li>
@@ -128,7 +128,7 @@ const Navbar = ({ top }) => {
             <NavItem link="/Web3">Web3</NavItem>
           </li>
           <li className="nav__item">
-            <NavItem link="/program">IT Program</NavItem>
+            <NavItem link="/it">IT Program</NavItem>
           </li>
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>

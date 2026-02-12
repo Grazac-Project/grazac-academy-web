@@ -29,7 +29,7 @@ import why3 from "../../images/program/mentor-1.png";
 import why4 from "../../images/program/global.png";
 
 
-const Program = () => {
+const It = () => {
   const history = useHistory();
   // useEffect(() => {
   //   window.scrollTo(0, 0);
@@ -412,4 +412,4 @@ const Program = () => {
   );
 };
 
-export default Program;
+export default It;
