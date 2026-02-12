@@ -3,21 +3,7 @@ module.exports = {
   important: true,
 
   content: [
-    // './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    // './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    // './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    "./src/pages/web3-application/web3.{js,jsx}",
-    "./src/pages/web3-application/form.{js,jsx}",
-    "./src/pages/web3-application/payment.{js,jsx}",
-    "./src/pages/web3-application/start.{js,jsx}",
-    "./src/pages/web3-application/successModal.{js,jsx}",
-    "./src/pages/web3-application/failedModal.{js,jsx}",
-    "./src/pages/physical-dashboard/Dashboard.js",
-    "./src/pages/physical-dashboard/ApplicationForm.js",
-    ".src/components/dashboard/not-submitted/index.js",
-    "./src/pages/graduateCohort/dashboard/Main.js",
-    "./src/components/dashboard/Details.js",
-    "./src/components/Assessment.js",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     animation: {
@@ -25,7 +11,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        sans: ["Rajdhani", "sans-serif"],
         mont: ["var(--font-montserrat)"],
+        rajdhani: ["Rajdhani", "sans-serif"],
       },
       screens: {
         "2xl": { max: "1535px" },
@@ -43,7 +31,7 @@ module.exports = {
         ssxm: { max: "360px" },
         sxm: { max: "350px" },
         minlg: "1024px",
-        minmd: "768px",
+        c: "768px",
         minsm: "639px",
         minxm: "468px",
       },

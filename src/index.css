@@ -1,78 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
-*{
+* {
   font-family: "Rajdhani", sans-serif !important;
-
 }
 body {
   margin: 0;
   /* font-family: "Nunito Sans", sans-serif; */
-  font-family: "Rajdhani", sans-serif ;
+  font-family: "Rajdhani", sans-serif !important;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-p{
+p {
   /* font-family: "Nunito Sans", sans-serif; */
-  font-family: "Rajdhani", sans-serif ;
-
+  font-family: "Rajdhani", sans-serif !important;
 }
-a{
+a {
   /* cursor: pointer; */
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
-button:focus{
+button:focus {
   outline: none;
 }
 
-.one-btn{
+.one-btn {
   width: 130px;
   margin-left: 75px;
   margin-top: 25px;
   text-align: center;
 }
 
-.link-view h5{
+.link-view h5 {
   color: #773dd3;
   font-weight: 600;
   margin-top: 20px;
   font-size: 16px;
 }
-.link-view:hover{
-  color: #773dd3;;
+.link-view:hover {
+  color: #773dd3;
 }
 
-.disable-btn{
-  color: #E0E0E0 !important;
-  background: #FAFAFA !important;
-  border: 1px solid #FAFAFA;
+.disable-btn {
+  color: #e0e0e0 !important;
+  background: #fafafa !important;
+  border: 1px solid #fafafa;
 }
 
-.disp-flex{
+.disp-flex {
   display: flex;
 }
 
-.crs-bg{
+.crs-bg {
   border: 2px solid #773dd3;
 }
 
-@media(min-width:600px){
-  .hide-at-600{
+@media (min-width: 600px) {
+  .hide-at-600 {
     display: none;
   }
 }
 
-@media(max-width:769px){
-  .one-btn{
+@media (max-width: 769px) {
+  .one-btn {
     margin-left: 60px;
   }
 }
