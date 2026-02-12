@@ -355,44 +355,6 @@ const Program = () => {
         </div>
       </section>
 
-      {/* <section
-        className="mt-24 ml-[80px] lgx:ml-[40px] md:ml-[20px] xm:ml-0 "
-        style={{ background: "linear-gradient(to bottom, transparent 90px, #FEF4BF66 90px)" }}
-      >
-        <div className="flex items-stretch overflow-hidden xm:px-[20px] xm:py-[40px]">
-          <div className="w-1/2 sm:w-full md:mt-[-120px] overflow-hidden xm:hidden md:block ">
-            <img
-              src={woman}
-              alt="Student"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="py-[78px] w-1/2 sm:w-full flex flex-col items-center md:items-start pr-[80px] lgx:pr-[40px] md:pr-[20px] sm:px-4 pl-10">
-            <h3 className="!text-[32px] md:text-[20px] font-bold text-[#000000] mb-2 leading-tight pt-[78px] text-center md:text-left xm:text-center sm:mx-auto xm:text-[24px]">
-              Want to build a career in <br className="hidden lg:block xm:hidden" /> tech?
-            </h3>
-            <p className="text-[#787676] !text-[16px] md:text-[14px] leading-[1.8] mb-[40px] max-w-[408px] text-center md:text-left xm:text-center xm:text-[16px]">
-              Interested in building a career in tech? Grazac Academy is the right
-              solution for you. Learn valuable skills with us and pay no
-              tuition until you are hired.
-            </p>
-            <div className="flex flex-row items-center justify-center md:justify-start gap-4">
-              <Link
-                to="/InternshipForm"
-                className="bg-[#773DD3] text-white px-[40px] py-[15px] rounded-[5px] font-bold !text-[18px] hover:shadow-xl transition-all min-w-[138px] text-center md:w-[100px] md:text-[16px] md:px-[20px]"
-              >
-                Apply Now
-              </Link>
-              <a
-                href="https://wa.me/2348068365951"
-                className="bg-white border-2 border-[#773DD3] text-[#773DD3] px-[40px] py-[13px] rounded-[5px] font-bold !text-[18px] hover:bg-[#773DD3] hover:text-white transition-all min-w-[138px] text-center md:w-[100px] md:text-[16px] md:px-[20px]"
-              >
-                Call Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <section
         className="mt-24 relative"
@@ -426,7 +388,7 @@ const Program = () => {
             </p>
 
             <div className="flex flex-row items-center justify-start md:justify-center gap-4">
-              <Link
+              <Link to="/InternshipForm"
                 className="bg-[#773DD3] text-white px-[40px] py-[15px] rounded-[5px] font-bold text-[18px] hover:shadow-xl transition-all min-w-[138px] text-center md:w-[130px] md:text-[16px] md:px-[20px]"
               >
                 Apply Now
