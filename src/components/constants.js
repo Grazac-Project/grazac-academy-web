@@ -11,6 +11,7 @@
  import fayemi from '../images/fayemi.png'
  import adeniyi from '../images/adeniyi.png'
 import justice from '../images/justice.jpg'
+import joy from "../images/joy.jpeg"
 
  
  export const mentorsData = [
@@ -88,11 +89,17 @@ import justice from '../images/justice.jpg'
         role: 'Product Manager',
         company: 'Location.live'
     },
+    // {
+    //     image: fayemi,
+    //     name: 'Daniel Fayemi',
+    //     role: ' Blockchain Engineer',
+    //     company: 'Bitvavo'
+    // },
     {
-        image: fayemi,
-        name: 'Daniel Fayemi',
-        role: ' Blockchain Engineer',
-        company: 'Bitvavo'
+        image: joy,
+        name: 'Joy Omowaye',
+        role: ' Lead Project Designer ',
+        company: 'Prooval'
     },
     
 ]
