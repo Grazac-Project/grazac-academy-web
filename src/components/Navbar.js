@@ -78,6 +78,11 @@ const Navbar = ({ top }) => {
                 <span>04</span>Pricing
               </NavItem>
             </li>
+            <li className="nav__item">
+              <NavItem link="/it">
+                <span>04</span>IT Program
+              </NavItem>
+            </li>
             {/* <li className="nav__item">
               <NavItem link="/hire">
                 <span>04</span>Hire
@@ -121,6 +126,9 @@ const Navbar = ({ top }) => {
           </li>
           <li className="nav__item">
             <NavItem link="/Web3">Web3</NavItem>
+          </li>
+          <li className="nav__item">
+            <NavItem link="/it">IT Program</NavItem>
           </li>
           {/* <li className="nav__item">
             <NavItem link="/hire">Hire</NavItem>

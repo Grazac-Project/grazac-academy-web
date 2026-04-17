@@ -56,7 +56,8 @@ const GraduateForm = () => {
   };
 
   const config = {
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
+   
     tx_ref: Date.now(),
     amount: amount,
     currency: "NGN",

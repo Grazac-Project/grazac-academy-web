@@ -12,6 +12,7 @@ import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
 import Waitlist from "./pages/web3-application/waitlist";
+import It from "./pages/program-page/It";
 // import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
@@ -124,6 +125,13 @@ const Form = lazy(() => {
 const Web3Payment = lazy(() => {
   return import("./pages/web3-application/payment");
 });
+const InternshipForm = lazy(() => {
+  return import("./pages/program-page/InternshipForm");
+});
+
+const InternshipPayment = lazy(() => {
+  return import("./pages/program-page/InternshipPayment");
+});
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -147,7 +155,7 @@ const App = () => {
     if (window.PageSense) {
       window.PageSense.track();
     }
-  }, [location. Pathname]);
+  }, [location.Pathname]);
 
   const app = useRef();
 
@@ -203,6 +211,7 @@ const App = () => {
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
                 <Route path="/web3" component={Web3} />
+                <Route path="/it" component={It} />
 
                 {/* Courses (both graduate and undergraduate) and internship */}
                 <Route
@@ -233,6 +242,8 @@ const App = () => {
                 <Route path="/web3-application-form" exact component={Form} />
                 <Route path="/waitlist" exact component={Waitlist} />
                 <Route path="/web3-application-payment" exact component={Web3Payment} />
+                <Route path="/InternshipForm" exact component={InternshipForm} />
+                <Route path="/InternshipPayment" exact component={InternshipPayment} />
 
 
               </Switch>

@@ -7,7 +7,14 @@ import {
 } from "flutterwave-react-v3";
 import { toast } from "react-toastify";
 
-const Payment = ({ selectedTrack }) => {
+const formatCurrency = (value) => {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+  }).format(value);
+};
+
+const Payment = ({ selectedTrack, isSpecialCourse }) => {
   const [action, setAction] = useState("Pay Now");
   const [status, setStatus] = useState("Pending");
   const [details, setDetails] = useState({});
@@ -46,7 +53,7 @@ const Payment = ({ selectedTrack }) => {
       callback: (response) => {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard"
+          window.location = "/dashboard";
           // setTimeout(() => {
           //   window.location = "/dashboard";
           // }, 2500);
@@ -94,7 +101,7 @@ const Payment = ({ selectedTrack }) => {
 
   const config = {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
-    public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
+    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
 
     tx_ref: Date.now(),
     amount: amount,
@@ -115,6 +122,38 @@ const Payment = ({ selectedTrack }) => {
 
   const handleFlutterPayment = useFlutterwave(config);
 
+  const firstPayment =
+    selectedTrack === "physical" && isSpecialCourse
+      ? 470000
+      : selectedTrack === "physical" && !isSpecialCourse
+      ? 350000
+      : selectedTrack === "virtual" && isSpecialCourse
+      ? 275000
+      : selectedTrack === "virtual" && !isSpecialCourse
+      ? 140000
+      : null;
+
+  const secondPayment =
+    selectedTrack === "physical" && isSpecialCourse
+      ? 255000
+      : selectedTrack === "physical" && !isSpecialCourse
+      ? 180000
+      : selectedTrack === "virtual" && isSpecialCourse
+      ? 130000
+      : selectedTrack === "virtual" && !isSpecialCourse
+      ? 110000
+      : null;
+  const thirdPayment =
+    selectedTrack === "physical" && isSpecialCourse
+      ? 175000
+      : selectedTrack === "physical" && !isSpecialCourse
+      ? 170000
+      : selectedTrack === "virtual" && isSpecialCourse
+      ? 95000
+      : selectedTrack === "virtual" && !isSpecialCourse
+      ? 100000
+      : null;
+
   return (
     <div className="payment">
       <h4>Payment Type: Installment</h4>
@@ -131,7 +170,7 @@ const Payment = ({ selectedTrack }) => {
           <tbody>
             <tr>
               <td>January</td>
-              <td>{selectedTrack === "physical" ? "260" : "120"}</td>
+              <td>{formatCurrency(firstPayment)}</td>
               <td>
                 <span className={initialPayment ? "approved" : "pending"}>
                   {initialPayment ? "Approved" : "Pending"}
@@ -141,7 +180,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={initialPayment ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 260 : 120);
+                    setAmount(firstPayment);
                   }}
                   className={initialPayment ? "paid" : "pay-now"}
                 >
@@ -151,7 +190,7 @@ const Payment = ({ selectedTrack }) => {
             </tr>
             <tr>
               <td>February</td>
-              <td>{selectedTrack === "physical" ? "240" : "110"}</td>
+              <td>{formatCurrency(secondPayment)}</td>
               <td>
                 <span className={subInstallment ? "approved" : "pending"}>
                   {/* {status} */}
@@ -162,7 +201,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={subInstallment ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 240 : 110);
+                    setAmount(secondPayment);
                   }}
                   className={subInstallment ? "paid" : "pay-now"}
                 >
@@ -172,7 +211,7 @@ const Payment = ({ selectedTrack }) => {
             </tr>
             <tr>
               <td>March</td>
-              <td>{selectedTrack === "physical" ? 200 : 105}</td>
+              <td>{formatCurrency(thirdPayment)}</td>
               <td>
                 <span className={subInstallmentOne ? "approved" : "pending"}>
                   {subInstallmentOne ? "Approved" : "Pending"}
@@ -182,7 +221,7 @@ const Payment = ({ selectedTrack }) => {
                 <button
                   disabled={subInstallmentOne ? true : false}
                   onClick={() => {
-                    setAmount(selectedTrack === "physical" ? 200 : 105);
+                    setAmount(thirdPayment);
                   }}
                   className={subInstallmentOne ? "paid" : "pay-now"}
                 >
@@ -389,7 +428,7 @@ const Payment = ({ selectedTrack }) => {
               <span>Month:</span> January
             </div>
             <div className="details">
-              <span>Amount:</span> 350,000
+              <span>Amount:</span> {formatCurrency(firstPayment)}
             </div>
             <div className="details">
               <span>Status: </span>
@@ -401,7 +440,7 @@ const Payment = ({ selectedTrack }) => {
               <button
                 disabled={initialPayment == 1 ? true : false}
                 onClick={() => {
-                  setAmount(150);
+                  setAmount(firstPayment);
                 }}
                 className={initialPayment ? "paid" : "pay-now"}
               >
@@ -414,7 +453,7 @@ const Payment = ({ selectedTrack }) => {
               <span>Month:</span> February
             </div>
             <div className="details">
-              <span>Amount:</span> 175,000
+              <span>Amount:</span> {formatCurrency(secondPayment)}
             </div>
             <div className="details">
               <span>Status: </span>
@@ -427,7 +466,7 @@ const Payment = ({ selectedTrack }) => {
                 className={subInstallment == 1 ? "paid" : "pay-now"}
                 disabled={subInstallment == 1 ? true : false}
                 onClick={() => {
-                  setAmount(175000);
+                  setAmount(secondPayment);
                 }}
               >
                 {subInstallment == 1 ? "Paid" : "Pay Now"}
@@ -439,7 +478,7 @@ const Payment = ({ selectedTrack }) => {
               <span>Month:</span> March
             </div>
             <div className="details">
-              <span>Amount:</span> 175,000
+              <span>Amount:</span> {formatCurrency(thirdPayment)}
             </div>
             <div className="details">
               <span>Status: </span>
@@ -452,7 +491,7 @@ const Payment = ({ selectedTrack }) => {
                 className={subInstallmentOne == 1 ? "paid" : "pay-now"}
                 disabled={subInstallmentOne == 1 ? true : false}
                 onClick={() => {
-                  setAmount(175000);
+                  setAmount(thirdPayment);
                 }}
               >
                 {subInstallmentOne == 1 ? "Paid" : "Pay Now"}

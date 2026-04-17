@@ -9,9 +9,9 @@ import Mode from "../components/Mode";
 import { Container, Row, Col } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 
-import Abdullahi from "../images/testimonial/abdullahi.jpeg";
-import Adedamola from "../images/testimonial/adedamola.jpeg";
-import Bosun from "../images/testimonial/bosun.jpg";
+// import Abdullahi from "../images/testimonial/abdullahi.jpeg";
+// import Adedamola from "../images/testimonial/adedamola.jpeg";
+// import Bosun from "../images/testimonial/bosun.jpg";
 import Grazac from "../images/svg/logo-round.svg";
 import Video from "../images/landing-video2.mp4";
 import Object from "../images/svg/objects.svg";
@@ -31,16 +31,16 @@ import Sponsor3 from "../images/svg/Flutterwave.svg";
 import Sponsor5 from "../images/svg/Microsoft.svg";
 import Sponsor6 from "../images/svg/Google.svg";
 import mark from "../images/svg/mark.svg";
-import join from "../images/svg/join.svg";
+// import join from "../images/svg/join.svg";
 import why1 from "../images/svg/why1.svg";
 import why2 from "../images/svg/why2.svg";
 import why3 from "../images/svg/why3.svg";
 import why4 from "../images/svg/why4.svg";
 
 import { LoaderContext } from "../context";
-import WhatsApp from "../components/whatsApp/whatsApp";
+// import WhatsApp from "../components/whatsApp/whatsApp";
 import VirtualSection from "../components/VirtualSection/VirtualSection";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LandingMentors from "../components/LandingMentors";
 import LandingJudges from "../components/LandingJudges";
 import AvailableTrack from "../components/AvailableTrack/AvailableTrack";
@@ -139,9 +139,7 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for Cohort 17 is ongoing. Early registration
-                  closes by November 30th. Hurry Now and Register. Classes
-                  starts by January 12th, 2026.
+                  Application for Cohort 18 has started. Early Registration closes May 30th. Classes starts by July 6th. Hurry now and register.
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -562,128 +560,6 @@ const Landing = () => {
         <div className="landing_faq">
           <div className="container">
             <h1>FAQs</h1>
-            {/* <div>
-              <Accordion>
-                <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="1">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>Do I have to be physically present to register?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="1">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                            No, registration is to be done online.
-                          </p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <hr />
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="2">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>Are classes virtual or onsite?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="2">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                            Classes would be onsite or virtually, depending on the mode of learning you prefer.
-                          </p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <hr />
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="3">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>
-                          What is the duration of the program?
-                        </h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="3">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                            The program is for a duration of 12 months,
-                              consisting of 6 months  immersive training and 6 months internship.
-                          </p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <hr />
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="4">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>Do I qualify to enrol as an Undergraduate?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="4">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                          Yes,please. However, as an undergraduate, you are strongly 
-                          advised to choose our virtual learning mode due to its flexibility.
-                          </p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <hr />
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="5">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>Do you offer any certification after the course?</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="5">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                            Yes, students who complete our courses will receive a virtual and hardcopy 
-                            certificate of completion
-                          </p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                  <hr />
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="6">
-                      <div className="landing_faq-question" onClick={handleFaq}>
-                        <h4>What is the cost of learning at Grazac Academy</h4>
-                        <MdKeyboardArrowDown size="2rem" color="black" />
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="6">
-                      <Card.Body>
-                        <div className="landing_faq-answer">
-                          <p>
-                            For our virtual classes, the cost for all courses is #1,000,000
-                          </p>
-                          <p>While for our virtual classes, the cost is $200. To get more information 
-                            about our pricing, <a>Click here</a></p>
-                        </div>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                <Link to="/faq" className="link-view">
-                  <h5>View All</h5>
-                </Link>
-              </Accordion>
-            </div> */}
-
             <div style={{ width: "90%", margin: "auto" }}>
               <Accordion defaultActiveKey="1">
                 <Card>

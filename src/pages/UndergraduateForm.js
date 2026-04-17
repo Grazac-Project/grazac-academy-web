@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
@@ -28,19 +28,15 @@ const UndergraduateForm = () => {
       .then((resp) => {
         setFetched(resp.data);
       })
-      .catch((error) => {
-     
-      });
+      .catch((error) => {});
 
-      //endpoint to fetch all institutions
-      fetch("https://grazacacademy.com/undergraduate/institutions")
-        .then((resp) => resp.json())
-        .then((resp) => {
-          setInstitutionlist(resp.data);
-        })
-        .catch((error) => {
-        
-        });
+    //endpoint to fetch all institutions
+    fetch("https://grazacacademy.com/undergraduate/institutions")
+      .then((resp) => resp.json())
+      .then((resp) => {
+        setInstitutionlist(resp.data);
+      })
+      .catch((error) => {});
   }, []);
 
   const courseChange = (e) => {
@@ -50,20 +46,21 @@ const UndergraduateForm = () => {
   };
 
   const config = {
-    public_key: 'FLWPUBK-006bdc82ad878f1518af32f44af6478f-X',
+    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
+
     tx_ref: Date.now(),
     amount: amount,
-    currency: 'NGN',
-    payment_options: 'card,mobilemoney,ussd',
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
     customer: {
       email: email,
       phonenumber: phone,
       name: firstname + " " + lastname,
     },
     customizations: {
-      title: 'Grazac Undergraduate Accelerator Plan',
+      title: "Grazac Undergraduate Accelerator Plan",
       description: `Payment for ${course} at Grazac Undergraduate Accelerator Plan`,
-      logo: 'https://grazac.com.ng/assets/images/favicon.png',
+      logo: "https://grazac.com.ng/assets/images/favicon.png",
     },
   };
 
@@ -73,86 +70,90 @@ const UndergraduateForm = () => {
     if (institution === "OOU_IBOGUN") {
       handleFlutterPayment({
         callback: (response) => {
-            if (response.status === 'successful') {
-              setTxref(response.tx_ref);
-              //window.scroll(0, formInfo.current.offsetTop);
-              document.querySelector(".form-info").textContent =
-                "Submitting, please wait...";
-              document
-                .querySelector("#submit-btn")
-                .setAttribute("disabled", "disabled");
-              fetch("https://grazacacademy.com/undergraduate/register", {
-                method: "POST",
+          if (response.status === "successful") {
+            setTxref(response.tx_ref);
+            //window.scroll(0, formInfo.current.offsetTop);
+            document.querySelector(".form-info").textContent =
+              "Submitting, please wait...";
+            document
+              .querySelector("#submit-btn")
+              .setAttribute("disabled", "disabled");
+            fetch("https://grazacacademy.com/undergraduate/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                institution: institution,
+                course: course,
+                expectation: message,
+                tuition: amount,
+                tx_ref: txref,
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                if (data.success === true) {
+                  document.querySelector(".form-info").textContent =
+                    "Your registration was successful, kindly check your mailbox for further details.";
+                  document
+                    .querySelector("#submit-btn")
+                    .removeAttribute("disabled");
+                  setFirstName("");
+                  setLastName("");
+                  setMessage("");
+                  setPhone("");
+                  setEmail("");
+                  setInstitution("");
+                  setCourse("");
+                } else {
+                  document.querySelector(".form-info").textContent = data.msg;
+                  document
+                    .querySelector("#submit-btn")
+                    .removeAttribute("disabled");
+                }
+              })
+              .catch((err) => {
+                document.querySelector(".form-info").textContent =
+                  "Something went wrong, please try again";
+                document
+                  .querySelector("#submit-btn")
+                  .removeAttribute("disabled");
+              });
+            let formData = new FormData();
+
+            formData.append("name", firstname);
+            formData.append("email", email);
+            axios
+              .post("https://grazac.com.ng/newsletter/subscribe", formData, {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                  firstname: firstname,
-                  lastname: lastname,
-                  email: email,
-                  phone: phone,
-                  institution: institution,
-                  course: course,
-                  expectation: message,
-                  tuition: amount,
-                  tx_ref: txref,
-                }),
               })
-                .then((resp) => resp.json())
-                .then((data) => {
-                  if (data.success === true) {
-                    document.querySelector(".form-info").textContent =
-                      "Your registration was successful, kindly check your mailbox for further details.";
-                    document.querySelector("#submit-btn").removeAttribute("disabled");
-                    setFirstName("");
-                    setLastName("");
-                    setMessage("");
-                    setPhone("");
-                    setEmail("");
-                    setInstitution("");
-                    setCourse("");
-                  } else {
-                    document.querySelector(".form-info").textContent = data.msg;
-                    document.querySelector("#submit-btn").removeAttribute("disabled");
-                  }
-                })
-                .catch((err) => {
-                  document.querySelector(".form-info").textContent =
-                    "Something went wrong, please try again";
-                  document.querySelector("#submit-btn").removeAttribute("disabled");
-                });
-              let formData = new FormData();
-
-              formData.append("name", firstname);
-              formData.append("email", email);
-              axios
-                .post("https://grazac.com.ng/newsletter/subscribe", formData, {
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                .then((resp) => resp.data)
-                .then((data) => {
-              
-                })
-                .catch((err) => {
-                });
-            } else {
-              alert('Payment not successful');
-            }
-            closePaymentModal() // this will close the modal programmatically
+              .then((resp) => resp.data)
+              .then((data) => {})
+              .catch((err) => {});
+          } else {
+            alert("Payment not successful");
+          }
+          closePaymentModal(); // this will close the modal programmatically
         },
         onClose: () => {},
       });
-
     } else {
-      alert("We don't have any open enrollment in your institution at the moment. Please check back later.");
+      alert(
+        "We don't have any open enrollment in your institution at the moment. Please check back later."
+      );
     }
   };
 
   const handlePhone = (e) => {
     setPhone(e.target.value.slice(0, 11));
-  }
+  };
 
   return (
     <div>
@@ -162,10 +163,7 @@ const UndergraduateForm = () => {
           <div className="form_top" ref={formInfo}>
             <div>
               <h1>Grazac Academy Undergraduate Accelerator</h1>
-              <p>
-                Classes are on-site and will only
-                be on weekends.
-              </p>
+              <p>Classes are on-site and will only be on weekends.</p>
             </div>
           </div>
           <div className="container">
@@ -244,9 +242,14 @@ const UndergraduateForm = () => {
                 >
                   <option>---Choose institution---</option>
                   {institutionlist.length ? (
-                    institutionlist.map((item, index) =>  (
-                    <option value={item.ref} key={index}>{item.name}</option>)))
-                    :(<option>Loading Institutions ...</option>)}
+                    institutionlist.map((item, index) => (
+                      <option value={item.ref} key={index}>
+                        {item.name}
+                      </option>
+                    ))
+                  ) : (
+                    <option>Loading Institutions ...</option>
+                  )}
                 </select>
               </div>
               <div>

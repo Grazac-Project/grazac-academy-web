@@ -10,9 +10,6 @@ import {
 import axios from "axios";
 
 import arrow from "../../../images/svg/dashboard/arrow.svg";
-import upload from "../../../images/svg/upload.svg";
-import loader from "../../../images/svg/dashboard/loader.gif";
-import about from "../../../images/about-1.jpg";
 import termsandconds from "../../../images/newsletter/terms_and_conds.pdf";
 import pricingPolicy from "../../../images/newsletter/pricing.pdf";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -920,6 +917,9 @@ function NotSubmitted({
                         >
                           Product Marketing
                         </option>
+                        <option value="Product Design">
+                          Product Design
+                        </option>
                         <option value="Frontend Web Development">
                           Front End Web Development (Reactjs)
                         </option>
@@ -939,6 +939,9 @@ function NotSubmitted({
                         <option value="Data Analysis">Data Analysis</option>
 
                         <option value="cyber security">Cyber Security</option>
+                        <option value="Backend with Java">
+                          Backend With Java
+                        </option>
                       </select>
                     </div>
                     <div className="dashboard-content-form-container">
@@ -966,11 +969,12 @@ function NotSubmitted({
                         type="text"
                         required
                         name="why_selected_for_cohort"
+                        maxLength="150"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
                         onChange={(e) => {
-                          const words = countWords(e.target.value);
-                          if (words <= 350) {
+                          const charLength = e.target.value.length;
+                          if (charLength <= 150) {
                             handleChange(e);
                           }
                         }}
@@ -979,15 +983,14 @@ function NotSubmitted({
                         style={{
                           fontSize: "12px",
                           color:
-                            countWords(bioData.why_selected_for_cohort) > 350
+                            bioData.why_selected_for_cohort.length > 150
                               ? "red"
                               : "#666",
                         }}
                       >
-                        {countWords(bioData.why_selected_for_cohort)} / 350
-                        words
-                        {countWords(bioData.why_selected_for_cohort) > 350 &&
-                          "(Word limit reached)"}
+                        {bioData.why_selected_for_cohort.length} / 150 characters
+                        {bioData.why_selected_for_cohort.length > 150 &&
+                          " (Limit reached)"}
                       </p>
                     </div>
                     {/* <div className="dashboard-content-form-container">
@@ -1385,6 +1388,9 @@ function NotSubmitted({
                         <option value="Backend Web Development">
                           Back-end Web Development
                         </option>
+                        <option value="Product Design">
+                          Product Design
+                        </option>
                         <option value="Android Development">
                           Mobile Application Development (Flutter and Dart)
                         </option>
@@ -1407,11 +1413,12 @@ function NotSubmitted({
                         type="text"
                         required
                         name="why_selected_for_cohort"
+                        maxLength="150"
                         value={bioData.why_selected_for_cohort}
                         placeholder="Write your reasons here..."
                         onChange={(e) => {
-                          const words = countWords(e.target.value);
-                          if (words <= 350) {
+                          const charLength = e.target.value.length;
+                          if (charLength <= 150) {
                             handleChange(e);
                           }
                         }}
@@ -1420,15 +1427,14 @@ function NotSubmitted({
                         style={{
                           fontSize: "12px",
                           color:
-                            countWords(bioData.why_selected_for_cohort) > 350
+                            bioData.why_selected_for_cohort.length > 150
                               ? "red"
                               : "#666",
                         }}
                       >
-                        {countWords(bioData.why_selected_for_cohort)} / 350
-                        words
-                        {countWords(bioData.why_selected_for_cohort) > 350 &&
-                          "(Word limit reached)"}
+                        {bioData.why_selected_for_cohort.length} / 150 characters
+                        {bioData.why_selected_for_cohort.length > 150 &&
+                          " (Limit reached)"}
                       </p>
                     </div>
 
