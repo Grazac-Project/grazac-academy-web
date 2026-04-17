@@ -876,13 +876,14 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(850000);
-                                      // setAmount(1000);
+                                      // setAmount(850000);
+                                      setAmount(99);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 850,000)</p>
+                                    <p>Pay at once (99)</p>
+                                    {/* <p>Pay at once (NGN 850,000)</p> */}
                                   </div>
                                   <div
                                     className={
@@ -1014,13 +1015,14 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(650000);
-                                      // setAmount(1000);
+                                      // setAmount(650000);
+                                      setAmount(99);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (NGN 650,000)</p>
+                                    {/* <p>Pay at once (NGN 650,000)</p> */}
+                                    <p>Pay at once (NGN 99)</p>
                                   </div>
                                   <div
                                     className={
