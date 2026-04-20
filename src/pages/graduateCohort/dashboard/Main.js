@@ -877,12 +877,12 @@ function Dashboard() {
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
                                       // setAmount(850000);
-                                      setAmount(95);
+                                      setAmount(120);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
-                                    <p>Pay at once (95)</p>
+                                    <p>Pay at once (120)</p>
                                     {/* <p>Pay at once (NGN 850,000)</p> */}
                                   </div>
                                   <div
@@ -946,8 +946,8 @@ function Dashboard() {
                                     }
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
-                                      setAmount(450000);
-                                      // setAmount(1000);
+                                      // setAmount(450000);
+                                      setAmount(120);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -1016,13 +1016,13 @@ function Dashboard() {
                                     onClick={() => {
                                       setPayOpt("fullTrainingOnly");
                                       // setAmount(650000);
-                                      setAmount(95);
+                                      setAmount(120);
                                       setCurrency("NGN");
                                     }}
                                   >
                                     <div></div>
                                     {/* <p>Pay at once (NGN 650,000)</p> */}
-                                    <p>Pay at once (NGN 95)</p>
+                                    <p>Pay at once (NGN 120)</p>
                                   </div>
                                   <div
                                     className={
