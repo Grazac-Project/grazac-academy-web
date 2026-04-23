@@ -18,8 +18,8 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
 
     tx_ref: Date.now(),
-    // amount: 7500,
-    amount: 105,
+    amount: 7500,
+    // amount: 105,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -54,8 +54,8 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
       <h3>Welcome to Grazac Academy, {fname}</h3>
       <p>We're excited to support you as you kickstart your career in tech!</p>
       <p>
-        The application fee for our program is <strong>₦105</strong>.
-        {/* The application fee for our program is <strong>₦7,500</strong>. */}
+        {/* The application fee for our program is <strong>₦105</strong>. */}
+        The application fee for our program is <strong>₦7,500</strong>.
       </p>
       <p>
         After completing your registration payment, you’ll be required to take a
