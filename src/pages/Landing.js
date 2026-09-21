@@ -139,7 +139,8 @@ const Landing = () => {
               <div className="infomodal_content">
                 <img src={badge} alt="" className="infomodal_badge" />
                 <p>
-                  Application for Cohort 18 has started. Early Registration closes May 30th. Classes starts by July 6th. Hurry now and register.
+                  Our new cohort is now open for registration! Start your tech journey with Grazac Academy.
+                  Registration closes December 10. Register now and secure your spot.
                   {/* <a
                 className="infomodal_content-link"
                 href="/login"
@@ -541,7 +542,7 @@ const Landing = () => {
                   <Link to="/hire">
                     <div
                       className="nav__btn nav__btn-flex "
-                      // onClick={() => toast.info("Coming Soon")}
+                    // onClick={() => toast.info("Coming Soon")}
                     >
                       <a className="nav__btn--text">Hire our Talents</a>
                     </div>
@@ -656,7 +657,7 @@ const Landing = () => {
                     </Accordion.Body>
                   </Accordion.Item>
                 </Card>
-                <Link to="/faq" className="link-view" style={{textAlign: "center"}}>
+                <Link to="/faq" className="link-view" style={{ textAlign: "center" }}>
                   <h5>View All</h5>
                 </Link>
               </Accordion>
