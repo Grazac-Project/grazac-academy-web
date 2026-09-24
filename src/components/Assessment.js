@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Timer from "./Timer";
 import { fetchAssessment, submitAssessment } from "../api/dashboard/data";
 import loader from "../images/loader-purple.gif";
@@ -13,6 +13,7 @@ const Assessment = ({
   const [assessmentData, setAssessmentData] = useState();
   const [time, setTime] = useState();
   const [selectedOption, setSelectedOption] = useState({});
+  const submitting = useRef(false);
   const [loading, setLoading] = useState(true);
   const [load, setLoad] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -40,22 +41,28 @@ const Assessment = ({
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
+    if (submitting.current) return;
+
+    submitting.current = true;
     setLoad(true);
 
-    const values = Object.values(selectedOption);
-    const data = { answers: values };
+    const answers = assessmentData.questions
+      .map((question) => selectedOption[question._id])
+      .filter((answer) => answer !== undefined);
+    const data = { answers };
     const testId = assessmentData._id;
 
     submitAssessment(data, testId)
       .then((res) => {
         console.log("assessment response", res);
-        setLoad(false);
         setScore(res.data.data.assessmentScore);
         setShowAssessment(false);
         setShowScore(true);
         setStatus(res.data.message);
       })
-      .catch(() => {
+      .catch(() => {})
+      .finally(() => {
+        submitting.current = false;
         setLoad(false);
       });
   };
@@ -101,6 +108,7 @@ const Assessment = ({
                         setShowConfirmation(false);
                         handleSubmit();
                       }}
+                      disabled={load}
                     >
                       Proceed
                     </button>
