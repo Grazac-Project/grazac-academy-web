@@ -1,5 +1,4 @@
 import { APIKit, AdminApiKit, AdminApi } from "./apikit";
-import axios from 'axios'
 
 let token = "";
 let userId = 0;
@@ -81,7 +80,7 @@ export const submitAssessment = (data, testId) => {
 // ===============Course Guarantor data fetch commented=============== 
 
 export const getGuarantor = () => {
-  return axios.get(`https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/fetchGuarantorData?userId=${userId}`, {
+  return APIKit.get(`api/v1/user/fetchGuarantorData?userId=${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -140,4 +139,3 @@ export const sendFlutterTx = (trans_id) => {
 export const newsForm = (payload) => {
   return APIKit.post('api/v1/user/subscribe', payload)
 }
-

@@ -11,6 +11,7 @@ import Fone from "../images/session-fone.png";
 import Mobile from "../images/session-mobile.png";
 import Stroke from "../images/stroke.png";
 import { PopupButton } from "react-calendly";
+import { academyApiUrl } from "../api/dashboard/apikit";
 // import axios from 'axios'
 
 const CourseDetail = (props) => {
@@ -72,9 +73,9 @@ const CourseDetail = (props) => {
       let urlBuild = "";
       // console.log(mode)
       if (mode === "Virtual") {
-        urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourseVirtual/${slug}`;
+        urlBuild = `${academyApiUrl}/api/v1/user/getCourseVirtual/${slug}`;
       } else if (mode === "Onsite") {
-        urlBuild = `https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user/getCourse/${slug}`;
+        urlBuild = `${academyApiUrl}/api/v1/user/getCourse/${slug}`;
       }
 
       setUrl(urlBuild);
