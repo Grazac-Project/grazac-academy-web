@@ -35,12 +35,8 @@ const Start = () => {
   const handleCoupon = (e) => {
     setError("");
     setForm(e.target.value);
-    console.log(form);
-    if (setForm === true) {
-      setError("");
-    } else {
-      setLoading("");
-    }
+    setActive(false);
+    setLoading("");
   };
   const handleCloseSucess = () => {
     setSucessModal(!sucessModal);
@@ -65,19 +61,30 @@ const Start = () => {
     e.preventDefault();
     setLoading("loading");
     setError("");
+    setActive(false);
     try {
       const response = await coupon(form);
-      console.log(response);
-
-      if (response.status === 200) {
+      const result = response.data;
+      if (
+        result?.message === "Coupon is valid and use incremented" &&
+        result.coupon?.code === form
+      ) {
         setLoading("correct");
         setActive(true);
+      } else {
+        setLoading("");
+        setError(
+          typeof result?.message === "string"
+            ? result.message
+            : "This coupon could not be accepted. Please try again."
+        );
       }
     } catch (err) {
       setLoading("");
       const errorMessage =
-        err.response?.data?.message ||
-        "Something went wrong! Please ensure you have a good internet connection.";
+        typeof err.response?.data?.message === "string"
+          ? err.response.data.message
+          : "Something went wrong! Please ensure you have a good internet connection.";
       setError(errorMessage);
     }
   };
@@ -429,9 +436,10 @@ const Start = () => {
                   name=""
                   value={form}
                   onChange={handleCoupon}
+                  disabled={loading === "loading"}
                 />
                 <button
-                  disabled={!form}
+                  disabled={!form || loading === "loading"}
                   onClick={checkCoupon}
                   className={`text-[#787676] flex justify-center items-center text-[14px] leading-[17.87px] !w-[64px]  h-[50px] p-[13px]  !rounded-[5px] !mt-[5px] !border-none ${
                     form
@@ -449,7 +457,7 @@ const Start = () => {
                 </button>
               </div>
               {error && (
-                <p className="!text-red-600 text-[14px] leading-[21px]">
+                <p role="alert" className="!text-red-600 text-[14px] leading-[21px]">
                   {error}
                 </p>
               )}
