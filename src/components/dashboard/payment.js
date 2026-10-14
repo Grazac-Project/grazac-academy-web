@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { sendFlutterTx } from "../../api/dashboard/data.js";
 import {
   useFlutterwave,
-  FlutterWaveButton,
   closePaymentModal,
 } from "flutterwave-react-v3";
 import { toast } from "react-toastify";
@@ -14,23 +13,16 @@ const formatCurrency = (value) => {
   }).format(value);
 };
 
+const isPaid = (value) => value === true || value === 1;
+
 const Payment = ({ selectedTrack, isSpecialCourse }) => {
-  const [action, setAction] = useState("Pay Now");
-  const [status, setStatus] = useState("Pending");
+  const [, setAction] = useState("Pay Now");
   const [details, setDetails] = useState({});
   const [amount, setAmount] = useState();
-  const [currency, setCurrency] = useState("NGN");
+  const currency = "NGN";
   const [initialPayment, setInitialPayment] = useState();
   const [subInstallment, setSubInstallment] = useState();
   const [subInstallmentOne, setSubInstallmentOne] = useState();
-  const [subInstallmentTwo, setSubInstallmentTwo] = useState();
-  const [subInstallmentThree, setSubInstallmentThree] = useState();
-  const [subInstallmentFour, setSubInstallmentFour] = useState();
-  const [subInstallmentFive, setSubInstallmentFive] = useState();
-  const [subInstallmentSix, setSubInstallmentSix] = useState();
-  const [subInstallmentSeven, setSubInstallmentSeven] = useState();
-  const [subInstallmentEight, setSubInstallmentEight] = useState();
-  const [displayBtn, setDisplayBtn] = useState();
 
   useEffect(() => {
     let details = sessionStorage.getItem("user_details");
@@ -39,62 +31,8 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
     setInitialPayment(JSON.parse(details).firstInstallment);
     setSubInstallment(JSON.parse(details).subInstallment);
     setSubInstallmentOne(JSON.parse(details).subInstallmentOne);
-    setSubInstallmentTwo(JSON.parse(details).subInstallmentTwo);
-    setSubInstallmentThree(JSON.parse(details).subInstallmentThree);
-    setSubInstallmentFour(JSON.parse(details).subInstallmentFour);
-    setSubInstallmentFive(JSON.parse(details).subInstallmentFive);
-    setSubInstallmentSix(JSON.parse(details).subInstallmentSix);
-    setSubInstallmentSeven(JSON.parse(details).subInstallmentSeven);
-    setSubInstallmentEight(JSON.parse(details).subInstallmentEight);
   }, []);
 
-  const flutterWavePayment = () => {
-    handleFlutterPayment({
-      callback: (response) => {
-        if (response.status === "completed") {
-          toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard";
-          // setTimeout(() => {
-          //   window.location = "/dashboard";
-          // }, 2500);
-          // console.log(response);
-          // console.log(response);
-          // console.log(response);
-
-          sendFlutterTx(response.transaction_id)
-            .then((response) => response.data)
-            .then((res) => {
-              if (res.data.status === "successful") {
-                setAction("paid");
-                // window.location = "/dashboard";
-              } else {
-                setAction("Pay Now");
-              }
-            })
-            .catch((err) => {});
-        } else {
-          toast.error("Payment unsuccessful!");
-        }
-        closePaymentModal(); // this will close the modal programmatically
-      },
-      onClose: (response) => {},
-    });
-  };
-  useEffect(() => {
-    makePayment();
-  }, [amount]);
-
-  const makePayment = () => {
-    // console.log(amount);
-    flutterWavePayment();
-    // if (action === "Paid") {
-    //   setStatus("Approved");
-    // } else if (action === "Pay Now") {
-    //   setStatus("Pending");
-    // } else {
-    //   toast.info("Something is wrong!");
-    // }
-  };
 
 
   const config = {
@@ -118,6 +56,34 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
   };
 
   const handleFlutterPayment = useFlutterwave(config);
+  const lastCheckoutAmount = useRef();
+
+  useEffect(() => {
+    if (amount === undefined || lastCheckoutAmount.current === amount) return;
+    lastCheckoutAmount.current = amount;
+    handleFlutterPayment({
+      callback: (response) => {
+        if (response.status === "completed") {
+          toast.success("Payment successful! Verifying payment...");
+          window.location = "/dashboard";
+          sendFlutterTx(response.transaction_id)
+            .then((response) => response.data)
+            .then((res) => {
+              if (res.data.status === "successful") {
+                setAction("paid");
+              } else {
+                setAction("Pay Now");
+              }
+            })
+            .catch((err) => {});
+        } else {
+          toast.error("Payment unsuccessful!");
+        }
+        closePaymentModal();
+      },
+      onClose: (response) => {},
+    });
+  }, [amount, handleFlutterPayment]);
 
   const firstPayment =
     selectedTrack === "physical" && isSpecialCourse
@@ -435,7 +401,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             </div>
             <div className="payment-mobile-action">
               <button
-                disabled={initialPayment == 1 ? true : false}
+                disabled={isPaid(initialPayment)}
                 onClick={() => {
                   setAmount(firstPayment);
                 }}
@@ -454,19 +420,19 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             </div>
             <div className="details">
               <span>Status: </span>
-              <span className={subInstallment == 1 ? "approved" : "pending"}>
-                {subInstallment == 1 ? "Approved" : "Pending"}
+              <span className={isPaid(subInstallment) ? "approved" : "pending"}>
+                {isPaid(subInstallment) ? "Approved" : "Pending"}
               </span>
             </div>
             <div className="payment-mobile-action">
               <button
-                className={subInstallment == 1 ? "paid" : "pay-now"}
-                disabled={subInstallment == 1 ? true : false}
+                className={isPaid(subInstallment) ? "paid" : "pay-now"}
+                disabled={isPaid(subInstallment)}
                 onClick={() => {
                   setAmount(secondPayment);
                 }}
               >
-                {subInstallment == 1 ? "Paid" : "Pay Now"}
+                {isPaid(subInstallment) ? "Paid" : "Pay Now"}
               </button>
             </div>
           </div>
@@ -479,19 +445,19 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             </div>
             <div className="details">
               <span>Status: </span>
-              <span className={subInstallmentOne == 1 ? "approved" : "pending"}>
-                {subInstallmentOne == 1 ? "Approved" : "Pending"}
+              <span className={isPaid(subInstallmentOne) ? "approved" : "pending"}>
+                {isPaid(subInstallmentOne) ? "Approved" : "Pending"}
               </span>
             </div>
             <div className="payment-mobile-action">
               <button
-                className={subInstallmentOne == 1 ? "paid" : "pay-now"}
-                disabled={subInstallmentOne == 1 ? true : false}
+                className={isPaid(subInstallmentOne) ? "paid" : "pay-now"}
+                disabled={isPaid(subInstallmentOne)}
                 onClick={() => {
                   setAmount(thirdPayment);
                 }}
               >
-                {subInstallmentOne == 1 ? "Paid" : "Pay Now"}
+                {isPaid(subInstallmentOne) ? "Paid" : "Pay Now"}
               </button>
             </div>
           </div>

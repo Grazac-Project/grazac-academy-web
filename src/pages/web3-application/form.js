@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import "tailwindcss/tailwind.css"; 
 import loader from "../../images/load.gif";
 
-import { set } from "date-fns";
 
 const Start = () => {
   const [details, setDetails] = useState({});

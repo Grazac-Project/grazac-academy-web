@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PrimaryBtn from "../components/PrimaryBtn";
 
 import Facebook from "../images/svg/facebook.svg";
 import Instagram from "../images/svg/instagram.svg";
@@ -134,7 +133,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <div>
-                    <iframe src="https://www.google.com/maps/d/embed?mid=16NZ9a9VhKkk2-5nnYEdL93mxq7kjDZLT" width="100%" height="600"></iframe>
+                    <iframe title="Grazac campus location" src="https://www.google.com/maps/d/embed?mid=16NZ9a9VhKkk2-5nnYEdL93mxq7kjDZLT" width="100%" height="600"></iframe>
                 </div>
                 {/*<extracomponent/> a component used in the landing page comes here*/}
             </div>

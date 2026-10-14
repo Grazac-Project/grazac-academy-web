@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import authImg from "../../images/auth.png";
 import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -12,18 +12,17 @@ import { useHistory } from 'react-router-dom'
 
 const Waitlist = () => {
   const history = useHistory();
-  const [details, setDetails] = useState({});
   const [error, setError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    fullName: details?.fullName || "",
-    email: details?.email || "",
-    phoneNumber: details?.phoneNumber || "",
-    githubProfileLink: details?.githubProfileLink || "",
-    linkedInLink: details?.linkedInLink || "",
-    twitterLink: details?.twitterLink || "",
-    portfolioLink: details?.portfolioLink || "",
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    githubProfileLink: "",
+    linkedInLink: "",
+    twitterLink: "",
+    portfolioLink: "",
   });
   const [errors, setErrors] = useState({
     fullName: '',
@@ -134,12 +133,6 @@ const Waitlist = () => {
     }
   };
 
-  useEffect(() => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      ...details,
-    }));
-  }, [details]);
   
   // console.log(details);
   // console.log('form', form);

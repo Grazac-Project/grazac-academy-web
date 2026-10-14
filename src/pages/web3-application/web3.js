@@ -5,17 +5,11 @@ import Avatar from "../../images/web3/avatar.png";
 import bgmap from "../../images/web3/bg-map.png";
 import badge from "../../images/svg/badge.svg";
 import ex from "../../images/svg/x-mark.svg";
-import logo1 from "../../images/web3/logo1.png";
-import logo2 from "../../images/web3/logo2.png";
-import logo3 from "../../images/web3/logo3.png";
-import logo4 from "../../images/web3/logo4.png";
-import logo5 from "../../images/web3/logo5.png";
-import logo6 from "../../images/web3/logo6.png";
 // import badge from "../images/svg/badge.svg";
 
 import Footer from "../../components/Footer";
-import { Accordion, Card, Pagination } from "react-bootstrap";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { Accordion, Card } from "react-bootstrap";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { outline } from "../../content/web3";
 import { useEffect, useRef } from "react";
 import Splide from "@splidejs/splide";
@@ -33,7 +27,6 @@ const Web3 = () => {
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const [isHovered3, setIsHovered3] = useState(false);
-  const [isHovered4, setIsHovered4] = useState(false);
   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {

@@ -4,12 +4,10 @@ import NavItem from "../../components/NavItem";
 // import logo from "../images/svg/grazac-logo.svg";
 import logo from "../../images/grazac_logo.png";
 import { Link } from "react-router-dom";
-import InfoModal from "../../components/InfoModal";
 
 const Navbar = ({ top }) => {
   const [fixed, setFixed] = useState(false);
   const [active, setActive] = useState(false);
-  const [hover, setHover] = useState(false);
   const nav = useRef(null);
 
   useEffect(() => {

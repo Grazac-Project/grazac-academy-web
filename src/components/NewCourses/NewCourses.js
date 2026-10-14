@@ -1,8 +1,5 @@
 import classes from "./NewCourses.module.css";
-import Virtual from "../../images/virtual-new.png";
-import benzene from "../../images/benzene.svg";
 import group1 from "../../images/group-gift.png";
-import { Link } from "react-router-dom";
 const NewCourses = () => {
   return (
     <section className={classes.new}>

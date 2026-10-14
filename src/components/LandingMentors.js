@@ -39,7 +39,7 @@ const LandingMentors = () => {
         <div className="landingmentors-container-main">
           {mentorsData.map((mentor, i) => (
             <div className="mentor" key={i}>
-              <img src={mentor.image} alt={`${mentor.name}'s photo`} />
+              <img src={mentor.image} alt={mentor.name} />
               <h4 className="mentor-name">{mentor.name}</h4>
               <p className="stack">{mentor.role}</p>
               <p className="company">{mentor.company}</p>

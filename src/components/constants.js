@@ -8,7 +8,6 @@
  import tobiloba from '../images/tobiloba.png'
  import ayotunde from '../images/ayotunde.png'
  import moyinoluwa from '../images/moyinoluwa.png'
- import fayemi from '../images/fayemi.png'
  import adeniyi from '../images/adeniyi.png'
 import justice from '../images/justice.jpg'
 import joy from "../images/joy.jpeg"

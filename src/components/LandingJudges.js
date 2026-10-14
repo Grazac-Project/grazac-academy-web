@@ -11,7 +11,7 @@ const LandingJudges = () => {
         <div className="landingmentors-container-main">
           {judgesData.map((judge, i) => (
             <div className="mentor" key={i}>
-              <img src={judge.image} alt={`${judge.name}'s photo`} />
+              <img src={judge.image} alt={judge.name} />
               <h4 className="mentor-name">{judge.name}</h4>
               <p className="stack">{judge.role}</p>
               <p className="company">{judge.company}</p>

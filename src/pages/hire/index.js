@@ -16,13 +16,11 @@ import Sponsor6 from "../../images/svg/Google.svg";
 import whyHire from "../../images/why_hire_2.jpg";
 
 import man from "../../images/man.jpg";
-import my_love from "../../images/my_love.png";
-import kamala from "../../images/kamala.jpg";
 import arrow from "../../images/svg/arrow-front.svg";
 import star from "../../images/svg/star.svg";
 import Loader from "../../components/Loader";
 import { saveHireId } from "../../redux/slice/pageData.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Hire = () => {
   let dispatch = useDispatch();
@@ -36,7 +34,6 @@ const Hire = () => {
   });
 
   const [talents, setTalents] = useState([]);
-  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     document.title = "Hire - Grazac Academy";
@@ -59,23 +56,6 @@ const Hire = () => {
   }, []);
 
 
-  const carouselPple = [
-    {
-      name: "Jonathan Doe",
-      position: "Software Engineer, Primer AI",
-      stars: 4,
-    },
-    {
-      name: "Miracle Shadare",
-      position: "Content Writer, Grazac",
-      stars: 4,
-    },
-    {
-      name: "Rebecca West",
-      position: "Product Designer, Google LLC",
-      stars: 4,
-    },
-  ];
 
   const whyContent = [
     {
@@ -103,7 +83,7 @@ const Hire = () => {
   return (
     <div>
 
-      {talents.length != 0 ? (
+      {talents.length !== 0 ? (
         <div>
           <Navbar />
           <div className="hire">

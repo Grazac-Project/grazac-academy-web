@@ -1,5 +1,3 @@
-import sprint from "../images/sprint.png";
-import quote from "../images/svg/quote.svg";
 import portfolio from "../images/svg/portfolio.svg";
 import handshake from "../images/svg/handshake.svg";
 import document from "../images/svg/document.svg";

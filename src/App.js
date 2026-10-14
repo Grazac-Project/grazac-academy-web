@@ -1,13 +1,12 @@
 import { useState, useRef, lazy, Suspense, useEffect } from "react";
 import "./scss/main.css";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import { LoaderContext } from "./context";
 import Loader from "./components/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import AcademySidebar from "./academy-dashboard/component/sidebar/AcademySidebar";
 import Newsform from "./pages/newsletterModal/newsForm/newsform";
 import NewsResponse from "./pages/newsletterModal/newsResponse/newsResponse";
 import WhatsApp from "./components/whatsApp/whatsApp";
@@ -92,21 +91,6 @@ const ComponentPage = lazy(() => {
   return import("./components/shared/index");
 });
 
-const AcademyDashboardPage = lazy(() => {
-  return import("../src/academy-dashboard/pages/dashboard/Dashboard");
-});
-const AcademyChallengePage = lazy(() => {
-  return import("../src/academy-dashboard/pages/challenge/Challenge");
-});
-const AcademyPaymentPage = lazy(() => {
-  return import("../src/academy-dashboard/pages/payment/Payment");
-});
-const AcademyPortfolioPage = lazy(() => {
-  return import("../src/academy-dashboard/pages/portfolio/Portfolio");
-});
-const AcademySettingsPage = lazy(() => {
-  return import("../src/academy-dashboard/pages/settings/Settings");
-});
 const Pricing = lazy(() => {
   return import("./pages/pricing");
 });
@@ -135,19 +119,19 @@ const InternshipPayment = lazy(() => {
 
 const App = () => {
   const [show, setShow] = useState(true);
-  const [redirect, setRedirect] = useState(false);
   const [news, setNews] = useState("");
   const [newsMessage, setNewsMessage] = useState();
   const location = useLocation();
+  const initialPathname = useRef(location.pathname);
 
   useEffect(() => {
-    // Logic for showing news after 7 seconds on the "/" route
-    if (location.pathname === "/") {
+    // Show news after 7 seconds when the app mounts on the "/" route
+    if (initialPathname.current === "/") {
       const timer = setTimeout(() => {
         setNews("showNews");
       }, 7000);
 
-      // Cleanup the timer if the component unmounts or path changes
+      // Cleanup the timer if the component unmounts
       return () => clearTimeout(timer);
     }
 
@@ -155,7 +139,7 @@ const App = () => {
     if (window.PageSense) {
       window.PageSense.track();
     }
-  }, [location.Pathname]);
+  }, []);
 
   const app = useRef();
 

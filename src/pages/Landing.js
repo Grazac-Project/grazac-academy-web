@@ -6,15 +6,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Mode from "../components/Mode";
-import { Container, Row, Col } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { Container } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
 
 // import Abdullahi from "../images/testimonial/abdullahi.jpeg";
 // import Adedamola from "../images/testimonial/adedamola.jpeg";
 // import Bosun from "../images/testimonial/bosun.jpg";
 import Grazac from "../images/svg/logo-round.svg";
 import Video from "../images/landing-video2.mp4";
-import Object from "../images/svg/objects.svg";
 import poster from "../images/Grazac-website/IMG_8403.JPG";
 import grad1 from "../images/grad1.png";
 import grad2 from "../images/grad2.png";
@@ -48,7 +47,7 @@ import NewCourses from "../components/NewCourses/NewCourses";
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(true);
-  const { setShow, show } = useContext(LoaderContext);
+  const { setShow } = useContext(LoaderContext);
 
   // useEffect(() => {
   //   // document.title = "Welcome to Grazac Academy";
@@ -96,10 +95,10 @@ const Landing = () => {
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `70px`;
 
-    window.addEventListener("load", () => {
-      setShow(false);
-    });
-  }, []);
+    const handleLoad = () => setShow(false);
+    window.addEventListener("load", handleLoad);
+    return () => window.removeEventListener("load", handleLoad);
+  }, [setShow]);
 
   const handleModal = () => {
     setShowModal(false);
@@ -123,11 +122,6 @@ const Landing = () => {
     document.getElementById("scrolltainer").scrollLeft += 200;
   };
 
-  const showToast = () => {
-    toast.info(
-      "Application into Cohort (CH011) is closed. Enrollment into CH012 begins July 2022."
-    );
-  };
 
   return (
     <>
@@ -504,18 +498,18 @@ const Landing = () => {
               <div className="join_gallery">
                 <div className="join_gallery-top">
                   <div className="join_gallery-top-left">
-                    <img src={grad1} />
+                    <img src={grad1} alt="Grazac students" />
                   </div>
                   <div className="join_gallery-top-right">
-                    <img src={grad4} />
+                    <img src={grad4} alt="Grazac students" />
                   </div>
                 </div>
                 <div className="join_gallery-bottom">
                   <div className="join_gallery-bottom-left">
-                    <img src={grad2} />
+                    <img src={grad2} alt="Grazac students" />
                   </div>
                   <div className="join_gallery-bottom-right">
-                    <img src={grad3} />
+                    <img src={grad3} alt="Grazac students" />
                   </div>
                 </div>
               </div>
@@ -543,7 +537,7 @@ const Landing = () => {
                       className="nav__btn nav__btn-flex "
                       // onClick={() => toast.info("Coming Soon")}
                     >
-                      <a className="nav__btn--text">Hire our Talents</a>
+                      <span className="nav__btn--text">Hire our Talents</span>
                     </div>
                   </Link>
                 </div>

@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import {
   getGuarantor,
-  getDetailsB,
   getDetailsC,
   editDetails,
   editGuarantor,
@@ -27,11 +26,9 @@ function Details() {
   const [guarantorDetails_2, setGuarantorDetails_2] = useState([]);
   const [guarantorError_1, setGuarantorError_1] = useState("");
   const [guarantorError_2, setGuarantorError_2] = useState("");
-  const [submitted, setSubmitted] = useState(true);
 
   const [clicked, setClicked] = useState("bio");
   const [accepted, setAccepted] = useState(false);
-  const [tempData, setTemData] = useState(null);
 
   useEffect(() => {
     try {
@@ -47,16 +44,6 @@ function Details() {
     // setBioData(userDetails)
   }, []);
 
-  useEffect(() => {
-    //remove the submit button if there is data for agerange have kids and marital status
-    {
-      !userDetails?.ageRange &&
-      !userDetails?.haveKids &&
-      !userDetails?.maritalStatus
-        ? setSubmitted(true)
-        : setSubmitted(false);
-    }
-  }, []);
 
   const submitData = (e) => {
     e.preventDefault();
@@ -83,11 +70,10 @@ function Details() {
     editDetails(data, userId)
       .then((response) => response.data)
       .then((res) => {
-        if (res.status == 201) {
+        if (Number(res.status) === 201) {
           toast.success("Submission successful!");
           btn.innerHTML = `Submit`;
 
-          setSubmitted(false);
 
           window.location = "/dashboard";
         } else {
@@ -129,20 +115,6 @@ function Details() {
     );
   };
 
-  const handleDataChange = (e) => {
-    if (
-      e.target.value != "" ||
-      e.target.value != undefined ||
-      !e.target.value
-    ) {
-      let userData = { ...userDetails };
-
-      setUserDetails({
-        ...userData,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
 
   const saveGuarantor = async (e, record, slot, setError) => {
     e.preventDefault();
@@ -184,7 +156,7 @@ function Details() {
     }
   };
 
-  const loadGuarantors = async () => {
+  const loadGuarantors = useCallback(async () => {
     setGuarantorsLoading(true);
     setGuarantorsError("");
     setGuarantorDetails_1([]);
@@ -237,9 +209,9 @@ function Details() {
     } finally {
       setGuarantorsLoading(false);
     }
-  };
+  }, []);
 
-  const loadProfile = async () => {
+  const loadProfile = useCallback(async () => {
     setIsLoading(true);
     setProfileError("");
     try {
@@ -249,7 +221,6 @@ function Details() {
         throw new Error("Unable to read your profile. Please try again.");
       }
       setUserDetails(profile);
-      setTemData(profile);
       if (profile.payment_plan === "pay as you earn") loadGuarantors();
     } catch (err) {
       const message = err.response?.data?.message ||
@@ -260,11 +231,11 @@ function Details() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [loadGuarantors]);
 
   useEffect(() => {
     loadProfile();
-  }, []);
+  }, [loadProfile]);
 
   return (
     <div className="dashboard-content">
@@ -274,6 +245,7 @@ function Details() {
           <img
             style={{ marginLeft: "30rem", marginTop: "20rem" }}
             src={loader}
+            alt="Loading profile"
           />
         </div>
       ) : profileError ? (

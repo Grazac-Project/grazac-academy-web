@@ -99,12 +99,12 @@ function ResetPassword () {
                             <div className="auth_container_form-password">
                                 <label>Password</label>
                                 <input type="password" id="password" placeholder="Password" name="password" onChange={handleChange} />
-                                <div id="toggle" onClick={toggleIcon} ><img src={visible} /></div>
+                                <div id="toggle" onClick={toggleIcon} ><img src={visible} alt="Toggle password visibility" /></div>
                             </div>
                             <div className="auth_container_form-password">
                                 <label>Confirm Password</label>
                                 <input type="password" id="confirmpassword" placeholder="Password" name="confirmpassword" onChange={handleChange} />
-                                <div id="confirmtoggle" onClick={toggleIcon2} ><img src={visible} /></div>
+                                <div id="confirmtoggle" onClick={toggleIcon2} ><img src={visible} alt="Toggle password visibility" /></div>
                             </div>
                             <button type="submit" id="actionBtn" disabled={loading}>
                                 {loading ? <img src={loader} alt="Resetting password" width="20px" /> : "Reset Password"}

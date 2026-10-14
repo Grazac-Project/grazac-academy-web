@@ -1,13 +1,10 @@
-import React, { useState, useRef } from "react";
-import termsandconds from "../../../content/TermsandCondition.pdf";
+import React, { useRef } from "react";
 import {
   useFlutterwave,
-  FlutterWaveButton,
   closePaymentModal,
 } from "flutterwave-react-v3";
 
 function AdmissionFeePage({ details, fname, lname, email, phone }) {
-  const [checkAct, setCheckAct] = useState(false);
   const buttonRef = useRef();
 
 
@@ -36,14 +33,6 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
     AdmissionFeeFlutterwaveConfig
   );
 
-  const confirmCheck = () => {
-    var check = document.getElementById("check");
-    if (check.checked) {
-      setCheckAct(true);
-    } else {
-      setCheckAct(false);
-    }
-  };
 
   return (
     <div>

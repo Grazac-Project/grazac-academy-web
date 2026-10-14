@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { submitContact } from "../../api/dashboard/hire";
 
 import telephone from "../../images/svg/telephone.svg";

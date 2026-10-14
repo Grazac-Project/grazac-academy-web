@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import Facebook from "../images/svg/facebook.svg";
 import Instagram from "../images/svg/instagram.svg";
-import Twitter from "../images/svg/twitter.svg";
-import Youtube from "../images/svg/youtube.svg";
 import Logo from "../images/grazac_logo.png";
 import Bird from '../images/footer-bird.png'
 import Terms from "../images/newsletter/terms.pdf";
@@ -94,19 +92,19 @@ const Footer = () => {
             >
               <img src={Youtube} alt="icon" />
             </a> */}
-            <a href="https://x.com/grazacng?s=21" target="_blank">
+            <a href="https://x.com/grazacng?s=21" target="_blank" rel="noopener noreferrer">
               <FaXTwitter size={20}/>
             </a>
-            <a href="https://www.instagram.com/grazacng?" target="_blank">
+            <a href="https://www.instagram.com/grazacng?" target="_blank" rel="noopener noreferrer">
               <img src={Instagram} alt="icon" />
             </a>
-            <a href="https://www.facebook.com/grazacng" target="_blank">
+            <a href="https://www.facebook.com/grazacng" target="_blank" rel="noopener noreferrer">
               <img src={Facebook} alt="icon" />
             </a>
-            <a href="https://www.linkedin.com/company/gra-zac/" target="_blank">
+            <a href="https://www.linkedin.com/company/gra-zac/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin  size={20}/>
             </a>
-            <a href="https://www.tiktok.com/@grazac.ng?" target="_blank">
+            <a href="https://www.tiktok.com/@grazac.ng?" target="_blank" rel="noopener noreferrer">
               <FaTiktok size={20}/>
             </a>
           </div>

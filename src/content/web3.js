@@ -2,7 +2,6 @@ import block from "../images/web3/block.svg";
 import  security from "../images/web3/block.png";
 import etherjs from "../images/web3/entherjs.svg";
 import solidity from "../images/web3/solidity.svg";
-import eth from "../images/web3/eth.png";
 import hardhot from "../images/web3/hardhot.svg";
 
 export const outline = [

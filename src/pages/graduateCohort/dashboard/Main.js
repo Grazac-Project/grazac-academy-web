@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../../../components/dashboard/Sidebar";
 import Details from "../../../components/dashboard/Details";
 import NotSubmitted from "../../../components/dashboard/not-submitted";
@@ -7,7 +7,6 @@ import PaymentReceived from "../../../components/dashboard/selected/PaymentRecei
 import Selected from "../../../components/dashboard/Selected";
 import Rejected from "../../../components/dashboard/Rejected";
 
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import {
   submitGuarantor,
@@ -18,7 +17,6 @@ import {
 } from "../../../api/dashboard/data";
 import {
   useFlutterwave,
-  FlutterWaveButton,
   closePaymentModal,
 } from "flutterwave-react-v3";
 import arrow from "../../../images/svg/dashboard/arrow.svg";
@@ -33,8 +31,6 @@ import Payment from "../../../components/dashboard/payment";
 import Pending from "../../../components/dashboard/Pending";
 import Failed from "../../../components/dashboard/Failed";
 import OutsideClickHandler from "react-outside-click-handler";
-import { set } from "date-fns";
-import useApplicationFee from "../../../components/useApplicationfee";
 // import { usePayercoins } from "payercoins-react";
 
 function Dashboard() {
@@ -47,7 +43,6 @@ function Dashboard() {
     Pending: "c:bg-yellow-200 px-8 py-4 rounded-full",
   };
 
-  const buttonRef = useRef();
   // const [accepted, setAccepted] = useState(false);
 
   // const accepted = useApplicationFee();
@@ -55,7 +50,6 @@ function Dashboard() {
   // const [status, setStatus] = useState("Not Submitted");
   const [status, setStatus] = useState("Not Applied Yet");
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(null);
   // const [status, setStatus] = useState("Admitted");
   const [selectStatus, setSelectStatus] = useState("congrats");
   const [payShowModal, setPayShowModal] = useState("");
@@ -65,20 +59,15 @@ function Dashboard() {
   const [amount, setAmount] = useState(0);
   const [currency, setCurrency] = useState("");
   const [userId, setUserId] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
   const [guarantorForm1, setGuarantorForm1] = useState(true);
-  const [showProfessionalInput1, setShowProfessionalInput1] = useState(false);
   // const [chosenCourse, setChosenCourse] = useState("");
   const [selectedTrack, setSelectedTrack] = useState("");
   const [isSpecialCourse, setIsSpecialCourse] = useState(false);
-  const [showGuarantorRelationshipInput1, setShowGuarantorRelationshipInput1] =
-    useState(false);
   const [paymentChoice, setPaymentChoice] = useState("");
   const [trigger, setTrigger] = useState(false);
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   const [isFeePaid, setIsFeePaid] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
-  const [dataBaseStatus, setDataBaseStatus] = useState("");
   const [guarantor, setGuarantor] = useState({
     firstName: "",
     lastName: "",
@@ -95,10 +84,6 @@ function Dashboard() {
     relationship: "",
   });
 
-  const item = 1;
-
-  const usdValue = "10";
-  const ngnValue = "720000";
 
   useEffect(() => {
     // setSelectStatus("paid");
@@ -118,7 +103,7 @@ function Dashboard() {
         console.log("feeeee", fee);
         // console.log("fkjdkj");
         // setStatus("Not Submitted");
-        setStatus(dataBaseStatus);
+        setStatus(JSON.parse(details).status);
         // console.log(status)
 
         if (
@@ -150,7 +135,7 @@ function Dashboard() {
           setGuarantorForm1(false);
         }
         // work on this part for the payment page
-        if (res.data.length > 2 || res.data.length == 2) {
+        if (res.data.length >= 2) {
           setGuarantorForm1(false);
           setGuarantorStatus(true);
         }
@@ -186,7 +171,6 @@ function Dashboard() {
       setPaymentChoice(res.data.data.result?.paymentOption);
 
       // setChosenCourse(res.data.data.result?.preferred_course);
-      setDataBaseStatus(res.data.data.result?.status);
       setSelectedTrack(res.data.data.result?.learningTrack);
       sessionStorage.setItem(
         "user_details",
@@ -290,7 +274,7 @@ function Dashboard() {
   const makePayment = () => {
     if (payOpt === "part") {
       setPayShowModal("");
-      var planData = new FormData();
+      const planData = new FormData();
       planData.append("payment_plan", "learn now pay later");
       addPlan(planData)
         .then((response) => response.data)
@@ -302,7 +286,7 @@ function Dashboard() {
     } else if (payOpt === "full") {
       setPayShowModal("");
 
-      var planData = new FormData();
+      const planData = new FormData();
       planData.append("payment_plan", "pay at once");
       addPlan(planData)
         .then((response) => response.data)
@@ -313,7 +297,7 @@ function Dashboard() {
     } else if (payOpt === "fullTrainingOnly") {
       setPayShowModal("");
 
-      var planData = new FormData();
+      const planData = new FormData();
       planData.append("payment_plan", "training only");
       addPlan(planData)
         .then((response) => response.data)
@@ -328,7 +312,7 @@ function Dashboard() {
     } else if (payOpt === "instalment-pay") {
       setPayShowModal("");
 
-      var planData = new FormData();
+      const planData = new FormData();
       planData.append("payment_plan", "pay in instalment");
       addPlan(planData)
         .then((response) => response.data)
@@ -357,13 +341,13 @@ function Dashboard() {
       .then((res) => {
         setLoading(false);
 
-        if (!(res.data.length == 1 || res.data.length > 1)) {
+        if (res.data.length < 1) {
           // setGuarantorForm1(false);
 
           e.preventDefault();
           var data = new FormData();
 
-          var btn = document.getElementById("actionBtn");
+          btn = document.getElementById("actionBtn");
           btn.innerHTML = `<img src=${loader} width="20px" />`;
           btn.disabled = false;
 
@@ -371,7 +355,6 @@ function Dashboard() {
             btn.innerHTML = `<img src=${loader} width="20px" />`;
 
             toast.error("please enter a correct phone number");
-            setIsError(true);
             btn.innerHTML = `Proceed`;
             // btn.disabled = true
           }
@@ -380,7 +363,6 @@ function Dashboard() {
             btn.innerHTML = `<img src=${loader} width="20px" />`;
 
             toast.error("please enter a correct employer's phone number");
-            setIsError(true);
             btn.innerHTML = `Proceed`;
             // btn.disabled = true
           }
@@ -396,7 +378,6 @@ function Dashboard() {
             guarantor.phone.length > 10 &&
             guarantor.employerPhone.length > 10
           ) {
-            setIsError(false);
             // btn.disabled = false
 
             // btn.innerHTML = `<img src=${loader} width="20px" />`;
@@ -466,7 +447,6 @@ function Dashboard() {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
 
       toast.error("please enter a correct phone number");
-      setIsError(true);
       btn.innerHTML = `Proceed`;
       // btn.disabled = true
     }
@@ -475,13 +455,11 @@ function Dashboard() {
       btn.innerHTML = `<img src=${loader} width="20px" />`;
 
       toast.error("please enter a correct employer's phone number");
-      setIsError(true);
       btn.innerHTML = `Proceed`;
       // btn.disabled = false
     }
 
     if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-      setIsError(false);
 
       // btn.innerHTML = `<img src=${loader} width="20px" />`;
       data.append("firstname", guarantor?.firstName);
@@ -539,127 +517,6 @@ function Dashboard() {
     }
   };
 
-  const submitForm = (e, whichForm) => {
-    e.preventDefault();
-    var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-    var data = new FormData();
-
-    if (!(guarantor.phone.length > 10)) {
-      btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-      toast.error("please enter a correct phone number");
-      setIsError(true);
-      btn.innerHTML = `Proceed`;
-    }
-
-    if (!(guarantor.employerPhone.length > 10)) {
-      btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-      toast.error("please enter a correct employer's phone number");
-      setIsError(true);
-      btn.innerHTML = `Proceed`;
-    }
-
-    if (guarantor.phone.length > 10 && guarantor.employerPhone.length > 10) {
-      setIsError(false);
-    }
-
-    if (isError === false) {
-      btn.innerHTML = `<img src=${loader} width="20px" />`;
-      data.append("firstname", guarantor?.firstName);
-      data.append("lastname", guarantor?.lastName);
-      data.append("email", guarantor?.email);
-      data.append("phone_number", guarantor?.phone);
-      data.append("gender", guarantor?.gender);
-      data.append("office_address", guarantor?.officeAddress);
-      data.append("home_address", guarantor?.homeAddress);
-      data.append("profession", guarantor?.profession);
-      data.append("name_of_organization", guarantor?.organisation);
-      data.append("name_of_employer", guarantor?.employer);
-      data.append("email_address_of_employer", guarantor?.employerMail);
-      data.append("phone_number_of_employer", guarantor?.employerPhone);
-      data.append("relationship_with_the_guarantor", guarantor?.relationship);
-      data.append("user_id", userId);
-
-      if (whichForm === "guarantor1" && isError === false) {
-        var btn = document.getElementById("actionBtn");
-
-        btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-        submitGuarantor(data)
-          .then((response) => response.data)
-          .then((res) => {
-            if (res.status === 200) {
-              toast.success("Submission successful");
-              btn.innerHTML = `Proceed`;
-              setGuarantorForm1(false);
-
-              window.scrollTo(0, 0);
-              document.getElementById("guarantorForm2").reset();
-            } else {
-              toast.error("Submission not successful, try again!!!");
-              btn.innerHTML = `Proceed`;
-            }
-          })
-          .catch((err) => {
-            if (err.response) {
-              toast.error(err.response);
-              btn.innerHTML = `Proceed`;
-            }
-            // else {
-            //   toast.error(
-            //     "Something went wrong!!! Please make sure you have a good internet connection."
-            //   );
-            btn.innerHTML = `Proceed`;
-            // }
-          });
-      } else {
-        btn.innerHTML = `Proceed`;
-      }
-
-      if (whichForm === "guarantor2" && isError === false) {
-        var btn = document.getElementById("actionBtn");
-        btn.innerHTML = `<img src=${loader} width="20px" />`;
-
-        submitGuarantor(data)
-          .then((response) => response.data)
-          .then((res) => {
-            if (res.status === 200) {
-              window.location = "/dashboard";
-              // toast.success("Submission successful");
-              btn.innerHTML = `Submit & Pay`;
-              // flutterWavePayment();
-            } else {
-              toast.error("Submission not successful, try again!!!");
-              btn.innerHTML = `Submit & Pay`;
-            }
-          })
-          .catch((err) => {
-            if (err.response) {
-              toast.error(err.response);
-              btn.innerHTML = `Submit & Pay`;
-            }
-            // else {
-            //   toast.error(
-            //     "Something went wrong!!! Please make sure you have a good internet connection."
-            //   );
-            btn.innerHTML = `Submit & Pay`;
-            // }
-          });
-
-        var planData = new FormData();
-        planData.append("payment_plan", "pay as you earn");
-        addPlan(planData)
-          .then((response) => response.data)
-          .then((res) => {})
-          .catch((err) => {});
-      } else {
-        btn.innerHTML = `Proceed`;
-      }
-    }
-  };
 
   const config = {
     public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
@@ -690,18 +547,6 @@ function Dashboard() {
 
   //payercoins LIVE public key PYC-PUB_339d368f5254b0149ad6c7
   //payercoins TEST public key PYC-PUB_a04caeeba00b80ae762bbe_TEST
-  const payercoinsConfig = {
-    key: "PYC-PUB_a04caeeba00b80ae762bbe_TEST",
-    customer_name: "Grazac Academy",
-    customer_email: "mitchelinajuo@gmail.com",
-    amount: parseFloat(usdValue), // amount as a number or string
-    currency: "ethereum", // [ethereum, bitcoin, usdt-eth].  optional, if not provided will use your default currencies activated in your account
-    // description: "Test Payment", // optional
-    redirect_url: "", // optional - will default to current page
-    invoice_id: "239313200190.40646", // optional - unique identifier for your payment and minLength 8, else we will automatically generate one
-    // callback_url: 'https://sandbox-api.payercoins.com/api/v1/withdrawal' //This is just a test sandbox
-    callback_url: "https://webhook.site/c573fd7d-2e6f-478d-b16d-b97e15c533c1", //This is just a test sandbox
-  };
   // const [initializePayment] = usePayercoins();
   // const handlePayercoinsPayment = async () => {
   //   initializePayment(payercoinsConfig);
@@ -1292,6 +1137,7 @@ function Dashboard() {
                                   href={termsandconds}
                                   download
                                   target="_blank"
+                                  rel="noreferrer"
                                 >
                                   Terms ‌and‌ ‌Conditions‌
                                 </a>
@@ -1785,6 +1631,7 @@ function Dashboard() {
                                       <a
                                         href="https://docs.google.com/forms/u/3/d/e/1FAIpQLSep9AvrWxiedsn8KWYTTiTAArLRwsHRSLnnd49GIrJ35Z4FUw/viewform?usp=pp_url&authuser=0"
                                         target="_blank"
+                                        rel="noreferrer"
                                         className={
                                           payOpt === "install"
                                             ? "active"

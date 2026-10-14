@@ -1,13 +1,4 @@
-import React, { useState } from 'react';
-import {
-    FaTh,
-    FaBars,
-    FaUserAlt,
-    FaRegChartBar,
-    FaCommentAlt,
-    FaShoppingBag,
-    FaThList
-}from "react-icons/fa";
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ChallengeIcon from '../../icons/ChallengeIcon';
 import DashboardIcon from '../../icons/DashboardIcon';
@@ -17,8 +8,6 @@ import SettingsIcon from '../../icons/SettingsIcon';
 import CohortCard from "../shared/cohortcard/CohortCard"
 
 const AcademySidebar = ({children}) => {
-    const[isOpen ,setIsOpen] = useState(false);
-    const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
             path:"/academy",

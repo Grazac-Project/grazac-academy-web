@@ -1,5 +1,5 @@
 import classes from "./AvailableTrack.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import product from "../../images/product.png";
 import frontend from "../../images/frontend.png";
 import backend from "../../images/backend.png";
@@ -20,7 +20,6 @@ import dashboard from "../../images/available-tracks/dashboard.png";
 import security from "../../images/available-tracks/security.png";
 import database from "../../images/available-tracks/database.png";
 import product1 from "../../images/available-tracks/product.png";
-import { cy } from "date-fns/locale";
 
 const tabs = [
   {

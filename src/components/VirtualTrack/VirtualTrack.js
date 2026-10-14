@@ -20,7 +20,6 @@ import dashboard from "../../images/available-tracks/dashboard.png";
 import security from "../../images/available-tracks/security.png";
 import database from "../../images/available-tracks/database.png";
 import product1 from "../../images/available-tracks/product.png";
-import { cy } from "date-fns/locale";
 
 const tabs = [
   {

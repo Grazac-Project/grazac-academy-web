@@ -13,12 +13,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { coupon, Web3Form } from "../../api/dashboard/auth";
 import "../../tailwindComponents.css";
 import sucess from "../../images/mark.svg";
-import copy from "../../images/copy.svg";
-import file from "../../images/file.svg";
-import filee from "../../images/file-icon.svg";
 
-import { Button } from "react-bootstrap";
-import { set } from "date-fns";
 
 const Start = () => {
   const [details, setDetails] = useState({});
@@ -28,9 +23,6 @@ const Start = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
   const [active, setActive] = useState(false);
-  const [fileName, setFileName] = useState("");
-  const [fileSize, setFileSize] = useState("");
-  const [selectedFile, setSelectedFile] = useState("null");
 
   const handleCoupon = (e) => {
     setError("");
@@ -52,7 +44,6 @@ const Start = () => {
       if (data) {
         setDetails(JSON.parse(data));
       }
-      console.log(details);
     } catch (error) {
       console.error("Failed to get details:", error);
     }
@@ -165,7 +156,6 @@ const Start = () => {
     try {
       // const response = await Web3Form(Data);
       const response = await Web3Form(newDetails);
-      console.log(response);
 
       if (response.data.status === 200) {
         // toast.success(response.data.message);
@@ -212,7 +202,6 @@ const Start = () => {
     setLoading("loader");
     handleFlutterPayment({
       callback: (response) => {
-        console.log("Payment response:", response);
         if (
           response.status === "completed" ||
           response.status === "successful"
@@ -231,48 +220,6 @@ const Start = () => {
         setLoading("");
       },
     });
-  };
-  const accountNumber = "1023002745";
-  const [copySuccess, setCopySuccess] = useState("");
-
-  const copyToClipboard = () => {
-    navigator.clipboard
-      .writeText(accountNumber)
-      .then(() => {
-        setCopySuccess("copied!");
-      })
-      .catch(() => {
-        setCopySuccess("Failed to copy .");
-      });
-  };
-  const handleFileChange = (event) => {
-    const selectedFiles = event.target.files[0];
-
-    if (selectedFiles) {
-      // Access file details
-      const fileName = selectedFiles.name;
-      const fileSize = (selectedFiles.size / (1024 * 1024)).toFixed(2) + " MB";
-      console.log("Selected file:", fileName);
-      // console.log("File size:", fileSize);
-
-      const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
-
-      if (!allowedTypes.includes(selectedFiles.type)) {
-        setError("Only PDF,JPEG and PNG files are allowed.");
-        return;
-      }
-      const maxSize = 10 * 1024 * 1024;
-      if (selectedFiles.size > maxSize) {
-        setError("File size exceeds the maximum limit of 10MB.");
-        return;
-      }
-
-      console.log(selectedFiles);
-      setSelectedFile(selectedFiles);
-      setFileName(fileName);
-      setFileSize(fileSize);
-      setError("");
-    }
   };
   return (
     <div className="layout_auth">

@@ -68,7 +68,6 @@ function Login() {
               token: res.data.token,
             })
           );
-          const appPaymentStatus = res.data.payload.applicationFee
           sessionStorage.setItem("status", `${res.data.status}`);
            sessionStorage.setItem(
              "applicationFee",
@@ -151,7 +150,7 @@ function Login() {
                   onChange={handleChange}
                 />
                 <div id="toggle" onClick={toggleIcon}>
-                  <img src={visible} />
+                  <img src={visible} alt="Toggle password visibility" />
                 </div>
               </div>
               {/* <div>

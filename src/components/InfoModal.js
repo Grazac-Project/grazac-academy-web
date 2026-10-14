@@ -4,7 +4,7 @@ import badge from "../images/svg/badge.svg";
 import ex from "../images/svg/x-mark.svg";
 
 const InfoModal = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [, setShowModal] = useState(true);
 
   return (
     <div>

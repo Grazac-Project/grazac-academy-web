@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { SignupAction } from "../../../api/dashboard/auth";
@@ -268,7 +268,7 @@ function SignUp() {
                   onChange={handleChange}
                 />
                 <div id="toggle" onClick={toggleIcon}>
-                  <img src={visible} />
+                  <img src={visible} alt="Toggle password visibility" />
                 </div>
               </div>
               {/* <div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./navbar";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
@@ -17,7 +17,6 @@ import people from "../../images/program/people.png"
 import frontend from "../../images/frontend.png";
 import backend from "../../images/backend.png";
 import cybersecurity from "../../images/cybersecurity.png";
-import data_analysis from "../../images/analysis.png";
 import android from "../../images/android.png";
 import python from "../../images/python.png";
 
@@ -224,7 +223,7 @@ const It = () => {
                 <Link to="/hire">
                   <div
                   >
-                    <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
+                    <span className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</span>
                   </div>
                 </Link>
               </div>
@@ -238,7 +237,7 @@ const It = () => {
               <Link to="/hire">
                 <div
                 >
-                  <a className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</a>
+                  <span className="w-[185px] bg-[#773DD3] text-white px-12 py-4 rounded-[3px] font-bold !text-[18px] hover:shadow-2xl">Hire our grads</span>
                 </div>
               </Link>
             </div>

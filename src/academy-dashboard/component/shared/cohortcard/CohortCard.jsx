@@ -1,8 +1,4 @@
 import React from "react";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { HiArrowSmDown } from "react-icons/hi";
-import { MdArrowDropDown } from "react-icons/md";
-import green from "../../../../academy-dashboard/static/green.png";
 import DropDown from "../../../icons/DropDown";
 
 function CohortCard({ cohort, status }) {

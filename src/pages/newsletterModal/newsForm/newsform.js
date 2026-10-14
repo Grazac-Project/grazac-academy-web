@@ -4,11 +4,9 @@ import NewsletterModal from "../newsletterModal";
 import Message from "../../../images/newsletter/popup-envelope.png";
 import Check from "../../../images/newsletter/check.svg";
 import LoaderGif from "../../../images/svg/dashboard/loader.gif";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 // import { zohoSubmit } from "../../../api/dashboard/data";
 import { newsForm } from "../../../api/dashboard/data";
-import NewsResponse from "../newsResponse/newsResponse";
 import { ToastContainer, toast } from "react-toastify";
 
 const Newsform = ({ setNews, setNewsMessage }) => {
@@ -20,33 +18,6 @@ const Newsform = ({ setNews, setNewsMessage }) => {
     email: "",
   });
 
-  function splitEmail(email) {
-    const atIndex = email.indexOf("@");
-    if (atIndex !== -1) {
-      const username = email.substring(0, atIndex);
-      const domain = email.substring(atIndex + 1);
-      return { username, domain };
-    } else {
-      // Handle the case where there is no "@" symbol in the email.
-      return null;
-    }
-  }
-
-  function splitFullName(fullName) {
-    // Split the full name by space
-    const nameParts = fullName.split(" ");
-
-    if (nameParts.length >= 2) {
-      const firstName = nameParts[0];
-      const lastName = nameParts.slice(1).join(" "); // Join any remaining parts as the last name
-
-      return { firstName, lastName };
-    } else {
-      // Handle cases where there is no space to separate the first and last name.
-      // You might want to return an error or handle it differently.
-      return null;
-    }
-  }
 
   const handleChange = (e) => {
     setPayload((prevState) => ({
@@ -55,8 +26,6 @@ const Newsform = ({ setNews, setNewsMessage }) => {
     }));
   };
 
-  const key = process.env.REACT_APP_API_KEY;
-  // console.log(key);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +35,6 @@ const Newsform = ({ setNews, setNewsMessage }) => {
     newsForm(payload)
       .then((res) => {
         // console.log(res);
-        const message = res.data.message;
         if (res.status === 201) {
           setNews("newsResponse");
           setThanks(false);

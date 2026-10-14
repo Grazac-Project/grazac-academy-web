@@ -4,7 +4,7 @@ function ProfileCard({ image, name, cohort }) {
   return (
     <div className="profilecard__container">
       <div className="profilecard-image" >
-        <img src={image} />
+        <img src={image} alt={name || ""} />
       </div>
       <div className="profilecard-details">
         <div className="profilecard-details-name">{name}</div>

@@ -5,12 +5,10 @@ import { Container } from "react-bootstrap";
 import { getAllTalents } from "../../api/dashboard/hire";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import man from "../../images/man.jpg";
 import loader from "../../images/loader-purple.gif";
-import arrow from "../../images/svg/arrow-front.svg";
 import Loader from "../../components/Loader";
 import { saveHireId } from "../../redux/slice/pageData.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Listing() {
   let dispatch = useDispatch();
@@ -84,7 +82,7 @@ function Listing() {
   return (
     <div>
       <ToastContainer />
-      {isEmptyObject(talents) == false ? (
+      {!isEmptyObject(talents) ? (
         <div>
           <div className="hire-bg">
             <Navbar />

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Assessment from "../Assessment";
 import success from "../../images/assessment/success-assessment.png";
-import fail from "../../images/assessment/fail-assessment.png";
 import sorry from "../../images/assessment/sorry.png";
 
 function UnderReview({ fname }) {
@@ -91,7 +90,7 @@ function UnderReview({ fname }) {
           {status === "You failed." && (
             <div className="message-content">
               {/* <span onClick={() => setShowScore(false)}>&times;</span> */}
-              <img src={sorry} alt="sorry image" />
+              <img src={sorry} alt="Assessment received" />
               <h2>Your assessment has been received</h2>
               {/* <h3 className="fail">{score}%</h3> */}
               <p>We will be in touch soon</p>

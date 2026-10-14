@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import VitualHero from "../images/virtual/VitualHero.png";
 import VitualHero from "../images/virtual/virtual-lady.png";
 import Browse from "../images/virtual/browse.png";
@@ -9,14 +8,9 @@ import Click from "../images/virtual/click.png";
 import Plan from "../images/virtual/plan.png";
 import Forward from "../images/virtual/forward.png";
 import Down from "../images/virtual/down.png";
-import { useState, useEffect } from "react";
-import { format, differenceInSeconds } from "date-fns/locale/en-US";
-import { useMemo } from "react";
-import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useState } from "react";
 import VirtualClass from "../components/VirtualClass/VirtualClass";
 import VirtualTrack from "../components/VirtualTrack/VirtualTrack";
-import { ToastContainer, toast } from "react-toastify";
 
 
 import ex from "../images/svg/x-mark.svg";
@@ -24,21 +18,6 @@ import badge from "../images/svg/badge.svg";
 
 const VirtualLanidng = () => {
   const [showModal, setShowModal] = useState(true);
-  const [buttonColor, setButtonColor] = useState("initialColor");
-  const sliderRef = useRef(null);
-
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 200,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500, // Adjust the speed as needed
-    cssEase: "linear",
-    arrows: false,
-  };
-  const history = useHistory();
   // const productDesignHandler = () =>{
   //   sessionStorage.setItem(
   //     "learning_mode",
@@ -54,28 +33,6 @@ const VirtualLanidng = () => {
     var landingHeight = document.getElementsByClassName("landing")[0];
     landingHeight.style.marginTop = `0px`;
   };
-  const courseDetailsHandler = (goTo) => {
-    sessionStorage.setItem(
-      "learning_mode",
-      JSON.stringify({
-        class_option: "Virtual",
-      })
-    );
-    history.push(goTo);
-  };
-  const goToPrev = () => {
-    if (sliderRef.current) {
-      sliderRef.current.slickPrev();
-      setButtonColor("colorAfterClick");
-    }
-  };
-
-  const goToNext = () => {
-    if (sliderRef.current) {
-      sliderRef.current.slickNext();
-      setButtonColor("colorAfterClick");
-    }
-  };
 
   // const scrollToTarget = () => {
   //   const targetElement = document.querySelector(".landing__intern--content");
@@ -87,38 +44,6 @@ const VirtualLanidng = () => {
   //   }
   // };
 
-  const targetDate = new Date("2023-12-31T23:59:59");
-
-  const memoizedTargetDate = useMemo(
-    () => targetDate || new Date(),
-    [targetDate]
-  );
-
-  const [timeRemaining, setTimeRemaining] = useState(
-    calculateTimeRemaining(memoizedTargetDate)
-  );
-
-  function calculateTimeRemaining(targetDate) {
-    const now = new Date();
-    const difference = Math.max(0, targetDate.getTime() - now.getTime()) / 1000; // Convert milliseconds to seconds
-    return Math.floor(difference);
-  }
-
-  useEffect(() => {
-    // Check if targetDate is defined before using it
-    if (targetDate) {
-      const intervalId = setInterval(() => {
-        setTimeRemaining(calculateTimeRemaining(targetDate));
-      }, 1000);
-
-      return () => clearInterval(intervalId);
-    }
-  }, [targetDate]);
-
-  const days = Math.floor(timeRemaining / (60 * 60 * 24));
-  const hours = Math.floor((timeRemaining % (60 * 60 * 24)) / (60 * 60));
-  const minutes = Math.floor((timeRemaining % (60 * 60)) / 60);
-  const seconds = timeRemaining % 60;
 
   return (
     <>

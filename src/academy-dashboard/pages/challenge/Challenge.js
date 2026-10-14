@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import ChallengeCard from "../../component/challenge/challenges/challengecard/ChallengeCard";
 import LockedChallenge from "../../component/challenge/challenges/challengecard/LockedChallenge";
 import ChallengeProgress from "../../component/challenge/challenges/ChallengeProgress";
-import ChallengeText from "../../component/challenge/challenges/challengetext/ChallengeText";
 import ProfileCard from "../../component/shared/profilecard/ProfileCard";
 import CohortCard from "../../component/shared/cohortcard/CohortCard";
 import img from "../../static/profile_image.png";
-import Carousel from "../../component/carousel/Carousel";
-import CarouselDiv from "../../component/carousel/Carousel";
 import ChallengeDetail from "./ChallengeDetail";
 // const Component1 = ({ String }) => {
 //   return <div dangerouslySetInnerHTML={{ __html: String }} />;

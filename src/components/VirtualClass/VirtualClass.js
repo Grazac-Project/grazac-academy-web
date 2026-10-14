@@ -49,7 +49,7 @@ const slides = [
 ];
 
 const VirtualClass = () => {
-  const [buttonColor, setButtonColor] = useState("initialColor");
+  const [, setButtonColor] = useState("initialColor");
   const sliderRef = useRef(null);
 
   var settings = {

@@ -8,19 +8,6 @@ import Virtual from "../../../images/svg/virtual.svg";
 
 const Mode = () => {
   const history = useHistory();
-  const containerStyle = {
-    display: "flex",
-    width: "201px",
-    height: "201px",
-    padding: "19.716px",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "13.144px",
-    borderRadius: "13.144px",
-    background: "#FFF",
-    boxShadow: "0px 1.64297px 6.57189px 0px rgba(0, 0, 0, 0.15)",
-  };
   const handlePhysical = () => {
     sessionStorage.setItem(
       "mode_selection",

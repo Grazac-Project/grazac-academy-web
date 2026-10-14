@@ -8,13 +8,11 @@ import { Link } from "react-router-dom";
 import arrow from "../../images/svg/arrow-front.svg";
 import purpleBack from "../../images/svg/purple-back.svg";
 import instagram from "../../images/svg/icons8-instagram.svg";
-import facebook from "../../images/svg/icons8-facebook.svg";
 import twitter from "../../images/svg/icons8-twitter.svg";
 import github from "../../images/svg/icons8-github.svg";
 import linkedin from "../../images/svg/icons8-linkedin.svg";
-import profile from "../../images/man.jpg";
 import Loader from "../../components/Loader";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Profile() {
   const talentId = useSelector((state) => state.pageData.hireUserId);
@@ -55,11 +53,11 @@ function Profile() {
       .catch((err) => {
         alert(`Something went wrong, please try again!!!`);
       });
-  }, []);
+  }, [talentId]);
 
   return (
     <div>
-      {isEmptyObject(talent) == false ? (
+      {!isEmptyObject(talent) ? (
         <div>
           <div className="hire-bg">
             <Navbar />
@@ -156,7 +154,7 @@ function Profile() {
                                   : "hired"
                               }
                             >
-                              {talent?.status == "Unhired"
+                              {talent?.status === "Unhired"
                                 ? "Available"
                                 : "Hired"}
                             </p>

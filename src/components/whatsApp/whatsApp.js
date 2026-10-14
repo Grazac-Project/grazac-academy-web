@@ -10,6 +10,7 @@ const WhatsApp = () => {
         // href="https://wa.link/lspb4k"
         href="https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL?mode=ems_wa_c"
         target="_blank"
+        rel="noopener noreferrer"
         className={classes.whatsapp}
       >
         <WhatsAppIcon />

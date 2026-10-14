@@ -1544,7 +1544,7 @@ function NotSubmitted({
                       />
                       <p>
                         I accept the{" "}
-                        <a href={termsandconds} download target="_blank">
+                        <a href={termsandconds} download target="_blank" rel="noreferrer">
                           Terms ‌and‌ ‌Conditions‌
                         </a>{" "}
                       </p>
