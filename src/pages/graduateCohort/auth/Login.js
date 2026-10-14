@@ -16,6 +16,7 @@ function Login() {
     password: "",
     cohort: "",
   });
+  const [isPending, setIsPending] = useState(false);
 
   const handleChange = (e) => {
     setForm({
@@ -25,10 +26,9 @@ function Login() {
   };
 
   const doLogin = (e) => {
-    // console.log(form);
     e.preventDefault();
-    var btn = document.getElementById("actionBtn");
-    btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;" />`;
+    if (isPending) return;
+    setIsPending(true);
     const { email, password, cohort } = form;
     // var data = new FormData();
     var data = {};
@@ -75,7 +75,6 @@ function Login() {
              `${res.data.payload.applicationFee}`
            );
 
-          btn.innerHTML = `Sign in`;
           window.location = '/dashboard'
           // setTimeout(function () {
           //   window.location = "/dashboard";
@@ -89,23 +88,17 @@ function Login() {
           //   // window.location = "/mode";
           // }, 2500);
         } else {
-          toast.error("Something went wrong, please try again!!!");
+          toast.error(res.message || "Unable to sign in. Please try again.");
         }
       })
       .catch((err) => {
-        console.log(err)
-        // toast.error(err.response.data.message);
-
-        if (err.response.data.message) {
-          toast.error(err.response.data.message);
-          btn.innerHTML = `Sign in`;
-        } 
-        // else {
-        //   toast.error(
-        //     "Something went wrong!!! Please make sure you have a good internet connection."
-        //   );
-        //   btn.innerHTML = `Sign in`;
-        // }
+        toast.error(
+          err.response?.data?.message ||
+            "Unable to sign in. Please check your internet connection and try again."
+        );
+      })
+      .finally(() => {
+        setIsPending(false);
       });
   };
 
@@ -177,8 +170,22 @@ function Login() {
                   <option value="CH15">CH-15 - August</option>
                 </select>
               </div> */}
-              <button type="submit" id="actionBtn">
-                Sign in
+              <button
+                type="submit"
+                id="actionBtn"
+                disabled={isPending}
+                aria-busy={isPending}
+              >
+                {isPending ? (
+                  <img
+                    src={loader}
+                    width="20"
+                    alt="Signing in"
+                    style={{ display: "block", margin: "auto" }}
+                  />
+                ) : (
+                  "Sign in"
+                )}
               </button>
               <p>
                 <Link to="/forgot-password">
