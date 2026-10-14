@@ -1,60 +1,42 @@
+import React, { useState, useEffect, useRef } from "react";
 
-import React, { useState, useEffect } from 'react';
+const secondsUntil = (expiresAt) =>
+  Math.max(0, Math.ceil((Date.parse(expiresAt) - Date.now()) / 1000));
 
-const Timer = ({ initialTime, onTimeUp }) => {
-  const [timeLeft, setTimeLeft] = useState(null); // Start with null
-
-  useEffect(() => {
-    let savedTime;
-    if (typeof window != 'undefined') {
-      savedTime = sessionStorage.getItem('time_left');
-    }
-    const initial = savedTime ? parseInt(savedTime, 10) : initialTime;
-    setTimeLeft(initial); // Set the timeLeft once calculated
-  }, [initialTime]);
+const Timer = ({ expiresAt, onTimeUp }) => {
+  const [timeLeft, setTimeLeft] = useState(() => secondsUntil(expiresAt));
+  const onTimeUpRef = useRef(onTimeUp);
+  const notifiedDeadline = useRef();
 
   useEffect(() => {
-    if (timeLeft === 0) {
-      onTimeUp();
-      return;
-    }
+    onTimeUpRef.current = onTimeUp;
+  }, [onTimeUp]);
 
+  useEffect(() => {
+    const tick = () => {
+      const remaining = secondsUntil(expiresAt);
+      setTimeLeft(remaining);
+      if (remaining === 0 && notifiedDeadline.current !== expiresAt) {
+        notifiedDeadline.current = expiresAt;
+        onTimeUpRef.current();
+      }
+      return remaining;
+    };
+
+    if (tick() === 0) return;
     const timerId = setInterval(() => {
-      setTimeLeft(prevTime => {
-        // console.log(prevTime);
-        
-        const newTime = prevTime - 1;
-        if (typeof window != 'undefined') {
-          sessionStorage.setItem('time_left', newTime);
-        }
-        // console.log('newTime', newTime);
-        
-        return newTime;
-      });
+      if (tick() === 0) clearInterval(timerId);
     }, 1000);
-
     return () => clearInterval(timerId);
-  }, [timeLeft, onTimeUp]);
+  }, [expiresAt]);
 
-  // console.log(timeLeft);
-  
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
 
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
-  if (timeLeft === null) {
-    return null; // Or a loading spinner/placeholder
-  }
-
-  // console.log(formatTime(timeLeft));
-  
   return (
-    <p id='timer'>
-      {formatTime(timeLeft)}
-      {/* 03:00 */}
+    <p id="timer">
+      {minutes.toString().padStart(2, "0")}:
+      {seconds.toString().padStart(2, "0")}
     </p>
   );
 };

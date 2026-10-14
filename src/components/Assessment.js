@@ -12,14 +12,15 @@ const Assessment = ({
 }) => {
   const [assignment, setAssignment] = useState();
   const assessmentData = assignment?.test;
-  const time = assignment
-    ? (Date.parse(assignment.expiresAt) - Date.parse(assignment.startedAt)) / 1000
-    : undefined;
   const [assignmentError, setAssignmentError] = useState("");
   const [selectedOption, setSelectedOption] = useState({});
   const submitting = useRef(false);
   const pendingSubmission = useRef();
   const completed = useRef(false);
+  const expiredRef = useRef(false);
+  const lastSubmissionOutcome = useRef();
+  const [expired, setExpired] = useState(false);
+  const [transportRetry, setTransportRetry] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
   const [loading, setLoading] = useState(true);
   const [load, setLoad] = useState(false);
@@ -53,41 +54,55 @@ const Assessment = ({
   }, []);
 
   const handleOptionChange = (e, questionId) => {
+    if (submitting.current || expiredRef.current || completed.current) return;
     setSelectedOption((prev) => ({
       ...prev,
       [questionId]: e.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, atDeadline = false) => {
     if (e) e.preventDefault();
     if (submitting.current || completed.current || !assessmentData) return;
 
-    const orderedSelections = assessmentData.questions.map(
-      (question) => selectedOption[question.id]
-    );
-    const signature = JSON.stringify(orderedSelections);
-    if (pendingSubmission.current?.signature !== signature) {
-      const bytes = window.crypto.getRandomValues(new Uint8Array(16));
-      pendingSubmission.current = {
-        signature,
-        payload: {
-          answers: orderedSelections.filter((answer) => answer !== undefined),
-          idempotencyKey: Array.from(bytes, (byte) =>
-            byte.toString(16).padStart(2, "0")
-          ).join(""),
-        },
-      };
+    if (expiredRef.current) {
+      if (!pendingSubmission.current && !atDeadline) return;
+      if (
+        pendingSubmission.current &&
+        lastSubmissionOutcome.current !== "transport"
+      ) return;
+    }
+
+    if (!expiredRef.current || !pendingSubmission.current) {
+      const orderedSelections = assessmentData.questions.map(
+        (question) => selectedOption[question.id]
+      );
+      const signature = JSON.stringify(orderedSelections);
+      if (pendingSubmission.current?.signature !== signature) {
+        const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+        pendingSubmission.current = {
+          signature,
+          payload: {
+            answers: orderedSelections.filter((answer) => answer !== undefined),
+            idempotencyKey: Array.from(bytes, (byte) =>
+              byte.toString(16).padStart(2, "0")
+            ).join(""),
+          },
+        };
+      }
     }
 
     submitting.current = true;
     setLoad(true);
     setSubmissionError("");
+    setTransportRetry(false);
+    lastSubmissionOutcome.current = undefined;
 
     submitAssessment(pendingSubmission.current.payload)
       .then((res) => {
         if (completed.current) return;
         completed.current = true;
+        lastSubmissionOutcome.current = "success";
         setScore(res.data.data.assessmentScore);
         setShowAssessment(false);
         setShowScore(true);
@@ -95,14 +110,24 @@ const Assessment = ({
       })
       .catch((error) => {
         const response = error.response?.data;
+        lastSubmissionOutcome.current = error.response ? "rejected" : "transport";
+        setTransportRetry(!error.response);
         if (response?.code === "incomplete") {
           setSubmissionError(
-            `Answer every question before you submit. Expected ${response.data.expected} answers; received ${response.data.received}.`
+            `${expiredRef.current ? "Assessment time has expired. The server rejected an incomplete submission." : "Answer every question before you submit."} Expected ${response.data.expected} answers; received ${response.data.received}.`
           );
         } else if (response?.code === "no_active_attempt") {
-          setSubmissionError("No active assessment attempt. Please reopen the assessment.");
+          setSubmissionError(
+            expiredRef.current
+              ? "Assessment time has expired. The server did not accept this submission because the attempt is no longer active."
+              : "No active assessment attempt. Please reopen the assessment."
+          );
         } else if (response?.code === "payment_option_required") {
-          setSubmissionError("Choose a payment option before you submit the assessment.");
+          setSubmissionError(
+            expiredRef.current
+              ? "Assessment time has expired. The server requires a payment option and did not accept this submission."
+              : "Choose a payment option before you submit the assessment."
+          );
         } else {
           setSubmissionError(
             response?.message || "Unable to submit your assessment. Please try again."
@@ -116,10 +141,11 @@ const Assessment = ({
   };
 
   const handleTimeUp = () => {
-    if (typeof window !== "undefined") {
-      sessionStorage.removeItem("time_left");
-    }
-    handleSubmit(new Event("submit"));
+    if (expiredRef.current) return;
+    expiredRef.current = true;
+    setExpired(true);
+    setShowConfirmation(false);
+    handleSubmit(undefined, true);
   };
 
   return (
@@ -135,11 +161,24 @@ const Assessment = ({
           </p>
         ) : (
           <>
-            {submissionError && (
+            {(submissionError || expired) && (
               <p role="alert" className="assessment-form px-4 py-6">
-                {submissionError}
+                {expired && !submissionError.startsWith("Assessment time has expired.")
+                  ? "Assessment time has expired. "
+                  : ""}
+                {submissionError || "Answers can no longer be changed."}
               </p>
             )}
+            <div className={showConfirmation ? "hidden" : "assessment-container-timer sticky top-[-30px] w-full bg-white z-40 py-6 flex items-center justify-between px-4 shadow"}>
+              <h2>Assessment</h2>
+              {assignment && (
+                <Timer
+                  key={assignment.attemptId}
+                  expiresAt={assignment.expiresAt}
+                  onTimeUp={handleTimeUp}
+                />
+              )}
+            </div>
             {showConfirmation ? (
               // confirmation replaces assessment
               <div className="flex items-center justify-center w-full mt-48">
@@ -175,12 +214,9 @@ const Assessment = ({
             ) : (
               // assessment form
               <>
-                <div className="assessment-container-timer sticky top-[-30px] w-full bg-white z-40 py-6 flex items-center justify-between px-4 shadow">
-                  <h2>Assessment</h2>
-                  {time && <Timer initialTime={time} onTimeUp={handleTimeUp} />}
-                </div>
 
                 <form className="assessment-container-form">
+                  <fieldset disabled={load || expired || completed.current}>
                   {assessmentData?.questions.map((element, i) => (
                     <div key={element.id} className="question mb-6">
                       <p className="assessment-form mb-2">
@@ -212,8 +248,9 @@ const Assessment = ({
                       </div>
                     </div>
                   ))}
+                  </fieldset>
 
-                  {assessmentData && (
+                  {assessmentData && !expired && (
                     <button
                       type="button"
                       className="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
@@ -225,6 +262,16 @@ const Assessment = ({
                       ) : (
                         "Submit"
                       )}
+                    </button>
+                  )}
+                  {expired && transportRetry && !completed.current && (
+                    <button
+                      type="button"
+                      className="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                      onClick={handleSubmit}
+                      disabled={load}
+                    >
+                      Retry submission
                     </button>
                   )}
                 </form>

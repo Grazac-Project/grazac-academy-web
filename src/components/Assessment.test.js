@@ -317,3 +317,104 @@ test.each([
   expect(result.setShowScore).not.toHaveBeenCalled();
   expect(screen.getByRole("button", { name: "Submit" })).not.toBeDisabled();
 });
+
+test("expiry still submits during confirmation and displays the server's expired-attempt response", async () => {
+  submitAssessment.mockRejectedValue({
+    response: {
+      status: 409,
+      data: {
+        success: false,
+        code: "no_active_attempt",
+        message: "Start an assessment before you submit answers.",
+      },
+    },
+  });
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option A"));
+  fireEvent.click(screen.getByRole("button", { name: "Submit" }));
+  expect(screen.getByRole("button", { name: "Proceed" })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByText("Expire assessment"));
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Assessment time has expired. The server did not accept this submission because the attempt is no longer active."
+  );
+  expect(submitAssessment.mock.calls[0][0].answers).toEqual(["a"]);
+  expect(screen.getByLabelText("First option A")).toBeChecked();
+  expect(screen.queryByRole("button", { name: "Proceed" })).not.toBeInTheDocument();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+  expect(screen.getByLabelText("First option A")).toBeDisabled();
+  expect(screen.getByLabelText("Second option B")).toBeDisabled();
+  expect(screen.queryByRole("button", { name: "Submit" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: "Retry submission" })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByText("Expire assessment"));
+  expect(submitAssessment).toHaveBeenCalledTimes(1);
+});
+
+test("a lost pre-deadline response can replay its exact payload after expiry while answers stay locked", async () => {
+  let rejectSubmission;
+  submitAssessment
+    .mockImplementationOnce(() => new Promise((resolve, reject) => {
+      rejectSubmission = reject;
+    }))
+    .mockResolvedValue({
+      ...submissionResponse(),
+      headers: { "idempotent-replay": "true" },
+    });
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option B"));
+  fireEvent.click(screen.getByLabelText("Second option C"));
+  confirmSubmission();
+  await waitFor(() => expect(submitAssessment).toHaveBeenCalledTimes(1));
+  const originalPayload = submitAssessment.mock.calls[0][0];
+  expect(screen.getByLabelText("First option B")).toBeDisabled();
+
+  fireEvent.click(screen.getByText("Expire assessment"));
+  expect(submitAssessment).toHaveBeenCalledTimes(1);
+  await act(async () => {
+    rejectSubmission(new Error("Network Error"));
+    await Promise.resolve();
+  });
+  const retry = await screen.findByRole("button", { name: "Retry submission" });
+  expect(screen.getByLabelText("First option B")).toBeChecked();
+  expect(screen.getByLabelText("Second option C")).toBeDisabled();
+  expect(screen.queryByRole("button", { name: "Submit" })).not.toBeInTheDocument();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+
+  fireEvent.click(retry);
+  await waitFor(() => expect(result.setShowScore).toHaveBeenCalledTimes(1));
+  expect(submitAssessment.mock.calls[1][0]).toBe(originalPayload);
+  expect(result.setScore).toHaveBeenLastCalledWith(100);
+  expect(screen.queryByRole("button", { name: "Retry submission" })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByText("Expire assessment"));
+  expect(submitAssessment).toHaveBeenCalledTimes(2);
+});
+
+test.each([
+  {
+    code: "incomplete",
+    message: "Answer every question before you submit.",
+    data: { expected: 2, received: 1 },
+  },
+  {
+    code: "payment_option_required",
+    message: "Choose a payment option before you submit the assessment.",
+  },
+])("does not offer expiry retries after a known $code rejection", async (response) => {
+  submitAssessment.mockRejectedValue({
+    response: { status: response.code === "incomplete" ? 409 : 422, data: response },
+  });
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option A"));
+  fireEvent.click(screen.getByText("Expire assessment"));
+
+  await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent(
+    response.code === "incomplete"
+      ? "The server rejected an incomplete submission."
+      : "The server requires a payment option and did not accept this submission."
+  ));
+  await waitFor(() => expect(submitAssessment).toHaveBeenCalledTimes(1));
+  expect(screen.getByLabelText("First option A")).toBeDisabled();
+  expect(screen.queryByRole("button", { name: "Retry submission" })).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: "Submit" })).not.toBeInTheDocument();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+});
