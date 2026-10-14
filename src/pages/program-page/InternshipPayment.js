@@ -56,7 +56,6 @@ const InternshipPayment = () => {
     setLoading(true);
     handleFlutterPayment({
       callback: (response) => {
-        console.log("Payment response:", response);
         if (response.status === "completed" || response.status === "successful") {
           setSucessModal(true);
           toast.success("Payment successful!");

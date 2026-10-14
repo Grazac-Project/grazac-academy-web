@@ -39,7 +39,6 @@ function Profile() {
       .then((response) => response)
       .then((resp) => {
         if (resp.status === 200) {
-          console.log("effect", resp.data.profile);
           setTalent(resp.data.profile.user);
           setEducation(resp.data.profile.education);
           setAward(resp.data.profile.award);
@@ -202,7 +201,6 @@ function Profile() {
                         <div className="hire_profile-main-info-shift">
                           {project?.map((item, idx) => (
                             <div key={idx}>
-                              {console.log(item)}
                               <div className="hire_profile-main-info-shift-flx">
                                 <div className="hire_profile-main-info-shift-flx-1">
                                   <p className="text-1">{item.role}</p>

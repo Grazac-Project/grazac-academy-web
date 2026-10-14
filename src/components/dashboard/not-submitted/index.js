@@ -303,7 +303,6 @@ function NotSubmitted({
         // data.append("why_selected_for_cohort", education.reason);
         // data.append("physically_available", education.availability);
         // data.append("will_you_pay_legal_fees", education.legalFee);
-        console.log(data);
       }
     } catch (err) {
       toast.error("please check enter a valid phone number");

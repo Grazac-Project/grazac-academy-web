@@ -155,7 +155,6 @@ function Dashboard() {
 
   useEffect(() => {
     getDetailsC().then((res) => {
-      console.log("profile", res);
       const profile = res.data.data.result;
       if (!profile) {
         toast.error("Unable to load your profile. Please try again.");
@@ -237,7 +236,6 @@ function Dashboard() {
 
     handleFlutterPayment({
       callback: (response) => {
-        console.log(response);
         // if (response.status === "successful") {
         if (response.status === "completed") {
           toast.success("Payment successful! Verifying payment...");
@@ -248,7 +246,6 @@ function Dashboard() {
 
           sendFlutterTx(response.transaction_id)
             // .then((response) => response.data)
-            .then((response) => console.log(response))
             .then((res) => {
               // console.log(res)
               if (res.data.status === "successful") {

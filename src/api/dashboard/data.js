@@ -18,7 +18,6 @@ export const submitDetails = (data, id) => {
   //   },
   // });
   // return APIKit.put(`/user/application-form`, data, {
-    console.log(token)
   return APIKit.put(`api/v1/user/application-form`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,7 +26,6 @@ export const submitDetails = (data, id) => {
 };
 export const submitDetailsLnpl = (data, id) => {
   const { token } = getSession();
-    console.log(token)
   return APIKit.put(`api/v1/user/application-form-lnpl`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
