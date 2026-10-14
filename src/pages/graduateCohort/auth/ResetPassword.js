@@ -18,6 +18,7 @@ function ResetPassword () {
         password: "",
         confirmpassword: ""
     });
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setForm({
@@ -26,48 +27,34 @@ function ResetPassword () {
         })
     }
 
-    const doReset = (e) => {
+    const doReset = async (e) => {
         e.preventDefault();
+        if (loading) return;
         if (!form.password.length || !form.confirmpassword.length) {
-            toast.info("Please make sure no field is empty!")
-        }else if(form.password != form.confirmpassword){
-            toast.error("Passwords do not match!")
-        }else if(form.password.length<6 || form.confirmpassword<6){
-            toast.error("Passwords should be at least 6 characters!")
-        } else{
-            var btn = document.getElementById("actionBtn");
-            btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;"/>`;
-            var data  = new FormData();
-            const newData = {}
-            newData.token = reset_token;
-            newData.password = form.password;
-            newData.confirmPassword = form.confirmpassword; 
-            
-            // data.append("token", reset_token);
-            // data.append("password", form.password);
-            // data.append("confirmPassword", form.confirmpassword);
-    
-            ResetPasswordAction(newData)
-                .then((response) => response.data)
-                .then((res) => {
-                    if (res.status === 200) {
-                        toast.success("Password reset successful! Proceed to login.");
-                        btn.innerHTML=`Reset Password`;
-                    } else {
-                        toast.error("Something went wrong, please try again!!!")
-                        btn.innerHTML=`Reset Password`;
-                    }
-                })
-                .catch((err) => {
-                    toast.error("Unable to reset password! Try again");
-                //     if(err.response.data.message){
-                //         toast.error(err.response.data.message);
-                //         btn.innerHTML=`Reset Password`;
-                //     } else{
-                //         toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                //         btn.innerHTML=`Reset Password`;
-                //     }
+            toast.info("Enter both passwords.");
+        } else if (form.password !== form.confirmpassword) {
+            toast.error("Passwords do not match!");
+        } else if (form.password.length < 6 || form.confirmpassword.length < 6) {
+            toast.error("Passwords should be at least 6 characters!");
+        } else {
+            setLoading(true);
+            try {
+                const response = await ResetPasswordAction({
+                    token: reset_token,
+                    password: form.password,
+                    confirmPassword: form.confirmpassword
                 });
+                const res = response.data;
+                if (response.status === 200 && res.status === 200) {
+                    toast.success("Password reset successful! Proceed to login.");
+                } else {
+                    toast.error(res.message || "Cannot reset your password. Try again.");
+                }
+            } catch (err) {
+                toast.error(err.response?.data?.message || "Cannot connect to the server. Check your connection and try again.");
+            } finally {
+                setLoading(false);
+            }
         }
     }
 
@@ -119,7 +106,9 @@ function ResetPassword () {
                                 <input type="password" id="confirmpassword" placeholder="Password" name="confirmpassword" onChange={handleChange} />
                                 <div id="confirmtoggle" onClick={toggleIcon2} ><img src={visible} /></div>
                             </div>
-                            <button type="submit" id="actionBtn">Reset Password</button>
+                            <button type="submit" id="actionBtn" disabled={loading}>
+                                {loading ? <img src={loader} alt="Resetting password" width="20px" /> : "Reset Password"}
+                            </button>
                             <p>Remember your password? <Link to="/login"><span>Login</span></Link></p>
                         </form>
                     </div>

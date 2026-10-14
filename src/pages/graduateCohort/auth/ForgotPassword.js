@@ -11,42 +11,29 @@ import loader from "../../../images/svg/dashboard/loader.gif";
 
 function ForgotPassword () {
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setEmail(e.target.value)
     }
 
-    const sendMail = (e) => {
+    const sendMail = async (e) => {
         e.preventDefault();
-        var btn = document.getElementById("actionBtn");
-        btn.innerHTML = `<img src=${loader} width="20px" style="display: block; margin: auto;"/>`;
-        var data  = new FormData();
-
-        data.append("email", email);
-        console.log(email);
-        
-        ForgotPasswordAction({email:email})
-            .then((response) => response.data)
-            .then((res) => {
-                console.log(res)
-                if (res.status === 201) {
-                    toast.success("Mail sent! Proceed to check your mail.");
-                    btn.innerHTML=`Send Email`;
-                } else {
-                    toast.error("Something went wrong, please try again!!!")
-                }
-            })
-            .catch((err) => {
-                console.log(err)
-                if(err.response.data.message){
-                    toast.error(err.response.data.message);
-                    btn.innerHTML=`Send Email`;
-                } else{
-                    toast.error("Something went wrong!!! Please make sure you have a good internet connection.");
-                    btn.innerHTML=`Send Email`;
-                }
-            })
-            .finally()
+        if (loading) return;
+        setLoading(true);
+        try {
+            const response = await ForgotPasswordAction({email:email});
+            const res = response.data;
+            if (response.status === 201 && res.status === 201) {
+                toast.success(res.message);
+            } else {
+                toast.error(res.message || "Cannot send the reset email. Try again.");
+            }
+        } catch (err) {
+            toast.error(err.response?.data?.message || "Cannot connect to the server. Check your connection and try again.");
+        } finally {
+            setLoading(false);
+        }
     }
 
 
@@ -68,7 +55,9 @@ function ForgotPassword () {
                                 <label>Email Address</label>
                                 <input type="email" required placeholder="Email Address" name="email" onChange={handleChange} />
                             </div>
-                            <button type="submit" id="actionBtn">Send Email</button>
+                            <button type="submit" id="actionBtn" disabled={loading}>
+                                {loading ? <img src={loader} alt="Sending email" width="20px" /> : "Send Email"}
+                            </button>
                             <p>Remember your password? <Link to="/login"><span>Login</span></Link></p>
                         </form>
                     </div>

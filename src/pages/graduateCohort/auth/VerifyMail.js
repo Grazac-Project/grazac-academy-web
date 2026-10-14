@@ -11,20 +11,43 @@ function Verify() {
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get("token");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [verified, setVerified] = useState(false);
 
   useEffect(() => {
-    verify();
-  }, []);
+    let active = true;
 
-  async function verify() {
-    try {
-      const response = await VerifyEmail(token);
-      const res = await response;
-      setTimeout(function () {
+    async function verify() {
+      setLoading(true);
+      setError("");
+      setVerified(false);
+      if (!token) {
+        setError("The verification link has no token. Use the link in your email.");
         setLoading(false);
-      }, 2500);
-    } catch (err) {}
-  }
+        return;
+      }
+      try {
+        const response = await VerifyEmail(token);
+        if (!active) return;
+        if (response.status === 200 && response.data.status === 200) {
+          setVerified(true);
+        } else {
+          setError(response.data.message || "Email verification failed. Use the link in your email.");
+        }
+      } catch (err) {
+        if (active) {
+          setError(err.response?.data?.message || "Cannot connect to the server. Check your connection and try again.");
+        }
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+
+    verify();
+    return () => {
+      active = false;
+    };
+  }, [token]);
 
   return (
     <div className="layout_auth">
@@ -42,7 +65,8 @@ function Verify() {
                 <h3>Verifying, please wait...</h3>
               </div>
             )}
-            {!loading && (
+            {!loading && error && <p role="alert">{error}</p>}
+            {!loading && verified && (
               <div>
                 <img
                   src={email}
