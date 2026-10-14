@@ -9,8 +9,7 @@ export const APIKit = axios.create({
     timeout: 50000, // timeout can be increased
     headers: {
         // 'Content-Type': 'multipart/form-data',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type': 'application/json'
     }
 });
 
@@ -18,8 +17,7 @@ export const AdminApiKit = axios.create({
     baseURL: adminApiUrl,
     timeout: 50000, // timeout can be increased
     headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type': 'application/json'
     }
 });
 
@@ -27,26 +25,16 @@ export const AdminApi = axios.create({
     baseURL: adminApiUrl,
     timeout: 50000, // timeout can be increased
     headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type': 'application/json'
     }
 });
 
 
 export const forHire = axios.create({
-    baseURL: adminApiUrl,
+    baseURL: 'https://grazac-academy-admin.onrender.com',
     timeout: 50000, // timeout can be increased
     headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type': 'application/json'
     }
 });
 
-// export const forHireContact = axios.create({
-//     baseURL: 'https://grazachire.smartvesty.com',
-//     timeout: 10000, // timeout can be increased
-//     headers: {
-//         'Content-Type': 'application/json',
-//         "Access-Control-Allow-Origin": "*"
-//     }
-// });
