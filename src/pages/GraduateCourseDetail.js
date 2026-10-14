@@ -1,113 +1,125 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PrimaryBtn from "../components/PrimaryBtn";
 import MOT from "../components/MOT";
 
-import paper from "../images/svg/paper-ribbon.svg";
 import Loader from "../components/Loader";
 import Fone from "../images/session-fone.png";
 import Mobile from "../images/session-mobile.png";
 import Stroke from "../images/stroke.png";
 import { PopupButton } from "react-calendly";
 import { academyApiUrl } from "../api/dashboard/apikit";
-// import axios from 'axios'
 
 const CourseDetail = (props) => {
-  const [course, setCourse] = useState("");
+  const [course, setCourse] = useState(null);
   const [outline, setOutline] = useState([]);
   const [mode, setMode] = useState("");
-  const [url, setUrl] = useState("");
-
-  // Use a ref for tracking unmounted state
-  // const isUnmounted = useRef(false);
-
-  const slug = props.location.search.substring(8);
-  // console.log(slug)
-  useEffect(() => {
-    const getInfo = async () => {
-      document.title = "Course Details - Grazac Academy";
-      window.scrollTo(0, 0);
-      const savedData = await sessionStorage.getItem("learning_mode");
-      const trial = await JSON.parse(savedData);
-      await setMode(trial.class_option);
-
-      // Cleanup function
-
-      // return () => {
-      //   isUnmounted.current = true;
-      // };
-    };
-    getInfo();
-  }, []);
-
-  console.log(mode);
-  console.log(outline);
+  const [status, setStatus] = useState("loading");
+  const search = props.location.search;
+  const slug = new URLSearchParams(search).get("course");
 
   useEffect(() => {
-    // Define the fetchData function
-    const fetchData = async (url) => {
+    let active = true;
+    setCourse(null);
+    setOutline([]);
+    setMode("");
+    setStatus("loading");
+    document.title = "Course Details - Grazac Academy";
+    window.scrollTo(0, 0);
+
+    let selectedMode;
+    try {
+      const savedMode = JSON.parse(sessionStorage.getItem("learning_mode"));
+      selectedMode = savedMode && savedMode.class_option;
+    } catch {
+      selectedMode = null;
+    }
+
+    if (selectedMode !== "Virtual" && selectedMode !== "Onsite") {
+      setStatus("mode-needed");
+      return;
+    }
+
+    setMode(selectedMode);
+    if (!slug || !slug.trim()) {
+      setStatus("missing-course");
+      return;
+    }
+
+    const getCourse = async () => {
       try {
-        const response = await fetch(url);
+        const endpoint =
+          selectedMode === "Virtual" ? "getCourseVirtual" : "getCourse";
+        const response = await fetch(
+          `${academyApiUrl}/api/v1/user/${endpoint}/${encodeURIComponent(slug)}`
+        );
+        if (response.status === 404) {
+          if (active) {
+            setStatus("missing-course");
+          }
+          return;
+        }
+        if (!response.ok) {
+          throw new Error("Course request failed");
+        }
         const result = await response.json();
-        // console.log(result)
-        await setCourse(result.details);
-        // console.log(JSON.parse(result.details.outline))
-        await setOutline(JSON.parse(result.details.outline));
-        // if (!isUnmounted.current) {
-        //   setCourse(result.details);
-        // }
-      } catch (error) {
-        // console.log("error:", error);
-        // Handle errors
-        // You can also check if it's unmounted before setting state here
-        // if (!isUnmounted.current) {
-        //   // Handle error or reload the page
-        // }
+        if (!active) {
+          return;
+        }
+        if (!result || !result.details) {
+          setStatus("missing-course");
+          return;
+        }
+        const details = result.details;
+        if (
+          typeof details.name !== "string" ||
+          !details.name.trim() ||
+          (details.description !== null &&
+            typeof details.description !== "string")
+        ) {
+          throw new Error("Invalid course details");
+        }
+
+        let courseOutline = [];
+        try {
+          const parsedOutline =
+            typeof details.outline === "string"
+              ? JSON.parse(details.outline)
+              : details.outline;
+          if (
+            Array.isArray(parsedOutline) &&
+            parsedOutline.every(
+              (item) =>
+                item &&
+                typeof item.topic === "string" &&
+                typeof item.summary === "string"
+            )
+          ) {
+            courseOutline = parsedOutline;
+          }
+        } catch {
+          courseOutline = [];
+        }
+        setCourse(details);
+        setOutline(courseOutline);
+        setStatus("ready");
+      } catch {
+        if (active) {
+          setStatus("error");
+        }
       }
     };
+    getCourse();
 
-    const urlSelect = async () => {
-      // Construct the URL based on the mode
-      let urlBuild = "";
-      // console.log(mode)
-      if (mode === "Virtual") {
-        urlBuild = `${academyApiUrl}/api/v1/user/getCourseVirtual/${slug}`;
-      } else if (mode === "Onsite") {
-        urlBuild = `${academyApiUrl}/api/v1/user/getCourse/${slug}`;
-      }
-
-      setUrl(urlBuild);
-      // console.log(urlBuild)
-      // console.log(url);
-      // Fetch data
-      if (urlBuild) {
-        fetchData(urlBuild);
-      }
+    return () => {
+      active = false;
     };
-    urlSelect();
-  }, [slug, mode]);
-
-  // React.useEffect(() => {
-  //   document.title = "Course Details - Grazac Academy";
-  //   window.scrollTo(0, 0);
-  //   const slug = props.location.search.substring(8);
-  //   console.log(slug)
-
-  //   const savedData = sessionStorage.getItem("learning_mode");
-  //   const trial = JSON.parse(savedData)
-  //   console.log(trial)
-  //   setMode(trial.class_option);
-  //   console.log(trial.class_option)
-
-  // console.log(course);
-  // console.log(mode);
-  // console.log(url)
+  }, [search, slug]);
 
   return (
     <div>
-      {outline.length ? (
+      {status === "ready" ? (
         <div id="blur">
           <Navbar />
           <div className="course">
@@ -125,13 +137,16 @@ const CourseDetail = (props) => {
                           <h1>{course.name}</h1>
                           <p>{course.description}</p>
                           <div className="contact_hero-privacy">
-                            <a
-                              href={course.brochure}
-                              className="download-brochure"
-                              target="_blank"
-                            >
-                              Download Brochure
-                            </a>
+                            {typeof course.brochure === "string" && course.brochure && (
+                              <a
+                                href={course.brochure}
+                                className="download-brochure"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Download Brochure
+                              </a>
+                            )}
                             <Link to="/signup">
                               <button>Apply now</button>
                             </Link>
@@ -176,9 +191,7 @@ const CourseDetail = (props) => {
                       </div>
                     ))
                   ) : (
-                    <div>
-                      {/* <img src={loader} alt="loader" className="loader" /> */}
-                    </div>
+                    <p role="status">The course outline is not available right now.</p>
                   )}
                 </div>
               </div>
@@ -211,8 +224,45 @@ const CourseDetail = (props) => {
           </div>
           <Footer />
         </div>
-      ) : (
+      ) : status === "loading" ? (
         <Loader />
+      ) : (
+        <div id="blur">
+          <Navbar />
+          <div className="course">
+            <div className="course_hero">
+              <div className="container">
+                <div className="course_hero-text">
+                  <div className="course_hero-text-b" role="status">
+                    <h1>
+                      {status === "mode-needed"
+                        ? "Choose your learning mode"
+                        : status === "missing-course"
+                        ? "Course not found"
+                        : "Unable to load this course"}
+                    </h1>
+                    <p>
+                      {status === "mode-needed"
+                        ? "Choose an Onsite or Virtual course to view its details."
+                        : status === "missing-course"
+                        ? "This course is not available for the selected learning mode."
+                        : "We could not load the course details. Please try again later."}
+                    </p>
+                    <div className="contact_hero-privacy">
+                      <Link to="/#availableTrack">
+                        <button>Browse Onsite courses</button>
+                      </Link>
+                      <Link to="/virtual#virtualTrack">
+                        <button>Browse Virtual courses</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Footer />
+        </div>
       )}
     </div>
   );
