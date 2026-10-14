@@ -18,6 +18,8 @@ Required configuration:
 
 Missing variables are not defaulted. Never put a secret key in frontend configuration. Hire remains outside school and independent of the Admin API base; full hire contract alignment remains separate work.
 
+Every Flutterwave checkout reads `REACT_APP_FLW_PUBLIC_KEY`. No checkout contains an embedded public key or a fallback key.
+
 Browser requests with `/` API bases stay on the frontend origin. CRA forwards only `/api` and `/api/...` to the required server-only `API_PROXY_TARGET`, keeping paths and queries unchanged. Both school namespaces reach one listener. Restart CRA after environment changes.
 
 Keep local settings in `.env.development.local`, not a shared production environment file. The proxy runs only during `npm start`; it does not configure backend CORS or production ingress. Production builds must supply approved `REACT_APP_*` values. Absolute API origins bypass the development proxy and need their own server-side CORS policy. Production `/` bases require separately configured same-origin ingress. There are no hard-coded deployed-origin fallbacks.

@@ -10,12 +10,9 @@ function AdmissionFeePage({ details, fname, lname, email, phone }) {
   const [checkAct, setCheckAct] = useState(false);
   const buttonRef = useRef();
 
-  // test: "FLWPUBK_TEST-b6c44d3213f2d2b3c0c3142f3ab81b72-X",
-  // public_key: "FLWPUBK-006bdc82ad878f1518af32f44af6478f-X",
 
   const AdmissionFeeFlutterwaveConfig = {
-    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
-    // public_key: "FLWPUBK_TEST-db62329aaf72156409b8ba67895226d6-X",
+    public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
 
     tx_ref: Date.now(),
     amount: 7500,

@@ -46,7 +46,7 @@ const UndergraduateForm = () => {
   };
 
   const config = {
-    public_key: "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
+    public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
 
     tx_ref: Date.now(),
     amount: amount,
