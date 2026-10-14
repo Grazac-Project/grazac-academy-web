@@ -121,7 +121,10 @@ function Dashboard() {
         setStatus(dataBaseStatus);
         // console.log(status)
 
-        if (JSON.parse(details).isPaid === true) {
+        if (
+          JSON.parse(details).isPaid === true ||
+          JSON.parse(details).isPaid === 1
+        ) {
           setSelectStatus("paid");
         }
         if (JSON.parse(details).firstInstallment === true) {
@@ -168,6 +171,17 @@ function Dashboard() {
   useEffect(() => {
     getDetailsC().then((res) => {
       console.log("profile", res);
+      const profile = res.data.data.result;
+      if (!profile) {
+        toast.error("Unable to load your profile. Please try again.");
+        return;
+      }
+      const session = {
+        ...JSON.parse(sessionStorage.getItem("user_details")),
+        ...profile,
+        id: profile.id,
+        phone: profile.phoneNumber,
+      };
 
       setPaymentChoice(res.data.data.result?.paymentOption);
 
@@ -176,27 +190,10 @@ function Dashboard() {
       setSelectedTrack(res.data.data.result?.learningTrack);
       sessionStorage.setItem(
         "user_details",
-        JSON.stringify({
-          firstName: res.data.data?.result?.firstName,
-          lastName: res.data.data?.result?.lastName,
-          email: res.data.data?.result?.email,
-          id: res.data.data?.result?._id,
-          firstInstallment: res.data.data?.result?.firstInstallment,
-          subInstallment: res.data.data?.result?.subInstallment,
-          subInstallmentOne: res.data.data?.result?.subInstallmentOne,
-          subInstallmentTwo: res.data.data?.result?.subInstallmentTwo,
-          subInstallmentThree: res.data.data?.result?.subInstallmentThree,
-          subInstallmentFour: res.data.data?.result?.subInstallmentFour,
-          subInstallmentFive: res.data.data?.result?.subInstallmentFive,
-          subInstallmentSix: res.data.data?.result?.subInstallmentSix,
-          subInstallmentSeven: res.data.data?.result?.subInstallmentSeven,
-          subInstallmentEight: res.data.data?.result?.subInstallmentEight,
-          isPaid: res.data.data?.result?.isPaid,
-          applicationFee: res.data.data?.result?.applicationFee,
-          phone: res.data.data?.result?.phoneNumber,
-          // token: res.data.token,
-        })
+        JSON.stringify(session)
       );
+      setDetails(session);
+      setUserId(session.id);
       sessionStorage.setItem(
         "applicationFee",
         `${res.data.data.result?.applicationFee}`
@@ -209,6 +206,15 @@ function Dashboard() {
       ) {
         setIsSpecialCourse(true);
       }
+    }).catch((err) => {
+      if (err.response?.status === 401) {
+        window.location = "/login";
+        return;
+      }
+      toast.error(
+        err.response?.data?.message ||
+          "Unable to load your profile. Please check your internet connection and try again."
+      );
     });
   }, []);
 
