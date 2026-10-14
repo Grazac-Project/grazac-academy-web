@@ -33,7 +33,7 @@ const InternshipPayment = () => {
   const totalAmount = tuitionFee + accommodationFee;
 
   const config = {
-    public_key: process.env.REACT_APP_FLW_PUBLIC_KEY || "FLWPUBK-b765ab41a14a9a8258992eafe205259f-X",
+    public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
     tx_ref: `INT-${Date.now()}`,
     amount: totalAmount,
     currency: "NGN",
