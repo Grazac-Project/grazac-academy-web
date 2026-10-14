@@ -18,6 +18,9 @@ const Assessment = ({
   const [assignmentError, setAssignmentError] = useState("");
   const [selectedOption, setSelectedOption] = useState({});
   const submitting = useRef(false);
+  const pendingSubmission = useRef();
+  const completed = useRef(false);
+  const [submissionError, setSubmissionError] = useState("");
   const [loading, setLoading] = useState(true);
   const [load, setLoad] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -58,26 +61,54 @@ const Assessment = ({
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    if (submitting.current || !assessmentData) return;
+    if (submitting.current || completed.current || !assessmentData) return;
+
+    const orderedSelections = assessmentData.questions.map(
+      (question) => selectedOption[question.id]
+    );
+    const signature = JSON.stringify(orderedSelections);
+    if (pendingSubmission.current?.signature !== signature) {
+      const bytes = window.crypto.getRandomValues(new Uint8Array(16));
+      pendingSubmission.current = {
+        signature,
+        payload: {
+          answers: orderedSelections.filter((answer) => answer !== undefined),
+          idempotencyKey: Array.from(bytes, (byte) =>
+            byte.toString(16).padStart(2, "0")
+          ).join(""),
+        },
+      };
+    }
 
     submitting.current = true;
     setLoad(true);
+    setSubmissionError("");
 
-    const answers = assessmentData.questions
-      .map((question) => selectedOption[question.id])
-      .filter((answer) => answer !== undefined);
-    const data = { answers };
-    const testId = assessmentData.id;
-
-    submitAssessment(data, testId)
+    submitAssessment(pendingSubmission.current.payload)
       .then((res) => {
-        console.log("assessment response", res);
+        if (completed.current) return;
+        completed.current = true;
         setScore(res.data.data.assessmentScore);
         setShowAssessment(false);
         setShowScore(true);
         setStatus(res.data.message);
       })
-      .catch(() => {})
+      .catch((error) => {
+        const response = error.response?.data;
+        if (response?.code === "incomplete") {
+          setSubmissionError(
+            `Answer every question before you submit. Expected ${response.data.expected} answers; received ${response.data.received}.`
+          );
+        } else if (response?.code === "no_active_attempt") {
+          setSubmissionError("No active assessment attempt. Please reopen the assessment.");
+        } else if (response?.code === "payment_option_required") {
+          setSubmissionError("Choose a payment option before you submit the assessment.");
+        } else {
+          setSubmissionError(
+            response?.message || "Unable to submit your assessment. Please try again."
+          );
+        }
+      })
       .finally(() => {
         submitting.current = false;
         setLoad(false);
@@ -104,6 +135,11 @@ const Assessment = ({
           </p>
         ) : (
           <>
+            {submissionError && (
+              <p role="alert" className="assessment-form px-4 py-6">
+                {submissionError}
+              </p>
+            )}
             {showConfirmation ? (
               // confirmation replaces assessment
               <div className="flex items-center justify-center w-full mt-48">

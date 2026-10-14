@@ -81,10 +81,13 @@ export const assignAssessment = () => {
     },
   });
 };
-export const submitAssessment = (data, testId) => {
-  const { userId } = getSession();
-  // return AdminApiKit.get(`/fetchDataB/${userId}`, {
-  return AdminApiKit.put(`api/v1/Assessment/answers/${userId}/${testId}`, data);
+export const submitAssessment = (data) => {
+  const { token } = getSession();
+  return APIKit.put(`api/v1/assessment/submit`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 // ===============Course Guarantor data fetch commented=============== 

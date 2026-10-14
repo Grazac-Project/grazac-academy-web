@@ -16,6 +16,41 @@ jest.mock("./Timer", () => ({
   ),
 }));
 
+
+const webcrypto = require("crypto").webcrypto;
+const originalCrypto = Object.getOwnPropertyDescriptor(window, "crypto");
+
+beforeAll(() => {
+  Object.defineProperty(window, "crypto", {
+    configurable: true,
+    value: webcrypto,
+  });
+});
+
+afterAll(() => {
+  if (originalCrypto) {
+    Object.defineProperty(window, "crypto", originalCrypto);
+  } else {
+    delete window.crypto;
+  }
+});
+
+function submissionResponse(passed = true) {
+  return {
+    data: {
+      success: true,
+      message: passed ? "You passed!" : "You failed.",
+      data: {
+        attemptId: "attempt-one",
+        assessmentScore: passed ? 100 : 0,
+        status: "Pending",
+        testStatus: passed ? "passed" : "failed",
+        takenAssessment: passed,
+        passMark: 60,
+      },
+    },
+  };
+}
 const optionValues = ["a", "b", "c", "d"];
 
 function makeOptions(questionId, questionName) {
@@ -23,6 +58,7 @@ function makeOptions(questionId, questionName) {
     id: `${questionId}-option-${value}`,
     option: `${questionName} option ${value.toUpperCase()}`,
     value,
+    description: false,
   }));
 }
 
@@ -59,23 +95,26 @@ beforeEach(() => {
   jest.clearAllMocks();
   assignAssessment.mockResolvedValue({
     data: {
+      status: 200,
+      message: "Test assigned successfully",
       data: {
         attemptId: "attempt-one",
         startedAt: "2026-10-14T10:00:00.000Z",
         expiresAt: "2026-10-14T10:05:00.000Z",
-        test: { id: "test-one", time: 5, questions },
+        test: {
+          id: "test-one",
+          time: 5,
+          questions,
+          createdAt: "2026-10-14T09:00:00.000Z",
+          updatedAt: "2026-10-14T09:00:00.000Z",
+        },
       },
     },
   });
 });
 
 test("sends answers in assessment question order", async () => {
-  submitAssessment.mockResolvedValue({
-    data: {
-      message: "You passed!",
-      data: { assessmentScore: 100 },
-    },
-  });
+  submitAssessment.mockResolvedValue(submissionResponse());
   await renderAssessment();
 
   fireEvent.click(screen.getByLabelText("Second option C"));
@@ -89,10 +128,15 @@ test("sends answers in assessment question order", async () => {
 });
 
 test("keeps a partial submission shorter than the assessment", async () => {
-  submitAssessment.mockResolvedValue({
-    data: {
-      message: "You failed.",
-      data: { assessmentScore: 0 },
+  submitAssessment.mockRejectedValue({
+    response: {
+      status: 409,
+      data: {
+        success: false,
+        code: "incomplete",
+        message: "Answer every question before you submit.",
+        data: { expected: 2, received: 1 },
+      },
     },
   });
   await renderAssessment();
@@ -104,6 +148,9 @@ test("keeps a partial submission shorter than the assessment", async () => {
   await waitFor(() => {
     expect(submitAssessment.mock.calls[0][0].answers).toEqual(["a"]);
   });
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Expected 2 answers; received 1."
+  );
 });
 
 test("sends only one request while submission remains active", async () => {
@@ -117,6 +164,7 @@ test("sends only one request while submission remains active", async () => {
   await renderAssessment();
 
   fireEvent.click(screen.getByLabelText("First option A"));
+  fireEvent.click(screen.getByLabelText("Second option B"));
   fireEvent.click(screen.getByRole("button", { name: "Submit" }));
   fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
   await waitFor(() => expect(submitAssessment).toHaveBeenCalledTimes(1));
@@ -125,12 +173,7 @@ test("sends only one request while submission remains active", async () => {
   expect(submitAssessment).toHaveBeenCalledTimes(1);
 
   await act(async () => {
-    resolveSubmission({
-      data: {
-        message: "You failed.",
-        data: { assessmentScore: 0 },
-      },
-    });
+    resolveSubmission(submissionResponse(false));
     await Promise.resolve();
   });
 });
@@ -175,4 +218,102 @@ test("shows an error when a successful response has no assignment", async () => 
     "Unable to load your assigned assessment."
   );
   expect(screen.queryByRole("button", { name: "Expire assessment" })).not.toBeInTheDocument();
+});
+
+function confirmSubmission() {
+  fireEvent.click(screen.getByRole("button", { name: "Submit" }));
+  fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
+}
+
+test("retries a lost submission response with the same payload and displays a replay only once", async () => {
+  submitAssessment
+    .mockRejectedValueOnce(new Error("Network Error"))
+    .mockResolvedValue({
+      ...submissionResponse(),
+      headers: { "idempotent-replay": "true" },
+    });
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option B"));
+  fireEvent.click(screen.getByLabelText("Second option C"));
+  confirmSubmission();
+
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Unable to submit your assessment. Please try again."
+  );
+  expect(screen.getByLabelText("First option B")).toBeChecked();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+  const firstPayload = submitAssessment.mock.calls[0][0];
+  expect(firstPayload).toEqual({
+    answers: ["b", "c"],
+    idempotencyKey: expect.stringMatching(/^[0-9a-f]{32}$/),
+  });
+
+  confirmSubmission();
+  await waitFor(() => expect(result.setShowScore).toHaveBeenCalledTimes(1));
+  expect(submitAssessment.mock.calls[1][0]).toBe(firstPayload);
+  expect(result.setScore).toHaveBeenLastCalledWith(100);
+  expect(result.setStatus).toHaveBeenLastCalledWith("You passed!");
+
+  fireEvent.click(screen.getByRole("button", { name: "Expire assessment" }));
+  expect(submitAssessment).toHaveBeenCalledTimes(2);
+  expect(result.setShowScore).toHaveBeenCalledTimes(1);
+});
+
+test("keeps incomplete answers selected and creates a new submission key when answers change", async () => {
+  submitAssessment
+    .mockRejectedValueOnce({
+      response: {
+        status: 409,
+        data: {
+          success: false,
+          code: "incomplete",
+          message: "Answer every question before you submit.",
+          data: { expected: 2, received: 1 },
+        },
+      },
+    })
+    .mockResolvedValue(submissionResponse());
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option B"));
+  confirmSubmission();
+
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Expected 2 answers; received 1."
+  );
+  expect(screen.getByLabelText("First option B")).toBeChecked();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+  const firstPayload = submitAssessment.mock.calls[0][0];
+
+  fireEvent.click(screen.getByLabelText("Second option C"));
+  confirmSubmission();
+  await waitFor(() => expect(result.setShowScore).toHaveBeenCalledTimes(1));
+  const secondPayload = submitAssessment.mock.calls[1][0];
+  expect(secondPayload.answers).toEqual(["b", "c"]);
+  expect(secondPayload.idempotencyKey).not.toBe(firstPayload.idempotencyKey);
+});
+
+test.each([
+  ["no_active_attempt", "No active assessment attempt. Please reopen the assessment."],
+  ["payment_option_required", "Choose a payment option before you submit the assessment."],
+])("shows %s without discarding selected answers or displaying success", async (code, message) => {
+  submitAssessment.mockRejectedValue({
+    response: {
+      status: code === "no_active_attempt" ? 409 : 422,
+      data: {
+        success: false,
+        code,
+        message: code === "no_active_attempt"
+          ? "Start an assessment before you submit answers."
+          : "Choose a payment option before you submit the assessment.",
+      },
+    },
+  });
+  const result = await renderAssessment();
+  fireEvent.click(screen.getByLabelText("First option A"));
+  confirmSubmission();
+
+  expect(await screen.findByRole("alert")).toHaveTextContent(message);
+  expect(screen.getByLabelText("First option A")).toBeChecked();
+  expect(result.setShowScore).not.toHaveBeenCalled();
+  expect(screen.getByRole("button", { name: "Submit" })).not.toBeDisabled();
 });
