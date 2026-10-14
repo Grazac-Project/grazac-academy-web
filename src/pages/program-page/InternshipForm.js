@@ -129,7 +129,6 @@ const InternshipForm = () => {
 
       try {
         const response = await Internship_Form(formData);
-        console.log(response);
 
         if (response.status === 200 || response.status === 201) {
           toast.success("Details submitted successfully!");
