@@ -1,4 +1,4 @@
-import { APIKit, AdminApiKit, AdminApi } from "./apikit";
+import { APIKit, AdminApiKit } from "./apikit";
 
 const getSession = () => {
   const token = sessionStorage.getItem("token");

@@ -1,4 +1,4 @@
-import {forHire, forHireContact} from './apikit';
+import {forHire} from './apikit';
 
 
 export const getAllTalents = (page) => {
