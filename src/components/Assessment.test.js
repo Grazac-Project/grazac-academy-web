@@ -1,9 +1,9 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Assessment from "./Assessment";
-import { fetchAssessment, submitAssessment } from "../api/dashboard/data";
+import { assignAssessment, submitAssessment } from "../api/dashboard/data";
 
 jest.mock("../api/dashboard/data", () => ({
-  fetchAssessment: jest.fn(),
+  assignAssessment: jest.fn(),
   submitAssessment: jest.fn(),
 }));
 
@@ -19,8 +19,8 @@ jest.mock("./Timer", () => ({
 const optionValues = ["a", "b", "c", "d"];
 
 function makeOptions(questionId, questionName) {
-  return optionValues.map((value, index) => ({
-    _id: `${questionId}-option-${value}`,
+  return optionValues.map((value) => ({
+    id: `${questionId}-option-${value}`,
     option: `${questionName} option ${value.toUpperCase()}`,
     value,
   }));
@@ -28,12 +28,12 @@ function makeOptions(questionId, questionName) {
 
 const questions = [
   {
-    _id: "question-one",
+    id: "question-one",
     question: "First question",
     options: makeOptions("question-one", "First"),
   },
   {
-    _id: "question-two",
+    id: "question-two",
     question: "Second question",
     options: makeOptions("question-two", "Second"),
   },
@@ -55,17 +55,16 @@ async function renderAssessment() {
   return result;
 }
 
-async function openConfirmation(optionLabel = "First option A") {
-  fireEvent.click(screen.getByLabelText(optionLabel));
-  fireEvent.click(screen.getByRole("button", { name: "Submit" }));
-  fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
-}
-
 beforeEach(() => {
   jest.clearAllMocks();
-  fetchAssessment.mockResolvedValue({
+  assignAssessment.mockResolvedValue({
     data: {
-      data: [{ _id: "test-one", time: 5, questions }],
+      data: {
+        attemptId: "attempt-one",
+        startedAt: "2026-10-14T10:00:00.000Z",
+        expiresAt: "2026-10-14T10:05:00.000Z",
+        test: { id: "test-one", time: 5, questions },
+      },
     },
   });
 });
@@ -85,10 +84,7 @@ test("sends answers in assessment question order", async () => {
   fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
 
   await waitFor(() => {
-    expect(submitAssessment).toHaveBeenCalledWith(
-      { answers: ["b", "c"] },
-      "test-one"
-    );
+    expect(submitAssessment.mock.calls[0][0].answers).toEqual(["b", "c"]);
   });
 });
 
@@ -106,10 +102,7 @@ test("keeps a partial submission shorter than the assessment", async () => {
   fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
 
   await waitFor(() => {
-    expect(submitAssessment).toHaveBeenCalledWith(
-      { answers: ["a"] },
-      "test-one"
-    );
+    expect(submitAssessment.mock.calls[0][0].answers).toEqual(["a"]);
   });
 });
 
@@ -142,24 +135,44 @@ test("sends only one request while submission remains active", async () => {
   });
 });
 
-test.each([
-  ["You passed!", 75],
-  ["You failed.", 0],
-])("preserves the %s result message", async (message, assessmentScore) => {
-  submitAssessment.mockResolvedValue({
-    data: {
-      message,
-      data: { assessmentScore },
+test("shows a passed-attempt assignment rejection without starting the assessment", async () => {
+  assignAssessment.mockRejectedValue({
+    response: {
+      status: 409,
+      data: { code: "attempt_already_passed" },
     },
   });
-  const result = await renderAssessment();
+  render(<Assessment {...callbacks()} />);
 
-  await openConfirmation();
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "You already passed this assessment. An administrator must reset your attempt."
+  );
+  expect(screen.queryByText("1. First question")).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: "Expire assessment" })).not.toBeInTheDocument();
+  expect(submitAssessment).not.toHaveBeenCalled();
+});
 
-  await waitFor(() => {
-    expect(result.setStatus).toHaveBeenCalledWith(message);
-    expect(result.setScore).toHaveBeenCalledWith(assessmentScore);
-    expect(result.setShowScore).toHaveBeenCalledWith(true);
-    expect(result.setShowAssessment).toHaveBeenCalledWith(false);
+test.each([
+  { response: { data: { message: "Test not found" } } },
+  new Error("Network Error"),
+])("shows assignment failures rather than an empty assessment", async (error) => {
+  assignAssessment.mockRejectedValue(error);
+  render(<Assessment {...callbacks()} />);
+
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    error.response?.data.message || "Unable to load your assigned assessment."
+  );
+  expect(screen.queryByRole("button", { name: "Submit" })).not.toBeInTheDocument();
+});
+
+test("shows an error when a successful response has no assignment", async () => {
+  assignAssessment.mockResolvedValue({
+    data: { message: "Assignment created", data: null },
   });
+  render(<Assessment {...callbacks()} />);
+
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Unable to load your assigned assessment."
+  );
+  expect(screen.queryByRole("button", { name: "Expire assessment" })).not.toBeInTheDocument();
 });

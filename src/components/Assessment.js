@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Timer from "./Timer";
-import { fetchAssessment, submitAssessment } from "../api/dashboard/data";
+import { assignAssessment, submitAssessment } from "../api/dashboard/data";
 import loader from "../images/loader-purple.gif";
 import loader2 from "../images/load.gif";
 
@@ -10,8 +10,12 @@ const Assessment = ({
   setStatus,
   setShowAssessment,
 }) => {
-  const [assessmentData, setAssessmentData] = useState();
-  const [time, setTime] = useState();
+  const [assignment, setAssignment] = useState();
+  const assessmentData = assignment?.test;
+  const time = assignment
+    ? (Date.parse(assignment.expiresAt) - Date.parse(assignment.startedAt)) / 1000
+    : undefined;
+  const [assignmentError, setAssignmentError] = useState("");
   const [selectedOption, setSelectedOption] = useState({});
   const submitting = useRef(false);
   const [loading, setLoading] = useState(true);
@@ -19,17 +23,30 @@ const Assessment = ({
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
-    fetchAssessment()
+    assignAssessment()
       .then((res) => {
-        setLoading(false);
-        setAssessmentData(res.data.data[0]);
-        if (res.data.data[0].time) {
-          setTime(res.data.data[0].time * 60);
+        const assigned = res.data?.data;
+        if (
+          !assigned?.attemptId ||
+          !assigned.test?.id ||
+          !Array.isArray(assigned.test.questions) ||
+          !Number.isFinite(Date.parse(assigned.startedAt)) ||
+          !Number.isFinite(Date.parse(assigned.expiresAt))
+        ) {
+          setAssignmentError("Unable to load your assigned assessment.");
+          return;
         }
+        setAssignment(assigned);
       })
-      .catch(() => {
-        setLoading(false);
-      });
+      .catch((error) => {
+        const response = error.response?.data;
+        setAssignmentError(
+          response?.code === "attempt_already_passed"
+            ? "You already passed this assessment. An administrator must reset your attempt."
+            : response?.message || "Unable to load your assigned assessment. Please try again later."
+        );
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleOptionChange = (e, questionId) => {
@@ -41,16 +58,16 @@ const Assessment = ({
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    if (submitting.current) return;
+    if (submitting.current || !assessmentData) return;
 
     submitting.current = true;
     setLoad(true);
 
     const answers = assessmentData.questions
-      .map((question) => selectedOption[question._id])
+      .map((question) => selectedOption[question.id])
       .filter((answer) => answer !== undefined);
     const data = { answers };
-    const testId = assessmentData._id;
+    const testId = assessmentData.id;
 
     submitAssessment(data, testId)
       .then((res) => {
@@ -81,6 +98,10 @@ const Assessment = ({
           <div className="img-container">
             <img src={loader} alt="loader" />
           </div>
+        ) : assignmentError ? (
+          <p role="alert" className="assessment-form px-4 py-6">
+            {assignmentError}
+          </p>
         ) : (
           <>
             {showConfirmation ? (
@@ -125,29 +146,29 @@ const Assessment = ({
 
                 <form className="assessment-container-form">
                   {assessmentData?.questions.map((element, i) => (
-                    <div key={`${element._id}-${i}`} className="question mb-6">
+                    <div key={element.id} className="question mb-6">
                       <p className="assessment-form mb-2">
                         {i + 1}. {element.question}
                       </p>
                       <div className="options-container space-y-2">
-                        {element.options.map((option, index) => (
+                        {element.options.map((option) => (
                           <div
-                            key={`${option._id}-${index}`}
+                            key={option.id}
                             className="option-container flex items-center gap-2"
                           >
                             <input
                               type="radio"
-                              id={`${option._id}-${element._id}`}
-                              name={`option-${element._id}`}
+                              id={`${option.id}-${element.id}`}
+                              name={`option-${element.id}`}
                               value={option.value}
                               checked={
-                                selectedOption[element._id] === option.value
+                                selectedOption[element.id] === option.value
                               }
                               onChange={(e) =>
-                                handleOptionChange(e, element._id)
+                                handleOptionChange(e, element.id)
                               }
                             />
-                            <label htmlFor={`${option._id}-${element._id}`}>
+                            <label htmlFor={`${option.id}-${element.id}`}>
                               {option.option}
                             </label>
                           </div>
