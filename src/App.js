@@ -16,42 +16,33 @@ import It from "./pages/program-page/It";
 // import Tawk from "./components/tawkTo/tawk";
 
 const LandingPage = lazy(() => {
-  return import("./pages/Landing");
+  return import("./site/pages/Home");
+});
+const Courses = lazy(() => {
+  return import("./site/pages/Courses");
 });
 const Vitual = lazy(() => {
-  return import("./pages/virtualLanding");
+  return import("./site/pages/Virtual");
 });
 
 const About = lazy(() => {
-  return import("./pages/AboutUs");
+  return import("./site/pages/About");
 });
 
 const GraduateCourseDetail = lazy(() => {
-  return import("./pages/GraduateCourseDetail");
+  return import("./site/pages/CourseDetail");
 });
 
 const Faq = lazy(() => {
-  return import("./pages/Faq");
+  return import("./site/pages/Faq");
 });
 
 const Contact = lazy(() => {
-  return import("./pages/Contact");
+  return import("./site/pages/Contact");
 });
 
 const Hire = lazy(() => {
-  return import("./pages/hire");
-});
-
-const Listing = lazy(() => {
-  return import("./pages/hire/Listing");
-});
-
-const Profile = lazy(() => {
-  return import("./pages/hire/Profile");
-});
-
-const HireContact = lazy(() => {
-  return import("./pages/hire/Contact");
+  return import("./site/pages/Hire");
 });
 
 const SignUp = lazy(() => {
@@ -108,7 +99,7 @@ const AcademySettingsPage = lazy(() => {
   return import("../src/academy-dashboard/pages/settings/Settings");
 });
 const Pricing = lazy(() => {
-  return import("./pages/pricing");
+  return import("./site/pages/Pricing");
 });
 const Payment = lazy(() => {
   return import("../src/components/dashboard/payment");
@@ -173,7 +164,7 @@ const App = () => {
           {/* {show && <Loader />} */}
 
           <Suspense fallback={<Loader />}>
-            <div ref={app} className="App" style={{ overflow: "hidden" }}>
+            <div ref={app} className="App" style={{ overflowX: "clip" }}>
               <WhatsApp />
               <Switch>
                 {/* <AcademySidebar>
@@ -207,6 +198,7 @@ const App = () => {
                   {/* <Redirect to="/join"/>  */}
                 </Route>
                 {/* <Route path="/join" component={Join}/> */}
+                <Route path="/courses" component={Courses} />
                 <Route path="/about-us" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
@@ -228,9 +220,10 @@ const App = () => {
                 {/*   hire pages */}
 
                 <Route path="/hire" exact component={Hire} />
-                <Route path="/hire/listing" component={Listing} />
-                <Route path="/hire/:username" component={Profile} />
-                <Route path="/hire/contact" component={HireContact} />
+                {/* The talent directory API no longer exists, so the old listing,
+                    profile and contact pages redirect to the new hire page. */}
+                <Redirect from="/hire/contact" to="/hire#request" />
+                <Redirect from="/hire/:rest" to="/hire" />
 
                 <Route path="/pricing" component={Pricing} />
 
