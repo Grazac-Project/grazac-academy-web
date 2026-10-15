@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { sendFlutterTx } from "../../api/dashboard/data.js";
 import {
   useFlutterwave,
   closePaymentModal,
@@ -15,8 +14,7 @@ const formatCurrency = (value) => {
 
 const isPaid = (value) => value === true || value === 1;
 
-const Payment = ({ selectedTrack, isSpecialCourse }) => {
-  const [paymentVerification, setPaymentVerification] = useState("");
+const Payment = ({ selectedTrack, isSpecialCourse, paymentVerification, checkPaymentStatus }) => {
   const [details, setDetails] = useState({});
   const [amount, setAmount] = useState();
   const currency = "NGN";
@@ -59,19 +57,14 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
   const lastCheckoutAmount = useRef();
 
   useEffect(() => {
-    if (amount === undefined || lastCheckoutAmount.current === amount) return;
+    if (paymentVerification || amount === undefined || lastCheckoutAmount.current === amount) return;
     lastCheckoutAmount.current = amount;
     handleFlutterPayment({
       callback: async (response) => {
         if (response.status === "completed" || response.status === "successful") {
-          setPaymentVerification("pending");
+          const transactionId = String(response.transaction_id);
           closePaymentModal();
-          try {
-            await sendFlutterTx(response.transaction_id);
-          } catch (err) {
-            setPaymentVerification("request-failed");
-            toast.error("Unable to request payment verification. Do not pay again.");
-          }
+          await checkPaymentStatus(transactionId);
         } else {
           toast.error("Payment unsuccessful!");
           closePaymentModal();
@@ -79,7 +72,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
       },
       onClose: (response) => {},
     });
-  }, [amount, handleFlutterPayment]);
+  }, [amount, handleFlutterPayment, checkPaymentStatus, paymentVerification]);
 
   const firstPayment =
     selectedTrack === "physical" && isSpecialCourse
@@ -116,17 +109,6 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
   return (
     <div className="payment">
       <h4>Payment Type: Installment</h4>
-      {paymentVerification && (
-        <div className="pending" role="status">
-          <p>Your payment is not yet verified. Do not pay again.</p>
-          {paymentVerification === "pending" && (
-            <p>Payment verification is pending.</p>
-          )}
-          {paymentVerification === "request-failed" && (
-            <p role="alert">We cannot request payment verification. Please contact support.</p>
-          )}
-        </div>
-      )}
       <div className="payment-table">
         <table>
           <thead>
@@ -148,7 +130,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
               </td>
               <td>
                 <button
-                  disabled={initialPayment ? true : false}
+                  disabled={Boolean(paymentVerification) || Boolean(initialPayment)}
                   onClick={() => {
                     setAmount(firstPayment);
                   }}
@@ -169,7 +151,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
               </td>
               <td>
                 <button
-                  disabled={subInstallment ? true : false}
+                  disabled={Boolean(paymentVerification) || Boolean(subInstallment)}
                   onClick={() => {
                     setAmount(secondPayment);
                   }}
@@ -189,7 +171,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
               </td>
               <td>
                 <button
-                  disabled={subInstallmentOne ? true : false}
+                  disabled={Boolean(paymentVerification) || Boolean(subInstallmentOne)}
                   onClick={() => {
                     setAmount(thirdPayment);
                   }}
@@ -408,7 +390,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             </div>
             <div className="payment-mobile-action">
               <button
-                disabled={isPaid(initialPayment)}
+                disabled={Boolean(paymentVerification) || isPaid(initialPayment)}
                 onClick={() => {
                   setAmount(firstPayment);
                 }}
@@ -434,7 +416,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             <div className="payment-mobile-action">
               <button
                 className={isPaid(subInstallment) ? "paid" : "pay-now"}
-                disabled={isPaid(subInstallment)}
+                disabled={Boolean(paymentVerification) || isPaid(subInstallment)}
                 onClick={() => {
                   setAmount(secondPayment);
                 }}
@@ -459,7 +441,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
             <div className="payment-mobile-action">
               <button
                 className={isPaid(subInstallmentOne) ? "paid" : "pay-now"}
-                disabled={isPaid(subInstallmentOne)}
+                disabled={Boolean(paymentVerification) || isPaid(subInstallmentOne)}
                 onClick={() => {
                   setAmount(thirdPayment);
                 }}

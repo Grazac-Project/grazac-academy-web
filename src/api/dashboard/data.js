@@ -145,7 +145,10 @@ export const submitGuarantor2 = (data) => {
 };
 
 export const sendFlutterTx = (trans_id) => {
-  return APIKit.post(`api/v1/user/pay?transaction_id=${trans_id}`);
+  const { token } = getSession();
+  return APIKit.post(`api/v1/user/pay?transaction_id=${encodeURIComponent(trans_id)}`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 // export const zohoSubmit = (data) => {

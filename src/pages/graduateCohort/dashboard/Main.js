@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import Sidebar from "../../../components/dashboard/Sidebar";
 import Details from "../../../components/dashboard/Details";
 import NotSubmitted from "../../../components/dashboard/not-submitted";
@@ -68,6 +68,8 @@ function Dashboard() {
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   const [isFeePaid, setIsFeePaid] = useState(false);
   const [paymentVerification, setPaymentVerification] = useState("");
+  const [paymentTransactionId, setPaymentTransactionId] = useState("");
+  const [checkingPayment, setCheckingPayment] = useState(false);
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
     firstName: "",
@@ -218,7 +220,44 @@ function Dashboard() {
     }
   };
 
+  const checkPaymentStatus = useCallback(async (transactionId) => {
+    setPaymentTransactionId(transactionId);
+    setCheckingPayment(true);
+    setPaymentVerification("pending");
+    let confirmed = false;
+    try {
+      const result = await sendFlutterTx(transactionId);
+      if (
+        result.status === 200 &&
+        result.data?.status === 200 &&
+        result.data?.data?.status === "successful" &&
+        result.data?.data?.transaction_id === transactionId
+      ) {
+        confirmed = true;
+        const profileResult = await getDetailsC();
+        const profile = profileResult.data?.data?.result;
+        if (!profile) throw new Error("Unable to refresh your profile");
+        sessionStorage.setItem("user_details", JSON.stringify({
+          ...JSON.parse(sessionStorage.getItem("user_details")),
+          ...profile,
+          phone: profile.phoneNumber,
+        }));
+        sessionStorage.setItem("applicationFee", String(profile.applicationFee));
+        toast.success("Payment verified successfully");
+        window.location.reload();
+      }
+    } catch (err) {
+      setPaymentVerification(confirmed ? "profile-refresh-failed" : "request-failed");
+      toast.error(confirmed
+        ? "Payment verified, but your profile did not refresh. Do not pay again."
+        : "Unable to request payment verification. Do not pay again.");
+    } finally {
+      setCheckingPayment(false);
+    }
+  }, []);
+
   const flutterWavePayment = () => {
+    if (paymentVerification) return;
     // const url =
     //   "https://admin-api.grazacacademy.com/api/v1/admin/download?status=Under Review";
 
@@ -238,14 +277,9 @@ function Dashboard() {
     handleFlutterPayment({
       callback: async (response) => {
         if (response.status === "completed" || response.status === "successful") {
-          setPaymentVerification("pending");
+          const transactionId = String(response.transaction_id);
           closePaymentModal();
-          try {
-            await sendFlutterTx(response.transaction_id);
-          } catch (err) {
-            setPaymentVerification("request-failed");
-            toast.error("Unable to request payment verification. Do not pay again.");
-          }
+          await checkPaymentStatus(transactionId);
         } else {
           toast.error("Payment unsuccessful!");
           closePaymentModal();
@@ -256,6 +290,10 @@ function Dashboard() {
   };
 
   const makePayment = () => {
+    if (paymentVerification) {
+      toast.info("Check your existing payment status. Do not pay again.");
+      return;
+    }
     if (payOpt === "part") {
       setPayShowModal("");
       const planData = new FormData();
@@ -612,13 +650,25 @@ function Dashboard() {
             </div>
             {paymentVerification && (
               <div className="pending" role="status">
-                <p>Your payment is not yet verified. Do not pay again.</p>
+                <p>{paymentVerification === "profile-refresh-failed"
+                  ? "Your payment is verified. Do not pay again."
+                  : "Your payment is not yet verified. Do not pay again."}</p>
                 {paymentVerification === "pending" && (
                   <p>Payment verification is pending.</p>
                 )}
                 {paymentVerification === "request-failed" && (
                   <p role="alert">We cannot request payment verification. Please contact support.</p>
                 )}
+                {paymentVerification === "profile-refresh-failed" && (
+                  <p role="alert">Your profile did not refresh. Check payment status again to retry, or contact support.</p>
+                )}
+                <button
+                  type="button"
+                  disabled={checkingPayment || !paymentTransactionId}
+                  onClick={() => checkPaymentStatus(paymentTransactionId)}
+                >
+                  {checkingPayment ? "Checking payment status..." : "Check payment status"}
+                </button>
               </div>
             )}
             {sidebarClick === "dashboard" && (
@@ -1676,6 +1726,8 @@ function Dashboard() {
               <Payment
                 selectedTrack={selectedTrack}
                 isSpecialCourse={isSpecialCourse}
+                paymentVerification={paymentVerification}
+                checkPaymentStatus={checkPaymentStatus}
               />
             )}
             {/* {sidebarClick === "payment" && <Payment handleFlutterwave = {flutterWavePayment()} setPayOpt={setPayOpt} setAmount={setAmount} setCurrency={setCurrency}/>} */}
