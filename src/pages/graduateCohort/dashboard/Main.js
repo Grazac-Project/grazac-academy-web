@@ -294,18 +294,7 @@ function Dashboard() {
       toast.info("Check your existing payment status. Do not pay again.");
       return;
     }
-    if (payOpt === "part") {
-      setPayShowModal("");
-      const planData = new FormData();
-      planData.append("payment_plan", "learn now pay later");
-      addPlan(planData)
-        .then((response) => response.data)
-        .then((res) => {})
-        .catch((err) => {});
-
-      flutterWavePayment();
-      // setSelectStatus("pay-as-you-earn");
-    } else if (payOpt === "full") {
+    if (payOpt === "full") {
       setPayShowModal("");
 
       const planData = new FormData();
@@ -928,77 +917,6 @@ function Dashboard() {
                                       setPayOpt("instalment");
                                       setAmount(140000);
                                       // setAmount(1000);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay in Instalment (NGN 350,000)</p>
-                                  </div>
-                                  <button onClick={makePayment}>Proceed</button>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                        {payShowModal === "pay" &&
-                          paymentChoice === "learn_now_pay_later" && (
-                            <div className="dashboard-content-modal">
-                              <div className="dashboard-content-modal-backdrop"></div>
-                              <div className="dashboard-content-modal-container">
-                                <div className="dashboard-content-modal-main">
-                                  <div className="dashboard-content-modal-main-text">
-                                    <h4>Choose Payment Option</h4>
-                                    <img
-                                      src={cancel}
-                                      alt="cancel"
-                                      onClick={() => setPayShowModal("")}
-                                    />
-                                  </div>
-                                  <div
-                                    className={
-                                      payOpt === "part"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("part");
-                                      setAmount(50000);
-                                      // setAmount(1000);
-                                      // setAmount(150);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>
-                                      Learn Now Pay Later (NGN 50,000 legal fee)
-                                    </p>
-                                  </div>
-                                  <div
-                                    className={
-                                      payOpt === "full"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("full");
-                                      setAmount(650000);
-                                      // setAmount(250);
-                                      setCurrency("NGN");
-                                    }}
-                                  >
-                                    <div></div>
-                                    <p>Pay at Once (650,000 Naira)</p>
-                                  </div>
-                                  <div
-                                    className={
-                                      payOpt === "instalment"
-                                        ? "active"
-                                        : "dashboard-content-modal-main-frame1"
-                                    }
-                                    onClick={() => {
-                                      setPayOpt("instalment");
-                                      setAmount(350000);
-                                      // setAmount(220);
                                       setCurrency("NGN");
                                     }}
                                   >
@@ -1641,23 +1559,6 @@ function Dashboard() {
                                           onClick={() => setPayShowModal("")}
                                         />
                                       </div>
-                                      {/* <div
-                                        className={
-                                          payOpt === "part"
-                                            ? "active"
-                                            : "dashboard-content-modal-main-frame1"
-                                        }
-                                        onClick={() => {
-                                          setPayOpt("part");
-                                          setAmount(50000);
-                                          setCurrency("NGN");
-                                        }}
-                                      >
-                                        <div></div>
-                                        <p>
-                                          Pay as you earn (NGN 50,000 legal fee)
-                                        </p>
-                                      </div> */}
                                       <div
                                         className={
                                           payOpt === "full"
