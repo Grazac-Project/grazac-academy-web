@@ -63,7 +63,7 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
     lastCheckoutAmount.current = amount;
     handleFlutterPayment({
       callback: async (response) => {
-        if (response.status === "completed") {
+        if (response.status === "completed" || response.status === "successful") {
           setPaymentVerification("pending");
           closePaymentModal();
           try {
@@ -118,7 +118,10 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
       <h4>Payment Type: Installment</h4>
       {paymentVerification && (
         <div className="pending" role="status">
-          <p>Payment verification is pending. Your payment is not yet verified. Do not pay again.</p>
+          <p>Your payment is not yet verified. Do not pay again.</p>
+          {paymentVerification === "pending" && (
+            <p>Payment verification is pending.</p>
+          )}
           {paymentVerification === "request-failed" && (
             <p role="alert">We cannot request payment verification. Please contact support.</p>
           )}
