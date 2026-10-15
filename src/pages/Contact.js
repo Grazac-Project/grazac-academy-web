@@ -14,37 +14,38 @@ const Contact = () => {
     const [ email, setEmail ] = useState('');
     const [ subject, setSubject ] = useState('');
     const [ message, setMessage ] = useState('');
+    const [ submitting, setSubmitting ] = useState(false);
+    const [ error, setError ] = useState('');
 
     useEffect(() => {
         document.title = 'Contact - Grazac Academy';
         window.scrollTo(0,0);
     }, []);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        if (submitting) return;
+        setError('');
         if(name.length && email.length && subject.length && message.length) {
-            const btn = document.querySelector('#submit');
-            btn.setAttribute('disabled', '');
-            btn.textContent = 'Submitting...';
-            axios.post('http://grazacacademy.com/contact/create', {
-                name: name,
-                email: email,
-                subject: subject,
-                message: message
-            })
-            .then(resp => resp.data)
-            .then(response => {
+            setSubmitting(true);
+            try {
+                const resp = await axios.post('http://grazacacademy.com/contact/create', {
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                });
+                const response = resp.data;
                 if(response.success === true) {
-                    btn.removeAttribute('disabled');
-                    btn.textContent = 'Submit';
                     alert(response.msg);
                     setName(''); setEmail(''); setSubject(''); setMessage('');
                 } else {
-
+                    setError(response.msg || 'Cannot send your message. Please try again.');
                 }
-            })
-            .catch((err) => {
-                
-            });
+            } catch (err) {
+                setError(err.response?.data?.msg || 'Cannot connect to the server. Check your connection and try again.');
+            } finally {
+                setSubmitting(false);
+            }
         } else {
             alert('Invalid input');
         }
@@ -87,7 +88,10 @@ const Contact = () => {
                             </div>
                             <div className="contact_hero-privacy" >
                                 <p>By submitting this form your consent to us emailing you occasionally about our products and services. You can unsubscribe from emails at any time, and we will never pass your email onto third parties. <span>Privacy Policy</span></p>
-                                <button id="submit" onClick={handleSubmit}>Submit</button>
+                                {error && <p role="alert">{error}</p>}
+                                <button id="submit" onClick={handleSubmit} disabled={submitting}>
+                                    {submitting ? 'Submitting...' : 'Submit'}
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ const formatCurrency = (value) => {
 const isPaid = (value) => value === true || value === 1;
 
 const Payment = ({ selectedTrack, isSpecialCourse }) => {
-  const [, setAction] = useState("Pay Now");
+  const [paymentVerification, setPaymentVerification] = useState("");
   const [details, setDetails] = useState({});
   const [amount, setAmount] = useState();
   const currency = "NGN";
@@ -62,24 +62,20 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
     if (amount === undefined || lastCheckoutAmount.current === amount) return;
     lastCheckoutAmount.current = amount;
     handleFlutterPayment({
-      callback: (response) => {
+      callback: async (response) => {
         if (response.status === "completed") {
-          toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard";
-          sendFlutterTx(response.transaction_id)
-            .then((response) => response.data)
-            .then((res) => {
-              if (res.data.status === "successful") {
-                setAction("paid");
-              } else {
-                setAction("Pay Now");
-              }
-            })
-            .catch((err) => {});
+          setPaymentVerification("pending");
+          closePaymentModal();
+          try {
+            await sendFlutterTx(response.transaction_id);
+          } catch (err) {
+            setPaymentVerification("request-failed");
+            toast.error("Unable to request payment verification. Do not pay again.");
+          }
         } else {
           toast.error("Payment unsuccessful!");
+          closePaymentModal();
         }
-        closePaymentModal();
       },
       onClose: (response) => {},
     });
@@ -120,6 +116,14 @@ const Payment = ({ selectedTrack, isSpecialCourse }) => {
   return (
     <div className="payment">
       <h4>Payment Type: Installment</h4>
+      {paymentVerification && (
+        <div className="pending" role="status">
+          <p>Payment verification is pending. Your payment is not yet verified. Do not pay again.</p>
+          {paymentVerification === "request-failed" && (
+            <p role="alert">We cannot request payment verification. Please contact support.</p>
+          )}
+        </div>
+      )}
       <div className="payment-table">
         <table>
           <thead>

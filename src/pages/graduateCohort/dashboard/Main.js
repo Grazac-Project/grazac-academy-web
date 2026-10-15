@@ -67,6 +67,7 @@ function Dashboard() {
   const [trigger, setTrigger] = useState(false);
   const [guarantorStatus, setGuarantorStatus] = useState(false);
   const [isFeePaid, setIsFeePaid] = useState(false);
+  const [paymentVerification, setPaymentVerification] = useState("");
   // const [guarantorDetails_2,setGuarantorDetails_2]=useState([])
   const [guarantor, setGuarantor] = useState({
     firstName: "",
@@ -235,34 +236,20 @@ function Dashboard() {
     // });
 
     handleFlutterPayment({
-      callback: (response) => {
-        // if (response.status === "successful") {
+      callback: async (response) => {
         if (response.status === "completed") {
-          toast.success("Payment successful! Verifying payment...");
-          window.location = "/dashboard";
-          // console.log(response);
-          // console.log(response);
-          // console.log(response);
-
-          sendFlutterTx(response.transaction_id)
-            // .then((response) => response.data)
-            .then((res) => {
-              // console.log(res)
-              if (res.data.status === "successful") {
-                setSelectStatus("paid");
-                // window.location = "/dashboard";
-              } else {
-                // console.log(res)
-              }
-            })
-            .catch((err) => {
-              // console.log(err)
-            });
+          setPaymentVerification("pending");
+          closePaymentModal();
+          try {
+            await sendFlutterTx(response.transaction_id);
+          } catch (err) {
+            setPaymentVerification("request-failed");
+            toast.error("Unable to request payment verification. Do not pay again.");
+          }
         } else {
-          // console.log(response)
           toast.error("Payment unsuccessful!");
+          closePaymentModal();
         }
-        closePaymentModal(); // this will close the modal programmatically
       },
       onClose: (response) => {},
     });
@@ -623,6 +610,14 @@ function Dashboard() {
                 </p>
               </div>
             </div>
+            {paymentVerification && (
+              <div className="pending" role="status">
+                <p>Payment verification is pending. Your payment is not yet verified. Do not pay again.</p>
+                {paymentVerification === "request-failed" && (
+                  <p role="alert">We cannot request payment verification. Please contact support.</p>
+                )}
+              </div>
+            )}
             {sidebarClick === "dashboard" && (
               <div className="dashboard-content">
                 {isFeePaid === "false" || isFeePaid === false ? (
