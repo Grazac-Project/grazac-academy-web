@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import authImg from "../../images/auth.png";
 import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -10,7 +10,7 @@ import SucessModal from "./successModal";
 import { useFlutterwave } from "flutterwave-react-v3";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { coupon, Web3Form } from "../../api/dashboard/auth";
+import { coupon, Web3Form, createPublicCheckout, getFees } from "../../api/dashboard/auth";
 import "../../tailwindComponents.css";
 import sucess from "../../images/mark.svg";
 
@@ -23,6 +23,17 @@ const Start = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
   const [active, setActive] = useState(false);
+  const [checkout, setCheckout] = useState(null);
+  const paymentOpened = useRef(false);
+  const paymentBusy = useRef(false);
+  const awaitingVerification = useRef(false);
+  const [fee, setFee] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    getFees().then((result) => setFee(result.data?.data?.web3))
+      .catch(() => toast.error("Unable to load application fee. Please refresh and try again."));
+  }, []);
 
   const handleCoupon = (e) => {
     setError("");
@@ -113,7 +124,7 @@ const Start = () => {
   //     setSucessModal(true);
 
   // };
-  const doSignUp = async (e) => {
+  const doSignUp = useCallback(async () => {
     // const Data = new FormData();
     const newDetails = {}
 
@@ -173,7 +184,7 @@ const Start = () => {
     } finally {
       setLoading("");
     }
-  };
+  }, [details, form]);
 
   const doSignUpWithCoupon = async () => {
     await doSignUp();
@@ -181,9 +192,9 @@ const Start = () => {
 
   const config = {
     public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
-    tx_ref: Date.now(),
-    amount: 100,
-    currency: "NGN",
+    tx_ref: checkout?.tx_ref,
+    amount: checkout?.amount,
+    currency: checkout?.currency,
     payment_options: "card,mobilemoney,ussd",
     customer: {
       email: details?.email || "",
@@ -198,28 +209,66 @@ const Start = () => {
   };
 
   const handleFlutterPayment = useFlutterwave(config);
-  const handlePayment = () => {
-    setLoading("loader");
+
+
+  useEffect(() => {
+    const closeCheckout = () => {
+      paymentBusy.current = false;
+      setCheckout(null);
+    };
+    if (!checkout || paymentOpened.current === checkout.tx_ref) return;
+    paymentOpened.current = checkout.tx_ref;
     handleFlutterPayment({
-      callback: (response) => {
+      callback: async (response) => {
         if (
           response.status === "completed" ||
           response.status === "successful"
         ) {
-          doSignUp();
-          setLoading("");
-
-          setSucessModal(true);
+          awaitingVerification.current = true;
+          setSubmitted(true);
+          await doSignUp();
         } else {
           toast.error("Payment failed. Please try again.");
           setFailedModal(true);
         }
+        closeCheckout();
       },
       onClose: () => {
         toast.info("Payment window closed.");
         setLoading("");
+        closeCheckout();
       },
+    }).catch(() => {
+      setLoading("");
+      toast.error("Unable to open payment. Please try again.");
+      closeCheckout();
     });
+  }, [checkout, handleFlutterPayment, doSignUp]);
+
+  const handlePayment = () => {
+    if (!fee || paymentBusy.current || awaitingVerification.current) return;
+    paymentBusy.current = true;
+
+    setLoading("loader");
+    createPublicCheckout({ purpose: "web3", email: details?.email || "" })
+      .then((response) => response.data)
+      .then((res) => {
+        if (res?.status === 201 && res.data?.tx_ref && res.data.amount > 0 && res.data.currency === "NGN") {
+          setCheckout(res.data);
+          return;
+        }
+        setLoading("");
+        paymentBusy.current = false;
+        toast.error(res?.message || "Unable to start payment. Please try again.");
+      })
+      .catch((err) => {
+        setLoading("");
+        paymentBusy.current = false;
+        toast.error(
+          err.response?.data?.message ||
+            "Something went wrong! Please ensure you have a good internet connection."
+        );
+      });
   };
   return (
     <div className="layout_auth">
@@ -255,7 +304,7 @@ const Start = () => {
               Complete your application by paying your application fee
             </p>
             <p className="text-text text-[14px] leading-[21px] mt-4 mb-8">
-              Application Fee: <span className="text-primary">10000 NGN</span>
+              Application Fee: <span className="text-primary">{fee ? `${fee.toLocaleString()} NGN` : "Loading..."}</span>
             </p>
             <form>
               {/* {active ? (
@@ -409,8 +458,10 @@ const Start = () => {
                 </p>
               )}
             </form>
+            {submitted && <p role="status">Payment submitted for verification. Do not pay again. Contact support if confirmation does not arrive.</p>}
             <button
               onClick={active ? doSignUpWithCoupon : handlePayment}
+              disabled={loading === "loader" || submitted || (!active && !fee)}
               className="!mt-8 cursor-pointer flex justify-center items-center"
             >
               {active ? "Submit" : "Proceed to payment"}

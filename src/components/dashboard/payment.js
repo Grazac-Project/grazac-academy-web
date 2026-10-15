@@ -1,655 +1,190 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  useFlutterwave,
-  closePaymentModal,
-} from "flutterwave-react-v3";
-import { toast } from "react-toastify";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { addPlan, createCheckout, getDetailsC, getPaymentDue, sendFlutterTx } from "../../api/dashboard/data";
 
-const formatCurrency = (value) => {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-  }).format(value);
-};
-
+const formatCurrency = (value) => new Intl.NumberFormat("en-NG", {
+  style: "currency", currency: "NGN",
+}).format(value);
 const isPaid = (value) => value === true || value === 1;
 
-const Payment = ({ selectedTrack, isSpecialCourse, paymentVerification, checkPaymentStatus }) => {
+const Payment = ({ paymentVerification, checkPaymentStatus } = {}) => {
   const [details, setDetails] = useState({});
-  const [amount, setAmount] = useState();
-  const currency = "NGN";
-  const [initialPayment, setInitialPayment] = useState();
-  const [subInstallment, setSubInstallment] = useState();
-  const [subInstallmentOne, setSubInstallmentOne] = useState();
+  const [due, setDue] = useState(null);
+  const [error, setError] = useState(null);
+  const [checkout, setCheckout] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [verification, setVerification] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [checking, setChecking] = useState(false);
+  const paymentBusy = useRef(false);
+  const paymentOpened = useRef(null);
+  const awaitingVerification = useRef(false);
 
-  useEffect(() => {
-    let details = sessionStorage.getItem("user_details");
-    // console.log(details);
-    setDetails(JSON.parse(details));
-    setInitialPayment(JSON.parse(details).firstInstallment);
-    setSubInstallment(JSON.parse(details).subInstallment);
-    setSubInstallmentOne(JSON.parse(details).subInstallmentOne);
+  const load = useCallback(async () => {
+    setError(null);
+    try {
+      const profileResult = await getDetailsC();
+      const profile = profileResult.data?.data?.result;
+      if (!profile) throw new Error("Unable to load your profile.");
+      setDetails({ ...profile, phone: profile.phoneNumber });
+      const result = await getPaymentDue();
+      if (!result.data?.data) throw new Error("Unable to load your payment due.");
+      setDue(result.data.data);
+      setError(null);
+    } catch (err) {
+      setError({ message: err.response?.data?.message || err.message || "Unable to load payment details.", retryLoad: true });
+    }
   }, []);
 
+  useEffect(() => { load(); }, [load]);
 
+  const verify = useCallback(async (id) => {
+    awaitingVerification.current = true;
+    setTransactionId(id);
+    setVerification("pending");
+    setChecking(true);
+    let confirmed = false;
+    try {
+      if (checkPaymentStatus) {
+        await checkPaymentStatus(id);
+        return;
+      }
+      const result = await sendFlutterTx(id);
+      if (result.status === 200 && result.data?.status === 200 &&
+          result.data?.data?.status === "successful" && result.data?.data?.transaction_id === id) {
+        confirmed = true;
+        const profileResult = await getDetailsC();
+        const profile = profileResult.data?.data?.result;
+        if (!profile) throw new Error("Unable to refresh your profile.");
+        sessionStorage.setItem("user_details", JSON.stringify({
+          ...JSON.parse(sessionStorage.getItem("user_details")), ...profile, phone: profile.phoneNumber,
+        }));
+        sessionStorage.setItem("applicationFee", String(profile.applicationFee));
+        window.location.reload();
+      }
+    } catch (err) {
+      setVerification(confirmed ? "profile-refresh-failed" : "request-failed");
+    } finally {
+      setChecking(false);
+    }
+  }, [checkPaymentStatus]);
 
-  const config = {
+  const handleFlutterPayment = useFlutterwave({
     public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
-
-    tx_ref: Date.now(),
-    amount: amount,
-    currency: currency,
+    tx_ref: checkout?.tx_ref, amount: checkout?.amount, currency: checkout?.currency,
     payment_options: "card,mobilemoney,ussd",
-    customer: {
-      email: `${details.email}`,
-      phonenumber: `${details.phone}`,
-      name: `${details.firstName} ${details.lastName}`,
-    },
-
-    customizations: {
-      title: "Grazac Academy",
-      description: "Payment for Graduate Cohort",
-      logo: "https://grazac.com.ng/logo.png",
-    },
-  };
-
-  const handleFlutterPayment = useFlutterwave(config);
-  const lastCheckoutAmount = useRef();
+    customer: { email: details.email, phonenumber: details.phone, name: `${details.firstName} ${details.lastName}` },
+    customizations: { title: "Grazac Academy", description: "Payment for Graduate Cohort", logo: "https://grazac.com.ng/logo.png" },
+  });
 
   useEffect(() => {
-    if (paymentVerification || amount === undefined || lastCheckoutAmount.current === amount) return;
-    lastCheckoutAmount.current = amount;
+    if (!checkout || paymentOpened.current === checkout.tx_ref) return;
+    paymentOpened.current = checkout.tx_ref;
+    const release = () => {
+      paymentBusy.current = false;
+      setBusy(false);
+      setCheckout(null);
+    };
     handleFlutterPayment({
       callback: async (response) => {
         if (response.status === "completed" || response.status === "successful") {
-          const transactionId = String(response.transaction_id);
+          awaitingVerification.current = true;
           closePaymentModal();
-          await checkPaymentStatus(transactionId);
+          release();
+          await verify(String(response.transaction_id));
         } else {
-          toast.error("Payment unsuccessful!");
           closePaymentModal();
+          release();
+          setError({ message: "Payment unsuccessful. Please try again.", retryLoad: false });
         }
       },
-      onClose: (response) => {},
+      onClose: release,
+    }).catch(() => {
+      release();
+      setError({ message: "Unable to open payment. Please try again.", retryLoad: false });
     });
-  }, [amount, handleFlutterPayment, checkPaymentStatus, paymentVerification]);
+  }, [checkout, handleFlutterPayment, verify]);
 
-  const firstPayment =
-    selectedTrack === "physical" && isSpecialCourse
-      ? 470000
-      : selectedTrack === "physical" && !isSpecialCourse
-      ? 350000
-      : selectedTrack === "virtual" && isSpecialCourse
-      ? 275000
-      : selectedTrack === "virtual" && !isSpecialCourse
-      ? 140000
-      : null;
+  const startPayment = async (plan, expectedItem) => {
+    if (paymentBusy.current || awaitingVerification.current || paymentVerification) return;
+    paymentBusy.current = true;
+    setBusy(true);
+    setError(null);
+    try {
+      if (plan) {
+        const body = new FormData();
+        body.append("payment_plan", plan);
+        const saved = await addPlan(body);
+        if (saved.status !== 200 || saved.data?.status !== 200) throw new Error("Unable to save your payment plan.");
+      }
+      const current = await getPaymentDue();
+      const payment = current.data?.data;
+      setDue(payment);
+      if (expectedItem && (payment?.due?.item !== expectedItem ||
+          payment?.due?.purpose !== due?.due?.purpose || payment?.due?.amount !== due?.due?.amount)) {
+        await load();
+        throw new Error("Payment due changed. Review the updated payment details before paying.");
+      }
+      if (!payment?.due) throw new Error("No payment is due. Please refresh your dashboard.");
+      const result = await createCheckout({ purpose: payment.due.purpose });
+      const created = result.data?.data;
+      if (result.data?.status !== 201 || !created?.tx_ref || !(created.amount > 0) || created.currency !== "NGN") {
+        throw new Error("Unable to start payment. Please try again.");
+      }
+      if (created.amount !== payment.due.amount || created.currency !== "NGN") {
+        await load();
+        throw new Error("Payment due changed. Review the updated payment details before paying.");
+      }
+      setCheckout(created);
+    } catch (err) {
+      paymentBusy.current = false;
+      setBusy(false);
+      setError({ message: err.response?.data?.message || err.message || "Unable to start payment. Please try again.", retryLoad: false });
+    }
+  };
 
-  const secondPayment =
-    selectedTrack === "physical" && isSpecialCourse
-      ? 255000
-      : selectedTrack === "physical" && !isSpecialCourse
-      ? 180000
-      : selectedTrack === "virtual" && isSpecialCourse
-      ? 130000
-      : selectedTrack === "virtual" && !isSpecialCourse
-      ? 110000
-      : null;
-  const thirdPayment =
-    selectedTrack === "physical" && isSpecialCourse
-      ? 175000
-      : selectedTrack === "physical" && !isSpecialCourse
-      ? 170000
-      : selectedTrack === "virtual" && isSpecialCourse
-      ? 95000
-      : selectedTrack === "virtual" && !isSpecialCourse
-      ? 100000
-      : null;
+  const blocked = busy || Boolean(paymentVerification) || Boolean(verification);
+  const fields = ["firstInstallment", "subInstallment", "subInstallmentOne"];
+  const items = ["first", "second", "third"];
+  const rows = due?.due?.purpose !== "admission" && due?.plan === "instalment" && due.prices
+    ? due.prices.instalments.map((amount, index) => ({ item: items[index], label: `Installment ${index + 1}`, amount, paid: isPaid(details[fields[index]]) }))
+    : due?.due ? [{ ...due.due, label: due.due.purpose === "admission" ? "Admission fee" : "Full tuition", paid: false }] : [];
+  const action = (row) => <button className={row.paid ? "paid" : "pay-now"}
+    disabled={blocked || due?.due?.item !== row.item} onClick={() => startPayment(undefined, row.item)}>
+    {row.paid ? "Paid" : due?.due?.item === row.item ? "Pay Now" : "Not yet due"}
+  </button>;
 
   return (
     <div className="payment">
-      <h4>Payment Type: Installment</h4>
-      <div className="payment-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>January</td>
-              <td>{formatCurrency(firstPayment)}</td>
-              <td>
-                <span className={initialPayment ? "approved" : "pending"}>
-                  {initialPayment ? "Approved" : "Pending"}
-                </span>
-              </td>
-              <td>
-                <button
-                  disabled={Boolean(paymentVerification) || Boolean(initialPayment)}
-                  onClick={() => {
-                    setAmount(firstPayment);
-                  }}
-                  className={initialPayment ? "paid" : "pay-now"}
-                >
-                  {initialPayment ? "Paid" : "Pay Now"}
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>February</td>
-              <td>{formatCurrency(secondPayment)}</td>
-              <td>
-                <span className={subInstallment ? "approved" : "pending"}>
-                  {/* {status} */}
-                  {subInstallment ? "Approved" : "Pending"}
-                </span>
-              </td>
-              <td>
-                <button
-                  disabled={Boolean(paymentVerification) || Boolean(subInstallment)}
-                  onClick={() => {
-                    setAmount(secondPayment);
-                  }}
-                  className={subInstallment ? "paid" : "pay-now"}
-                >
-                  {subInstallment ? "Paid" : "Pay Now"}
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>March</td>
-              <td>{formatCurrency(thirdPayment)}</td>
-              <td>
-                <span className={subInstallmentOne ? "approved" : "pending"}>
-                  {subInstallmentOne ? "Approved" : "Pending"}
-                </span>
-              </td>
-              <td>
-                <button
-                  disabled={Boolean(paymentVerification) || Boolean(subInstallmentOne)}
-                  onClick={() => {
-                    setAmount(thirdPayment);
-                  }}
-                  className={subInstallmentOne ? "paid" : "pay-now"}
-                >
-                  {subInstallmentOne ? "Paid" : "Pay Now"}
-                </button>
-              </td>
-            </tr>
-            {/* <tr>
-                <td>April</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentTwo == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentTwo == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentTwo == 1 ? true : false }
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentTwo == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentTwo == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>May</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentThree == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentThree == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentThree == 1 ? true : false} 
-                    onClick={() => {
-                    setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentThree == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentThree == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>June</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentFour == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentFour == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentFour == 1 ? true : false}
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentFour == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentFour == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>July</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentFive == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentFive == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentFive == 1 ? true : false}
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentFive == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentFive == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>August</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentSix == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentSix == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                  disabled={subInstallmentSix == 1 ? true : false}
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentSix == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentSix == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>September</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentSeven == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentSeven == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentSeven == 1 ? true : false}
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentSeven == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentSeven == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>October</td>
-                <td>85,000</td>
-                <td>
-                  <span
-                    className={
-                      subInstallmentEight == 1 ?
-                       "approved" : 'pending'
-                    }
-                  >
-                    {subInstallmentEight == 1 ? 'Approved' : 'Pending'}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={subInstallmentEight == 1 ? true : false}
-                    onClick={() => {
-                      setAmount(85000);
-                    }}
-                    className={
-                       subInstallmentEight == 1 ? 'paid' : 'pay-now'
-                    }
-                  >
-                    {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
-                  </button>
-                </td>
-              </tr> */}
-          </tbody>
-        </table>
-      </div>
-      <div className="payment-mobile">
-        <div>
-          <div className="payment-mobile-container">
-            <div className="details">
-              <span>Month:</span> January
-            </div>
-            <div className="details">
-              <span>Amount:</span> {formatCurrency(firstPayment)}
-            </div>
-            <div className="details">
-              <span>Status: </span>
-              <span className={initialPayment ? "approved" : "pending"}>
-                {initialPayment ? "Approved" : "Pending"}
-              </span>
-            </div>
-            <div className="payment-mobile-action">
-              <button
-                disabled={Boolean(paymentVerification) || isPaid(initialPayment)}
-                onClick={() => {
-                  setAmount(firstPayment);
-                }}
-                className={initialPayment ? "paid" : "pay-now"}
-              >
-                {initialPayment ? "Paid" : "Pay Now"}
-              </button>
-            </div>
-          </div>
-          <div className="payment-mobile-container">
-            <div className="details">
-              <span>Month:</span> February
-            </div>
-            <div className="details">
-              <span>Amount:</span> {formatCurrency(secondPayment)}
-            </div>
-            <div className="details">
-              <span>Status: </span>
-              <span className={isPaid(subInstallment) ? "approved" : "pending"}>
-                {isPaid(subInstallment) ? "Approved" : "Pending"}
-              </span>
-            </div>
-            <div className="payment-mobile-action">
-              <button
-                className={isPaid(subInstallment) ? "paid" : "pay-now"}
-                disabled={Boolean(paymentVerification) || isPaid(subInstallment)}
-                onClick={() => {
-                  setAmount(secondPayment);
-                }}
-              >
-                {isPaid(subInstallment) ? "Paid" : "Pay Now"}
-              </button>
-            </div>
-          </div>
-          <div className="payment-mobile-container">
-            <div className="details">
-              <span>Month:</span> March
-            </div>
-            <div className="details">
-              <span>Amount:</span> {formatCurrency(thirdPayment)}
-            </div>
-            <div className="details">
-              <span>Status: </span>
-              <span className={isPaid(subInstallmentOne) ? "approved" : "pending"}>
-                {isPaid(subInstallmentOne) ? "Approved" : "Pending"}
-              </span>
-            </div>
-            <div className="payment-mobile-action">
-              <button
-                className={isPaid(subInstallmentOne) ? "paid" : "pay-now"}
-                disabled={Boolean(paymentVerification) || isPaid(subInstallmentOne)}
-                onClick={() => {
-                  setAmount(thirdPayment);
-                }}
-              >
-                {isPaid(subInstallmentOne) ? "Paid" : "Pay Now"}
-              </button>
-            </div>
-          </div>
-          {/* <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> April
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentTwo == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentTwo == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentTwo == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentTwo == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentTwo == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> May
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentThree == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentThree == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div
-              className="payment-mobile-action">
-                <button className={subInstallmentThree == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentThree == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentThree == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> June
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentFour == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentFour == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentFour == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentFour == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentFour == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> July
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentFive == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentFive == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentFive == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentFive == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentFive == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> August
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentSix == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentSix == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentSix == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentSix == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentSix == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> September
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentSeven == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentSeven == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentSeven == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentSeven == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentSeven == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div>
-            <div className="payment-mobile-container">
-              <div className="details">
-                <span>Month:</span> October
-              </div>
-              <div className="details">
-                <span>Amount:</span> 85,000
-              </div>
-              <div className="details">
-                <span>Status: </span>
-                <span
-                  className={
-                    subInstallmentEight == 1 ? 'approved' : 'pending'
-                  }
-                >
-                  {subInstallmentEight == 1 ? 'Approved': 'Pending'}
-                </span>
-              </div>
-              <div className="payment-mobile-action">
-                <button className={subInstallmentEight == 1 ?'paid':'pay-now'}
-                  disabled={subInstallmentEight == 1 ? true : false}
-                  onClick={() => {
-                    setAmount(85000);
-                  }}
-                >
-                  {subInstallmentEight == 1 ? 'Paid' : 'Pay Now'}
-                </button>
-              </div>
-            </div> */}
-          {/* ))} */}
-        </div>
-      </div>
+      <h4>Payment Type: {due?.due?.purpose === "admission" ? "Admission fee" : due?.plan === "instalment" ? "Installment" : due?.plan === "full" ? "Full tuition" : "Payment due"}</h4>
+      {error && <p role="alert">{error.message} {error.retryLoad && <button onClick={load}>Retry loading payment details</button>}</p>}
+      {!due && !error && <p>Loading payment details...</p>}
+      {verification && !paymentVerification && <div role="status">
+        <p>{verification === "profile-refresh-failed" ? "Payment verified, but your profile did not refresh." : "Payment verification is pending."} Do not pay again.</p>
+        {verification === "request-failed" && <p role="alert">Unable to request payment verification. Retry or contact support.</p>}
+        <button disabled={checking || !transactionId} onClick={() => verify(transactionId)}>{checking ? "Checking payment status..." : "Check payment status"}</button>
+      </div>}
+      {due?.reason === "no_plan" && due.prices && <div>
+        <p>Choose your payment plan.</p>
+        <button disabled={blocked} onClick={() => startPayment("training only")}>Pay at once ({formatCurrency(due.prices.full)})</button>
+        <p>Installments: {due.prices.instalments.map(formatCurrency).join(", ")}</p>
+        <button disabled={blocked} onClick={() => startPayment("pay in instalment")}>Pay in installments</button>
+      </div>}
+      {due?.reason === "lnpl" && <p>Your payment plan has no online tuition payment due.</p>}
+      {due?.reason === "paid" && <p>No payment due. Your payments are complete.</p>}
+      {due?.reason === "no_price" && <p>No tuition price is available for your course. Please contact support.</p>}
+      {rows.length > 0 && <>
+        <div className="payment-table"><table>
+          <thead><tr><th>Payment</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>{rows.map((row) => <tr key={row.item}><td>{row.label}</td><td>{formatCurrency(row.amount)}</td><td>{row.paid ? "Approved" : due?.due?.item === row.item ? "Due" : "Not yet due"}</td><td>{action(row)}</td></tr>)}</tbody>
+        </table></div>
+        <div className="payment-mobile">{rows.map((row) => <div className="payment-mobile-container" key={row.item}>
+          <div className="details"><span>Payment:</span> {row.label}</div>
+          <div className="details"><span>Amount:</span> {formatCurrency(row.amount)}</div>
+          <div className="details"><span>Status:</span> {row.paid ? "Approved" : due?.due?.item === row.item ? "Due" : "Not yet due"}</div>
+          <div className="payment-mobile-action">{action(row)}</div>
+        </div>)}</div>
+      </>}
     </div>
   );
 };

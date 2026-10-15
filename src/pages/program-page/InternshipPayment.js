@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import authImg from "../../images/auth.png";
 import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -16,27 +16,31 @@ const InternshipPayment = () => {
   const [failedModal, setFailedModal] = useState(false);
   const [sucessModal, setSucessModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [checkout, setCheckout] = useState(null);
+  const paymentOpened = useRef(false);
+  const paymentBusy = useRef(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     try {
       const data = sessionStorage.getItem("internshipForm");
       if (data) {
         setDetails(JSON.parse(data));
+        setSubmitted(sessionStorage.getItem("internshipPaymentSubmitted") === JSON.parse(data)?.checkout?.tx_ref);
       }
     } catch (error) {
       console.error("Failed to get details:", error);
     }
   }, []);
 
-  const tuitionFee = 301000;
-  const accommodationFee = details?.accommodation ? 250000 : 0;
-  const totalAmount = tuitionFee + accommodationFee;
+  const savedCheckout = details?.checkout;
+  const hasCheckout = Boolean(savedCheckout?.tx_ref && savedCheckout.amount > 0 && savedCheckout.currency === "NGN");
 
   const config = {
     public_key: process.env.REACT_APP_FLW_PUBLIC_KEY,
-    tx_ref: `INT-${Date.now()}`,
-    amount: totalAmount,
-    currency: "NGN",
+    tx_ref: checkout?.tx_ref,
+    amount: checkout?.amount,
+    currency: checkout?.currency,
     payment_options: "card,mobilemoney,ussd",
     customer: {
       email: details?.email || "",
@@ -52,24 +56,50 @@ const InternshipPayment = () => {
 
   const handleFlutterPayment = useFlutterwave(config);
 
-  const handlePayment = () => {
-    setLoading(true);
+
+  useEffect(() => {
+    const closeCheckout = () => {
+      paymentBusy.current = false;
+      paymentOpened.current = null;
+      setCheckout(null);
+    };
+    if (!checkout || paymentOpened.current === checkout.tx_ref) return;
+    paymentOpened.current = checkout.tx_ref;
     handleFlutterPayment({
       callback: (response) => {
         if (response.status === "completed" || response.status === "successful") {
+          setSubmitted(true);
+          sessionStorage.setItem("internshipPaymentSubmitted", checkout.tx_ref);
           setSucessModal(true);
-          toast.success("Payment successful!");
+          toast.info("Payment submitted. Confirmation will be sent after verification. Do not pay again.");
         } else {
           setFailedModal(true);
           toast.error("Payment failed. Please try again.");
         }
         setLoading(false);
         closePaymentModal();
+        closeCheckout();
       },
       onClose: () => {
         setLoading(false);
+        closeCheckout();
       },
+    }).catch(() => {
+      setLoading(false);
+      toast.error("Unable to open payment. Please try again.");
+      closeCheckout();
     });
+  }, [checkout, handleFlutterPayment]);
+
+  const handlePayment = () => {
+    if (paymentBusy.current || submitted) return;
+    if (!hasCheckout) {
+      toast.error("Please submit the internship form again to receive a checkout.");
+      return;
+    }
+    paymentBusy.current = true;
+    setLoading(true);
+    setCheckout(savedCheckout);
   };
 
   const handleCloseSucess = () => {
@@ -118,26 +148,20 @@ const InternshipPayment = () => {
             </p>
 
             <div className="bg-[#F5F5F5] p-6 rounded-xl mb-8">
-              <div className="flex justify-between mb-2">
-                <span className="text-gray-600">Tuition Fee</span>
-                <span className="font-bold">₦{tuitionFee.toLocaleString()}</span>
+              <div className="flex justify-between">
+                <span className="text-[#073041] font-bold">Saved application total</span>
+                <span className="text-[#773DD3] font-bold text-xl">{hasCheckout
+                  ? new Intl.NumberFormat("en-NG", { style: "currency", currency: savedCheckout.currency }).format(savedCheckout.amount)
+                  : "Unavailable"}</span>
               </div>
-              {details?.accommodation && (
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-600">Accommodation</span>
-                  <span className="font-bold">₦{accommodationFee.toLocaleString()}</span>
-                </div>
-              )}
-              <div className="border-t border-gray-200 mt-4 pt-4 flex justify-between">
-                <span className="text-[#073041] font-bold">Total Amount</span>
-                <span className="text-[#773DD3] font-bold text-xl">₦{totalAmount.toLocaleString()}</span>
-              </div>
+              {!hasCheckout && <p role="alert">Please <Link to="/InternshipForm">submit the form again</Link> to receive your saved application checkout.</p>}
+              {submitted && <p role="status">Payment submitted for verification. Do not pay again.</p>}
             </div>
 
             <button
               onClick={handlePayment}
               className="!mt-4 cursor-pointer flex justify-center items-center gap-2"
-              disabled={loading}
+              disabled={loading || submitted || !hasCheckout}
             >
               {loading ? (
                 <>

@@ -151,6 +151,20 @@ export const sendFlutterTx = (trans_id) => {
   });
 };
 
+export const createCheckout = (payload) => {
+  const { token } = getSession();
+  return APIKit.post(`/api/v1/user/checkout`, payload, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
+export const getPaymentDue = () => {
+  const { token } = getSession();
+  return APIKit.get("/api/v1/user/payment-due", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
 // export const zohoSubmit = (data) => {
 //   return APIKit.post('api/v1/user/zoho', data)
 // };

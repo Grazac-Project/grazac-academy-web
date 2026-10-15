@@ -17,8 +17,7 @@ const Modal = ({ close }) => {
             Application Successful!
           </h4>
           <p className="text-text text-[14px] leading-[21px] mb-8 text-center">
-            Your application and payment have been successfully received! You
-            will be contacted via email soon with the next steps
+            Your application was received. You will receive an email with the next steps.
           </p>
         </div>
         <button onClick={close} className="bg-primary w-full rounded-lg py-[13px] !mt-8">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -6,7 +6,7 @@ import logo from "../../images/svg/academy-logo.svg";
 import loader from "../../images/load.gif";
 import authImg from "../../images/auth.png";
 import upload from "../../images/program/upload-cloud.png"
-import { Internship_Form } from "../../api/dashboard/auth";
+import { Internship_Form, getFees } from "../../api/dashboard/auth";
 
 
 const InternshipForm = () => {
@@ -24,6 +24,11 @@ const InternshipForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [fees, setFees] = useState(null);
+  useEffect(() => {
+    getFees().then((result) => setFees(result.data?.data))
+      .catch(() => toast.error("Unable to load fees. Please try again later."));
+  }, []);
 
   const schools = [
     "Babcock University, Ilisan Remo",
@@ -113,6 +118,7 @@ const InternshipForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
     if (validateForm()) {
       setLoading(true);
 
@@ -131,11 +137,16 @@ const InternshipForm = () => {
         const response = await Internship_Form(formData);
 
         if (response.status === 200 || response.status === 201) {
+          const checkout = response.data?.checkout;
+          if (!checkout?.tx_ref || !(checkout.amount > 0) || checkout.currency !== "NGN") {
+            throw new Error("No checkout was returned. Please submit the form again before paying.");
+          }
           toast.success("Details submitted successfully!");
           // Store basic info for the payment page
           sessionStorage.setItem("internshipForm", JSON.stringify({
             ...form,
-            schoolId: null // Can't store File object in JSON
+            idCard: null,
+            checkout,
           }));
 
           // Small delay to show toast before redirect
@@ -147,7 +158,7 @@ const InternshipForm = () => {
         }
       } catch (err) {
         const errorMessage =
-          err.response?.data?.message ||
+          err.response?.data?.message || err.message ||
           "Something went wrong! Please ensure you have a good internet connection.";
         toast.error(errorMessage);
       } finally {
@@ -182,7 +193,7 @@ const InternshipForm = () => {
             </h1>
             <p className="text-[#787676] text-[14px] leading-[21px] mb-8">
               Kindly fill in your details correctly. Please note that payment of your{" "}
-              <span className="text-[#773DD3] font-bold">tuition fee (₦301,000)</span> completes this application.
+              <span className="text-[#773DD3] font-bold">tuition fee {fees ? `(₦${fees.internship.toLocaleString()})` : "(loading...)"}</span> completes this application.
             </p>
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-4">
@@ -298,7 +309,7 @@ const InternshipForm = () => {
                 <div className="bg-[#F5F5F5] px-[24px] py-[16px] rounded-xl">
                   <p className="!text-[12px] text-gray-600 mb-4 leading-relaxed">
                     We offer accommodation option at the rate of{" "}
-                    <span className="text-[#773DD3] font-bold">₦250,000</span> for the period of your internship with us. Select the checkbox below to show interest.
+                    <span className="text-[#773DD3] font-bold">{fees ? `₦${(fees.internshipAccommodation - fees.internship).toLocaleString()}` : "loading..."}</span> for the period of your internship with us. Select the checkbox below to show interest.
                   </p>
                   <label className="flex gap-3 cursor-pointer mt-2">
                     <input

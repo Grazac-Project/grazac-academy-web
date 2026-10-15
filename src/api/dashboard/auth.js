@@ -30,4 +30,11 @@ export const coupon = (code) => {
 }
 export const Internship_Form = (data) => {
     return APIKit.post(`api/v1/user/internship/apply`, data)
+}
+export const createPublicCheckout = (data) => {
+    return APIKit.post(`/api/v1/user/checkout/public`, data)
 } 
+
+export const getFees = () => {
+    return APIKit.get("/api/v1/user/checkout/fees")
+}
