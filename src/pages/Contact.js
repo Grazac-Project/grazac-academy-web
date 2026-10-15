@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import { APIKit } from "../api/dashboard/apikit";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -28,21 +28,28 @@ const Contact = () => {
         if(name.length && email.length && subject.length && message.length) {
             setSubmitting(true);
             try {
-                const resp = await axios.post('http://grazacacademy.com/contact/create', {
+                const resp = await APIKit.post('/api/v1/user/contactForm', {
                     name: name,
                     email: email,
-                    subject: subject,
+                    purpose: subject,
                     message: message
                 });
                 const response = resp.data;
-                if(response.success === true) {
-                    alert(response.msg);
+                if(resp.status === 201 && response.status === 201) {
+                    alert(response.message);
                     setName(''); setEmail(''); setSubject(''); setMessage('');
                 } else {
-                    setError(response.msg || 'Cannot send your message. Please try again.');
+                    setError(response.message || 'Cannot send your message. Please try again.');
                 }
             } catch (err) {
-                setError(err.response?.data?.msg || 'Cannot connect to the server. Check your connection and try again.');
+                const response = err.response;
+                if (response?.status === 500 &&
+                    response.data?.message === 'Notification delivery failed' &&
+                    response.data?.status === false && response.data?.data === null) {
+                    setError('Your message was saved, but the support notification failed. Please contact support before you submit it again.');
+                } else {
+                    setError(response?.data?.message || 'Cannot connect to the server. Check your connection and try again.');
+                }
             } finally {
                 setSubmitting(false);
             }
