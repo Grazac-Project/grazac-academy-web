@@ -50,9 +50,11 @@ const Footer = () => {
             <li className="footer__item">
               <Link to="/login">Learn with us</Link>
             </li>
+            {/*
             <li className="footer__item">
               <Link to="/hire">Hire our Talents</Link>
             </li>
+            */}
           </ul>
 
           <ul className="footer__list">

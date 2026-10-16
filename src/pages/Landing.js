@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 // import Slider from "infinite-react-carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Mode from "../components/Mode";
+// import Mode from "../components/Mode";
 import { Container } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
 
@@ -531,6 +531,7 @@ const Landing = () => {
                   Find experienced fresh tech talents and professionals with
                   authentic background that match your requirements.
                 </p>
+                {/*
                 <div className="landing__btn--2">
                   <Link to="/hire">
                     <div
@@ -541,6 +542,7 @@ const Landing = () => {
                     </div>
                   </Link>
                 </div>
+                */}
               </div>
 
               <div className="landing__bottom--text--left">
@@ -657,6 +659,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
+        {/*
         <Mode
           id="landing_page_mode"
           page={"home"}
@@ -667,6 +670,7 @@ const Landing = () => {
           button_1={"Hire from us"}
           button_2={"Chat with us"}
         />
+        */}
 
         {/* <WhatsApp /> */}
         <Footer />

@@ -28,9 +28,11 @@ const Mode = ({ title, page, text, button_1, button_2 }) => {
                         </div>
                       </a>
 
+                      {/*
                       <a href="/hire/contact ">
                         <div className="nav__btn--text1">{button_2}</div>
                       </a>
+                      */}
                     </>
                   ) : (
                     <>

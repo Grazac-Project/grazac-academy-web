@@ -219,6 +219,7 @@ const It = () => {
               <p className="text-[16px] text-[#787676] mb-[30px]">
                 We guarantee you impact driven candidates who will impact your bottom lines positively.
               </p>
+              {/*
               <div className="xm:hidden md:block">
                 <Link to="/hire">
                   <div
@@ -227,12 +228,14 @@ const It = () => {
                   </div>
                 </Link>
               </div>
+              */}
             </div>
 
             <div className="landing__bottom--text--left">
               <img src={Grazac} alt="img" />
             </div>
 
+            {/*
             <div className="md:hidden xm:block mt-[28px]">
               <Link to="/hire">
                 <div
@@ -241,6 +244,7 @@ const It = () => {
                 </div>
               </Link>
             </div>
+            */}
           </div>
         </div>
       </section>
