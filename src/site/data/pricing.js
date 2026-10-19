@@ -1,5 +1,4 @@
-// Tuition plans. Amounts are copied from the live pricing page.
-// `was` is the pre-discount price shown struck through.
+// Tuition. `was` is the old price, shown struck through.
 
 export const applicationFee = "₦10,000";
 

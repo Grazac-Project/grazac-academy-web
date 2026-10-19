@@ -7,6 +7,7 @@ import {
   FiPhone,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
+import CircuitPattern from "../components/CircuitPattern";
 import MailForm from "../components/MailForm";
 import { SectionHeading } from "../components/ui";
 import { contact } from "../data/site";
@@ -15,14 +16,14 @@ const channels = [
   {
     icon: FiPhone,
     title: "Call us",
-    text: "Speak with our admissions team about courses, pricing and start dates.",
+    text: "Our admissions team can answer questions about courses, fees and start dates.",
     label: contact.phone,
     href: contact.phoneHref,
   },
   {
     icon: FiMessageCircle,
     title: "WhatsApp",
-    text: "Send us a message and we'll help you pick the right course.",
+    text: "Usually the quickest way to get help choosing a course.",
     label: "Chat on WhatsApp",
     href: contact.whatsappChat,
     external: true,
@@ -30,7 +31,7 @@ const channels = [
   {
     icon: FiCalendar,
     title: "Book a session",
-    text: "Schedule a free 30-minute call with our program manager.",
+    text: "A free 30-minute call with our program manager.",
     label: "Pick a time",
     href: contact.calendly,
     external: true,
@@ -38,7 +39,7 @@ const channels = [
   {
     icon: FiMail,
     title: "Email",
-    text: "For partnerships, media and anything else.",
+    text: "Partnerships, press, or anything that needs a longer reply.",
     label: contact.email,
     href: `mailto:${contact.email}`,
   },
@@ -57,12 +58,13 @@ const Contact = () => (
     description="Get in touch with Grazac Academy by phone, WhatsApp or email, book a session with our program manager, or visit our campus in Abeokuta."
   >
     <section className="gz-page-hero">
+        <CircuitPattern className="gz-hero__pattern" seed={11} />
       <div className="gz-container">
         <p className="gz-eyebrow">Contact</p>
-        <h1 className="gz-h1">We'd love to hear from you.</h1>
+        <h1 className="gz-h1">Talk to a person at Grazac.</h1>
         <p className="gz-lead">
-          Questions about a course, a payment plan or hiring our talent? Reach
-          us however suits you best.
+          Ask about a course, a payment plan or hiring our graduates. Use
+          whichever channel is easiest for you.
         </p>
       </div>
     </section>
@@ -96,14 +98,14 @@ const Contact = () => (
           <SectionHeading
             eyebrow="Send a message"
             title="Write to us"
-            lead="Tell us a little about what you need and we'll get back to you."
+            lead="Send us a note and we'll reply by email."
           />
           <div className="gz-card">
             <MailForm to={contact.email} subjectPrefix="Website enquiry" fields={fields} />
           </div>
         </div>
         <div>
-          <SectionHeading eyebrow="Visit us" title="Our campus" />
+          <SectionHeading eyebrow="Visit us" title="Find us at PROHUB" />
           <div className="gz-feature" style={{ marginBottom: 24 }}>
             <span className="gz-icon">
               <FiMapPin size={22} />

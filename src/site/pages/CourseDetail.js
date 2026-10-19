@@ -8,6 +8,7 @@ import {
   FiUsers,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
+import CircuitPattern from "../components/CircuitPattern";
 import { Check, CourseCard, CtaBand, SectionHeading } from "../components/ui";
 import { courseHref, courses, findCourse } from "../data/courses";
 import { contact, links } from "../data/site";
@@ -133,6 +134,7 @@ const CourseDetail = () => {
   return (
     <Layout title={title} description={description}>
       <section className="gz-page-hero">
+        <CircuitPattern className="gz-hero__pattern" seed={11} />
         <div className="gz-container">
           <nav className="gz-crumbs" aria-label="Breadcrumb">
             <Link to="/">Home</Link> <span>/</span>
@@ -211,7 +213,7 @@ const CourseDetail = () => {
               title="What you'll learn"
               lead={
                 status === "ready" && outline.length
-                  ? `${outline.length} modules, taught through projects, assessments and mentorship.`
+                  ? `${outline.length} modules. The brochure has the full detail.`
                   : null
               }
             />
@@ -271,11 +273,11 @@ const CourseDetail = () => {
                   Curriculum coming soon
                 </span>
                 <h3 className="gz-h3" style={{ marginTop: 14 }}>
-                  The full module breakdown is being finalised
+                  We're still finalising the module list
                 </h3>
                 <p>
-                  Talk to our program manager for the course outline, schedule
-                  and requirements for the upcoming cohort.
+                  Our program manager can walk you through the outline, the
+                  schedule and what you'll need for the next cohort.
                 </p>
                 {known.stacks && (
                   <div style={{ marginTop: 20 }}>

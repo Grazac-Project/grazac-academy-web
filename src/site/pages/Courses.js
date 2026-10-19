@@ -1,6 +1,7 @@
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import Layout from "../components/Layout";
+import CircuitPattern from "../components/CircuitPattern";
 import { CourseExplorer, CtaBand } from "../components/ui";
 import { coursesByMode } from "../data/courses";
 
@@ -19,17 +20,18 @@ const Courses = () => {
   return (
     <Layout
       title="Courses"
-      description="Explore Grazac Academy's courses in software engineering, AI, product, data, cloud and cybersecurity — onsite in Abeokuta or virtual."
+      description="Grazac Academy courses in AI automation, cybersecurity, data, cloud, software engineering and product. Physical classes in Abeokuta or live online."
     >
       <section className="gz-page-hero">
+        <CircuitPattern className="gz-hero__pattern" seed={11} />
         <div className="gz-container">
           <nav className="gz-crumbs" aria-label="Breadcrumb">
             <Link to="/">Home</Link> <span>/</span> <span>Courses</span>
           </nav>
-          <h1 className="gz-h1">Courses built for today&apos;s tech jobs</h1>
+          <h1 className="gz-h1">Choose a course</h1>
           <p className="gz-lead">
-            Pick a track, choose how you want to learn, and get hands-on with
-            the tools real teams use.
+            Physical courses run for six months at our Abeokuta campus.
+            Virtual courses run for three months, live online.
           </p>
           <div style={{ marginTop: 32 }}>
             <div className="gz-segment" role="group" aria-label="Learning mode">
@@ -62,8 +64,8 @@ const Courses = () => {
       </section>
 
       <CtaBand
-        title="Not sure which course is right for you?"
-        text="Book a free 30-minute session with our program manager, or chat with us on WhatsApp."
+        title="Can't decide between two courses?"
+        text="Book a free 30-minute call with our program manager, or send us a WhatsApp message."
       />
     </Layout>
   );

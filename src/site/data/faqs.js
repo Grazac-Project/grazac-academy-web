@@ -1,93 +1,134 @@
-// Frequently asked questions, grouped by topic.
-// Answers are taken from the previous FAQ page, with duplicates removed.
+// FAQ content, grouped by topic. Shown on /faq, the home page and the pricing page.
+// Answers that list courses, dates or the address are built from the other
+// data files, so they stay correct when those change.
+import { coursesByMode } from "./courses";
+import { announcement, contact } from "./site";
+
+const list = (items) => items.map((c) => c.title).join(", ");
 
 export const faqGroups = [
   {
     topic: "Admissions",
+    icon: "admissions",
+    blurb: "Applying, eligibility and getting started",
     items: [
       {
         q: "What is your application process like?",
-        a: "It's a two-step online process. First, create an account. You'll then be taken to our application platform to complete your application, which takes a few minutes and includes an assessment test.",
+        a: "It happens online in two steps. Create an account, then fill in the application form on our platform. It takes a few minutes and ends with a short assessment test.",
+        link: { to: "/signup", label: "Start an application" },
+      },
+      {
+        q: "When does the next cohort start?",
+        a: announcement.text || "Call or WhatsApp us for the next start date.",
       },
       {
         q: "What level of experience do I need?",
-        a: "None. Our courses cater to people with varying levels of experience, from complete beginners to advanced learners.",
+        a: "None. The courses work for complete beginners as well as people who already know a bit.",
       },
       {
         q: "Can I enroll as an undergraduate?",
-        a: "Yes. As an undergraduate, we strongly advise you to choose the virtual or onsite learning mode that best fits your school schedule.",
+        a: "Yes. Check that the course fits around your school timetable: physical courses run on campus for six months, virtual courses run online for three.",
       },
       {
         q: "Do I have to be physically present to register?",
-        a: "No, registration is done online. If you'd like more clarity, you can also speak with our admissions team onsite.",
-      },
-      {
-        q: "Which course is right for me?",
-        a: "Call us or send a WhatsApp message on +234 806 836 5951 and our team will help you choose the best course for your goals.",
+        a: "No, you register online. You're welcome to visit and talk to the admissions team in person if you'd like.",
       },
       {
         q: "Can I take two courses at a time?",
-        a: "No. This is strongly discouraged — we want you fully focused and dedicated to the course you choose.",
+        a: "We strongly advise against it. One course takes your full attention.",
+      },
+    ],
+  },
+  {
+    topic: "Courses",
+    icon: "courses",
+    blurb: "What we teach, where, and how",
+    items: [
+      {
+        q: "Which courses do you offer?",
+        a: `Physical classes in Abeokuta: ${list(coursesByMode("onsite"))}. Live online: ${list(coursesByMode("virtual"))}.`,
+        link: { to: "/courses", label: "See all courses" },
+      },
+      {
+        q: "Which course is right for me?",
+        a: `Call or WhatsApp us on ${contact.phone}. Tell us what you're aiming for and we'll suggest a course. You can also book a free 30-minute call with our program manager.`,
+        link: { href: contact.calendly, label: "Book a call" },
+      },
+      {
+        q: "Are classes virtual or physical?",
+        a: "It depends on the course. Some run at our Abeokuta campus and others run live online. Each course page says which.",
+      },
+      {
+        q: "Where are the physical classes held?",
+        a: `At PROHUB: ${contact.address.join(" ")}`,
+        link: { to: "/contact", label: "Get directions" },
+      },
+      {
+        q: "Do you have a program for SIWES students?",
+        a: "Yes. Our IT program is for undergraduates on industrial training (SIWES). It runs for six months, fully on campus, and ends with a certificate.",
+        link: { to: "/it", label: "About the IT program" },
       },
     ],
   },
   {
     topic: "Learning",
+    icon: "learning",
+    blurb: "Classes, instructors and what you'll need",
     items: [
       {
-        q: "Are classes virtual or onsite?",
-        a: "Both. You choose the mode that suits you: onsite at our Abeokuta campus, or virtual from anywhere.",
-      },
-      {
         q: "How long is each program?",
-        a: "Onsite programs run for 6 months (4 months of immersive training and 2 months building a real project). Virtual programs run for 3 months. Check each course page for details.",
+        a: "Physical courses run for six months: four months of training, then two months building a real project. Virtual courses run for three months.",
       },
       {
         q: "How are the courses taught?",
-        a: "Virtual classes are taught live, combined with content, readings, quizzes and projects. Onsite classes are taught at the academy by qualified instructors, with assignments, assessments and projects.",
+        a: "Virtual classes are live, with readings, quizzes and projects in between. Physical classes happen at the academy, with assignments, assessments and projects.",
       },
       {
         q: "What qualifications do your instructors have?",
-        a: "All our instructors are experienced professionals with a proven track record in the tech industry.",
+        a: "Our instructors are experienced professionals from the tech industry, and every student also gets one-to-one time with a mentor.",
       },
       {
         q: "Do I need any materials to succeed?",
-        a: "Most courses require a laptop and an internet connection. Some courses need additional materials, which we'll tell you about before you start.",
+        a: "You'll need a laptop and an internet connection. A few courses need more than that, and we'll tell you before you start.",
       },
     ],
   },
   {
     topic: "Fees & payment",
+    icon: "fees",
+    blurb: "Tuition, installments and other costs",
     items: [
       {
         q: "How much does it cost to learn at Grazac Academy?",
-        a: "It depends on the course and the learning mode. See our pricing page for current plans.",
+        a: "It depends on the course. The pricing page lists the current plans for physical and virtual courses.",
         link: { to: "/pricing", label: "View pricing" },
       },
       {
         q: "Do all courses cost the same?",
-        a: "No. The price varies with the course you choose and the mode of learning (virtual or onsite).",
+        a: "No. Physical and virtual courses are priced differently, and Cloud Engineering and Cybersecurity have their own plan.",
       },
       {
         q: "Can I pay in installments?",
-        a: "Yes. You can pay upfront or choose an installment plan that splits the fee into manageable monthly payments. Contact our admissions team to find the plan that works best for you.",
+        a: "Yes. You can pay in full or spread the fee over monthly installments. Our admissions team can talk you through the options.",
       },
       {
         q: "Are there any fees besides tuition?",
-        a: "You make two payments: a ₦10,000 application fee, and your tuition fee (which depends on the course you choose).",
+        a: "There's a ₦10,000 application fee. After that you only pay tuition.",
       },
     ],
   },
   {
     topic: "Certificates & careers",
+    icon: "careers",
+    blurb: "What you leave with",
     items: [
       {
         q: "Do you offer a certificate after the course?",
-        a: "Yes. Students who complete a course receive a certificate of completion in both digital and printed formats. Our programs are accredited by the American Council of Training and Development (ACTD).",
+        a: "Yes. When you finish, you get a certificate in print and a digital copy you can share online. Our programs are accredited by the American Council of Training and Development (ACTD).",
       },
       {
         q: "Will the academy get me a job?",
-        a: "We don't guarantee jobs, but we connect students with job opportunities and provide placement support such as CV reviews, soft-skills training and salary negotiation sessions.",
+        a: "We can't promise you a job. We do share openings with students and help with CV reviews, soft skills and salary negotiation.",
       },
     ],
   },

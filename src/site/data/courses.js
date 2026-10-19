@@ -8,14 +8,11 @@ import dataAnalysis from "../../images/analysis.png";
 import cybersecurity from "../../images/cybersecurity.png";
 import cloud from "../../images/cloud.png";
 
-// Single list of courses used across the site. Each course is offered in one
-// learning mode ("onsite" = physical classes in Abeokuta, or "virtual").
+// Courses on offer this cohort. "onsite" means physical classes in Abeokuta.
 //
-// `api` is the backend slug whose curriculum (outline + brochure) is loaded on
-// the course page. Leave it null when the backend has no outline yet; the page
-// then shows a "curriculum coming soon" panel instead of modules.
-// `aliases` keeps old links (e.g. ?course=java) pointing at the right course.
-// Courses without artwork use `icon` instead of `image`.
+// api:     backend slug for the outline and brochure. null shows "curriculum coming soon".
+// aliases: old slugs that should still open this course (e.g. ?course=java).
+// icon:    used when there's no course artwork.
 
 export const categories = [
   "AI & Data",
@@ -25,7 +22,7 @@ export const categories = [
 ];
 
 export const courses = [
-  // ---------- Onsite (physical) ----------
+  // Physical
   {
     slug: "ai-automation-bootcamp",
     title: "AI Automation Bootcamp",
@@ -35,7 +32,7 @@ export const courses = [
     api: null,
     isNew: true,
     summary:
-      "Learn to use AI tools and automation workflows to cut repetitive work and build smarter processes for businesses.",
+      "Use AI tools and automation workflows to take repetitive work off a business's plate.",
   },
   {
     slug: "cybersecurity",
@@ -45,7 +42,7 @@ export const courses = [
     modes: ["onsite"],
     api: "cybersecurity",
     summary:
-      "Protect systems, networks and data: security fundamentals, ethical hacking, penetration testing and defensive strategy.",
+      "Security fundamentals, ethical hacking and penetration testing, and how to defend systems, networks and data.",
   },
   {
     slug: "data-analysis",
@@ -56,7 +53,7 @@ export const courses = [
     api: "data-analysis",
     aliases: ["data-analytics"],
     summary:
-      "Clean, explore and visualise data to answer questions and support better business decisions.",
+      "Clean and explore data, build charts and dashboards, and turn the numbers into decisions.",
   },
   {
     slug: "business-analysis-project-management",
@@ -67,7 +64,7 @@ export const courses = [
     api: null,
     isNew: true,
     summary:
-      "Gather requirements, analyse business needs, and plan, run and deliver projects successfully.",
+      "Work out what a business actually needs, write it up as requirements, then plan and deliver the project.",
   },
   {
     slug: "cloud-engineering-aws",
@@ -78,10 +75,10 @@ export const courses = [
     api: "cloud-engineering-aws",
     aliases: ["cloud-engineering"],
     summary:
-      "Master cloud infrastructure on AWS — deploy, secure and scale cloud applications.",
+      "Deploy, secure and scale applications on AWS.",
   },
 
-  // ---------- Virtual ----------
+  // Virtual
   {
     slug: "backend-development",
     title: "Back-End Development (Java, Node.js, Go)",
@@ -92,7 +89,7 @@ export const courses = [
     aliases: ["backend-web-development", "java", "golang"],
     stacks: ["Java", "Node.js", "Go (Golang)"],
     summary:
-      "Build the server side of applications — APIs, databases and business logic — in your choice of Java, Node.js or Go.",
+      "APIs, databases and server logic, in Java, Node.js or Go. You pick the stack.",
   },
   {
     slug: "mobile-application-development",
@@ -102,7 +99,7 @@ export const courses = [
     modes: ["virtual"],
     api: "mobile-application-development",
     summary:
-      "Build apps for iOS and Android from a single codebase with Flutter and Dart.",
+      "Build iOS and Android apps from one codebase with Flutter and Dart.",
   },
   {
     slug: "frontend-web-development",
@@ -112,7 +109,7 @@ export const courses = [
     modes: ["virtual"],
     api: "frontend-web-development",
     summary:
-      "Build fast, accessible websites and web apps with HTML, CSS and JavaScript.",
+      "HTML, CSS and JavaScript, from your first page to a working web app.",
   },
   {
     slug: "product-management",
@@ -122,7 +119,7 @@ export const courses = [
     modes: ["virtual"],
     api: "product-management",
     summary:
-      "Guide a product from strategy through development, launch, ongoing support and improvement.",
+      "Decide what to build, work with designers and engineers, and see a product through launch.",
   },
   {
     slug: "product-designing-ui-ux",
@@ -132,7 +129,7 @@ export const courses = [
     modes: ["virtual"],
     api: "product-designing-ui-ux",
     summary:
-      "Research users, design interfaces and prototype products that meet real user needs and business goals.",
+      "Talk to users, design screens in Figma and prototype products people find easy to use.",
   },
 ];
 

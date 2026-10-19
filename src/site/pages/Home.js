@@ -1,123 +1,129 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FiArrowRight,
+  FiArrowUpRight,
+  FiMessageCircle,
+  FiPhone,
   FiAward,
-  FiBriefcase,
-  FiCheckCircle,
   FiMonitor,
-  FiUnlock,
-  FiUserCheck,
   FiUsers,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
+import CircuitPattern from "../components/CircuitPattern";
 import {
   Check,
   CourseExplorer,
   CtaBand,
   FaqList,
-  LiteVideo,
+  LogoMarquee,
   PeopleGrid,
+  Reveal,
+  Rotator,
   SectionHeading,
+  StoryCarousel,
+  TestimonialMarquee,
 } from "../components/ui";
 import { courseHref, courses, coursesByMode } from "../data/courses";
-import { allFaqs } from "../data/faqs";
-import { links } from "../data/site";
-import { judgesData, mentorsData } from "../../components/constants";
+import { allFaqs, faqGroups } from "../data/faqs";
+import { stories } from "../data/stories";
+import { talentRows } from "../data/talent";
+import { testimonials } from "../data/testimonials";
+import { contact, links } from "../data/site";
+import { mentorsData } from "../../components/constants";
 import hero from "../img/hero.jpg";
 import pair from "../img/pair.jpg";
 import teamwork from "../img/teamwork.jpg";
-import culture from "../img/culture.jpg";
-import student from "../img/student.jpg";
-import group from "../img/group.jpg";
+
+const onsite = coursesByMode("onsite");
+const virtual = coursesByMode("virtual");
+
+const heroWords = [
+  "AI automation",
+  "cybersecurity",
+  "cloud engineering",
+  "data analytics",
+  "product design",
+  "back-end development",
+];
 
 const why = [
   {
-    icon: FiUnlock,
-    title: "No learning barriers",
-    text: "Graduate or undergraduate, young or old, whatever your experience level — our model, courses and community are designed so you feel comfortable and fully engaged.",
+    title: "Anyone can start",
+    text: "Graduate or undergraduate, young or old. You don't need any background in tech to get in.",
   },
   {
-    icon: FiUserCheck,
-    title: "Expert instructors",
-    text: "Learn from industry practitioners who bring real-world experience and up-to-date knowledge to every lesson.",
+    title: "Your teachers do this for a living",
+    text: "Instructors and mentors work in the industry, so lessons cover the tools teams use now.",
   },
   {
-    icon: FiBriefcase,
-    title: "Real project experience",
-    text: "Physical-class students spend 2 months building a real project with a team, so you finish with a portfolio — not just notes.",
+    title: "You leave with work to show",
+    text: "Physical students spend their last two months building a real project with a team.",
   },
   {
-    icon: FiAward,
-    title: "Career-ready certification",
-    text: "Earn an ACTD-accredited certificate that validates your skills, plus placement support like CV reviews and salary negotiation sessions.",
+    title: "Help after the classes end",
+    text: "We review your CV, coach you on soft skills and salary negotiation, and pass on job openings.",
   },
 ];
 
-const steps = [
-  {
-    title: "Create an account & apply",
-    text: "Sign up, log in to your dashboard and fill in your details. It only takes a few minutes.",
-  },
-  {
-    title: "Take the assessment",
-    text: "Complete a short assessment so we can confirm the course is the right fit for you.",
-  },
-  {
-    title: "Choose a plan & start learning",
-    text: "Pick a payment plan, complete your admission and begin your journey into tech.",
-  },
-];
-
-const videos = [
-  "ht8l30MozEM",
-  "ck-f8UD8RqU",
-  "IG5cs69PmBo",
-  "l5FVImbxdqw",
-  "6_ILohsUndE",
-  "M8mStqg17cQ",
-];
-
-const onsiteCourses = coursesByMode("onsite");
-const virtualCourses = coursesByMode("virtual");
+const HomeFaq = () => {
+  const [active, setActive] = useState(faqGroups[0].topic);
+  const group = faqGroups.find((g) => g.topic === active);
+  return (
+    <div className="gz-home-faq__list">
+      <div className="gz-tabs" role="tablist" aria-label="FAQ topics">
+        {faqGroups.map((g) => (
+          <button
+            key={g.topic}
+            type="button"
+            role="tab"
+            aria-selected={active === g.topic}
+            className={`gz-tab${active === g.topic ? " is-active" : ""}`}
+            onClick={() => setActive(g.topic)}
+          >
+            {g.topic}
+          </button>
+        ))}
+      </div>
+      <FaqList key={active} items={group.items.slice(0, 4)} variant="cards" openFirst />
+      <Link to="/faq" className="gz-link gz-home-faq__more">
+        See all {allFaqs.length} answers <FiArrowRight />
+      </Link>
+    </div>
+  );
+};
 
 const Home = () => (
-  <Layout description="Learn in-demand tech skills onsite in Abeokuta or virtually from anywhere. Software, AI, product, data, cloud and cybersecurity courses with mentorship and accredited certification.">
-    {/* Hero */}
+  <Layout description="Learn AI automation, cybersecurity, cloud, data, software engineering and product design at Grazac Academy. Physical classes in Abeokuta or live online, with mentors from the industry.">
     <section className="gz-hero">
+        <CircuitPattern className="gz-hero__pattern" />
       <div className="gz-container gz-hero__grid">
         <div>
-          <p className="gz-eyebrow">
+          <Link to={courseHref("ai-automation-bootcamp")} className="gz-pill">
             <span className="gz-badge gz-badge--new">New</span>
-            AI Automation Bootcamp now enrolling
-          </p>
-          <h1 className="gz-h1">
-            Upskilling you for the <span className="gz-accent">future</span> of
-            work.
+            AI Automation Bootcamp is open for applications
+            <FiArrowRight />
+          </Link>
+          <h1 className="gz-h1 gz-hero__title">
+            Learn <Rotator words={heroWords} />
+            from people who do it for a living.
           </h1>
           <p className="gz-lead">
-            Learn valuable technology skills — from AI automation, cloud and
-            cybersecurity to software engineering and product — and land your
-            dream job. Physical classes in Abeokuta or virtual from anywhere.
+            Grazac Academy trains people for tech jobs. Come to our campus in
+            Abeokuta for six months, or join live classes online for three.
+            No experience needed.
           </p>
           <div className="gz-btn-row">
             <Link to={links.apply} className="gz-btn gz-btn--primary gz-btn--lg">
               Apply now <FiArrowRight />
             </Link>
             <Link to="/courses" className="gz-btn gz-btn--ghost gz-btn--lg">
-              Explore courses
+              See the courses
             </Link>
           </div>
-          <ul className="gz-hero__chips">
-            <li className="gz-chip">
-              <Check /> No prior experience required
-            </li>
-            <li className="gz-chip">
-              <Check /> Flexible payment options
-            </li>
-            <li className="gz-chip">
-              <Check /> Conducive learning environment
-            </li>
-          </ul>
+          <p className="gz-hero__note">
+            <Check /> Installment plans available. ACTD-accredited certificate.
+          </p>
         </div>
         <div className="gz-hero__media">
           <div className="gz-hero__photo">
@@ -129,7 +135,7 @@ const Home = () => (
             </span>
             <div>
               <strong>ACTD accredited</strong>
-              <span>Certification you can share</span>
+              <span>Digital and printed certificate</span>
             </div>
           </div>
           <div className="gz-float gz-float--b">
@@ -138,58 +144,45 @@ const Home = () => (
             </span>
             <div>
               <strong>1:1 mentorship</strong>
-              <span>From industry experts</span>
+              <span>With working engineers and designers</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    {/* Facts */}
-    <section className="gz-section gz-section--tight">
-      <div className="gz-container">
-        <div className="gz-facts">
-          <div className="gz-fact">
-            <strong>{courses.length} courses</strong>
-            <span>{onsiteCourses.length} physical and {virtualCourses.length} virtual</span>
-          </div>
-          <div className="gz-fact">
-            <strong>2 ways to learn</strong>
-            <span>Physical classes in Abeokuta or live virtual classes</span>
-          </div>
-          <div className="gz-fact">
-            <strong>6-month onsite</strong>
-            <span>4 months training + 2 months on a real project</span>
-          </div>
-          <div className="gz-fact">
-            <strong>ACTD accredited</strong>
-            <span>American Council of Training & Development</span>
-          </div>
-        </div>
+    <div className="gz-ticker" aria-hidden="true">
+      <div className="gz-ticker__track">
+        {[...courses, ...courses].map((c, i) => (
+          <span key={`${c.slug}-${i}`}>
+            {c.title}
+            <i>✦</i>
+          </span>
+        ))}
       </div>
-    </section>
+    </div>
 
-    {/* Learning modes */}
-    <section className="gz-section" style={{ paddingTop: 32 }}>
+    <section className="gz-section">
       <div className="gz-container">
-        <SectionHeading
-          eyebrow="How you'll learn"
-          title="Two ways to learn. Same high standard."
-          lead="Choose the mode that fits your life. Both include mentorship, job opportunities and accredited certification."
-        />
+        <Reveal>
+          <SectionHeading
+            index="01"
+            eyebrow="Two ways to learn"
+            title="On campus or online. Pick what fits your week."
+          />
+        </Reveal>
         <div className="gz-grid gz-grid--2">
-          <div className="gz-mode gz-mode--onsite">
+          <Reveal className="gz-mode gz-mode--onsite">
             <span className="gz-badge">
               <FiUsers size={12} /> Physical · 6 months
             </span>
-            <h3 className="gz-h3">Physical classes in Abeokuta</h3>
+            <h3 className="gz-h3">Classes at our Abeokuta campus</h3>
             <p>
-              Immersive, instructor-led classes at our campus with your cohort
-              and mentors.
+              Four months of training, then two months building a real project
+              with your team. You get free use of the workspace the whole time.
             </p>
-            <p className="gz-mode__sub">4 months of training + 2 months on a real project, with free workspace access.</p>
             <ul className="gz-mode__list">
-              {onsiteCourses.map((c) => (
+              {onsite.map((c) => (
                 <li key={c.slug}>
                   <Check />
                   <Link to={courseHref(c.slug)}>{c.title}</Link>
@@ -199,25 +192,24 @@ const Home = () => (
             </ul>
             <div className="gz-btn-row">
               <Link to="/courses?mode=onsite" className="gz-btn gz-btn--primary">
-                View physical courses
+                Physical courses
               </Link>
               <Link to="/pricing" className="gz-btn gz-btn--secondary">
-                See pricing
+                Pricing
               </Link>
             </div>
-          </div>
-          <div className="gz-mode gz-mode--virtual">
+          </Reveal>
+          <Reveal className="gz-mode gz-mode--virtual" delay={120}>
             <span className="gz-badge">
               <FiMonitor size={12} /> Virtual · 3 months
             </span>
-            <h3 className="gz-h3">Learn live, from anywhere</h3>
+            <h3 className="gz-h3">Live classes, wherever you are</h3>
             <p>
-              Live online classes with expert instructors and fellow students,
-              from anywhere.
+              Real-time classes with an instructor and your classmates, plus a
+              virtual mentor who checks in with you one to one.
             </p>
-            <p className="gz-mode__sub">3 months of live classes with 1:1 mentorship from virtual experts.</p>
             <ul className="gz-mode__list">
-              {virtualCourses.map((c) => (
+              {virtual.map((c) => (
                 <li key={c.slug}>
                   <Check />
                   <Link to={courseHref(c.slug)}>{c.title}</Link>
@@ -226,196 +218,193 @@ const Home = () => (
             </ul>
             <div className="gz-btn-row">
               <Link to="/virtual" className="gz-btn gz-btn--yellow">
-                Explore virtual classes
+                How virtual classes work
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
 
-    {/* Courses */}
     <section className="gz-section gz-section--soft" id="courses">
       <div className="gz-container">
-        <SectionHeading
-          eyebrow="Available tracks"
-          title="Find the course that fits your goals"
-          lead="Explore a wide range of tech courses designed to give you the skills to thrive in an ever-evolving industry."
-          action={
-            <Link to="/courses" className="gz-link">
-              View all courses <FiArrowRight />
-            </Link>
-          }
-        />
+        <Reveal>
+          <SectionHeading
+            index="02"
+            eyebrow="Courses"
+            title={`${courses.length} courses built around what employers hire for`}
+            action={
+              <Link to="/courses" className="gz-link">
+                All courses <FiArrowRight />
+              </Link>
+            }
+          />
+        </Reveal>
         <CourseExplorer limit={6} />
-        <div className="gz-center" style={{ marginTop: 40 }}>
-          <Link to="/courses" className="gz-btn gz-btn--secondary gz-btn--lg">
-            See all {courses.length} courses <FiArrowRight />
-          </Link>
-        </div>
       </div>
     </section>
 
-    {/* Why */}
+    <section className="gz-section gz-section--dark gz-talent">
+      <CircuitPattern className="gz-talent__pattern" seed={19} />
+      <div className="gz-container gz-talent__head">
+        <Reveal>
+          <p className="gz-eyebrow">
+            <span className="gz-eyebrow__index">03</span>
+            Talent in the world
+          </p>
+          <h2 className="gz-h2">
+            Our talent works with many of the world&apos;s leading companies.
+          </h2>
+        </Reveal>
+        <Reveal as="p" className="gz-lead" delay={120}>
+          Grazac graduates work at fintechs, banks and global tech companies,
+          in Nigeria and abroad.
+        </Reveal>
+      </div>
+      <LogoMarquee rows={talentRows} />
+    </section>
+
     <section className="gz-section">
       <div className="gz-container gz-split">
         <div>
-          <SectionHeading
-            eyebrow="Why Grazac Academy"
-            title="Built to get you job-ready, not just certified"
-          />
-          <div className="gz-grid" style={{ gap: 32 }}>
-            {why.map(({ icon: Icon, title, text }) => (
-              <div className="gz-feature" key={title}>
-                <span className="gz-icon">
-                  <Icon size={22} />
-                </span>
+          <Reveal>
+            <SectionHeading index="04" eyebrow="Why Grazac" title="What you can expect from us" />
+          </Reveal>
+          <div className="gz-why">
+            {why.map((w, i) => (
+              <Reveal className="gz-why__item" key={w.title} delay={i * 80}>
+                <span className="gz-why__num">{String(i + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
+                  <h3>{w.title}</h3>
+                  <p>{w.text}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
-        <div className="gz-frame" style={{ aspectRatio: "4 / 5" }}>
-          <img src={pair} alt="Two Grazac students collaborating at a laptop" loading="lazy" />
-        </div>
+        <Reveal className="gz-stack" delay={150}>
+          <div className="gz-stack__back">
+            <img src={teamwork} alt="" loading="lazy" />
+          </div>
+          <div className="gz-stack__front">
+            <img src={pair} alt="Two Grazac students working through code together" loading="lazy" />
+          </div>
+        </Reveal>
       </div>
     </section>
 
-    {/* Admission steps */}
-    <section className="gz-section gz-section--dark">
+    <section className="gz-section gz-section--soft gz-mentors">
       <div className="gz-container">
-        <SectionHeading
-          center
-          eyebrow="Admission"
-          title="How the admission process works"
-          lead="Three simple steps from application to your first class."
-        />
-        <ol className="gz-steps">
-          {steps.map((s, i) => (
-            <li className="gz-step" key={s.title}>
-              <span className="gz-step__num">0{i + 1}</span>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="gz-center" style={{ marginTop: 48 }}>
-          <Link to={links.apply} className="gz-btn gz-btn--yellow gz-btn--lg">
-            Start your application <FiArrowRight />
-          </Link>
-        </div>
+        <Reveal>
+          <SectionHeading
+            center
+            title="Get 1-on-1 access to mentors"
+            lead="Experienced people from companies like Paystack, Sterling Bank and BT Group, ready to guide you from your first class to your final project."
+          />
+        </Reveal>
+        <PeopleGrid people={mentorsData.slice(0, 8)} />
       </div>
     </section>
 
-    {/* Mentors */}
     <section className="gz-section">
       <div className="gz-container">
-        <SectionHeading
-          eyebrow="Mentors"
-          title="Get 1-on-1 access to mentors"
-          lead="Top-rated practitioners from leading companies, lined up to guide you through a seamless learning process."
-        />
-        <PeopleGrid people={mentorsData} />
-      </div>
-    </section>
-
-    {/* Judges */}
-    <section className="gz-section gz-section--soft">
-      <div className="gz-container">
-        <SectionHeading
-          eyebrow="Judges"
-          title="Our judges help us maintain a global standard"
-          lead="We work with high-profile talent globally to define what excellence means."
-        />
-        <PeopleGrid people={judgesData} />
-      </div>
-    </section>
-
-    {/* Testimonials */}
-    <section className="gz-section">
-      <div className="gz-container">
-        <SectionHeading
-          eyebrow="Student stories"
-          title="Hear it from our students"
-          lead="Students who put in deliberate effort and stayed consistent in applying what they learnt."
-        />
-        <div className="gz-videos">
-          {videos.map((id, i) => (
-            <LiteVideo key={id} id={id} title={`Grazac student testimonial ${i + 1}`} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Gallery */}
-    <section className="gz-section gz-section--soft">
-      <div className="gz-container">
-        <SectionHeading
-          eyebrow="Life at Grazac"
-          title="Connect, collaborate, create"
-        />
-        <div className="gz-gallery">
-          <figure><img src={group} alt="A Grazac cohort with their laptops" loading="lazy" /></figure>
-          <figure><img src={teamwork} alt="Students in front of the teamwork wall" loading="lazy" /></figure>
-          <figure><img src={culture} alt="A student relaxing in the Grazac lounge" loading="lazy" /></figure>
-          <figure><img src={student} alt="A smiling Grazac student" loading="lazy" /></figure>
-          <figure><img src={pair} alt="Students reviewing work together" loading="lazy" /></figure>
-        </div>
-      </div>
-    </section>
-
-    {/* Hire */}
-    <section className="gz-section">
-      <div className="gz-container">
-        <div className="gz-band">
+        <Reveal className="gz-talent__head">
           <div>
-            <span className="gz-badge">
-              <FiBriefcase size={12} /> For employers
-            </span>
-            <h2 className="gz-h2">Ready to fill your vacant position?</h2>
+            <p className="gz-eyebrow">Video testimonials</p>
+            <h2 className="gz-h2">Our students, in their own words.</h2>
+          </div>
+          <p className="gz-lead">
+            Graduates talk about leaving a job to retrain, learning fast and
+            getting hired in tech.
+          </p>
+        </Reveal>
+        <StoryCarousel stories={stories} />
+      </div>
+    </section>
+
+    <section className="gz-section gz-testimonials">
+      <CircuitPattern className="gz-testimonials__pattern" seed={23} />
+      <div className="gz-container">
+        <Reveal className="gz-talent__head">
+          <div>
+            <p className="gz-eyebrow">Testimonials</p>
+            <h2 className="gz-h2">What people say about learning with us.</h2>
+          </div>
+          <p className="gz-lead">
+            Students and the people who work with our graduates, in their
+            own words.
+          </p>
+        </Reveal>
+      </div>
+      <TestimonialMarquee items={testimonials} />
+    </section>
+
+    <section className="gz-section">
+      <div className="gz-container">
+        <Reveal className="gz-band">
+          <div>
+            <span className="gz-badge">For employers</span>
+            <h2 className="gz-h2">Hiring? Our graduates are ready to interview.</h2>
             <p className="gz-lead">
-              Hire job-ready tech talent with genuine skill sets and good
-              workplace ethics — trained on real projects, not just theory.
+              Tell us the role and we'll put forward graduates who have already
+              built something real with a team.
             </p>
             <div className="gz-btn-row" style={{ marginTop: 28 }}>
               <Link to="/hire" className="gz-btn gz-btn--primary gz-btn--lg">
-                Hire our talent <FiArrowRight />
+                Hire from Grazac <FiArrowUpRight />
               </Link>
             </div>
           </div>
           <ul className="gz-band__list">
-            {[
-              "Competent, globally-minded graduates",
-              "Strong soft skills and workplace ethics",
-              "Practical, project-based experience",
-              "No stress sifting through hundreds of applications",
-            ].map((t) => (
-              <li key={t}>
-                <FiCheckCircle size={20} /> {t}
-              </li>
-            ))}
+            <li>
+              <Check /> Trained on real team projects
+            </li>
+            <li>
+              <Check /> Coached on soft skills and workplace habits
+            </li>
+            <li>
+              <Check /> Remote or on-site
+            </li>
+            <li>
+              <Check /> You interview them directly
+            </li>
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
 
-    {/* FAQ */}
     <section className="gz-section gz-section--soft">
-      <div className="gz-container gz-split" style={{ alignItems: "start" }}>
-        <SectionHeading
-          eyebrow="FAQs"
-          title="Questions, answered"
-          lead="Everything you need to know before you apply."
-          action={
-            <Link to="/faq" className="gz-link">
-              View all FAQs <FiArrowRight />
-            </Link>
-          }
-        />
-        <FaqList items={allFaqs.slice(0, 5)} />
+      <div className="gz-container gz-home-faq">
+        <Reveal className="gz-home-faq__intro">
+          <p className="gz-eyebrow">
+            <span className="gz-eyebrow__index">05</span>
+            FAQs
+          </p>
+          <h2 className="gz-h2">Questions people ask before applying</h2>
+          <p className="gz-lead">
+            Pick a topic to see the answers. There are {allFaqs.length} in
+            total on our FAQ page.
+          </p>
+          <div className="gz-home-faq__help">
+            <CircuitPattern className="gz-faq-help__pattern" seed={5} />
+            <h3>Still have questions?</h3>
+            <p>Talk to our admissions team. WhatsApp is usually the quickest.</p>
+            <div className="gz-btn-row">
+              <a
+                href={contact.whatsappChat}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gz-btn gz-btn--yellow gz-btn--sm"
+              >
+                <FiMessageCircle /> WhatsApp us
+              </a>
+              <a href={contact.phoneHref} className="gz-btn gz-btn--ghost gz-btn--sm">
+                <FiPhone /> Call
+              </a>
+            </div>
+          </div>
+        </Reveal>
+        <HomeFaq />
       </div>
     </section>
 

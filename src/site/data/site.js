@@ -1,5 +1,4 @@
-// Site-wide contact details, links and announcements.
-// Edit these in one place instead of hunting through components.
+// Contact details, links and banners for the public pages.
 
 export const contact = {
   phone: "+234 806 836 5951",
@@ -34,7 +33,7 @@ export const links = {
 
 // Top-of-page announcement. Set `text` to "" to hide it.
 export const announcement = {
-  text: "Application for Cohort 18 has started. Early registration closes May 30th and classes start by July 6th.",
+  text: "Applications for Cohort 18 are open. Early registration closes May 30th and classes start by July 6th.",
   cta: "Register now",
   href: "/signup",
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiDownload, FiInfo } from "react-icons/fi";
 import Layout from "../components/Layout";
+import CircuitPattern from "../components/CircuitPattern";
 import { Check, CtaBand, FaqList, SectionHeading } from "../components/ui";
 import { faqGroups } from "../data/faqs";
 import { applicationFee, percentOff, pricing } from "../data/pricing";
@@ -17,18 +18,18 @@ const Pricing = () => {
   return (
     <Layout
       title="Pricing"
-      description="Transparent tuition for Grazac Academy's onsite and virtual programs. Pay at once or in installments — no hidden charges."
+      description="Tuition for Grazac Academy's physical and virtual courses. Pay at once or in installments."
     >
       <section className="gz-page-hero">
+        <CircuitPattern className="gz-hero__pattern" seed={11} />
         <div className="gz-container gz-center">
           <p className="gz-eyebrow">Plans & pricing</p>
           <h1 className="gz-h1" style={{ marginLeft: "auto", marginRight: "auto" }}>
-            Invest in your future. No surprise fees.
+            What a course costs
           </h1>
           <p className="gz-lead" style={{ marginLeft: "auto", marginRight: "auto" }}>
-            Choose how you want to learn, then pay at once or spread it out.
-            Every plan includes mentorship, job opportunities and accredited
-            certification.
+            Every plan includes mentorship, job leads and an accredited
+            certificate. Paying at once works out cheapest.
           </p>
           <div style={{ marginTop: 32 }}>
             <div className="gz-segment" role="group" aria-label="Learning mode">
@@ -123,8 +124,8 @@ const Pricing = () => {
         <div className="gz-container gz-split" style={{ alignItems: "start" }}>
           <SectionHeading
             eyebrow="Payment FAQs"
-            title="Questions about fees?"
-            lead="Here are the answers people ask for most. Still unsure? We're a call or WhatsApp message away."
+            title="Common questions about fees"
+            lead="If your situation isn't covered here, call or WhatsApp us and we'll work it out with you."
             action={
               <Link to="/faq" className="gz-link">
                 All FAQs <FiArrowRight />

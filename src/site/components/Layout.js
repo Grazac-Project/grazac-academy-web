@@ -26,6 +26,7 @@ import {
   links,
   socials,
 } from "../data/site";
+import CircuitPattern from "./CircuitPattern";
 import "../site.css";
 
 const primaryNav = [
@@ -288,14 +289,14 @@ const Header = () => {
 
 const Footer = () => (
   <footer className="gz-footer">
+    <CircuitPattern className="gz-footer__pattern" seed={3} />
     <div className="gz-container">
       <div className="gz-footer__grid">
         <div className="gz-footer__brand">
           <img src={logo} alt="Grazac Academy" width="110" height="40" />
           <p>
-            Grazac Academy gives you the opportunity to learn in-demand skills
-            and build your technology career — onsite in Abeokuta or virtually
-            from anywhere.
+            Tech training at PROHUB in Abeokuta and online. Physical courses
+            run for six months, virtual courses for three.
           </p>
           <div className="gz-footer__contact">
             <a href={contact.phoneHref}>
@@ -418,7 +419,7 @@ const Layout = ({ title, description, children }) => {
   useEffect(() => {
     document.title = title
       ? `${title} | Grazac Academy`
-      : "Grazac Academy | Learn in-demand tech skills";
+      : "Grazac Academy | Tech courses in Abeokuta and online";
     if (description) {
       const meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute("content", description);

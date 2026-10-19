@@ -1,98 +1,100 @@
 import { Link } from "react-router-dom";
 import {
   FiArrowRight,
-  FiAward,
   FiBookOpen,
   FiGitPullRequest,
   FiShare2,
   FiUserCheck,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
-import { CtaBand, PeopleGrid, SectionHeading } from "../components/ui";
+import CircuitPattern from "../components/CircuitPattern";
+import { CtaBand, PeopleGrid, Reveal, SectionHeading } from "../components/ui";
 import { mentorsData } from "../../components/constants";
 import { accreditation, contact } from "../data/site";
 import cohort from "../img/cohort.jpg";
 import trio from "../img/trio.jpg";
+import culture from "../img/culture.jpg";
 import actdLogo from "../../images/footer-bird.png";
 
 const values = [
-  { color: "39,234,198", title: "Creativity", body: "We constantly develop ideas that drive innovation. Our community lets us share common interests and ideas." },
-  { color: "26,222,235", title: "Quality", body: "We strive to provide value that fulfils and exceeds expectations, with an unwavering focus on your goals." },
-  { color: "108,21,250", title: "Passion", body: "Our enthusiasm to deliver the best makes us unique. We uphold the highest standards." },
-  { color: "255,113,155", title: "Commitment", body: "We focus on giving the best solutions — solving your problem rather than dwelling on why it happened." },
-  { color: "254,125,108", title: "Collaboration", body: "Our success depends on the collective intelligence of our team and the shared vision of our partners." },
-  { color: "255,180,67", title: "Teamwork", body: "We do better, together. Our environment fosters progress, effectiveness and speed." },
+  { color: "39,234,198", title: "Creativity", body: "We keep developing new ideas and share them openly with our community." },
+  { color: "26,222,235", title: "Quality", body: "We want you to finish with more than you expected when you signed up." },
+  { color: "108,21,250", title: "Passion", body: "We care about doing this well, and we hold ourselves to a high standard." },
+  { color: "255,113,155", title: "Commitment", body: "When a student is stuck, we look for a way forward instead of someone to blame." },
+  { color: "254,125,108", title: "Collaboration", body: "We rely on what our team knows together, and on partners who share our goals." },
+  { color: "255,180,67", title: "Teamwork", body: "We do better together, and we keep the place set up so work moves quickly." },
 ];
 
 const approach = [
-  { icon: FiBookOpen, title: "Instructor-led live classes", text: "Learn with other students in live classes led by experts from the industry." },
-  { icon: FiGitPullRequest, title: "Project-based learning", text: "Apply what you learn on real-life projects that sharpen your skills and solve real problems." },
-  { icon: FiShare2, title: "Networking", text: "Collaborate and exchange ideas with students who share your interests, and build a community." },
-  { icon: FiUserCheck, title: "Mentorship access", text: "Personalised guidance from mentors and thought leaders that increases your visibility to employers." },
+  { icon: FiBookOpen, title: "Instructor-led classes", text: "You learn in a class led by someone who works in the field." },
+  { icon: FiGitPullRequest, title: "Projects", text: "You practise on real problems, so your skills get tested before your first job does it for you." },
+  { icon: FiShare2, title: "Your cohort", text: "You swap ideas with classmates who are learning the same things, and build a network as you go." },
+  { icon: FiUserCheck, title: "Mentors", text: "One-to-one guidance from people already working in the field you want to join." },
 ];
 
 const About = () => (
   <Layout
     title="About us"
-    description="Grazac Academy is a tech academy in Abeokuta, Nigeria, helping people learn in-demand technology skills onsite and virtually."
+    description="Grazac Academy is a tech training school at PROHUB in Abeokuta, Ogun State, run by Grazac Technologies. We teach physical and virtual courses."
   >
     <section className="gz-page-hero">
+        <CircuitPattern className="gz-hero__pattern" seed={11} />
       <div className="gz-container">
         <p className="gz-eyebrow">About Grazac Academy</p>
-        <h1 className="gz-h1">The right platform to upskill yourself for the future.</h1>
+        <h1 className="gz-h1">
+          A tech school in Abeokuta for people who want to work in tech.
+        </h1>
         <p className="gz-lead">
-          We provide the training, mentorship, tools and community to help you
-          build a career in technology — whatever your starting point.
+          We teach at PROHUB in Idi-Aba and online. Graduates and undergraduates
+          both join, and you don't need a tech background to start.
         </p>
       </div>
     </section>
 
     <section className="gz-section">
       <div className="gz-container gz-split">
-        <div className="gz-frame">
-          <img src={cohort} alt="A Grazac Academy cohort" loading="lazy" />
-        </div>
-        <div>
-          <SectionHeading
-            eyebrow="Who we are"
-            title="A tech academy built around real outcomes"
-          />
+        <Reveal className="gz-stack">
+          <div className="gz-stack__back">
+            <img src={culture} alt="" loading="lazy" />
+          </div>
+          <div className="gz-stack__front">
+            <img src={cohort} alt="A Grazac Academy cohort with their laptops" loading="lazy" />
+          </div>
+        </Reveal>
+        <Reveal delay={120}>
+          <SectionHeading index="01" eyebrow="Who we are" title="Grazac Academy, by Grazac Technologies" />
           <p className="gz-lead" style={{ marginBottom: 20 }}>
-            Grazac Academy, by Grazac Technologies, is based at PROHUB in
-            Abeokuta, Ogun State. We help graduates, undergraduates
-            and career-switchers learn in-demand technology skills — onsite at
-            our campus or virtually from anywhere.
+            You decide where you're starting from. We give you the classes,
+            the mentors, a workspace and a cohort to learn alongside.
           </p>
           <p className="gz-muted">
-            Our programs combine expert instruction, real projects and 1:1
-            mentorship, and are accredited by the American Council of Training
-            and Development (ACTD).
+            Physical courses run for six months at our campus. Virtual courses
+            run for three months online. Our programs are accredited by the
+            American Council of Training and Development (ACTD).
           </p>
           <div className="gz-btn-row" style={{ marginTop: 28 }}>
             <Link to="/courses" className="gz-btn gz-btn--primary">
-              Explore courses <FiArrowRight />
+              Our courses <FiArrowRight />
             </Link>
             <Link to="/contact" className="gz-btn gz-btn--secondary">
-              Visit our campus
+              Visit the campus
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
 
     <section className="gz-section gz-section--soft">
       <div className="gz-container">
-        <SectionHeading
-          eyebrow="Our core values"
-          title="What we stand for"
-          lead="You determine the starting point; we provide the best possible support to help you reach your goals."
-        />
+        <Reveal>
+          <SectionHeading index="02" eyebrow="Core values" title="What we hold ourselves to" />
+        </Reveal>
         <div className="gz-grid gz-grid--3">
-          {values.map((v) => (
-            <div className="gz-value" key={v.title} style={{ "--gz-value": v.color }}>
+          {values.map((v, i) => (
+            <Reveal className="gz-value" key={v.title} style={{ "--gz-value": v.color }} delay={i * 60}>
               <h3>{v.title}</h3>
               <p>{v.body}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -101,13 +103,12 @@ const About = () => (
     <section className="gz-section">
       <div className="gz-container gz-split">
         <div>
-          <SectionHeading
-            eyebrow="How we teach"
-            title="Strategic pathways that fast-track your learning"
-          />
-          <div className="gz-grid" style={{ gap: 28 }}>
-            {approach.map(({ icon: Icon, title, text }) => (
-              <div className="gz-feature" key={title}>
+          <Reveal>
+            <SectionHeading index="03" eyebrow="How we teach" title="How a Grazac course is put together" />
+          </Reveal>
+          <div className="gz-perks">
+            {approach.map(({ icon: Icon, title, text }, i) => (
+              <Reveal className="gz-perk" key={title} delay={i * 80}>
                 <span className="gz-icon">
                   <Icon size={22} />
                 </span>
@@ -115,42 +116,41 @@ const About = () => (
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
-        <div className="gz-frame" style={{ aspectRatio: "4 / 5" }}>
-          <img src={trio} alt="Three Grazac students" loading="lazy" />
-        </div>
+        <Reveal className="gz-frame" style={{ aspectRatio: "4 / 5" }} delay={120}>
+          <img src={trio} alt="Three Grazac students on a sofa" loading="lazy" />
+        </Reveal>
       </div>
     </section>
 
     <section className="gz-section gz-section--tight">
       <div className="gz-container">
-        <div className="gz-band" style={{ gridTemplateColumns: "auto 1fr" }}>
+        <Reveal className="gz-band" style={{ gridTemplateColumns: "auto 1fr" }}>
           <img src={actdLogo} alt="ACTD seal" style={{ width: 96, height: 96 }} />
           <div>
-            <span className="gz-badge">
-              <FiAward size={12} /> Accreditation
-            </span>
+            <span className="gz-badge">Accreditation</span>
             <h2 className="gz-h2" style={{ fontSize: 30 }}>{accreditation}</h2>
             <p className="gz-muted">
-              Students who complete a program receive a certificate in both
-              digital and printed formats.
+              Everyone who completes a course gets a certificate, both printed
+              and digital.
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
 
     <section className="gz-section">
       <div className="gz-container">
         <SectionHeading
+          index="04"
           eyebrow="Mentors"
-          title="Learn alongside industry practitioners"
+          title="Some of the people you'll learn from"
           action={
             <a href={contact.calendly} target="_blank" rel="noopener noreferrer" className="gz-link">
-              Book a session <FiArrowRight />
+              Book a call <FiArrowRight />
             </a>
           }
         />

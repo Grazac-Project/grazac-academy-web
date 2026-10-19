@@ -1,65 +1,69 @@
 import { Link } from "react-router-dom";
 import {
   FiArrowRight,
-  FiCompass,
+  FiClock,
   FiGlobe,
   FiMessageSquare,
-  FiSliders,
   FiTag,
   FiUsers,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
-import { Check, CourseExplorer, CtaBand, SectionHeading } from "../components/ui";
+import CircuitPattern from "../components/CircuitPattern";
+import {
+  Check,
+  CourseExplorer,
+  CtaBand,
+  Reveal,
+  SectionHeading,
+} from "../components/ui";
 import { percentOff, pricing } from "../data/pricing";
 import { links, virtualAnnouncement } from "../data/site";
 import heroImg from "../img/virtual.jpg";
 
-const benefits = [
+const perks = [
   {
     icon: FiGlobe,
-    title: "Accessibility",
-    text: "Learn from anywhere around the globe — all you need is a laptop and an internet connection.",
-  },
-  {
-    icon: FiSliders,
-    title: "Flexibility",
-    text: "Live classes plus content, readings, quizzes and projects you can fit around work or school.",
-  },
-  {
-    icon: FiUsers,
-    title: "Mentorship",
-    text: "1:1 guidance from experienced virtual mentors who help you stay on track.",
+    title: "Join from anywhere",
+    text: "A laptop and a stable internet connection are all you need.",
   },
   {
     icon: FiMessageSquare,
-    title: "Real-time interaction",
-    text: "Interact with expert instructors and fellow students in real time — not just pre-recorded videos.",
+    title: "Classes are live",
+    text: "You can ask the instructor a question and get an answer in the same session.",
   },
   {
-    icon: FiCompass,
-    title: "Cost-effective",
-    text: "A shorter, more affordable path into tech, with installment options available.",
+    icon: FiUsers,
+    title: "A mentor of your own",
+    text: "A virtual mentor meets with you one to one and keeps you on track.",
+  },
+  {
+    icon: FiClock,
+    title: "Three months, start to finish",
+    text: "Live sessions plus readings, quizzes and projects you can fit around work or school.",
   },
 ];
 
 const steps = [
   {
-    title: "Browse courses",
-    text: "Explore the catalogue and read each course's description, curriculum and prerequisites. Unsure? Our program manager can help you decide.",
+    when: "Step 1",
+    title: "Pick a course",
+    text: "Read the outline for each course. Not sure? Book a call with our program manager.",
   },
   {
-    title: "Sign up & take the assessment",
-    text: "Create an account, confirm your email, then take a short assessment to make sure you're a fit for your chosen course.",
+    when: "Step 2",
+    title: "Sign up and take the assessment",
+    text: "Create an account, confirm your email, then take a short test so we know the course suits you.",
   },
   {
-    title: "Choose a payment plan",
-    text: "Pick a plan and pay. We'll email you confirmation and instructions for accessing your course platform — then you start learning.",
+    when: "Step 3",
+    title: "Choose how to pay",
+    text: "Pay at once or in installments. We'll email you your login for the class platform.",
   },
 ];
 
 const Virtual = () => {
   const plans = pricing.virtual.plans;
-  const from = plans.reduce((min, p) =>
+  const cheapest = plans.reduce((min, p) =>
     Number(p.price.replace(/[^0-9]/g, "")) < Number(min.price.replace(/[^0-9]/g, ""))
       ? p
       : min
@@ -68,21 +72,25 @@ const Virtual = () => {
   return (
     <Layout
       title="Virtual classes"
-      description="Learn tech skills live online with Grazac Academy. 3-month virtual programs with expert instructors, 1:1 mentorship and accredited certification."
+      description="Three-month live online courses from Grazac Academy in back-end, front-end and mobile development, product management and product design."
     >
       <section className="gz-hero">
+        <CircuitPattern className="gz-hero__pattern" />
         <div className="gz-container gz-hero__grid">
           <div>
-            <p className="gz-eyebrow">Virtual classes · 3 months</p>
+            <p className="gz-live">
+              <span className="gz-live__dot" aria-hidden="true" /> Live online classes
+            </p>
             <h1 className="gz-h1">
-              Upskill in tech from the comfort of <span className="gz-accent">home</span>.
+              Learn tech from <span className="gz-accent">home</span>, with a real
+              teacher on the call.
             </h1>
             <p className="gz-lead">
-              Live online classes with highly qualified instructors, ensuring you
-              acquire valuable skills and knowledge that transcend borders.
+              Our virtual courses run for three months. You attend live classes,
+              work on projects and meet your mentor online, wherever you are.
             </p>
             {virtualAnnouncement && (
-              <p className="gz-chip" style={{ marginTop: 24 }}>
+              <p className="gz-hero__note">
                 <Check /> {virtualAnnouncement}
               </p>
             )}
@@ -91,20 +99,20 @@ const Virtual = () => {
                 Apply now <FiArrowRight />
               </Link>
               <a href="#virtual-courses" className="gz-btn gz-btn--ghost gz-btn--lg">
-                View virtual courses
+                Virtual courses
               </a>
             </div>
           </div>
           <div className="gz-hero__media">
             <div className="gz-hero__photo">
-              <img src={heroImg} alt="A student in a live online class" />
+              <img src={heroImg} alt="A student taking a live online class" />
             </div>
             <div className="gz-float gz-float--a">
               <span className="gz-float__icon">
                 <FiTag size={20} />
               </span>
               <div>
-                <strong>From {from.price}</strong>
+                <strong>From {cheapest.price}</strong>
                 <span>Installments available</span>
               </div>
             </div>
@@ -113,49 +121,46 @@ const Virtual = () => {
       </section>
 
       <section className="gz-section">
-        <div className="gz-container">
-          <SectionHeading
-            eyebrow="Why virtual"
-            title="A world of possibilities for your education"
-            lead="Choosing virtual classes with us opens up real benefits you can enjoy."
-          />
-          <div className="gz-grid gz-grid--3">
-            {benefits.map(({ icon: Icon, title, text }) => (
-              <div className="gz-card" key={title}>
+        <div className="gz-container gz-split" style={{ alignItems: "start" }}>
+          <Reveal>
+            <SectionHeading
+              index="01"
+              eyebrow="How it works"
+              title="Everything happens online, including time with your mentor"
+            />
+            <Link to={links.apply} className="gz-btn gz-btn--primary">
+              Apply for the next cohort <FiArrowRight />
+            </Link>
+          </Reveal>
+          <div className="gz-perks">
+            {perks.map(({ icon: Icon, title, text }, i) => (
+              <Reveal className="gz-perk" key={title} delay={i * 80}>
                 <span className="gz-icon">
                   <Icon size={22} />
                 </span>
-                <h3 className="gz-h3">{title}</h3>
-                <p>{text}</p>
-              </div>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </Reveal>
             ))}
-            <div className="gz-card" style={{ background: "var(--gz-purple)", borderColor: "var(--gz-purple)", color: "#fff" }}>
-              <h3 className="gz-h3">Ready to begin?</h3>
-              <p style={{ color: "rgba(255,255,255,.8)", marginBottom: 24 }}>
-                Join the next virtual cohort and learn live with experts.
-              </p>
-              <Link to={links.apply} className="gz-btn gz-btn--yellow">
-                Apply now <FiArrowRight />
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="gz-section gz-section--dark">
+      <section className="gz-section gz-section--dark gz-section--grain">
         <div className="gz-container">
-          <SectionHeading
-            center
-            eyebrow="Getting started"
-            title="Join a virtual class in 3 easy steps"
-          />
-          <ol className="gz-steps">
+          <Reveal>
+            <SectionHeading index="02" eyebrow="Getting in" title="Three steps to your first class" />
+          </Reveal>
+          <ol className="gz-journey gz-journey--3">
             {steps.map((s, i) => (
-              <li className="gz-step" key={s.title}>
-                <span className="gz-step__num">0{i + 1}</span>
+              <Reveal as="li" className="gz-journey__stop" key={s.title} delay={i * 90}>
+                <span className="gz-journey__when">{s.when}</span>
+                <span className="gz-journey__dot" aria-hidden="true" />
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>
@@ -163,31 +168,32 @@ const Virtual = () => {
 
       <section className="gz-section gz-section--soft" id="virtual-courses">
         <div className="gz-container">
-          <SectionHeading
-            eyebrow="Virtual tracks"
-            title="Courses available online"
-            lead="Every course below is taught live by expert instructors."
-          />
+          <Reveal>
+            <SectionHeading index="03" eyebrow="Courses" title="What you can study online" />
+          </Reveal>
           <CourseExplorer mode="virtual" />
         </div>
       </section>
 
       <section className="gz-section">
         <div className="gz-container">
-          <SectionHeading
-            eyebrow="Virtual pricing"
-            title="Simple, transparent plans"
-            action={
-              <Link to="/pricing" className="gz-link">
-                Full pricing details <FiArrowRight />
-              </Link>
-            }
-          />
+          <Reveal>
+            <SectionHeading
+              index="04"
+              eyebrow="Fees"
+              title="What it costs"
+              action={
+                <Link to="/pricing" className="gz-link">
+                  Full pricing <FiArrowRight />
+                </Link>
+              }
+            />
+          </Reveal>
           <div className="gz-pricing">
-            {plans.map((p) => {
+            {plans.map((p, i) => {
               const off = percentOff(p.price, p.was);
               return (
-                <div className="gz-card" key={p.name}>
+                <Reveal className="gz-card" key={p.name} delay={i * 80}>
                   <p className="gz-muted" style={{ fontWeight: 600 }}>{p.name}</p>
                   <div className="gz-plan__price" style={{ marginTop: 12 }}>
                     <strong style={{ fontSize: 34 }}>{p.price}</strong>
@@ -199,14 +205,14 @@ const Virtual = () => {
                     </span>
                   )}
                   <p style={{ marginTop: 14, fontSize: 15 }}>{p.note}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
         </div>
       </section>
 
-      <CtaBand dark title="Learn live, from anywhere." />
+      <CtaBand dark title="Study from home, with people keeping an eye on your progress" />
     </Layout>
   );
 };
