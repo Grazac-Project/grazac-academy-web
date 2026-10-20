@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   FiArrowRight,
+  FiBriefcase,
+  FiCalendar,
   FiChevronDown,
+  FiHelpCircle,
+  FiHexagon,
+  FiMessageCircle,
+  FiMonitor,
+  FiTag,
   FiMail,
   FiMapPin,
   FiMenu,
@@ -31,19 +38,43 @@ import "../site.css";
 
 const primaryNav = [
   { to: "/courses", label: "Courses" },
-  { to: "/virtual", label: "Virtual classes" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/hire", label: "Hire talent" },
   { to: "/about-us", label: "About" },
-  { to: "/faq", label: "FAQs" },
+  { href: links.blog, label: "Blog" },
 ];
 
 const moreNav = [
-  { to: "/it", label: "IT / SIWES program" },
-  { to: "/web3", label: "Web3 & Blockchain" },
-  { href: links.blog, label: "Blog" },
-  { to: "/contact", label: "Contact us" },
+  { to: "/virtual", label: "Virtual classes", icon: FiMonitor, desc: "Live online courses, 3 months" },
+  { to: "/pricing", label: "Pricing", icon: FiTag, desc: "Plans and installments" },
+  { to: "/faq", label: "FAQs", icon: FiHelpCircle, desc: "Admissions, fees, certificates" },
+  { to: "/it", label: "IT / SIWES program", icon: FiBriefcase, desc: "Industrial training for students" },
+  { to: "/web3", label: "Web3 & Blockchain", icon: FiHexagon, desc: "Blockchain and smart contracts" },
+  { to: "/contact", label: "Contact us", icon: FiMessageCircle, desc: "Call, WhatsApp or visit" },
 ];
+
+const MenuItem = ({ item }) => {
+  const Icon = item.icon;
+  const inner = (
+    <>
+      <span className="gz-menu__icon">
+        <Icon size={18} />
+      </span>
+      <span>
+        <strong>{item.label}</strong>
+        <em>{item.desc}</em>
+      </span>
+    </>
+  );
+  return item.href ? (
+    <a href={item.href} target="_blank" rel="noopener noreferrer" className="gz-menu__item">
+      {inner}
+    </a>
+  ) : (
+    <NavLink to={item.to} className="gz-menu__item" activeClassName="is-active">
+      {inner}
+    </NavLink>
+  );
+};
 
 const socialIcons = {
   X: FaXTwitter,
@@ -173,7 +204,7 @@ const Header = () => {
 
           <nav className="gz-nav" aria-label="Main">
             {primaryNav.map((item) => (
-              <NavAnchor key={item.to} item={item} className="gz-nav__link" />
+              <NavAnchor key={item.label} item={item} className="gz-nav__link" />
             ))}
             <div className={`gz-nav__more${more ? " is-open" : ""}`}>
               <button
@@ -185,22 +216,38 @@ const Header = () => {
                   setMore((v) => !v);
                 }}
               >
-                More <FiChevronDown size={16} />
+                More <FiChevronDown className="gz-nav__chev" size={16} />
               </button>
-              <div className="gz-nav__menu">
-                {moreNav.map((item) => (
-                  <NavAnchor key={item.label} item={item} />
-                ))}
+              <div className="gz-nav__menu" onClick={(e) => e.stopPropagation()}>
+                <div className="gz-menu__grid">
+                  {moreNav.map((item) => (
+                    <MenuItem key={item.label} item={item} />
+                  ))}
+                </div>
+                <a
+                  href={contact.calendly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gz-menu__foot"
+                >
+                  <FiCalendar size={18} />
+                  <span>
+                    <strong>Not sure where to start?</strong> Book a free 30-minute call
+                  </span>
+                  <FiArrowRight size={18} />
+                </a>
               </div>
             </div>
           </nav>
 
           <div className="gz-header__actions">
             <a
-              href={links.login}
+              href={contact.whatsappChat}
+              target="_blank"
+              rel="noopener noreferrer"
               className="gz-btn gz-btn--secondary gz-btn--sm"
             >
-              Log in
+              <FiMessageCircle size={16} /> Talk to us
             </a>
             <Link
               to={links.apply}

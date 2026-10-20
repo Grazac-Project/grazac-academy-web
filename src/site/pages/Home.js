@@ -95,7 +95,7 @@ const HomeFaq = () => {
 
 const Home = () => (
   <Layout description="Learn AI automation, cybersecurity, cloud, data, software engineering and product design at Grazac Academy. Physical classes in Abeokuta or live online, with mentors from the industry.">
-    <section className="gz-hero">
+    <section className="gz-hero gz-hero--home">
         <CircuitPattern className="gz-hero__pattern" />
       <div className="gz-container gz-hero__grid">
         <div>
