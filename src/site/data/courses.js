@@ -11,8 +11,11 @@ import cloud from "../../images/cloud.png";
 // Courses on offer this cohort. "onsite" means physical classes in Abeokuta.
 //
 // api:     backend slug for the outline and brochure. null shows "curriculum coming soon".
+// tracks:  per-stack curricula (Back-End); each loads its own outline.
+// Names, descriptions and outlines match the live grazacacademy.com course pages.
 // aliases: old slugs that should still open this course (e.g. ?course=java).
 // icon:    used when there's no course artwork.
+// short:   the name shown on the course artwork on the courses page.
 
 export const categories = [
   "AI & Data",
@@ -25,6 +28,7 @@ export const courses = [
   // Physical
   {
     slug: "ai-automation-bootcamp",
+    short: "AI Automation",
     title: "AI Automation Bootcamp",
     category: "AI & Data",
     icon: FiCpu,
@@ -36,27 +40,30 @@ export const courses = [
   },
   {
     slug: "cybersecurity",
+    short: "Cybersecurity",
     title: "Cybersecurity",
     category: "Cloud & Security",
     image: cybersecurity,
     modes: ["onsite"],
     api: "cybersecurity",
     summary:
-      "Security fundamentals, ethical hacking and penetration testing, and how to defend systems, networks and data.",
+      "Learn how to protect systems, networks, and data from cyber threats. This course covers security fundamentals, ethical hacking, penetration testing, and defensive strategies.",
   },
   {
     slug: "data-analysis",
-    title: "Data Analytics",
+    short: "Data Analytics",
+    title: "Data Analysis",
     category: "AI & Data",
     image: dataAnalysis,
     modes: ["onsite"],
     api: "data-analysis",
     aliases: ["data-analytics"],
     summary:
-      "Clean and explore data, build charts and dashboards, and turn the numbers into decisions.",
+      "Data Analysis involves using different tools and techniques to scrutinize and probe large volumes of data with the goal of solving problems, making informed business decisions, and improving processes.",
   },
   {
     slug: "business-analysis-project-management",
+    short: "Business Analysis",
     title: "Business Analysis & Project Management",
     category: "Business & Product",
     icon: FiBarChart2,
@@ -68,19 +75,21 @@ export const courses = [
   },
   {
     slug: "cloud-engineering-aws",
-    title: "Cloud Engineering",
+    short: "Cloud Engineering",
+    title: "Cloud Engineering (AWS)",
     category: "Cloud & Security",
     image: cloud,
     modes: ["onsite"],
     api: "cloud-engineering-aws",
     aliases: ["cloud-engineering"],
     summary:
-      "Deploy, secure and scale applications on AWS.",
+      "Master cloud infrastructure with AWS. Learn how to deploy, secure, and scale cloud applications.",
   },
 
   // Virtual
   {
     slug: "backend-development",
+    short: "Back-End Development",
     title: "Back-End Development (Java, Node.js, Go)",
     category: "Software Engineering",
     image: backend,
@@ -88,48 +97,58 @@ export const courses = [
     api: null,
     aliases: ["backend-web-development", "java", "golang"],
     stacks: ["Java", "Node.js", "Go (Golang)"],
+    // Live curricula per stack; Go has none yet.
+    tracks: [
+      { name: "Node.js", api: "backend-web-development" },
+      { name: "Java", api: "java" },
+      { name: "Go (Golang)", api: null },
+    ],
     summary:
-      "APIs, databases and server logic, in Java, Node.js or Go. You pick the stack.",
+      "Build the server side of applications: APIs, databases and business logic. Choose your stack: Node.js, for real-time applications such as chat, news feeds and push notifications; Java, used everywhere from web development to big data; or Go.",
   },
   {
     slug: "mobile-application-development",
-    title: "Mobile App Development",
+    short: "Mobile App Development",
+    title: "Mobile Application Development (Flutter)",
     category: "Software Engineering",
     image: android,
     modes: ["virtual"],
     api: "mobile-application-development",
     summary:
-      "Build iOS and Android apps from one codebase with Flutter and Dart.",
+      "Learn to build cross-platform mobile applications using Flutter, an open-source UI framework. This course covers Dart programming, Flutter widgets, state management, API integration, and deploying mobile apps for iOS and Android.",
   },
   {
     slug: "frontend-web-development",
-    title: "Front-End Development",
+    short: "Front-End Development",
+    title: "Front End Web Development (HTML, CSS & JavaScript)",
     category: "Software Engineering",
     image: frontend,
     modes: ["virtual"],
     api: "frontend-web-development",
     summary:
-      "HTML, CSS and JavaScript, from your first page to a working web app.",
+      "Front-end web development, also known as client-side development, is the practice of producing HTML, CSS, and JavaScript for a website or web application so that a user can see and interact with them directly.",
   },
   {
     slug: "product-management",
+    short: "Product Management",
     title: "Product Management",
     category: "Business & Product",
     image: productManagement,
     modes: ["virtual"],
     api: "product-management",
     summary:
-      "Decide what to build, work with designers and engineers, and see a product through launch.",
+      "This course provides comprehensive knowledge on how to guide product development, from ideation to market launch, by aligning business, technology, and user needs. You'll master market research, product strategy, roadmap development, and stakeholder management.",
   },
   {
     slug: "product-designing-ui-ux",
-    title: "Product Design (UI/UX)",
+    short: "Product Design",
+    title: "Product Designing (UI/UX)",
     category: "Business & Product",
     image: product,
     modes: ["virtual"],
     api: "product-designing-ui-ux",
     summary:
-      "Talk to users, design screens in Figma and prototype products people find easy to use.",
+      "This course equips students with a deep understanding of UI/UX principles, helping them design user-friendly and visually appealing digital products. You'll learn design thinking, user research, prototyping, and testing to enhance the user experience.",
   },
 ];
 

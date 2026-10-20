@@ -67,6 +67,12 @@ const CourseDetail = () => {
 
   const [state, setState] = useState({ status: "loading", course: null });
   const [attempt, setAttempt] = useState(0);
+  const tracks = known && known.tracks;
+  const [trackName, setTrackName] = useState(tracks ? tracks[0].name : null);
+  const track = tracks ? tracks.find((t) => t.name === trackName) || tracks[0] : null;
+  // Per-stack tracks use the full curricula published on the main course pages.
+  const apiSlug = track ? track.api : known && known.api;
+  const endpoint = track || mode !== "virtual" ? "getCourse" : "getCourseVirtual";
 
   useEffect(() => {
     // Courses no longer on offer (or mistyped links) skip the API entirely.
@@ -74,14 +80,13 @@ const CourseDetail = () => {
       setState({ status: "missing", course: null });
       return undefined;
     }
-    if (!known.api) {
+    if (!apiSlug) {
       setState({ status: "pending", course: null });
       return undefined;
     }
     const controller = new AbortController();
     setState({ status: "loading", course: null });
-    const endpoint = mode === "virtual" ? "getCourseVirtual" : "getCourse";
-    fetch(`${API}/${endpoint}/${encodeURIComponent(known.api)}`, {
+    fetch(`${API}/${endpoint}/${encodeURIComponent(apiSlug)}`, {
       signal: controller.signal,
     })
       .then((r) => {
@@ -100,7 +105,7 @@ const CourseDetail = () => {
           setState({ status: "error", course: null });
       });
     return () => controller.abort();
-  }, [known, mode, attempt]);
+  }, [known, apiSlug, endpoint, attempt]);
 
   const setMode = (m) => {
     try {
@@ -124,7 +129,7 @@ const CourseDetail = () => {
   const title =
     (known && known.title) || (course && course.name) || "Course details";
   const description =
-    (course && course.description) || (known && known.summary) || "";
+    (!tracks && course && course.description) || (known && known.summary) || "";
   const related = courses
     .filter(
       (c) => known && c.slug !== known.slug && c.category === known.category,
@@ -218,6 +223,23 @@ const CourseDetail = () => {
               }
             />
 
+            {tracks && (
+              <div className="gz-tabs" role="tablist" aria-label="Choose a stack">
+                {tracks.map((t) => (
+                  <button
+                    key={t.name}
+                    type="button"
+                    role="tab"
+                    aria-selected={track.name === t.name}
+                    className={`gz-tab${track.name === t.name ? " is-active" : ""}`}
+                    onClick={() => setTrackName(t.name)}
+                  >
+                    {t.name}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {status === "loading" && (
               <div
                 className="gz-modules"
@@ -279,7 +301,7 @@ const CourseDetail = () => {
                   Our program manager can walk you through the outline, the
                   schedule and what you'll need for the next cohort.
                 </p>
-                {known.stacks && (
+                {known.stacks && !tracks && (
                   <div style={{ marginTop: 20 }}>
                     <p
                       style={{

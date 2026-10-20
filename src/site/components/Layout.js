@@ -379,8 +379,16 @@ const Footer = () => (
       </div>
 
       <div className="gz-footer__accredit">
-        <img src={actdLogo} alt="ACTD logo" />
-        <p>{accreditation}</p>
+        <span className="gz-footer__seal">
+          <img src={actdLogo} alt="American Council of Training and Development seal" />
+        </span>
+        <div>
+          <p className="gz-footer__accredit-label">Accreditation</p>
+          <p className="gz-footer__accredit-name">{accreditation}</p>
+          <p className="gz-footer__accredit-note">
+            Every graduate receives an ACTD-accredited certificate, in print and digital.
+          </p>
+        </div>
       </div>
 
       <div className="gz-footer__bottom">

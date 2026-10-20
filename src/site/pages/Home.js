@@ -102,7 +102,7 @@ const Home = () => (
           <Link to={courseHref("ai-automation-bootcamp")} className="gz-pill">
             <span className="gz-badge gz-badge--new">New</span>
             AI Automation Bootcamp is open for applications
-            <FiArrowRight />
+            {/* <FiArrowRight /> */}
           </Link>
           <h1 className="gz-h1 gz-hero__title">
             Learn <Rotator words={heroWords} />
@@ -166,8 +166,8 @@ const Home = () => (
       <div className="gz-container">
         <Reveal>
           <SectionHeading
-            index="01"
-            eyebrow="Two ways to learn"
+            // index="01"
+            // eyebrow="Two ways to learn"
             title="On campus or online. Pick what fits your week."
           />
         </Reveal>
@@ -230,9 +230,9 @@ const Home = () => (
       <div className="gz-container">
         <Reveal>
           <SectionHeading
-            index="02"
-            eyebrow="Courses"
-            title={`${courses.length} courses built around what employers hire for`}
+            // index="02"
+            // eyebrow="Courses"
+            title="Courses built around what employers hire for"
             action={
               <Link to="/courses" className="gz-link">
                 All courses <FiArrowRight />
@@ -248,10 +248,10 @@ const Home = () => (
       <CircuitPattern className="gz-talent__pattern" seed={19} />
       <div className="gz-container gz-talent__head">
         <Reveal>
-          <p className="gz-eyebrow">
+          {/* <p className="gz-eyebrow">
             <span className="gz-eyebrow__index">03</span>
             Talent in the world
-          </p>
+          </p> */}
           <h2 className="gz-h2">
             Our talent works with many of the world&apos;s leading companies.
           </h2>
@@ -268,7 +268,7 @@ const Home = () => (
       <div className="gz-container gz-split">
         <div>
           <Reveal>
-            <SectionHeading index="04" eyebrow="Why Grazac" title="What you can expect from us" />
+            <SectionHeading index="04"  title="What you can expect from us" />
           </Reveal>
           <div className="gz-why">
             {why.map((w, i) => (
@@ -310,7 +310,7 @@ const Home = () => (
       <div className="gz-container">
         <Reveal className="gz-talent__head">
           <div>
-            <p className="gz-eyebrow">Video testimonials</p>
+            {/* <p className="gz-eyebrow">Video testimonials</p> */}
             <h2 className="gz-h2">Our students, in their own words.</h2>
           </div>
           <p className="gz-lead">
@@ -327,7 +327,7 @@ const Home = () => (
       <div className="gz-container">
         <Reveal className="gz-talent__head">
           <div>
-            <p className="gz-eyebrow">Testimonials</p>
+            {/* <p className="gz-eyebrow">Testimonials</p> */}
             <h2 className="gz-h2">What people say about learning with us.</h2>
           </div>
           <p className="gz-lead">
@@ -343,7 +343,7 @@ const Home = () => (
       <div className="gz-container">
         <Reveal className="gz-band">
           <div>
-            <span className="gz-badge">For employers</span>
+            {/* <span className="gz-badge">For employers</span> */}
             <h2 className="gz-h2">Hiring? Our graduates are ready to interview.</h2>
             <p className="gz-lead">
               Tell us the role and we'll put forward graduates who have already
@@ -376,10 +376,10 @@ const Home = () => (
     <section className="gz-section gz-section--soft">
       <div className="gz-container gz-home-faq">
         <Reveal className="gz-home-faq__intro">
-          <p className="gz-eyebrow">
+          {/* <p className="gz-eyebrow">
             <span className="gz-eyebrow__index">05</span>
             FAQs
-          </p>
+          </p> */}
           <h2 className="gz-h2">Questions people ask before applying</h2>
           <p className="gz-lead">
             Pick a topic to see the answers. There are {allFaqs.length} in
