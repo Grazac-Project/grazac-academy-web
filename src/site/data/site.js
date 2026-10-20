@@ -6,7 +6,7 @@ export const contact = {
   whatsappChat: "https://wa.me/2348068365951",
   whatsappCommunity: "https://chat.whatsapp.com/EG62sZ8TqY198wq1vsjsXL",
   email: "hello@grazacacademy.com",
-  hireEmail: "hire@grazacacademy.com",
+  hireEmail: "hello@grazacacademy.com",
   calendly:
     "https://calendly.com/grazacacademy/book-a-session-with-the-grazac-academy-program-manager",
   address: [

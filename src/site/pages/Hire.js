@@ -288,9 +288,9 @@ const Hire = () => {
           <div>
             <p className="gz-eyebrow">Hire from Grazac</p>
             <h1 className="gz-h1">
-              We trained the talent.
+              Hire people who&apos;ve
               <br />
-              Now <span className="gz-accent">build your team.</span>
+              <span className="gz-accent">already done the work.</span>
             </h1>
             <p className="gz-lead">
               Grazac graduates have learnt from industry practitioners, built
@@ -355,8 +355,8 @@ const Hire = () => {
           <Reveal>
             <SectionHeading
               eyebrow="How our talent is made"
-              title="We don't wait for great talent to appear. We train it."
-              lead="Every Grazac graduate goes through the same path before they're put forward to an employer."
+              title="Every graduate follows the same path before they reach you."
+              lead="Training, a real project and outside review, then an introduction to you."
             />
           </Reveal>
           <ol className="gz-pipeline">
@@ -380,8 +380,8 @@ const Hire = () => {
           <Reveal>
             <SectionHeading
               center
-              eyebrow="Skip the pile"
-              title="Start with people who are ready, not a stack of CVs."
+              eyebrow="Why it's quicker"
+              title="Fewer CVs to read. Better people to meet."
             />
           </Reveal>
           <div className="gz-compare">
@@ -418,14 +418,14 @@ const Hire = () => {
           <Reveal>
             <SectionHeading
               eyebrow="Talent categories"
-              title="Build the product. Grow the business."
+              title="Talent for your product and your business"
               lead="Pick a skill and we'll start your request with it."
             />
           </Reveal>
           <div className="gz-cats">
             {[
-              { n: "01", label: "Build the product", sub: "Technical talent", items: productTalent },
-              { n: "02", label: "Grow the business", sub: "Data, product and business talent", items: businessTalent },
+              { n: "01", label: "Product & engineering", sub: "Developers, designers, cloud and security", items: productTalent },
+              { n: "02", label: "Data & business", sub: "Analysts, product managers and automation", items: businessTalent },
             ].map((g) => (
               <Reveal className="gz-cats__group" key={g.n}>
                 <span className="gz-cats__n">{g.n}</span>
@@ -450,7 +450,7 @@ const Hire = () => {
           <Reveal>
             <SectionHeading
               eyebrow="What you can expect"
-              title="Already trained. Already tested on real work."
+              title="What every Grazac graduate brings"
               lead="We coach students on communication and workplace habits alongside the technical work, and they graduate with an ACTD-accredited certificate."
             />
             <a href="#request" className="gz-btn gz-btn--primary">
@@ -484,8 +484,8 @@ const Hire = () => {
           <div>
             <SectionHeading
               eyebrow="Create a hiring request"
-              title="Build your shortlist."
-              lead="Three short steps give us what we need to match the right graduates to your role."
+              title="Tell us who you need."
+              lead="Three short steps, then our team matches graduates to your role."
             />
             <ul className="gz-aside__list">
               <li>
@@ -495,12 +495,10 @@ const Hire = () => {
                 <FiCheck /> Interns and full-time hires
               </li>
             </ul>
-            <p className="gz-muted">
-              Prefer email? Write to{" "}
-              <a href={`mailto:${contact.hireEmail}`} style={{ color: "var(--gz-purple)", fontWeight: 600 }}>
-                <FiMail style={{ verticalAlign: "-2px" }} /> {contact.hireEmail}
-              </a>
-            </p>
+            <p className="gz-muted">Prefer email?</p>
+            <a href={`mailto:${contact.hireEmail}`} className="gz-link">
+              <FiMail /> {contact.hireEmail}
+            </a>
           </div>
           <div className="gz-card">
             <HireRequest key={formKey} presetRole={presetRole} />
@@ -513,7 +511,7 @@ const Hire = () => {
         <div className="gz-container">
           <div className="gz-cta gz-cta--dark">
             <div>
-              <h2 className="gz-h2">The talent is ready. Build your team.</h2>
+              <h2 className="gz-h2">Your next hire could be in our current cohort.</h2>
               <p>Tell us who you need and meet trained graduates who have already built something real.</p>
             </div>
             <div className="gz-btn-row">

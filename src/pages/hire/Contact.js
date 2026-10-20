@@ -86,7 +86,7 @@ function Contact() {
                     <div className="hire_contact-text-box">
                       <div className="hire_contact-text-box-flx">
                         <img src={email} alt="icon" />
-                        <p>hire@grazacacademy.com</p>
+                        <p>hello@grazacacademy.com</p>
                       </div>
                     </div>
                     <div className="hire_contact-text-box">
