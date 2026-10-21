@@ -35,18 +35,18 @@ const approach = [
 const About = () => (
   <Layout
     title="About us"
-    description="Grazac Academy is a tech training school at PROHUB in Abeokuta, Ogun State, run by Grazac Technologies. We teach physical and virtual courses."
+    description="Grazac Academy is a tech Academy. We teach physical and virtual courses."
   >
     <section className="gz-page-hero">
         <CircuitPattern className="gz-hero__pattern" seed={11} />
       <div className="gz-container">
-        <p className="gz-eyebrow">About Grazac Academy</p>
+        {/* <p className="gz-eyebrow">About Grazac Academy</p> */}
         <h1 className="gz-h1">
-          A tech school in Abeokuta for people who want to work in tech.
+          About Us
         </h1>
         <p className="gz-lead">
-          We teach at PROHUB in Idi-Aba and online. Graduates and undergraduates
-          both join, and you don't need a tech background to start.
+          At Grazac Academy, we provide you with the right platform to
+          upskill yourself for the future.
         </p>
       </div>
     </section>
@@ -62,7 +62,7 @@ const About = () => (
           </div>
         </Reveal>
         <Reveal delay={120}>
-          <SectionHeading index="01" eyebrow="Who we are" title="Grazac Academy, by Grazac Technologies" />
+          {/* <SectionHeading title="Grazac Academy, by Grazac Technologies" /> */}
           <p className="gz-lead" style={{ marginBottom: 20 }}>
             You decide where you're starting from. We give you the classes,
             the mentors, a workspace and a cohort to learn alongside.
@@ -87,7 +87,7 @@ const About = () => (
     <section className="gz-section gz-section--soft">
       <div className="gz-container">
         <Reveal>
-          <SectionHeading index="02" eyebrow="Core values" title="What we hold ourselves to" />
+          <SectionHeading  eyebrow="Core values" title="What we hold ourselves to" />
         </Reveal>
         <div className="gz-grid gz-grid--3">
           {values.map((v, i) => (
@@ -104,7 +104,7 @@ const About = () => (
       <div className="gz-container gz-split">
         <div>
           <Reveal>
-            <SectionHeading index="03" eyebrow="How we teach" title="How a Grazac course is put together" />
+            <SectionHeading   title="How a Grazac course is put together" />
           </Reveal>
           <div className="gz-perks">
             {approach.map(({ icon: Icon, title, text }, i) => (
@@ -131,7 +131,7 @@ const About = () => (
         <Reveal className="gz-band" style={{ gridTemplateColumns: "auto 1fr" }}>
           <img src={actdLogo} alt="ACTD seal" style={{ width: 96, height: 96 }} />
           <div>
-            <span className="gz-badge">Accreditation</span>
+            <span className="gz-badge"></span>
             <h2 className="gz-h2" style={{ fontSize: 30 }}>{accreditation}</h2>
             <p className="gz-muted">
               Everyone who completes a course gets a certificate, both printed
@@ -145,9 +145,8 @@ const About = () => (
     <section className="gz-section">
       <div className="gz-container">
         <SectionHeading
-          index="04"
           eyebrow="Mentors"
-          title="Some of the people you'll learn from"
+          title="Some of the mentors you'll learn from"
           action={
             <a href={contact.calendly} target="_blank" rel="noopener noreferrer" className="gz-link">
               Book a call <FiArrowRight />
