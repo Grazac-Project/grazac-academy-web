@@ -7,7 +7,7 @@ import loader2 from "../images/load.gif";
 const Assessment = ({
   setShowScore,
   setScore,
-  setStatus,
+  setTestStatus,
   setShowAssessment,
 }) => {
   const [assignment, setAssignment] = useState();
@@ -104,9 +104,9 @@ const Assessment = ({
         completed.current = true;
         lastSubmissionOutcome.current = "success";
         setScore(res.data.data.assessmentScore);
+        setTestStatus(res.data.data.testStatus);
         setShowAssessment(false);
         setShowScore(true);
-        setStatus(res.data.message);
       })
       .catch((error) => {
         const response = error.response?.data;
