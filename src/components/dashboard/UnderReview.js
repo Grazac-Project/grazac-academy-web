@@ -8,7 +8,7 @@ function UnderReview({ fname }) {
   const [showAssessment, setShowAssessment] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(false);
-  const [status, setStatus] = useState();
+  const [testStatus, setTestStatus] = useState();
   const handleModal = () => {
     setShowModal(true);
   };
@@ -69,7 +69,7 @@ function UnderReview({ fname }) {
           <Assessment
             setShowScore={setShowScore}
             setScore={setScore}
-            setStatus={setStatus}
+            setTestStatus={setTestStatus}
             setShowAssessment={setShowAssessment}
           />
         </div>
@@ -77,7 +77,7 @@ function UnderReview({ fname }) {
       {showScore && (
         <div className="message-prompt">
           <div className="message-backdrop"></div>
-          {status === "You passed!" && (
+          {testStatus === "passed" && (
             <div className="message-content">
               {/* <span class='ass-times' onClick={() => setShowScore(false)}>&times;</span> */}
               <img src={success} alt="passed icon" />
@@ -87,7 +87,7 @@ function UnderReview({ fname }) {
               <button onClick={handleReload}>Proceed to Dashboard</button>
             </div>
           )}
-          {status === "You failed." && (
+          {testStatus === "failed" && (
             <div className="message-content">
               {/* <span onClick={() => setShowScore(false)}>&times;</span> */}
               <img src={sorry} alt="Assessment received" />

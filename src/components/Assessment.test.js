@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Assessment from "./Assessment";
+import UnderReview from "./dashboard/UnderReview";
 import { assignAssessment, submitAssessment } from "../api/dashboard/data";
 
 jest.mock("../api/dashboard/data", () => ({
@@ -79,7 +80,7 @@ function callbacks() {
   return {
     setShowScore: jest.fn(),
     setScore: jest.fn(),
-    setStatus: jest.fn(),
+    setTestStatus: jest.fn(),
     setShowAssessment: jest.fn(),
   };
 }
@@ -225,6 +226,91 @@ function confirmSubmission() {
   fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
 }
 
+test("shows the fullPayment admitted result card after a passed assessment", async () => {
+  submitAssessment.mockResolvedValue({
+    data: {
+      success: true,
+      message: "You Passed The Assessment And Now Admitted.",
+      data: {
+        attemptId: "attempt-one",
+        assessmentScore: 70,
+        status: "Admitted",
+        testStatus: "passed",
+        takenAssessment: true,
+        passMark: 60,
+      },
+    },
+  });
+  render(<UnderReview fname="Ada" />);
+  fireEvent.click(screen.getByRole("button", { name: "Take Assessment" }));
+  fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
+  await screen.findByText("1. First question");
+  fireEvent.click(screen.getByLabelText("First option B"));
+  fireEvent.click(screen.getByLabelText("Second option C"));
+  confirmSubmission();
+
+  expect(await screen.findByRole("heading", { name: "Congratulations" })).toBeVisible();
+  expect(screen.getByText("70%")).toBeVisible();
+  expect(screen.getByText("You passed your assessment")).toBeVisible();
+  expect(screen.getByRole("button", { name: "Proceed to Dashboard" })).toBeVisible();
+  expect(screen.queryByRole("button", { name: "Go to Dashboard" })).not.toBeInTheDocument();
+  expect(screen.queryByText("1. First question")).not.toBeInTheDocument();
+});
+
+test.each([
+  {
+    testStatus: "passed",
+    message: "You passed!",
+    heading: "Congratulations",
+    copy: "You passed your assessment",
+    action: "Proceed to Dashboard",
+    absentHeading: "Your assessment has been received",
+  },
+  {
+    testStatus: "failed",
+    message: "You failed.",
+    heading: "Your assessment has been received",
+    copy: "We will be in touch soon",
+    action: "Go to Dashboard",
+    absentHeading: "Congratulations",
+  },
+])("shows the $testStatus result for a successful Pending submission", async ({
+  testStatus,
+  message,
+  heading,
+  copy,
+  action,
+  absentHeading,
+}) => {
+  submitAssessment.mockResolvedValue({
+    data: {
+      success: true,
+      message,
+      data: {
+        attemptId: "attempt-one",
+        assessmentScore: testStatus === "passed" ? 70 : 40,
+        status: "Pending",
+        testStatus,
+        takenAssessment: testStatus === "passed",
+        passMark: 60,
+      },
+    },
+  });
+  render(<UnderReview fname="Ada" />);
+  fireEvent.click(screen.getByRole("button", { name: "Take Assessment" }));
+  fireEvent.click(screen.getByRole("button", { name: "Proceed" }));
+  await screen.findByText("1. First question");
+  fireEvent.click(screen.getByLabelText("First option B"));
+  fireEvent.click(screen.getByLabelText("Second option C"));
+  confirmSubmission();
+
+  expect(await screen.findByRole("heading", { name: heading })).toBeVisible();
+  expect(screen.getByText(copy)).toBeVisible();
+  expect(screen.getByRole("button", { name: action })).toBeVisible();
+  expect(screen.queryByRole("heading", { name: absentHeading })).not.toBeInTheDocument();
+  expect(screen.queryByText("1. First question")).not.toBeInTheDocument();
+});
+
 test("retries a lost submission response with the same payload and displays a replay only once", async () => {
   submitAssessment
     .mockRejectedValueOnce(new Error("Network Error"))
@@ -252,7 +338,6 @@ test("retries a lost submission response with the same payload and displays a re
   await waitFor(() => expect(result.setShowScore).toHaveBeenCalledTimes(1));
   expect(submitAssessment.mock.calls[1][0]).toBe(firstPayload);
   expect(result.setScore).toHaveBeenLastCalledWith(100);
-  expect(result.setStatus).toHaveBeenLastCalledWith("You passed!");
 
   fireEvent.click(screen.getByRole("button", { name: "Expire assessment" }));
   expect(submitAssessment).toHaveBeenCalledTimes(2);
