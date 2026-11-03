@@ -4035,3 +4035,7 @@
   font-weight: 700;
   font-size: 22px;
 }
+/* .gz-catalog__cats sets display: flex, which would override the hidden attribute. */
+.gz-catalog__cats[hidden] {
+  display: none;
+}
