@@ -25,6 +25,8 @@ import {
   TestimonialMarquee,
 } from "../components/ui";
 import { courseHref, courses, coursesByMode } from "../data/courses";
+import { virtualHref } from "../components/VirtualCourses";
+import useVirtualCourses from "../hooks/useVirtualCourses";
 import { allFaqs, faqGroups } from "../data/faqs";
 import { stories } from "../data/stories";
 import { talentRows } from "../data/talent";
@@ -36,7 +38,32 @@ import pair from "../img/pair.jpg";
 import teamwork from "../img/teamwork.jpg";
 
 const onsite = coursesByMode("onsite");
-const virtual = coursesByMode("virtual");
+
+// Virtual courses come from the backend (TrainerCentral).
+const VirtualList = () => {
+  const { status, items } = useVirtualCourses({ limit: 6 });
+  if (status === "loading") {
+    return [0, 1, 2].map((i) => (
+      <li key={i} aria-hidden="true">
+        <span className="gz-skeleton" style={{ display: "block", height: 18, width: "70%", opacity: 0.35 }} />
+      </li>
+    ));
+  }
+  if (!items.length) {
+    return (
+      <li>
+        <Check />
+        <Link to="/courses?mode=virtual">See the virtual courses that are open</Link>
+      </li>
+    );
+  }
+  return items.map((c) => (
+    <li key={c.id}>
+      <Check />
+      <Link to={virtualHref(c)}>{c.title}</Link>
+    </li>
+  ));
+};
 
 const heroWords = [
   "AI automation",
@@ -209,12 +236,7 @@ const Home = () => (
               virtual mentor who checks in with you one to one.
             </p>
             <ul className="gz-mode__list">
-              {virtual.map((c) => (
-                <li key={c.slug}>
-                  <Check />
-                  <Link to={courseHref(c.slug)}>{c.title}</Link>
-                </li>
-              ))}
+              <VirtualList />
             </ul>
             <div className="gz-btn-row">
               <Link to="/virtual" className="gz-btn gz-btn--yellow">

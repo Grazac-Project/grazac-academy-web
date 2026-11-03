@@ -29,6 +29,8 @@ export const links = {
   apply: "/signup",
   login: "/login",
   blog: "https://blog.grazacacademy.com/",
+  // Grazac Learn (TrainerCentral): virtual-course sign-in, payment and learning.
+  learn: "https://learn.grazacacademy.com",
 };
 
 // Top-of-page announcement. Set `text` to "" to hide it.

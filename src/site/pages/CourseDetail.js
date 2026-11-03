@@ -12,6 +12,7 @@ import CircuitPattern from "../components/CircuitPattern";
 import { Check, CourseCard, CtaBand, SectionHeading } from "../components/ui";
 import { courseHref, courses, findCourse } from "../data/courses";
 import { contact, links } from "../data/site";
+import VirtualCourseDetail from "./VirtualCourseDetail";
 
 const API = "https://grazac-academy-back-end-ej7s.onrender.com/api/v1/user";
 
@@ -55,7 +56,25 @@ const parseOutline = (raw) => {
   }
 };
 
+// Virtual courses are sold and taught on Grazac Learn (TrainerCentral), so
+// their details come from the backend. A slug goes there when the link asks
+// for virtual, when the site only knows it as a virtual course, or when the
+// site doesn't know it at all (courses added in TrainerCentral).
 const CourseDetail = () => {
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const slug = params.get("course") || "";
+  const known = findCourse(slug);
+  const wantsVirtual = (params.get("mode") || "").toLowerCase() === "virtual";
+  const virtualOnly = known && !known.modes.includes("onsite");
+
+  if (slug && (wantsVirtual || virtualOnly || !known)) {
+    return <VirtualCourseDetail slug={slug} legacy={known && known.modes.includes("virtual") ? known : null} />;
+  }
+  return <PhysicalCourseDetail />;
+};
+
+const PhysicalCourseDetail = () => {
   const { search } = useLocation();
   const history = useHistory();
   const params = new URLSearchParams(search);
@@ -132,7 +151,11 @@ const CourseDetail = () => {
     (!tracks && course && course.description) || (known && known.summary) || "";
   const related = courses
     .filter(
-      (c) => known && c.slug !== known.slug && c.category === known.category,
+      (c) =>
+        known &&
+        c.slug !== known.slug &&
+        c.category === known.category &&
+        c.modes.includes("onsite"),
     )
     .slice(0, 3);
 
