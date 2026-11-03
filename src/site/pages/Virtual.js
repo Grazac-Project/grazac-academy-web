@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
 import {
   FiArrowRight,
   FiClock,
   FiGlobe,
+  FiLogIn,
   FiMessageSquare,
-  FiTag,
   FiUsers,
 } from "react-icons/fi";
 import Layout from "../components/Layout";
@@ -16,7 +15,6 @@ import {
   Reveal,
   SectionHeading,
 } from "../components/ui";
-import { percentOff, pricing } from "../data/pricing";
 import { links, virtualAnnouncement } from "../data/site";
 import heroImg from "../img/virtual.jpg";
 
@@ -43,36 +41,30 @@ const perks = [
   },
 ];
 
+// Virtual courses are sold and taught on Grazac Learn (TrainerCentral).
 const steps = [
   {
     when: "Step 1",
     title: "Pick a course",
-    text: "Read the outline for each course. Not sure? Book a call with our program manager.",
+    text: "Read about each course below. Not sure? Book a call with our program manager.",
   },
   {
     when: "Step 2",
-    title: "Sign up and take the assessment",
-    text: "Create an account, confirm your email, then take a short test so we know the course suits you.",
+    title: "Enrol on Grazac Learn",
+    text: "Click Enrol now to open the course on Grazac Learn, our learning portal. Create your account there and pay if the course has a fee.",
   },
   {
     when: "Step 3",
-    title: "Choose how to pay",
-    text: "Pay at once or in installments. We'll email you your login for the class platform.",
+    title: "Start learning",
+    text: "Your lessons, assessments, progress and certificate are all in My Learning on Grazac Learn.",
   },
 ];
 
 const Virtual = () => {
-  const plans = pricing.virtual.plans;
-  const cheapest = plans.reduce((min, p) =>
-    Number(p.price.replace(/[^0-9]/g, "")) < Number(min.price.replace(/[^0-9]/g, ""))
-      ? p
-      : min
-  );
-
   return (
     <Layout
       title="Virtual classes"
-      description="Three-month live online courses from Grazac Academy in back-end, front-end and mobile development, product management and product design."
+      description="Online tech courses from Grazac Academy. Browse the virtual courses, enrol on Grazac Learn and learn from anywhere."
     >
       <section className="gz-hero">
         <CircuitPattern className="gz-hero__pattern" />
@@ -95,11 +87,11 @@ const Virtual = () => {
               </p>
             )}
             <div className="gz-btn-row">
-              <Link to={links.apply} className="gz-btn gz-btn--primary gz-btn--lg">
-                Apply now <FiArrowRight />
-              </Link>
-              <a href="#virtual-courses" className="gz-btn gz-btn--ghost gz-btn--lg">
-                Virtual courses
+              <a href="#virtual-courses" className="gz-btn gz-btn--primary gz-btn--lg">
+                Browse virtual courses <FiArrowRight />
+              </a>
+              <a href={links.learn} className="gz-btn gz-btn--ghost gz-btn--lg">
+                My Learning
               </a>
             </div>
           </div>
@@ -109,11 +101,11 @@ const Virtual = () => {
             </div>
             <div className="gz-float gz-float--a">
               <span className="gz-float__icon">
-                <FiTag size={20} />
+                <FiLogIn size={20} />
               </span>
               <div>
-                <strong>From {cheapest.price}</strong>
-                <span>Installments available</span>
+                <strong>Learn on Grazac Learn</strong>
+                <span>Lessons, progress and certificates</span>
               </div>
             </div>
           </div>
@@ -128,9 +120,9 @@ const Virtual = () => {
               eyebrow="How it works"
               title="Everything happens online, including time with your mentor"
             />
-            <Link to={links.apply} className="gz-btn gz-btn--primary">
-              Apply for the next cohort <FiArrowRight />
-            </Link>
+            <a href="#virtual-courses" className="gz-btn gz-btn--primary">
+              See the courses <FiArrowRight />
+            </a>
           </Reveal>
           <div className="gz-perks">
             {perks.map(({ icon: Icon, title, text }, i) => (
@@ -175,44 +167,12 @@ const Virtual = () => {
         </div>
       </section>
 
-      <section className="gz-section">
-        <div className="gz-container">
-          <Reveal>
-            <SectionHeading
-              index="04"
-              eyebrow="Fees"
-              title="What it costs"
-              action={
-                <Link to="/pricing" className="gz-link">
-                  Full pricing <FiArrowRight />
-                </Link>
-              }
-            />
-          </Reveal>
-          <div className="gz-pricing">
-            {plans.map((p, i) => {
-              const off = percentOff(p.price, p.was);
-              return (
-                <Reveal className="gz-card" key={p.name} delay={i * 80}>
-                  <p className="gz-muted" style={{ fontWeight: 600 }}>{p.name}</p>
-                  <div className="gz-plan__price" style={{ marginTop: 12 }}>
-                    <strong style={{ fontSize: 34 }}>{p.price}</strong>
-                    <span className="gz-plan__was">{p.was}</span>
-                  </div>
-                  {off && (
-                    <span className="gz-badge gz-badge--green" style={{ marginTop: 12 }}>
-                      Save {off}%
-                    </span>
-                  )}
-                  <p style={{ marginTop: 14, fontSize: 15 }}>{p.note}</p>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <CtaBand dark title="Study from home, with people keeping an eye on your progress" />
+      <CtaBand
+        dark
+        title="Already enrolled in a virtual course?"
+        text="Sign in to Grazac Learn to pick up your lessons, check your progress and download your certificate."
+        action={{ href: links.learn, label: "Go to My Learning" }}
+      />
     </Layout>
   );
 };

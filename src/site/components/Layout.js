@@ -10,6 +10,7 @@ import {
   FiMessageCircle,
   FiMonitor,
   FiTag,
+  FiUsers,
   FiMail,
   FiMapPin,
   FiMenu,
@@ -36,15 +37,19 @@ import {
 import CircuitPattern from "./CircuitPattern";
 import "../site.css";
 
+// "My Learning" is Grazac Learn (TrainerCentral), where virtual-course
+// learners sign in. Physical-cohort learners still use /login.
 const primaryNav = [
   { to: "/courses", label: "Courses" },
   { to: "/hire", label: "Hire talent" },
   { to: "/about-us", label: "About" },
   { href: links.blog, label: "Blog" },
+  { href: links.learn, label: "My Learning" },
 ];
 
 const moreNav = [
-  { to: "/virtual", label: "Virtual classes", icon: FiMonitor, desc: "Live online courses, 3 months" },
+  { to: "/virtual", label: "Virtual courses", icon: FiMonitor, desc: "Learn online on Grazac Learn" },
+  { to: "/courses?mode=onsite", label: "Physical courses", icon: FiUsers, desc: "Six months at our Abeokuta campus" },
   { to: "/pricing", label: "Pricing", icon: FiTag, desc: "Plans and installments" },
   { to: "/faq", label: "FAQs", icon: FiHelpCircle, desc: "Admissions, fees, certificates" },
   { to: "/it", label: "IT / SIWES program", icon: FiBriefcase, desc: "Industrial training for students" },
@@ -316,10 +321,16 @@ const Header = () => {
               Apply now
             </Link>
             <a
+              href={links.learn}
+              className="gz-btn gz-btn--secondary gz-btn--lg"
+            >
+              My Learning (virtual courses)
+            </a>
+            <a
               href={links.login}
               className="gz-btn gz-btn--secondary gz-btn--lg"
             >
-              Log in
+              Log in (physical cohort)
             </a>
             <a
               href={contact.phoneHref}
@@ -366,7 +377,10 @@ const Footer = () => (
               <Link to="/courses">All courses</Link>
             </li>
             <li>
-              <Link to="/virtual">Virtual classes</Link>
+              <Link to="/virtual">Virtual courses</Link>
+            </li>
+            <li>
+              <Link to="/courses?mode=onsite">Physical courses</Link>
             </li>
             <li>
               <Link to="/pricing">Pricing</Link>
@@ -407,7 +421,10 @@ const Footer = () => (
               <Link to={links.apply}>Apply now</Link>
             </li>
             <li>
-              <a href={links.login}>Log in to dashboard</a>
+              <a href={links.learn}>My Learning (virtual courses)</a>
+            </li>
+            <li>
+              <a href={links.login}>Log in to dashboard (physical cohort)</a>
             </li>
             <li>
               <Link to="/faq">FAQs</Link>

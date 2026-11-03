@@ -124,6 +124,11 @@ const InternshipPayment = lazy(() => {
   return import("./pages/program-page/InternshipPayment");
 });
 
+// Internal reporting dashboard (TrainerCentral data). Separate from the admin app.
+const Reports = lazy(() => {
+  return import("./reports/ReportsApp");
+});
+
 const App = () => {
   const [show, setShow] = useState(true);
   const [redirect, setRedirect] = useState(false);
@@ -165,7 +170,7 @@ const App = () => {
 
           <Suspense fallback={<Loader />}>
             <div ref={app} className="App" style={{ overflowX: "clip" }}>
-              <WhatsApp />
+              {!location.pathname.startsWith("/reports") && <WhatsApp />}
               <Switch>
                 {/* <AcademySidebar>
                 <Route path="/academy" component={AcademyDashboardPage} />
@@ -226,6 +231,9 @@ const App = () => {
                 <Redirect from="/hire/:rest" to="/hire" />
 
                 <Route path="/pricing" component={Pricing} />
+
+                {/* Staff reporting dashboard */}
+                <Route path="/reports" component={Reports} />
 
                 {/* Coming soon page */}
                 {/* <Route path="/:name/coming-soon" component={ComingSoon} /> */}

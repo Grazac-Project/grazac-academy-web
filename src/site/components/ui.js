@@ -11,8 +11,15 @@ import {
 } from "react-icons/fi";
 import { FaPlay, FaQuoteLeft } from "react-icons/fa";
 import avatarPlaceholder from "../img/avatars/placeholder.svg";
-import { categories, courseHref, courses } from "../data/courses";
+import { categories, courseHref, coursesByMode } from "../data/courses";
 import { contact, links } from "../data/site";
+import useVirtualCourses from "../hooks/useVirtualCourses";
+import {
+  CourseSkeletons,
+  VirtualCourseCard,
+  VirtualCoursesEmpty,
+  VirtualCoursesError,
+} from "./VirtualCourses";
 
 export const Check = (props) => <FiCheck size={18} aria-hidden="true" {...props} />;
 
@@ -132,19 +139,47 @@ export const CourseCard = ({ course, mode }) => (
   </Link>
 );
 
+// Physical courses come from data/courses.js; virtual courses come from the
+// backend (TrainerCentral). With no `mode`, both are shown, physical first.
 export const CourseExplorer = ({ mode, limit }) => {
   const [active, setActive] = useState("All");
+  const virtual = useVirtualCourses({ enabled: mode !== "onsite" });
+  const physical = useMemo(() => (mode === "virtual" ? [] : coursesByMode("onsite")), [mode]);
+  const remote = virtual.items;
+
+  // One list of { key, category, node } so tabs and counts cover both sources.
   const available = useMemo(
-    () => (mode ? courses.filter((c) => c.modes.includes(mode)) : courses),
-    [mode]
+    () => [
+      ...physical.map((c) => ({
+        key: `onsite:${c.slug}`,
+        category: c.category,
+        node: <CourseCard key={`onsite:${c.slug}`} course={c} mode={mode} />,
+      })),
+      ...remote.map((c) => ({
+        key: `virtual:${c.id}`,
+        category: c.categories[0] || null,
+        node: <VirtualCourseCard key={`virtual:${c.id}`} course={c} />,
+      })),
+    ],
+    [physical, remote, mode]
   );
+  const known = available.map((c) => c.category).filter(Boolean);
   const tabs = [
     "All",
-    ...categories.filter((t) => available.some((c) => c.category === t)),
+    ...categories.filter((t) => known.includes(t)),
+    ...[...new Set(known)].filter((t) => !categories.includes(t)),
   ];
   const shown =
     active === "All" ? available : available.filter((c) => c.category === active);
   const list = limit ? shown.slice(0, limit) : shown;
+  const waitingForVirtual = mode !== "onsite" && virtual.status === "loading";
+
+  if (mode === "virtual" && virtual.status === "error") {
+    return <VirtualCoursesError onRetry={virtual.retry} />;
+  }
+  if (mode === "virtual" && virtual.status === "ready" && !available.length) {
+    return <VirtualCoursesEmpty />;
+  }
 
   return (
     <div>
@@ -169,11 +204,24 @@ export const CourseExplorer = ({ mode, limit }) => {
           );
         })}
       </div>
-      <div className="gz-grid gz-grid--3">
-        {list.map((c) => (
-          <CourseCard key={c.slug} course={c} mode={mode} />
-        ))}
+      <div className="gz-grid gz-grid--3" aria-busy={waitingForVirtual || undefined}>
+        {list.map((c) => c.node)}
+        {waitingForVirtual && (!limit || list.length < limit) && (
+          <CourseSkeletons count={limit ? Math.min(3, limit - list.length) : 3} />
+        )}
       </div>
+      {mode === "virtual" && virtual.hasMore && !limit && (
+        <div className="gz-load-more">
+          <button
+            type="button"
+            className="gz-btn gz-btn--secondary"
+            onClick={virtual.loadMore}
+            disabled={virtual.loadingMore}
+          >
+            {virtual.loadingMore ? "Loading…" : "Show more courses"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -248,6 +296,8 @@ export const CtaBand = ({
   title = "Applications for the next cohort are open",
   text = "Applying takes a few minutes. If you're unsure which course to pick, message us first and we'll help you decide.",
   dark,
+  // { to | href, label }. Defaults to the physical-cohort application.
+  action = { to: links.apply, label: "Apply now" },
 }) => (
   <section className="gz-section gz-section--tight">
     <div className="gz-container">
@@ -257,9 +307,15 @@ export const CtaBand = ({
           <p>{text}</p>
         </div>
         <div className="gz-btn-row">
-          <Link to={links.apply} className="gz-btn gz-btn--yellow gz-btn--lg">
-            Apply now <FiArrowRight />
-          </Link>
+          {action.href ? (
+            <a href={action.href} className="gz-btn gz-btn--yellow gz-btn--lg">
+              {action.label} <FiArrowRight />
+            </a>
+          ) : (
+            <Link to={action.to} className="gz-btn gz-btn--yellow gz-btn--lg">
+              {action.label} <FiArrowRight />
+            </Link>
+          )}
           <a
             href={contact.whatsappChat}
             target="_blank"

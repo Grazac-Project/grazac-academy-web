@@ -18,7 +18,7 @@ const Pricing = () => {
   return (
     <Layout
       title="Pricing"
-      description="Tuition for Grazac Academy's physical and virtual courses. Pay at once or in installments."
+      description="Tuition for Grazac Academy's physical courses, with installment plans. Virtual courses are priced per course."
     >
       <section className="gz-page-hero">
         <CircuitPattern className="gz-hero__pattern" seed={11} />
@@ -49,6 +49,27 @@ const Pricing = () => {
         </div>
       </section>
 
+      {mode === "virtual" ? (
+        <section className="gz-section">
+          <div className="gz-container">
+            <div className="gz-state" style={{ maxWidth: 720, margin: "0 auto" }}>
+              <h2 className="gz-h3">Each virtual course has its own price</h2>
+              <p>
+                You'll see the price on each course's page. Enrolment and payment
+                for virtual courses happen on Grazac Learn, our learning portal.
+              </p>
+              <div className="gz-btn-row">
+                <Link to="/courses?mode=virtual" className="gz-btn gz-btn--primary">
+                  Browse virtual courses <FiArrowRight />
+                </Link>
+                <a href={links.learn} className="gz-btn gz-btn--secondary">
+                  My Learning
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : (
       <section className="gz-section">
         <div className="gz-container">
           <p className="gz-center gz-muted" style={{ marginBottom: 40 }}>
@@ -119,6 +140,7 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+      )}
 
       <section className="gz-section gz-section--soft">
         <div className="gz-container gz-split" style={{ alignItems: "start" }}>

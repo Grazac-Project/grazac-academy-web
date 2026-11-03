@@ -46,7 +46,7 @@ export const faqGroups = [
     items: [
       {
         q: "Which courses do you offer?",
-        a: `Physical classes in Abeokuta: ${list(coursesByMode("onsite"))}. Live online: ${list(coursesByMode("virtual"))}.`,
+        a: `Physical classes in Abeokuta: ${list(coursesByMode("onsite"))}. Our virtual courses change through the year; the courses page lists the ones open now, and you enrol on Grazac Learn.`,
         link: { to: "/courses", label: "See all courses" },
       },
       {
@@ -100,7 +100,7 @@ export const faqGroups = [
     items: [
       {
         q: "How much does it cost to learn at Grazac Academy?",
-        a: "It depends on the course. The pricing page lists the current plans for physical and virtual courses.",
+        a: "It depends on the course. The pricing page lists the plans for physical courses. Each virtual course shows its price on its course page, and you pay for it on Grazac Learn.",
         link: { to: "/pricing", label: "View pricing" },
       },
       {
