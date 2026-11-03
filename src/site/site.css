@@ -3905,3 +3905,133 @@
     transition: none !important;
   }
 }
+
+/* ---------- Virtual courses (TrainerCentral catalogue) ----------
+ * Cards hold two actions (details + enrol), so the card root is not a link.
+ * These rules mirror .gz-course / .gz-tile instead of changing them.
+ */
+.gz-course--virtual .gz-course__hit,
+.gz-tile--virtual .gz-tile__hit {
+  display: block;
+  color: inherit;
+}
+.gz-course--virtual .gz-course__title a,
+.gz-tile--virtual .gz-tile__title a {
+  color: inherit;
+}
+.gz-course--virtual .gz-course__title a:hover,
+.gz-tile--virtual .gz-tile__title a:hover {
+  color: var(--gz-purple);
+}
+.gz-course__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.gz-course__actions .gz-btn {
+  flex: 1 1 auto;
+}
+.gz-tile__thumb {
+  position: relative;
+  aspect-ratio: 388 / 220;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ede4fd;
+}
+.gz-tile__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gz-tile__thumb--icon {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(231, 163, 0, 0.35), transparent 45%),
+    linear-gradient(135deg, var(--gz-purple), var(--gz-ink-2));
+}
+.gz-tile__thumb .gz-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+.gz-tile__foot--actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gz-tile__foot--actions .gz-btn {
+  flex: 1 1 auto;
+}
+.gz-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gz-ink);
+}
+.gz-enrol-soon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1.5px dashed var(--gz-line);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gz-muted);
+}
+.gz-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.gz-prose p + p {
+  margin-top: 14px;
+}
+.gz-instructors {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+.gz-instructor {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  border: 1px solid var(--gz-line);
+  border-radius: var(--gz-radius);
+  background: #fff;
+}
+.gz-instructor strong {
+  display: block;
+  color: var(--gz-ink);
+  font-size: 17px;
+}
+.gz-instructor__title {
+  display: block;
+  font-size: 14px;
+  color: var(--gz-purple);
+  font-weight: 600;
+}
+.gz-instructor p {
+  margin-top: 8px;
+  color: var(--gz-muted);
+  font-size: 15px;
+}
+.gz-instructor__photo {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+.gz-instructor__photo--initial {
+  display: grid;
+  place-items: center;
+  background: var(--gz-purple-tint);
+  color: var(--gz-purple-strong);
+  font-weight: 700;
+  font-size: 22px;
+}
