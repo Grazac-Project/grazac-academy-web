@@ -11,6 +11,7 @@ import {
 } from "react-icons/fi";
 import Layout from "../components/Layout";
 import CircuitPattern from "../components/CircuitPattern";
+import { ApplyLink } from "../components/ApplyChooser";
 import {
   Check,
   CourseExplorer,
@@ -31,7 +32,7 @@ import { allFaqs, faqGroups } from "../data/faqs";
 import { stories } from "../data/stories";
 import { talentRows } from "../data/talent";
 import { testimonials } from "../data/testimonials";
-import { contact, links } from "../data/site";
+import { contact } from "../data/site";
 import { mentorsData } from "../../components/constants";
 import hero from "../img/hero.jpg";
 import pair from "../img/pair.jpg";
@@ -76,20 +77,20 @@ const heroWords = [
 
 const why = [
   {
-    title: "Anyone can start",
-    text: "Graduate or undergraduate, young or old. You don't need any background in tech to get in.",
+    title: "Expert Instructors",
+    text: "Our academy is home to a team of industry leading experts who are not just educators but also respected in their respective fields. ",
   },
   {
-    title: "Your teachers do this for a living",
-    text: "Instructors and mentors work in the industry, so lessons cover the tools teams use now.",
+    title: " Career-Ready Certification",
+    text: "Our programs are designed to prepare you for the workforce. You'll receive ACTD certificate that validate your skills",
   },
   {
-    title: "You leave with work to show",
-    text: "Physical students spend their last two months building a real project with a team.",
+    title: "Internship After Training",
+    text: "You get real workplace experience working with amazing teams on real-life projects to solve related problems while building your portfolio.",
   },
   {
-    title: "Help after the classes end",
-    text: "We review your CV, coach you on soft skills and salary negotiation, and pass on job openings.",
+    title: "There are no learning barriers",
+    text: "Whether you are a graduate or you are an undergraduate, young or old, and no matter your experience our courses, and community has been designed to make you feel comfortable.",
   },
 ];
 
@@ -133,17 +134,16 @@ const Home = () => (
           </Link>
           <h1 className="gz-h1 gz-hero__title">
             Learn <Rotator words={heroWords} />
-            from people who do it for a living.
+            and Upskill for the Future of work
           </h1>
           <p className="gz-lead">
-            Grazac Academy trains people for tech jobs. Come to our campus in
-            Abeokuta for six months, or join live classes online for three.
-            No experience needed.
+            Learn valuable technology skills with our wide range of courses and
+            land your dream job.
           </p>
           <div className="gz-btn-row">
-            <Link to={links.apply} className="gz-btn gz-btn--primary gz-btn--lg">
+            <ApplyLink className="gz-btn gz-btn--primary gz-btn--lg">
               Apply now <FiArrowRight />
-            </Link>
+            </ApplyLink>
             <Link to="/courses" className="gz-btn gz-btn--ghost gz-btn--lg">
               See the courses
             </Link>
@@ -203,10 +203,13 @@ const Home = () => (
             <span className="gz-badge">
               <FiUsers size={12} /> Physical · 6 months
             </span>
-            <h3 className="gz-h3">Classes at our Abeokuta campus</h3>
+            <h3 className="gz-h3">Onsite Class</h3>
             <p>
-              Four months of training, then two months building a real project
-              with your team. You get free use of the workspace the whole time.
+              Get real workplace experience. You stand a chance to work with
+              amazing teams on real-life projects to solve related problems
+              so you can build your portfolio for 6-months.
+
+
             </p>
             <ul className="gz-mode__list">
               {onsite.map((c) => (
@@ -230,9 +233,9 @@ const Home = () => (
             <span className="gz-badge">
               <FiMonitor size={12} /> Virtual · 3 months
             </span>
-            <h3 className="gz-h3">Live classes, wherever you are</h3>
+            <h3 className="gz-h3">Virtual classes </h3>
             <p>
-              Real-time classes with an instructor and your classmates, plus a
+              Virtual classes with an instructor, community and your classmates, plus a
               virtual mentor who checks in with you one to one.
             </p>
             <ul className="gz-mode__list">
@@ -254,7 +257,7 @@ const Home = () => (
           <SectionHeading
             // index="02"
             // eyebrow="Courses"
-            title="Courses built around what employers hire for"
+            title="Courses built for you around market demand"
             action={
               <Link to="/courses" className="gz-link">
                 All courses <FiArrowRight />
@@ -262,7 +265,7 @@ const Home = () => (
             }
           />
         </Reveal>
-        <CourseExplorer limit={6} />
+        <CourseExplorer limit={6} simple />
       </div>
     </section>
 
@@ -279,7 +282,7 @@ const Home = () => (
           </h2>
         </Reveal>
         <Reveal as="p" className="gz-lead" delay={120}>
-          Grazac graduates work at fintechs, banks and global tech companies,
+          Our talent works at fintechs, banks and global tech companies,
           in Nigeria and abroad.
         </Reveal>
       </div>
@@ -290,7 +293,7 @@ const Home = () => (
       <div className="gz-container gz-split">
         <div>
           <Reveal>
-            <SectionHeading index="04"  title="What you can expect from us" />
+            <SectionHeading index="04"  title="Why Grazac Academy is the best for you" />
           </Reveal>
           <div className="gz-why">
             {why.map((w, i) => (
@@ -309,7 +312,7 @@ const Home = () => (
             <img src={teamwork} alt="" loading="lazy" />
           </div>
           <div className="gz-stack__front">
-            <img src={pair} alt="Two Grazac students working through code together" loading="lazy" />
+            <img src={pair} alt="Two talent students working through code together" loading="lazy" />
           </div>
         </Reveal>
       </div>
@@ -321,7 +324,7 @@ const Home = () => (
           <SectionHeading
             center
             title="Get 1-on-1 access to mentors"
-            lead="Experienced people from companies like Paystack, Sterling Bank and BT Group, ready to guide you from your first class to your final project."
+            lead="Experienced mentors from companies like Paystack, Sterling Bank and BT Group, ready to guide you from your first class to your final project."
           />
         </Reveal>
         <PeopleGrid people={mentorsData.slice(0, 8)} />
@@ -333,10 +336,10 @@ const Home = () => (
         <Reveal className="gz-talent__head">
           <div>
             {/* <p className="gz-eyebrow">Video testimonials</p> */}
-            <h2 className="gz-h2">Our students, in their own words.</h2>
+            <h2 className="gz-h2">Our talents, in their own words.</h2>
           </div>
           <p className="gz-lead">
-            Graduates talk about leaving a job to retrain, learning fast and
+            Talents talk about leaving a job to retrain, learning fast and
             getting hired in tech.
           </p>
         </Reveal>
@@ -366,9 +369,9 @@ const Home = () => (
         <Reveal className="gz-band">
           <div>
             {/* <span className="gz-badge">For employers</span> */}
-            <h2 className="gz-h2">Hiring? Our graduates are ready to interview.</h2>
+            <h2 className="gz-h2">Hiring? Our talents are ready to interview.</h2>
             <p className="gz-lead">
-              Tell us the role and we'll put forward graduates who have already
+              Tell us the role and we'll put forward talent who have already
               built something real with a team.
             </p>
             <div className="gz-btn-row" style={{ marginTop: 28 }}>

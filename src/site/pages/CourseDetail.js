@@ -462,7 +462,7 @@ const PhysicalCourseDetail = () => {
         </section>
       )}
 
-      <CtaBand />
+      <CtaBand action={{ to: links.apply, label: "Apply now" }} />
     </Layout>
   );
 };

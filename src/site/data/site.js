@@ -35,7 +35,7 @@ export const links = {
 
 // Top-of-page announcement. Set `text` to "" to hide it.
 export const announcement = {
-  text: "Applications for Cohort 18 are open. Early registration closes May 30th and classes start by July 6th.",
+  text: "Applications for Cohort 19 are open. Early registration closes Dec 5th and classes start by January 11th.",
   cta: "Register now",
   href: "/signup",
 };

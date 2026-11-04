@@ -12,11 +12,13 @@ import {
 import { FaPlay, FaQuoteLeft } from "react-icons/fa";
 import avatarPlaceholder from "../img/avatars/placeholder.svg";
 import { categories, courseHref, coursesByMode } from "../data/courses";
-import { contact, links } from "../data/site";
+import { contact } from "../data/site";
 import useVirtualCourses from "../hooks/useVirtualCourses";
+import { ApplyLink } from "./ApplyChooser";
 import {
   CourseSkeletons,
   VirtualCourseCard,
+  VirtualCourseLinkCard,
   VirtualCoursesEmpty,
   VirtualCoursesError,
 } from "./VirtualCourses";
@@ -141,7 +143,8 @@ export const CourseCard = ({ course, mode }) => (
 
 // Physical courses come from data/courses.js; virtual courses come from the
 // backend (TrainerCentral). With no `mode`, both are shown, physical first.
-export const CourseExplorer = ({ mode, limit }) => {
+// `simple` shows virtual courses like physical ones: no price or Enrol button.
+export const CourseExplorer = ({ mode, limit, simple }) => {
   const [active, setActive] = useState("All");
   const virtual = useVirtualCourses({ enabled: mode !== "onsite" });
   const physical = useMemo(() => (mode === "virtual" ? [] : coursesByMode("onsite")), [mode]);
@@ -158,10 +161,14 @@ export const CourseExplorer = ({ mode, limit }) => {
       ...remote.map((c) => ({
         key: `virtual:${c.id}`,
         category: c.categories[0] || null,
-        node: <VirtualCourseCard key={`virtual:${c.id}`} course={c} />,
+        node: simple ? (
+          <VirtualCourseLinkCard key={`virtual:${c.id}`} course={c} />
+        ) : (
+          <VirtualCourseCard key={`virtual:${c.id}`} course={c} />
+        ),
       })),
     ],
-    [physical, remote, mode]
+    [physical, remote, mode, simple]
   );
   const known = available.map((c) => c.category).filter(Boolean);
   const tabs = [
@@ -296,8 +303,9 @@ export const CtaBand = ({
   title = "Applications for the next cohort are open",
   text = "Applying takes a few minutes. If you're unsure which course to pick, message us first and we'll help you decide.",
   dark,
-  // { to | href, label }. Defaults to the physical-cohort application.
-  action = { to: links.apply, label: "Apply now" },
+  // { to | href, label }. With neither, it's Apply now: the learner picks
+  // virtual or physical first.
+  action = { label: "Apply now" },
 }) => (
   <section className="gz-section gz-section--tight">
     <div className="gz-container">
@@ -311,10 +319,14 @@ export const CtaBand = ({
             <a href={action.href} className="gz-btn gz-btn--yellow gz-btn--lg">
               {action.label} <FiArrowRight />
             </a>
-          ) : (
+          ) : action.to ? (
             <Link to={action.to} className="gz-btn gz-btn--yellow gz-btn--lg">
               {action.label} <FiArrowRight />
             </Link>
+          ) : (
+            <ApplyLink className="gz-btn gz-btn--yellow gz-btn--lg">
+              {action.label} <FiArrowRight />
+            </ApplyLink>
           )}
           <a
             href={contact.whatsappChat}

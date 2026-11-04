@@ -4039,3 +4039,189 @@
 .gz-catalog__cats[hidden] {
   display: none;
 }
+
+/* ---------- Apply: virtual or physical ---------- */
+.gz-apply {
+  position: fixed;
+  inset: 0;
+  /* Above the floating WhatsApp button (150); the dialog has its own WhatsApp link. */
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(31, 16, 53, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: gz-fade-in 0.18s ease;
+}
+.gz-apply__panel {
+  width: min(820px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: var(--gz-radius-lg);
+  box-shadow: var(--gz-shadow-lg);
+  padding: 28px;
+  animation: gz-pop-in 0.22s ease;
+}
+.gz-apply__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.gz-apply__head .gz-eyebrow {
+  margin-bottom: 6px;
+}
+.gz-choose__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.gz-choose__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border-radius: var(--gz-radius);
+  border: 1.5px solid var(--gz-line);
+  background: #fff;
+  color: var(--gz-text) !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.gz-choose__card:hover,
+.gz-choose__card:focus-visible {
+  border-color: var(--gz-purple);
+  box-shadow: var(--gz-shadow-lg);
+  transform: translateY(-2px);
+}
+.gz-choose__card:focus-visible {
+  outline: 3px solid var(--gz-purple-tint);
+  outline-offset: 2px;
+}
+.gz-choose__card--virtual {
+  background: linear-gradient(160deg, var(--gz-purple-soft), #fff 60%);
+}
+.gz-choose__card--onsite {
+  background: linear-gradient(160deg, var(--gz-yellow-soft), #fff 60%);
+}
+.gz-choose__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--gz-purple);
+}
+.gz-choose__card--onsite .gz-choose__icon {
+  background: var(--gz-ink);
+  color: var(--gz-yellow);
+}
+.gz-choose__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 6px;
+}
+.gz-choose__text {
+  color: var(--gz-muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.gz-choose__fact {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gz-ink-2);
+}
+.gz-choose__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-weight: 700;
+  color: var(--gz-purple);
+}
+.gz-choose__card:hover .gz-choose__go svg {
+  transform: translateX(3px);
+}
+.gz-choose__go svg {
+  transition: transform 0.18s ease;
+}
+.gz-choose__last {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--gz-purple);
+  color: #fff;
+}
+.gz-choose__help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gz-muted) !important;
+}
+.gz-choose__help:hover {
+  color: var(--gz-purple) !important;
+}
+@keyframes gz-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes gz-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+@media (max-width: 640px) {
+  /* A sheet from the bottom on phones. */
+  .gz-apply {
+    place-items: end stretch;
+    padding: 0;
+  }
+  .gz-apply__panel {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: var(--gz-radius-lg) var(--gz-radius-lg) 0 0;
+    padding: 22px 16px 28px;
+    animation: gz-sheet-in 0.24s ease;
+  }
+  .gz-choose__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .gz-choose__card {
+    padding: 18px;
+  }
+  .gz-choose__title {
+    font-size: 21px;
+  }
+}
+@keyframes gz-sheet-in {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz-apply,
+  .gz-apply__panel {
+    animation: none;
+  }
+  .gz-choose__card:hover {
+    transform: none;
+  }
+}

@@ -158,7 +158,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      <CtaBand />
+      <CtaBand action={mode === "onsite" ? { to: links.apply, label: "Apply now" } : undefined} />
     </Layout>
   );
 };

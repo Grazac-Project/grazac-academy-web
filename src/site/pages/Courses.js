@@ -29,6 +29,7 @@ import {
 } from "../components/VirtualCourses";
 import { categories, courseHref, coursesByMode } from "../data/courses";
 import useVirtualCourses from "../hooks/useVirtualCourses";
+import { links } from "../data/site";
 
 // Physical courses are listed from data/courses.js. Virtual courses come from
 // the backend, which syncs them from TrainerCentral.
@@ -292,6 +293,7 @@ const Courses = () => {
       <CtaBand
         title="Can't decide between two courses?"
         text="Book a free 30-minute call with our program manager, or send us a WhatsApp message."
+        action={mode === "onsite" ? { to: links.apply, label: "Apply now" } : undefined}
       />
     </Layout>
   );
