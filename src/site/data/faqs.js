@@ -56,7 +56,7 @@ export const faqGroups = [
       },
       {
         q: "Are classes virtual or physical?",
-        a: "It depends on the course. Some run at our Abeokuta campus and others run live online. Each course page says which.",
+        a: "It depends on the course. Some run at our campus and others run live online. Each course page says which.",
       },
       {
         q: "Where are the physical classes held?",
