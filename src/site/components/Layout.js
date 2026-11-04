@@ -7,6 +7,7 @@ import {
   FiChevronDown,
   FiHelpCircle,
   FiHexagon,
+  FiLogIn,
   FiMessageCircle,
   FiMonitor,
   FiTag,
@@ -34,6 +35,7 @@ import {
   links,
   socials,
 } from "../data/site";
+import { ApplyLink, ApplyProvider, LoginButton } from "./ApplyChooser";
 import CircuitPattern from "./CircuitPattern";
 import "../site.css";
 
@@ -44,16 +46,16 @@ const primaryNav = [
   { to: "/hire", label: "Hire talent" },
   { to: "/about-us", label: "About" },
   { href: links.blog, label: "Blog" },
-  { href: links.learn, label: "My Learning" },
+  // { href: links.learn, label: "My Learning" },
 ];
 
 const moreNav = [
-  { to: "/virtual", label: "Virtual courses", icon: FiMonitor, desc: "Learn online on Grazac Learn" },
-  { to: "/courses?mode=onsite", label: "Physical courses", icon: FiUsers, desc: "Six months at our Abeokuta campus" },
+  // { to: "/virtual", label: "Virtual courses", icon: FiMonitor, desc: "Learn online on Grazac Learn" },
+  // { to: "/courses?mode=onsite", label: "Physical courses", icon: FiUsers, desc: "Six months at our Abeokuta campus" },
   { to: "/pricing", label: "Pricing", icon: FiTag, desc: "Plans and installments" },
   { to: "/faq", label: "FAQs", icon: FiHelpCircle, desc: "Admissions, fees, certificates" },
-  { to: "/it", label: "IT / SIWES program", icon: FiBriefcase, desc: "Industrial training for students" },
-  { to: "/web3", label: "Web3 & Blockchain", icon: FiHexagon, desc: "Blockchain and smart contracts" },
+  // { to: "/it", label: "IT / SIWES program", icon: FiBriefcase, desc: "Industrial training for students" },
+  // { to: "/web3", label: "Web3 & Blockchain", icon: FiHexagon, desc: "Blockchain and smart contracts" },
   { to: "/contact", label: "Contact us", icon: FiMessageCircle, desc: "Call, WhatsApp or visit" },
 ];
 
@@ -117,9 +119,13 @@ const Announcement = () => {
       <div className="gz-container gz-announce__inner">
         <p className="gz-announce__text">
           {announcement.text}{" "}
-          <Link className="gz-announce__cta" to={announcement.href}>
-            {announcement.cta}
-          </Link>
+          {announcement.href === links.apply ? (
+            <ApplyLink className="gz-announce__cta">{announcement.cta}</ApplyLink>
+          ) : (
+            <Link className="gz-announce__cta" to={announcement.href}>
+              {announcement.cta}
+            </Link>
+          )}
         </p>
         <button
           type="button"
@@ -246,20 +252,12 @@ const Header = () => {
           </nav>
 
           <div className="gz-header__actions">
-            <a
-              href={contact.whatsappChat}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gz-btn gz-btn--secondary gz-btn--sm"
-            >
-              <FiMessageCircle size={16} /> Talk to us
-            </a>
-            <Link
-              to={links.apply}
-              className="gz-btn gz-btn--primary gz-btn--sm"
-            >
+            <LoginButton className="gz-btn gz-btn--secondary gz-btn--sm">
+              <FiLogIn size={16} /> Log in
+            </LoginButton>
+            <ApplyLink className="gz-btn gz-btn--primary gz-btn--sm">
               Apply now
-            </Link>
+            </ApplyLink>
           </div>
 
           <button
@@ -313,14 +311,12 @@ const Header = () => {
               />
             ))}
           </nav>
+          {/* Apply and Log in close the menu so their dialog isn't stacked on top of it. */}
           <div className="gz-drawer__actions">
-            <Link
-              to={links.apply}
-              className="gz-btn gz-btn--primary gz-btn--lg"
-            >
+            <ApplyLink className="gz-btn gz-btn--primary gz-btn--lg" onClick={() => setDrawer(false)}>
               Apply now
-            </Link>
-            <a
+            </ApplyLink>
+            {/* <a
               href={links.learn}
               className="gz-btn gz-btn--secondary gz-btn--lg"
             >
@@ -331,13 +327,16 @@ const Header = () => {
               className="gz-btn gz-btn--secondary gz-btn--lg"
             >
               Log in (physical cohort)
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href={contact.phoneHref}
               className="gz-btn gz-btn--secondary gz-btn--lg"
             >
               <FiPhone /> Talk to us
-            </a>
+            </a> */}
+            <LoginButton className="gz-btn gz-btn--secondary gz-btn--lg" onClick={() => setDrawer(false)}>
+              <FiLogIn /> Log in
+            </LoginButton>
           </div>
         </div>
       </div>
@@ -353,8 +352,8 @@ const Footer = () => (
         <div className="gz-footer__brand">
           <img src={logo} alt="Grazac Academy" width="110" height="40" />
           <p>
-            Tech training at PROHUB in Abeokuta and online. Physical courses
-            run for six months, virtual courses for three.
+            Grazac Academy gives you the opportunity to learn in-demand skills to build
+            your technology career.
           </p>
           <div className="gz-footer__contact">
             <a href={contact.phoneHref}>
@@ -418,7 +417,7 @@ const Footer = () => (
           <h3>Students</h3>
           <ul className="gz-footer__links">
             <li>
-              <Link to={links.apply}>Apply now</Link>
+              <ApplyLink>Apply now</ApplyLink>
             </li>
             <li>
               <a href={links.learn}>My Learning (virtual courses)</a>
@@ -450,7 +449,7 @@ const Footer = () => (
           <p className="gz-footer__accredit-label">Accreditation</p>
           <p className="gz-footer__accredit-name">{accreditation}</p>
           <p className="gz-footer__accredit-note">
-            Every graduate receives an ACTD-accredited certificate, in print and digital.
+            Every talents receives an ACTD-accredited certificate, in print and digital.
           </p>
         </div>
       </div>
@@ -511,13 +510,16 @@ const Layout = ({ title, description, children }) => {
 
   return (
     <div className="gz">
-      <a href="#main" className="gz-skip">
-        Skip to content
-      </a>
-      <Announcement />
-      <Header />
-      <main id="main">{children}</main>
-      <Footer />
+      {/* Inside .gz so the Apply dialog gets the site's styles. */}
+      <ApplyProvider>
+        <a href="#main" className="gz-skip">
+          Skip to content
+        </a>
+        <Announcement />
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+      </ApplyProvider>
     </div>
   );
 };

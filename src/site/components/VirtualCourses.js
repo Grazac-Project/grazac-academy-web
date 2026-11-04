@@ -74,6 +74,28 @@ export const VirtualCourseCard = ({ course }) => (
   </article>
 );
 
+/** The same card as a physical CourseCard (ui.js): one link to the details page, no price or Enrol. */
+export const VirtualCourseLinkCard = ({ course }) => (
+  <Link to={virtualHref(course)} className="gz-course">
+    <Thumb course={course} className="gz-course__media" />
+    <div className="gz-course__body">
+      {course.categories[0] && <p className="gz-course__cat">{course.categories[0]}</p>}
+      <h3 className="gz-h3 gz-course__title">{course.title}</h3>
+      {course.description && <p className="gz-course__summary">{excerpt(course.description, 140)}</p>}
+      <div className="gz-course__foot">
+        <span className="gz-course__modes">
+          <span className="gz-badge">
+            <FiMonitor size={12} /> Virtual
+          </span>
+        </span>
+        <span className="gz-link">
+          Details <FiArrowRight />
+        </span>
+      </div>
+    </div>
+  </Link>
+);
+
 /** Matches CourseTile on the courses page. */
 export const VirtualCourseTile = ({ course }) => (
   <article className="gz-tile gz-tile--virtual">

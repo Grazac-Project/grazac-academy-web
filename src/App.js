@@ -45,6 +45,10 @@ const Hire = lazy(() => {
   return import("./site/pages/Hire");
 });
 
+const Apply = lazy(() => {
+  return import("./site/pages/Apply");
+});
+
 const SignUp = lazy(() => {
   return import("./pages/graduateCohort/auth/SignUp");
 });
@@ -204,6 +208,7 @@ const App = () => {
                 </Route>
                 {/* <Route path="/join" component={Join}/> */}
                 <Route path="/courses" component={Courses} />
+                <Route path="/apply" component={Apply} />
                 <Route path="/about-us" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/faq" component={Faq} />
