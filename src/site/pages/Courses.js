@@ -170,7 +170,7 @@ const Courses = () => {
   return (
     <Layout
       title="Courses"
-      description="Grazac Academy courses in AI automation, cybersecurity, data, cloud, software engineering and product. Physical classes in Abeokuta or live online."
+      description="Grazac Academy courses in AI automation, cybersecurity, data, cloud, software engineering and product. Physical classes Onsite or live online."
     >
       <section className="gz-catalog">
         <div className="gz-container">
@@ -232,7 +232,7 @@ const Courses = () => {
             {virtualLoading && !shownCount
               ? "Loading courses…"
               : `Showing ${shownCount} ${shownCount === 1 ? "course" : "courses"}`}
-            {mode === "onsite" && " at our Abeokuta campus"}
+            {mode === "onsite" && " at any of our campus"}
             {mode === "virtual" && !virtualLoading && " online"}
           </p>
 

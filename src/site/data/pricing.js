@@ -5,7 +5,7 @@ export const applicationFee = "₦10,000";
 export const pricing = {
   onsite: {
     label: "Physical",
-    duration: "6 months · Abeokuta campus",
+    duration: "6 months · Onsite campus",
     plans: [
       {
         name: "Pay in installments",

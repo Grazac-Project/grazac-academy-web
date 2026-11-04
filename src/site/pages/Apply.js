@@ -7,7 +7,7 @@ import { ApplyChoices } from "../components/ApplyChooser";
 const Apply = () => (
   <Layout
     title="Apply"
-    description="Apply to Grazac Academy: learn online on Grazac Learn, or join a physical cohort at our Abeokuta campus."
+    description="Apply to Grazac Academy: learn online on Grazac Learn, or join a physical cohort at our campus."
   >
     <section className="gz-page-hero">
       <CircuitPattern className="gz-hero__pattern" seed={11} />
