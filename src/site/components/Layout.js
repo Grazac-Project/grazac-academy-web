@@ -51,7 +51,7 @@ const primaryNav = [
 
 const moreNav = [
   // { to: "/virtual", label: "Virtual courses", icon: FiMonitor, desc: "Learn online on Grazac Learn" },
-  // { to: "/courses?mode=onsite", label: "Physical courses", icon: FiUsers, desc: "Six months at our Abeokuta campus" },
+  // { to: "/courses?mode=onsite", label: "Physical courses", icon: FiUsers, desc: "Six months at our  campus" },
   { to: "/pricing", label: "Pricing", icon: FiTag, desc: "Plans and installments" },
   { to: "/faq", label: "FAQs", icon: FiHelpCircle, desc: "Admissions, fees, certificates" },
   // { to: "/it", label: "IT / SIWES program", icon: FiBriefcase, desc: "Industrial training for students" },
@@ -490,7 +490,7 @@ const Layout = ({ title, description, children }) => {
   useEffect(() => {
     document.title = title
       ? `${title} | Grazac Academy`
-      : "Grazac Academy | Tech courses in Abeokuta and online";
+      : "Grazac Academy | Tech courses Onsite and online";
     if (description) {
       const meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute("content", description);

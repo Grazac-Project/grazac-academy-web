@@ -132,15 +132,15 @@ export const ApplyChoices = ({ onChoose, autoFocus }) => {
           to={VIRTUAL_PATH}
           title="Learn online"
           text="Pick a course and enrol on Grazac Learn. Learn from anywhere and track your progress there."
-          fact={summary}
+          // fact={summary}
           go="Browse virtual courses"
         />
         <ChoiceCard
           {...card("onsite")}
           to={links.apply}
-          title="Learn in Abeokuta"
-          text="Six months of classes at our campus, with mentors in the room. Create an account to apply."
-          fact={`${physicalCount} courses${announcement.text ? ` · ${announcement.text.split(".")[0]}` : ""}`}
+          title="Learn Onsite"
+          text="Six months of classes Onsite, with mentors and facilitators"
+          // fact={`${physicalCount} courses${announcement.text ? ` · ${announcement.text.split(".")[0]}` : ""}`}
           go="Start your application"
         />
       </div>
@@ -160,15 +160,15 @@ export const LoginChoices = ({ onChoose, autoFocus }) => {
           {...card("virtual")}
           href={links.learn}
           title="Virtual course"
-          text="Sign in to Grazac Learn to continue your lessons, take assessments and get your certificate."
-          fact="My Learning on Grazac Learn"
+          text="Sign in to continue your lessons, take assessments and get your certificate."
+          // fact="My Learning on Grazac Learn"
           go="Go to My Learning"
         />
         <ChoiceCard
           {...card("onsite")}
           to={links.login}
           title="Physical cohort"
-          text="Sign in to your class dashboard for our Abeokuta campus courses."
+          text="Sign in to access your dashboard"
           go="Log in to your dashboard"
         />
       </div>
